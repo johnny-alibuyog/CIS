@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B15D6AA5-7E64-4713-A754-44384474FA2E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CIS.Data</RootNamespace>
+    <AssemblyName>CIS.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.3.3.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.SysCache2">
+      <HintPath>..\packages\NHibernate.Caches.SysCache2.3.2.0.4000\lib\Net35\NHibernate.Caches.SysCache2.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Validator">
+      <HintPath>..\packages\NHibernate.Validator.1.3.2.4000\lib\Net35\NHibernate.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Validator.Specific">
+      <HintPath>..\packages\NHibernate.Validator.1.3.2.4000\lib\Net35\NHibernate.Validator.Specific.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commons\Exceptions\BusinessException.cs" />
+    <Compile Include="Commons\Exceptions\BusinessExceptionBuilder.cs" />
+    <Compile Include="Commons\Exceptions\IExceptionBuilder.cs" />
+    <Compile Include="Commons\Exceptions\IInvaildValueMessageBuilder.cs" />
+    <Compile Include="Commons\Exceptions\InvalidValueMessageBuilder.cs" />
+    <Compile Include="Commons\Extentions\TypeExtentions.cs" />
+    <Compile Include="Configurations\AuditEventListener.cs" />
+    <Compile Include="Configurations\AuditResolver.cs" />
+    <Compile Include="Configurations\CacheConfiguration.cs" />
+    <Compile Include="Configurations\ConventionMessageInterpolator.cs" />
+    <Compile Include="Configurations\CurrentSessionContextConfiguration.cs" />
+    <Compile Include="Configurations\EventListenerConfiguration.cs" />
+    <Compile Include="Configurations\IndexForeignKeyConfiguration.cs" />
+    <Compile Include="Configurations\SchemaConfiguration.cs" />
+    <Compile Include="Configurations\ValidatedSharedEngineProvider.cs" />
+    <Compile Include="Configurations\ValidationEventListener.cs" />
+    <Compile Include="Configurations\ValidatorConfiguration.cs" />
+    <Compile Include="Conventions\BinaryColumnLengthConvention.cs" />
+    <Compile Include="Conventions\CustomComponentConvention.cs" />
+    <Compile Include="Conventions\CustomForeignKeyConvention.cs" />
+    <Compile Include="Conventions\CustomHasManyConvention.cs" />
+    <Compile Include="Conventions\CustomPrimaryKeyNameConvention.cs" />
+    <Compile Include="Conventions\CustomPropertyAccessConvention.cs" />
+    <Compile Include="Conventions\CustomTableNameConvention.cs" />
+    <Compile Include="Conventions\EnumConvention.cs" />
+    <Compile Include="Conventions\_CustomJoinedSubclassConvention.cs" />
+    <Compile Include="ISessionProvider.cs" />
+    <Compile Include="Mappings\Barangays\CaptainMapping.cs">
+      <DependentUpon>OfficialMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Barangays\ClearanceMapping.cs" />
+    <Compile Include="Mappings\Barangays\CouncilorMapping.cs">
+      <DependentUpon>OfficialMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Barangays\IncumbentMapping.cs" />
+    <Compile Include="Mappings\Barangays\KagawadMapping.cs">
+      <DependentUpon>OfficialMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Barangays\OfficeMapping.cs" />
+    <Compile Include="Mappings\Barangays\OfficialMapping.cs" />
+    <Compile Include="Mappings\Barangays\SecretaryMapping.cs">
+      <DependentUpon>OfficialMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Barangays\SKChairmanMapping.cs">
+      <DependentUpon>OfficialMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Barangays\TreasurerMapping.cs">
+      <DependentUpon>OfficialMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Commons\AddressMapping.cs" />
+    <Compile Include="Mappings\Commons\AuditMapping.cs" />
+    <Compile Include="Mappings\Commons\BarangayMapping.cs">
+      <DependentUpon>AddressMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Commons\BarcodeMapping.cs" />
+    <Compile Include="Mappings\Commons\BlobMapping.cs" />
+    <Compile Include="Mappings\Commons\CityMapping.cs">
+      <DependentUpon>AddressMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Commons\ContactMapping.cs" />
+    <Compile Include="Mappings\Commons\EmailMapping.cs">
+      <DependentUpon>ContactMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Commons\FaxMapping.cs">
+      <DependentUpon>ContactMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Commons\FingerPrintMapping.cs" />
+    <Compile Include="Mappings\Commons\ImageBlobMapping.cs">
+      <DependentUpon>BlobMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Commons\LandlineMapping.cs">
+      <DependentUpon>ContactMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Commons\MobileMapping.cs">
+      <DependentUpon>ContactMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Commons\PersonMapping.cs" />
+    <Compile Include="Mappings\Commons\PhysicalAttributesMapping.cs" />
+    <Compile Include="Mappings\Commons\PictureMapping.cs" />
+    <Compile Include="Mappings\Commons\ProvinceMapping.cs">
+      <DependentUpon>AddressMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Commons\RegionMapping.cs">
+      <DependentUpon>AddressMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Mayors\ClearanceMapping.cs" />
+    <Compile Include="Mappings\Mayors\IncumbentMapping.cs" />
+    <Compile Include="Mappings\Mayors\MayorMapping.cs">
+      <DependentUpon>OfficialMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Mayors\OfficeMapping.cs" />
+    <Compile Include="Mappings\Mayors\OfficialMapping.cs" />
+    <Compile Include="Mappings\Mayors\SecretaryMapping.cs">
+      <DependentUpon>OfficialMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mappings\Memberships\RoleMapping.cs" />
+    <Compile Include="Mappings\Memberships\UserMapping.cs" />
+    <Compile Include="Mappings\Polices\ClearanceMapping.cs" />
+    <Compile Include="Mappings\Polices\OfficerMapping.cs" />
+    <Compile Include="Mappings\Polices\PurposeMapping.cs" />
+    <Compile Include="Mappings\Polices\RankMapping.cs" />
+    <Compile Include="Mappings\Polices\StationMapping.cs" />
+    <Compile Include="Mappings\Polices\SuspectMapping.cs" />
+    <Compile Include="Mappings\Polices\WarrantMapping.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionProvider.cs" />
+    <Compile Include="Validations\Barangays\CaptainValidation.cs">
+      <DependentUpon>OfficialValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Barangays\ClearanceValidaton.cs" />
+    <Compile Include="Validations\Barangays\CouncilorValidation.cs">
+      <DependentUpon>OfficialValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Barangays\IncumbentValidation.cs" />
+    <Compile Include="Validations\Barangays\KagawadValidation.cs">
+      <DependentUpon>OfficialValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Barangays\OfficeValidation.cs" />
+    <Compile Include="Validations\Barangays\OfficialValidation.cs" />
+    <Compile Include="Validations\Barangays\SecretaryValidaton.cs">
+      <DependentUpon>OfficialValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Barangays\SKChairmanValidation.cs">
+      <DependentUpon>OfficialValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Barangays\TreasurerValidation.cs">
+      <DependentUpon>OfficialValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Commons\AddressValidation.cs" />
+    <Compile Include="Validations\Commons\AuditValidation.cs" />
+    <Compile Include="Validations\Commons\BarangayValidation.cs">
+      <DependentUpon>AddressValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Commons\BarcodeValidaton.cs" />
+    <Compile Include="Validations\Commons\BlobValidation.cs" />
+    <Compile Include="Validations\Commons\CityValidation.cs">
+      <DependentUpon>AddressValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Commons\ContactValidaton.cs" />
+    <Compile Include="Validations\Commons\EmailValidation.cs">
+      <DependentUpon>ContactValidaton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Commons\FaxValidation.cs">
+      <DependentUpon>ContactValidaton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Commons\FingerPrintValidation.cs" />
+    <Compile Include="Validations\Commons\ImageBlobMapping.cs">
+      <DependentUpon>BlobValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Commons\LandlineValidation.cs">
+      <DependentUpon>ContactValidaton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Commons\MobileValidation.cs">
+      <DependentUpon>ContactValidaton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Commons\PersonValidation.cs" />
+    <Compile Include="Validations\Commons\PhysicalAttributesValidation.cs" />
+    <Compile Include="Validations\Commons\PictureValidation.cs" />
+    <Compile Include="Validations\Commons\ProvinceValidation.cs">
+      <DependentUpon>AddressValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Commons\RegionValidation.cs">
+      <DependentUpon>AddressValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Mayors\ClearanceValidation.cs" />
+    <Compile Include="Validations\Mayors\IncumbentValidation.cs" />
+    <Compile Include="Validations\Mayors\MayorValidation.cs">
+      <DependentUpon>OfficialValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Mayors\OfficeValidation.cs" />
+    <Compile Include="Validations\Mayors\OfficialValidation.cs" />
+    <Compile Include="Validations\Mayors\SecretaryValidation.cs">
+      <DependentUpon>OfficialValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Memberships\RoleValidation.cs" />
+    <Compile Include="Validations\Memberships\UserValidation.cs" />
+    <Compile Include="Validations\Polices\ClearanceValidaton.cs" />
+    <Compile Include="Validations\Polices\OfficerValidation.cs" />
+    <Compile Include="Validations\Polices\PurposeValidaton.cs" />
+    <Compile Include="Validations\Polices\RankValidation.cs" />
+    <Compile Include="Validations\Polices\StationValidaton.cs" />
+    <Compile Include="Validations\Polices\SuspectValidation.cs" />
+    <Compile Include="Validations\Polices\WarrantValidation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="database_creation_script.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIS.Core\CIS.Core.csproj">
+      <Project>{443e80b3-b2b6-402b-828c-804f8e8532b8}</Project>
+      <Name>CIS.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

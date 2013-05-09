@@ -1,0 +1,40 @@
+﻿<local:DialogBase x:Class="CIS.UI.Features.Polices.Stations.OfficerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:CIS.UI.Features"
+        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+        xmlns:persons="clr-namespace:CIS.UI.Features.Commons.Persons"
+        local:DialogBase.DialogResult="{Binding Path=ActionResult}"
+        Title="OfficerView" SizeToContent="WidthAndHeight">
+    <StackPanel Style="{StaticResource ContentRoot}">
+        <StackPanel.Resources>
+            <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
+        </StackPanel.Resources>
+
+        <TextBlock Style="{StaticResource Heading2}" Text="Officer's Profile" Margin="0,8,0,8"/>
+        <persons:PersonView DataContext="{Binding Person}"/>
+
+        <StackPanel>
+            <Label Content="Rank"/>
+            <ComboBox 
+                ItemsSource="{Binding Ranks, Mode=TwoWay}"
+                SelectedValue="{Binding Rank, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                DisplayMemberPath="Name" />
+        </StackPanel>
+        <StackPanel>
+            <Label Content="Position"/>
+            <TextBox Text="{Binding Position, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+        <StackPanel>
+            <Label Content="Title"/>
+            <TextBox Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <!-- buttons -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Save" IsDefault="True" Command="{Binding Path=Save}" Margin="4" />
+            <Button Content="Cancel" IsCancel="True"  Margin="4" />
+        </StackPanel>
+
+    </StackPanel>
+</local:DialogBase>

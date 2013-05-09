@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{443E80B3-B2B6-402B-828C-804F8E8532B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CIS.Core</RootNamespace>
+    <AssemblyName>CIS.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="zxing">
+      <HintPath>..\packages\ZXing.Net.0.11.0.1\lib\net40\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation">
+      <HintPath>..\packages\ZXing.Net.0.11.0.1\lib\net40\zxing.presentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Barangays\Captain.cs">
+      <DependentUpon>Official.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Barangays\Clearance.cs" />
+    <Compile Include="Entities\Barangays\Councilor.cs">
+      <DependentUpon>Official.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Barangays\Incumbent.cs" />
+    <Compile Include="Entities\Barangays\Kagawad.cs">
+      <DependentUpon>Official.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Barangays\Office.cs" />
+    <Compile Include="Entities\Barangays\Official.cs" />
+    <Compile Include="Entities\Barangays\Secretary.cs">
+      <DependentUpon>Official.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Barangays\SKChairman.cs">
+      <DependentUpon>Official.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Barangays\Treasurer.cs">
+      <DependentUpon>Official.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Commons\Address.cs" />
+    <Compile Include="Entities\Commons\Audit.cs" />
+    <Compile Include="Entities\Commons\Barangay.cs">
+      <DependentUpon>Address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Commons\AreaClass.cs" />
+    <Compile Include="Entities\Commons\Barcode.cs" />
+    <Compile Include="Entities\Commons\Blob.cs" />
+    <Compile Include="Entities\Commons\City.cs">
+      <DependentUpon>Address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Commons\Contact.cs" />
+    <Compile Include="Entities\Commons\Email.cs">
+      <DependentUpon>Contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Commons\Fax.cs">
+      <DependentUpon>Contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Commons\FingerPrint.cs" />
+    <Compile Include="Entities\Commons\Gender.cs" />
+    <Compile Include="Entities\Commons\ImageBlob.cs">
+      <DependentUpon>Blob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Commons\Landline.cs">
+      <DependentUpon>Contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Commons\Mobile.cs">
+      <DependentUpon>Contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Commons\Person.cs" />
+    <Compile Include="Entities\Commons\PhysicalAttributes.cs" />
+    <Compile Include="Entities\Commons\Picture.cs" />
+    <Compile Include="Entities\Commons\Province.cs">
+      <DependentUpon>Address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Commons\Region.cs">
+      <DependentUpon>Address.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Mayors\Clearance.cs" />
+    <Compile Include="Entities\Mayors\Incumbent.cs" />
+    <Compile Include="Entities\Mayors\Mayor.cs">
+      <DependentUpon>Official.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Mayors\Office.cs" />
+    <Compile Include="Entities\Mayors\Official.cs" />
+    <Compile Include="Entities\Mayors\Secretary.cs">
+      <DependentUpon>Official.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Memberships\Permission.cs" />
+    <Compile Include="Entities\Memberships\Role.cs" />
+    <Compile Include="Entities\Memberships\User.cs" />
+    <Compile Include="Entities\Polices\ArrestStatus.cs" />
+    <Compile Include="Entities\Polices\Clearance.cs" />
+    <Compile Include="Entities\Polices\Officer.cs" />
+    <Compile Include="Entities\Polices\Purpose.cs" />
+    <Compile Include="Entities\Polices\Rank.cs" />
+    <Compile Include="Entities\Polices\RankCategory.cs" />
+    <Compile Include="Entities\Polices\Station.cs" />
+    <Compile Include="Entities\Polices\Suspect.cs" />
+    <Compile Include="Entities\Polices\Warrant.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\Commons\AddressNotes.txt">
+      <DependentUpon>Address.cs</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,57 @@
+﻿Protocol
+
+<Addressee>
+<Unit No> < Building Name>  or  <Lot No / Block No>
+<House No> <Street Name>
+<Village/Subdivision>  or  <Postal Code Name>  or  <Purok Name>
+<Barangay Name> < Postal Code> <City/Municipality Name>
+<Province>, <Country>
+
+The protocol starts in reverse order with the largest parcel which is the country, followed by smaller parcels city, municipality and so on, In effect drilling down to a specific location.
+
+Some Examples
+
+Building Based Address
+Juan Dela Cruz
+Unit 21 Greenbelt  Residences
+37 Esperanza Street
+Greenbelt, Makati 1228
+Barangay San Lorenzo
+Metro Manila, Philippines
+
+Village Based Address
+Juan Dela Cruz
+11 Main Avenue
+Merville Park Subdivision
+Barangay Merville 1706 Paranaque City
+Metro Manila, Philippines
+
+Provincial Address
+Juan Dela Cruz
+Purok 4
+Barangay Canitu-an 1610 Kalilangan
+Bukidnon, Philippines
+
+Village Based Address (Lot Block)
+Juan Dela Cruz
+Lot 4, Block 6
+President Roxas Street
+South Admiral Village
+Barangay Merville 1709 Paranaque City
+Metro Manila, Philippines
+
+The Odd Balls
+<Purok>
+No one quite knows whether this is a political block or a geographical block? But it seems in the provinces purok is a way to find a person’s location.
+
+<Postal Code Name>
+The Philippine postal office attaches description(s) or name(s) to a postal code.
+
+The conventions are confusing, it is not a barangay.  It does seem to be a village name (e.g. Merville, Greenhills) or a popular locality name (e.g. Binondo, Malate) when in metro manila, and it takes the municipality name when outside of Metro Manila.
+
+This might be because of population size considerations however it causes location finding issues when used for large municipalities such as Davao City which carries a single postal code of 8000.  It may be that the postal office is extremely slow to react (similar to their mail services) to population changes, hence Davao with a population of more than a million is still a single postal code.
+
+<Lot No / Block No>
+This is the most annoying of all, we cannot route to a location with this information!  It is impossible to do with Navigation Software.  If we understand this correctly, this identifier is meant to be used by property developers to sell lots.
+
+Process Ownership

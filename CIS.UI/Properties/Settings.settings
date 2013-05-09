@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CIS.UI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FingersToScan" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;RightThumb&lt;/string&gt;
+  &lt;string&gt;RightIndex&lt;/string&gt;
+  &lt;string&gt;RightMiddle&lt;/string&gt;
+  &lt;string&gt;RightRing&lt;/string&gt;
+  &lt;string&gt;RightPinky&lt;/string&gt;
+  &lt;string&gt;LeftThumb&lt;/string&gt;
+  &lt;string&gt;LeftIndex&lt;/string&gt;
+  &lt;string&gt;LeftMiddle&lt;/string&gt;
+  &lt;string&gt;LeftRing&lt;/string&gt;
+  &lt;string&gt;LeftPinky&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Camera" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="WithFingerPrintDevice" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="WithDefaultLogin" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
