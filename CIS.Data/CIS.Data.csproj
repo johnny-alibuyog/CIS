@@ -134,6 +134,7 @@
     </Compile>
     <Compile Include="Mappings\Commons\BarcodeMapping.cs" />
     <Compile Include="Mappings\Commons\BlobMapping.cs" />
+    <Compile Include="Mappings\Commons\BodyStatisticsMapping.cs" />
     <Compile Include="Mappings\Commons\CityMapping.cs">
       <DependentUpon>AddressMapping.cs</DependentUpon>
     </Compile>
@@ -213,6 +214,7 @@
     </Compile>
     <Compile Include="Validations\Commons\BarcodeValidaton.cs" />
     <Compile Include="Validations\Commons\BlobValidation.cs" />
+    <Compile Include="Validations\Commons\BodyStatisticsValidation.cs" />
     <Compile Include="Validations\Commons\CityValidation.cs">
       <DependentUpon>AddressValidation.cs</DependentUpon>
     </Compile>

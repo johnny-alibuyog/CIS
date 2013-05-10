@@ -12,6 +12,7 @@ namespace CIS.Core.Entities.Polices
         private int _version;
         private Audit _audit;
         private Person _person;
+        private BodyStatistics _bodyStatistics;
         private Address _address;
         private Picture _picture;
         private FingerPrint _fingerPrint;
@@ -48,6 +49,12 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _person; }
             set { _person = value; }
+        }
+
+        public virtual BodyStatistics BodyStatistics
+        {
+            get { return _bodyStatistics; }
+            set { _bodyStatistics = value; }
         }
 
         public virtual Address Address

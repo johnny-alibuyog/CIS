@@ -21,6 +21,8 @@ namespace CIS.Data.Mappings.Polices
 
             Component(x => x.Person);
 
+            Component(x => x.BodyStatistics);
+
             Component(x => x.Address);
 
             References(x => x.Picture)

@@ -21,6 +21,10 @@ namespace CIS.Data.Validations.Polices
                 .NotNullable()
                 .And.IsValid();
 
+            Define(x => x.BodyStatistics)
+                .NotNullable()
+                .And.IsValid();
+
             Define(x => x.Address)
                 .NotNullable()
                 .And.IsValid();
