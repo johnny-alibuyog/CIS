@@ -8,6 +8,7 @@
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.xaml" />
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.Light.xaml"/>
                 <ResourceDictionary Source="/Assets/Styles/DialogBase.xaml" />
+                <!--<ResourceDictionary Source="/Assets/Styles/FieldContainer.xaml" />-->
                 <ResourceDictionary Source="/Assets/Icons/AppBar.xaml" />
                 <ResourceDictionary Source="/Assets/Icons/AppBar2.xaml" />
                 <ResourceDictionary Source="/Assets/Icons/appbar.edit.xaml" />

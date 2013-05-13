@@ -5,20 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d">
-    <StackPanel x:Name="Form" Orientation="Vertical">
+    <StackPanel x:Name="Form">
         <StackPanel.Resources>
             <ResourceDictionary Source="pack://application:,,,/Assets/Styles/FormInputMatrix.xaml" />
         </StackPanel.Resources>
 
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Address1" />
             <TextBox Text="{Binding Address1, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Address2"/>
             <TextBox Text="{Binding Address2, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Barangay"/>
             <TextBox Text="{Binding Barangay, Mode=TwoWay, ValidatesOnDataErrors=True}" />
             <!--<ComboBox 
@@ -37,7 +37,7 @@
                 IsTextSearchEnabled="True" 
                 StaysOpenOnEdit="True" />-->
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="City"/>
             <TextBox Text="{Binding City, Mode=TwoWay, ValidatesOnDataErrors=True}" />
             <!--<ComboBox 
@@ -60,7 +60,7 @@
                 StaysOpenOnEdit="True"
                 IsEditable="True" />-->
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Province"/>
             <TextBox Text="{Binding Province, Mode=TwoWay, ValidatesOnDataErrors=True}" />
             <!--<ComboBox 

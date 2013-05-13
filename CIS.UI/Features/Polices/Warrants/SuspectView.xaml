@@ -33,19 +33,19 @@
             <Rectangle Grid.Column="1" Fill="{DynamicResource SeparatorBackground}" Width="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
 
             <!-- physical attributes -->
-            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="0,8,0,0">
+            <StackPanel Grid.Column="2" Margin="0,8,0,0">
                 <StackPanel.Resources>
                     <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                 </StackPanel.Resources>
 
                 <TextBlock Style="{StaticResource Heading2}" Text="Physical Attributes" Margin="0,8,0,8"/>
                 <persons:PhysicalAttributesView DataContext="{Binding PhysicalAttributes}" />
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Alias"/>
                     <TextBox x:Name="textBox" Text="{Binding AliasToAdd, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     <mui:ModernButton Command="{Binding AddAlias}" Style="{StaticResource app_bar_add}" Margin="4,0,0,0" />
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label />
                     <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1" Width="{StaticResource InputWidth}">
                         <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Aliases, Mode=TwoWay, ValidatesOnDataErrors=True}">
@@ -69,12 +69,12 @@
                         </ListBox>
                     </Border>
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Occupation"/>
                     <TextBox Text="{Binding OccupationToAdd, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     <mui:ModernButton Command="{Binding AddOccupation}" Style="{StaticResource app_bar_add}" Margin="4,0,0,0"/>
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label />
                     <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1" Width="{StaticResource InputWidth}">
                         <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Occupations, Mode=TwoWay, ValidatesOnDataErrors=True}">

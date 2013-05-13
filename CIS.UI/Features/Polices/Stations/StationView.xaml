@@ -12,27 +12,27 @@
                 <TextBlock Text="Station Configuration" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
                 <mui:BBCodeBlock BBCode="Station defenitions and configuration." Margin="0,0,0,16"/>
 
-                <StackPanel x:Name="Form" Orientation="Vertical" >
+                <StackPanel x:Name="Form">
                     <StackPanel.Resources>
                         <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                     </StackPanel.Resources>
 
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Logo" />
                         <StackPanel Orientation="Horizontal">
                             <Image Source="{Binding Logo}" HorizontalAlignment="Center" MaxHeight="250" MaxWidth="250"/>
                             <mui:ModernButton Command="{Binding LookupLogo}" Style="{StaticResource app_bar_picture}" HorizontalAlignment="Center" Margin="4"/>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Name"/>
                         <TextBox Text="{Binding Name, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Location"/>
                         <TextBox Text="{Binding Location, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Clearance Validity"/>
                         <TextBox Text="{Binding ClearanceValidity, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>

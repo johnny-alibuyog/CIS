@@ -10,33 +10,33 @@
             <TextBlock Text="Import Warrants" Style="{StaticResource Heading2}" />
             <TextBlock Text="Will import from an excel file" />
 
-            <StackPanel Orientation="Vertical">
+            <StackPanel>
                 <StackPanel.Resources>
                     <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                 </StackPanel.Resources>
 
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Source Path"/>
                     <TextBox IsReadOnly="True" Text="{Binding SourcePath, Mode=TwoWay}" />
                     <mui:ModernButton Command="{Binding LookupPath}" Style="{StaticResource app_bar_search_folder}" Margin="4,0,0,0"/>
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Start"/>
                     <TextBox IsReadOnly="True" Text="{Binding ImportStart, Mode=TwoWay}" />
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="End"/>
                     <TextBox IsReadOnly="True" Text="{Binding ImportEnd, Mode=TwoWay}" />
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Total Time"/>
                     <TextBox IsReadOnly="True" Text="{Binding TotalTime, Mode=TwoWay}" />
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Total Cases"/>
                     <TextBox IsReadOnly="True" Text="{Binding TotalCases, Mode=TwoWay}" />
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Total Suspects"/>
                     <TextBox IsReadOnly="True" Text="{Binding TotalSuspects, Mode=TwoWay}" />
                 </StackPanel>

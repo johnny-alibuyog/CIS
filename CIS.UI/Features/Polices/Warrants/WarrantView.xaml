@@ -24,28 +24,28 @@
             </Grid.ColumnDefinitions>
 
             <!-- left side -->
-            <StackPanel Grid.Column="0" Orientation="Vertical">
+            <StackPanel Grid.Column="0">
                 <StackPanel.Resources>
                     <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                 </StackPanel.Resources>
                 <TextBlock Style="{StaticResource Heading2}" Text="Case Info" Margin="0,8,0,8"/>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Case Number"/>
                     <TextBox Text="{Binding CaseNumber, Mode=TwoWay, ValidatesOnDataErrors=True}" />
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Crime"/>
                     <TextBox Text="{Binding Crime, Mode=TwoWay, ValidatesOnDataErrors=True}" />
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Description"/>
                     <TextBox Text="{Binding Description, Mode=TwoWay, ValidatesOnDataErrors=True}" Height="60" />
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Remarks"/>
                     <TextBox Text="{Binding Remarks, Mode=TwoWay, ValidatesOnDataErrors=True}" Height="60" />
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Bail Amount"/>
                     <TextBox Text="{Binding BailAmount, Mode=TwoWay, ValidatesOnDataErrors=True}" TextAlignment="Right"/>
                 </StackPanel>
@@ -55,23 +55,21 @@
             <Rectangle Grid.Column="1" Fill="{DynamicResource SeparatorBackground}" Width="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
 
             <!-- right side -->
-            <StackPanel Grid.Column="2" Orientation="Vertical">
+            <StackPanel Grid.Column="2">
                 <StackPanel.Resources>
                     <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                 </StackPanel.Resources>
 
                 <TextBlock Style="{StaticResource Heading2}" Text="Issue Info" Margin="0,8,0,8"/>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Issued On"/>
                     <TextBox Text="{Binding IssuedOn, Mode=TwoWay, ValidatesOnDataErrors=True}" />
                 </StackPanel>
-                <StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Issued By"/>
                     <TextBox Text="{Binding IssuedBy, Mode=TwoWay, ValidatesOnDataErrors=True}" />
                 </StackPanel>
-                <StackPanel>
-                    <addresses:AddresssView DataContext="{Binding IssuedAt}"/>
-                </StackPanel>
+                <addresses:AddresssView DataContext="{Binding IssuedAt}"/>
             </StackPanel>
         </Grid>
 
@@ -92,7 +90,7 @@
             </DockPanel.Resources>
 
             <DockPanel DockPanel.Dock="Top" >
-                <TextBlock Text="Suspect" Style="{StaticResource Heading2}" Margin="0,8,0,8" />
+                <TextBlock Text="Suspects" Style="{StaticResource Heading2}" Margin="0,8,0,8" />
                 <mui:ModernButton Style="{StaticResource app_bar_add}" Content="Add Suspect" Command="{Binding CreateSupect}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,8,0" />
             </DockPanel>
             <DataGrid AutoGenerateColumns="False" IsReadOnly="True"

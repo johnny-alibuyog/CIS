@@ -5,7 +5,7 @@
     <sys:Double x:Key="LabelWidth">105</sys:Double>
     <sys:Double x:Key="InputWidth">250</sys:Double>
 
-    <Style TargetType="StackPanel">
+    <Style x:Key="FieldSet" TargetType="StackPanel">
         <Setter Property="Orientation" Value="Horizontal" />
         <Setter Property="Margin" Value="0,0,0,4" />
     </Style>
@@ -16,6 +16,9 @@
     <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
         <Setter Property="Width" Value="{StaticResource LabelWidth}" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Height" Value="Auto" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0" />
     </Style>
     <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
         <Setter Property="Width" Value="{StaticResource InputWidth}" />

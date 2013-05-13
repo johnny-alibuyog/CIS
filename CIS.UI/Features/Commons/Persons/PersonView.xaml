@@ -7,7 +7,7 @@
              xmlns:core="clr-namespace:CIS.Core.Entities.Commons;assembly=CIS.Core"
              xmlns:converters="clr-namespace:CIS.UI.Utilities.Converters"
              mc:Ignorable="d">
-    <StackPanel x:Name="Form" Orientation="Vertical">
+    <StackPanel x:Name="Form">
         <StackPanel.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
@@ -19,27 +19,27 @@
             </ResourceDictionary>
         </StackPanel.Resources>
 
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="First Name"/>
             <TextBox Text="{Binding FirstName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Middle Name"/>
             <TextBox Text="{Binding MiddleName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Last Name"/>
             <TextBox Text="{Binding LastName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Suffix"/>
             <TextBox Text="{Binding Suffix, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Birth Date"/>
             <DatePicker Text="{Binding BirthDate, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Gender" />
             <RadioButton IsChecked="{Binding Path=Gender, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static core:Gender.Male}, Mode=TwoWay}" Content="Male" />
             <RadioButton IsChecked="{Binding Path=Gender, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static core:Gender.Female}, Mode=TwoWay}" Content="Female"  Margin="8,0,0,0" />

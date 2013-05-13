@@ -17,28 +17,28 @@
         <ScrollViewer Margin="{StaticResource SplitLeft}">
             <StackPanel>
                 <TextBlock Text="Personal Information" Style="{StaticResource Heading2}" />
-                
-                <StackPanel Margin="0,10,0,0" Orientation="Vertical">
+
+                <StackPanel Margin="0,10,0,0">
                     <StackPanel.Resources>
                         <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                     </StackPanel.Resources>
 
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <persons:PersonView DataContext="{Binding Person}" />
                     </StackPanel>
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Birth Place"/>
                         <TextBox Text="{Binding BirthPlace, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Also Known As"/>
                         <TextBox Text="{Binding AlosoKnownAs, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Height"/>
                         <TextBox Text="{Binding Height, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Weight"/>
                         <TextBox Text="{Binding Weight, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
@@ -50,35 +50,35 @@
             <StackPanel>
                 <TextBlock Text="Address" Style="{StaticResource Heading2}" />
 
-                <StackPanel Margin="0,10,0,0" Orientation="Vertical">
+                <StackPanel Margin="0,10,0,0">
                     <StackPanel.Resources>
                         <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                     </StackPanel.Resources>
 
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <addresses:AddresssView DataContext="{Binding Address}" />
                     </StackPanel>
 
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Occupation"/>
                         <TextBox Text="{Binding Occupation, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Religion"/>
                         <TextBox Text="{Binding Religion, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Purpose"/>
                         <ComboBox ItemsSource="{Binding Purposes, Mode=TwoWay}"
                                   SelectedValue="{Binding Purpose, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Verified By"/>
                         <ComboBox ItemsSource="{Binding Verifiers, Mode=TwoWay}"
                                   SelectedValue="{Binding VerifiedBy, Mode=TwoWay, ValidatesOnDataErrors=True}"
                                   DisplayMemberPath="Name"/>
                     </StackPanel>
-                    <StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Certified By"/>
                         <ComboBox ItemsSource="{Binding Certifiers, Mode=TwoWay}"
                                   SelectedValue="{Binding CertifiedBy, Mode=TwoWay, ValidatesOnDataErrors=True}"

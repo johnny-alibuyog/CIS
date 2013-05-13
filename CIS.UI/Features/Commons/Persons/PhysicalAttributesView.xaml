@@ -5,32 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="350">
-    <StackPanel x:Name="Form" Orientation="Vertical">
+    <StackPanel x:Name="Form">
         <StackPanel.Resources>
             <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
         </StackPanel.Resources>
 
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Hair"/>
             <TextBox Text="{Binding Hair, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Eyes"/>
             <TextBox Text="{Binding Eyes, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Build"/>
             <TextBox Text="{Binding Build, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Complexion"/>
             <TextBox Text="{Binding Complexion, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Scars/Marks"/>
             <TextBox Text="{Binding ScarsAndMarks, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Race"/>
             <TextBox Text="{Binding Race, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
