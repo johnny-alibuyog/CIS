@@ -56,7 +56,7 @@
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Findings"/>
-                        <TextBox Text="{Binding Findings, Mode=OneWay}" Height="40" IsEnabled="False" />
+                        <TextBox Foreground="Red" Text="{Binding PerfectMatchFindings, Mode=OneWay}" Height="40" IsEnabled="False" TextWrapping="WrapWithOverflow" />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

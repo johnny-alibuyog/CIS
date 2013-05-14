@@ -229,7 +229,8 @@
       <DependentUpon>AddressView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Commons\Addresses\AddressViewModel.cs" />
-    <Compile Include="Features\Commons\Biometrics\Finger.cs" />
+    <Compile Include="Features\Commons\Biometrics\FingerViewModel.cs" />
+    <Compile Include="Features\Commons\Biometrics\FingerDataInitializer.cs" />
     <Compile Include="Features\Commons\Biometrics\FingerScannerController.cs" />
     <Compile Include="Features\Commons\Biometrics\FingerScannerView.xaml.cs">
       <DependentUpon>FingerScannerView.xaml</DependentUpon>
@@ -243,6 +244,7 @@
     <Compile Include="Features\Commons\Cameras\SplitPage1.xaml.cs">
       <DependentUpon>SplitPage1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\Commons\Terminals\TerminalDataInitializer.cs" />
     <Compile Include="Features\LookupBase.cs" />
     <Compile Include="Features\Commons\Persons\PhysicalAttributesView.xaml.cs">
       <DependentUpon>PhysicalAttributesView.xaml</DependentUpon>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using NHibernate.Validator.Constraints;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
@@ -13,11 +14,12 @@ namespace CIS.UI.Features.Commons.Biometrics
     {
         private FingerScannerController _controller;
 
-        public virtual Dictionary<Finger, BitmapSource> FingerImages { get; set; }
+        public virtual Dictionary<FingerViewModel, BitmapSource> FingerImages { get; set; }
 
+        [NotNull(Message = "Finger print is mandatory.")]
         public virtual BitmapSource CapturedFingerImage { get; set; }
 
-        public virtual Finger CurrentFinger { get; set; }
+        public virtual FingerViewModel CurrentFinger { get; set; }
 
         public virtual ReactiveCollection<string> EventLogs { get; set; }
 
@@ -32,19 +34,19 @@ namespace CIS.UI.Features.Commons.Biometrics
         public FingerScannerViewModel()
         {
             this.EventLogs = new ReactiveCollection<string>();
-            this.CurrentFinger = Finger.RightThumb;
-            this.FingerImages = new Dictionary<Finger, BitmapSource>()
+            this.CurrentFinger = FingerViewModel.RightThumb;
+            this.FingerImages = new Dictionary<FingerViewModel, BitmapSource>()
                 {
-                    { Finger.RightThumb, (BitmapSource)null },
-                    { Finger.RightIndex, (BitmapSource)null },
-                    { Finger.RightMiddle, (BitmapSource)null },
-                    { Finger.RightRing, (BitmapSource)null },
-                    { Finger.RightPinky, (BitmapSource)null },
-                    { Finger.LeftThumb, (BitmapSource)null },
-                    { Finger.LeftIndex, (BitmapSource)null },
-                    { Finger.LeftMiddle, (BitmapSource)null },
-                    { Finger.LeftRing, (BitmapSource)null },
-                    { Finger.LeftPinky, (BitmapSource)null },
+                    { FingerViewModel.RightThumb, (BitmapSource)null },
+                    { FingerViewModel.RightIndex, (BitmapSource)null },
+                    { FingerViewModel.RightMiddle, (BitmapSource)null },
+                    { FingerViewModel.RightRing, (BitmapSource)null },
+                    { FingerViewModel.RightPinky, (BitmapSource)null },
+                    { FingerViewModel.LeftThumb, (BitmapSource)null },
+                    { FingerViewModel.LeftIndex, (BitmapSource)null },
+                    { FingerViewModel.LeftMiddle, (BitmapSource)null },
+                    { FingerViewModel.LeftRing, (BitmapSource)null },
+                    { FingerViewModel.LeftPinky, (BitmapSource)null },
                 };
 
             _controller = new FingerScannerController(this);

@@ -22,7 +22,7 @@
                     <Image Source="{Binding ImagePreview}" Height="180" Width="180"/>
                     <ComboBox Margin="0,4,0,0" 
                               ItemsSource="{Binding Cameras, Mode=TwoWay}"
-                              SelectedValue="{Binding Camera, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                              SelectedValue="{Binding SelectedCamera, Mode=TwoWay, ValidatesOnDataErrors=True}"
                               DisplayMemberPath="Name" />
                     <mui:ModernButton Margin="0,4,0,0" Content="Continue" Command="{Binding Continue}" Style="{StaticResource app_bar_play}" />
                     <mui:ModernButton Margin="0,4,0,0" Content="Capture" Command="{Binding Capture}" Style="{StaticResource app_bar_camera}"/>
@@ -39,7 +39,7 @@
 
                 <StackPanel Margin="0,10,0,0">
 
-                    <Image Source="{Binding Picture}" Height="202" Width="192"/>
+                    <Image Source="{Binding Picture, Mode=TwoWay, ValidatesOnDataErrors=True}" Height="202" Width="192"/>
 
                 </StackPanel>
             </StackPanel>

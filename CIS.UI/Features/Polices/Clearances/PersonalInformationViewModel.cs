@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Features.Commons.Persons;
+using NHibernate.Validator.Constraints;
 using ReactiveUI;
 
 namespace CIS.UI.Features.Polices.Clearances
 {
     public class PersonalInformationViewModel : ViewModelBase
     {
+        [Valid]
         public virtual PersonViewModel Person { get; set; }
 
         public virtual string Height { get; set; }
@@ -21,8 +23,7 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual string Purpose { get; set; }
 
-        //public virtual string NewPurpose { get; set; }
-
+        [Valid]
         public virtual AddressViewModel Address { get; set; }
 
         public virtual string BirthPlace { get; set; }
@@ -45,6 +46,13 @@ namespace CIS.UI.Features.Polices.Clearances
         {
             this.Person = new PersonViewModel();
             this.Address = new AddressViewModel();
+
+            this.WhenAny(
+                x => x.Person.IsValid,
+                x => x.Address.IsValid,
+                (isPersonValid, isAddressValid) => { return true; }
+            )
+            .Subscribe(_ => this.Revalidate());
         }
     }
 }

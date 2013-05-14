@@ -51,7 +51,7 @@ namespace CIS.UI.Features.Polices.Stations
                     .ToFuture();
 
                 var station = query.FirstOrDefault();
-                if (station == null)
+                if (station != null)
                     this.ViewModel.SerializeWith(station);
 
                 transaction.Commit();

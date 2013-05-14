@@ -19,7 +19,9 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual Nullable<DateTime> BirthDate { get; set; }
 
-        public virtual string Findings { get; set; }
+        public virtual string PartialMatchFindings { get; set; }
+
+        public virtual string PerfectMatchFindings { get; set; }
 
         public virtual string Validity { get; set; }
 

@@ -20,7 +20,7 @@ namespace CIS.UI.Features.Commons.Cameras
         public CameraController(CameraViewModel viewModel) : base(viewModel)
         {
             this.ViewModel.Cameras = CameraService.AvailableCameras.ToReactiveColletion();
-            this.ViewModel.SelectedCamera = this.ViewModel.Cameras.FirstOrDefault(); //CameraService.DefaultCamera;
+            this.ViewModel.SelectedCamera = CameraService.DefaultCamera;
 
             this.ViewModel.Start = new ReactiveCommand();
             this.ViewModel.Start.Subscribe(x => Start());

@@ -27,16 +27,16 @@ namespace CIS.UI.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>RightThumb</string>
-  <string>RightIndex</string>
-  <string>RightMiddle</string>
-  <string>RightRing</string>
-  <string>RightPinky</string>
-  <string>LeftThumb</string>
-  <string>LeftIndex</string>
-  <string>LeftMiddle</string>
-  <string>LeftRing</string>
-  <string>LeftPinky</string>
+  <string>Right Thumb</string>
+  <string>Right Index</string>
+  <string>Right Middle</string>
+  <string>Right Ring</string>
+  <string>Right Pinky</string>
+  <string>Left Thumb</string>
+  <string>Left Index</string>
+  <string>Left Middle</string>
+  <string>Left Ring</string>
+  <string>Left Pinky</string>
 </ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection FingersToScan {
             get {

@@ -105,6 +105,7 @@
     <Compile Include="Entities\Commons\Fax.cs">
       <DependentUpon>Contact.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Commons\Finger.cs" />
     <Compile Include="Entities\Commons\FingerPrint.cs" />
     <Compile Include="Entities\Commons\Gender.cs" />
     <Compile Include="Entities\Commons\ImageBlob.cs">
@@ -125,6 +126,7 @@
     <Compile Include="Entities\Commons\Region.cs">
       <DependentUpon>Address.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Commons\Terminal.cs" />
     <Compile Include="Entities\Mayors\Clearance.cs" />
     <Compile Include="Entities\Mayors\Incumbent.cs" />
     <Compile Include="Entities\Mayors\Mayor.cs">

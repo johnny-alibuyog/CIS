@@ -14,7 +14,9 @@
         <Setter Property="Width" Value="Auto" />
         <Setter Property="Height" Value="Auto" />
         <Setter Property="ResizeMode" Value="NoResize" />
-        <Setter Property="SizeToContent" Value="WidthAndHeight" />
+        <Setter Property="ShowInTaskbar" Value="False" />
+        <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:ModernWindow">

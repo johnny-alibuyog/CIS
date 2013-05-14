@@ -15,7 +15,8 @@ namespace CIS.UI.Features.Commons.Biometrics
     {
         private readonly Capture _scanner;
 
-        public FingerScannerController(FingerScannerViewModel viewModel) : base(viewModel)
+        public FingerScannerController(FingerScannerViewModel viewModel)
+            : base(viewModel)
         {
             _scanner = new Capture();
             _scanner.EventHandler = this;
@@ -35,7 +36,7 @@ namespace CIS.UI.Features.Commons.Biometrics
 
             this.ViewModel.CapturedFingerImage = image;
             this.ViewModel.FingerImages[this.ViewModel.CurrentFinger] = image;
-            this.ViewModel.CurrentFinger = Finger.GetNext(this.ViewModel.CurrentFinger);
+            this.ViewModel.CurrentFinger = FingerViewModel.GetNext(this.ViewModel.CurrentFinger);
         }
 
         private Bitmap ConvertSampleToBitmap(Sample sample)

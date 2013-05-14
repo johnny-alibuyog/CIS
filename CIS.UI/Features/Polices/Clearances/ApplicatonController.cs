@@ -23,11 +23,37 @@ namespace CIS.UI.Features.Polices.Clearances
             this.Reset();
 
             this.ViewModel.Previous = new ReactiveCommand(this.ViewModel
-                .WhenAny(x => x.CurrentViewModel, x => x.Value != this.ViewModel.ViewModels.First()));
+                .WhenAny(
+                    x => x.CurrentViewModel, 
+                    x => x.CurrentViewModel.IsValid, 
+                    (current, isValid) => 
+                    {
+                        if (current.Value != this.ViewModel.ViewModels.First())
+                            return true;
+
+                        return false;
+                    })
+                );
             this.ViewModel.Previous.Subscribe(x => Previous());
 
             this.ViewModel.Next = new ReactiveCommand(this.ViewModel
-                .WhenAny(x => x.CurrentViewModel, x => x.Value != this.ViewModel.ViewModels.Last()));
+                .WhenAny(
+                    x => x.CurrentViewModel,
+                    x => x.CurrentViewModel.IsValid,
+                    (current, isValid) =>
+                    {
+                        if (current.Value != this.ViewModel.ViewModels.Last())
+                            return true;
+
+                        if (current.Value.IsValid)
+                            return true;
+
+                        if (isValid.Value == true)
+                            return true;
+
+                        return false;
+                    })
+                );
             this.ViewModel.Next.Subscribe(x => Next());
 
             this.ViewModel.Print = new ReactiveCommand();
@@ -124,6 +150,12 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual void Next()
         {
+            if (this.ViewModel.CurrentViewModel.IsValid == false)
+            {
+                MessageDialog.Show(this.ViewModel.CurrentViewModel.Error, "Application", MessageBoxButton.OK);
+                return;
+            }
+
             var currentIndex = this.ViewModel.ViewModels.IndexOf(this.ViewModel.CurrentViewModel);
             this.ViewModel.CurrentViewModel = this.ViewModel.ViewModels[currentIndex + 1];
 
@@ -162,13 +194,14 @@ namespace CIS.UI.Features.Polices.Clearances
                     )
                     .ToList();
 
-                var crimes = perfectMatch
-                    .GroupBy(x => x.Warrant.Crime)
-                    .Select(x => (x.Count() > 1)
-                        ? x.Count().ToString() + " counts of " + x.Key
-                        : x.Key
-                    )
-                    .ToList();
+                //var crimes = perfectMatch
+                //    .GroupBy(x => x.Warrant.Crime)
+                //    .Select(x => (x.Count() > 1)
+                //        ? x.Count().ToString() + " counts of " + x.Key
+                //        : x.Key
+                //    )
+                //    .Distinct()
+                //    .ToList();
 
                 var partialMatch = warrants
                     .SelectMany(x => x.Suspects)
@@ -180,6 +213,16 @@ namespace CIS.UI.Features.Polices.Clearances
                 {
                     message = string.Format("Person with the name of {0} and criminial record {1} has partialy the name as the applicant. Please verfiy.", 
                         partialMatch.First().Person.Fullname, partialMatch.First().Warrant.Crime);
+                }
+
+                if (perfectMatch.Count > 0)
+                {
+                    this.ViewModel.Summary.PerfectMatchFindings = string.Join(
+                        separator: "/n",
+                        values: perfectMatch
+                            .Select(x => x.Warrant.Crime)
+                            .Distinct()
+                    );
                 }
 
                 transaction.Commit();

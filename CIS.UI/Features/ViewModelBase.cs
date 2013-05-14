@@ -79,7 +79,12 @@ namespace CIS.UI.Features
 
         public virtual string Error
         {
-            get { return this[string.Empty]; }
+            get 
+            {
+                var invalidValues = this.Validator.Validate(this);
+                this.IsValid = (invalidValues.Count() == 0);
+                return string.Join(Environment.NewLine, invalidValues.Select(x => x.Message));
+            }
         }
 
         public virtual string this[string columnName]
@@ -98,6 +103,12 @@ namespace CIS.UI.Features
                 else
                     return null;
             }
+        }
+
+        public virtual void Revalidate()
+        {
+            var invalidValues = this.Validator.Validate(this);
+            this.IsValid = (invalidValues.Count() == 0);
         }
 
         #endregion

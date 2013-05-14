@@ -5,16 +5,16 @@
     <Setting Name="FingersToScan" Type="System.Collections.Specialized.StringCollection" Scope="Application">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;RightThumb&lt;/string&gt;
-  &lt;string&gt;RightIndex&lt;/string&gt;
-  &lt;string&gt;RightMiddle&lt;/string&gt;
-  &lt;string&gt;RightRing&lt;/string&gt;
-  &lt;string&gt;RightPinky&lt;/string&gt;
-  &lt;string&gt;LeftThumb&lt;/string&gt;
-  &lt;string&gt;LeftIndex&lt;/string&gt;
-  &lt;string&gt;LeftMiddle&lt;/string&gt;
-  &lt;string&gt;LeftRing&lt;/string&gt;
-  &lt;string&gt;LeftPinky&lt;/string&gt;
+  &lt;string&gt;Right Thumb&lt;/string&gt;
+  &lt;string&gt;Right Index&lt;/string&gt;
+  &lt;string&gt;Right Middle&lt;/string&gt;
+  &lt;string&gt;Right Ring&lt;/string&gt;
+  &lt;string&gt;Right Pinky&lt;/string&gt;
+  &lt;string&gt;Left Thumb&lt;/string&gt;
+  &lt;string&gt;Left Index&lt;/string&gt;
+  &lt;string&gt;Left Middle&lt;/string&gt;
+  &lt;string&gt;Left Ring&lt;/string&gt;
+  &lt;string&gt;Left Pinky&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="Camera" Type="System.String" Scope="Application">

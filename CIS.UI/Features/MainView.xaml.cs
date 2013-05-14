@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Memberships;
 using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Features.Commons.Biometrics;
+using CIS.UI.Features.Commons.Terminals;
 using CIS.UI.Features.Polices;
 using CIS.UI.Features.Polices.Clearances;
 using FirstFloor.ModernUI.Windows.Controls;
@@ -37,6 +39,12 @@ namespace CIS.UI.Features
             dataInitializer.Execute();
 
             dataInitializer = IoC.Container.Resolve<PurposeDataInitializer>();
+            dataInitializer.Execute();
+
+            dataInitializer = IoC.Container.Resolve<FingerDataInitializer>();
+            dataInitializer.Execute();
+
+            dataInitializer = IoC.Container.Resolve<TerminalDataInitializer>();
             dataInitializer.Execute();
         }
     }

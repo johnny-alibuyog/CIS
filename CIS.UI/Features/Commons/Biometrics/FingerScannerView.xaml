@@ -17,7 +17,7 @@
                 <TextBlock Text="Finger Print" Style="{StaticResource Heading2}" />
                 <TextBlock Text="Scanned finger preview" />
                 <StackPanel>
-                    <Image Source="{Binding CapturedFingerImage}" Height="171" Width="134" Margin="5"/>
+                    <Image Source="{Binding CapturedFingerImage, Mode=TwoWay, ValidatesOnDataErrors=True}" Height="171" Width="134" Margin="5"/>
                     <Image Source="{Binding CurrentFinger.ImageUri}" Height="114" Width="220" Margin="5"/>
                 </StackPanel>
             </StackPanel>
