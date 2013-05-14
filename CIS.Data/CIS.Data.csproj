@@ -104,165 +104,169 @@
     <Compile Include="Conventions\CustomTableNameConvention.cs" />
     <Compile Include="Conventions\EnumConvention.cs" />
     <Compile Include="Conventions\_CustomJoinedSubclassConvention.cs" />
+    <Compile Include="EntityDefinitions\Commons\TerminalValidation.cs" />
     <Compile Include="ISessionProvider.cs" />
-    <Compile Include="Mappings\Barangays\CaptainMapping.cs">
+    <Compile Include="EntityDefinitions\Barangays\CaptainMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Barangays\ClearanceMapping.cs" />
-    <Compile Include="Mappings\Barangays\CouncilorMapping.cs">
+    <Compile Include="EntityDefinitions\Barangays\ClearanceMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\CouncilorMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Barangays\IncumbentMapping.cs" />
-    <Compile Include="Mappings\Barangays\KagawadMapping.cs">
+    <Compile Include="EntityDefinitions\Barangays\IncumbentMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\KagawadMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Barangays\OfficeMapping.cs" />
-    <Compile Include="Mappings\Barangays\OfficialMapping.cs" />
-    <Compile Include="Mappings\Barangays\SecretaryMapping.cs">
+    <Compile Include="EntityDefinitions\Barangays\OfficeMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\OfficialMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\SecretaryMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Barangays\SKChairmanMapping.cs">
+    <Compile Include="EntityDefinitions\Barangays\SKChairmanMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Barangays\TreasurerMapping.cs">
+    <Compile Include="EntityDefinitions\Barangays\TreasurerMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Commons\AddressMapping.cs" />
-    <Compile Include="Mappings\Commons\AuditMapping.cs" />
-    <Compile Include="Mappings\Commons\BarangayMapping.cs">
+    <Compile Include="EntityDefinitions\Commons\AddressMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\AuditMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\BarangayMapping.cs">
       <DependentUpon>AddressMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Commons\BarcodeMapping.cs" />
-    <Compile Include="Mappings\Commons\BlobMapping.cs" />
-    <Compile Include="Mappings\Commons\BodyStatisticsMapping.cs" />
-    <Compile Include="Mappings\Commons\CityMapping.cs">
+    <Compile Include="EntityDefinitions\Commons\BarcodeMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\BlobMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\BodyStatisticsMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\CityMapping.cs">
       <DependentUpon>AddressMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Commons\ContactMapping.cs" />
-    <Compile Include="Mappings\Commons\EmailMapping.cs">
+    <Compile Include="EntityDefinitions\Commons\ContactMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\EmailMapping.cs">
       <DependentUpon>ContactMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Commons\FaxMapping.cs">
+    <Compile Include="EntityDefinitions\Commons\FaxMapping.cs">
       <DependentUpon>ContactMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Commons\FingerPrintMapping.cs" />
-    <Compile Include="Mappings\Commons\ImageBlobMapping.cs">
+    <Compile Include="EntityDefinitions\Commons\FingerMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\FingerPrintMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\ImageBlobMapping.cs">
       <DependentUpon>BlobMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Commons\LandlineMapping.cs">
+    <Compile Include="EntityDefinitions\Commons\LandlineMapping.cs">
       <DependentUpon>ContactMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Commons\MobileMapping.cs">
+    <Compile Include="EntityDefinitions\Commons\MobileMapping.cs">
       <DependentUpon>ContactMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Commons\PersonMapping.cs" />
-    <Compile Include="Mappings\Commons\PhysicalAttributesMapping.cs" />
-    <Compile Include="Mappings\Commons\PictureMapping.cs" />
-    <Compile Include="Mappings\Commons\ProvinceMapping.cs">
+    <Compile Include="EntityDefinitions\Commons\PersonMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\PhysicalAttributesMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\PictureMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\ProvinceMapping.cs">
       <DependentUpon>AddressMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Commons\RegionMapping.cs">
+    <Compile Include="EntityDefinitions\Commons\RegionMapping.cs">
       <DependentUpon>AddressMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Mayors\ClearanceMapping.cs" />
-    <Compile Include="Mappings\Mayors\IncumbentMapping.cs" />
-    <Compile Include="Mappings\Mayors\MayorMapping.cs">
+    <Compile Include="EntityDefinitions\Commons\TerminalMapping.cs" />
+    <Compile Include="EntityDefinitions\Mayors\ClearanceMapping.cs" />
+    <Compile Include="EntityDefinitions\Mayors\IncumbentMapping.cs" />
+    <Compile Include="EntityDefinitions\Mayors\MayorMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Mayors\OfficeMapping.cs" />
-    <Compile Include="Mappings\Mayors\OfficialMapping.cs" />
-    <Compile Include="Mappings\Mayors\SecretaryMapping.cs">
+    <Compile Include="EntityDefinitions\Mayors\OfficeMapping.cs" />
+    <Compile Include="EntityDefinitions\Mayors\OfficialMapping.cs" />
+    <Compile Include="EntityDefinitions\Mayors\SecretaryMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mappings\Memberships\RoleMapping.cs" />
-    <Compile Include="Mappings\Memberships\UserMapping.cs" />
-    <Compile Include="Mappings\Polices\ClearanceMapping.cs" />
-    <Compile Include="Mappings\Polices\OfficerMapping.cs" />
-    <Compile Include="Mappings\Polices\PurposeMapping.cs" />
-    <Compile Include="Mappings\Polices\RankMapping.cs" />
-    <Compile Include="Mappings\Polices\StationMapping.cs" />
-    <Compile Include="Mappings\Polices\SuspectMapping.cs" />
-    <Compile Include="Mappings\Polices\WarrantMapping.cs" />
+    <Compile Include="EntityDefinitions\Memberships\RoleMapping.cs" />
+    <Compile Include="EntityDefinitions\Memberships\UserMapping.cs" />
+    <Compile Include="EntityDefinitions\Polices\ClearanceMapping.cs" />
+    <Compile Include="EntityDefinitions\Polices\OfficerMapping.cs" />
+    <Compile Include="EntityDefinitions\Polices\PurposeMapping.cs" />
+    <Compile Include="EntityDefinitions\Polices\RankMapping.cs" />
+    <Compile Include="EntityDefinitions\Polices\StationMapping.cs" />
+    <Compile Include="EntityDefinitions\Polices\SuspectMapping.cs" />
+    <Compile Include="EntityDefinitions\Polices\WarrantMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionProvider.cs" />
-    <Compile Include="Validations\Barangays\CaptainValidation.cs">
+    <Compile Include="EntityDefinitions\Barangays\CaptainValidation.cs">
       <DependentUpon>OfficialValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Barangays\ClearanceValidaton.cs" />
-    <Compile Include="Validations\Barangays\CouncilorValidation.cs">
+    <Compile Include="EntityDefinitions\Barangays\ClearanceValidaton.cs" />
+    <Compile Include="EntityDefinitions\Barangays\CouncilorValidation.cs">
       <DependentUpon>OfficialValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Barangays\IncumbentValidation.cs" />
-    <Compile Include="Validations\Barangays\KagawadValidation.cs">
+    <Compile Include="EntityDefinitions\Barangays\IncumbentValidation.cs" />
+    <Compile Include="EntityDefinitions\Barangays\KagawadValidation.cs">
       <DependentUpon>OfficialValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Barangays\OfficeValidation.cs" />
-    <Compile Include="Validations\Barangays\OfficialValidation.cs" />
-    <Compile Include="Validations\Barangays\SecretaryValidaton.cs">
+    <Compile Include="EntityDefinitions\Barangays\OfficeValidation.cs" />
+    <Compile Include="EntityDefinitions\Barangays\OfficialValidation.cs" />
+    <Compile Include="EntityDefinitions\Barangays\SecretaryValidaton.cs">
       <DependentUpon>OfficialValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Barangays\SKChairmanValidation.cs">
+    <Compile Include="EntityDefinitions\Barangays\SKChairmanValidation.cs">
       <DependentUpon>OfficialValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Barangays\TreasurerValidation.cs">
+    <Compile Include="EntityDefinitions\Barangays\TreasurerValidation.cs">
       <DependentUpon>OfficialValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Commons\AddressValidation.cs" />
-    <Compile Include="Validations\Commons\AuditValidation.cs" />
-    <Compile Include="Validations\Commons\BarangayValidation.cs">
+    <Compile Include="EntityDefinitions\Commons\AddressValidation.cs" />
+    <Compile Include="EntityDefinitions\Commons\AuditValidation.cs" />
+    <Compile Include="EntityDefinitions\Commons\BarangayValidation.cs">
       <DependentUpon>AddressValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Commons\BarcodeValidaton.cs" />
-    <Compile Include="Validations\Commons\BlobValidation.cs" />
-    <Compile Include="Validations\Commons\BodyStatisticsValidation.cs" />
-    <Compile Include="Validations\Commons\CityValidation.cs">
+    <Compile Include="EntityDefinitions\Commons\BarcodeValidaton.cs" />
+    <Compile Include="EntityDefinitions\Commons\BlobValidation.cs" />
+    <Compile Include="EntityDefinitions\Commons\BodyStatisticsValidation.cs" />
+    <Compile Include="EntityDefinitions\Commons\CityValidation.cs">
       <DependentUpon>AddressValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Commons\ContactValidaton.cs" />
-    <Compile Include="Validations\Commons\EmailValidation.cs">
+    <Compile Include="EntityDefinitions\Commons\ContactValidaton.cs" />
+    <Compile Include="EntityDefinitions\Commons\EmailValidation.cs">
       <DependentUpon>ContactValidaton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Commons\FaxValidation.cs">
+    <Compile Include="EntityDefinitions\Commons\FaxValidation.cs">
       <DependentUpon>ContactValidaton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Commons\FingerPrintValidation.cs" />
-    <Compile Include="Validations\Commons\ImageBlobMapping.cs">
+    <Compile Include="EntityDefinitions\Commons\FingerPrintValidation.cs" />
+    <Compile Include="EntityDefinitions\Commons\FingerValidation.cs" />
+    <Compile Include="EntityDefinitions\Commons\ImageBlobValidation.cs">
       <DependentUpon>BlobValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Commons\LandlineValidation.cs">
+    <Compile Include="EntityDefinitions\Commons\LandlineValidation.cs">
       <DependentUpon>ContactValidaton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Commons\MobileValidation.cs">
+    <Compile Include="EntityDefinitions\Commons\MobileValidation.cs">
       <DependentUpon>ContactValidaton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Commons\PersonValidation.cs" />
-    <Compile Include="Validations\Commons\PhysicalAttributesValidation.cs" />
-    <Compile Include="Validations\Commons\PictureValidation.cs" />
-    <Compile Include="Validations\Commons\ProvinceValidation.cs">
+    <Compile Include="EntityDefinitions\Commons\PersonValidation.cs" />
+    <Compile Include="EntityDefinitions\Commons\PhysicalAttributesValidation.cs" />
+    <Compile Include="EntityDefinitions\Commons\PictureValidation.cs" />
+    <Compile Include="EntityDefinitions\Commons\ProvinceValidation.cs">
       <DependentUpon>AddressValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Commons\RegionValidation.cs">
+    <Compile Include="EntityDefinitions\Commons\RegionValidation.cs">
       <DependentUpon>AddressValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Mayors\ClearanceValidation.cs" />
-    <Compile Include="Validations\Mayors\IncumbentValidation.cs" />
-    <Compile Include="Validations\Mayors\MayorValidation.cs">
+    <Compile Include="EntityDefinitions\Mayors\ClearanceValidation.cs" />
+    <Compile Include="EntityDefinitions\Mayors\IncumbentValidation.cs" />
+    <Compile Include="EntityDefinitions\Mayors\MayorValidation.cs">
       <DependentUpon>OfficialValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Mayors\OfficeValidation.cs" />
-    <Compile Include="Validations\Mayors\OfficialValidation.cs" />
-    <Compile Include="Validations\Mayors\SecretaryValidation.cs">
+    <Compile Include="EntityDefinitions\Mayors\OfficeValidation.cs" />
+    <Compile Include="EntityDefinitions\Mayors\OfficialValidation.cs" />
+    <Compile Include="EntityDefinitions\Mayors\SecretaryValidation.cs">
       <DependentUpon>OfficialValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validations\Memberships\RoleValidation.cs" />
-    <Compile Include="Validations\Memberships\UserValidation.cs" />
-    <Compile Include="Validations\Polices\ClearanceValidaton.cs" />
-    <Compile Include="Validations\Polices\OfficerValidation.cs" />
-    <Compile Include="Validations\Polices\PurposeValidaton.cs" />
-    <Compile Include="Validations\Polices\RankValidation.cs" />
-    <Compile Include="Validations\Polices\StationValidaton.cs" />
-    <Compile Include="Validations\Polices\SuspectValidation.cs" />
-    <Compile Include="Validations\Polices\WarrantValidation.cs" />
+    <Compile Include="EntityDefinitions\Memberships\RoleValidation.cs" />
+    <Compile Include="EntityDefinitions\Memberships\UserValidation.cs" />
+    <Compile Include="EntityDefinitions\Polices\ClearanceValidaton.cs" />
+    <Compile Include="EntityDefinitions\Polices\OfficerValidation.cs" />
+    <Compile Include="EntityDefinitions\Polices\PurposeValidaton.cs" />
+    <Compile Include="EntityDefinitions\Polices\RankValidation.cs" />
+    <Compile Include="EntityDefinitions\Polices\StationValidaton.cs" />
+    <Compile Include="EntityDefinitions\Polices\SuspectValidation.cs" />
+    <Compile Include="EntityDefinitions\Polices\WarrantValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="database_creation_script.sql" />
@@ -276,6 +280,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

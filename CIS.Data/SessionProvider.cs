@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using CIS.Data.Configurations;
 using CIS.Data.Conventions;
-using CIS.Data.Mappings.Commons;
+using CIS.Data.EntityDefinition.Commons;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions.Helpers;

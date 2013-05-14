@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using CIS.Data.Validations.Commons;
+using CIS.Data.EntityDefinition.Commons;
 using NHibernate.Cfg;
 using NHibernate.Event;
 using NHibernate.Validator.Cfg;
