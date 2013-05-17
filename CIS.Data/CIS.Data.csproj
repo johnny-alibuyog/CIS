@@ -84,16 +84,26 @@
     <Compile Include="Commons\Exceptions\IInvaildValueMessageBuilder.cs" />
     <Compile Include="Commons\Exceptions\InvalidValueMessageBuilder.cs" />
     <Compile Include="Commons\Extentions\TypeExtentions.cs" />
-    <Compile Include="Configurations\AuditEventListener.cs" />
-    <Compile Include="Configurations\AuditResolver.cs" />
+    <Compile Include="Configurations\AuditEventListener.cs">
+      <DependentUpon>EventListenerConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\AuditResolver.cs">
+      <DependentUpon>AuditEventListener.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configurations\CacheConfiguration.cs" />
-    <Compile Include="Configurations\ConventionMessageInterpolator.cs" />
+    <Compile Include="Configurations\ConventionMessageInterpolator.cs">
+      <DependentUpon>ValidatorConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configurations\CurrentSessionContextConfiguration.cs" />
     <Compile Include="Configurations\EventListenerConfiguration.cs" />
     <Compile Include="Configurations\IndexForeignKeyConfiguration.cs" />
     <Compile Include="Configurations\SchemaConfiguration.cs" />
-    <Compile Include="Configurations\ValidatedSharedEngineProvider.cs" />
-    <Compile Include="Configurations\ValidationEventListener.cs" />
+    <Compile Include="Configurations\ValidatedSharedEngineProvider.cs">
+      <DependentUpon>ValidatorConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configurations\ValidationEventListener.cs">
+      <DependentUpon>EventListenerConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configurations\ValidatorConfiguration.cs" />
     <Compile Include="Conventions\BinaryColumnLengthConvention.cs" />
     <Compile Include="Conventions\CustomComponentConvention.cs" />
@@ -105,6 +115,14 @@
     <Compile Include="Conventions\EnumConvention.cs" />
     <Compile Include="Conventions\_CustomJoinedSubclassConvention.cs" />
     <Compile Include="EntityDefinitions\Commons\TerminalValidation.cs" />
+    <Compile Include="EntityDefinitions\FireArms\GunMapping.cs" />
+    <Compile Include="EntityDefinitions\FireArms\GunValidation.cs" />
+    <Compile Include="EntityDefinitions\FireArms\KindMapping.cs" />
+    <Compile Include="EntityDefinitions\FireArms\KindValidation.cs" />
+    <Compile Include="EntityDefinitions\FireArms\MakeMapping.cs" />
+    <Compile Include="EntityDefinitions\FireArms\MakeValidation.cs" />
+    <Compile Include="EntityDefinitions\FireArms\RegistrationMapping.cs" />
+    <Compile Include="EntityDefinitions\FireArms\RegistrationValidation.cs" />
     <Compile Include="ISessionProvider.cs" />
     <Compile Include="EntityDefinitions\Barangays\CaptainMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>

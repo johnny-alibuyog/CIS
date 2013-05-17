@@ -158,3 +158,11 @@ GO
 CREATE SCHEMA Mayors AUTHORIZATION [dbo]
 GO
 
+/****** Object:  Schema [Firearms]    Script Date: 01/09/2013 16:22:26 ******/
+IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'Firearms')
+DROP SCHEMA Firearms
+GO
+
+/****** Object:  Schema [Firearms]    Script Date: 01/09/2013 16:22:26 ******/
+CREATE SCHEMA Firearms AUTHORIZATION [dbo]
+GO
