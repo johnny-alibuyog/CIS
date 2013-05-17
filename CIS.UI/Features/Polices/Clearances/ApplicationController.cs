@@ -16,9 +16,9 @@ using CIS.UI.Utilities.Extentions;
 
 namespace CIS.UI.Features.Polices.Clearances
 {
-    public class ApplicatonController : ControllerBase<ApplicationViewModel>
+    public class ApplicationController : ControllerBase<ApplicationViewModel>
     {
-        public ApplicatonController(ApplicationViewModel viewModel) : base(viewModel)
+        public ApplicationController(ApplicationViewModel viewModel) : base(viewModel)
         {
             this.Reset();
 

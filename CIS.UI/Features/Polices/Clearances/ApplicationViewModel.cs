@@ -12,7 +12,7 @@ namespace CIS.UI.Features.Polices.Clearances
 {
     public class ApplicationViewModel : ViewModelBase
     {
-        private readonly ApplicatonController _controller;
+        private readonly ApplicationController _controller;
 
         public virtual PersonalInformationViewModel PersonalInformation { get; set; }
 
@@ -38,7 +38,7 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public ApplicationViewModel()
         {
-            _controller = new ApplicatonController(this);
+            _controller = new ApplicationController(this);
         }
     }
 }

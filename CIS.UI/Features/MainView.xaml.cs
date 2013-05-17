@@ -17,6 +17,7 @@ using CIS.Core.Entities.Memberships;
 using CIS.UI.Bootstraps.DependencyInjection;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Terminals;
+using CIS.UI.Features.Firearms;
 using CIS.UI.Features.Polices;
 using CIS.UI.Features.Polices.Clearances;
 using FirstFloor.ModernUI.Windows.Controls;
@@ -45,6 +46,12 @@ namespace CIS.UI.Features
             dataInitializer.Execute();
 
             dataInitializer = IoC.Container.Resolve<TerminalDataInitializer>();
+            dataInitializer.Execute();
+
+            dataInitializer = IoC.Container.Resolve<MakeDataInitializer>();
+            dataInitializer.Execute();
+
+            dataInitializer = IoC.Container.Resolve<KindDataInitializer>();
             dataInitializer.Execute();
         }
     }

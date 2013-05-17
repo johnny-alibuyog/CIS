@@ -245,6 +245,8 @@
       <DependentUpon>SplitPage1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Commons\Terminals\TerminalDataInitializer.cs" />
+    <Compile Include="Features\Firearms\KindDataInitializer.cs" />
+    <Compile Include="Features\Firearms\MakeDataInitializer.cs" />
     <Compile Include="Features\LookupBase.cs" />
     <Compile Include="Features\Commons\Persons\PhysicalAttributesView.xaml.cs">
       <DependentUpon>PhysicalAttributesView.xaml</DependentUpon>
@@ -256,7 +258,7 @@
     <Compile Include="Features\Commons\Persons\PersonViewModel.cs" />
     <Compile Include="Features\DialogService.cs" />
     <Compile Include="Features\IDataInitializer.cs" />
-    <Compile Include="Features\Polices\Clearances\ApplicatonController.cs" />
+    <Compile Include="Features\Polices\Clearances\ApplicationController.cs" />
     <Compile Include="Features\Polices\Clearances\ApplicationView.xaml.cs">
       <DependentUpon>ApplicationView.xaml</DependentUpon>
     </Compile>

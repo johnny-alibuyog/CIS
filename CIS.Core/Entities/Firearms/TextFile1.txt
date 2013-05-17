@@ -1,0 +1,111 @@
+﻿Firearm License Lookup (lookup by name)
+purpose - to identify delinquent gun owners (expired license)
+
+remarks details for positive hits
+- Expired Firearm Lincense - FA Lic. No. [XXXXXXXXXXXXXXXX] - [MMM-DD-YYYY]
+
+- - - - - - - - -
+
+Create a new table (list) for gun license lookup (based on the firearm license card)
+- Full Name
+- Firearm License Control Number [alpanumeric]
+- Firearm License Number [numeric]
+- Date Issued
+- Date Expiry
+Gun Information
+ - Gun Type (Classification)
+ - Gun Model
+ - Gun Caliber
+ - Gun Maker (Firearms Manufacturer)
+ - Serial Number
+
+- - - - - - - - -
+
+Classification [dropdown]
+- Pistol
+- Revolver
+- Shotgun
+- Rifle
+- Carbine
+- Assault Rifle 
+- Bullpup Rifle
+- Battle Rifle
+- Machine Pistol 
+- Submachine Gun 
+- Machine Gun
+- Light Machine Gun 
+- Medium Machine Gun
+- Heavy Machine Guns 
+
+Firearms Manufacturers [dropdown]
+- Aimpoint Red Dot Sights
+- ArmaLite
+- Armscor
+- Auto-Ordnance
+- Barrett
+- Benelli
+- Beretta
+- Bersa
+- Blaser
+- Browning
+- Bushmaster
+- Century Arms
+- CMMG
+- Colt
+- Crimson Trace Laser Sight Grips
+- CZ Firearms
+- Dan Wesson
+- DPMS Rifles
+- FNH
+- Galco Holsters
+- Galil
+- Glock
+- H&R Firearms
+- Heckler and Koch
+- Henry Firearms
+- Hi-Point Firearms
+- Hogue Grips
+- Iver Johnson Firearms
+- Kahr
+- Kel Tec
+- Kimber
+- Knights Armament
+- Magpul
+- Makarov
+- Marlin
+- MasterPiece Arms
+- Mauser
+- Mossberg
+- New England Firearms
+- Norinco
+- Perazzi
+- Phoenix Arms
+- Puma Firearms
+- Remington
+- Rock Island Armory
+- Rock River Arms
+- Rossi
+- Ruger
+- Saiga
+- Sako
+- Savage Arms
+- Sig Sauer
+- SKS
+- Smith and Wesson
+- Springfield Armory
+- Stag Rifles
+- Stevens Firearms
+- Steyr Rifle
+- Taurus Firearms
+- Thompson/Center Firearms
+- Uzi
+- Walther
+- Weatherby
+- Wilson Combat
+- Winchester
+- OTHERS
+
+It does'nt matter if I am wrong or if I am right.
+What matter is you're discretion of what is and what you want to do about it.
+If you're getting annoyed of me repeating myself over and over again is because I love you, otherwise I won't bother.
+Take care..
