@@ -8,9 +8,9 @@ using FluentNHibernate.Mapping;
 
 namespace CIS.Data.EntityDefinitions.FireArms
 {
-    public class RegistrationMapping : ClassMap<Registration>
+    public class LicenseMapping : ClassMap<License>
     {
-        public RegistrationMapping()
+        public LicenseMapping()
         {
             OptimisticLock.Version();
 

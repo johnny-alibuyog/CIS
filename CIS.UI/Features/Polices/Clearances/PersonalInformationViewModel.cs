@@ -34,13 +34,13 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual ReactiveCollection<string> Purposes { get; set; }
 
-        public virtual LookupBase<Guid> VerifiedBy { get; set; } 
+        public virtual Lookup<Guid> VerifiedBy { get; set; } 
 
-        public virtual ReactiveCollection<LookupBase<Guid>> Verifiers {get;set;}
+        public virtual ReactiveCollection<Lookup<Guid>> Verifiers {get;set;}
 
-        public virtual LookupBase<Guid> CertifiedBy { get; set; }
+        public virtual Lookup<Guid> CertifiedBy { get; set; }
 
-        public virtual ReactiveCollection<LookupBase<Guid>> Certifiers { get; set; }
+        public virtual ReactiveCollection<Lookup<Guid>> Certifiers { get; set; }
 
         public PersonalInformationViewModel()
         {

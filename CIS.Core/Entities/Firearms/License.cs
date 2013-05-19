@@ -7,7 +7,7 @@ using CIS.Core.Entities.Commons;
 
 namespace CIS.Core.Entities.Firearms
 {
-    public class Registration
+    public class License
     {
         private Guid _id;
         private int _version;
@@ -82,7 +82,7 @@ namespace CIS.Core.Entities.Firearms
 
         #region Methods
 
-        public virtual void SerializeWith(Registration value)
+        public virtual void SerializeWith(License value)
         {
             this.LicenseNumber = value.LicenseNumber;
             this.ControlNumber = value.ControlNumber;
@@ -99,7 +99,7 @@ namespace CIS.Core.Entities.Firearms
 
         public override bool Equals(object obj)
         {
-            var that = obj as Registration;
+            var that = obj as License;
 
             if (that == null)
                 return false;
@@ -122,12 +122,12 @@ namespace CIS.Core.Entities.Firearms
             return _hashCode.Value;
         }
 
-        public static bool operator ==(Registration x, Registration y)
+        public static bool operator ==(License x, License y)
         {
             return Equals(x, y);
         }
 
-        public static bool operator !=(Registration x, Registration y)
+        public static bool operator !=(License x, License y)
         {
             return !Equals(x, y);
         }

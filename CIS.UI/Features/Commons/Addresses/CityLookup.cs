@@ -7,7 +7,7 @@ using ReactiveUI;
 
 namespace CIS.UI.Features.Commons.Addresses
 {
-    public class CityLookup : LookupBase<Guid>
+    public class CityLookup : Lookup<Guid>
     {
         public virtual IReactiveCollection<BarangayLookup> Barangays { get; set; }
     }

@@ -14,14 +14,30 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CIS.UI.Utilities.Converters;
+using ReactiveUI;
 
 namespace CIS.UI.Features.Commons.Addresses
 {
     /// <summary>
     /// Interaction logic for View.xaml
     /// </summary>
-    public partial class AddresssView : UserControl
+    public partial class AddresssView : UserControl, IViewFor<AddressViewModel>
     {
+        #region IViewFor<AddressViewModel> Members
+
+        public AddressViewModel ViewModel
+        {
+            get { return this.DataContext as AddressViewModel; }
+            set { this.DataContext = value; }
+        }
+
+        object IViewFor.ViewModel
+        {
+            get { return this.DataContext; }
+            set { this.DataContext = value; }
+        }
+        #endregion
+
         public AddresssView()
         {
             if (DesignerProperties.GetIsInDesignMode(this))

@@ -16,7 +16,6 @@ namespace CIS.UI.Features.Commons.Terminals
         public TerminalDataInitializer(ISessionFactory sessionFactory)
         {
             _sessionFactory = sessionFactory;
-
         }
 
         public void Execute()

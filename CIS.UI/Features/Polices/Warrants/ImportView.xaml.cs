@@ -12,19 +12,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ReactiveUI;
 
 namespace CIS.UI.Features.Polices.Warrants
 {
     /// <summary>
     /// Interaction logic for ImportView.xaml
     /// </summary>
-    public partial class ImportView : UserControl
+    public partial class ImportView : UserControl, IViewFor<ImportViewModel>
     {
+        #region IViewFor<ImportViewModel> Members
+
+        public ImportViewModel ViewModel
+        {
+            get { return this.DataContext as ImportViewModel; }
+            set { this.DataContext = value; }
+        }
+
+        object IViewFor.ViewModel
+        {
+            get { return this.DataContext; }
+            set { this.DataContext = value; }
+        }
+
+        #endregion
+
         public ImportView()
         {
             InitializeComponent();
 
-            DataContext = new ImportViewModel();
+            this.ViewModel = new ImportViewModel();
         }
     }
 }

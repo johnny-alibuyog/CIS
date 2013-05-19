@@ -12,14 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ReactiveUI;
 
 namespace CIS.UI.Features.Polices.Clearances
 {
     /// <summary>
     /// Interaction logic for SummaryView.xaml
     /// </summary>
-    public partial class SummaryView : UserControl
+    public partial class SummaryView : UserControl, IViewFor<SummaryViewModel>
     {
+        #region IViewFor<SummaryViewModel> Members
+
+        public SummaryViewModel ViewModel
+        {
+            get { return this.DataContext as SummaryViewModel; }
+            set { this.DataContext = value; }
+        }
+
+        object IViewFor.ViewModel
+        {
+            get { return this.DataContext; }
+            set { this.DataContext = value; }
+        }
+        #endregion
+
         public SummaryView()
         {
             InitializeComponent();

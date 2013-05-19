@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CIS.UI.Features
 {
-    public class LookupBase<T> : ViewModelBase
+    public class Lookup<T> : ViewModelBase
     {
         public virtual T Id { get; set; }
 
@@ -23,7 +23,7 @@ namespace CIS.UI.Features
 
         public override bool Equals(object obj)
         {
-            var that = obj as LookupBase<T>;
+            var that = obj as Lookup<T>;
 
             if (that == null)
                 return false;

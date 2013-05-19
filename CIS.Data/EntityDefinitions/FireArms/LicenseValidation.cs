@@ -8,9 +8,9 @@ using NHibernate.Validator.Cfg.Loquacious;
 
 namespace CIS.Data.EntityDefinitions.FireArms
 {
-    public class RegistrationValidation : ValidationDef<Registration>
+    public class LicenseValidation : ValidationDef<License>
     {
-        public RegistrationValidation()
+        public LicenseValidation()
         {
             Define(x => x.Id);
 

@@ -130,7 +130,7 @@
     <Compile Include="Entities\Firearms\Gun.cs" />
     <Compile Include="Entities\Firearms\Kind.cs" />
     <Compile Include="Entities\Firearms\Make.cs" />
-    <Compile Include="Entities\Firearms\Registration.cs" />
+    <Compile Include="Entities\Firearms\License.cs" />
     <Compile Include="Entities\Mayors\Clearance.cs" />
     <Compile Include="Entities\Mayors\Incumbent.cs" />
     <Compile Include="Entities\Mayors\Mayor.cs">

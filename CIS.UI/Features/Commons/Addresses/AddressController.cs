@@ -47,7 +47,7 @@ namespace CIS.UI.Features.Commons.Addresses
             }
 
             this.ViewModel.Provinces = provinces
-                .Select(x => new LookupBase<Guid>()
+                .Select(x => new Lookup<Guid>()
                 {
                     Id = x.Id,
                     Name = x.Name
@@ -56,7 +56,7 @@ namespace CIS.UI.Features.Commons.Addresses
                 .ToReactiveColletion();
         }
 
-        public virtual void PopulateCities(LookupBase<Guid> provinceLookup)
+        public virtual void PopulateCities(Lookup<Guid> provinceLookup)
         {
             this.ViewModel.Cities = null;
             this.ViewModel.Barangays = null;
@@ -78,7 +78,7 @@ namespace CIS.UI.Features.Commons.Addresses
             }
 
             this.ViewModel.Cities = cities
-                .Select(x => new LookupBase<Guid>()
+                .Select(x => new Lookup<Guid>()
                 {
                     Id = x.Id,
                     Name = x.Name
@@ -87,7 +87,7 @@ namespace CIS.UI.Features.Commons.Addresses
                 .ToReactiveColletion();
         }
 
-        public virtual void PopulateBarangays(LookupBase<Guid> cityLookup)
+        public virtual void PopulateBarangays(Lookup<Guid> cityLookup)
         {
             this.ViewModel.Barangay = null;
 
@@ -108,7 +108,7 @@ namespace CIS.UI.Features.Commons.Addresses
             }
 
             this.ViewModel.Barangays = barangays
-                .Select(x => new LookupBase<Guid>()
+                .Select(x => new Lookup<Guid>()
                 {
                     Id = x.Id,
                     Name = x.Name

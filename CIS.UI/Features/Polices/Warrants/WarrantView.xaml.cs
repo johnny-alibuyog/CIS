@@ -13,21 +13,38 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using FirstFloor.ModernUI.Windows.Controls;
+using ReactiveUI;
 
 namespace CIS.UI.Features.Polices.Warrants
 {
     /// <summary>
     /// Interaction logic for WarratnView.xaml
     /// </summary>
-    public partial class WarratnView : DialogBase
+    public partial class WarratnView : DialogBase, IViewFor<WarrantViewModel>
     {
+        #region IViewFor<WarrantViewModel> Members
+
+        public WarrantViewModel ViewModel
+        {
+            get { return this.DataContext as WarrantViewModel; }
+            set { this.DataContext = value; }
+        }
+
+        object IViewFor.ViewModel
+        {
+            get { return this.DataContext; }
+            set { this.DataContext = value; }
+        }
+
+        #endregion
+
         public WarratnView() : base()
         {
             InitializeComponent();
 
             if (!DesignerProperties.GetIsInDesignMode(this))
             {
-                DataContext = new WarrantViewModel();
+                ViewModel = new WarrantViewModel();
             }
         }
     }

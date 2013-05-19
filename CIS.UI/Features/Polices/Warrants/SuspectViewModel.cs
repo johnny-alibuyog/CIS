@@ -22,7 +22,7 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual PersonViewModel Person { get; set; }
 
-        public virtual PhysicalAttributeViewModel PhysicalAttributes { get; set; }
+        public virtual PhysicalAttributesViewModel PhysicalAttributes { get; set; }
 
         public virtual AddressViewModel Address { get; set; }
 
@@ -47,7 +47,7 @@ namespace CIS.UI.Features.Polices.Warrants
         public SuspectViewModel()
         {
             this.Person = new PersonViewModel();
-            this.PhysicalAttributes = new PhysicalAttributeViewModel();
+            this.PhysicalAttributes = new PhysicalAttributesViewModel();
             this.Address = new AddressViewModel();
             this.Aliases = new ReactiveCollection<string>();
             this.Occupations = new ReactiveCollection<string>();

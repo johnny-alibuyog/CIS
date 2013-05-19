@@ -12,14 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ReactiveUI;
 
 namespace CIS.UI.Features.Commons.Biometrics
 {
     /// <summary>
     /// Interaction logic for FingerScannerView.xaml
     /// </summary>
-    public partial class FingerScannerView : UserControl
+    public partial class FingerScannerView : UserControl, IViewFor<FingerScannerViewModel>
     {
+        #region IViewFor<FingerScannerViewModel> Members
+
+        public FingerScannerViewModel ViewModel
+        {
+            get { return this.DataContext as FingerScannerViewModel; }
+            set { this.DataContext = value; }
+        }
+
+        object IViewFor.ViewModel
+        {
+            get { return this.DataContext; }
+            set { this.DataContext = value; }
+        }
+        #endregion
+
         public FingerScannerView()
         {
             InitializeComponent();

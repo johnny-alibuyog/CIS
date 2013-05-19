@@ -33,7 +33,7 @@ namespace CIS.UI.Features.Polices.Stations
                     .ToFuture();
 
                 this.ViewModel.Ranks = ranks
-                    .Select(x => new LookupBase<string>()
+                    .Select(x => new Lookup<string>()
                     {
                         Id = x.Id,
                         Name = x.Name

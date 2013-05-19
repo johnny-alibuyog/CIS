@@ -246,8 +246,29 @@
     </Compile>
     <Compile Include="Features\Commons\Terminals\TerminalDataInitializer.cs" />
     <Compile Include="Features\Firearms\KindDataInitializer.cs" />
+    <Compile Include="Features\Firearms\Licenses\GunViewModel.cs" />
+    <Compile Include="Features\Firearms\Licenses\LicenseViewModel.cs" />
+    <Compile Include="Features\Firearms\Maintenances\KindListController.cs" />
+    <Compile Include="Features\Firearms\Maintenances\KindListView.xaml.cs">
+      <DependentUpon>KindListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Firearms\Maintenances\KindListViewModel.cs" />
+    <Compile Include="Features\Firearms\Maintenances\KindViewModel.cs">
+      <DependentUpon>KindListViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Firearms\Maintenances\MaintenancePage.xaml.cs">
+      <DependentUpon>MaintenancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Firearms\Maintenances\MakeListController.cs" />
+    <Compile Include="Features\Firearms\Maintenances\MakeListViewModel.cs" />
+    <Compile Include="Features\Firearms\Maintenances\MakeListView.xaml.cs">
+      <DependentUpon>MakeListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Firearms\Maintenances\MakeViewModel.cs">
+      <DependentUpon>MakeListViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Firearms\MakeDataInitializer.cs" />
-    <Compile Include="Features\LookupBase.cs" />
+    <Compile Include="Features\Lookup.cs" />
     <Compile Include="Features\Commons\Persons\PhysicalAttributesView.xaml.cs">
       <DependentUpon>PhysicalAttributesView.xaml</DependentUpon>
     </Compile>
@@ -382,6 +403,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\Commons\Persons\PersonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Firearms\Maintenances\KindListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Firearms\Maintenances\MaintenancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Firearms\Maintenances\MakeListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

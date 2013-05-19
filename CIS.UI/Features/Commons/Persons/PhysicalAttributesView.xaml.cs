@@ -12,14 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ReactiveUI;
 
 namespace CIS.UI.Features.Commons.Persons
 {
     /// <summary>
     /// Interaction logic for PhysicalAttributesView.xaml
     /// </summary>
-    public partial class PhysicalAttributesView : UserControl
+    public partial class PhysicalAttributesView : UserControl, IViewFor<PhysicalAttributesViewModel>
     {
+        #region IViewFor<PhysicalAttributesViewModel> Members
+
+        public PhysicalAttributesViewModel ViewModel
+        {
+            get { return this.DataContext as PhysicalAttributesViewModel; }
+            set { this.DataContext = value; }
+        }
+
+        object IViewFor.ViewModel
+        {
+            get { return this.DataContext; }
+            set { this.DataContext = value; }
+        }
+        #endregion
+
         public PhysicalAttributesView()
         {
             InitializeComponent();

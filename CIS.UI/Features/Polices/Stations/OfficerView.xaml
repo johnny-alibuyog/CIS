@@ -14,18 +14,18 @@
         <TextBlock Style="{StaticResource Heading2}" Text="Officer's Profile" Margin="0,8,0,8"/>
         <persons:PersonView DataContext="{Binding Person}"/>
 
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Rank"/>
             <ComboBox 
                 ItemsSource="{Binding Ranks, Mode=TwoWay}"
                 SelectedValue="{Binding Rank, Mode=TwoWay, ValidatesOnDataErrors=True}"
                 DisplayMemberPath="Name" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Position"/>
             <TextBox Text="{Binding Position, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Title"/>
             <TextBox Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>

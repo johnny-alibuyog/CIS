@@ -121,8 +121,8 @@
     <Compile Include="EntityDefinitions\FireArms\KindValidation.cs" />
     <Compile Include="EntityDefinitions\FireArms\MakeMapping.cs" />
     <Compile Include="EntityDefinitions\FireArms\MakeValidation.cs" />
-    <Compile Include="EntityDefinitions\FireArms\RegistrationMapping.cs" />
-    <Compile Include="EntityDefinitions\FireArms\RegistrationValidation.cs" />
+    <Compile Include="EntityDefinitions\FireArms\LicenseMapping.cs" />
+    <Compile Include="EntityDefinitions\FireArms\LicenseValidation.cs" />
     <Compile Include="ISessionProvider.cs" />
     <Compile Include="EntityDefinitions\Barangays\CaptainMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>

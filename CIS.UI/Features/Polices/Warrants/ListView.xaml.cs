@@ -24,18 +24,16 @@ namespace CIS.UI.Features.Polices.Warrants
     {
         #region IViewFor<ViewModel>
 
-        private ListViewModel _viewModel;
-
         public ListViewModel ViewModel 
         {
-            get { return _viewModel; }
-            set { _viewModel = value; }
+            get { return this.DataContext as ListViewModel; }
+            set { this.DataContext = value; }
         }
 
         object IViewFor.ViewModel
         {
-            get { return _viewModel; }
-            set { _viewModel = value as ListViewModel; }
+            get { return this.DataContext; }
+            set { this.DataContext = value; }
         }
 
         #endregion
@@ -44,7 +42,7 @@ namespace CIS.UI.Features.Polices.Warrants
         {
             InitializeComponent();
 
-            DataContext = new ListViewModel();
+            this.ViewModel = new ListViewModel();
 
             //if (!DesignerProperties.GetIsInDesignMode(this))
             //{

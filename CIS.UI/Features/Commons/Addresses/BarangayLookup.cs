@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace CIS.UI.Features.Commons.Addresses
 {
-    public class BarangayLookup : LookupBase<Guid> { }
+    public class BarangayLookup : Lookup<Guid> { }
 }

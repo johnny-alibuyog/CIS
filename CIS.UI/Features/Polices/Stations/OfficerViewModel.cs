@@ -25,9 +25,9 @@ namespace CIS.UI.Features.Polices.Stations
         public virtual PersonViewModel Person { get; set; }
 
         [NotNull(Message = "Rank is mandatory.")]
-        public virtual LookupBase<string> Rank { get; set; }
+        public virtual Lookup<string> Rank { get; set; }
 
-        public virtual ReactiveCollection<LookupBase<string>> Ranks { get; set; }
+        public virtual ReactiveCollection<Lookup<string>> Ranks { get; set; }
 
         [NotNullNotEmpty(Message = "Positon is mandatory.")]
         public virtual string Position { get; set; }
@@ -61,7 +61,7 @@ namespace CIS.UI.Features.Polices.Stations
 
                 target.Id = source.Id;
                 target.Person.SerializeWith(source.Person);
-                target.Rank = new LookupBase<string>()
+                target.Rank = new Lookup<string>()
                 {
                     Id = source.Rank.Id,
                     Name = source.Rank.Name

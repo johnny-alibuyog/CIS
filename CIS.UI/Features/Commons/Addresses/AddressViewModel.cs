@@ -22,17 +22,17 @@ namespace CIS.UI.Features.Commons.Addresses
 
         public virtual string Province { get; set; }
 
-        public virtual LookupBase<Guid> SelectedBarangay { get; set; }
+        public virtual Lookup<Guid> SelectedBarangay { get; set; }
 
-        public virtual LookupBase<Guid> SelectedCity { get; set; }
+        public virtual Lookup<Guid> SelectedCity { get; set; }
 
-        public virtual LookupBase<Guid> SelectedProvince { get; set; }
+        public virtual Lookup<Guid> SelectedProvince { get; set; }
 
-        public virtual IReactiveCollection<LookupBase<Guid>> Barangays { get; set; }
+        public virtual IReactiveCollection<Lookup<Guid>> Barangays { get; set; }
 
-        public virtual IReactiveCollection<LookupBase<Guid>> Cities { get; set; }
+        public virtual IReactiveCollection<Lookup<Guid>> Cities { get; set; }
 
-        public virtual IReactiveCollection<LookupBase<Guid>> Provinces { get; set; }
+        public virtual IReactiveCollection<Lookup<Guid>> Provinces { get; set; }
 
         public AddressViewModel()
         {

@@ -21,6 +21,12 @@
                 <!--<mui:Link DisplayName="Wanted" />-->
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
+        <mui:LinkGroup DisplayName="firearms">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="License Registration" />
+                <mui:Link DisplayName="Maintenance" Source="/Features/Firearms/Maintenances/MaintenancePage.xaml" />
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
         <mui:LinkGroup DisplayName="barangay">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="Clearance" />

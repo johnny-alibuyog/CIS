@@ -11,14 +11,31 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ReactiveUI;
 
 namespace CIS.UI.Features.Polices.Warrants
 {
     /// <summary>
     /// Interaction logic for SuspectView.xaml
     /// </summary>
-    public partial class SuspectView : DialogBase
+    public partial class SuspectView : DialogBase, IViewFor<SuspectViewModel>
     {
+        #region IViewFor<SuspectViewModel> Members
+
+        public SuspectViewModel ViewModel
+        {
+            get { return this.DataContext as SuspectViewModel; }
+            set { this.DataContext = value; }
+        }
+
+        object IViewFor.ViewModel
+        {
+            get { return this.DataContext; }
+            set { this.DataContext = value; }
+        }
+
+        #endregion
+
         public SuspectView()
         {
             InitializeComponent();

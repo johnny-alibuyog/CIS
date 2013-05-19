@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using CIS.Core.Entities.Firearms;
+using CIS.Core.Entities.Polices;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Cameras;
 using CIS.UI.Utilities.CommonDialogs;
-using ReactiveUI;
-using ReactiveUI.Xaml;
+using CIS.UI.Utilities.Extentions;
 using NHibernate;
 using NHibernate.Linq;
-using CIS.Core.Entities.Polices;
-using CIS.UI.Utilities.Extentions;
+using ReactiveUI;
+using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Clearances
 {
@@ -82,7 +83,7 @@ namespace CIS.UI.Features.Polices.Clearances
                     .ToReactiveColletion();
 
                 this.ViewModel.PersonalInformation.Verifiers = officerQuery
-                    .Select(x => new LookupBase<Guid>()
+                    .Select(x => new Lookup<Guid>()
                     {
                         Id = x.Id,
                         Name = x.Person.Fullname
@@ -90,7 +91,7 @@ namespace CIS.UI.Features.Polices.Clearances
                     .ToReactiveColletion();
 
                 this.ViewModel.PersonalInformation.Certifiers = officerQuery
-                    .Select(x => new LookupBase<Guid>()
+                    .Select(x => new Lookup<Guid>()
                     {
                         Id = x.Id,
                         Name = x.Person.Fullname
@@ -168,7 +169,8 @@ namespace CIS.UI.Features.Polices.Clearances
 
         private void Evaluate()
         {
-            var message = string.Empty;
+            this.ViewModel.Summary.PerfectMatchFindings = string.Empty;
+            this.ViewModel.Summary.PartialMatchFindings = string.Empty;
 
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
@@ -183,9 +185,18 @@ namespace CIS.UI.Features.Polices.Clearances
                       )
                   )
                   .FetchMany(x => x.Suspects)
-                  .ToList();
+                  .ToFuture();
 
-                var perfectMatch = warrants
+                var expiredFirearmsLicenses = session.Query<License>()
+                    .Where(x =>
+                        x.ExpiryDate <= DateTime.Today &&
+                        x.Person.FirstName == person.FirstName &&
+                        x.Person.MiddleName == person.MiddleName &&
+                        x.Person.LastName == person.LastName
+                    )
+                    .ToFuture();
+
+                var suspectPerfectMatch = warrants
                     .SelectMany(x => x.Suspects)
                     .Where(x =>
                         x.Person.FirstName == person.FirstName &&
@@ -194,33 +205,41 @@ namespace CIS.UI.Features.Polices.Clearances
                     )
                     .ToList();
 
-                //var crimes = perfectMatch
-                //    .GroupBy(x => x.Warrant.Crime)
-                //    .Select(x => (x.Count() > 1)
-                //        ? x.Count().ToString() + " counts of " + x.Key
-                //        : x.Key
-                //    )
-                //    .Distinct()
-                //    .ToList();
-
-                var partialMatch = warrants
+                var suspectPartialMatch = warrants
                     .SelectMany(x => x.Suspects)
                     .Where(x => string.IsNullOrWhiteSpace(x.Person.MiddleName))
-                    .Except(perfectMatch)
+                    .Except(suspectPerfectMatch)
                     .ToList();
 
-                if (partialMatch.Count > 0)
+                if (suspectPartialMatch.Count > 0)
                 {
-                    message = string.Format("Person with the name of {0} and criminial record {1} has partialy the name as the applicant. Please verfiy.", 
-                        partialMatch.First().Person.Fullname, partialMatch.First().Warrant.Crime);
+                    this.ViewModel.Summary.PartialMatchFindings = string.Format("Person with the name of {0} and criminial record {1} has partialy the name as the applicant. Please verfiy.", 
+                        suspectPartialMatch.First().Person.Fullname, suspectPartialMatch.First().Warrant.Crime);
                 }
 
-                if (perfectMatch.Count > 0)
+                if (suspectPerfectMatch.Count > 0)
                 {
                     this.ViewModel.Summary.PerfectMatchFindings = string.Join(
-                        separator: "/n",
-                        values: perfectMatch
+                        separator: Environment.NewLine,
+                        values: suspectPerfectMatch
                             .Select(x => x.Warrant.Crime)
+                            .Distinct()
+                    );
+                }
+
+                if (expiredFirearmsLicenses.Count() > 0)
+                {
+                    if (this.ViewModel.Summary.PerfectMatchFindings != string.Empty)
+                        this.ViewModel.Summary.PerfectMatchFindings += Environment.NewLine;
+
+                    this.ViewModel.Summary.PerfectMatchFindings += string.Join(
+                        separator: Environment.NewLine,
+                        values: expiredFirearmsLicenses
+                            .Select(x => 
+                                string.Format("Expired Firearm Lincense - FA Lic. No. {0} - {2}", 
+                                    x.LicenseNumber, x.ExpiryDate.ToString("MMM-dd-yyyy")
+                                )
+                            )
                             .Distinct()
                     );
                 }
@@ -234,12 +253,10 @@ namespace CIS.UI.Features.Polices.Clearances
             this.ViewModel.Summary.BirthDate = this.ViewModel.PersonalInformation.Person.BirthDate;
             this.ViewModel.Summary.BirthPlace = this.ViewModel.PersonalInformation.BirthPlace;
 
-            if (!string.IsNullOrWhiteSpace(message))
+            if (!string.IsNullOrWhiteSpace(this.ViewModel.Summary.PartialMatchFindings))
             {
-                MessageDialog.Show(message, "Clearance", MessageBoxButton.OK);
+                MessageDialog.Show(this.ViewModel.Summary.PartialMatchFindings, "Clearance", MessageBoxButton.OK);
             }
-
-
         }
 
         public virtual void HandleHardwareInteraction()

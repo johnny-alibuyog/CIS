@@ -7,7 +7,7 @@ using CIS.Core.Entities.Commons;
 
 namespace CIS.UI.Features.Commons.Persons
 {
-    public class PhysicalAttributeViewModel : ViewModelBase
+    public class PhysicalAttributesViewModel : ViewModelBase
     {
         public virtual string Hair { get; set; }
         public virtual string Eyes { get; set; }
@@ -22,9 +22,9 @@ namespace CIS.UI.Features.Commons.Persons
             if (instance == null)
                 return null;
 
-            if (instance is PhysicalAttributeViewModel)
+            if (instance is PhysicalAttributesViewModel)
             {
-                var source = instance as PhysicalAttributeViewModel;
+                var source = instance as PhysicalAttributesViewModel;
                 var target = this;
 
                 target.Hair = source.Hair;
@@ -59,10 +59,10 @@ namespace CIS.UI.Features.Commons.Persons
             if (instance == null)
                 return null;
 
-            if (instance is PhysicalAttributeViewModel)
+            if (instance is PhysicalAttributesViewModel)
             {
                 var source = this;
-                var target = instance as PhysicalAttributeViewModel;
+                var target = instance as PhysicalAttributesViewModel;
 
                 target.SerializeWith(source);
                 return target;
