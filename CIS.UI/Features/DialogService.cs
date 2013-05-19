@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using CIS.UI.Bootstraps.DependencyInjection;
 using Microsoft.Win32;
 
 namespace CIS.UI.Features
@@ -63,7 +64,8 @@ namespace CIS.UI.Features
 
         public DialogService()
         {
-            this.View = Activator.CreateInstance<TView>();
+            //this.View = Activator.CreateInstance<TView>();
+            this.View = IoC.Container.Resolve<TView>();
             if (this.View.DataContext == null)
                 this.View.DataContext = Activator.CreateInstance<TViewModel>();
 

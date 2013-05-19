@@ -23,7 +23,7 @@
         </mui:LinkGroup>
         <mui:LinkGroup DisplayName="firearms">
             <mui:LinkGroup.Links>
-                <mui:Link DisplayName="License Registration" />
+                <mui:Link DisplayName="License" Source="/Features/Firearms/Licenses/LicensePage.xaml" />
                 <mui:Link DisplayName="Maintenance" Source="/Features/Firearms/Maintenances/MaintenancePage.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>

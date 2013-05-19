@@ -4,8 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Utilities.CommonDialogs;
 using NHibernate;
 using NHibernate.Linq;
 using ReactiveUI;
@@ -86,6 +88,11 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual void BatchSave()
         {
+            var message = string.Format("Are you sure you want to save warrant?");
+            var confirm = MessageDialog.Show(message, "Delete", MessageBoxButton.YesNo);
+            if (confirm == false)
+                return;
+
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {

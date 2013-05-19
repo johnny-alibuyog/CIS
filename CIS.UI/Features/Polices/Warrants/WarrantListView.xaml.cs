@@ -20,13 +20,13 @@ namespace CIS.UI.Features.Polices.Warrants
     /// <summary>
     /// Interaction logic for ListView.xaml
     /// </summary>
-    public partial class ListView : UserControl, IViewFor<ListViewModel>
+    public partial class ListView : UserControl, IViewFor<WarrantListViewModel>
     {
         #region IViewFor<ViewModel>
 
-        public ListViewModel ViewModel 
+        public WarrantListViewModel ViewModel 
         {
-            get { return this.DataContext as ListViewModel; }
+            get { return this.DataContext as WarrantListViewModel; }
             set { this.DataContext = value; }
         }
 
@@ -42,7 +42,7 @@ namespace CIS.UI.Features.Polices.Warrants
         {
             InitializeComponent();
 
-            this.ViewModel = new ListViewModel();
+            this.ViewModel = new WarrantListViewModel();
 
             //if (!DesignerProperties.GetIsInDesignMode(this))
             //{

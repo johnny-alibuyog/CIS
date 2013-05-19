@@ -252,7 +252,20 @@
     </Compile>
     <Compile Include="Features\Firearms\Licenses\GunViewModel.cs" />
     <Compile Include="Features\Firearms\Licenses\LicenseContoller.cs" />
+    <Compile Include="Features\Firearms\Licenses\LicenseListController.cs" />
+    <Compile Include="Features\Firearms\Licenses\LicenseListCriteriaViewModel.cs">
+      <DependentUpon>LicenseListViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Firearms\Licenses\LicenseListItemViewModel.cs">
+      <DependentUpon>LicenseListViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Firearms\Licenses\LicenseListView.xaml.cs">
+      <DependentUpon>LicenseListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Features\Firearms\Licenses\LicenseListViewModel.cs" />
+    <Compile Include="Features\Firearms\Licenses\LicensePage.xaml.cs">
+      <DependentUpon>LicensePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Features\Firearms\Licenses\LicenseView.xaml.cs">
       <DependentUpon>LicenseView.xaml</DependentUpon>
     </Compile>
@@ -341,18 +354,18 @@
     <Compile Include="Features\Polices\Warrants\ImportWarrantViewModel.cs">
       <DependentUpon>ImportViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Polices\Warrants\WarrantListCriteriaViewModel.cs">
+      <DependentUpon>WarrantListViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Warrants\WarrantListItemViewModel.cs">
+      <DependentUpon>WarrantListViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Polices\Warrants\WarrantController.cs" />
     <Compile Include="Features\Polices\Warrants\SuspectController.cs" />
     <Compile Include="Features\Polices\Warrants\SuspectView.xaml.cs">
       <DependentUpon>SuspectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Warrants\SuspectViewModel.cs" />
-    <Compile Include="Features\Polices\Warrants\ListCriteriaViewModel.cs">
-      <DependentUpon>ListViewModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Polices\Warrants\ListItemViewModel.cs">
-      <DependentUpon>ListViewModel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Features\Polices\Warrants\WarrantPage.xaml.cs">
       <DependentUpon>WarrantPage.xaml</DependentUpon>
     </Compile>
@@ -419,6 +432,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Features\Firearms\Licenses\LicenseListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Firearms\Licenses\LicensePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Features\Firearms\Licenses\LicenseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -451,12 +472,12 @@
       <DependentUpon>WarrantView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\ListController.cs" />
+    <Compile Include="Features\Polices\Warrants\WarrantListController.cs" />
     <Compile Include="Features\Polices\Warrants\WarrantViewModel.cs" />
-    <Compile Include="Features\Polices\Warrants\ListView.xaml.cs">
-      <DependentUpon>ListView.xaml</DependentUpon>
+    <Compile Include="Features\Polices\Warrants\WarrantListView.xaml.cs">
+      <DependentUpon>WarrantListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\ListViewModel.cs" />
+    <Compile Include="Features\Polices\Warrants\WarrantListViewModel.cs" />
     <Compile Include="Features\Settings\Abouts\ViewModel.cs" />
     <Compile Include="Features\Settings\Appearances\Class1.cs" />
     <Compile Include="Features\Settings\Class1.cs" />
@@ -514,7 +535,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Warrants\ListView.xaml">
+    <Page Include="Features\Polices\Warrants\WarrantListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

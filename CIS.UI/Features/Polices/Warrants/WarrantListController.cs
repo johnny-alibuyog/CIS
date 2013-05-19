@@ -16,9 +16,9 @@ using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Warrants
 {
-    public class ListController : ControllerBase<ListViewModel>
+    public class WarrantListController : ControllerBase<WarrantListViewModel>
     {
-        public ListController(ListViewModel viewModel) : base(viewModel)
+        public WarrantListController(WarrantListViewModel viewModel) : base(viewModel)
         {
 
             ViewModel.Search = new ReactiveCommand(
@@ -38,10 +38,10 @@ namespace CIS.UI.Features.Polices.Warrants
             ViewModel.Create.Subscribe(x => Create());
 
             ViewModel.Edit = new ReactiveCommand();
-            ViewModel.Edit.Subscribe(x => { Edit((ListItemViewModel)x); });
+            ViewModel.Edit.Subscribe(x => { Edit((WarrantListItemViewModel)x); });
 
             ViewModel.Delete = new ReactiveCommand();
-            ViewModel.Delete.Subscribe(x => { Delete((ListItemViewModel)x); });
+            ViewModel.Delete.Subscribe(x => { Delete((WarrantListItemViewModel)x); });
         }
 
         public virtual void Search()
@@ -64,7 +64,7 @@ namespace CIS.UI.Features.Polices.Warrants
                     .OrderBy(x => x.Person.FirstName)
                     .ThenBy(x => x.Person.MiddleName)
                     .ThenBy(x => x.Person.LastName)
-                    .Select(x => new ListItemViewModel()
+                    .Select(x => new WarrantListItemViewModel()
                     {
                         Id = x.Warrant.Id,
                         SuspectId = x.Id,
@@ -75,7 +75,7 @@ namespace CIS.UI.Features.Polices.Warrants
                     })
                     .ToList();
 
-                this.ViewModel.Items = new ReactiveCollection<ListItemViewModel>(items);
+                this.ViewModel.Items = new ReactiveCollection<WarrantListItemViewModel>(items);
 
                 transaction.Commit();
             }
@@ -83,22 +83,22 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual void Create()
         {
-            var dialog = new DialogService<WarratnView, WarrantViewModel>();
+            var dialog = new DialogService<WarrantView, WarrantViewModel>();
             var result = dialog.Show(this, "Create Warrant", null);
             if (result != null)
                 this.Search();
         }
 
-        public virtual void Edit(ListItemViewModel item)
+        public virtual void Edit(WarrantListItemViewModel item)
         {
-            var dialog = new DialogService<WarratnView, WarrantViewModel>();
+            var dialog = new DialogService<WarrantView, WarrantViewModel>();
             dialog.ViewModel.Load.Execute(item.Id);
             var result = dialog.Show(this, "Edit Warrant", null);
             if (result != null)
                 this.Search();
         }
 
-        public virtual void Delete(ListItemViewModel item)
+        public virtual void Delete(WarrantListItemViewModel item)
         {
             this.ViewModel.SelectedItem = item;
             var selected = this.ViewModel.SelectedItem;

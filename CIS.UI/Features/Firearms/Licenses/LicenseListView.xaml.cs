@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,22 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using FirstFloor.ModernUI.Windows.Controls;
 using ReactiveUI;
 
-namespace CIS.UI.Features.Polices.Warrants
+namespace CIS.UI.Features.Firearms.Licenses
 {
     /// <summary>
-    /// Interaction logic for WarratnView.xaml
+    /// Interaction logic for LicenseListView.xaml
     /// </summary>
-    public partial class WarrantView : DialogBase, IViewFor<WarrantViewModel>
+    public partial class LicenseListView : UserControl, IViewFor<LicenseListViewModel>
     {
-        #region IViewFor<WarrantViewModel> Members
+        #region IViewFor<LicenseListViewModel>
 
-        public WarrantViewModel ViewModel
+        public LicenseListViewModel ViewModel
         {
-            get { return this.DataContext as WarrantViewModel; }
+            get { return this.DataContext as LicenseListViewModel; }
             set { this.DataContext = value; }
         }
 
@@ -38,14 +37,11 @@ namespace CIS.UI.Features.Polices.Warrants
 
         #endregion
 
-        public WarrantView() : base()
+        public LicenseListView()
         {
             InitializeComponent();
 
-            if (!DesignerProperties.GetIsInDesignMode(this))
-            {
-                ViewModel = new WarrantViewModel();
-            }
+            ViewModel = new LicenseListViewModel();
         }
     }
 }

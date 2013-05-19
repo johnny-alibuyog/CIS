@@ -7,7 +7,7 @@ using ReactiveUI;
 
 namespace CIS.UI.Features.Polices.Warrants
 {
-    public class ListItemViewModel : ViewModelBase
+    public class WarrantListItemViewModel : ViewModelBase
     {
         public virtual Guid Id { get; set; }
         public virtual Guid SuspectId { get; set; }

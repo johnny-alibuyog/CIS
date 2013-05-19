@@ -7,7 +7,7 @@ using ReactiveUI;
 
 namespace CIS.UI.Features.Polices.Warrants
 {
-    public class ListCriteriaViewModel : ViewModelBase
+    public class WarrantListCriteriaViewModel : ViewModelBase
     {
         public virtual string FirstName { get; set; }
         public virtual string MiddleName { get; set; }

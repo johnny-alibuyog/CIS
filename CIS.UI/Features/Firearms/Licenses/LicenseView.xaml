@@ -5,6 +5,7 @@
         xmlns:persons="clr-namespace:CIS.UI.Features.Commons.Persons"
         xmlns:addresses="clr-namespace:CIS.UI.Features.Commons.Addresses"
         xmlns:licenses="clr-namespace:CIS.UI.Features.Firearms.Licenses"
+        local:DialogBase.DialogResult="{Binding Path=ActionResult}"
         Title="License" SizeToContent="WidthAndHeight">
     <StackPanel Style="{StaticResource ContentRoot}">
         <Grid>
@@ -50,5 +51,11 @@
                 <licenses:GunView DataContext="{Binding Gun}" />
             </StackPanel>
         </Grid>
+
+        <!-- buttons -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button IsDefault="True" Content="Save" Command="{Binding Path=Save}" Margin="4" />
+            <Button IsCancel="True" Content="Cancel" Margin="4" />
+        </StackPanel>
     </StackPanel>
 </local:DialogBase>
