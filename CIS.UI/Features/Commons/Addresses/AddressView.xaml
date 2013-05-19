@@ -20,7 +20,7 @@
         </StackPanel>
         <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Barangay"/>
-            <TextBox Text="{Binding Barangay, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+            <TextBox Text="{Binding Barangay, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
             <!--<ComboBox 
                 Text="{Binding Barangay, Mode=TwoWay, ValidatesOnDataErrors=True}" 
                 ItemsSource="{Binding Barangays, Mode=TwoWay}"
@@ -39,7 +39,7 @@
         </StackPanel>
         <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="City"/>
-            <TextBox Text="{Binding City, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+            <TextBox Text="{Binding City, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
             <!--<ComboBox 
                 Text="{Binding City, Mode=TwoWay, ValidatesOnDataErrors=True}" 
                 ItemsSource="{Binding Cities, Mode=TwoWay}"
@@ -62,7 +62,7 @@
         </StackPanel>
         <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Province"/>
-            <TextBox Text="{Binding Province, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+            <TextBox Text="{Binding Province, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
             <!--<ComboBox 
                 ItemsSource="{Binding Provinces, Mode=TwoWay}"
                 SelectedValue="{Binding SelectedProvince, Mode=TwoWay, ValidatesOnDataErrors=True}"

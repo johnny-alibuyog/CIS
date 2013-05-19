@@ -18,6 +18,9 @@ namespace CIS.UI.Features.Polices.Warrants
         public WarrantController(WarrantViewModel viewModel)
             : base(viewModel)
         {
+            this.ViewModel.Load = new ReactiveCommand();
+            this.ViewModel.Load.Subscribe(x => Load((Guid)x));
+
             this.ViewModel.CreateSupect = new ReactiveCommand();
             this.ViewModel.CreateSupect.Subscribe(x => CreateSuspect());
 
@@ -32,7 +35,7 @@ namespace CIS.UI.Features.Polices.Warrants
             this.ViewModel.BatchSave.Subscribe(x => BatchSave());
         }
 
-        public virtual void Populate(Guid id)
+        public virtual void Load(Guid id)
         {
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())

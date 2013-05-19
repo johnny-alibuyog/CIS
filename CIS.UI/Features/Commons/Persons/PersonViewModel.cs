@@ -22,10 +22,10 @@ namespace CIS.UI.Features.Commons.Persons
 
         public virtual string FullName { get { return string.Format("{0} {1} {2}", this.FirstName, this.MiddleName, this.LastName); } }
 
-        //[NotNullNotEmpty(Message = "Gender is mandatory.")]
+        //[NotNull(Message = "Gender is mandatory.")]
         public virtual Nullable<Gender> Gender { get; set; }
 
-        //[NotNullNotEmpty(Message = "BirthDate is mandatory.")]
+        //[NotNull(Message = "BirthDate is mandatory.")]
         public virtual Nullable<DateTime> BirthDate { get; set; }
 
         public override string ToString()

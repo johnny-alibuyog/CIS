@@ -246,7 +246,16 @@
     </Compile>
     <Compile Include="Features\Commons\Terminals\TerminalDataInitializer.cs" />
     <Compile Include="Features\Firearms\KindDataInitializer.cs" />
+    <Compile Include="Features\Firearms\Licenses\GunController.cs" />
+    <Compile Include="Features\Firearms\Licenses\GunView.xaml.cs">
+      <DependentUpon>GunView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Features\Firearms\Licenses\GunViewModel.cs" />
+    <Compile Include="Features\Firearms\Licenses\LicenseContoller.cs" />
+    <Compile Include="Features\Firearms\Licenses\LicenseListViewModel.cs" />
+    <Compile Include="Features\Firearms\Licenses\LicenseView.xaml.cs">
+      <DependentUpon>LicenseView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Features\Firearms\Licenses\LicenseViewModel.cs" />
     <Compile Include="Features\Firearms\Maintenances\KindListController.cs" />
     <Compile Include="Features\Firearms\Maintenances\KindListView.xaml.cs">
@@ -403,6 +412,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\Commons\Persons\PersonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Firearms\Licenses\GunView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Firearms\Licenses\LicenseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

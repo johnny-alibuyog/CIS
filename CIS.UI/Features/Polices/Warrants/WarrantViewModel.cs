@@ -38,6 +38,8 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual ReactiveCollection<SuspectViewModel> Suspects { get; set; }
 
+        public virtual IReactiveCommand Load { get; set; }
+
         public virtual IReactiveCommand CreateSupect { get; set; }
 
         public virtual IReactiveCommand EditSuspect { get; set; }
@@ -46,17 +48,13 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual IReactiveCommand BatchSave { get; set; }
 
+
         public WarrantViewModel()
         {
             this.IssuedAt = new AddressViewModel();
             this.Suspects = new ReactiveCollection<SuspectViewModel>();
 
             _controller = new WarrantController(this);
-        }
-
-        public virtual void Populate(Guid id)
-        {
-            _controller.Populate(id);
         }
 
         public override object SerializeWith(object instance)

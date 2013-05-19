@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CIS.UI.Features.Firearms.Licenses
+{
+    public class LicenseContoller : ControllerBase<LicenseViewModel>
+    {
+        public LicenseContoller(LicenseViewModel viewModel) : base(viewModel)
+        {
+
+        }
+    }
+}

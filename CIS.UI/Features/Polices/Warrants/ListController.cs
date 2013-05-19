@@ -92,7 +92,7 @@ namespace CIS.UI.Features.Polices.Warrants
         public virtual void Edit(ListItemViewModel item)
         {
             var dialog = new DialogService<WarratnView, WarrantViewModel>();
-            dialog.ViewModel.Populate(item.Id);
+            dialog.ViewModel.Load.Execute(item.Id);
             var result = dialog.Show(this, "Edit Warrant", null);
             if (result != null)
                 this.Search();

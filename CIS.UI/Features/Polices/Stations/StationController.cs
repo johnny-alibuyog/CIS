@@ -20,7 +20,7 @@ namespace CIS.UI.Features.Polices.Stations
         public StationController(StationViewModel viewModel)
             : base(viewModel)
         {
-            Populate();
+            Load();
 
             this.ViewModel.LookupLogo = new ReactiveCommand();
             this.ViewModel.LookupLogo.Subscribe(x => LookupLogo());
@@ -30,7 +30,7 @@ namespace CIS.UI.Features.Polices.Stations
             this.ViewModel.Save.Subscribe(x => Save());
 
             this.ViewModel.Refresh = new ReactiveCommand();
-            this.ViewModel.Refresh.Subscribe(x => Populate(confirm: true));
+            this.ViewModel.Refresh.Subscribe(x => Load(confirm: true));
         }
 
         public virtual void LookupLogo()
@@ -40,7 +40,7 @@ namespace CIS.UI.Features.Polices.Stations
                 this.ViewModel.Logo = logo;
         }
 
-        public virtual void Populate(bool confirm = false)
+        public virtual void Load(bool confirm = false)
         {
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())

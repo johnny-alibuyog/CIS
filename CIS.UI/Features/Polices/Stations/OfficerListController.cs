@@ -76,7 +76,7 @@ namespace CIS.UI.Features.Polices.Stations
         public virtual void Edit(OfficerListItemViewModel item)
         {
             var dialog = new DialogService<OfficerView, OfficerViewModel>();
-            dialog.ViewModel.Populate(item.Id);
+            dialog.ViewModel.Load.Execute(item.Id);
             var result = dialog.Show(this, "Edit Officer", null);
             if (result != null)
                 this.Search();

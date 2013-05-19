@@ -12,6 +12,18 @@ namespace CIS.UI.Features
 
         public virtual string Name { get; set; }
 
+        #region Constructors
+
+        public Lookup() { }
+
+        public Lookup(T id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+
+        #endregion
+
         #region Equality Comparer
 
         private Nullable<int> _hashCode;

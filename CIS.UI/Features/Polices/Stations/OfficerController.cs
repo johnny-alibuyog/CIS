@@ -18,6 +18,10 @@ namespace CIS.UI.Features.Polices.Stations
         {
             PopulateLookup();
 
+            this.ViewModel.Load = new ReactiveCommand();
+            this.ViewModel.Load.Subscribe(x => Load((Guid)x));
+
+
             this.ViewModel.Save = new ReactiveCommand(this.ViewModel
                 .WhenAny(x => x.IsValid, x => x.Value));
             this.ViewModel.Save.Subscribe(x => Save());
@@ -44,7 +48,7 @@ namespace CIS.UI.Features.Polices.Stations
             }
         }
 
-        public virtual void Populate(Guid id)
+        public virtual void Load(Guid id)
         {
             using (var session = this.SessionProvider.GetSharedSession())
             using (var transaction = session.BeginTransaction())

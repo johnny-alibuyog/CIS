@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Features.Commons.Persons;
+using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Firearms.Licenses
 {
@@ -16,7 +17,18 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public virtual AddressViewModel Address { get; set; }
 
+        public virtual GunViewModel Gun { get; set; }
 
+        public virtual string LicenseNumber { get; set; }
 
+        public virtual string ControlNumber { get; set; }
+
+        public virtual DateTime IssueDate { get; set; }
+
+        public virtual DateTime ExpirationDate { get; set; }
+
+        public virtual IReactiveCommand Load { get; set; }
+
+        public virtual IReactiveCommand Save { get; set; }
     }
 }

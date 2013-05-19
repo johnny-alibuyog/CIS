@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="CIS.UI.Features.Firearms.Licenses.GunView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d">
+    <StackPanel>
+        <StackPanel.Resources>
+            <ResourceDictionary Source="pack://application:,,,/Assets/Styles/FormInputMatrix.xaml" />
+        </StackPanel.Resources>
+
+        <StackPanel Style="{StaticResource FieldSet}">
+            <Label Content="Model" />
+            <TextBox Text="{Binding Model, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
+            <Label Content="Caliber"/>
+            <TextBox Text="{Binding Caliber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
+            <Label Content="SerialNumber"/>
+            <TextBox Text="{Binding SerialNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
+            <Label Content="Classifcation"/>
+            <ComboBox ItemsSource="{Binding Kinds, Mode=TwoWay}" SelectedItem="{Binding Kind, Mode=TwoWay}"/>
+        </StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
+            <Label Content="Manufacturer"/>
+            <ComboBox ItemsSource="{Binding Makes, Mode=TwoWay}" SelectedItem="{Binding Make, Mode=TwoWay}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

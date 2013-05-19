@@ -35,6 +35,8 @@ namespace CIS.UI.Features.Polices.Stations
         [NotNullNotEmpty(Message = "Title is mandatory.")]
         public virtual string Title { get; set; }
 
+        public virtual IReactiveCommand Load { get; set; }
+
         public virtual IReactiveCommand Save { get; set; }
 
         public override object SerializeWith(object instance)
@@ -103,11 +105,6 @@ namespace CIS.UI.Features.Polices.Stations
             }
 
             return null;
-        }
-
-        public virtual void Populate(Guid id)
-        {
-            _controller.Populate(id);
         }
 
         public OfficerViewModel()
