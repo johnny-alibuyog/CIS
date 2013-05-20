@@ -123,6 +123,8 @@
     <Compile Include="EntityDefinitions\FireArms\MakeValidation.cs" />
     <Compile Include="EntityDefinitions\FireArms\LicenseMapping.cs" />
     <Compile Include="EntityDefinitions\FireArms\LicenseValidation.cs" />
+    <Compile Include="EntityDefinitions\Polices\ApplicantMapping.cs" />
+    <Compile Include="EntityDefinitions\Polices\ApplicantValidation.cs" />
     <Compile Include="ISessionProvider.cs" />
     <Compile Include="EntityDefinitions\Barangays\CaptainMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>
@@ -153,7 +155,6 @@
     </Compile>
     <Compile Include="EntityDefinitions\Commons\BarcodeMapping.cs" />
     <Compile Include="EntityDefinitions\Commons\BlobMapping.cs" />
-    <Compile Include="EntityDefinitions\Commons\BodyStatisticsMapping.cs" />
     <Compile Include="EntityDefinitions\Commons\CityMapping.cs">
       <DependentUpon>AddressMapping.cs</DependentUpon>
     </Compile>
@@ -235,7 +236,6 @@
     </Compile>
     <Compile Include="EntityDefinitions\Commons\BarcodeValidaton.cs" />
     <Compile Include="EntityDefinitions\Commons\BlobValidation.cs" />
-    <Compile Include="EntityDefinitions\Commons\BodyStatisticsValidation.cs" />
     <Compile Include="EntityDefinitions\Commons\CityValidation.cs">
       <DependentUpon>AddressValidation.cs</DependentUpon>
     </Compile>

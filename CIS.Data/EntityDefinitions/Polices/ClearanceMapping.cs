@@ -19,16 +19,7 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Component(x => x.Audit);
 
-            Component(x => x.Person);
-
-            Component(x => x.BodyStatistics);
-
-            Component(x => x.Address);
-
-            References(x => x.Picture)
-                .Cascade.All();
-
-            References(x => x.FingerPrint)
+            References(x => x.Applicant)
                 .Cascade.All();
 
             References(x => x.Barcode)
@@ -38,7 +29,8 @@ namespace CIS.Data.EntityDefinition.Polices
 
             References(x => x.IssuedBy);
 
-            Component(x => x.IssuedAt);
+            Component(x => x.IssuedAt)
+                .ColumnPrefix("IssuedAt");
 
             Map(x => x.Office);
 
@@ -46,11 +38,13 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Map(x => x.Location);
 
-            Map(x => x.Purpose);
-
             Map(x => x.OfficialReceiptNumber);
 
             Map(x => x.CommunityTaxCertificateNumber);
+
+            Map(x => x.PartialMatchFindings);
+
+            Map(x => x.PerfectMatchFindings);
         }
     }
 }

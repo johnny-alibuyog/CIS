@@ -229,6 +229,7 @@
       <DependentUpon>AddressView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Commons\Addresses\AddressViewModel.cs" />
+    <Compile Include="Features\Commons\Biometrics\FingerPrintViewModel.cs" />
     <Compile Include="Features\Commons\Biometrics\FingerViewModel.cs" />
     <Compile Include="Features\Commons\Biometrics\FingerDataInitializer.cs" />
     <Compile Include="Features\Commons\Biometrics\FingerScannerController.cs" />
@@ -309,6 +310,7 @@
     <Compile Include="Features\Polices\Clearances\ClearancePage.xaml.cs">
       <DependentUpon>ClearancePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\Polices\Clearances\ClearanceReportViewModel.cs" />
     <Compile Include="Features\Polices\Clearances\PurposeDataInitializer.cs" />
     <Compile Include="Features\Polices\Clearances\SummaryViewModel.cs" />
     <Compile Include="Features\Polices\Clearances\PersonalInformationView.xaml.cs">

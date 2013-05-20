@@ -17,24 +17,9 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Define(x => x.Audit);
 
-            Define(x => x.Person)
+            Define(x => x.Applicant)
                 .NotNullable()
                 .And.IsValid();
-
-            Define(x => x.BodyStatistics)
-                .NotNullable()
-                .And.IsValid();
-
-            Define(x => x.Address)
-                .NotNullable()
-                .And.IsValid();
-
-            Define(x => x.Picture)
-                .NotNullable()
-                .And.IsValid();
-
-            Define(x => x.FingerPrint)
-                .IsValid();
 
             Define(x => x.Barcode)
                 .IsValid();
@@ -59,10 +44,6 @@ namespace CIS.Data.EntityDefinition.Polices
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(150);
 
-            Define(x => x.Purpose)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
-
             Define(x => x.OfficialReceiptNumber)
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(50);
@@ -71,6 +52,12 @@ namespace CIS.Data.EntityDefinition.Polices
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(50);
 
+
+            Define(x => x.PartialMatchFindings)
+                .MaxLength(1000);
+
+            Define(x => x.PerfectMatchFindings)
+                .MaxLength(1000);
         }
     }
 }
