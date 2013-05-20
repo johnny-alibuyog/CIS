@@ -94,7 +94,6 @@
     <Compile Include="Entities\Commons\AreaClass.cs" />
     <Compile Include="Entities\Commons\Barcode.cs" />
     <Compile Include="Entities\Commons\Blob.cs" />
-    <Compile Include="Entities\Commons\BodyStatistics.cs" />
     <Compile Include="Entities\Commons\City.cs">
       <DependentUpon>Address.cs</DependentUpon>
     </Compile>
@@ -144,6 +143,7 @@
     <Compile Include="Entities\Memberships\Permission.cs" />
     <Compile Include="Entities\Memberships\Role.cs" />
     <Compile Include="Entities\Memberships\User.cs" />
+    <Compile Include="Entities\Polices\Applicant.cs" />
     <Compile Include="Entities\Polices\ArrestStatus.cs" />
     <Compile Include="Entities\Polices\Clearance.cs" />
     <Compile Include="Entities\Polices\Officer.cs" />

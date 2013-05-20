@@ -11,11 +11,7 @@ namespace CIS.Core.Entities.Polices
         private Guid _id;
         private int _version;
         private Audit _audit;
-        private Person _person;
-        private BodyStatistics _bodyStatistics;
-        private Address _address;
-        private Picture _picture;
-        private FingerPrint _fingerPrint;
+        private Applicant _applicant;
         private Barcode _barcode;
         private Officer _verifiedBy;
         private Officer _issuedBy;
@@ -23,9 +19,10 @@ namespace CIS.Core.Entities.Polices
         private string _office;
         private string _station;
         private string _location;
-        private string _purpose;
         private string _officialReceiptNumber;
         private string _communityTaxCertificateNumber;
+        private string _partialMatchFindings;
+        private string _perfectMatchFindings;
 
         public virtual Guid Id
         {
@@ -45,34 +42,10 @@ namespace CIS.Core.Entities.Polices
             set { _audit = value; }
         }
 
-        public virtual Person Person
+        public virtual Applicant Applicant
         {
-            get { return _person; }
-            set { _person = value; }
-        }
-
-        public virtual BodyStatistics BodyStatistics
-        {
-            get { return _bodyStatistics; }
-            set { _bodyStatistics = value; }
-        }
-
-        public virtual Address Address
-        {
-            get { return _address; }
-            set { _address = value; }
-        }
-
-        public virtual Picture Picture
-        {
-            get { return _picture; }
-            set { _picture = value; }
-        }
-
-        public virtual FingerPrint FingerPrint
-        {
-            get { return _fingerPrint; }
-            set { _fingerPrint = value; }
+            get { return _applicant; }
+            set { _applicant = value; }
         }
 
         public virtual Barcode Barcode
@@ -117,12 +90,6 @@ namespace CIS.Core.Entities.Polices
             set { _location = value; }
         }
 
-        public virtual string Purpose
-        {
-            get { return _purpose; }
-            set { _purpose = value; }
-        }
-
         public virtual string OfficialReceiptNumber
         {
             get { return _officialReceiptNumber; }
@@ -133,6 +100,18 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _communityTaxCertificateNumber; }
             set { _communityTaxCertificateNumber = value; }
+        }
+
+        public virtual string PartialMatchFindings
+        {
+            get { return _partialMatchFindings; }
+            set { _partialMatchFindings = value; }
+        }
+
+        public virtual string PerfectMatchFindings
+        {
+            get { return _perfectMatchFindings; }
+            set { _perfectMatchFindings = value; }
         }
 
         #region Equality Comparer
