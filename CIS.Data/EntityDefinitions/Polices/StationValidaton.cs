@@ -19,7 +19,7 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Define(x => x.Logo);
 
-            Define(x => x.Name)
+            Define(x => x.Office)
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(150);
 
@@ -27,9 +27,7 @@ namespace CIS.Data.EntityDefinition.Polices
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(150);
 
-            Define(x => x.ClearanceValidity)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+            Define(x => x.ClearanceValidityInDays);
 
             Define(x => x.Address)
                 .IsValid();

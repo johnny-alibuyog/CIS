@@ -100,7 +100,10 @@ namespace CIS.Core.Entities.Commons
 
         public static string GeneratBarcodeText()
         {
-            return new Random().Next(0, 1000000).ToString();
+            var text = string.Empty;
+            text += new Random().Next(0, 1000000000).ToString();
+            text += new Random().Next(0, 10000).ToString();
+            return text;
         }
 
         public static ImageBlob GenerateBarcodeImage(string text)

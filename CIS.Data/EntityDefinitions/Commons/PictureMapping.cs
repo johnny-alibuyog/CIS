@@ -11,8 +11,6 @@ namespace CIS.Data.EntityDefinition.Commons
     {
         public PictureMapping()
         {
-            OptimisticLock.Version();
-
             Id(x => x.Id);
 
             References(x => x.Image)

@@ -146,6 +146,7 @@
     <Compile Include="Entities\Polices\Applicant.cs" />
     <Compile Include="Entities\Polices\ArrestStatus.cs" />
     <Compile Include="Entities\Polices\Clearance.cs" />
+    <Compile Include="Entities\Commons\Logo.cs" />
     <Compile Include="Entities\Polices\Officer.cs" />
     <Compile Include="Entities\Polices\Purpose.cs" />
     <Compile Include="Entities\Polices\Rank.cs" />

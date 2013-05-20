@@ -22,14 +22,14 @@ namespace CIS.UI.Features.Polices.Stations
 
         public virtual BitmapSource Logo { get; set; }
 
-        [NotNullNotEmpty(Message="Station name is mandatory.")]
-        public virtual string Name { get; set; }
+        [NotNullNotEmpty(Message = "Office is mandatory.")]
+        public virtual string Office { get; set; }
 
         [NotNullNotEmpty(Message = "Location is mandatory.")]
         public virtual string Location { get; set; }
 
-        [NotNullNotEmpty(Message = "Clerance validity is mandatory.")]
-        public virtual string ClearanceValidity { get; set; }
+        //[IsNumeric(Message = "Clerance validity is numeric.")]
+        public virtual int ClearanceValidityInDays { get; set; }
 
         [NotNull(Message = "Location is mandatory.")]
         public virtual AddressViewModel Address { get; set; }
@@ -58,9 +58,9 @@ namespace CIS.UI.Features.Polices.Stations
 
                 target.Id = source.Id;
                 target.Logo = source.Logo;
-                target.Name = source.Name;
+                target.Office = source.Office;
                 target.Location = source.Location;
-                target.ClearanceValidity = source.ClearanceValidity;
+                target.ClearanceValidityInDays = source.ClearanceValidityInDays;
                 target.Address.SerializeWith(source.Address);
                 //target.Officers = source.Officers;
                 return target;
@@ -72,9 +72,9 @@ namespace CIS.UI.Features.Polices.Stations
 
                 target.Id = source.Id;
                 target.Logo = source.Logo.Image.Content.ToBitmapSource();
-                target.Name = source.Name;
+                target.Office = source.Office;
                 target.Location = source.Location;
-                target.ClearanceValidity = source.ClearanceValidity;
+                target.ClearanceValidityInDays = source.ClearanceValidityInDays;
                 target.Address.SerializeWith(source.Address);
                 //target.Officers = source.Officers
                 //    .Select(x => new OfficerViewModel().SerializeWith(x) as OfficerViewModel)
@@ -106,9 +106,9 @@ namespace CIS.UI.Features.Polices.Stations
 
                 //target.Id = source.Id;
                 target.Logo.Image.Content = source.Logo.ToImage();
-                target.Name = source.Name;
+                target.Office = source.Office;
                 target.Location = source.Location;
-                target.ClearanceValidity = source.ClearanceValidity;
+                target.ClearanceValidityInDays = source.ClearanceValidityInDays;
                 target.Address = (Address)source.Address.SerializeInto(new Address());
                 //target.Officers = source.Officers
                 //    .Select(x => x.SerializeInto(new Officer()) as Officer)

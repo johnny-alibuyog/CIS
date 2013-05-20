@@ -13,16 +13,20 @@ namespace CIS.Core.Entities.Polices
         private Audit _audit;
         private Applicant _applicant;
         private Barcode _barcode;
-        private Officer _verifiedBy;
-        private Officer _issuedBy;
-        private Address _issuedAt;
-        private string _office;
-        private string _station;
-        private string _location;
+        private Officer _verifier;
+        private string _verifierRank;
+        private string _verifierPosition;
+        private Officer _certifier;
+        private string _certifierRank;
+        private string _certifierPosition;
+        private Station _station;
+        private DateTime _issueDate;
+        private string _validity;
         private string _officialReceiptNumber;
         private string _communityTaxCertificateNumber;
         private string _partialMatchFindings;
         private string _perfectMatchFindings;
+        private string _finalFindings;
 
         public virtual Guid Id
         {
@@ -54,40 +58,58 @@ namespace CIS.Core.Entities.Polices
             set { _barcode = value; }
         }
 
-        public virtual Officer VerifiedBy
+        public virtual Officer Verifier
         {
-            get { return _verifiedBy; }
-            set { _verifiedBy = value; }
+            get { return _verifier; }
+            protected set { _verifier = value; }
         }
 
-        public virtual Officer IssuedBy
+        public virtual string VerifierRank
         {
-            get { return _issuedBy; }
-            set { _issuedBy = value; }
+            get { return _verifierRank; }
+            protected set { _verifierRank = value; }
         }
 
-        public virtual Address IssuedAt
+        public virtual string VerifierPosition
         {
-            get { return _issuedAt; }
-            set { _issuedAt = value; }
+            get { return _verifierPosition; }
+            protected set { _verifierPosition = value; }
         }
 
-        public virtual string Office
+        public virtual Officer Certifier
         {
-            get { return _office; }
-            set { _office = value; }
+            get { return _certifier; }
+            protected set { _certifier = value; }
         }
 
-        public virtual string Station
+        public virtual string CertifierRank
+        {
+            get { return _certifierRank; }
+            protected set { _certifierRank = value; }
+        }
+
+        public virtual string CertifierPosition
+        {
+            get { return _certifierPosition; }
+            protected set { _certifierPosition = value; }
+        }
+
+        public virtual Station Station
         {
             get { return _station; }
-            set { _station = value; }
+            protected set { _station = value; }
         }
 
-        public virtual string Location
+        public virtual DateTime IssueDate
         {
-            get { return _location; }
-            set { _location = value; }
+            get { return _issueDate; }
+            set { _issueDate = value; }
+        }
+
+        public virtual string Validity
+        {
+            get { return _validity; }
+            set { _validity = value; }
         }
 
         public virtual string OfficialReceiptNumber
@@ -96,7 +118,7 @@ namespace CIS.Core.Entities.Polices
             set { _officialReceiptNumber = value; }
         }
 
-        public virtual string CommunityTaxCertificateNumber
+        public virtual string TaxCertificateNumber
         {
             get { return _communityTaxCertificateNumber; }
             set { _communityTaxCertificateNumber = value; }
@@ -113,6 +135,47 @@ namespace CIS.Core.Entities.Polices
             get { return _perfectMatchFindings; }
             set { _perfectMatchFindings = value; }
         }
+
+        public virtual string FinalFindings
+        {
+            get { return _finalFindings; }
+            set { _finalFindings = value; }
+        }
+
+        #region Methods
+
+        public virtual void SetVerifier(Officer officer)
+        {
+            this.Verifier = officer;
+            this.VerifierRank = officer.Rank.Name;
+            this.VerifierPosition = officer.Position;
+        }
+
+        public virtual void SetCertifier(Officer officer)
+        {
+            this.Certifier = officer;
+            this.CertifierRank = officer.Rank.Name;
+            this.CertifierPosition = officer.Position;
+        }
+
+        public virtual void SetStation(Station station)
+        {
+            this.Station = station;
+            this.IssueDate = DateTime.Today;
+            this.Validity = station.GetValidity(this.IssueDate);
+        }
+
+        #endregion
+
+        #region Constructors
+
+        public Clearance()
+        {
+            this.Applicant = new Applicant();
+            this.Barcode = Barcode.GenerateBarcode();
+        }
+
+        #endregion
 
         #region Equality Comparer
 

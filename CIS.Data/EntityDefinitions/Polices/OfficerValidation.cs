@@ -32,10 +32,6 @@ namespace CIS.Data.EntityDefinition.Polices
             Define(x => x.Position)
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(150);
-
-            Define(x => x.Title)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
         }
     }
 }

@@ -26,8 +26,6 @@ namespace CIS.Data.EntityDefinition.Polices
             References(x => x.Rank);
 
             Map(x => x.Position);
-
-            Map(x => x.Title);
         }
     }
 }

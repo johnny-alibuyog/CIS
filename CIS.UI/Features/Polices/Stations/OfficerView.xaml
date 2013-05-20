@@ -25,10 +25,6 @@
             <Label Content="Position"/>
             <TextBox Text="{Binding Position, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        <StackPanel Style="{StaticResource FieldSet}">
-            <Label Content="Title"/>
-            <TextBox Text="{Binding Title, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
-        </StackPanel>
 
         <!-- buttons -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

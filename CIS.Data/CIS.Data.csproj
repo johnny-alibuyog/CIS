@@ -114,6 +114,8 @@
     <Compile Include="Conventions\CustomTableNameConvention.cs" />
     <Compile Include="Conventions\EnumConvention.cs" />
     <Compile Include="Conventions\_CustomJoinedSubclassConvention.cs" />
+    <Compile Include="EntityDefinitions\Commons\LogoMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\LogoValidation.cs" />
     <Compile Include="EntityDefinitions\Commons\TerminalValidation.cs" />
     <Compile Include="EntityDefinitions\FireArms\GunMapping.cs" />
     <Compile Include="EntityDefinitions\FireArms\GunValidation.cs" />

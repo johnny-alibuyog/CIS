@@ -94,6 +94,16 @@ namespace CIS.Core.Entities.Polices
             set { _purpose = value; }
         }
 
+        #region Constructors
+
+        public Applicant()
+        {
+            Picture = new Picture();
+            FingerPrint = new FingerPrint();
+        }
+
+        #endregion
+
         #region Equality Comparer
 
         private Nullable<int> _hashCode;
@@ -134,6 +144,5 @@ namespace CIS.Core.Entities.Polices
         }
 
         #endregion
-
     }
 }

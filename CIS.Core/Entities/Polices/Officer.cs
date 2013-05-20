@@ -15,7 +15,6 @@ namespace CIS.Core.Entities.Polices
         private Station _station;
         private Rank _rank;
         private string _position;
-        private string _title;
 
         public virtual Guid Id
         {
@@ -59,12 +58,6 @@ namespace CIS.Core.Entities.Polices
             set { _position = value; }
         }
 
-        public virtual string Title
-        {
-            get { return _title; }
-            set { _title = value; }
-        }
-
         #region Methods
 
         public virtual void SerializeWith(Officer value)
@@ -73,7 +66,6 @@ namespace CIS.Core.Entities.Polices
             this.Station = value.Station;
             this.Rank = value.Rank;
             this.Position = value.Position;
-            this.Title = value.Title;
         }
 
         #endregion

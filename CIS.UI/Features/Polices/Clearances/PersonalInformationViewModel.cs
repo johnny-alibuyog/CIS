@@ -21,8 +21,6 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual string AlsoKnownAs { get; set; }
 
-        public virtual string Purpose { get; set; }
-
         [Valid]
         public virtual AddressViewModel Address { get; set; }
 
@@ -32,13 +30,15 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual string Religion { get; set; }
 
-        public virtual ReactiveCollection<string> Purposes { get; set; }
+        public virtual Lookup<Guid> Purpose { get; set; }
 
-        public virtual Lookup<Guid> VerifiedBy { get; set; } 
+        public virtual ReactiveCollection<Lookup<Guid>> Purposes { get; set; }
+
+        public virtual Lookup<Guid> Verifier { get; set; } 
 
         public virtual ReactiveCollection<Lookup<Guid>> Verifiers {get;set;}
 
-        public virtual Lookup<Guid> CertifiedBy { get; set; }
+        public virtual Lookup<Guid> Certifier { get; set; }
 
         public virtual ReactiveCollection<Lookup<Guid>> Certifiers { get; set; }
 

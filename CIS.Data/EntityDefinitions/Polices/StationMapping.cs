@@ -23,11 +23,11 @@ namespace CIS.Data.EntityDefinition.Polices
                 .Cascade.All()
                 .Fetch.Join();
 
-            Map(x => x.Name);
+            Map(x => x.Office);
 
             Map(x => x.Location);
 
-            Map(x => x.ClearanceValidity);
+            Map(x => x.ClearanceValidityInDays);
 
             Component(x => x.Address);
 

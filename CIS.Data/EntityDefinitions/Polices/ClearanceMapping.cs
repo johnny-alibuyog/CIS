@@ -25,26 +25,33 @@ namespace CIS.Data.EntityDefinition.Polices
             References(x => x.Barcode)
                 .Cascade.All();
 
-            References(x => x.VerifiedBy);
+            References(x => x.Verifier);
 
-            References(x => x.IssuedBy);
+            Map(x => x.VerifierRank);
 
-            Component(x => x.IssuedAt)
-                .ColumnPrefix("IssuedAt");
+            Map(x => x.VerifierPosition);
 
-            Map(x => x.Office);
+            References(x => x.Certifier);
 
-            Map(x => x.Station);
+            Map(x => x.CertifierRank);
 
-            Map(x => x.Location);
+            Map(x => x.CertifierPosition);
+
+            References(x => x.Station);
+
+            Map(x => x.IssueDate);
+
+            Map(x => x.Validity);
 
             Map(x => x.OfficialReceiptNumber);
 
-            Map(x => x.CommunityTaxCertificateNumber);
+            Map(x => x.TaxCertificateNumber);
 
             Map(x => x.PartialMatchFindings);
 
             Map(x => x.PerfectMatchFindings);
+
+            Map(x => x.FinalFindings);
         }
     }
 }

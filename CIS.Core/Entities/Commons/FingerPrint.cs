@@ -9,16 +9,16 @@ namespace CIS.Core.Entities.Commons
     public class FingerPrint
     {
         private Guid _id;
-        private Blob _rightThumb;
-        private Blob _rightIndex;
-        private Blob _rightMiddle;
-        private Blob _rightRing;
-        private Blob _rightPinky;
-        private Blob _leftThumb;
-        private Blob _leftIndex;
-        private Blob _leftMiddle;
-        private Blob _leftRing;
-        private Blob _leftPinky;
+        private ImageBlob _rightThumb;
+        private ImageBlob _rightIndex;
+        private ImageBlob _rightMiddle;
+        private ImageBlob _rightRing;
+        private ImageBlob _rightPinky;
+        private ImageBlob _leftThumb;
+        private ImageBlob _leftIndex;
+        private ImageBlob _leftMiddle;
+        private ImageBlob _leftRing;
+        private ImageBlob _leftPinky;
 
         public virtual Guid Id
         {
@@ -26,65 +26,83 @@ namespace CIS.Core.Entities.Commons
             protected set { _id = value; }
         }
 
-        public virtual Blob RightThumb
+        public virtual ImageBlob RightThumb
         {
             get { return _rightThumb; }
             set { _rightThumb = value; }
         }
 
-        public virtual Blob RightIndex
+        public virtual ImageBlob RightIndex
         {
             get { return _rightIndex; }
             set { _rightIndex = value; }
         }
 
-        public virtual Blob RightMiddle
+        public virtual ImageBlob RightMiddle
         {
             get { return _rightMiddle; }
             set { _rightMiddle = value; }
         }
 
-        public virtual Blob RightRing
+        public virtual ImageBlob RightRing
         {
             get { return _rightRing; }
             set { _rightRing = value; }
         }
 
-        public virtual Blob RightPinky
+        public virtual ImageBlob RightPinky
         {
             get { return _rightPinky; }
             set { _rightPinky = value; }
         }
 
-        public virtual Blob LeftThumb
+        public virtual ImageBlob LeftThumb
         {
             get { return _leftThumb; }
             set { _leftThumb = value; }
         }
 
-        public virtual Blob LeftIndex
+        public virtual ImageBlob LeftIndex
         {
             get { return _leftIndex; }
             set { _leftIndex = value; }
         }
 
-        public virtual Blob LeftMiddle
+        public virtual ImageBlob LeftMiddle
         {
             get { return _leftMiddle; }
             set { _leftMiddle = value; }
         }
 
-        public virtual Blob LeftRing
+        public virtual ImageBlob LeftRing
         {
             get { return _leftRing; }
             set { _leftRing = value; }
         }
 
-        public virtual Blob LeftPinky
+        public virtual ImageBlob LeftPinky
         {
             get { return _leftPinky; }
             set { _leftPinky = value; }
         }
+
+        #region Constructors
+
+        public FingerPrint()
+        {
+            RightThumb = new ImageBlob();
+            RightIndex = new ImageBlob();
+            RightMiddle = new ImageBlob();
+            RightRing = new ImageBlob();
+            RightPinky = new ImageBlob();
+            LeftThumb = new ImageBlob();
+            LeftIndex = new ImageBlob();
+            LeftMiddle = new ImageBlob();
+            LeftRing = new ImageBlob();
+            LeftPinky = new ImageBlob();
+        }
+
+        #endregion
 
         #region Equality Comparer
 

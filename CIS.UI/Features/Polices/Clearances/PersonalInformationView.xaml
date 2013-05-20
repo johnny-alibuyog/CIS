@@ -70,18 +70,19 @@
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Purpose"/>
                         <ComboBox ItemsSource="{Binding Purposes, Mode=TwoWay}"
-                                  SelectedValue="{Binding Purpose, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                                  SelectedValue="{Binding Purpose, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                                  DisplayMemberPath="Name"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Verified By"/>
                         <ComboBox ItemsSource="{Binding Verifiers, Mode=TwoWay}"
-                                  SelectedValue="{Binding VerifiedBy, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                                  SelectedValue="{Binding Verifier, Mode=TwoWay, ValidatesOnDataErrors=True}"
                                   DisplayMemberPath="Name"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Certified By"/>
                         <ComboBox ItemsSource="{Binding Certifiers, Mode=TwoWay}"
-                                  SelectedValue="{Binding CertifiedBy, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                                  SelectedValue="{Binding Certifier, Mode=TwoWay, ValidatesOnDataErrors=True}"
                                   DisplayMemberPath="Name"/>
                     </StackPanel>
                 </StackPanel>

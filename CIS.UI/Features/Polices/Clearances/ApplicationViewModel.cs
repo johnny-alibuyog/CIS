@@ -34,8 +34,6 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual IReactiveCommand Release { get; set; }
 
-        public virtual IReactiveCommand Print { get; set; }
-
         public ApplicationViewModel()
         {
             _controller = new ApplicationController(this);

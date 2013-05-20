@@ -12,10 +12,10 @@ namespace CIS.Core.Entities.Polices
         private Guid _id;
         private int _version;
         private Audit _audit;
-        private Picture _logo;
+        private Logo _logo;
         private string _name;
         private string _location;
-        private string _clearanceValidity;
+        private int _clearanceValidityInDays;
         private Address _address;
         private ICollection<Officer> _officers;
 
@@ -37,13 +37,13 @@ namespace CIS.Core.Entities.Polices
             set { _audit = value; }
         }
 
-        public virtual Picture Logo
+        public virtual Logo Logo
         {
             get { return _logo; }
             set { _logo = value; }
         }
 
-        public virtual string Name
+        public virtual string Office
         {
             get { return _name; }
             set { _name = value; }
@@ -55,10 +55,10 @@ namespace CIS.Core.Entities.Polices
             set { _location = value; }
         }
 
-        public virtual string ClearanceValidity
+        public virtual int ClearanceValidityInDays
         {
-            get { return _clearanceValidity; }
-            set { _clearanceValidity = value; }
+            get { return _clearanceValidityInDays; }
+            set { _clearanceValidityInDays = value; }
         }
 
         public virtual Address Address
@@ -112,13 +112,18 @@ namespace CIS.Core.Entities.Polices
             _officers.Add(item);
         }
 
+        public virtual string GetValidity(DateTime issueDate)
+        {
+            return string.Format("Clearance is valid until {0}.", issueDate.AddDays(this.ClearanceValidityInDays));
+        }
+
         #endregion
 
         #region Constructors
 
         public Station()
         {
-            _logo = new Picture();
+            _logo = new Logo();
             _officers = new Collection<Officer>();
         }
 

@@ -24,7 +24,7 @@
 
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Date"/>
-                        <DatePicker Text="{Binding IssuedOn, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:MM-dd-yyyy}}"  IsEnabled="False" />
+                        <DatePicker Text="{Binding IssuedDate, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:MM-dd-yyyy}}"  IsEnabled="False" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Validity"/>

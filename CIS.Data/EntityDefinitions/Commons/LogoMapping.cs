@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using FluentNHibernate.Mapping;
 
-namespace CIS.Data.EntityDefinition.Commons
+namespace CIS.Data.EntityDefinitions.Commons
 {
-    public class BarcodeMapping : ClassMap<Barcode>
+    public class LogoMapping : ClassMap<Logo>
     {
-        public BarcodeMapping()
+        public LogoMapping()
         {
             Id(x => x.Id);
 
             References(x => x.Image)
                 .Cascade.All()
                 .Fetch.Join();
-
-            Map(x => x.Text);
         }
     }
 }

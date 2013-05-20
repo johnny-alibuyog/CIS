@@ -23,17 +23,19 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual string PerfectMatchFindings { get; set; }
 
+        public virtual string FinalFindings { get; set; }
+
         public virtual string Validity { get; set; }
 
         public virtual string OfficialReceiptNumber { get; set; }
 
         public virtual string TaxCertificateNumber { get; set; }
 
-        public virtual DateTime IssuedOn { get; set; }
+        public virtual DateTime IssuedDate { get; set; }
 
         public SummaryViewModel()
         {
-            IssuedOn = DateTime.Today;
+            IssuedDate = DateTime.Today;
         }
     }
 }

@@ -31,7 +31,7 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public void OnNavigatedFrom(FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)
         {
-            this.ViewModel.Release.Execute(null);
+            this.ViewModel.Reset.Execute(null);
         }
 
         public void OnNavigatedTo(FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)

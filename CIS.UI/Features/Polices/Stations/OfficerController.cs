@@ -83,9 +83,9 @@ namespace CIS.UI.Features.Polices.Stations
                 {
                     station = new Station()
                     {
-                        Name = "Name not set",
+                        Office = "Name not set",
                         Location = "Location not set",
-                        ClearanceValidity = "Clearance validity not set",
+                        ClearanceValidityInDays = 60,
                     };
                 }
 

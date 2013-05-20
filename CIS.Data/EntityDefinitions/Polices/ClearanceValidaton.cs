@@ -24,40 +24,53 @@ namespace CIS.Data.EntityDefinition.Polices
             Define(x => x.Barcode)
                 .IsValid();
 
-            Define(x => x.VerifiedBy)
+            Define(x => x.Verifier)
                 .NotNullable()
                 .And.IsValid();
 
-            Define(x => x.IssuedBy)
+            Define(x => x.VerifierRank)
+                .MaxLength(100);
+
+            Define(x => x.VerifierPosition)
+                .MaxLength(100);
+
+            Define(x => x.Certifier)
                 .NotNullable()
                 .And.IsValid();
 
-            Define(x => x.Office)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+            Define(x => x.CertifierRank)
+                .MaxLength(100);
+
+            Define(x => x.CertifierPosition)
+                .MaxLength(100);
 
             Define(x => x.Station)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+                .NotNullable()
+                .And.IsValid();
 
-            Define(x => x.Location)
+            Define(x => x.IssueDate);
+
+            Define(x => x.Validity)
                 .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+                .And.MaxLength(250);
 
             Define(x => x.OfficialReceiptNumber)
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(50);
 
-            Define(x => x.CommunityTaxCertificateNumber)
+            Define(x => x.TaxCertificateNumber)
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(50);
 
 
             Define(x => x.PartialMatchFindings)
-                .MaxLength(1000);
+                .MaxLength(2000);
 
             Define(x => x.PerfectMatchFindings)
-                .MaxLength(1000);
+                .MaxLength(2000);
+
+            Define(x => x.FinalFindings)
+                .MaxLength(2000);
         }
     }
 }

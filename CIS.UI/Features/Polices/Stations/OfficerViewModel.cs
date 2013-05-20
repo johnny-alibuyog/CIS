@@ -32,9 +32,6 @@ namespace CIS.UI.Features.Polices.Stations
         [NotNullNotEmpty(Message = "Positon is mandatory.")]
         public virtual string Position { get; set; }
 
-        [NotNullNotEmpty(Message = "Title is mandatory.")]
-        public virtual string Title { get; set; }
-
         public virtual IReactiveCommand Load { get; set; }
 
         public virtual IReactiveCommand Save { get; set; }
@@ -53,7 +50,6 @@ namespace CIS.UI.Features.Polices.Stations
                 target.Person.SerializeWith(source.Person);
                 target.Rank = source.Rank;
                 target.Position = source.Position;
-                target.Title = source.Title;
                 return target;
             }
             else if (instance is Officer)
@@ -69,7 +65,6 @@ namespace CIS.UI.Features.Polices.Stations
                     Name = source.Rank.Name
                 };
                 target.Position = source.Position;
-                target.Title = source.Title;
 
                 return target;
             }
@@ -99,7 +94,6 @@ namespace CIS.UI.Features.Polices.Stations
                 target.Person = (Person)source.Person.SerializeInto(new Person());
                 target.Rank = IoC.Container.Resolve<ISessionProvider>().GetSharedSession().Load<Rank>(source.Rank.Id);
                 target.Position = source.Position;
-                target.Title = source.Title;
 
                 return target;
             }
