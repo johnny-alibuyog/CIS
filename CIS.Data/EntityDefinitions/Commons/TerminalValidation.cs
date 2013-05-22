@@ -14,7 +14,7 @@ namespace CIS.Data.EntityDefinitions.Commons
         {
             Define(x => x.Id);
 
-            Define(x => x.PcName)
+            Define(x => x.MachineName)
                 .MaxLength(100);
 
             Define(x => x.IpAddress)

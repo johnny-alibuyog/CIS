@@ -94,6 +94,7 @@
     <Compile Include="Entities\Commons\AreaClass.cs" />
     <Compile Include="Entities\Commons\Barcode.cs" />
     <Compile Include="Entities\Commons\Blob.cs" />
+    <Compile Include="Entities\Commons\CivilStatus.cs" />
     <Compile Include="Entities\Commons\City.cs">
       <DependentUpon>Address.cs</DependentUpon>
     </Compile>

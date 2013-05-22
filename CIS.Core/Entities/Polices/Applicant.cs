@@ -20,6 +20,8 @@ namespace CIS.Core.Entities.Polices
         private string _birthPlace;
         private string _occupation;
         private string _religion;
+        private string _citizenship;
+        private CivilStatus _civilStatus;
         private Purpose _purpose;
 
         public virtual Guid Id
@@ -86,6 +88,18 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _religion; }
             set { _religion = value; }
+        }
+
+        public virtual string Citizenship
+        {
+            get { return _citizenship; }
+            set { _citizenship = value; }
+        }
+
+        public virtual CivilStatus CivilStatus
+        {
+            get { return _civilStatus; }
+            set { _civilStatus = value; }
         }
 
         public virtual Purpose Purpose

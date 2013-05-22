@@ -18,9 +18,11 @@ namespace CIS.Data.EntityDefinitions.Polices
 
             Component(x => x.Address);
 
-            References(x => x.Picture);
+            References(x => x.Picture)
+                .Cascade.All();
 
-            References(x => x.FingerPrint);
+            References(x => x.FingerPrint)
+                .Cascade.All();
 
             Map(x => x.Height);
 
@@ -33,6 +35,10 @@ namespace CIS.Data.EntityDefinitions.Polices
             Map(x => x.Occupation);
 
             Map(x => x.Religion);
+
+            Map(x => x.Citizenship);
+
+            Map(x => x.CivilStatus);
 
             References(x => x.Purpose);
         }

@@ -15,7 +15,7 @@ namespace CIS.Data.EntityDefinition.Commons
         {
             Id(x => x.Id);
 
-            Map(x => x.PcName)
+            Map(x => x.MachineName)
                 .Index("PcNameIndex");
 
             Map(x => x.IpAddress)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Memberships;
+using CIS.Core.Entities.Polices;
 using NHibernate.Caches.SysCache2;
 using NHibernate.Cfg;
 
@@ -46,6 +47,16 @@ namespace CIS.Data.Configurations
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
                     x.RegionName = "User";
+                })
+                .EntityCache<Purpose>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Purpose";
+                })
+                .EntityCache<Rank>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Rank";
                 });
         }
     }

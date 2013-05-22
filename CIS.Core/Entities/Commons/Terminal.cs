@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +12,7 @@ namespace CIS.Core.Entities.Commons
     public class Terminal
     {
         private Guid _id;
-        private string _pcName;
+        private string _machineName;
         private string _ipAddress;
         private string _macAddress;
         private bool _withDefaultLogin;
@@ -23,10 +25,10 @@ namespace CIS.Core.Entities.Commons
             protected set { _id = value; }
         }
 
-        public virtual string PcName
+        public virtual string MachineName
         {
-            get { return _pcName; }
-            set { _pcName = value; }
+            get { return _machineName; }
+            set { _machineName = value; }
         }
 
         public virtual string IpAddress
@@ -59,15 +61,6 @@ namespace CIS.Core.Entities.Commons
             set { SyncFingersToScan(value); }
         }
 
-        #region Constructors
-
-        public Terminal()
-        {
-            _fingersToScan = new Collection<Finger>();
-        }
-
-        #endregion
-
         #region Methods
 
         private void SyncFingersToScan(IEnumerable<Finger> items)
@@ -94,6 +87,35 @@ namespace CIS.Core.Entities.Commons
             {
                 _fingersToScan.Remove(item);
             }
+        }
+
+        #endregion
+
+        #region Constructors
+
+        public Terminal()
+        {
+            _fingersToScan = new Collection<Finger>();
+        }
+
+        #endregion
+
+        #region Static Members
+
+        public static Terminal CreateLocalTerminal()
+        {
+            return new Terminal()
+            {
+                MachineName = Environment.MachineName,
+                IpAddress = Dns.GetHostEntry(Dns.GetHostName()).AddressList.FirstOrDefault().ToString(),
+                MacAddress = NetworkInterface.GetAllNetworkInterfaces()
+                    .Where(x =>
+                        x.NetworkInterfaceType == NetworkInterfaceType.Ethernet &&
+                        x.OperationalStatus == OperationalStatus.Up)
+                    .Select(x => x.GetPhysicalAddress().ToString())
+                    .FirstOrDefault(),
+                FingersToScan = new Collection<Finger>() { Finger.RightThumb, Finger.LeftThumb }
+            };
         }
 
         #endregion

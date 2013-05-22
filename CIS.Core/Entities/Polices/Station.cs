@@ -13,7 +13,7 @@ namespace CIS.Core.Entities.Polices
         private int _version;
         private Audit _audit;
         private Logo _logo;
-        private string _name;
+        private string _office;
         private string _location;
         private int _clearanceValidityInDays;
         private Address _address;
@@ -45,8 +45,8 @@ namespace CIS.Core.Entities.Polices
 
         public virtual string Office
         {
-            get { return _name; }
-            set { _name = value; }
+            get { return _office; }
+            set { _office = value; }
         }
 
         public virtual string Location

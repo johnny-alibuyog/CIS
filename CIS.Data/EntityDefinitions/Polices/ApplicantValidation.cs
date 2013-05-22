@@ -35,20 +35,21 @@ namespace CIS.Data.EntityDefinitions.Polices
                 .And.MaxLength(20);
 
             Define(x => x.AlsoKnownAs)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+                .MaxLength(150);
 
             Define(x => x.BirthPlace)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+                .MaxLength(150);
 
             Define(x => x.Occupation)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+                .MaxLength(150);
 
             Define(x => x.Religion)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+                .MaxLength(150);
+
+            Define(x => x.Citizenship)
+                .MaxLength(100);
+
+            Define(x => x.CivilStatus);
 
             Define(x => x.Purpose)
                 .NotNullable();
