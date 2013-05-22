@@ -20,6 +20,7 @@ using CIS.UI.Features.Commons.Terminals;
 using CIS.UI.Features.Firearms;
 using CIS.UI.Features.Polices;
 using CIS.UI.Features.Polices.Clearances;
+using CIS.UI.Features.Polices.Stations;
 using FirstFloor.ModernUI.Windows.Controls;
 using NHibernate;
 using NHibernate.Linq;
@@ -53,6 +54,10 @@ namespace CIS.UI.Features
 
             dataInitializer = IoC.Container.Resolve<KindDataInitializer>();
             dataInitializer.Execute();
+
+            dataInitializer = IoC.Container.Resolve<StationDataInitializer>();
+            dataInitializer.Execute();
+
         }
     }
 }

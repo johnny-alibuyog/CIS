@@ -111,9 +111,9 @@ namespace CIS.UI.Features.Commons.Biometrics
             using (var transaction = session.BeginTransaction())
             {
                 var fingerIds = session.Query<Terminal>()
-                    .Where(x => x.PcName == "extreme")
+                    .Where(x => x.MachineName == Environment.MachineName)
                     .SelectMany(x => x.FingersToScan)
-                    .Select(x => x.Name)
+                    .Select(x => x.Id)
                     .ToList();
 
                 if (fingerIds == null || fingerIds.Count() == 0)

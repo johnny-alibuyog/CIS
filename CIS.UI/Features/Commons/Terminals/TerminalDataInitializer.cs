@@ -24,26 +24,13 @@ namespace CIS.UI.Features.Commons.Terminals
             using (var transaction = session.BeginTransaction())
             {
                 var query = session.Query<Terminal>()
-                    .Where(x => x.PcName == "extreme")
+                    .Where(x => x.MachineName == Environment.MachineName)
                     .ToFutureValue();
 
                 var terminal = query.Value;
                 if (terminal == null)
                 {
-                    terminal = new Terminal()
-                    {
-                        PcName = "extreme",
-                        IpAddress = "127.0.0.1",
-                        MacAddress = "127.0.0.1",
-                        WithDefaultLogin = false,
-                        WithFingerPrintDevice = true,
-                        FingersToScan = new List<Finger>()
-                        {
-                            Finger.RightThumb,
-                            Finger.LeftThumb
-                        }
-                    };
-
+                    terminal = Terminal.CreateLocalTerminal();
                     session.Save(terminal);
                 }
 

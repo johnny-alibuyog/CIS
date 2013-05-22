@@ -36,7 +36,7 @@
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Tax Cert #"/>
-                        <TextBox Text="{Binding TaxCertificateNumber, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+                        <TextBox Text="{Binding TaxCertificateNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Name"/>

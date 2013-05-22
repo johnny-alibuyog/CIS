@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using NHibernate.Validator.Constraints;
 
 namespace CIS.UI.Features.Polices.Clearances
 {
@@ -27,8 +28,10 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual string Validity { get; set; }
 
+        [NotNullNotEmpty(Message = "Offical Receipt Number is mandatory.")]
         public virtual string OfficialReceiptNumber { get; set; }
 
+        [NotNullNotEmpty(Message = "Tax Certificate Number is mandatory.")]
         public virtual string TaxCertificateNumber { get; set; }
 
         public virtual DateTime IssuedDate { get; set; }

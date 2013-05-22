@@ -26,8 +26,10 @@
         <ScrollViewer>
             <DockPanel MinWidth="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <DockPanel HorizontalAlignment="Right" DockPanel.Dock="Bottom">
+                    <Button Content="Reset" Command="{Binding Reset}" Margin="0,0,8,0"/>
                     <Button Content="&lt;&lt;" Command="{Binding Previous}" Margin="0,0,8,0"/>
-                    <Button Content="&gt;&gt;" Command="{Binding Next}" />
+                    <Button Content="&gt;&gt;" Command="{Binding Next}" Margin="0,0,8,0"/>
+                    <Button Content="Release" Command="{Binding Release}" />
                 </DockPanel>
                 <Border DockPanel.Dock="Top" BorderBrush="{DynamicResource ButtonBorder}" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,16">
                     <mui:ModernFrame Content="{Binding CurrentViewModel}" Padding="4" />

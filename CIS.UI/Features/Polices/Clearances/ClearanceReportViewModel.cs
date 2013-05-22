@@ -13,6 +13,8 @@ namespace CIS.UI.Features.Polices.Clearances
     {
         public virtual Guid Id { get; set; }
         public virtual string Applicant { get; set; }
+        public virtual string CivilStatus { get; set; }
+        public virtual string Citizenship { get; set; }
         public virtual string Address { get; set; }
         public virtual BitmapSource Picture { get; set; }
         public virtual BitmapSource RightThumb { get; set; }
@@ -50,6 +52,8 @@ namespace CIS.UI.Features.Polices.Clearances
             target.Id = source.Id;
             target.Applicant = source.Applicant.Person.Fullname;
             target.Address = source.Applicant.Address.ToString();
+            target.CivilStatus = source.Applicant.CivilStatus.ToString();
+            target.Citizenship = source.Applicant.Citizenship;
             target.Picture = source.Applicant.Picture.Image.Content.ToBitmapSource();
             target.RightThumb = source.Applicant.FingerPrint.RightThumb.Content.ToBitmapSource();
             target.LeftThumb = source.Applicant.FingerPrint.LeftThumb.Content.ToBitmapSource();

@@ -23,16 +23,15 @@
                         <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                     </StackPanel.Resources>
 
+                    <persons:PersonView DataContext="{Binding Person}" />
                     <StackPanel Style="{StaticResource FieldSet}">
-                        <persons:PersonView DataContext="{Binding Person}" />
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource FieldSet}">
-                        <Label Content="Birth Place"/>
-                        <TextBox Text="{Binding BirthPlace, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        <Label Content="Civil Status"/>
+                        <ComboBox ItemsSource="{Binding CivilStatuses, Mode=TwoWay}"
+                                  SelectedValue="{Binding CivilStatus, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Also Known As"/>
-                        <TextBox Text="{Binding AlosoKnownAs, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Text="{Binding AlsoKnownAs, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Height"/>
@@ -41,6 +40,10 @@
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Weight"/>
                         <TextBox Text="{Binding Weight, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Religion"/>
+                        <TextBox Text="{Binding Religion, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
@@ -55,17 +58,18 @@
                         <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                     </StackPanel.Resources>
 
+                    <addresses:AddresssView DataContext="{Binding Address}" />
                     <StackPanel Style="{StaticResource FieldSet}">
-                        <addresses:AddresssView DataContext="{Binding Address}" />
+                        <Label Content="Birth Place"/>
+                        <TextBox Text="{Binding BirthPlace, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
-
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Citizenship"/>
+                        <TextBox Text="{Binding Citizenship, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Occupation"/>
                         <TextBox Text="{Binding Occupation, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource FieldSet}">
-                        <Label Content="Religion"/>
-                        <TextBox Text="{Binding Religion, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Purpose"/>

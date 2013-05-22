@@ -30,10 +30,10 @@ namespace CIS.UI.Features.Polices.Clearances
                     x => x.CurrentViewModel.IsValid, 
                     (current, isValid) => 
                     {
-                        if (current.Value != this.ViewModel.ViewModels.First())
-                            return true;
+                        if (current.Value == this.ViewModel.ViewModels.First())
+                            return false;
 
-                        return false;
+                        return true;
                     })
                 );
             this.ViewModel.Previous.Subscribe(x => Previous());
@@ -44,16 +44,13 @@ namespace CIS.UI.Features.Polices.Clearances
                     x => x.CurrentViewModel.IsValid,
                     (current, isValid) =>
                     {
-                        if (current.Value != this.ViewModel.ViewModels.Last())
-                            return true;
+                        if (current.Value == this.ViewModel.ViewModels.Last())
+                            return false;
 
-                        if (current.Value.IsValid)
-                            return true;
+                        if (isValid.Value != true)
+                            return false;
 
-                        if (isValid.Value == true)
-                            return true;
-
-                        return false;
+                        return true;
                     })
                 );
             this.ViewModel.Next.Subscribe(x => Next());
@@ -61,7 +58,21 @@ namespace CIS.UI.Features.Polices.Clearances
             this.ViewModel.Reset = new ReactiveCommand();
             this.ViewModel.Reset.Subscribe(x => Reset());
 
-            this.ViewModel.Release = new ReactiveCommand();
+            this.ViewModel.Release = new ReactiveCommand(this.ViewModel
+                .WhenAny(
+                    x => x.CurrentViewModel, 
+                    x => x.CurrentViewModel.IsValid,
+                    (current, isValid) => 
+                    {
+                        if (current.Value != this.ViewModel.Summary)
+                            return false;
+
+                        if (isValid.Value != true)
+                            return false;
+
+                        return true;
+                    })
+                );
             this.ViewModel.Release.Subscribe(x => Release());
         }
 
@@ -214,7 +225,7 @@ namespace CIS.UI.Features.Polices.Clearances
             }
         }
 
-        private ClearanceReportViewModel Generate()
+        private ClearanceReportViewModel GenerateClearance()
         {
             try
             {
@@ -229,7 +240,7 @@ namespace CIS.UI.Features.Polices.Clearances
                     var applicantAlias = (Applicant)null;
                     var pictureAlias = (Picture)null;
                     var fingerPrintAlias = (FingerPrint)null;
-                    var imageAlias = (ImageBlob)null;
+                    //var imageAlias = (ImageBlob)null;
                     var verifierAlias = (Officer)null;
                     var certifierAlias = (Officer)null;
 
@@ -239,17 +250,17 @@ namespace CIS.UI.Features.Polices.Clearances
                         .Left.JoinAlias(() => clearanceAlias.Certifier, () => certifierAlias)
                         .Left.JoinAlias(() => applicantAlias.FingerPrint, () => fingerPrintAlias)
                         .Left.JoinAlias(() => applicantAlias.Picture, () => pictureAlias)
-                        .Left.JoinAlias(() => fingerPrintAlias.RightThumb, () => imageAlias)
-                        .Left.JoinAlias(() => fingerPrintAlias.RightIndex, () => imageAlias)
-                        .Left.JoinAlias(() => fingerPrintAlias.RightMiddle, () => imageAlias)
-                        .Left.JoinAlias(() => fingerPrintAlias.RightRing, () => imageAlias)
-                        .Left.JoinAlias(() => fingerPrintAlias.RightPinky, () => imageAlias)
-                        .Left.JoinAlias(() => fingerPrintAlias.LeftThumb, () => imageAlias)
-                        .Left.JoinAlias(() => fingerPrintAlias.LeftIndex, () => imageAlias)
-                        .Left.JoinAlias(() => fingerPrintAlias.LeftMiddle, () => imageAlias)
-                        .Left.JoinAlias(() => fingerPrintAlias.LeftRing, () => imageAlias)
-                        .Left.JoinAlias(() => fingerPrintAlias.LeftPinky, () => imageAlias)
-                        .Left.JoinAlias(() => pictureAlias.Image, () => imageAlias)
+                        .Left.JoinQueryOver(() => fingerPrintAlias.RightThumb)
+                        .Left.JoinQueryOver(() => fingerPrintAlias.RightIndex)
+                        .Left.JoinQueryOver(() => fingerPrintAlias.RightMiddle)
+                        .Left.JoinQueryOver(() => fingerPrintAlias.RightRing)
+                        .Left.JoinQueryOver(() => fingerPrintAlias.RightPinky)
+                        .Left.JoinQueryOver(() => fingerPrintAlias.LeftThumb)
+                        .Left.JoinQueryOver(() => fingerPrintAlias.LeftIndex)
+                        .Left.JoinQueryOver(() => fingerPrintAlias.LeftMiddle)
+                        .Left.JoinQueryOver(() => fingerPrintAlias.LeftRing)
+                        .Left.JoinQueryOver(() => fingerPrintAlias.LeftPinky)
+                        .Left.JoinQueryOver(() => pictureAlias.Image)
                         .Where(() =>
                             applicantAlias.Person.FirstName == person.FirstName &&
                             applicantAlias.Person.MiddleName == person.MiddleName &&
@@ -300,7 +311,9 @@ namespace CIS.UI.Features.Polices.Clearances
                     clearance.Applicant.BirthPlace = this.ViewModel.PersonalInformation.BirthPlace;
                     clearance.Applicant.Occupation = this.ViewModel.PersonalInformation.Occupation;
                     clearance.Applicant.Religion = this.ViewModel.PersonalInformation.Religion;
-                    clearance.Applicant.Purpose = session.Load<Purpose>(this.ViewModel.PersonalInformation.Purpose.Id);
+                    clearance.Applicant.Citizenship = this.ViewModel.PersonalInformation.Citizenship;
+                    clearance.Applicant.CivilStatus = this.ViewModel.PersonalInformation.CivilStatus;
+                    clearance.Applicant.Purpose = session.Get<Purpose>(this.ViewModel.PersonalInformation.Purpose.Id);
 
                     clearance.SetVerifier(verifierQuery.Value);
                     clearance.SetCertifier(certifierQuery.Value);
@@ -387,8 +400,7 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual void Release()
         {
-
-
+            var clearance = this.GenerateClearance();
 
             MessageDialog.Show("Clearance has been printed.", "Clearance", MessageBoxButton.OK);
         }
