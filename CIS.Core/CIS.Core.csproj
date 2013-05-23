@@ -152,6 +152,7 @@
     <Compile Include="Entities\Polices\Purpose.cs" />
     <Compile Include="Entities\Polices\Rank.cs" />
     <Compile Include="Entities\Polices\RankCategory.cs" />
+    <Compile Include="Entities\Polices\Setting.cs" />
     <Compile Include="Entities\Polices\Station.cs" />
     <Compile Include="Entities\Polices\Suspect.cs" />
     <Compile Include="Entities\Polices\Warrant.cs" />

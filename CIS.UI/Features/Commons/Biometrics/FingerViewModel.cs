@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using CIS.Core.Entities.Commons;
+using CIS.Core.Entities.Polices;
 using CIS.UI.Bootstraps.DependencyInjection;
 using NHibernate;
 using NHibernate.Linq;
@@ -110,8 +111,8 @@ namespace CIS.UI.Features.Commons.Biometrics
             using (var session = sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var fingerIds = session.Query<Terminal>()
-                    .Where(x => x.MachineName == Environment.MachineName)
+                var fingerIds = session.Query<Setting>()
+                    .Where(x => x.Terminal.MachineName == Environment.MachineName)
                     .SelectMany(x => x.FingersToScan)
                     .Select(x => x.Id)
                     .ToList();

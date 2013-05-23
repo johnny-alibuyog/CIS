@@ -19,7 +19,6 @@ using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Terminals;
 using CIS.UI.Features.Firearms;
 using CIS.UI.Features.Polices;
-using CIS.UI.Features.Polices.Clearances;
 using CIS.UI.Features.Polices.Maintenances;
 using FirstFloor.ModernUI.Windows.Controls;
 using NHibernate;
@@ -37,16 +36,19 @@ namespace CIS.UI.Features
             InitializeComponent();
 
             var dataInitializer = (IDataInitializer)null;
-            dataInitializer = IoC.Container.Resolve<RankDataInitializer>();
-            dataInitializer.Execute();
-
-            dataInitializer = IoC.Container.Resolve<PurposeDataInitializer>();
-            dataInitializer.Execute();
-
             dataInitializer = IoC.Container.Resolve<FingerDataInitializer>();
             dataInitializer.Execute();
 
             dataInitializer = IoC.Container.Resolve<TerminalDataInitializer>();
+            dataInitializer.Execute();
+
+            dataInitializer = IoC.Container.Resolve<SettingDataInitializer>();
+            dataInitializer.Execute();
+
+            dataInitializer = IoC.Container.Resolve<RankDataInitializer>();
+            dataInitializer.Execute();
+
+            dataInitializer = IoC.Container.Resolve<PurposeDataInitializer>();
             dataInitializer.Execute();
 
             dataInitializer = IoC.Container.Resolve<MakeDataInitializer>();

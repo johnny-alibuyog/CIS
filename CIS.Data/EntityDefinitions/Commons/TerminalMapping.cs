@@ -13,10 +13,16 @@ namespace CIS.Data.EntityDefinition.Commons
     {
         public TerminalMapping()
         {
+            OptimisticLock.Version();
+
             Id(x => x.Id);
 
+            Version(x => x.Version);
+
+            Component(x => x.Audit);
+
             Map(x => x.MachineName)
-                .Index("PcNameIndex");
+                .Index("MachineNameIndex");
 
             Map(x => x.IpAddress)
                 .Index("IpAddressIndex");
@@ -25,15 +31,6 @@ namespace CIS.Data.EntityDefinition.Commons
                 .Index("MacAddressIndex");
 
             Map(x => x.WithDefaultLogin);
-
-            Map(x => x.WithFingerPrintDevice);
-
-            HasManyToMany(x => x.FingersToScan)
-                .Access.CamelCaseField(Prefix.Underscore)
-                .Schema(GetType().ParseSchema())
-                .Table("TerminalsFingersToScan")
-                .Cascade.SaveUpdate()
-                .AsSet();
         }
     }
 }

@@ -325,7 +325,7 @@
     </Compile>
     <Compile Include="Features\Polices\Maintenances\PurposeListViewModel.cs" />
     <Compile Include="Features\Polices\Maintenances\PurposeViewModel.cs" />
-    <Compile Include="Features\Polices\RankDataInitializer.cs" />
+    <Compile Include="Features\Polices\Maintenances\RankDataInitializer.cs" />
     <Compile Include="Features\Polices\Maintenances\OfficerController.cs" />
     <Compile Include="Features\Polices\Maintenances\OfficerListController.cs" />
     <Compile Include="Features\Polices\Maintenances\OfficerListCriteriaViewModel.cs">
@@ -342,6 +342,8 @@
       <DependentUpon>OfficerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Maintenances\OfficerViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\SettingDataInitializer.cs" />
+    <Compile Include="Features\Polices\Maintenances\SettingsViewModel.cs" />
     <Compile Include="Features\Polices\Maintenances\StationController.cs" />
     <Compile Include="Features\Polices\Maintenances\StationDataInitializer.cs" />
     <Compile Include="Features\Polices\Maintenances\MaintenancePage.xaml.cs">

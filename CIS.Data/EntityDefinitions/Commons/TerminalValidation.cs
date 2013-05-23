@@ -14,6 +14,10 @@ namespace CIS.Data.EntityDefinitions.Commons
         {
             Define(x => x.Id);
 
+            Define(x => x.Version);
+
+            Define(x => x.Audit);
+
             Define(x => x.MachineName)
                 .MaxLength(100);
 
@@ -24,11 +28,6 @@ namespace CIS.Data.EntityDefinitions.Commons
                 .MaxLength(100);
 
             Define(x => x.WithDefaultLogin);
-
-            Define(x => x.WithFingerPrintDevice);
-
-            Define(x => x.FingersToScan)
-                .HasValidElements();
         }
     }
 }

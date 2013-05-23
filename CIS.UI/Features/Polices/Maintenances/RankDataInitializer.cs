@@ -7,7 +7,7 @@ using CIS.Core.Entities.Polices;
 using NHibernate;
 using NHibernate.Linq;
 
-namespace CIS.UI.Features.Polices
+namespace CIS.UI.Features.Polices.Maintenances
 {
     public class RankDataInitializer : IDataInitializer
     {
