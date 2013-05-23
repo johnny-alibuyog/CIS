@@ -1,4 +1,4 @@
-﻿<local:DialogBase x:Class="CIS.UI.Features.Polices.Stations.OfficerView"
+﻿<local:DialogBase x:Class="CIS.UI.Features.Polices.Maintenances.OfficerView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:CIS.UI.Features"

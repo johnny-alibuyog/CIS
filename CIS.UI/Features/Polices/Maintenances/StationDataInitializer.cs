@@ -8,7 +8,7 @@ using CIS.Core.Entities.Polices;
 using NHibernate;
 using NHibernate.Linq;
 
-namespace CIS.UI.Features.Polices.Stations
+namespace CIS.UI.Features.Polices.Maintenances
 {
     public class StationDataInitializer : IDataInitializer
     {

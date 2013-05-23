@@ -14,18 +14,18 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ReactiveUI;
 
-namespace CIS.UI.Features.Polices.Stations
+namespace CIS.UI.Features.Polices.Maintenances
 {
     /// <summary>
-    /// Interaction logic for OfficerListView.xaml
+    /// Interaction logic for PurposeListView.xaml
     /// </summary>
-    public partial class OfficerListView : UserControl, IViewFor<OfficerListViewModel>
+    public partial class PurposeListView : UserControl, IViewFor<PurposeListViewModel>
     {
-        #region IViewFor<OfficerListViewModel> Members
+        #region IViewFor<PurposeViewModel> Members
 
-        public OfficerListViewModel ViewModel
+        public PurposeListViewModel ViewModel
         {
-            get { return this.DataContext as OfficerListViewModel; }
+            get { return this.DataContext as PurposeListViewModel; }
             set { this.DataContext = value; }
         }
 
@@ -34,14 +34,14 @@ namespace CIS.UI.Features.Polices.Stations
             get { return this.DataContext; }
             set { this.DataContext = value; }
         }
-
         #endregion
 
-        public OfficerListView()
+        public PurposeListView()
         {
             InitializeComponent();
 
-            ViewModel = new OfficerListViewModel();
+            ViewModel = new PurposeListViewModel();
+
         }
     }
 }

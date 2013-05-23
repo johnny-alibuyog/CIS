@@ -10,21 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ReactiveUI;
 
-namespace CIS.UI.Features.Polices.Stations
+namespace CIS.UI.Features.Polices.Maintenances
 {
     /// <summary>
-    /// Interaction logic for OfficerView.xaml
+    /// Interaction logic for OfficerListView.xaml
     /// </summary>
-    public partial class OfficerView : DialogBase, IViewFor<OfficerViewModel>
+    public partial class OfficerListView : UserControl, IViewFor<OfficerListViewModel>
     {
-        #region IViewFor<OfficerViewModel> Members
+        #region IViewFor<OfficerListViewModel> Members
 
-        public OfficerViewModel ViewModel
+        public OfficerListViewModel ViewModel
         {
-            get { return this.DataContext as OfficerViewModel; }
+            get { return this.DataContext as OfficerListViewModel; }
             set { this.DataContext = value; }
         }
 
@@ -36,9 +37,11 @@ namespace CIS.UI.Features.Polices.Stations
 
         #endregion
 
-        public OfficerView()
+        public OfficerListView()
         {
             InitializeComponent();
+
+            ViewModel = new OfficerListViewModel();
         }
     }
 }

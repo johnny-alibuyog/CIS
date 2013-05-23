@@ -61,10 +61,10 @@ namespace CIS.UI.Features.Firearms.Maintenances
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var kindQuery = session.Query<Kind>()
+                var query = session.Query<Kind>()
                     .ToFuture();
 
-                this.ViewModel.Items = kindQuery
+                this.ViewModel.Items = query
                     .Select(x => new KindViewModel()
                     {
                         Id = x.Id,
@@ -78,7 +78,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
 
         public virtual void Insert()
         {
-            var message = string.Format("Do you want to insert new {0}?", this.ViewModel.NewItem);
+            var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
             var confirm = MessageDialog.Show(message, "Classification (Kind)", MessageBoxButton.YesNo);
             if (confirm == false)
                 return;
@@ -93,12 +93,12 @@ namespace CIS.UI.Features.Firearms.Maintenances
                     return;
                 }
 
-                var kind = new Kind() { Name = this.ViewModel.NewItem };
+                var entity = new Kind() { Name = this.ViewModel.NewItem };
 
-                session.Save(kind);
+                session.Save(entity);
                 transaction.Commit();
 
-                var newlyCreatedItem = new KindViewModel() { Id = kind.Id, Name = kind.Name };
+                var newlyCreatedItem = new KindViewModel() { Id = entity.Id, Name = entity.Name };
                 this.ViewModel.Items.Insert(0, newlyCreatedItem);
                 this.ViewModel.SelectedItem = newlyCreatedItem;
                 this.ViewModel.NewItem = string.Empty;
@@ -115,9 +115,9 @@ namespace CIS.UI.Features.Firearms.Maintenances
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var kind = session.Get<Kind>(item.Id);
+                var entity = session.Get<Kind>(item.Id);
 
-                session.Delete(kind);
+                session.Delete(entity);
                 transaction.Commit();
 
                 this.ViewModel.Items.Remove(item);
@@ -130,11 +130,11 @@ namespace CIS.UI.Features.Firearms.Maintenances
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var kindQuery = session.Query<Kind>()
+                var query = session.Query<Kind>()
                     .Where(x => x.Name == this.ViewModel.NewItem)
                     .ToFuture();
 
-                this.ViewModel.Items = kindQuery
+                this.ViewModel.Items = query
                     .Select(x => new KindViewModel()
                     {
                         Id = x.Id,

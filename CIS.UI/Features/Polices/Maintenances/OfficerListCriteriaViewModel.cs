@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CIS.UI.Features.Polices.Stations
+namespace CIS.UI.Features.Polices.Maintenances
 {
     public class OfficerListCriteriaViewModel : ViewModelBase
     {

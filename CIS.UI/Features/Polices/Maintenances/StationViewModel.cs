@@ -12,7 +12,7 @@ using NHibernate.Validator.Constraints;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
-namespace CIS.UI.Features.Polices.Stations
+namespace CIS.UI.Features.Polices.Maintenances
 {
     public class StationViewModel : ViewModelBase
     {

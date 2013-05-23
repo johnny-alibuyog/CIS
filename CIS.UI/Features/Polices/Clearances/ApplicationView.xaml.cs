@@ -26,12 +26,12 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public void OnFragmentNavigation(FirstFloor.ModernUI.Windows.Navigation.FragmentNavigationEventArgs e)
         {
-            //throw new NotImplementedException();
+            //this.ViewModel.Reset.Execute(null);
         }
 
         public void OnNavigatedFrom(FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)
         {
-            this.ViewModel.Reset.Execute(null);
+            //this.ViewModel.Reset.Execute(null);
         }
 
         public void OnNavigatedTo(FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)
@@ -41,7 +41,7 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public void OnNavigatingFrom(FirstFloor.ModernUI.Windows.Navigation.NavigatingCancelEventArgs e)
         {
-            //throw new NotImplementedException();
+            this.ViewModel.Reset.Execute(null);
         }
 
         #endregion

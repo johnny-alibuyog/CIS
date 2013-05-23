@@ -16,8 +16,8 @@
         <mui:LinkGroup DisplayName="police">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="Clearance" Source="/Features/Polices/Clearances/ClearancePage.xaml" />
-                <mui:Link DisplayName="Station" Source="/Features/Polices/Stations/StationPage.xaml" />
                 <mui:Link DisplayName="Warrant" Source="/Features/Polices/Warrants/WarrantPage.xaml" />
+                <mui:Link DisplayName="Maintenance" Source="/Features/Polices/Maintenances/MaintenancePage.xaml" />
                 <!--<mui:Link DisplayName="Wanted" />-->
             </mui:LinkGroup.Links>
         </mui:LinkGroup>

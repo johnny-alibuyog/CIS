@@ -93,6 +93,8 @@ namespace CIS.Core.Entities.Commons
 
         #region Static Members
 
+        private static readonly Random _random = new Random();
+
         public static Barcode GenerateBarcode()
         {
             return new Barcode(Barcode.GeneratBarcodeText());
@@ -101,8 +103,8 @@ namespace CIS.Core.Entities.Commons
         public static string GeneratBarcodeText()
         {
             var text = string.Empty;
-            text += new Random().Next(0, 1000000000).ToString();
-            text += new Random().Next(0, 10000).ToString();
+            text += _random.Next(Guid.NewGuid().GetHashCode(), int.MaxValue).ToString();
+            text += _random.Next(Guid.NewGuid().GetHashCode(), int.MaxValue).ToString();
             return text;
         }
 
@@ -113,9 +115,10 @@ namespace CIS.Core.Entities.Commons
                 Format = BarcodeFormat.CODE_128,
                 Options = new EncodingOptions()
                 {
+                    PureBarcode = true,
                     Height = 50,
                     Width = 150,
-                }
+                },
             };
             return new ImageBlob(builder.Write(text));
         }

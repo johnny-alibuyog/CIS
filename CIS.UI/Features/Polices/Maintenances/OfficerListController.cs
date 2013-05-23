@@ -11,7 +11,7 @@ using ReactiveUI;
 using CIS.UI.Utilities.CommonDialogs;
 using System.Windows;
 
-namespace CIS.UI.Features.Polices.Stations
+namespace CIS.UI.Features.Polices.Maintenances
 {
     public class OfficerListController : ControllerBase<OfficerListViewModel>
     {
@@ -70,7 +70,10 @@ namespace CIS.UI.Features.Polices.Stations
             var dialog = new DialogService<OfficerView, OfficerViewModel>();
             var result = dialog.Show(this, "Create Officer", null);
             if (result != null)
+            {
+                this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
                 this.Search();
+            }
         }
 
         public virtual void Edit(OfficerListItemViewModel item)
@@ -79,7 +82,10 @@ namespace CIS.UI.Features.Polices.Stations
             dialog.ViewModel.Load.Execute(item.Id);
             var result = dialog.Show(this, "Edit Officer", null);
             if (result != null)
+            {
+                this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
                 this.Search();
+            }
         }
 
         public virtual void Delete(OfficerListItemViewModel item)
@@ -96,8 +102,9 @@ namespace CIS.UI.Features.Polices.Stations
 
                 session.Delete(officer);
                 transaction.Commit();
-
             }
+
+            this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
         }
     }
 }

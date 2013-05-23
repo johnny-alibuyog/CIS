@@ -101,6 +101,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\LinqToExcel.1.7.1\lib\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.16\lib\net45\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
@@ -276,9 +278,7 @@
       <DependentUpon>KindListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Firearms\Maintenances\KindListViewModel.cs" />
-    <Compile Include="Features\Firearms\Maintenances\KindViewModel.cs">
-      <DependentUpon>KindListViewModel.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Features\Firearms\Maintenances\KindViewModel.cs" />
     <Compile Include="Features\Firearms\Maintenances\MaintenancePage.xaml.cs">
       <DependentUpon>MaintenancePage.xaml</DependentUpon>
     </Compile>
@@ -287,9 +287,7 @@
     <Compile Include="Features\Firearms\Maintenances\MakeListView.xaml.cs">
       <DependentUpon>MakeListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Maintenances\MakeViewModel.cs">
-      <DependentUpon>MakeListViewModel.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Features\Firearms\Maintenances\MakeViewModel.cs" />
     <Compile Include="Features\Firearms\MakeDataInitializer.cs" />
     <Compile Include="Features\Lookup.cs" />
     <Compile Include="Features\Commons\Persons\PhysicalAttributesView.xaml.cs">
@@ -311,7 +309,8 @@
       <DependentUpon>ClearancePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Clearances\ClearanceReportViewModel.cs" />
-    <Compile Include="Features\Polices\Clearances\PurposeDataInitializer.cs" />
+    <Compile Include="Features\Polices\Maintenances\MaintenanceMessage.cs" />
+    <Compile Include="Features\Polices\Maintenances\PurposeDataInitializer.cs" />
     <Compile Include="Features\Polices\Clearances\SummaryViewModel.cs" />
     <Compile Include="Features\Polices\Clearances\PersonalInformationView.xaml.cs">
       <DependentUpon>PersonalInformationView.xaml</DependentUpon>
@@ -320,32 +319,38 @@
     <Compile Include="Features\Polices\Clearances\SummaryView.xaml.cs">
       <DependentUpon>SummaryView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\Polices\Maintenances\PurposeListController.cs" />
+    <Compile Include="Features\Polices\Maintenances\PurposeListView.xaml.cs">
+      <DependentUpon>PurposeListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Maintenances\PurposeListViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\PurposeViewModel.cs" />
     <Compile Include="Features\Polices\RankDataInitializer.cs" />
-    <Compile Include="Features\Polices\Stations\OfficerController.cs" />
-    <Compile Include="Features\Polices\Stations\OfficerListController.cs" />
-    <Compile Include="Features\Polices\Stations\OfficerListCriteriaViewModel.cs">
+    <Compile Include="Features\Polices\Maintenances\OfficerController.cs" />
+    <Compile Include="Features\Polices\Maintenances\OfficerListController.cs" />
+    <Compile Include="Features\Polices\Maintenances\OfficerListCriteriaViewModel.cs">
       <DependentUpon>OfficerListViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Stations\OfficerListItemViewModel.cs">
+    <Compile Include="Features\Polices\Maintenances\OfficerListItemViewModel.cs">
       <DependentUpon>OfficerListViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Stations\OfficerListView.xaml.cs">
+    <Compile Include="Features\Polices\Maintenances\OfficerListView.xaml.cs">
       <DependentUpon>OfficerListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Stations\OfficerListViewModel.cs" />
-    <Compile Include="Features\Polices\Stations\OfficerView.xaml.cs">
+    <Compile Include="Features\Polices\Maintenances\OfficerListViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\OfficerView.xaml.cs">
       <DependentUpon>OfficerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Stations\OfficerViewModel.cs" />
-    <Compile Include="Features\Polices\Stations\StationController.cs" />
-    <Compile Include="Features\Polices\Stations\StationDataInitializer.cs" />
-    <Compile Include="Features\Polices\Stations\StationPage.xaml.cs">
-      <DependentUpon>StationPage.xaml</DependentUpon>
+    <Compile Include="Features\Polices\Maintenances\OfficerViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\StationController.cs" />
+    <Compile Include="Features\Polices\Maintenances\StationDataInitializer.cs" />
+    <Compile Include="Features\Polices\Maintenances\MaintenancePage.xaml.cs">
+      <DependentUpon>MaintenancePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Stations\StationView.xaml.cs">
+    <Compile Include="Features\Polices\Maintenances\StationView.xaml.cs">
       <DependentUpon>StationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Stations\StationViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\StationViewModel.cs" />
     <Compile Include="Features\Polices\Warrants\ImportController.cs" />
     <Compile Include="Features\Polices\Warrants\ImportSuspectViewModel.cs">
       <DependentUpon>ImportViewModel.cs</DependentUpon>
@@ -387,6 +392,9 @@
     <Compile Include="Utilities\Extentions\EnumExtention.cs" />
     <Compile Include="Utilities\Extentions\ReactiveCollectonExtention.cs" />
     <Compile Include="Utilities\Extentions\StringExtention.cs" />
+    <Compile Include="Utilities\Reports\ReportPrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Page Include="Assets\Icons\appbar.edit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -506,19 +514,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Stations\OfficerListView.xaml">
+    <Page Include="Features\Polices\Maintenances\OfficerListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Stations\OfficerView.xaml">
+    <Page Include="Features\Polices\Maintenances\OfficerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Stations\StationPage.xaml">
+    <Page Include="Features\Polices\Maintenances\MaintenancePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Stations\StationView.xaml">
+    <Page Include="Features\Polices\Maintenances\PurposeListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Polices\Maintenances\StationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

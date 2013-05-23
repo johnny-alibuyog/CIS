@@ -13,7 +13,7 @@ using NHibernate.Linq;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
-namespace CIS.UI.Features.Polices.Stations
+namespace CIS.UI.Features.Polices.Maintenances
 {
     public class StationController : ControllerBase<StationViewModel>
     {
@@ -86,6 +86,8 @@ namespace CIS.UI.Features.Polices.Stations
             }
 
             MessageDialog.Show("Station configuration has been saved.", "Station", MessageBoxButton.OK);
+
+            this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Station"));
         }
     }
 }
