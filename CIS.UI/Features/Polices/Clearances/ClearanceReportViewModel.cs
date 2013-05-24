@@ -23,6 +23,7 @@ namespace CIS.UI.Features.Polices.Clearances
         public virtual string Citizenship { get; set; }
         public virtual string Address { get; set; }
         public virtual byte[] Picture { get; set; }
+        public virtual byte[] Signature { get; set; }
         public virtual byte[] RightThumb { get; set; }
         public virtual byte[] LeftThumb { get; set; }
         public virtual string Purpose { get; set; }
@@ -64,13 +65,14 @@ namespace CIS.UI.Features.Polices.Clearances
             target.CivilStatus = source.Applicant.CivilStatus.ToString();
             target.Citizenship = source.Applicant.Citizenship;
             target.Address = source.Applicant.Address.ToString();
-            target.Picture = source.Applicant.Picture.Image.Data;
-            target.RightThumb = source.Applicant.FingerPrint.RightThumb.Data;
-            target.LeftThumb = source.Applicant.FingerPrint.LeftThumb.Data;
+            target.Picture = source.Applicant.Picture.Bytes;
+            target.Signature = source.Applicant.Signature.Bytes;
+            target.RightThumb = source.Applicant.FingerPrint.RightThumb.Bytes;
+            target.LeftThumb = source.Applicant.FingerPrint.LeftThumb.Bytes;
             target.Purpose = source.Applicant.Purpose.Name;
-            target.Barcode = source.Barcode.Image.Data;
+            target.Barcode = source.Barcode.Image.Bytes;
             target.BarcodeText = source.Barcode.Text;
-            target.Logo = source.Station.Logo.Image.Data;
+            target.Logo = source.Station.Logo.Bytes;
             target.Verifier = source.Verifier.Person.Fullname;
             target.VerifierRank = source.VerifierRank;
             target.VerifierPosition = source.VerifierPosition;
@@ -100,7 +102,7 @@ namespace CIS.UI.Features.Polices.Clearances
             {
                 var clearanceAlias = (Clearance)null;
                 var applicantAlias = (Applicant)null;
-                var pictureAlias = (Picture)null;
+                var pictureAlias = (ImageBlob)null;
                 var fingerPrintAlias = (FingerPrint)null;
                 var verifierAlias = (Officer)null;
                 var certifierAlias = (Officer)null;
@@ -121,12 +123,10 @@ namespace CIS.UI.Features.Polices.Clearances
                     .Left.JoinQueryOver(() => fingerPrintAlias.LeftMiddle)
                     .Left.JoinQueryOver(() => fingerPrintAlias.LeftRing)
                     .Left.JoinQueryOver(() => fingerPrintAlias.LeftPinky)
-                    .Left.JoinQueryOver(() => pictureAlias.Image)
                     .Future();
 
                 var stationQuery = session.QueryOver<Station>()
                     .Left.JoinQueryOver(x => x.Logo)
-                    .Left.JoinQueryOver(x => x.Image)
                     .Future();
 
                 var clearance = clearanceQuery.LastOrDefault();

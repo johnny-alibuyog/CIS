@@ -32,6 +32,9 @@ namespace CIS.Data.EntityDefinition.Polices
             Define(x => x.Position)
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(150);
+
+            Define(x => x.Signature)
+                .IsValid();
         }
     }
 }

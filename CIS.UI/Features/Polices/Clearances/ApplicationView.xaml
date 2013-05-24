@@ -6,6 +6,7 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              xmlns:local="clr-namespace:CIS.UI.Features.Polices.Clearances"
              xmlns:cameras="clr-namespace:CIS.UI.Features.Commons.Cameras"
+             xmlns:signatures="clr-namespace:CIS.UI.Features.Commons.Signatures"
              xmlns:biometrics="clr-namespace:CIS.UI.Features.Commons.Biometrics"
              mc:Ignorable="d">
     <UserControl.Resources>
@@ -20,6 +21,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type cameras:CameraViewModel}">
             <cameras:CameraView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type signatures:SignatureViewModel}">
+            <signatures:SignatureView />
         </DataTemplate>
     </UserControl.Resources>
     <Grid>

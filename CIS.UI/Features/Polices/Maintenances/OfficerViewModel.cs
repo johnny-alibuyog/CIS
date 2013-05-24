@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
 using CIS.Data;
 using CIS.UI.Bootstraps.DependencyInjection;
 using CIS.UI.Features.Commons.Persons;
+using CIS.UI.Utilities.Extentions;
 using NHibernate;
 using NHibernate.Context;
 using NHibernate.Validator.Constraints;
@@ -32,6 +34,10 @@ namespace CIS.UI.Features.Polices.Maintenances
         [NotNullNotEmpty(Message = "Positon is mandatory.")]
         public virtual string Position { get; set; }
 
+        public virtual BitmapSource Signature { get; set; }
+
+        public virtual IReactiveCommand CaptureSignature { get; set; }
+
         public virtual IReactiveCommand Load { get; set; }
 
         public virtual IReactiveCommand Save { get; set; }
@@ -50,6 +56,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 target.Person.SerializeWith(source.Person);
                 target.Rank = source.Rank;
                 target.Position = source.Position;
+                target.Signature = source.Signature;
                 return target;
             }
             else if (instance is Officer)
@@ -65,6 +72,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                     Name = source.Rank.Name
                 };
                 target.Position = source.Position;
+                target.Signature = source.Signature.Image.ToBitmapSource();
 
                 return target;
             }
@@ -94,6 +102,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 target.Person = (Person)source.Person.SerializeInto(new Person());
                 target.Rank = IoC.Container.Resolve<ISessionProvider>().GetSharedSession().Load<Rank>(source.Rank.Id);
                 target.Position = source.Position;
+                target.Signature.Image = source.Signature.ToImage();
 
                 return target;
             }

@@ -15,6 +15,7 @@ namespace CIS.Core.Entities.Polices
         private Station _station;
         private Rank _rank;
         private string _position;
+        private ImageBlob _signature;
 
         public virtual Guid Id
         {
@@ -58,6 +59,12 @@ namespace CIS.Core.Entities.Polices
             set { _position = value; }
         }
 
+        public virtual ImageBlob Signature
+        {
+            get { return _signature; }
+            set { _signature = value; }
+        }
+
         #region Methods
 
         public virtual void SerializeWith(Officer value)
@@ -66,6 +73,16 @@ namespace CIS.Core.Entities.Polices
             this.Station = value.Station;
             this.Rank = value.Rank;
             this.Position = value.Position;
+            this.Signature = value.Signature;
+        }
+
+        #endregion
+
+        #region Conaructors
+
+        public Officer()
+        {
+            Signature = new ImageBlob();
         }
 
         #endregion

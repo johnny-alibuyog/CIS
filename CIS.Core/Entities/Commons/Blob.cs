@@ -8,7 +8,7 @@ namespace CIS.Core.Entities.Commons
     public abstract class Blob
     {
         private Guid _id;
-        private byte[] _data;
+        private byte[] _bytes;
 
         public virtual Guid Id
         {
@@ -16,10 +16,10 @@ namespace CIS.Core.Entities.Commons
             protected set { _id = value; }
         }
 
-        public virtual byte[] Data
+        public virtual byte[] Bytes
         {
-            get { return _data; }
-            protected set { _data = value; }
+            get { return _bytes; }
+            protected set { _bytes = value; }
         }
 
         #region Equality Comparer

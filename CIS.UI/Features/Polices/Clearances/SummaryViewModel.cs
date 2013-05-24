@@ -12,6 +12,8 @@ namespace CIS.UI.Features.Polices.Clearances
     {
         public virtual BitmapSource Picture { get; set; }
 
+        public virtual BitmapSource RightThumb { get; set; }
+
         public virtual string FullName { get; set; }
 
         public virtual string Address { get; set; }

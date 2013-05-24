@@ -13,7 +13,7 @@ namespace CIS.Core.Entities.Mayors
         private Audit _audit;
         private Person _applicant;
         private Address _applicantAddress;
-        private Picture _applicantPicture;
+        private ImageBlob _applicantPicture;
         private string _company;
         private Address _companyAddress;
         private Person _mayor;
@@ -55,7 +55,7 @@ namespace CIS.Core.Entities.Mayors
             set { _applicantAddress = value; }
         }
 
-        public virtual Picture ApplicantPicture
+        public virtual ImageBlob ApplicantPicture
         {
             get { return _applicantPicture; }
             set { _applicantPicture = value; }

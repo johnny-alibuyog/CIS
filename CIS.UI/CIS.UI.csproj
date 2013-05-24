@@ -248,8 +248,13 @@
       <DependentUpon>SplitPage1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Commons\Signatures\SignatureController.cs" />
+    <Compile Include="Features\Commons\Signatures\SignatureDialogController.cs" />
+    <Compile Include="Features\Commons\Signatures\SignatureDialogViewModel.cs" />
     <Compile Include="Features\Commons\Signatures\SignatureView.xaml.cs">
       <DependentUpon>SignatureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Commons\Signatures\SignatureDialogView.xaml.cs">
+      <DependentUpon>SignatureDialogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Commons\Signatures\SignatureViewModel.cs" />
     <Compile Include="Features\Commons\Terminals\TerminalDataInitializer.cs" />
@@ -454,6 +459,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\Commons\Signatures\SignatureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Commons\Signatures\SignatureDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

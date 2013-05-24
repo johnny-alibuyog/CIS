@@ -13,7 +13,7 @@ namespace CIS.Data.EntityDefinition.Commons
         {
             Define(x => x.Id);
 
-            Define(x => x.Data);
+            Define(x => x.Bytes);
         }
     }
 }

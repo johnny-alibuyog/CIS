@@ -26,6 +26,10 @@ namespace CIS.Data.EntityDefinition.Polices
             References(x => x.Rank);
 
             Map(x => x.Position);
+
+            References(x => x.Signature)
+                .Cascade.All()
+                .Fetch.Join();
         }
     }
 }

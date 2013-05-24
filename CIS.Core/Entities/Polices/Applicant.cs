@@ -12,7 +12,8 @@ namespace CIS.Core.Entities.Polices
         private Guid _id;
         private Person _person;
         private Address _address;
-        private Picture _picture;
+        private ImageBlob _picture;
+        private ImageBlob _signature;
         private FingerPrint _fingerPrint;
         private string _height;
         private string _weight;
@@ -42,10 +43,16 @@ namespace CIS.Core.Entities.Polices
             set { _address = value; }
         }
 
-        public virtual Picture Picture
+        public virtual ImageBlob Picture
         {
             get { return _picture; }
             set { _picture = value; }
+        }
+
+        public virtual ImageBlob Signature
+        {
+            get { return _signature; }
+            set { _signature = value; }
         }
 
         public virtual FingerPrint FingerPrint
@@ -112,7 +119,8 @@ namespace CIS.Core.Entities.Polices
 
         public Applicant()
         {
-            Picture = new Picture();
+            Picture = new ImageBlob();
+            Signature = new ImageBlob();
             FingerPrint = new FingerPrint();
         }
 

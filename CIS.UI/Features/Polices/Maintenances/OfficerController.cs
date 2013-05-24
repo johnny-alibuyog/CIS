@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Features.Commons.Signatures;
 using CIS.UI.Utilities.Extentions;
 using NHibernate;
 using NHibernate.Linq;
@@ -17,6 +18,9 @@ namespace CIS.UI.Features.Polices.Maintenances
         public OfficerController(OfficerViewModel viewModel) : base(viewModel) 
         {
             PopulateLookup();
+
+            this.ViewModel.CaptureSignature = new ReactiveCommand();
+            this.ViewModel.CaptureSignature.Subscribe(x => CaptureSignature());
 
             this.ViewModel.Load = new ReactiveCommand();
             this.ViewModel.Load.Subscribe(x => Load((Guid)x));
@@ -46,6 +50,16 @@ namespace CIS.UI.Features.Polices.Maintenances
 
                 transacction.Commit();
             }
+        }
+
+        public virtual void CaptureSignature()
+        {
+            var dialog = new DialogService<SignatureDialogView, SignatureDialogViewModel>();
+            dialog.ViewModel.Signature.SignatureImage = this.ViewModel.Signature;
+
+            var result = dialog.Show();
+            if (result != null)
+                this.ViewModel.Signature = result.Signature.SignatureImage;
         }
 
         public virtual void Load(Guid id)

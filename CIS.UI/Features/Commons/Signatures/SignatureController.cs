@@ -20,8 +20,8 @@ namespace CIS.UI.Features.Commons.Signatures
 
         public virtual void Clear()
         {
-            this.ViewModel.Strokes.Clear();
-            this.ViewModel.Signature = null;
+            //this.ViewModel.Strokes.Clear();
+            this.ViewModel.SignatureImage = null;
         }
     }
 }

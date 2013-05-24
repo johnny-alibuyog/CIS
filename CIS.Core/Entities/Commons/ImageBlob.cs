@@ -10,37 +10,37 @@ namespace CIS.Core.Entities.Commons
 {
     public class ImageBlob : Blob
     {
-        private Image _content;
+        private Image _image;
 
-        public virtual Image Content
+        public virtual Image Image
         {
             get
             {
-                if (_content != null)
-                    return _content;
+                if (_image != null)
+                    return _image;
 
-                if (this.Data != null)
+                if (this.Bytes != null)
                 {
-                    using (var ms = new MemoryStream(this.Data))
+                    using (var ms = new MemoryStream(this.Bytes))
                     {
-                        _content = new Bitmap(Image.FromStream(ms));
+                        _image = new Bitmap(Image.FromStream(ms));
                     }
                 }
-                return _content;
+                return _image;
             }
             set
             {
-                _content = value;
-                if (_content == null)
+                _image = value;
+                if (_image == null)
                 {
-                    this.Data = null;
+                    this.Bytes = null;
                     return;
                 }
 
                 using (var stream = new MemoryStream())
                 {
-                    _content.Save(stream, ImageFormat.Bmp);
-                    this.Data = stream.ToArray();
+                    _image.Save(stream, ImageFormat.Bmp);
+                    this.Bytes = stream.ToArray();
                 }
             }
         }
@@ -51,7 +51,7 @@ namespace CIS.Core.Entities.Commons
 
         public ImageBlob(Image content)
         {
-            this.Content = content;
+            this.Image = content;
         }
 
         #endregion

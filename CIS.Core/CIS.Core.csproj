@@ -119,7 +119,6 @@
     </Compile>
     <Compile Include="Entities\Commons\Person.cs" />
     <Compile Include="Entities\Commons\PhysicalAttributes.cs" />
-    <Compile Include="Entities\Commons\Picture.cs" />
     <Compile Include="Entities\Commons\Province.cs">
       <DependentUpon>Address.cs</DependentUpon>
     </Compile>
@@ -147,7 +146,6 @@
     <Compile Include="Entities\Polices\Applicant.cs" />
     <Compile Include="Entities\Polices\ArrestStatus.cs" />
     <Compile Include="Entities\Polices\Clearance.cs" />
-    <Compile Include="Entities\Commons\Logo.cs" />
     <Compile Include="Entities\Polices\Officer.cs" />
     <Compile Include="Entities\Polices\Purpose.cs" />
     <Compile Include="Entities\Polices\Rank.cs" />

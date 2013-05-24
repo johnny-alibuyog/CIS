@@ -73,8 +73,8 @@
                         <TextBlock Text="Picture" HorizontalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel>
-                        <Image Source="{Binding ThumbMark}" Margin="10" Height="113" Width="171"/>
-                        <TextBlock Text="Thumb Mark" HorizontalAlignment="Center"/>
+                        <Image Source="{Binding RightThumb}" Margin="10" Height="113" Width="171"/>
+                        <TextBlock Text="Right Thumb" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

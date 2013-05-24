@@ -10,6 +10,7 @@ using CIS.Core.Entities.Firearms;
 using CIS.Core.Entities.Polices;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Cameras;
+using CIS.UI.Features.Commons.Signatures;
 using CIS.UI.Features.Polices.Maintenances;
 using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
@@ -96,6 +97,44 @@ namespace CIS.UI.Features.Polices.Clearances
                 this.ViewModel.FingerScanner.Start.Execute(null);
             else
                 this.ViewModel.FingerScanner.Stop.Execute(null);
+        }
+
+        private void InitializeViews()
+        {
+            this.ViewModel.PersonalInformation = new PersonalInformationViewModel();
+            this.ViewModel.Camera = new CameraViewModel();
+            this.ViewModel.FingerScanner = new FingerScannerViewModel();
+            this.ViewModel.Signature = new SignatureViewModel();
+            this.ViewModel.Summary = new SummaryViewModel();
+
+            this.ViewModel.ViewModels = new List<ViewModelBase>();
+
+            using (var session = this.SessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var query = session.Query<Setting>()
+                    .Where(x => x.Terminal.MachineName == Environment.MachineName)
+                    .ToFutureValue();
+
+                var setting = query.Value;
+
+                this.ViewModel.ViewModels.Add(this.ViewModel.PersonalInformation);
+                
+                if (setting.WithCameraDevice)
+                    this.ViewModel.ViewModels.Add(this.ViewModel.Camera);
+
+                if (setting.WithFingerScannerDevice)
+                    this.ViewModel.ViewModels.Add(this.ViewModel.FingerScanner);
+
+                if (setting.WithDigitalSignatureDevice)
+                    this.ViewModel.ViewModels.Add(this.ViewModel.Signature);
+
+                this.ViewModel.ViewModels.Add(this.ViewModel.Summary);
+
+                transaction.Commit();
+            }
+
+            this.ViewModel.CurrentViewModel = this.ViewModel.ViewModels.First();
         }
 
         private void PopulateLookups()
@@ -221,6 +260,7 @@ namespace CIS.UI.Features.Polices.Clearances
             }
 
             this.ViewModel.Summary.Picture = this.ViewModel.Camera.Picture;
+            this.ViewModel.Summary.RightThumb = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightThumb];
             this.ViewModel.Summary.Address = this.ViewModel.PersonalInformation.Address.ToString();
             this.ViewModel.Summary.FullName = this.ViewModel.PersonalInformation.Person.FullName;
             this.ViewModel.Summary.BirthDate = this.ViewModel.PersonalInformation.Person.BirthDate;
@@ -245,7 +285,7 @@ namespace CIS.UI.Features.Polices.Clearances
 
                     var clearanceAlias = (Clearance)null;
                     var applicantAlias = (Applicant)null;
-                    var pictureAlias = (Picture)null;
+                    var pictureAlias = (ImageBlob)null;
                     var fingerPrintAlias = (FingerPrint)null;
                     //var imageAlias = (ImageBlob)null;
                     var verifierAlias = (Officer)null;
@@ -267,7 +307,6 @@ namespace CIS.UI.Features.Polices.Clearances
                         .Left.JoinQueryOver(() => fingerPrintAlias.LeftMiddle)
                         .Left.JoinQueryOver(() => fingerPrintAlias.LeftRing)
                         .Left.JoinQueryOver(() => fingerPrintAlias.LeftPinky)
-                        .Left.JoinQueryOver(() => pictureAlias.Image)
                         .Where(() =>
                             applicantAlias.Person.FirstName == person.FirstName &&
                             applicantAlias.Person.MiddleName == person.MiddleName &&
@@ -279,7 +318,6 @@ namespace CIS.UI.Features.Polices.Clearances
 
                     var stationQuery = session.QueryOver<Station>()
                         .Left.JoinQueryOver(x => x.Logo)
-                        .Left.JoinQueryOver(x => x.Image)
                         .Future();
 
                     var officerAlias = (Officer)null;
@@ -301,17 +339,18 @@ namespace CIS.UI.Features.Polices.Clearances
 
                     clearance.Applicant.Person = (Person)this.ViewModel.PersonalInformation.Person.SerializeInto(new Person());
                     clearance.Applicant.Address = (Address)this.ViewModel.PersonalInformation.Address.SerializeInto(new Address());
-                    clearance.Applicant.Picture.Image.Content = this.ViewModel.Camera.Picture.ToImage();
-                    clearance.Applicant.FingerPrint.RightThumb.Content = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightThumb].ToImage();
-                    clearance.Applicant.FingerPrint.RightIndex.Content = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightIndex].ToImage();
-                    clearance.Applicant.FingerPrint.RightMiddle.Content = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightMiddle].ToImage();
-                    clearance.Applicant.FingerPrint.RightRing.Content = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightRing].ToImage();
-                    clearance.Applicant.FingerPrint.RightPinky.Content = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightPinky].ToImage();
-                    clearance.Applicant.FingerPrint.LeftThumb.Content = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftThumb].ToImage();
-                    clearance.Applicant.FingerPrint.LeftIndex.Content = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftIndex].ToImage();
-                    clearance.Applicant.FingerPrint.LeftMiddle.Content = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftMiddle].ToImage();
-                    clearance.Applicant.FingerPrint.LeftRing.Content = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftRing].ToImage();
-                    clearance.Applicant.FingerPrint.LeftPinky.Content = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftPinky].ToImage();
+                    clearance.Applicant.Picture.Image = this.ViewModel.Camera.Picture.ToImage();
+                    clearance.Applicant.Signature.Image = this.ViewModel.Signature.SignatureImage.ToImage();
+                    clearance.Applicant.FingerPrint.RightThumb.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightThumb].ToImage();
+                    clearance.Applicant.FingerPrint.RightIndex.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightIndex].ToImage();
+                    clearance.Applicant.FingerPrint.RightMiddle.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightMiddle].ToImage();
+                    clearance.Applicant.FingerPrint.RightRing.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightRing].ToImage();
+                    clearance.Applicant.FingerPrint.RightPinky.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightPinky].ToImage();
+                    clearance.Applicant.FingerPrint.LeftThumb.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftThumb].ToImage();
+                    clearance.Applicant.FingerPrint.LeftIndex.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftIndex].ToImage();
+                    clearance.Applicant.FingerPrint.LeftMiddle.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftMiddle].ToImage();
+                    clearance.Applicant.FingerPrint.LeftRing.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftRing].ToImage();
+                    clearance.Applicant.FingerPrint.LeftPinky.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftPinky].ToImage();
                     clearance.Applicant.Height = this.ViewModel.PersonalInformation.Height;
                     clearance.Applicant.Weight = this.ViewModel.PersonalInformation.Weight;
                     clearance.Applicant.AlsoKnownAs = this.ViewModel.PersonalInformation.AlsoKnownAs;
@@ -372,24 +411,7 @@ namespace CIS.UI.Features.Polices.Clearances
             if (this.ViewModel.FingerScanner != null)
                 this.ViewModel.FingerScanner.Stop.Execute(null);
 
-            this.ViewModel.PersonalInformation = new PersonalInformationViewModel();
-            this.ViewModel.Camera = new CameraViewModel();
-            this.ViewModel.FingerScanner = new FingerScannerViewModel();
-            this.ViewModel.Summary = new SummaryViewModel();
-
-            this.ViewModel.ViewModels = new List<ViewModelBase>()
-            {
-                this.ViewModel.PersonalInformation,
-                this.ViewModel.Camera,
-                this.ViewModel.FingerScanner,
-                this.ViewModel.Summary
-            };
-
-            if (!Properties.Settings.Default.WithFingerPrintDevice)
-                this.ViewModel.ViewModels.Remove(this.ViewModel.FingerScanner);
-
-            this.ViewModel.CurrentViewModel = this.ViewModel.ViewModels.First();
-
+            InitializeViews();
             PopulateLookups();
 
             this.ViewModel.PersonalInformation.Person.FirstName = "Johnny";
@@ -454,6 +476,10 @@ namespace CIS.UI.Features.Polices.Clearances
         {
             try
             {
+                var confirm = MessageDialog.Show("Do you want to relase clearance.", "Clearance", MessageBoxButton.YesNo);
+                if (confirm == false)
+                    return;
+
                 var data = this.GenerateClearance();
                 if (data != null)
                     PrintClearance(data);
@@ -465,7 +491,6 @@ namespace CIS.UI.Features.Polices.Clearances
 
                 MessageDialog.Show(ex.Message, "Clearance", MessageBoxButton.OK);
             }
-
         }
     }
 }

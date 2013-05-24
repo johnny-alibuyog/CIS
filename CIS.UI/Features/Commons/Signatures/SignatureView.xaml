@@ -28,7 +28,7 @@
         <ScrollViewer Grid.Row="2"  Margin="8,8,8,8">
             <StackPanel Orientation="Vertical">
                 <Border Padding="8,8,8,8" Width="300" Height="100" BorderBrush="{DynamicResource InputBorder}" BorderThickness="1">
-                    <Image Width="Auto" Height="Auto" Name="SignatureImage" />
+                    <Image Width="Auto" Height="Auto" Name="SignatureImage" Source="{Binding SignatureImage, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
                 </Border>
             </StackPanel>
         </ScrollViewer>

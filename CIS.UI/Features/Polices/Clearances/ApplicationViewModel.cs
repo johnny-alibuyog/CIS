@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Cameras;
+using CIS.UI.Features.Commons.Signatures;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
@@ -19,6 +20,8 @@ namespace CIS.UI.Features.Polices.Clearances
         public virtual CameraViewModel Camera { get; set; }
 
         public virtual FingerScannerViewModel FingerScanner { get; set; }
+
+        public virtual SignatureViewModel Signature { get; set; }
 
         public virtual SummaryViewModel Summary { get; set; }
 

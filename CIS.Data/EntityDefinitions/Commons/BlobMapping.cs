@@ -13,7 +13,7 @@ namespace CIS.Data.EntityDefinition.Commons
         {
             Id(x => x.Id);
 
-            Map(x => x.Data);
+            Map(x => x.Bytes);
 
             DiscriminateSubClassesOnColumn("Discriminator")
                 .Index("DiscriminatorIndex")

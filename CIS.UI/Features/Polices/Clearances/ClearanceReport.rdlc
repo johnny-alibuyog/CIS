@@ -1348,7 +1348,7 @@
         <Value>=First(Fields!Picture.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>1.81972in</Top>
+        <Top>1.56972in</Top>
         <Left>6.48417in</Left>
         <Height>0.84in</Height>
         <Width>1.125in</Width>
@@ -1364,7 +1364,7 @@
         <Value>=First(Fields!LeftThumb.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>Fit</Sizing>
-        <Top>2.72916in</Top>
+        <Top>2.47916in</Top>
         <Left>6.09597in</Left>
         <Height>0.92291in</Height>
         <Width>0.94791in</Width>
@@ -1380,7 +1380,7 @@
         <Value>=First(Fields!RightThumb.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>Fit</Sizing>
-        <Top>2.72916in</Top>
+        <Top>2.47916in</Top>
         <Left>7.09944in</Left>
         <Height>0.92291in</Height>
         <Width>0.94791in</Width>
@@ -1411,7 +1411,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox35</rd:DefaultName>
-        <Top>3.71875in</Top>
+        <Top>3.42985in</Top>
         <Left>6.08209in</Left>
         <Height>0.17361in</Height>
         <Width>0.94791in</Width>
@@ -1442,7 +1442,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox35</rd:DefaultName>
-        <Top>3.71875in</Top>
+        <Top>3.42985in</Top>
         <Left>7.08556in</Left>
         <Height>0.17361in</Height>
         <Width>0.9618in</Width>
@@ -1710,10 +1710,10 @@
         <Value>=First(Fields!VerifierSignature.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>3.3368in</Top>
-        <Left>0.4675in</Left>
+        <Top>3.35069in</Top>
+        <Left>1.04042in</Left>
         <Height>0.5in</Height>
-        <Width>2.53125in</Width>
+        <Width>1.5in</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -1726,10 +1726,10 @@
         <Value>=First(Fields!CertifierSignature.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>3.3368in</Top>
-        <Left>2.99875in</Left>
+        <Top>3.35069in</Top>
+        <Left>3.50223in</Left>
         <Height>0.5in</Height>
-        <Width>2.53125in</Width>
+        <Width>1.5in</Width>
         <ZIndex>9</ZIndex>
         <Style>
           <Border>
@@ -1784,6 +1784,65 @@
           </Border>
         </Style>
       </Textbox>
+      <Line Name="Line1">
+        <Top>4.23833in</Top>
+        <Left>6.09597in</Left>
+        <Height>0in</Height>
+        <Width>1.95138in</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox51">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Signature</Value>
+                <Style>
+                  <FontFamily>tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox35</rd:DefaultName>
+        <Top>4.26611in</Top>
+        <Left>6.08209in</Left>
+        <Height>0.17361in</Height>
+        <Width>1.96526in</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Textbox>
+      <Image Name="Signature">
+        <Source>Database</Source>
+        <Value>=First(Fields!Signature.Value, "ItemDataSet")</Value>
+        <MIMEType>image/bmp</MIMEType>
+        <Sizing>FitProportional</Sizing>
+        <Top>3.69667in</Top>
+        <Left>6.30639in</Left>
+        <Height>0.5in</Height>
+        <Width>1.5in</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
     </ReportItems>
     <Height>11in</Height>
     <Style>
@@ -1943,6 +2002,10 @@
         </Field>
         <Field Name="RightThumb">
           <DataField>RightThumb</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+        <Field Name="Signature">
+          <DataField>Signature</DataField>
           <rd:TypeName>System.Byte[]</rd:TypeName>
         </Field>
         <Field Name="Station">

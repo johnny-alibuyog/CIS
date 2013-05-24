@@ -71,7 +71,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 var target = this;
 
                 target.Id = source.Id;
-                target.Logo = source.Logo.Image.Content.ToBitmapSource();
+                target.Logo = source.Logo.Image.ToBitmapSource();
                 target.Office = source.Office;
                 target.Location = source.Location;
                 target.ClearanceValidityInDays = source.ClearanceValidityInDays;
@@ -105,7 +105,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 var target = instance as Station;
 
                 //target.Id = source.Id;
-                target.Logo.Image.Content = source.Logo.ToImage();
+                target.Logo.Image = source.Logo.ToImage();
                 target.Office = source.Office;
                 target.Location = source.Location;
                 target.ClearanceValidityInDays = source.ClearanceValidityInDays;

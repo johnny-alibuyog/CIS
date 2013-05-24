@@ -12,7 +12,7 @@ namespace CIS.Core.Entities.Polices
         private Guid _id;
         private int _version;
         private Audit _audit;
-        private Logo _logo;
+        private ImageBlob _logo;
         private string _office;
         private string _location;
         private int _clearanceValidityInDays;
@@ -37,7 +37,7 @@ namespace CIS.Core.Entities.Polices
             set { _audit = value; }
         }
 
-        public virtual Logo Logo
+        public virtual ImageBlob Logo
         {
             get { return _logo; }
             set { _logo = value; }
@@ -123,7 +123,7 @@ namespace CIS.Core.Entities.Polices
 
         public Station()
         {
-            _logo = new Logo();
+            _logo = new ImageBlob();
             _officers = new Collection<Officer>();
         }
 

@@ -25,6 +25,13 @@
             <Label Content="Position"/>
             <TextBox Text="{Binding Position, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
+            <Label Content="Signature" VerticalAlignment="Top" />
+            <Border Padding="8,8,8,8" Width="300" Height="100" BorderBrush="{DynamicResource InputBorder}" BorderThickness="1">
+                <Image Width="Auto" Height="Auto" Name="SignatureImage" Source="{Binding Signature, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+            </Border>
+            <mui:ModernButton Command="{Binding CaptureSignature}" Style="{StaticResource app_bar_signature}" HorizontalAlignment="Center" Margin="4"/>
+        </StackPanel>
 
         <!-- buttons -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

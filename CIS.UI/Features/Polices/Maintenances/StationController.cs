@@ -47,7 +47,6 @@ namespace CIS.UI.Features.Polices.Maintenances
             {
                 var query = session.Query<Station>()
                     .Fetch(x => x.Logo)
-                    .ThenFetch(x => x.Image)
                     .ToFuture();
 
                 var station = query.FirstOrDefault();
@@ -72,7 +71,6 @@ namespace CIS.UI.Features.Polices.Maintenances
             {
                 var query = session.Query<Station>()
                     .Fetch(x => x.Logo)
-                    .ThenFetch(x => x.Image)
                     .ToFuture();
 
                 var station = query.FirstOrDefault();
