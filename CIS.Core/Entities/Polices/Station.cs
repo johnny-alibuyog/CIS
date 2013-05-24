@@ -114,7 +114,7 @@ namespace CIS.Core.Entities.Polices
 
         public virtual string GetValidity(DateTime issueDate)
         {
-            return string.Format("Clearance is valid until {0}.", issueDate.AddDays(this.ClearanceValidityInDays));
+            return string.Format("Clearance is valid until {0}.", issueDate.AddDays(this.ClearanceValidityInDays).ToString("MMM-dd-yyyy"));
         }
 
         #endregion

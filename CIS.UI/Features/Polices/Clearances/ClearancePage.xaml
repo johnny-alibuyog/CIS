@@ -10,7 +10,7 @@
         <mui:ModernTab Layout="List" SelectedSource="/Features/Polices/Clearances/ApplicationView.xaml">
             <mui:ModernTab.Links>
                 <mui:Link DisplayName="Application" Source="/Features/Polices/Clearances/ApplicationView.xaml"/>
-                <mui:Link DisplayName="Report" />
+                <mui:Link DisplayName="Archive" Source="/Features/Polices/Clearances/ArchiveView.xaml"/>
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

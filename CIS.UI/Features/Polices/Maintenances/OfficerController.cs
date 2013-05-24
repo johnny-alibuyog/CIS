@@ -57,7 +57,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             var dialog = new DialogService<SignatureDialogView, SignatureDialogViewModel>();
             dialog.ViewModel.Signature.SignatureImage = this.ViewModel.Signature;
 
-            var result = dialog.Show();
+            var result = dialog.Show(this, "Signature", null);
             if (result != null)
                 this.ViewModel.Signature = result.Signature.SignatureImage;
         }

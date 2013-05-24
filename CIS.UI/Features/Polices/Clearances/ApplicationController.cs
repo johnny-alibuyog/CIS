@@ -25,18 +25,25 @@ namespace CIS.UI.Features.Polices.Clearances
 {
     public class ApplicationController : ControllerBase<ApplicationViewModel>
     {
-        public ApplicationController(ApplicationViewModel viewModel) : base(viewModel)
+        public ApplicationController(ApplicationViewModel viewModel)
+            : base(viewModel)
         {
             this.Reset();
 
             this.MessageBus.Listen<MaintenanceMessage>()
-                .Subscribe(x => PopulateLookups());
+                .Subscribe(x => 
+                {
+                    if (x.Identifier == "Setting")
+                        Reset();
+                    else
+                        PopulateLookups();
+                });
 
             this.ViewModel.Previous = new ReactiveCommand(this.ViewModel
                 .WhenAny(
-                    x => x.CurrentViewModel, 
-                    x => x.CurrentViewModel.IsValid, 
-                    (current, isValid) => 
+                    x => x.CurrentViewModel,
+                    x => x.CurrentViewModel.IsValid,
+                    (current, isValid) =>
                     {
                         if (current.Value == this.ViewModel.ViewModels.First())
                             return false;
@@ -68,9 +75,9 @@ namespace CIS.UI.Features.Polices.Clearances
 
             this.ViewModel.Release = new ReactiveCommand(this.ViewModel
                 .WhenAny(
-                    x => x.CurrentViewModel, 
+                    x => x.CurrentViewModel,
                     x => x.CurrentViewModel.IsValid,
-                    (current, isValid) => 
+                    (current, isValid) =>
                     {
                         if (current.Value != this.ViewModel.Summary)
                             return false;
@@ -119,7 +126,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 var setting = query.Value;
 
                 this.ViewModel.ViewModels.Add(this.ViewModel.PersonalInformation);
-                
+
                 if (setting.WithCameraDevice)
                     this.ViewModel.ViewModels.Add(this.ViewModel.Camera);
 
@@ -287,16 +294,21 @@ namespace CIS.UI.Features.Polices.Clearances
                     var applicantAlias = (Applicant)null;
                     var pictureAlias = (ImageBlob)null;
                     var fingerPrintAlias = (FingerPrint)null;
-                    //var imageAlias = (ImageBlob)null;
+                    var stationAlias = (Station)null;
                     var verifierAlias = (Officer)null;
                     var certifierAlias = (Officer)null;
+                    var barcodeAlais = (Barcode)null;
 
                     var clearanceQuery = session.QueryOver<Clearance>(() => clearanceAlias)
                         .Left.JoinAlias(() => clearanceAlias.Applicant, () => applicantAlias)
+                        .Left.JoinAlias(() => clearanceAlias.Station, () => stationAlias)
                         .Left.JoinAlias(() => clearanceAlias.Verifier, () => verifierAlias)
                         .Left.JoinAlias(() => clearanceAlias.Certifier, () => certifierAlias)
+                        .Left.JoinAlias(() => clearanceAlias.Barcode, () => barcodeAlais)
                         .Left.JoinAlias(() => applicantAlias.FingerPrint, () => fingerPrintAlias)
                         .Left.JoinAlias(() => applicantAlias.Picture, () => pictureAlias)
+                        .Left.JoinQueryOver(() => stationAlias.Logo)
+                        .Left.JoinQueryOver(() => barcodeAlais.Image)
                         .Left.JoinQueryOver(() => fingerPrintAlias.RightThumb)
                         .Left.JoinQueryOver(() => fingerPrintAlias.RightIndex)
                         .Left.JoinQueryOver(() => fingerPrintAlias.RightMiddle)
@@ -437,7 +449,7 @@ namespace CIS.UI.Features.Polices.Clearances
             this.ViewModel.PersonalInformation.Weight = "85 kg'";
             this.ViewModel.Summary.OfficialReceiptNumber = "5545456677";
             this.ViewModel.Summary.TaxCertificateNumber = "t4e4545456";
-            
+
             //var testData = ClearanceReportViewModel.GetTestData();
             //if (testData != null)
             //{

@@ -18,7 +18,7 @@
                     <InkCanvas Width="Auto" Height="Auto" x:Name="SignatureInkCanvas">
                     </InkCanvas>
                 </Border>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
                     <Button Content="Capture" Margin="4" Name="CaptureButton" Click="CaptureButton_Click" />
                     <Button Content="Clear" Margin="4" Name="ClearButton" Click="ClearButton_Click"/>
                 </StackPanel>

@@ -206,6 +206,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -315,8 +316,26 @@
       <DependentUpon>ApplicationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Clearances\ApplicationViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\ArchiveController.cs" />
+    <Compile Include="Features\Polices\Clearances\ArchiveCriteriaViewModel.cs">
+      <DependentUpon>ArchiveViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Clearances\ArchiveItemViewModel.cs">
+      <DependentUpon>ArchiveViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Clearances\ArchiveReportView.xaml.cs">
+      <DependentUpon>ArchiveReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Clearances\ArchiveReportViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\ArchiveView.xaml.cs">
+      <DependentUpon>ArchiveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Clearances\ArchiveViewModel.cs" />
     <Compile Include="Features\Polices\Clearances\ClearancePage.xaml.cs">
       <DependentUpon>ClearancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Clearances\ClearanceReportView.xaml.cs">
+      <DependentUpon>ClearanceReportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Clearances\ClearanceReportViewModel.cs" />
     <Compile Include="Features\Polices\Maintenances\MaintenanceMessage.cs" />
@@ -529,7 +548,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Features\Polices\Clearances\ArchiveReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Polices\Clearances\ArchiveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Features\Polices\Clearances\ClearancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Polices\Clearances\ClearanceReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -664,6 +695,7 @@
     <Content Include="philippine-barangays.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\DataSources\CIS.UI.Features.Polices.Clearances.ArchiveItemViewModel.datasource" />
     <None Include="Properties\DataSources\CIS.UI.Features.Polices.Clearances.ClearanceReportViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -709,6 +741,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Features\Polices\Clearances\ArchiveReport.rdlc" />
     <EmbeddedResource Include="Features\Polices\Clearances\ClearanceReport.rdlc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

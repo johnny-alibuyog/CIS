@@ -4,9 +4,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.Core.Entities.Polices;
 using CIS.UI.Utilities.Extentions;
 using DPFP;
 using DPFP.Capture;
+using NHibernate;
+using NHibernate.Linq;
+using ReactiveUI;
 using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Commons.Biometrics
@@ -14,10 +18,13 @@ namespace CIS.UI.Features.Commons.Biometrics
     public class FingerScannerController : ControllerBase<FingerScannerViewModel>, DPFP.Capture.EventHandler
     {
         private readonly Capture _scanner;
+        private IList<FingerViewModel> _fingersToScan;
 
         public FingerScannerController(FingerScannerViewModel viewModel)
             : base(viewModel)
         {
+            InitializeFingersToScan();
+
             _scanner = new Capture();
             _scanner.EventHandler = this;
 
@@ -30,13 +37,42 @@ namespace CIS.UI.Features.Commons.Biometrics
 
         #region Routine Helpers
 
+        private void InitializeFingersToScan()
+        {
+            using (var session = this.SessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var fingerIds = session.Query<Setting>()
+                    .Where(x => x.Terminal.MachineName == Environment.MachineName)
+                    .SelectMany(x => x.FingersToScan)
+                    .Select(x => x.Id)
+                    .ToList();
+
+                if (fingerIds == null || fingerIds.Count() == 0)
+                    fingerIds = Properties.Settings.Default.FingersToScan.Cast<string>().ToList();
+
+                _fingersToScan = FingerViewModel.All.Where(x => fingerIds.Contains(x.Id)).ToList();
+
+                transaction.Commit();
+            }
+        }
+
+        private FingerViewModel GetNextFingerToScan()
+        {
+            var current = this.ViewModel.CurrentFinger;
+            if (_fingersToScan.LastOrDefault() == current)
+                return _fingersToScan.FirstOrDefault();
+            else
+                return _fingersToScan[_fingersToScan.IndexOf(current) + 1];
+        }
+
         private void Process(Sample sample)
         {
             var image = ConvertSampleToBitmap(sample).ToBitmapSource();
 
             this.ViewModel.CapturedFingerImage = image;
             this.ViewModel.FingerImages[this.ViewModel.CurrentFinger] = image;
-            this.ViewModel.CurrentFinger = FingerViewModel.GetNext(this.ViewModel.CurrentFinger);
+            this.ViewModel.CurrentFinger = GetNextFingerToScan();
         }
 
         private Bitmap ConvertSampleToBitmap(Sample sample)

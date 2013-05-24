@@ -29,7 +29,6 @@ namespace CIS.UI.Features.Polices.Clearances
         public virtual string Purpose { get; set; }
         public virtual byte[] Barcode { get; set; }
         public virtual string BarcodeText { get; set; }
-        public virtual byte[] Logo { get; set; }
         public virtual string Verifier { get; set; }
         public virtual string VerifierRank { get; set; }
         public virtual string VerifierPosition { get; set; }
@@ -41,6 +40,7 @@ namespace CIS.UI.Features.Polices.Clearances
         public virtual string Issuer { get; set; }
         public virtual string IssueAddress { get; set; }
         public virtual DateTime IssueDate { get; set; }
+        public virtual byte[] Logo { get; set; }
         public virtual string Office { get; set; }
         public virtual string Station { get; set; }
         public virtual string Location { get; set; }
@@ -52,45 +52,91 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public override object SerializeWith(object instance)
         {
-            var target = this;
-            var source = instance as Clearance;
-            if (source == null) 
+            if (instance == null)
                 return null;
 
-            target.Id = source.Id;
-            target.Applicant = source.Applicant.Person.Fullname;
-            target.BirthDate = source.Applicant.Person.BirthDate;
-            target.BirthPlace = source.Applicant.BirthPlace;
-            target.Gender = source.Applicant.Person.Gender.ToString();
-            target.CivilStatus = source.Applicant.CivilStatus.ToString();
-            target.Citizenship = source.Applicant.Citizenship;
-            target.Address = source.Applicant.Address.ToString();
-            target.Picture = source.Applicant.Picture.Bytes;
-            target.Signature = source.Applicant.Signature.Bytes;
-            target.RightThumb = source.Applicant.FingerPrint.RightThumb.Bytes;
-            target.LeftThumb = source.Applicant.FingerPrint.LeftThumb.Bytes;
-            target.Purpose = source.Applicant.Purpose.Name;
-            target.Barcode = source.Barcode.Image.Bytes;
-            target.BarcodeText = source.Barcode.Text;
-            target.Logo = source.Station.Logo.Bytes;
-            target.Verifier = source.Verifier.Person.Fullname;
-            target.VerifierRank = source.VerifierRank;
-            target.VerifierPosition = source.VerifierPosition;
-            target.Certifier = source.Certifier.Person.Fullname;
-            target.CertifierRank = source.CertifierRank;
-            target.CertifierPosition = source.CertifierPosition;
-            target.Issuer = source.Audit.CreatedBy;
-            target.IssueDate = source.IssueDate;
-            target.IssueAddress = source.Station.Address.ToString();
-            target.Office = source.Station.Office;
-            target.Location = source.Station.Location;
-            target.OfficialReceiptNumber = source.OfficialReceiptNumber;
-            target.TaxCertificateNumber = source.TaxCertificateNumber;
-            target.PartialMatchFindings = source.PartialMatchFindings;
-            target.PerfectMatchFindings = source.PerfectMatchFindings;
-            target.FinalFindings = source.FinalFindings;
+            if (instance is ClearanceReportViewModel)
+            {
+                var target = this;
+                var source = instance as ClearanceReportViewModel;
 
-            return target;
+                target.Id = source.Id;
+                target.Applicant = source.Applicant;
+                target.BirthDate = source.BirthDate;
+                target.BirthPlace = source.BirthPlace;
+                target.Gender = source.Gender;
+                target.CivilStatus = source.CivilStatus;
+                target.Citizenship = source.Citizenship;
+                target.Address = source.Address;
+                target.Picture = source.Picture;
+                target.Signature = source.Signature;
+                target.RightThumb = source.RightThumb;
+                target.LeftThumb = source.LeftThumb;
+                target.Purpose = source.Purpose;
+                target.Barcode = source.Barcode;
+                target.BarcodeText = source.BarcodeText;
+                target.Verifier = source.Verifier;
+                target.VerifierRank = source.VerifierRank;
+                target.VerifierPosition = source.VerifierPosition;
+                target.Certifier = source.Certifier;
+                target.CertifierRank = source.CertifierRank;
+                target.CertifierPosition = source.CertifierPosition;
+                target.Issuer = source.Issuer;
+                target.IssueDate = source.IssueDate;
+                target.IssueAddress = source.IssueAddress;
+                target.Logo = source.Logo;
+                target.Office = source.Office;
+                target.Location = source.Location;
+                target.OfficialReceiptNumber = source.OfficialReceiptNumber;
+                target.TaxCertificateNumber = source.TaxCertificateNumber;
+                target.PartialMatchFindings = source.PartialMatchFindings;
+                target.PerfectMatchFindings = source.PerfectMatchFindings;
+                target.FinalFindings = source.FinalFindings;
+
+                return target;
+            }
+            else if (instance is Clearance)
+            {
+                var target = this;
+                var source = instance as Clearance;
+
+                target.Id = source.Id;
+                target.Applicant = source.Applicant.Person.Fullname;
+                target.BirthDate = source.Applicant.Person.BirthDate;
+                target.BirthPlace = source.Applicant.BirthPlace;
+                target.Gender = source.Applicant.Person.Gender.ToString();
+                target.CivilStatus = source.Applicant.CivilStatus.ToString();
+                target.Citizenship = source.Applicant.Citizenship;
+                target.Address = source.Applicant.Address.ToString();
+                target.Picture = source.Applicant.Picture.Bytes;
+                target.Signature = source.Applicant.Signature.Bytes;
+                target.RightThumb = source.Applicant.FingerPrint.RightThumb.Bytes;
+                target.LeftThumb = source.Applicant.FingerPrint.LeftThumb.Bytes;
+                target.Purpose = source.Applicant.Purpose.Name;
+                target.Barcode = source.Barcode.Image.Bytes;
+                target.BarcodeText = source.Barcode.Text;
+                target.Verifier = source.Verifier.Person.Fullname;
+                target.VerifierRank = source.VerifierRank;
+                target.VerifierPosition = source.VerifierPosition;
+                target.Certifier = source.Certifier.Person.Fullname;
+                target.CertifierRank = source.CertifierRank;
+                target.CertifierPosition = source.CertifierPosition;
+                target.Issuer = source.Audit.CreatedBy;
+                target.IssueDate = source.IssueDate;
+                target.IssueAddress = source.Station.Address.ToString();
+                target.Logo = source.Station.Logo.Bytes;
+                target.Office = source.Station.Office;
+                target.Location = source.Station.Location;
+                target.OfficialReceiptNumber = source.OfficialReceiptNumber;
+                target.TaxCertificateNumber = source.TaxCertificateNumber;
+                target.PartialMatchFindings = source.PartialMatchFindings;
+                target.PerfectMatchFindings = source.PerfectMatchFindings;
+                target.FinalFindings = source.FinalFindings;
+
+                return target;
+            }
+
+            return null;
         }
 
         public static ClearanceReportViewModel GetTestData()

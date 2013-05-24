@@ -94,39 +94,39 @@ namespace CIS.UI.Features.Commons.Biometrics
             FingerViewModel.LeftPinky
         };
 
-        public static readonly IList<FingerViewModel> FingersToScan = GetFingersToScan();
+        //public static readonly IList<FingerViewModel> FingersToScan = GetFingersToScan();
 
-        public static FingerViewModel GetNext(FingerViewModel current)
-        {
-            if (FingerViewModel.FingersToScan.LastOrDefault() == current)
-                return FingerViewModel.FingersToScan.FirstOrDefault();
-            else
-                return FingerViewModel.FingersToScan[FingerViewModel.FingersToScan.IndexOf(current) + 1];
-        }
+        //public static FingerViewModel GetNext(FingerViewModel current)
+        //{
+        //    if (FingerViewModel.FingersToScan.LastOrDefault() == current)
+        //        return FingerViewModel.FingersToScan.FirstOrDefault();
+        //    else
+        //        return FingerViewModel.FingersToScan[FingerViewModel.FingersToScan.IndexOf(current) + 1];
+        //}
 
-        private static IList<FingerViewModel> GetFingersToScan()
-        {
-            var fingersToScan = (IList<FingerViewModel>)null;
-            var sessionFactory = IoC.Container.Resolve<ISessionFactory>();
-            using (var session = sessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
-            {
-                var fingerIds = session.Query<Setting>()
-                    .Where(x => x.Terminal.MachineName == Environment.MachineName)
-                    .SelectMany(x => x.FingersToScan)
-                    .Select(x => x.Id)
-                    .ToList();
+        //private static IList<FingerViewModel> GetFingersToScan()
+        //{
+        //    var fingersToScan = (IList<FingerViewModel>)null;
+        //    var sessionFactory = IoC.Container.Resolve<ISessionFactory>();
+        //    using (var session = sessionFactory.OpenSession())
+        //    using (var transaction = session.BeginTransaction())
+        //    {
+        //        var fingerIds = session.Query<Setting>()
+        //            .Where(x => x.Terminal.MachineName == Environment.MachineName)
+        //            .SelectMany(x => x.FingersToScan)
+        //            .Select(x => x.Id)
+        //            .ToList();
 
-                if (fingerIds == null || fingerIds.Count() == 0)
-                    fingerIds = Properties.Settings.Default.FingersToScan.Cast<string>().ToList();
+        //        if (fingerIds == null || fingerIds.Count() == 0)
+        //            fingerIds = Properties.Settings.Default.FingersToScan.Cast<string>().ToList();
 
-                fingersToScan = FingerViewModel.All.Where(x => fingerIds.Contains(x.Id)).ToList();
+        //        fingersToScan = FingerViewModel.All.Where(x => fingerIds.Contains(x.Id)).ToList();
 
-                transaction.Commit();
-            }
+        //        transaction.Commit();
+        //    }
 
-            return fingersToScan;
-        }
+        //    return fingersToScan;
+        //}
 
         #endregion
 
