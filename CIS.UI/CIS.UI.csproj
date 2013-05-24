@@ -247,6 +247,11 @@
     <Compile Include="Features\Commons\Cameras\SplitPage1.xaml.cs">
       <DependentUpon>SplitPage1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\Commons\Signatures\SignatureController.cs" />
+    <Compile Include="Features\Commons\Signatures\SignatureView.xaml.cs">
+      <DependentUpon>SignatureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Commons\Signatures\SignatureViewModel.cs" />
     <Compile Include="Features\Commons\Terminals\TerminalDataInitializer.cs" />
     <Compile Include="Features\Firearms\KindDataInitializer.cs" />
     <Compile Include="Features\Firearms\Licenses\GunController.cs" />
@@ -342,8 +347,15 @@
       <DependentUpon>OfficerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Maintenances\OfficerViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\SettingController.cs" />
     <Compile Include="Features\Polices\Maintenances\SettingDataInitializer.cs" />
-    <Compile Include="Features\Polices\Maintenances\SettingsViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\SettingFingerViewModel.cs">
+      <DependentUpon>SettingViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Maintenances\SettingView.xaml.cs">
+      <DependentUpon>SettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Maintenances\SettingViewModel.cs" />
     <Compile Include="Features\Polices\Maintenances\StationController.cs" />
     <Compile Include="Features\Polices\Maintenances\StationDataInitializer.cs" />
     <Compile Include="Features\Polices\Maintenances\MaintenancePage.xaml.cs">
@@ -441,6 +453,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Features\Commons\Signatures\SignatureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Features\Firearms\Licenses\GunView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -529,6 +545,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\Polices\Maintenances\PurposeListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Polices\Maintenances\SettingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -11,6 +11,7 @@
         <mui:LinkGroup DisplayName="welcome">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="home" Source="/Features/Homes/Page.xaml" />
+                <mui:Link DisplayName="test" Source="/Features/Commons/Signatures/SignatureView.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
         <mui:LinkGroup DisplayName="police">

@@ -10,6 +10,7 @@
         <mui:ModernTab Layout="List" SelectedSource="/Features/Polices/Maintenances/StationView.xaml">
             <mui:ModernTab.Links>
                 <mui:Link DisplayName="Station" Source="/Features/Polices/Maintenances/StationView.xaml"/>
+                <mui:Link DisplayName="Setting" Source="/Features/Polices/Maintenances/SettingView.xaml"/>
                 <mui:Link DisplayName="Officers" Source="/Features/Polices/Maintenances/OfficerListView.xaml"/>
                 <mui:Link DisplayName="Purposes" Source="/Features/Polices/Maintenances/PurposeListView.xaml"/>
             </mui:ModernTab.Links>
