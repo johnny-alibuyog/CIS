@@ -89,9 +89,13 @@ namespace CIS.UI.Features.Polices.Warrants
             this.ViewModel.TotalSuspects = 0M;
             var start = DateTime.Now;
 
-            var litusImporter = IoC.Container.Resolve<LitusImportDataInitializer>();
-            litusImporter.ViewModel = this.ViewModel;
-            litusImporter.Execute();
+            var litusDataImporter = IoC.Container.Resolve<LitusImportDataInitializer>();
+            litusDataImporter.ViewModel = this.ViewModel;
+            litusDataImporter.Execute();
+
+            var naraDataImporter = IoC.Container.Resolve<NaraImportDataInitializer>();
+            naraDataImporter.ViewModel = this.ViewModel;
+            naraDataImporter.Execute();
 
             var end = DateTime.Now;
             var duration = end - start;

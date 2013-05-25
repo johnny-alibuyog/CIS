@@ -25,6 +25,10 @@
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Name"/>
+                        <TextBox Text="{Binding Name, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Office"/>
                         <TextBox Text="{Binding Office, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>

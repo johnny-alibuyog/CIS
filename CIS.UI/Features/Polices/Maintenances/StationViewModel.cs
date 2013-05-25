@@ -22,6 +22,9 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public virtual BitmapSource Logo { get; set; }
 
+        [NotNullNotEmpty(Message = "Name is mandatory.")]
+        public virtual string Name { get; set; }
+
         [NotNullNotEmpty(Message = "Office is mandatory.")]
         public virtual string Office { get; set; }
 
@@ -58,6 +61,7 @@ namespace CIS.UI.Features.Polices.Maintenances
 
                 target.Id = source.Id;
                 target.Logo = source.Logo;
+                target.Name = source.Name;
                 target.Office = source.Office;
                 target.Location = source.Location;
                 target.ClearanceValidityInDays = source.ClearanceValidityInDays;
@@ -72,6 +76,7 @@ namespace CIS.UI.Features.Polices.Maintenances
 
                 target.Id = source.Id;
                 target.Logo = source.Logo.Image.ToBitmapSource();
+                target.Name = source.Name;
                 target.Office = source.Office;
                 target.Location = source.Location;
                 target.ClearanceValidityInDays = source.ClearanceValidityInDays;
@@ -106,6 +111,7 @@ namespace CIS.UI.Features.Polices.Maintenances
 
                 //target.Id = source.Id;
                 target.Logo.Image = source.Logo.ToImage();
+                target.Name = source.Name;
                 target.Office = source.Office;
                 target.Location = source.Location;
                 target.ClearanceValidityInDays = source.ClearanceValidityInDays;

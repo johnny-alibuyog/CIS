@@ -7,11 +7,10 @@ namespace CIS.Core.Entities.Polices
 {
     public enum ArrestStatus
     {
-        Acquitted,
-        Arrested,
-        Bailed,
-        Fugitive,
-        Served
+        Atlarge,
+        OnBail,
+        Detained,
+        Deceased,
     }
 
     //public class ArrestStatus

@@ -8,12 +8,12 @@
         ContentSource="/Features/Polices/Clearances/ClearancePage.xaml" Width="1078" mui:ModernFrame.KeepAlive="False" Height="600">
 
     <mui:ModernWindow.MenuLinkGroups>
-        <mui:LinkGroup DisplayName="welcome">
+        <!--<mui:LinkGroup DisplayName="welcome">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="home" Source="/Features/Homes/Page.xaml" />
                 <mui:Link DisplayName="test" Source="/Features/Commons/Signatures/SignatureView.xaml" />
             </mui:LinkGroup.Links>
-        </mui:LinkGroup>
+        </mui:LinkGroup>-->
         <mui:LinkGroup DisplayName="police">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="Clearance" Source="/Features/Polices/Clearances/ClearancePage.xaml" />
@@ -28,19 +28,19 @@
                 <mui:Link DisplayName="Maintenance" Source="/Features/Firearms/Maintenances/MaintenancePage.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
-        <mui:LinkGroup DisplayName="barangay">
+        <!--<mui:LinkGroup DisplayName="barangay">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="Clearance" />
                 <mui:Link DisplayName="Office" />
                 <mui:Link DisplayName="Blotter" />
             </mui:LinkGroup.Links>
-        </mui:LinkGroup>
-        <mui:LinkGroup DisplayName="mayor">
+        </mui:LinkGroup>-->
+        <!--<mui:LinkGroup DisplayName="mayor">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="Clearance" />
                 <mui:Link DisplayName="Office" />
             </mui:LinkGroup.Links>
-        </mui:LinkGroup>
+        </mui:LinkGroup>-->
         <mui:LinkGroup DisplayName="settings">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="software" Source="/Features/Settings/Page.xaml" />

@@ -190,6 +190,7 @@ namespace CIS.UI.Features.Polices.Clearances
         {
             this.ViewModel.Summary.PerfectMatchFindings = string.Empty;
             this.ViewModel.Summary.PartialMatchFindings = string.Empty;
+            this.ViewModel.Summary.FinalFindings = string.Empty;
 
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
@@ -262,6 +263,10 @@ namespace CIS.UI.Features.Polices.Clearances
                             .Distinct()
                     );
                 }
+
+                this.ViewModel.Summary.FinalFindings = !string.IsNullOrWhiteSpace(this.ViewModel.Summary.PerfectMatchFindings)
+                    ? this.ViewModel.Summary.PerfectMatchFindings
+                    : "No Derogatory Records/Information";
 
                 transaction.Commit();
             }

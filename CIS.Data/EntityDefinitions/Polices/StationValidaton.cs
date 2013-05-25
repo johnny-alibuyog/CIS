@@ -19,6 +19,10 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Define(x => x.Logo);
 
+            Define(x => x.Name)
+                .NotNullableAndNotEmpty()
+                .And.MaxLength(150);
+
             Define(x => x.Office)
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(150);

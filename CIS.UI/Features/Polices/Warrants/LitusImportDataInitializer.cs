@@ -22,7 +22,7 @@ namespace CIS.UI.Features.Polices.Warrants
 
         #region Routine Helpers
 
-        private IEnumerable<ImportWarrantViewModel> ParseFromFile()
+        private IEnumerable<LitusImportWarrant> ParseFromFile()
         {
             var directoryInfo = new DirectoryInfo(this.ViewModel.SourcePath);
             var warrantFiles = directoryInfo.GetFiles("*arrest*xls*", SearchOption.AllDirectories).ToList();
@@ -40,47 +40,47 @@ namespace CIS.UI.Features.Polices.Warrants
             };
 
             // parse warrants
-            var warrants = new List<ImportWarrantViewModel>();
+            var warrants = new List<LitusImportWarrant>();
             foreach (var file in warrantFiles)
             {
                 var excel = new ExcelQueryFactory(file.FullName);
-                excel.AddMapping<ImportWarrantViewModel>(x => x.WarrantCode, "CODE");
-                excel.AddMapping<ImportWarrantViewModel>(x => x.CaseNumber, "CASE_NO");
-                excel.AddMapping<ImportWarrantViewModel>(x => x.Description, "CRIME_TYPE_NAME");
-                excel.AddMapping<ImportWarrantViewModel>(x => x.BailAmount, "BAIL_AMOUNT");
-                excel.AddMapping<ImportWarrantViewModel>(x => x.IssuedOn, "ISSUED_ON", x => ParseDate(x));
-                excel.AddMapping<ImportWarrantViewModel>(x => x.IssuedBy, "ISSUED_BY_NAME");
-                excel.AddMapping<ImportWarrantViewModel>(x => x.Address1, "ADDRESS1");
-                excel.AddMapping<ImportWarrantViewModel>(x => x.Address2, "ADDRESS2");
-                excel.AddMapping<ImportWarrantViewModel>(x => x.Barangay, "BARANGAY");
-                excel.AddMapping<ImportWarrantViewModel>(x => x.City, "CITY");
-                excel.AddMapping<ImportWarrantViewModel>(x => x.Province, "PROVINCE");
+                excel.AddMapping<LitusImportWarrant>(x => x.WarrantCode, "CODE");
+                excel.AddMapping<LitusImportWarrant>(x => x.CaseNumber, "CASE_NO");
+                excel.AddMapping<LitusImportWarrant>(x => x.Description, "CRIME_TYPE_NAME");
+                excel.AddMapping<LitusImportWarrant>(x => x.BailAmount, "BAIL_AMOUNT");
+                excel.AddMapping<LitusImportWarrant>(x => x.IssuedOn, "ISSUED_ON", x => ParseDate(x));
+                excel.AddMapping<LitusImportWarrant>(x => x.IssuedBy, "ISSUED_BY_NAME");
+                excel.AddMapping<LitusImportWarrant>(x => x.Address1, "ADDRESS1");
+                excel.AddMapping<LitusImportWarrant>(x => x.Address2, "ADDRESS2");
+                excel.AddMapping<LitusImportWarrant>(x => x.Barangay, "BARANGAY");
+                excel.AddMapping<LitusImportWarrant>(x => x.City, "CITY");
+                excel.AddMapping<LitusImportWarrant>(x => x.Province, "PROVINCE");
 
                 var firstSheet = excel.GetWorksheetNames().First();
-                warrants.AddRange(excel.Worksheet<ImportWarrantViewModel>(firstSheet).ToList());
+                warrants.AddRange(excel.Worksheet<LitusImportWarrant>(firstSheet).ToList());
             }
 
             // parse suspects
-            var suspects = new List<ImportSuspectViewModel>();
+            var suspects = new List<LitusImportSuspect>();
             foreach (var file in suspectFiles)
             {
                 var excel = new ExcelQueryFactory(file.FullName);
-                excel.AddMapping<ImportSuspectViewModel>(x => x.WarrantCode, "WA_CODE");
-                excel.AddMapping<ImportSuspectViewModel>(x => x.FirstName, "FNAME");
-                excel.AddMapping<ImportSuspectViewModel>(x => x.MiddleName, "MNAME");
-                excel.AddMapping<ImportSuspectViewModel>(x => x.LastName, "LNAME");
-                excel.AddMapping<ImportSuspectViewModel>(x => x.Suffix, "SUF");
-                excel.AddMapping<ImportSuspectViewModel>(x => x.AlsoKnownAs, "ALIAS");
+                excel.AddMapping<LitusImportSuspect>(x => x.WarrantCode, "WA_CODE");
+                excel.AddMapping<LitusImportSuspect>(x => x.FirstName, "FNAME");
+                excel.AddMapping<LitusImportSuspect>(x => x.MiddleName, "MNAME");
+                excel.AddMapping<LitusImportSuspect>(x => x.LastName, "LNAME");
+                excel.AddMapping<LitusImportSuspect>(x => x.Suffix, "SUF");
+                excel.AddMapping<LitusImportSuspect>(x => x.AlsoKnownAs, "ALIAS");
 
                 var firstSheet = excel.GetWorksheetNames().First();
-                suspects.AddRange(excel.Worksheet<ImportSuspectViewModel>(firstSheet).ToList());
+                suspects.AddRange(excel.Worksheet<LitusImportSuspect>(firstSheet).ToList());
             }
 
             var resultList = warrants
                 .GroupJoin(suspects,
                     (warrant) => warrant.WarrantCode,
                     (suspect) => suspect.WarrantCode,
-                    (warrant, joinedSuspects) => new ImportWarrantViewModel()
+                    (warrant, joinedSuspects) => new LitusImportWarrant()
                     {
                         WarrantCode = warrant.WarrantCode,
                         CaseNumber = warrant.CaseNumber,
@@ -110,7 +110,7 @@ namespace CIS.UI.Features.Polices.Warrants
             return resultList;
         }
 
-        private void SaveBatch(int batchSize, IEnumerable<ImportWarrantViewModel> batchToImport)
+        private void SaveBatch(int batchSize, IEnumerable<LitusImportWarrant> batchToImport)
         {
             var batchCodesToImport = batchToImport
                 .Select(x => x.WarrantCode)
@@ -164,19 +164,21 @@ namespace CIS.UI.Features.Polices.Warrants
                             warrant.AddSuspect(suspect);
                         }
                         suspect.Aliases = new Collection<string>() { item1.AlsoKnownAs };
-                        suspect.Person = new Person(
-                            firstName: item1.FirstName,
-                            middleName: item1.MiddleName,
-                            lastName: item1.LastName,
-                            suffix: item1.Suffix
-                        );
-                        suspect.Address = new Address(
-                            address1: item.Address1,
-                            address2: item.Address2,
-                            barangay: item.Barangay,
-                            city: item.City,
-                            province: item.Province
-                        );
+                        suspect.Person = new Person()
+                        {
+                            FirstName = item1.FirstName,
+                            MiddleName = item1.MiddleName,
+                            LastName = item1.LastName,
+                            Suffix = item1.Suffix
+                        };
+                        suspect.Address = new Address()
+                        {
+                            Address1 = item.Address1,
+                            Address2 = item.Address2,
+                            Barangay = item.Barangay,
+                            City = item.City,
+                            Province = item.Province
+                        };
                     }
 
                     session.SaveOrUpdate(warrant);

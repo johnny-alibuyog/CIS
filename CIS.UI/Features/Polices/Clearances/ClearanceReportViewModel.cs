@@ -27,6 +27,7 @@ namespace CIS.UI.Features.Polices.Clearances
         public virtual byte[] RightThumb { get; set; }
         public virtual byte[] LeftThumb { get; set; }
         public virtual string Purpose { get; set; }
+        public virtual string Validity { get; set; }
         public virtual byte[] Barcode { get; set; }
         public virtual string BarcodeText { get; set; }
         public virtual string Verifier { get; set; }
@@ -73,6 +74,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.RightThumb = source.RightThumb;
                 target.LeftThumb = source.LeftThumb;
                 target.Purpose = source.Purpose;
+                target.Validity = source.Validity;
                 target.Barcode = source.Barcode;
                 target.BarcodeText = source.BarcodeText;
                 target.Verifier = source.Verifier;
@@ -87,6 +89,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.IssueDate = source.IssueDate;
                 target.IssueAddress = source.IssueAddress;
                 target.Logo = source.Logo;
+                target.Station = source.Station;
                 target.Office = source.Office;
                 target.Location = source.Location;
                 target.OfficialReceiptNumber = source.OfficialReceiptNumber;
@@ -115,6 +118,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.RightThumb = source.Applicant.FingerPrint.RightThumb.Bytes;
                 target.LeftThumb = source.Applicant.FingerPrint.LeftThumb.Bytes;
                 target.Purpose = source.Applicant.Purpose.Name;
+                target.Validity = source.Validity;
                 target.Barcode = source.Barcode.Image.Bytes;
                 target.BarcodeText = source.Barcode.Text;
                 target.Verifier = source.Verifier.Person.Fullname;
@@ -129,7 +133,9 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.IssueDate = source.IssueDate;
                 target.IssueAddress = source.Station.Address.ToString();
                 target.Logo = source.Station.Logo.Bytes;
+                target.Station = source.Station.Name;
                 target.Office = source.Station.Office;
+                target.Station = source.Station.Name;
                 target.Location = source.Station.Location;
                 target.OfficialReceiptNumber = source.OfficialReceiptNumber;
                 target.TaxCertificateNumber = source.TaxCertificateNumber;

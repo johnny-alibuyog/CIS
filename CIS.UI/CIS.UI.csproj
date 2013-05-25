@@ -401,18 +401,27 @@
     </Compile>
     <Compile Include="Features\Polices\Maintenances\StationViewModel.cs" />
     <Compile Include="Features\Polices\Warrants\ImportController.cs" />
-    <Compile Include="Features\Polices\Warrants\ImportSuspectViewModel.cs">
-      <DependentUpon>ImportViewModel.cs</DependentUpon>
+    <Compile Include="Features\Polices\Warrants\LitusImportDataInitializer.cs">
+      <DependentUpon>ImportController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Warrants\LitusImportSuspect.cs">
+      <DependentUpon>LitusImportDataInitializer.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Warrants\ImportView.xaml.cs">
       <DependentUpon>ImportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Warrants\ImportViewModel.cs" />
-    <Compile Include="Features\Polices\Warrants\ImportWarrantViewModel.cs">
-      <DependentUpon>ImportViewModel.cs</DependentUpon>
+    <Compile Include="Features\Polices\Warrants\LitusImportWarrant.cs">
+      <DependentUpon>LitusImportDataInitializer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\LitusImportDataInitializer.cs">
+    <Compile Include="Features\Polices\Warrants\NaraImportDataInitializer.cs">
       <DependentUpon>ImportController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Warrants\NaraImportSuspect.cs">
+      <DependentUpon>NaraImportDataInitializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Warrants\NaraImportWarrant.cs">
+      <DependentUpon>NaraImportDataInitializer.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Warrants\WarrantListCriteriaViewModel.cs">
       <DependentUpon>WarrantListViewModel.cs</DependentUpon>
@@ -666,6 +675,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="philippine-barangays.xlsx" />
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
@@ -702,26 +712,24 @@
     <Content Include="Assets\Images\FF-R5.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="firearms-licenses.xlsx" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Fody.targets" />
-    <Content Include="firearms-license.xlsx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <Content Include="philippine-barangays.xlsx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Properties\DataSources\CIS.UI.Features.Polices.Clearances.ArchiveItemViewModel.datasource" />
     <None Include="Properties\DataSources\CIS.UI.Features.Polices.Clearances.ClearanceReportViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="warrant_list.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CIS.Core\CIS.Core.csproj">

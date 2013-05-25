@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CIS.Core.Entities.Polices;
+using CIS.Data.Commons.Extentions;
 using FluentNHibernate.Mapping;
 
 namespace CIS.Data.EntityDefinition.Polices
@@ -52,6 +53,24 @@ namespace CIS.Data.EntityDefinition.Polices
             Map(x => x.PerfectMatchFindings);
 
             Map(x => x.FinalFindings);
+
+            HasManyToMany(x => x.SuspectPartialMatches)
+                .Access.CamelCaseField(Prefix.Underscore)
+                .Schema(GetType().ParseSchema())
+                .Table("ClearancesSuspectPartialMatches")
+                .AsSet();
+
+            HasManyToMany(x => x.SuspectPerfectMatches)
+                .Access.CamelCaseField(Prefix.Underscore)
+                .Schema(GetType().ParseSchema())
+                .Table("ClearancesSuspectPerfectMatches")
+                .AsSet();
+
+            HasManyToMany(x => x.ExpiredLicenseMatches)
+                .Access.CamelCaseField(Prefix.Underscore)
+                .Schema(GetType().ParseSchema())
+                .Table("ClearancesExpiredLicenseMatches")
+                .AsSet();
         }
     }
 }

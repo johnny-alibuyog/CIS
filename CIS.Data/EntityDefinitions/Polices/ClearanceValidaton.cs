@@ -71,6 +71,16 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Define(x => x.FinalFindings)
                 .MaxLength(2000);
+
+            Define(x => x.SuspectPartialMatches)
+                .HasValidElements();
+
+            Define(x => x.SuspectPerfectMatches)
+                .HasValidElements();
+
+            Define(x => x.ExpiredLicenseMatches)
+                .HasValidElements();
+
         }
     }
 }

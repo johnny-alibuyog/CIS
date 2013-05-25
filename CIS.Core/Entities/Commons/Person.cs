@@ -75,6 +75,16 @@ namespace CIS.Core.Entities.Commons
             _birthDate = birthDate;
         }
 
+        public Person(string firstName, string middleName, string lastName, string suffix, bool gender)
+        {
+            // TODO: Complete member initialization
+            this.FirstName = firstName;
+            this.MiddleName = middleName;
+            this.LastName = lastName;
+            this.Suffix = suffix;
+            this.gender = gender;
+        }
+
         #endregion
 
         #region Static Members
@@ -104,6 +114,7 @@ namespace CIS.Core.Entities.Commons
         #region Equality Comparer
 
         private Nullable<int> _hashCode;
+        private bool gender;
 
         public override int GetHashCode()
         {

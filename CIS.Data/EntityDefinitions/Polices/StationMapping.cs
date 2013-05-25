@@ -23,6 +23,8 @@ namespace CIS.Data.EntityDefinition.Polices
                 .Cascade.All()
                 .Fetch.Join();
 
+            Map(x => x.Name);
+
             Map(x => x.Office);
 
             Map(x => x.Location);
