@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CIS.Core.Entities.Firearms;
 using CIS.Data;
 using CIS.UI.Bootstraps.DependencyInjection;
+using NHibernate.Validator.Constraints;
 using ReactiveUI;
 
 namespace CIS.UI.Features.Firearms.Licenses
@@ -14,14 +15,19 @@ namespace CIS.UI.Features.Firearms.Licenses
     {
         private readonly GunController _controller;
 
+        [NotNullNotEmpty]
         public virtual string Model { get; set; }
 
+        [NotNullNotEmpty]
         public virtual string Caliber { get; set; }
 
+        [NotNullNotEmpty]
         public virtual string SerialNumber { get; set; }
 
+        [NotNull]
         public virtual Lookup<Guid> Kind { get; set; }
 
+        [NotNull]
         public virtual Lookup<Guid> Make { get; set; }
 
         public virtual IReactiveCollection<Lookup<Guid>> Kinds { get; set; }

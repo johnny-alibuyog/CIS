@@ -24,11 +24,11 @@
         </StackPanel>
         <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Classifcation"/>
-            <ComboBox ItemsSource="{Binding Kinds, Mode=TwoWay}" SelectedItem="{Binding Kind, Mode=TwoWay}" DisplayMemberPath="Name" />
+            <ComboBox ItemsSource="{Binding Kinds, Mode=TwoWay}" SelectedItem="{Binding Kind, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" />
         </StackPanel>
         <StackPanel Style="{StaticResource FieldSet}">
             <Label Content="Manufacturer"/>
-            <ComboBox ItemsSource="{Binding Makes, Mode=TwoWay}" SelectedItem="{Binding Make, Mode=TwoWay}" DisplayMemberPath="Name" />
+            <ComboBox ItemsSource="{Binding Makes, Mode=TwoWay}" SelectedItem="{Binding Make, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" />
         </StackPanel>
     </StackPanel>
 </UserControl>

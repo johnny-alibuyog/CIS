@@ -20,6 +20,8 @@ namespace CIS.Core.Entities.Polices
         private bool _withFingerScannerDevice;
         private bool _withDigitalSignatureDevice;
         private ICollection<Finger> _fingersToScan;
+        private Officer _currentVerifier;
+        private Officer _currentCertifier;
 
         public virtual Guid Id
         {
@@ -67,6 +69,18 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _fingersToScan; }
             set { SyncFingersToScan(value); }
+        }
+
+        public virtual Officer CurrentVerifier
+        {
+            get { return _currentVerifier; }
+            set { _currentVerifier = value; }
+        }
+
+        public virtual Officer CurrentCertifier
+        {
+            get { return _currentCertifier; }
+            set { _currentCertifier = value; }
         }
 
         #region Methods

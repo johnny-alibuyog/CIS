@@ -30,6 +30,10 @@ namespace CIS.Data.EntityDefinitions.Polices
 
             Define(x => x.FingersToScan)
                 .HasValidElements();
+
+            Define(x => x.CurrentVerifier);
+
+            Define(x => x.CurrentCertifier);
         }
     }
 }

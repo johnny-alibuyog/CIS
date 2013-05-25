@@ -52,11 +52,11 @@
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Address"/>
-                        <TextBox Text="{Binding Address, Mode=OneWay}" Height="60" IsEnabled="False" />
+                        <TextBox Text="{Binding Address, Mode=OneWay}" Height="60" IsEnabled="False" TextWrapping="WrapWithOverflow" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Findings"/>
-                        <TextBox Foreground="Red" Text="{Binding PerfectMatchFindings, Mode=OneWay}" Height="40" IsEnabled="False" TextWrapping="WrapWithOverflow" />
+                        <TextBox Foreground="Red" Text="{Binding PerfectMatchFindings, Mode=OneWay}" Height="60" IsEnabled="False" TextWrapping="WrapWithOverflow" />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

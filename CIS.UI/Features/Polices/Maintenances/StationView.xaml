@@ -20,8 +20,8 @@
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Logo" />
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="{Binding Logo}" HorizontalAlignment="Center" MaxHeight="250" MaxWidth="250"/>
-                            <mui:ModernButton Command="{Binding LookupLogo}" Style="{StaticResource app_bar_picture}" HorizontalAlignment="Center" Margin="4"/>
+                            <Image Source="{Binding Logo}" HorizontalAlignment="Center" Height="80" Width="80"/>
+                            <mui:ModernButton Command="{Binding LookupLogo}" Style="{StaticResource app_bar_picture}" VerticalAlignment="Center" Margin="4"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">

@@ -25,7 +25,7 @@
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label />
                         <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1" Width="{StaticResource InputWidth}">
-                            <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding FingersToScan, Mode=TwoWay, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedItem}">
+                            <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding FingersToScan, Mode=TwoWay, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedItem}" IsEnabled="{Binding WithFingerScannerDevice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="ListBoxItem">
                                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

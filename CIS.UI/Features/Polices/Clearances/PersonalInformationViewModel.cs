@@ -72,7 +72,7 @@ namespace CIS.UI.Features.Polices.Clearances
             this.WhenAny(
                 x => x.Person.IsValid,
                 x => x.Address.IsValid,
-                (isPersonValid, isAddressValid) => { return true; }
+                (isPersonValid, isAddressValid) => true
             )
             .Subscribe(_ => this.Revalidate());
         }

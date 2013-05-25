@@ -35,6 +35,10 @@ namespace CIS.Data.EntityDefinitions.Polices
                 .Table("SettingsFingersToScan")
                 .Cascade.SaveUpdate()
                 .AsSet();
+
+            References(x => x.CurrentVerifier);
+
+            References(x => x.CurrentCertifier);
         }
     }
 }

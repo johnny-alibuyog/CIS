@@ -7,6 +7,8 @@ using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Firearms;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Features.Commons.Persons;
+using NHibernate.Validator.Constraints;
+using ReactiveUI;
 using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Firearms.Licenses
@@ -17,14 +19,19 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public virtual Guid Id { get; set; }
 
+        [NotNull]
         public virtual PersonViewModel Person { get; set; }
 
+        [NotNull]
         public virtual AddressViewModel Address { get; set; }
 
+        [Valid]
         public virtual GunViewModel Gun { get; set; }
 
+        [NotNullNotEmpty]
         public virtual string LicenseNumber { get; set; }
 
+        [NotNullNotEmpty]
         public virtual string ControlNumber { get; set; }
 
         public virtual DateTime IssueDate { get; set; }
@@ -37,9 +44,22 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public LicenseViewModel()
         {
+            IssueDate = DateTime.Today;
+            ExpiryDate = DateTime.Today;
+
             Person = new PersonViewModel();
             Address = new AddressViewModel();
             Gun = new GunViewModel();
+
+            this.WhenAny(
+                x => x.Person.IsValid,
+                x => x.Address.IsValid,
+                x => x.Gun.IsValid,
+                (isPersonValid, isAddressValid, isGunValid) => true
+            )
+            .Subscribe(_ => this.Revalidate());
+
+
 
             _controller = new LicenseContoller(this);
         }
