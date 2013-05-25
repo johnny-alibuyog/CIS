@@ -712,7 +712,7 @@
     <Content Include="Assets\Images\FF-R5.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="firearms-licenses.xlsx" />
+    <Content Include="firearms_licenses.xlsx" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
