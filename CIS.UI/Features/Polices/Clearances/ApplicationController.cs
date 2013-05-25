@@ -15,6 +15,7 @@ using CIS.UI.Features.Polices.Maintenances;
 using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
 using CIS.UI.Utilities.Reports;
+using FirstFloor.ModernUI.Windows.Controls;
 using Microsoft.Reporting.WinForms;
 using NHibernate;
 using NHibernate.Linq;
@@ -152,6 +153,13 @@ namespace CIS.UI.Features.Polices.Clearances
                 var purposeQuery = session.Query<Purpose>().Cacheable().ToFuture();
                 var officerQuery = session.Query<Officer>().Cacheable().ToFuture();
                 var stationQuery = session.Query<Station>().Cacheable().ToFuture();
+                var settingQuery = session.Query<Setting>()
+                    .Where(x => x.Terminal.MachineName == Environment.MachineName)
+                    .Fetch(x => x.CurrentVerifier)
+                    .Fetch(x => x.CurrentCertifier)
+                    .Cacheable()
+                    .FirstOrDefault();
+
 
                 this.ViewModel.PersonalInformation.Purposes = purposeQuery
                   .Select(x => new Lookup<Guid>()
@@ -176,6 +184,18 @@ namespace CIS.UI.Features.Polices.Clearances
                         Name = x.Person.Fullname
                     })
                     .ToReactiveColletion();
+
+                var setting = settingQuery;
+                if (setting != null)
+                {
+                    if (setting.CurrentVerifier != null)
+                        this.ViewModel.PersonalInformation.Verifier = this.ViewModel.PersonalInformation.Verifiers
+                            .FirstOrDefault(x => x.Id == setting.CurrentVerifier.Id);
+
+                    if (setting.CurrentCertifier != null)
+                        this.ViewModel.PersonalInformation.Certifier = this.ViewModel.PersonalInformation.Certifiers
+                            .FirstOrDefault(x => x.Id == setting.CurrentCertifier.Id);
+                }
 
                 var station = stationQuery.FirstOrDefault();
                 this.ViewModel.Summary.Validity = station.GetValidity(DateTime.Today);
@@ -233,7 +253,7 @@ namespace CIS.UI.Features.Polices.Clearances
 
                 if (suspectPartialMatch.Count > 0)
                 {
-                    this.ViewModel.Summary.PartialMatchFindings = string.Format("Person with the name of {0} and criminial record {1} has partialy the name as the applicant. Please verfiy.",
+                    this.ViewModel.Summary.PartialMatchFindings = string.Format("Person with the name of {0} and criminial record {1} has partialy same name as the applicant.",
                         suspectPartialMatch.First().Person.Fullname, suspectPartialMatch.First().Warrant.Crime);
                 }
 
@@ -256,7 +276,7 @@ namespace CIS.UI.Features.Polices.Clearances
                         separator: Environment.NewLine,
                         values: expiredFirearmsLicenses
                             .Select(x =>
-                                string.Format("Expired Firearm Lincense - FA Lic. No. {0} - {2}",
+                                string.Format("Expired Firearm Lincense - FA Lic. No. {0} - {1}",
                                     x.LicenseNumber, x.ExpiryDate.ToString("MMM-dd-yyyy")
                                 )
                             )
@@ -278,10 +298,10 @@ namespace CIS.UI.Features.Polices.Clearances
             this.ViewModel.Summary.BirthDate = this.ViewModel.PersonalInformation.Person.BirthDate;
             this.ViewModel.Summary.BirthPlace = this.ViewModel.PersonalInformation.BirthPlace;
 
-            if (!string.IsNullOrWhiteSpace(this.ViewModel.Summary.PartialMatchFindings))
-            {
-                MessageDialog.Show(this.ViewModel.Summary.PartialMatchFindings, "Clearance", MessageBoxButton.OK);
-            }
+            //if (!string.IsNullOrWhiteSpace(this.ViewModel.Summary.PartialMatchFindings))
+            //{
+            //    MessageDialog.Show(this.ViewModel.Summary.PartialMatchFindings, "Clearance", MessageBoxButton.OK);
+            //}
         }
 
         private ClearanceReportViewModel GenerateClearance()
@@ -350,6 +370,20 @@ namespace CIS.UI.Features.Polices.Clearances
                         .Where(() => officerAlias.Id == this.ViewModel.PersonalInformation.Verifier.Id)
                         .FutureValue();
 
+                    var settingQuery = session.Query<Setting>()
+                        .Where(x => x.Terminal.MachineName == Environment.MachineName)
+                        .Fetch(x => x.CurrentVerifier)
+                        .Fetch(x => x.CurrentCertifier)
+                        .Cacheable()
+                        .FirstOrDefault();
+
+                    var setting = settingQuery;
+                    if (setting != null)
+                    {
+                        setting.CurrentVerifier = verifierQuery.Value;
+                        setting.CurrentCertifier = certifierQuery.Value;
+                    }
+
                     var clearance = clearanceQuery.Value;
                     if (clearance == null)
                         clearance = new Clearance();
@@ -393,6 +427,14 @@ namespace CIS.UI.Features.Polices.Clearances
                     transaction.Commit();
 
                     result.SerializeWith(clearance);
+                }
+
+                if (!string.IsNullOrWhiteSpace(result.PartialMatchFindings))
+                {
+                    var question = result.PartialMatchFindings + " This will not reflect in the findings. Do you still want to proceed?";
+                    var confirm = MessageDialog.Show(question, "Clearance", MessageBoxButton.YesNo);
+                    if (confirm == false)
+                        return null;
                 }
 
                 return result;
@@ -499,9 +541,10 @@ namespace CIS.UI.Features.Polices.Clearances
 
                 var data = this.GenerateClearance();
                 if (data != null)
+                {
                     PrintClearance(data);
-
-                MessageDialog.Show("Clearance has been sent to the printer.", "Clearance", MessageBoxButton.OK);
+                    MessageDialog.Show("Clearance has been sent to the printer.", "Clearance", MessageBoxButton.OK);
+                }
             }
             catch (Exception ex)
             {
