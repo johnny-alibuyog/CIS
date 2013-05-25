@@ -33,7 +33,7 @@
             <Rectangle Grid.Column="1" Fill="{DynamicResource SeparatorBackground}" Width="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
 
             <!-- physical attributes -->
-            <StackPanel Grid.Column="2" Margin="0,8,0,0">
+            <StackPanel Grid.Column="2">
                 <StackPanel.Resources>
                     <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                 </StackPanel.Resources>

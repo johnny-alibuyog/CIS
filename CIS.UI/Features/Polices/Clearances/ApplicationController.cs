@@ -472,37 +472,6 @@ namespace CIS.UI.Features.Polices.Clearances
 
             InitializeViews();
             PopulateLookups();
-
-            this.ViewModel.PersonalInformation.Person.FirstName = "Johnny";
-            this.ViewModel.PersonalInformation.Person.LastName = "Alibuyog";
-            this.ViewModel.PersonalInformation.Person.MiddleName = "Asprec";
-            this.ViewModel.PersonalInformation.Person.Gender = Gender.Male;
-            this.ViewModel.PersonalInformation.Person.BirthDate = DateTime.Today;
-            this.ViewModel.PersonalInformation.AlsoKnownAs = "Jay";
-            this.ViewModel.PersonalInformation.Address.Address1 = "#13 Rosal Street";
-            this.ViewModel.PersonalInformation.Address.Address2 = "Tres Hermanas Village";
-            this.ViewModel.PersonalInformation.Address.Barangay = "Mayamot";
-            this.ViewModel.PersonalInformation.Address.City = "Antipolo City";
-            this.ViewModel.PersonalInformation.Address.Province = "Rizal";
-            this.ViewModel.PersonalInformation.BirthPlace = "Zamboanga City";
-            this.ViewModel.PersonalInformation.Citizenship = "Filipino";
-            this.ViewModel.PersonalInformation.Religion = "Christian";
-            this.ViewModel.PersonalInformation.Occupation = "Software Engineer";
-            this.ViewModel.PersonalInformation.Purpose = this.ViewModel.PersonalInformation.Purposes.FirstOrDefault();
-            this.ViewModel.PersonalInformation.CivilStatus = this.ViewModel.PersonalInformation.CivilStatuses.FirstOrDefault();
-            this.ViewModel.PersonalInformation.Verifier = this.ViewModel.PersonalInformation.Verifiers.FirstOrDefault();
-            this.ViewModel.PersonalInformation.Certifier = this.ViewModel.PersonalInformation.Certifiers.FirstOrDefault();
-            this.ViewModel.PersonalInformation.Height = "6'";
-            this.ViewModel.PersonalInformation.Weight = "85 kg'";
-            this.ViewModel.Summary.OfficialReceiptNumber = "5545456677";
-            this.ViewModel.Summary.TaxCertificateNumber = "t4e4545456";
-
-            //var testData = ClearanceReportViewModel.GetTestData();
-            //if (testData != null)
-            //{
-            //    PrintClearance(testData);
-            //    return;
-            //}
         }
 
         public virtual void Previous()

@@ -63,7 +63,7 @@
                 <TextBlock Style="{StaticResource Heading2}" Text="Issue Info" Margin="0,8,0,8"/>
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Issued On"/>
-                    <TextBox Text="{Binding IssuedOn, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+                    <DatePicker Text="{Binding IssuedOn, Mode=TwoWay, ValidatesOnDataErrors=True}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Issued By"/>

@@ -29,7 +29,8 @@ namespace CIS.UI.Features.Polices.Maintenances
                 {
                     station = new Station()
                     {
-                        Office = "Name not set",
+                        Name = "Name not set",
+                        Office = "Office not set",
                         Location = "Location not set",
                         ClearanceValidityInDays = 60,
                         Address = new Address()

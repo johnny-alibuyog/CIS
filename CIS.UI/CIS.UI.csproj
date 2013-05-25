@@ -675,43 +675,73 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\Images\FF-L1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\FF-L2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\FF-L3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\FF-L4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\FF-L5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\FF-R1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\FF-R2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\FF-R3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\FF-R4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\FF-R5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="philippine-barangays.xlsx" />
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Assets\Images\FF-00.jpg">
+    <Resource Include="Assets\Images\FF-00.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Images\FF-L1.jpg">
+    </Resource>
+    <Resource Include="Assets\Images\FF-L1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Images\FF-L2.jpg">
+    </Resource>
+    <Resource Include="Assets\Images\FF-L2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Images\FF-L3.jpg">
+    </Resource>
+    <Resource Include="Assets\Images\FF-L3.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Images\FF-L4.jpg">
+    </Resource>
+    <Resource Include="Assets\Images\FF-L4.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Images\FF-L5.jpg">
+    </Resource>
+    <Resource Include="Assets\Images\FF-L5.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Images\FF-R1.jpg">
+    </Resource>
+    <Resource Include="Assets\Images\FF-R1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Images\FF-R2.jpg">
+    </Resource>
+    <Resource Include="Assets\Images\FF-R2.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Images\FF-R3.jpg">
+    </Resource>
+    <Resource Include="Assets\Images\FF-R3.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Images\FF-R4.jpg">
+    </Resource>
+    <Resource Include="Assets\Images\FF-R4.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Images\FF-R5.jpg">
+    </Resource>
+    <Resource Include="Assets\Images\FF-R5.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
     <Content Include="firearms_licenses.xlsx" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
