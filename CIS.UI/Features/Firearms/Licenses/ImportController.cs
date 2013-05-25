@@ -1,32 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data.SqlTypes;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using CIS.Core.Entities.Commons;
-using CIS.Core.Entities.Polices;
 using CIS.UI.Bootstraps.DependencyInjection;
 using CIS.UI.Utilities.CommonDialogs;
-using CIS.UI.Utilities.Extentions;
-using LinqToExcel;
-using NHibernate;
-using NHibernate.Linq;
 using ReactiveUI.Xaml;
 
-namespace CIS.UI.Features.Polices.Warrants
+namespace CIS.UI.Features.Firearms.Licenses
 {
     public class ImportController : ControllerBase<ImportViewModel>
     {
-        private readonly BackgroundWorker _importWorker;
+        private readonly System.ComponentModel.BackgroundWorker _importWorker;
 
         public ImportController(ImportViewModel viewModel) : base(viewModel)
         {
-            _importWorker = new BackgroundWorker();
+            _importWorker = new System.ComponentModel.BackgroundWorker();
             _importWorker.DoWork += (sender, e) => Import();
             //_backgroundWorker.ProgressChanged += (sender, e) => ProgressChanged(this.ViewModel));
             //_backgroundWorker.RunWorkerCompleted += (sender, e) => RunWorkerCompleted(this.ViewModel));
@@ -61,8 +48,7 @@ namespace CIS.UI.Features.Polices.Warrants
             this.ViewModel.ImportEnd = null;
             this.ViewModel.TotalTime = null;
             this.ViewModel.TotalTime = null;
-            this.ViewModel.TotalCases = null;
-            this.ViewModel.TotalSuspects = null;
+            this.ViewModel.TotalLicenses = null;
             this.ViewModel.Status = string.Empty;
         }
 
@@ -85,13 +71,13 @@ namespace CIS.UI.Features.Polices.Warrants
         {
             this.ViewModel.ImportStart = null;
             this.ViewModel.ImportEnd = null;
-            this.ViewModel.TotalCases = 0M;
-            this.ViewModel.TotalSuspects = 0M;
+            this.ViewModel.TotalLicenses = 0M;
+
             var start = DateTime.Now;
 
-            var litusImporter = IoC.Container.Resolve<LitusImportDataInitializer>();
-            litusImporter.ViewModel = this.ViewModel;
-            litusImporter.Execute();
+            var importer = IoC.Container.Resolve<ImportDataInitializer>();
+            importer.ViewModel = this.ViewModel;
+            importer.Execute();
 
             var end = DateTime.Now;
             var duration = end - start;

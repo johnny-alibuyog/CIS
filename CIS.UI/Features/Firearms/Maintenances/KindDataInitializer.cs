@@ -7,20 +7,17 @@ using CIS.Core.Entities.Firearms;
 using NHibernate;
 using NHibernate.Linq;
 
-namespace CIS.UI.Features.Firearms
+namespace CIS.UI.Features.Firearms.Maintenances
 {
     public class KindDataInitializer : IDataInitializer
     {
         private readonly ISessionFactory _sessionFactory;
 
+        public virtual IEnumerable<string> Data { get; set; }
+
         public KindDataInitializer(ISessionFactory sessionFactory)
         {
-            _sessionFactory = sessionFactory;
-        }
-
-        public void Execute()
-        {
-            var data = new string[] 
+            this.Data = new string[]
             {
                 "Pistol",
                 "Revolver",
@@ -38,6 +35,11 @@ namespace CIS.UI.Features.Firearms
                 "Heavy Machine Guns ",
             };
 
+            _sessionFactory = sessionFactory;
+        }
+
+        public void Execute()
+        {
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
@@ -45,7 +47,7 @@ namespace CIS.UI.Features.Firearms
                     .Cacheable()
                     .ToFuture();
 
-                foreach (var item in data)
+                foreach (var item in this.Data)
                 {
                     if (kinds.Any(x => x.Name == item))
                         continue;

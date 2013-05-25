@@ -78,9 +78,11 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.Verifier = source.Verifier;
                 target.VerifierRank = source.VerifierRank;
                 target.VerifierPosition = source.VerifierPosition;
+                target.VerifierSignature = source.VerifierSignature;
                 target.Certifier = source.Certifier;
                 target.CertifierRank = source.CertifierRank;
                 target.CertifierPosition = source.CertifierPosition;
+                target.CertifierSignature = source.CertifierSignature;
                 target.Issuer = source.Issuer;
                 target.IssueDate = source.IssueDate;
                 target.IssueAddress = source.IssueAddress;
@@ -118,9 +120,11 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.Verifier = source.Verifier.Person.Fullname;
                 target.VerifierRank = source.VerifierRank;
                 target.VerifierPosition = source.VerifierPosition;
+                target.VerifierSignature = source.Verifier.Signature.Bytes;
                 target.Certifier = source.Certifier.Person.Fullname;
                 target.CertifierRank = source.CertifierRank;
                 target.CertifierPosition = source.CertifierPosition;
+                target.CertifierSignature = source.Certifier.Signature.Bytes;
                 target.Issuer = source.Audit.CreatedBy;
                 target.IssueDate = source.IssueDate;
                 target.IssueAddress = source.Station.Address.ToString();

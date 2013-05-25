@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="CIS.UI.Features.Polices.Warrants.ImportView"
+﻿<UserControl x:Class="CIS.UI.Features.Firearms.Licenses.ImportView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
              mc:Ignorable="d">
     <ScrollViewer>
         <StackPanel>
-            <TextBlock Text="Import Warrants" Style="{StaticResource Heading2}" />
+            <TextBlock Text="Import Licenses" Style="{StaticResource Heading2}" />
             <TextBlock Text="Will import from an excel file" />
 
             <StackPanel Margin="0,8,0,8">
@@ -33,12 +33,8 @@
                     <TextBox IsReadOnly="True" Text="{Binding TotalTime, Mode=TwoWay}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
-                    <Label Content="Total Cases"/>
-                    <TextBox IsReadOnly="True" Text="{Binding TotalCases, Mode=TwoWay}" />
-                </StackPanel>
-                <StackPanel Style="{StaticResource FieldSet}">
-                    <Label Content="Total Suspects"/>
-                    <TextBox IsReadOnly="True" Text="{Binding TotalSuspects, Mode=TwoWay}" />
+                    <Label Content="Total Licences"/>
+                    <TextBox IsReadOnly="True" Text="{Binding TotalLicenses, Mode=TwoWay}" />
                 </StackPanel>
             </StackPanel>
 

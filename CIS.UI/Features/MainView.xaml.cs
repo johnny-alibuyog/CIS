@@ -18,6 +18,7 @@ using CIS.UI.Bootstraps.DependencyInjection;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Terminals;
 using CIS.UI.Features.Firearms;
+using CIS.UI.Features.Firearms.Maintenances;
 using CIS.UI.Features.Polices;
 using CIS.UI.Features.Polices.Maintenances;
 using FirstFloor.ModernUI.Windows.Controls;

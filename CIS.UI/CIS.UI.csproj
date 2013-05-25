@@ -259,7 +259,18 @@
     </Compile>
     <Compile Include="Features\Commons\Signatures\SignatureViewModel.cs" />
     <Compile Include="Features\Commons\Terminals\TerminalDataInitializer.cs" />
-    <Compile Include="Features\Firearms\KindDataInitializer.cs" />
+    <Compile Include="Features\Firearms\Licenses\ImportController.cs" />
+    <Compile Include="Features\Firearms\Licenses\ImportDataInitializer.cs">
+      <DependentUpon>ImportController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Firearms\Licenses\ImportLicenseViewModel.cs">
+      <DependentUpon>ImportViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Firearms\Licenses\ImportView.xaml.cs">
+      <DependentUpon>ImportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Firearms\Licenses\ImportViewModel.cs" />
+    <Compile Include="Features\Firearms\Maintenances\KindDataInitializer.cs" />
     <Compile Include="Features\Firearms\Licenses\GunController.cs" />
     <Compile Include="Features\Firearms\Licenses\GunView.xaml.cs">
       <DependentUpon>GunView.xaml</DependentUpon>
@@ -299,7 +310,7 @@
       <DependentUpon>MakeListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Firearms\Maintenances\MakeViewModel.cs" />
-    <Compile Include="Features\Firearms\MakeDataInitializer.cs" />
+    <Compile Include="Features\Firearms\Maintenances\MakeDataInitializer.cs" />
     <Compile Include="Features\Lookup.cs" />
     <Compile Include="Features\Commons\Persons\PhysicalAttributesView.xaml.cs">
       <DependentUpon>PhysicalAttributesView.xaml</DependentUpon>
@@ -400,6 +411,9 @@
     <Compile Include="Features\Polices\Warrants\ImportWarrantViewModel.cs">
       <DependentUpon>ImportViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Polices\Warrants\LitusImportDataInitializer.cs">
+      <DependentUpon>ImportController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Polices\Warrants\WarrantListCriteriaViewModel.cs">
       <DependentUpon>WarrantListViewModel.cs</DependentUpon>
     </Compile>
@@ -486,6 +500,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\Firearms\Licenses\GunView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Firearms\Licenses\ImportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -688,6 +706,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Fody.targets" />
+    <Content Include="firearms-license.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

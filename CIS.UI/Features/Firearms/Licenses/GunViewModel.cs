@@ -91,8 +91,8 @@ namespace CIS.UI.Features.Firearms.Licenses
                 target.Model = source.Model;
                 target.Caliber = source.Caliber;
                 target.SerialNumber = source.SerialNumber;
-                target.Kind = session.Get<Kind>(source.Kind.Id);
-                target.Make = session.Get<Make>(source.Make.Id);
+                target.Kind = session.Load<Kind>(source.Kind.Id);
+                target.Make = session.Load<Make>(source.Make.Id);
 
                 return target;
             }

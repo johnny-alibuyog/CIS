@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CIS.UI.Features.Polices.Warrants
 {
-    public class ImportSuspectViewModel : ViewModelBase
+    public class ImportSuspectViewModel 
     {
         private string _warrantCode;
         private string _firstName;
