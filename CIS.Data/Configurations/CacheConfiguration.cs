@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CIS.Core.Entities.Commons;
+using CIS.Core.Entities.Firearms;
 using CIS.Core.Entities.Memberships;
 using CIS.Core.Entities.Polices;
 using NHibernate.Caches.SysCache2;
@@ -57,6 +58,16 @@ namespace CIS.Data.Configurations
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
                     x.RegionName = "Rank";
+                })
+                .EntityCache<Make>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Make";
+                })
+                .EntityCache<Kind>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Kind";
                 });
         }
     }

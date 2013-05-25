@@ -10,7 +10,7 @@ namespace CIS.Core.Entities.Polices
     public class Suspect
     {
         private Guid _id;
-        private int _version;
+        //private int _version;
         private Audit _audit;
         private Warrant _warrant;
         private Nullable<ArrestStatus> _arrestStatus;
@@ -26,11 +26,11 @@ namespace CIS.Core.Entities.Polices
             set { _id = value; }
         }
 
-        public virtual int Version
-        {
-            get { return _version; }
-            protected set { _version = value; }
-        }
+        //public virtual int Version
+        //{
+        //    get { return _version; }
+        //    protected set { _version = value; }
+        //}
 
         public virtual Audit Audit
         {

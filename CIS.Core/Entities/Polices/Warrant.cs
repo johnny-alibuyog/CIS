@@ -10,7 +10,7 @@ namespace CIS.Core.Entities.Polices
     public class Warrant
     {
         private Guid _id;
-        private int _version;
+        //private int _version;
         private Audit _audit;
         private string _warrantCode;
         private string _caseNumber;
@@ -29,11 +29,11 @@ namespace CIS.Core.Entities.Polices
             protected set { _id = value; }
         }
 
-        public virtual int Version
-        {
-            get { return _version; }
-            protected set { _version = value; }
-        }
+        //public virtual int Version
+        //{
+        //    get { return _version; }
+        //    protected set { _version = value; }
+        //}
 
         public virtual Audit Audit
         {

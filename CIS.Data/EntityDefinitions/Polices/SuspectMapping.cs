@@ -12,11 +12,11 @@ namespace CIS.Data.EntityDefinition.Polices
     {
         public SuspectMapping()
         {
-            OptimisticLock.Version();
+            //OptimisticLock.Version();
 
             Id(x => x.Id);
 
-            Version(x => x.Version);
+            //Version(x => x.Version);
 
             Component(x => x.Audit);
 

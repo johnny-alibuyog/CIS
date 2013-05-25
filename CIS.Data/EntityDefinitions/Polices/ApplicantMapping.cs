@@ -21,6 +21,9 @@ namespace CIS.Data.EntityDefinitions.Polices
             References(x => x.Picture)
                 .Cascade.All();
 
+            References(x => x.Signature)
+                .Cascade.All();
+
             References(x => x.FingerPrint)
                 .Cascade.All();
 

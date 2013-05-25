@@ -13,7 +13,7 @@ namespace CIS.Data.EntityDefinition.Polices
         {
             Define(x => x.Id);
 
-            Define(x => x.Version);
+            //Define(x => x.Version);
 
             Define(x => x.Audit);
 

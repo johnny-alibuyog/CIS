@@ -24,6 +24,8 @@ namespace CIS.Data.EntityDefinitions.Polices
 
             Define(x => x.Picture);
 
+            Define(x => x.Signature);
+
             Define(x => x.FingerPrint);
 
             Define(x => x.Height)
