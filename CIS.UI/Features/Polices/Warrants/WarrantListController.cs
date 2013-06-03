@@ -84,7 +84,7 @@ namespace CIS.UI.Features.Polices.Warrants
         public virtual void Create()
         {
             var dialog = new DialogService<WarrantView, WarrantViewModel>();
-            var result = dialog.Show(this, "Create Warrant", null);
+            var result = dialog.ShowModal(this, "Create Warrant", null);
             if (result != null)
                 this.Search();
         }
@@ -93,7 +93,7 @@ namespace CIS.UI.Features.Polices.Warrants
         {
             var dialog = new DialogService<WarrantView, WarrantViewModel>();
             dialog.ViewModel.Load.Execute(item.Id);
-            var result = dialog.Show(this, "Edit Warrant", null);
+            var result = dialog.ShowModal(this, "Edit Warrant", null);
             if (result != null)
                 this.Search();
         }

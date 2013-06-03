@@ -68,7 +68,7 @@ namespace CIS.UI.Features.Polices.Maintenances
         public virtual void Create()
         {
             var dialog = new DialogService<OfficerView, OfficerViewModel>();
-            var result = dialog.Show(this, "Create Officer", null);
+            var result = dialog.ShowModal(this, "Create Officer", null);
             if (result != null)
             {
                 this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
@@ -80,7 +80,7 @@ namespace CIS.UI.Features.Polices.Maintenances
         {
             var dialog = new DialogService<OfficerView, OfficerViewModel>();
             dialog.ViewModel.Load.Execute(item.Id);
-            var result = dialog.Show(this, "Edit Officer", null);
+            var result = dialog.ShowModal(this, "Edit Officer", null);
             if (result != null)
             {
                 this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));

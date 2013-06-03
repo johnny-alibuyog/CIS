@@ -62,7 +62,7 @@ namespace CIS.UI.Features.Polices.Warrants
         public virtual string IssuedBy
         {
             get { return _issuedBy; }
-            set { _warrantCode = (value ?? string.Empty).Trim(); }
+            set { _issuedBy = (value ?? string.Empty).Trim(); }
         }
 
         public virtual string IssuedAtAddress1

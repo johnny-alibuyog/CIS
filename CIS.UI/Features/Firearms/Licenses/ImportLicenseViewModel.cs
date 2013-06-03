@@ -37,8 +37,8 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public virtual string ControlNumber
         {
-            get { return _licenseNumber; }
-            set { _licenseNumber = (value ?? string.Empty).Trim(); }
+            get { return _controlNumber; }
+            set { _controlNumber = (value ?? string.Empty).Trim(); }
         }
 
         public virtual DateTime IssueDate

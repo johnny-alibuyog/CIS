@@ -111,14 +111,14 @@ namespace CIS.UI.Features.Polices.Clearances
             }
 
             var dialog = new DialogService<ClearanceReportView, ClearanceReportViewModel>();
-            dialog.Show(this, "Clearance", reportData);
+            dialog.ShowModal(this, "Clearance", reportData);
         }
 
         public virtual void ViewReport()
         {
             var dialog = new DialogService<ArchiveReportView, ArchiveReportViewModel>();
             dialog.ViewModel.Items = this.ViewModel.Items;
-            dialog.Show(this, "Archive", null);
+            dialog.ShowModal(this, "Archive", null);
         }
     }
 }

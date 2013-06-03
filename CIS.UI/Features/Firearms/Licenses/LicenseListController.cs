@@ -81,7 +81,7 @@ namespace CIS.UI.Features.Firearms.Licenses
         public virtual void Create()
         {
             var dialog = new DialogService<LicenseView, LicenseViewModel>();
-            var result = dialog.Show(this, "Create License", null);
+            var result = dialog.ShowModal(this, "Create License", null);
             if (result != null)
                 this.Search();
         }
@@ -90,7 +90,7 @@ namespace CIS.UI.Features.Firearms.Licenses
         {
             var dialog = new DialogService<LicenseView, LicenseViewModel>();
             dialog.ViewModel.Load.Execute(item.Id);
-            var result = dialog.Show(this, "Edit License", null);
+            var result = dialog.ShowModal(this, "Edit License", null);
             if (result != null)
                 this.Search();
         }

@@ -15,6 +15,17 @@ namespace CIS.UI
     /// </summary>
     public partial class App : Application
     {
+        public static Window CurrentWindow
+        {
+            get
+            {
+                return Application.Current.Windows
+                    .OfType<Window>()
+                    .Where(x => x.IsActive)
+                    .SingleOrDefault();
+            }
+        }
+
         public static class Data
         {
             public static User CurrentUser { get; set; }

@@ -94,7 +94,7 @@
     <Compile Include="Configurations\ConventionMessageInterpolator.cs">
       <DependentUpon>ValidatorConfiguration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Configurations\CurrentSessionContextConfiguration.cs" />
+    <Compile Include="Configurations\SessionContextConfiguration.cs" />
     <Compile Include="Configurations\EventListenerConfiguration.cs" />
     <Compile Include="Configurations\IndexForeignKeyConfiguration.cs" />
     <Compile Include="Configurations\SchemaConfiguration.cs" />

@@ -92,7 +92,7 @@ namespace CIS.Data
                 .ExposeConfiguration(ValidatorConfiguration.Configure)
                 .ExposeConfiguration(IndexForeignKeyConfiguration.Configure)
                 .ExposeConfiguration(SchemaConfiguration.Configure)
-                .ExposeConfiguration(CurrentSessionContextConfiguration.Configure)
+                .ExposeConfiguration(SessionContextConfiguration.Configure)
                 .BuildSessionFactory();
         }
 

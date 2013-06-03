@@ -8,7 +8,7 @@ using NHibernate.Context;
 
 namespace CIS.Data.Configurations
 {
-    public static class CurrentSessionContextConfiguration
+    public static class SessionContextConfiguration
     {
         public static void Configure(this Configuration config)
         {

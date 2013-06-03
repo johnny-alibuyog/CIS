@@ -65,7 +65,7 @@ namespace CIS.UI.Features.Polices.Warrants
         public virtual void CreateSuspect()
         {
             var dialog = new DialogService<SuspectView, SuspectViewModel>();
-            var value = dialog.Show(this, "Create Susptect");
+            var value = dialog.ShowModal(this, "Create Susptect");
             if (value != null)
                 this.ViewModel.Suspects.Add(value);
         }
@@ -75,7 +75,7 @@ namespace CIS.UI.Features.Polices.Warrants
             this.ViewModel.SelectedSuspect = item;
 
             var dialog = new DialogService<SuspectView, SuspectViewModel>();
-            var value = dialog.Show(this, "Edit Susptect", this.ViewModel.SelectedSuspect);
+            var value = dialog.ShowModal(this, "Edit Susptect", this.ViewModel.SelectedSuspect);
             if (value != null)
                 this.ViewModel.SelectedSuspect.SerializeWith(value);
         }

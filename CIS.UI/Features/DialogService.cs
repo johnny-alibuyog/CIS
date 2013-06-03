@@ -13,33 +13,28 @@ namespace CIS.UI.Features
         where TView : DialogBase
         where TViewModel : ViewModelBase
     {
-        public virtual TView View { get; private set; }
-        public virtual TViewModel ViewModel { get; set; }
+        public virtual TView View
+        {
+            get;
+            private set;
+        }
+
+        public virtual TViewModel ViewModel
+        {
+            get { return View.DataContext as TViewModel; }
+            set { View.DataContext = value; }
+        }
 
         #region Methods
 
-        public virtual Window CurrentWindow
+       
+
+        public virtual TViewModel ShowModal()
         {
-            get
-            {
-                return Application.Current.Windows
-                    .OfType<Window>()
-                    .Where(x => x.IsActive)
-                    .SingleOrDefault();
-            }
+            return ShowModal(null, null);
         }
 
-        public virtual bool IsNotMainWindow(Window window)
-        {
-            return (!(window is MainView)); // && !(window is SplashScreenView));
-        }
-
-        public virtual TViewModel Show()
-        {
-            return Show(null, null);
-        }
-
-        public virtual TViewModel Show(object sender, string title, params object[] args)
+        public virtual TViewModel ShowModal(object sender, string title, params object[] args)
         {
             if (!string.IsNullOrWhiteSpace(title))
                 this.View.Title = title;
@@ -64,16 +59,13 @@ namespace CIS.UI.Features
 
         public DialogService()
         {
-            //this.View = Activator.CreateInstance<TView>();
             this.View = IoC.Container.Resolve<TView>();
             if (this.View.DataContext == null)
-                this.View.DataContext = Activator.CreateInstance<TViewModel>();
-
-            this.ViewModel = this.View.DataContext as TViewModel;
+                this.View.DataContext = IoC.Container.Resolve<TViewModel>();
 
             // assign owner if View is not the main window
-            if (this.IsNotMainWindow(View))
-                View.Owner = this.CurrentWindow;
+            if (!(this.View is MainView))
+                View.Owner = App.CurrentWindow;
         }
 
         #endregion
