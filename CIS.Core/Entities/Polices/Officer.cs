@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CIS.Core.Entities.Commons;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Polices
 {
@@ -56,7 +57,7 @@ namespace CIS.Core.Entities.Polices
         public virtual string Position
         {
             get { return _position; }
-            set { _position = value; }
+            set { _position = value.ToProperCase(); }
         }
 
         public virtual ImageBlob Signature
@@ -82,7 +83,7 @@ namespace CIS.Core.Entities.Polices
 
         public Officer()
         {
-            Signature = new ImageBlob();
+            _signature = new ImageBlob();
         }
 
         #endregion

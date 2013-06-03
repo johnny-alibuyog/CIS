@@ -18,30 +18,17 @@ namespace CIS.Core.Entities.Commons
             protected set { _id = value; }
         }
 
-        public virtual string Name 
+        public virtual string Name
         {
             get { return _name; }
             protected set { _name = value; }
         }
 
-        public virtual string ImageUri 
+        public virtual string ImageUri
         {
             get { return _imageUri; }
-            protected set { _imageUri = value; } 
+            protected set { _imageUri = value; }
         }
-
-        #region Constructors
-
-        public Finger() { }
-
-        private Finger(string id, string name, string imageUri)
-        {
-            this.Id = id;
-            this.Name = name;
-            this.ImageUri = imageUri;
-        }
-
-        #endregion
 
         #region Equality Comparer
 
@@ -86,66 +73,76 @@ namespace CIS.Core.Entities.Commons
 
         #region Static Members
 
-        public static readonly Finger RightThumb = new Finger(
-            id: "RT",
-            name: "Right Thumb",
-            imageUri: "/Assets/Images/FF-R1.png"
-            //imageUri: "/Assets/Images/FF-R1.jpg"
-        );
-        public static readonly Finger RightIndex = new Finger(
-            id: "RI",
-            name: "Right Index",
-            imageUri: "/Assets/Images/FF-R2.png"
-            //imageUri: "/Assets/Images/FF-R2.jpg"
-        );
-        public static readonly Finger RightMiddle = new Finger(
-            id: "RM",
-            name: "Right Middle",
-            imageUri: "/Assets/Images/FF-R3.png"
-            //imageUri: "/Assets/Images/FF-R3.jpg"
-        );
-        public static readonly Finger RightRing = new Finger(
-            id: "RR", 
-            name: "Right Ring",
-            imageUri: "/Assets/Images/FF-R4.png"
-            //imageUri: "/Assets/Images/FF-R4.jpg"
-        );
-        public static readonly Finger RightPinky = new Finger(
-            id: "RP",
-            name: "Right Pinky",
-            imageUri: "/Assets/Images/FF-R5.png"
-            //imageUri: "/Assets/Images/FF-R5.jpg"
-        );
-        public static readonly Finger LeftThumb = new Finger(
-            id: "LT",
-            name: "Left Thumb",
-            imageUri: "/Assets/Images/FF-L1.png"
-            //imageUri: "/Assets/Images/FF-L1.jpg"
-        );
-        public static readonly Finger LeftIndex = new Finger(
-            id: "LI",
-            name: "Left Index",
-            imageUri: "/Assets/Images/FF-L2.png"
-            //imageUri: "/Assets/Images/FF-L2.jpg"
-        );
-        public static readonly Finger LeftMiddle = new Finger(
-            id: "LM",
-            name: "Left Middle",
-            imageUri: "/Assets/Images/FF-L3.png"
-            //imageUri: "/Assets/Images/FF-L3.jpg"
-        );
-        public static readonly Finger LeftRing = new Finger(
-            id: "LR",
-            name: "Left Ring",
-            imageUri: "/Assets/Images/FF-L4.png"
-            //imageUri: "/Assets/Images/FF-L4.jpg"
-        );
-        public static readonly Finger LeftPinky = new Finger(
-            id: "LP",
-            name: "Left Pinky",
-            imageUri: "/Assets/Images/FF-L5.png"
-            //imageUri: "/Assets/Images/FF-L5.jpg"
-        );
+        public static readonly Finger RightThumb = new Finger()
+        {
+            Id = "RT",
+            Name = "Right Thumb",
+            ImageUri = "/Assets/Images/FF-R1.png"
+            //ImageUri = "/Assets/Images/FF-R1.jpg"
+        };
+        public static readonly Finger RightIndex = new Finger()
+        {
+            Id = "RI",
+            Name = "Right Index",
+            ImageUri = "/Assets/Images/FF-R2.png"
+            //ImageUri = "/Assets/Images/FF-R2.jpg"
+        };
+        public static readonly Finger RightMiddle = new Finger()
+        {
+            Id = "RM",
+            Name = "Right Middle",
+            ImageUri = "/Assets/Images/FF-R3.png"
+            //ImageUri = "/Assets/Images/FF-R3.jpg"
+        };
+        public static readonly Finger RightRing = new Finger()
+        {
+            Id = "RR",
+            Name = "Right Ring",
+            ImageUri = "/Assets/Images/FF-R4.png"
+            //ImageUri = "/Assets/Images/FF-R4.jpg"
+        };
+        public static readonly Finger RightPinky = new Finger()
+        {
+            Id = "RP",
+            Name = "Right Pinky",
+            ImageUri = "/Assets/Images/FF-R5.png"
+            //ImageUri = "/Assets/Images/FF-R5.jpg"
+        };
+        public static readonly Finger LeftThumb = new Finger()
+        {
+            Id = "LT",
+            Name = "Left Thumb",
+            ImageUri = "/Assets/Images/FF-L1.png"
+            //ImageUri = "/Assets/Images/FF-L1.jpg"
+        };
+        public static readonly Finger LeftIndex = new Finger()
+        {
+            Id = "LI",
+            Name = "Left Index",
+            ImageUri = "/Assets/Images/FF-L2.png"
+            //ImageUri = "/Assets/Images/FF-L2.jpg"
+        };
+        public static readonly Finger LeftMiddle = new Finger()
+        {
+            Id = "LM",
+            Name = "Left Middle",
+            ImageUri = "/Assets/Images/FF-L3.png"
+            //ImageUri = "/Assets/Images/FF-L3.jpg"
+        };
+        public static readonly Finger LeftRing = new Finger()
+        {
+            Id = "LR",
+            Name = "Left Ring",
+            ImageUri = "/Assets/Images/FF-L4.png"
+            //ImageUri = "/Assets/Images/FF-L4.jpg"
+        };
+        public static readonly Finger LeftPinky = new Finger()
+        {
+            Id = "LP",
+            Name = "Left Pinky",
+            ImageUri = "/Assets/Images/FF-L5.png"
+            //ImageUri = "/Assets/Images/FF-L5.jpg"
+        };
 
         public static readonly Finger[] All = new Finger[]
         {

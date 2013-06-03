@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using CIS.Core.Entities.Commons;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Polices
 {
@@ -47,19 +48,19 @@ namespace CIS.Core.Entities.Polices
         public virtual string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set { _name = value.ToProperCase(); }
         }
 
         public virtual string Office
         {
             get { return _office; }
-            set { _office = value; }
+            set { _office = value.ToProperCase(); }
         }
 
         public virtual string Location
         {
             get { return _location; }
-            set { _location = value; }
+            set { _location = value.ToProperCase(); }
         }
 
         public virtual int ClearanceValidityInDays

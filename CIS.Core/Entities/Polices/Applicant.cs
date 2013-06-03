@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Polices
 {
@@ -76,31 +77,31 @@ namespace CIS.Core.Entities.Polices
         public virtual string AlsoKnownAs
         {
             get { return _alsoKnownAs; }
-            set { _alsoKnownAs = value; }
+            set { _alsoKnownAs = value.ToProperCase(); }
         }
 
         public virtual string BirthPlace
         {
             get { return _birthPlace; }
-            set { _birthPlace = value; }
+            set { _birthPlace = value.ToProperCase(); }
         }
 
         public virtual string Occupation
         {
             get { return _occupation; }
-            set { _occupation = value; }
+            set { _occupation = value.ToProperCase(); }
         }
 
         public virtual string Religion
         {
             get { return _religion; }
-            set { _religion = value; }
+            set { _religion = value.ToProperCase(); }
         }
 
         public virtual string Citizenship
         {
             get { return _citizenship; }
-            set { _citizenship = value; }
+            set { _citizenship = value.ToProperCase(); }
         }
 
         public virtual CivilStatus CivilStatus
@@ -119,9 +120,9 @@ namespace CIS.Core.Entities.Polices
 
         public Applicant()
         {
-            Picture = new ImageBlob();
-            Signature = new ImageBlob();
-            FingerPrint = new FingerPrint();
+            _picture = new ImageBlob();
+            _signature = new ImageBlob();
+            _fingerPrint = new FingerPrint();
         }
 
         #endregion

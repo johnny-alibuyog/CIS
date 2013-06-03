@@ -120,6 +120,5 @@ namespace CIS.Core.Entities.Commons
         }
 
         #endregion
-
     }
 }

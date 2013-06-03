@@ -20,65 +20,68 @@ namespace CIS.UI.Features.Commons.Biometrics
 
         public virtual string ImageUri { get; private set; }
 
-        private FingerViewModel(string id, string name, string imageUri)
-        {
-            this.Id = id;
-            this.Name = name;
-            this.ImageUri = imageUri;
-        }
-
         #region Static Members
 
-        public static readonly FingerViewModel RightThumb = new FingerViewModel(
-            id: Finger.RightThumb.Id,
-            name: Finger.RightThumb.Name,
-            imageUri: Finger.RightThumb.ImageUri
-        );
-        public static readonly FingerViewModel RightIndex = new FingerViewModel(
-            id: Finger.RightIndex.Id,
-            name: Finger.RightIndex.Name,
-            imageUri: Finger.RightIndex.ImageUri
-        );
-        public static readonly FingerViewModel RightMiddle = new FingerViewModel(
-            id: Finger.RightMiddle.Id,
-            name: Finger.RightMiddle.Name,
-            imageUri: Finger.RightMiddle.ImageUri
-        );
-        public static readonly FingerViewModel RightRing = new FingerViewModel(
-            id: Finger.RightRing.Id,
-            name: Finger.RightRing.Name,
-            imageUri: Finger.RightRing.ImageUri
-        );
-        public static readonly FingerViewModel RightPinky = new FingerViewModel(
-            id: Finger.RightPinky.Id,
-            name: Finger.RightPinky.Name,
-            imageUri: Finger.RightPinky.ImageUri
-        );
-        public static readonly FingerViewModel LeftThumb = new FingerViewModel(
-            id: Finger.LeftThumb.Id,
-            name: Finger.LeftThumb.Name,
-            imageUri: Finger.LeftThumb.ImageUri
-        );
-        public static readonly FingerViewModel LeftIndex = new FingerViewModel(
-            id: Finger.LeftIndex.Id,
-            name: Finger.LeftIndex.Name,
-            imageUri: Finger.LeftIndex.ImageUri
-        );
-        public static readonly FingerViewModel LeftMiddle = new FingerViewModel(
-            id: Finger.LeftMiddle.Id,
-            name: Finger.LeftMiddle.Name,
-            imageUri: Finger.LeftMiddle.ImageUri
-        );
-        public static readonly FingerViewModel LeftRing = new FingerViewModel(
-            id: Finger.LeftRing.Id,
-            name: Finger.LeftRing.Name,
-            imageUri: Finger.LeftRing.ImageUri
-        );
-        public static readonly FingerViewModel LeftPinky = new FingerViewModel(
-            id: Finger.LeftPinky.Id,
-            name: Finger.LeftPinky.Name,
-            imageUri: Finger.LeftPinky.ImageUri
-        );
+        public static readonly FingerViewModel RightThumb = new FingerViewModel()
+        {
+            Id = Finger.RightThumb.Id,
+            Name = Finger.RightThumb.Name,
+            ImageUri = Finger.RightThumb.ImageUri
+        };
+        public static readonly FingerViewModel RightIndex = new FingerViewModel()
+        {
+            Id = Finger.RightIndex.Id,
+            Name = Finger.RightIndex.Name,
+            ImageUri = Finger.RightIndex.ImageUri
+        };
+        public static readonly FingerViewModel RightMiddle = new FingerViewModel()
+        {
+            Id = Finger.RightMiddle.Id,
+            Name = Finger.RightMiddle.Name,
+            ImageUri = Finger.RightMiddle.ImageUri
+        };
+        public static readonly FingerViewModel RightRing = new FingerViewModel()
+        {
+            Id = Finger.RightRing.Id,
+            Name = Finger.RightRing.Name,
+            ImageUri = Finger.RightRing.ImageUri
+        };
+        public static readonly FingerViewModel RightPinky = new FingerViewModel()
+        {
+            Id = Finger.RightPinky.Id,
+            Name = Finger.RightPinky.Name,
+            ImageUri = Finger.RightPinky.ImageUri
+        };
+        public static readonly FingerViewModel LeftThumb = new FingerViewModel()
+        {
+            Id = Finger.LeftThumb.Id,
+            Name = Finger.LeftThumb.Name,
+            ImageUri = Finger.LeftThumb.ImageUri
+        };
+        public static readonly FingerViewModel LeftIndex = new FingerViewModel()
+        {
+            Id = Finger.LeftIndex.Id,
+            Name = Finger.LeftIndex.Name,
+            ImageUri = Finger.LeftIndex.ImageUri
+        };
+        public static readonly FingerViewModel LeftMiddle = new FingerViewModel()
+        {
+            Id = Finger.LeftMiddle.Id,
+            Name = Finger.LeftMiddle.Name,
+            ImageUri = Finger.LeftMiddle.ImageUri
+        };
+        public static readonly FingerViewModel LeftRing = new FingerViewModel()
+        {
+            Id = Finger.LeftRing.Id,
+            Name = Finger.LeftRing.Name,
+            ImageUri = Finger.LeftRing.ImageUri
+        };
+        public static readonly FingerViewModel LeftPinky = new FingerViewModel()
+        {
+            Id = Finger.LeftPinky.Id,
+            Name = Finger.LeftPinky.Name,
+            ImageUri = Finger.LeftPinky.ImageUri
+        };
 
         public static readonly FingerViewModel[] All = new FingerViewModel[]
         {
@@ -93,40 +96,6 @@ namespace CIS.UI.Features.Commons.Biometrics
             FingerViewModel.LeftRing,
             FingerViewModel.LeftPinky
         };
-
-        //public static readonly IList<FingerViewModel> FingersToScan = GetFingersToScan();
-
-        //public static FingerViewModel GetNext(FingerViewModel current)
-        //{
-        //    if (FingerViewModel.FingersToScan.LastOrDefault() == current)
-        //        return FingerViewModel.FingersToScan.FirstOrDefault();
-        //    else
-        //        return FingerViewModel.FingersToScan[FingerViewModel.FingersToScan.IndexOf(current) + 1];
-        //}
-
-        //private static IList<FingerViewModel> GetFingersToScan()
-        //{
-        //    var fingersToScan = (IList<FingerViewModel>)null;
-        //    var sessionFactory = IoC.Container.Resolve<ISessionFactory>();
-        //    using (var session = sessionFactory.OpenSession())
-        //    using (var transaction = session.BeginTransaction())
-        //    {
-        //        var fingerIds = session.Query<Setting>()
-        //            .Where(x => x.Terminal.MachineName == Environment.MachineName)
-        //            .SelectMany(x => x.FingersToScan)
-        //            .Select(x => x.Id)
-        //            .ToList();
-
-        //        if (fingerIds == null || fingerIds.Count() == 0)
-        //            fingerIds = Properties.Settings.Default.FingersToScan.Cast<string>().ToList();
-
-        //        fingersToScan = FingerViewModel.All.Where(x => fingerIds.Contains(x.Id)).ToList();
-
-        //        transaction.Commit();
-        //    }
-
-        //    return fingersToScan;
-        //}
 
         #endregion
 

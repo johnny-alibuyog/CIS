@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Polices
 {
@@ -20,7 +21,7 @@ namespace CIS.Core.Entities.Polices
         public virtual string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set { _name = value.ToProperCase(); }
         }
 
         public virtual RankCategory Category
@@ -36,7 +37,7 @@ namespace CIS.Core.Entities.Polices
         public Rank(string id, string name, RankCategory category)
         {
             _id = id;
-            _name = name;
+            _name = name.ToProperCase();
             _category = category;
         }
 

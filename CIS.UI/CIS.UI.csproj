@@ -452,7 +452,6 @@
     <Compile Include="Utilities\Extentions\BitmapExtention.cs" />
     <Compile Include="Utilities\Extentions\EnumExtention.cs" />
     <Compile Include="Utilities\Extentions\ReactiveCollectonExtention.cs" />
-    <Compile Include="Utilities\Extentions\StringExtention.cs" />
     <Compile Include="Utilities\Reports\ReportPrintDocument.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace CIS.UI.Utilities.Extentions
+namespace CIS.Core.Utilities.Extentions
 {
     public static class StringExtention
     {

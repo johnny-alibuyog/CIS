@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Polices
 {
@@ -20,7 +21,7 @@ namespace CIS.Core.Entities.Polices
         public virtual string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set { _name = value.ToProperCase(); }
         }
 
         #region Equality Comparer

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Commons
 {
@@ -16,47 +17,32 @@ namespace CIS.Core.Entities.Commons
         public virtual string Address1
         {
             get { return _address1; }
-            set { _address1 = value; }
+            set { _address1 = value.ToProperCase(); }
         }
 
         public virtual string Address2
         {
             get { return _address2; }
-            set { _address2 = value; }
+            set { _address2 = value.ToProperCase(); }
         }
 
         public virtual string Barangay
         {
             get { return _barangay; }
-            set { _barangay = value; }
+            set { _barangay = value.ToProperCase(); }
         }
 
         public virtual string City
         {
             get { return _city; }
-            set { _city = value; }
+            set { _city = value.ToProperCase(); }
         }
 
         public virtual string Province
         {
             get { return _province; }
-            set { _province = value; }
+            set { _province = value.ToProperCase(); }
         }
-
-        #region Constructors
-
-        public Address() { }
-
-        public Address(string address1, string address2, string barangay, string city, string province)
-        {
-            _address1 = address1;
-            _address2 = address2;
-            _barangay = barangay;
-            _city = city;
-            _province = province;
-        }
-
-        #endregion
 
         #region Equality Comparer
 

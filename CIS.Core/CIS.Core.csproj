@@ -155,6 +155,7 @@
     <Compile Include="Entities\Polices\Suspect.cs" />
     <Compile Include="Entities\Polices\Warrant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Extentions\StringExtention.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entities\Commons\AddressNotes.txt">

@@ -34,14 +34,14 @@ namespace CIS.Data.Configurations
         {
             var createdOn = DateTime.Now;
             var createdBy = WindowsIdentity.GetCurrent().Name;
-            return new Audit(createdBy: createdBy, createdOn: createdOn);
+            return Audit.Create(createdBy, createdOn);
         }
 
         public virtual Audit CreateUpdate()
         {
             var updatedOn = DateTime.Now;
             var updatedBy = WindowsIdentity.GetCurrent().Name;
-            return new Audit(currentAudit: CurrentAudit, updatedBy: updatedBy, updatedOn: updatedOn);
+            return Audit.Create(this.CurrentAudit, updatedBy, updatedOn);
         }
     }
 }

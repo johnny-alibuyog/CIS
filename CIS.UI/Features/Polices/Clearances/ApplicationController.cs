@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Firearms;
 using CIS.Core.Entities.Polices;
+using CIS.Core.Utilities.Extentions;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Cameras;
 using CIS.UI.Features.Commons.Signatures;
@@ -32,7 +33,7 @@ namespace CIS.UI.Features.Polices.Clearances
             this.Reset();
 
             this.MessageBus.Listen<MaintenanceMessage>()
-                .Subscribe(x => 
+                .Subscribe(x =>
                 {
                     if (x.Identifier == "Setting")
                         Reset();
@@ -217,15 +218,13 @@ namespace CIS.UI.Features.Polices.Clearances
             {
                 var person = this.ViewModel.PersonalInformation.Person;
 
-                var warrants = session.Query<Warrant>()
-                    .Where(x => x.Suspects
-                      .Any(o =>
-                          o.Person.FirstName == person.FirstName &&
-                          o.Person.LastName == person.LastName
-                      )
-                  )
-                  .FetchMany(x => x.Suspects)
-                  .ToFuture();
+                var suspectHits = session.Query<Suspect>()
+                    .Where(x =>
+                        x.Person.FirstName == person.FirstName &&
+                        x.Person.LastName == person.LastName
+                    )
+                    .Fetch(x => x.Warrant)
+                    .ToFuture();
 
                 var expiredFirearmsLicenses = session.Query<License>()
                     .Where(x =>
@@ -236,18 +235,20 @@ namespace CIS.UI.Features.Polices.Clearances
                     )
                     .ToFuture();
 
-                var suspectPerfectMatch = warrants
-                    .SelectMany(x => x.Suspects)
+                var suspectPerfectMatch = suspectHits
                     .Where(x =>
-                        x.Person.FirstName == person.FirstName &&
-                        x.Person.MiddleName == person.MiddleName &&
-                        x.Person.LastName == person.LastName
+                        x.Person.FirstName.IsEqualTo(person.FirstName) &&
+                        x.Person.MiddleName.IsEqualTo(person.MiddleName) &&
+                        x.Person.LastName.IsEqualTo(person.LastName)
                     )
                     .ToList();
 
-                var suspectPartialMatch = warrants
-                    .SelectMany(x => x.Suspects)
-                    .Where(x => string.IsNullOrWhiteSpace(x.Person.MiddleName))
+                var suspectPartialMatch = suspectHits
+                    .Where(x =>
+                        x.Person.FirstName.IsEqualTo(person.FirstName) &&
+                        x.Person.LastName.IsEqualTo(person.LastName) &&
+                        string.IsNullOrWhiteSpace(x.Person.MiddleName)
+                    )
                     .Except(suspectPerfectMatch)
                     .ToList();
 

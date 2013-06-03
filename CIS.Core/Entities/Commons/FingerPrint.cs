@@ -90,16 +90,16 @@ namespace CIS.Core.Entities.Commons
 
         public FingerPrint()
         {
-            RightThumb = new ImageBlob();
-            RightIndex = new ImageBlob();
-            RightMiddle = new ImageBlob();
-            RightRing = new ImageBlob();
-            RightPinky = new ImageBlob();
-            LeftThumb = new ImageBlob();
-            LeftIndex = new ImageBlob();
-            LeftMiddle = new ImageBlob();
-            LeftRing = new ImageBlob();
-            LeftPinky = new ImageBlob();
+            _rightThumb = new ImageBlob();
+            _rightIndex = new ImageBlob();
+            _rightMiddle = new ImageBlob();
+            _rightRing = new ImageBlob();
+            _rightPinky = new ImageBlob();
+            _leftThumb = new ImageBlob();
+            _leftIndex = new ImageBlob();
+            _leftMiddle = new ImageBlob();
+            _leftRing = new ImageBlob();
+            _leftPinky = new ImageBlob();
         }
 
         #endregion

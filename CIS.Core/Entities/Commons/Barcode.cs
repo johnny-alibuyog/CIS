@@ -32,24 +32,6 @@ namespace CIS.Core.Entities.Commons
             protected set { _text = value; }
         }
 
-        #region Constructors
-
-        public Barcode() { }
-
-        public Barcode(string text)
-        {
-            _text = text;
-            _image = Barcode.GenerateBarcodeImage(text);
-        }
-
-        public Barcode(string text, ImageBlob image)
-        {
-            _text = text;
-            _image = image;
-        }
-
-        #endregion
-
         #region Equality Comparer
 
         private Nullable<int> _hashCode;
@@ -97,7 +79,13 @@ namespace CIS.Core.Entities.Commons
 
         public static Barcode GenerateBarcode()
         {
-            return new Barcode(Barcode.GeneratBarcodeText());
+            var barcodeText = Barcode.GeneratBarcodeText();
+            var barcodeImage = Barcode.GenerateBarcodeImage(barcodeText);
+            return new Barcode()
+            {
+                Text = barcodeText,
+                Image = barcodeImage
+            };
         }
 
         public static string GeneratBarcodeText()

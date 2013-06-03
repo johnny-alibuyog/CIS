@@ -26,7 +26,7 @@ namespace CIS.UI.Utilities
             var createdOn = DateTime.Now;
             var createdBy = this.GetCurrentUserName();
 
-            return new Audit(createdBy, createdOn);
+            return Audit.Create(createdBy, createdOn);
         }
 
         public override Audit CreateUpdate()
@@ -34,7 +34,7 @@ namespace CIS.UI.Utilities
             var updatedOn = DateTime.Now;
             var updatedBy = this.GetCurrentUserName();
 
-            return new Audit(this.CurrentAudit, updatedBy, updatedOn);
+            return Audit.Create(this.CurrentAudit, updatedBy, updatedOn);
         }
     }
 }

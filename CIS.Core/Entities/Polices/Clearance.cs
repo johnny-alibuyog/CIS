@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using CIS.Core.Entities.Commons;
@@ -236,8 +237,11 @@ namespace CIS.Core.Entities.Polices
 
         public Clearance()
         {
-            this.Applicant = new Applicant();
-            this.Barcode = Barcode.GenerateBarcode();
+            _applicant = new Applicant();
+            _barcode = Barcode.GenerateBarcode();
+            _suspectPartialMatches = new Collection<Suspect>();
+            _suspectPerfectMatches = new Collection<Suspect>();
+            _expiredLicenseMatches = new Collection<License>();
         }
 
         #endregion

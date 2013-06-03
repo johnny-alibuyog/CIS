@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
+using CIS.Core.Utilities.Extentions;
 using CIS.UI.Utilities.Extentions;
 using LinqToExcel;
 using LinqToExcel.Domain;

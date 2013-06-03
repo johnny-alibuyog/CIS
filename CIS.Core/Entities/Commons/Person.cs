@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CIS.Core.Entities.Commons;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Commons
 {
@@ -18,25 +19,25 @@ namespace CIS.Core.Entities.Commons
         public virtual string FirstName
         {
             get { return _firstName; }
-            set { _firstName = value; }
+            set { _firstName = value.ToProperCase(); }
         }
 
         public virtual string MiddleName
         {
             get { return _middleName; }
-            set { _middleName = value; }
+            set { _middleName = value.ToProperCase(); }
         }
 
         public virtual string LastName
         {
             get { return _lastName; }
-            set { _lastName = value; }
+            set { _lastName = value.ToProperCase(); }
         }
 
         public virtual string Suffix
         {
             get { return _suffix; }
-            set { _suffix = value; }
+            set { _suffix = value.ToProperCase(); }
         }
 
         public virtual Nullable<Gender> Gender
@@ -60,32 +61,6 @@ namespace CIS.Core.Entities.Commons
         {
             get { return Person.GetFullName(this); }
         }
-
-        #region Constructor
-
-        public Person() { }
-
-        public Person(string firstName, string middleName, string lastName, string suffix = null, Nullable<Gender> gender = null, Nullable<DateTime> birthDate = null)
-        {
-            _firstName = firstName;
-            _middleName = middleName;
-            _lastName = lastName;
-            _suffix = suffix;
-            _gender = gender ?? Commons.Gender.Male;
-            _birthDate = birthDate;
-        }
-
-        public Person(string firstName, string middleName, string lastName, string suffix, bool gender)
-        {
-            // TODO: Complete member initialization
-            this.FirstName = firstName;
-            this.MiddleName = middleName;
-            this.LastName = lastName;
-            this.Suffix = suffix;
-            this.gender = gender;
-        }
-
-        #endregion
 
         #region Static Members
 
@@ -114,7 +89,6 @@ namespace CIS.Core.Entities.Commons
         #region Equality Comparer
 
         private Nullable<int> _hashCode;
-        private bool gender;
 
         public override int GetHashCode()
         {

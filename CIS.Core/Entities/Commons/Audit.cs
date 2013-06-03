@@ -15,44 +15,55 @@ namespace CIS.Core.Entities.Commons
         public virtual string CreatedBy
         {
             get { return _createdBy; }
+            protected set { _createdBy = value; }
         }
 
         public virtual string UpdatedBy
         {
             get { return _updatedBy; }
+            protected set { _updatedBy = value; }
         }
 
         public virtual Nullable<DateTime> CreatedOn
         {
             get { return _createdOn; }
+            protected set { _createdOn = value; }
         }
 
         public virtual Nullable<DateTime> UpdatedOn
         {
             get { return _updatedOn; }
+            protected set { _updatedOn = value; }
         }
 
-        #region Constructors
+        #region Static Members
 
-        public Audit()
+        //public Audit()
+        //{
+        //    _createdBy = string.Empty;
+        //    _createdOn = DateTime.Now;
+        //}
+
+        public static Audit Create(string createdBy, DateTime createdOn)
         {
-            _createdBy = string.Empty;
-            _createdOn = DateTime.Now;
+            return new Audit()
+            {
+                CreatedBy = createdBy,
+                CreatedOn = createdOn
+            };
         }
 
-        public Audit(string createdBy, DateTime createdOn)
+        public static Audit Create(Audit currentAudit, string updatedBy, DateTime updatedOn)
         {
-            _createdBy = createdBy;
-            _createdOn = createdOn;
-        }
-
-        public Audit(Audit currentAudit, string updatedBy, DateTime updatedOn)
-        {
-            _createdBy = currentAudit != null ? currentAudit.CreatedBy : updatedBy;
-            _createdOn = currentAudit != null ? currentAudit.CreatedOn : updatedOn;
-
-            _updatedBy = updatedBy;
-            _updatedOn = updatedOn;
+            return new Audit()
+            {
+                CreatedBy = currentAudit != null 
+                    ? currentAudit.CreatedBy : updatedBy,
+                CreatedOn = currentAudit != null 
+                    ? currentAudit.CreatedOn : updatedOn,
+                UpdatedBy = updatedBy,
+                UpdatedOn = updatedOn
+            };
         }
 
         #endregion

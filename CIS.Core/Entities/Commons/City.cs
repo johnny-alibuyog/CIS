@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Commons
 {
@@ -22,7 +23,7 @@ namespace CIS.Core.Entities.Commons
         public virtual string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set { _name = value.ToProperCase(); }
         }
 
         public virtual Province Province

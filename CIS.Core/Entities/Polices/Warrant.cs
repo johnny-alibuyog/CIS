@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using CIS.Core.Entities.Commons;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Polices
 {
@@ -44,7 +45,7 @@ namespace CIS.Core.Entities.Polices
         public virtual string WarrantCode
         {
             get { return _warrantCode; }
-            set { _warrantCode = value; }
+            set { _warrantCode = value.ToProperCase(); }
         }
 
         public virtual string CaseNumber
@@ -56,7 +57,7 @@ namespace CIS.Core.Entities.Polices
         public virtual string Crime
         {
             get { return _crime; }
-            set { _crime = value; }
+            set { _crime = value.ToProperCase(); }
         }
 
         public virtual string Description
