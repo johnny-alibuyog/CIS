@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Commons
 {
@@ -18,61 +19,44 @@ namespace CIS.Core.Entities.Commons
         public virtual string Hair
         {
             get { return _hair; }
-            set { _hair = value; }
+            set { _hair = value.ToProperCase(); }
         }
 
         public virtual string Eyes
         {
             get { return _eyes; }
-            set { _eyes = value; }
+            set { _eyes = value.ToProperCase(); }
         }
 
         public virtual string Build
         {
             get { return _build; }
-            set { _build = value; }
+            set { _build = value.ToProperCase(); }
         }
 
         public virtual string Complexion
         {
             get { return _complexion; }
-            set { _complexion = value; }
+            set { _complexion = value.ToProperCase(); }
         }
 
         public virtual string ScarsAndMarks
         {
             get { return _scarsAndMarks; }
-            set { _scarsAndMarks = value; }
+            set { _scarsAndMarks = value.ToProperCase(); }
         }
 
         public virtual string Race
         {
             get { return _race; }
-            set { _race = value; }
+            set { _race = value.ToProperCase(); }
         }
 
         public virtual string Nationality
         {
             get { return _nationality; }
-            set { _nationality = value; }
+            set { _nationality = value.ToProperCase(); }
         }
-
-        #region Constructors
-
-        public PhysicalAttributes() { }
-
-        public PhysicalAttributes(string hair, string eyes, string build, string complexion, string scarsAndMarks, string race, string nationality)
-        {
-            _hair = hair;
-            _eyes = eyes;
-            _build = build;
-            _complexion = complexion;
-            _scarsAndMarks = scarsAndMarks;
-            _race = race;
-            _nationality = nationality;
-        }
-
-        #endregion
 
         #region Equality Comparer
 
