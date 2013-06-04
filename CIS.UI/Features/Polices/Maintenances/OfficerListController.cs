@@ -10,6 +10,7 @@ using CIS.Core.Entities.Polices;
 using ReactiveUI;
 using CIS.UI.Utilities.CommonDialogs;
 using System.Windows;
+using NHibernate.Exceptions;
 
 namespace CIS.UI.Features.Polices.Maintenances
 {
@@ -90,21 +91,33 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public virtual void Delete(OfficerListItemViewModel item)
         {
-            var message = string.Format("Are you sure you want to delete officer {0} {1}.", item.Rank, item.Name);
-            var confirm = MessageDialog.Show(message, "Delete", MessageBoxButton.YesNo);
-            if (confirm == false)
-                return;
-
-            using (var session = this.SessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
+            try
             {
-                var officer = session.Load<Officer>(item.Id);
+                var question = string.Format("Are you sure you want to delete officer {0} {1}.", item.Rank, item.Name);
+                var result = this.Confirm(question, "Delete");
+                if (result == false)
+                    return;
 
-                session.Delete(officer);
-                transaction.Commit();
+                using (var session = this.SessionFactory.OpenSession())
+                using (var transaction = session.BeginTransaction())
+                {
+                    var officer = session.Load<Officer>(item.Id);
+
+                    session.Delete(officer);
+                    transaction.Commit();
+                }
+
+                this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
             }
-
-            this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
+            catch (GenericADOException)
+            {
+                var message = string.Format("Unable to delete. Officer {0} may already be in use.", item.Name);
+                this.Warn(message, "Error");
+            }
+            catch (Exception ex)
+            {
+                this.Warn(ex.Message, "Error");
+            }
         }
     }
 }

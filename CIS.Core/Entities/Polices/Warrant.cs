@@ -45,7 +45,7 @@ namespace CIS.Core.Entities.Polices
         public virtual string WarrantCode
         {
             get { return _warrantCode; }
-            set { _warrantCode = value.ToProperCase(); }
+            set { _warrantCode = value; }
         }
 
         public virtual string CaseNumber

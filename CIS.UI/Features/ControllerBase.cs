@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Threading;
 using CIS.Data;
 using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Utilities.CommonDialogs;
 using Common.Logging;
 using NHibernate;
 using NHibernate.Context;
@@ -69,6 +70,21 @@ namespace CIS.UI.Features
         internal virtual void DispatcherInvoke(Action action)
         {
             Application.Current.Dispatcher.Invoke(action);
+        }
+
+        internal virtual bool? Inform(string text, string title)
+        {
+            return MessageDialog.Show(text, title, MessageBoxButton.OK);
+        }
+
+        internal virtual bool? Confirm(string text, string title)
+        {
+            return MessageDialog.Show(text, title, MessageBoxButton.YesNo);
+        }
+
+        internal virtual bool? Warn(string text, string title)
+        {
+            return MessageDialog.Show(text, title, MessageBoxButton.OK);
         }
 
         public ControllerBase(TViewModel viewModel)
