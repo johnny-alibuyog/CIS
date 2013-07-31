@@ -116,9 +116,30 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual void ViewReport()
         {
+            var station = (Station)null;
+
+            using (var session = this.SessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var stationQuery = session.QueryOver<Station>().Cacheable().List();
+                station = stationQuery.FirstOrDefault();
+                transaction.Commit();
+            }
+
+            var viewModel = new ArchiveReportViewModel()
+            {
+                Station = station.Name,
+                Office = station.Office,
+                Location = station.Location,
+                FromDate = this.ViewModel.Criteria.FromDate,
+                ToDate = this.ViewModel.Criteria.ToDate,
+                FilterDate = this.ViewModel.Criteria.FilterDate,
+                Items = this.ViewModel.Items,
+            };
+
             var dialog = new DialogService<ArchiveReportView, ArchiveReportViewModel>();
-            dialog.ViewModel.Items = this.ViewModel.Items;
-            dialog.ShowModal(this, "Archive", null);
+            dialog.ViewModel = viewModel;
+            dialog.ShowModal(this, "Archive");
         }
     }
 }

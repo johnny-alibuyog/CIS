@@ -68,6 +68,12 @@ namespace CIS.UI.Features.Polices.Clearances
             this.Loaded += (sender, e) =>
             {
                 _bindingSource.DataSource = this.ViewModel.Items;
+                _reportViewer.LocalReport.SetParameters(new ReportParameter("Office", this.ViewModel.Office));
+                _reportViewer.LocalReport.SetParameters(new ReportParameter("Station", this.ViewModel.Station));
+                _reportViewer.LocalReport.SetParameters(new ReportParameter("Location", this.ViewModel.Location));
+                _reportViewer.LocalReport.SetParameters(new ReportParameter("IncludeDate", this.ViewModel.FilterDate.ToString()));
+                _reportViewer.LocalReport.SetParameters(new ReportParameter("FromDate", this.ViewModel.FromDate.ToString()));
+                _reportViewer.LocalReport.SetParameters(new ReportParameter("ToDate", this.ViewModel.ToDate.ToString()));
                 _reportViewer.RefreshReport();
             };
         }
