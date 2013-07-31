@@ -34,10 +34,10 @@ namespace CIS.Core.Entities.Polices
 
         public Rank() { }
 
-        public Rank(string id, string name, RankCategory category)
+        public Rank(string id, string name, RankCategory category, bool enableProperCasing = false)
         {
             _id = id;
-            _name = name.ToProperCase();
+            _name = enableProperCasing ? name.ToProperCase() : name;
             _category = category;
         }
 

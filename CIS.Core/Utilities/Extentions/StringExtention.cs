@@ -15,17 +15,16 @@ namespace CIS.Core.Utilities.Extentions
         //    if (input == null)
         //        return null;
 
-        //    char[] chars = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input.ToLower()).ToCharArray();
+        //    var characters = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input.ToLower()).ToCharArray();
 
-        //    for (int i = 0; i + 1 < chars.Length; i++)
+        //    for (int i = 0; i + 1 < characters.Length; i++)
         //    {
-        //        if ((chars[i].Equals('\'')) ||
-        //            (chars[i].Equals('-')))
+        //        if ((characters[i].Equals('\'')) || (characters[i].Equals('-')))
         //        {
-        //            chars[i + 1] = Char.ToUpper(chars[i + 1]);
+        //            characters[i + 1] = Char.ToUpper(characters[i + 1]);
         //        }
         //    }
-        //    return new string(chars);
+        //    return new string(characters);
         //}
 
         #region Routine Helpers
@@ -47,6 +46,8 @@ namespace CIS.Core.Utilities.Extentions
             value = ProperSuffix(value, "'");       // D'Artagnon, D'Silva
             value = ProperSuffix(value, ".");       // ???
             value = ProperSuffix(value, "-");       // Oscar-Meyer-Weiner
+            value = ProperSuffix(value, "(");       // Oscar-Meyer-Weiner
+            value = ProperSuffix(value, ")");       // Oscar-Meyer-Weiner
             value = ProperSuffix(value, "Mc");      // Scots
             value = ProperSuffix(value, "Mac");     // Scots
 
@@ -141,16 +142,18 @@ namespace CIS.Core.Utilities.Extentions
 
         public static string ToProperCase(this string input)
         {
-            if (IsAllUpperOrAllLower(input))
-            {
-                // fix the ALL UPPERCASE or all lowercase names
-                return string.Join(" ", input.Split(' ').Select(word => WordToProperCase(word)));
-            }
-            else
-            {
-                // leave the CamelCase or Propercase names alone
-                return input;
-            }
+            return string.Join(" ", input.Split(' ').Select(word => WordToProperCase(word)));
+
+            //if (IsAllUpperOrAllLower(input))
+            //{
+            //    // fix the ALL UPPERCASE or all lowercase names
+            //    return string.Join(" ", input.Split(' ').Select(word => WordToProperCase(word)));
+            //}
+            //else
+            //{
+            //    // leave the CamelCase or Propercase names alone
+            //    return input;
+            //}
         }
     }
 }

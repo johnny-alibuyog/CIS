@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Memberships;
 using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Terminals;
 using CIS.UI.Features.Firearms;
@@ -37,6 +38,10 @@ namespace CIS.UI.Features
             InitializeComponent();
 
             var dataInitializer = (IDataInitializer)null;
+
+            dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
+            dataInitializer.Execute();
+
             dataInitializer = IoC.Container.Resolve<FingerDataInitializer>();
             dataInitializer.Execute();
 
@@ -60,6 +65,7 @@ namespace CIS.UI.Features
 
             dataInitializer = IoC.Container.Resolve<StationDataInitializer>();
             dataInitializer.Execute();
+
 
         }
     }

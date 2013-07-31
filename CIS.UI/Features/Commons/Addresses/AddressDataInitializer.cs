@@ -12,11 +12,11 @@ using NHibernate.Linq;
 
 namespace CIS.UI.Features.Commons.Addresses
 {
-    public class AddressDataInitialzer : IDataInitializer
+    public class AddressDataInitializer : IDataInitializer
     {
         private readonly ISessionFactory _sessionFactory;
 
-        public AddressDataInitialzer(ISessionFactory sessionFactory)
+        public AddressDataInitializer(ISessionFactory sessionFactory)
         {
             _sessionFactory = sessionFactory;
         }
@@ -70,6 +70,9 @@ namespace CIS.UI.Features.Commons.Addresses
 
                 transaction.Commit();
             }
+
+            //Note: remove this soon
+            return;
 
             var provinces = new List<Province>();
 
