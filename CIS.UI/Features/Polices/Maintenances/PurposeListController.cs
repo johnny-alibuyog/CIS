@@ -18,8 +18,7 @@ namespace CIS.UI.Features.Polices.Maintenances
     {
         public PurposeListController(PurposeListViewModel viewModel) : base(viewModel)
         {
-            this.ViewModel.ObservableForProperty(x => x.NewItem)
-            .Subscribe(x =>
+            this.ViewModel.ObservableForProperty(x => x.NewItem).Subscribe(x =>
             {
                 var matchedItem = this.ViewModel.Items
                     .Where(o => o.Name.Contains(this.ViewModel.NewItem))

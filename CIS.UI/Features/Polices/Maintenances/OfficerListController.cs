@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ReactiveUI.Xaml;
-using NHibernate;
-using NHibernate.Linq;
-using CIS.Core.Entities.Polices;
-using ReactiveUI;
-using CIS.UI.Utilities.CommonDialogs;
 using System.Windows;
+using CIS.Core.Entities.Polices;
+using CIS.UI.Utilities.CommonDialogs;
+using NHibernate;
 using NHibernate.Exceptions;
+using NHibernate.Linq;
+using ReactiveUI;
+using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Maintenances
 {

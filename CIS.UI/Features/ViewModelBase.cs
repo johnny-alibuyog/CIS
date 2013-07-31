@@ -75,7 +75,7 @@ namespace CIS.UI.Features
         //    }
         //}
 
-        public virtual bool IsValid { get; set; }
+        public virtual bool IsValid { get; private set; }
 
         public virtual string Error
         {
