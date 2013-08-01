@@ -46,8 +46,8 @@ namespace CIS.Core.Utilities.Extentions
             value = ProperSuffix(value, "'");       // D'Artagnon, D'Silva
             value = ProperSuffix(value, ".");       // ???
             value = ProperSuffix(value, "-");       // Oscar-Meyer-Weiner
-            value = ProperSuffix(value, "(");       // Oscar-Meyer-Weiner
-            value = ProperSuffix(value, ")");       // Oscar-Meyer-Weiner
+            value = ProperSuffix(value, "(");       
+            value = ProperSuffix(value, ")");       
             value = ProperSuffix(value, "Mc");      // Scots
             value = ProperSuffix(value, "Mac");     // Scots
 

@@ -39,8 +39,8 @@ namespace CIS.UI.Features
 
             var dataInitializer = (IDataInitializer)null;
 
-            dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
-            dataInitializer.Execute();
+            //dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
+            //dataInitializer.Execute();
 
             dataInitializer = IoC.Container.Resolve<FingerDataInitializer>();
             dataInitializer.Execute();

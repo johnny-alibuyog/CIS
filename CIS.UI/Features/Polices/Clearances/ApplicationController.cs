@@ -505,7 +505,7 @@ namespace CIS.UI.Features.Polices.Clearances
         {
             try
             {
-                var confirm = MessageDialog.Show("Do you want to relase clearance.", "Clearance", MessageBoxButton.YesNo);
+                var confirm = MessageDialog.Show("Do you want to release clearance.", "Clearance", MessageBoxButton.YesNo);
                 if (confirm == false)
                     return;
 
