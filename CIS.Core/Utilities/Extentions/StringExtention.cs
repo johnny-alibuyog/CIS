@@ -142,6 +142,9 @@ namespace CIS.Core.Utilities.Extentions
 
         public static string ToProperCase(this string input)
         {
+            if (string.IsNullOrWhiteSpace(input))
+                return null;
+
             return string.Join(" ", input.Split(' ').Select(word => WordToProperCase(word)));
 
             //if (IsAllUpperOrAllLower(input))

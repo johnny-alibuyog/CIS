@@ -2238,7 +2238,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=String.Format("Entry Operator: {0} Date Printed: {1}", First(Fields!Issuer.Value, "ItemDataSet"), First(Fields!IssueDate.Value, "ItemDataSet"))</Value>
+                <Value>=String.Format("Entry Operator: {0} Date Printed: {1}", First(Fields!Issuer.Value, "ItemDataSet"), Format(Globals!ExecutionTime, "MMM-dd-yyyy hh:mm tt"))</Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>Tahoma</FontFamily>
