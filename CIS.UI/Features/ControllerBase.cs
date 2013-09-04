@@ -27,7 +27,7 @@ namespace CIS.UI.Features
             get
             {
                 if (_log == null)
-                    _log = IoC.Container.Resolve<ILog>();
+                    _log = Common.Logging.LogManager.GetCurrentClassLogger(); //IoC.Container.Resolve<ILog>();
 
                 return _log;
             }
