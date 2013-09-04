@@ -37,15 +37,16 @@ namespace CIS.Core.Entities.Memberships
         #region Static Members
 
         public static readonly Role Administrator = new Role("A", "Administrator");
-        public static readonly Role PoliceStaff = new Role("PS", "Police Staff");
-        public static readonly Role BarangayStaff = new Role("BS", "Barangay Staff");
-        public static readonly Role MayorsStaff = new Role("MS", "Mayors Staff");
+        public static readonly Role Police = new Role("P", "Police");
+        public static readonly Role Barangay = new Role("B", "Barangay");
+        public static readonly Role Mayors = new Role("M", "Mayors");
+
         public static readonly IEnumerable<Role> All = new Role[] 
         { 
             Administrator, 
-            PoliceStaff, 
-            BarangayStaff, 
-            MayorsStaff 
+            Police, 
+            Barangay, 
+            Mayors 
         };
 
         #endregion
