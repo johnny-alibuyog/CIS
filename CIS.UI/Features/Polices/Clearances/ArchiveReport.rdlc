@@ -372,10 +372,11 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>=Format(Fields!IssueDate.Value, "MM-dd-yyyy")</Value>
+                            <Value>=Fields!IssueDate.Value</Value>
                             <Style>
                               <FontFamily>tahoma</FontFamily>
                               <FontSize>8pt</FontSize>
+                              <Format>yyyy-MM-dd</Format>
                             </Style>
                           </TextRun>
                         </TextRuns>
@@ -468,107 +469,6 @@
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Textbox Name="Verifier2">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Microsoft.VisualBasic.Strings.UCase(Parameters!Station.Value)</Value>
-                  <Style>
-                    <FontFamily>Tahoma</FontFamily>
-                    <FontSize>8pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Verifier</rd:DefaultName>
-          <Top>0.49861in</Top>
-          <Left>2.8586in</Left>
-          <Height>0.14in</Height>
-          <Width>2.78279in</Width>
-          <Style>
-            <Border>
-              <Color>White</Color>
-              <Style>Solid</Style>
-            </Border>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-        </Textbox>
-        <Textbox Name="Verifier3">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Microsoft.VisualBasic.Strings.UCase(Parameters!Office.Value)</Value>
-                  <Style>
-                    <FontFamily>Tahoma</FontFamily>
-                    <FontSize>8pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Verifier</rd:DefaultName>
-          <Top>0.3625in</Top>
-          <Left>2.8586in</Left>
-          <Height>0.14in</Height>
-          <Width>2.78279in</Width>
-          <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Color>White</Color>
-              <Style>Solid</Style>
-            </Border>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-        </Textbox>
-        <Textbox Name="Verifier4">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Microsoft.VisualBasic.Strings.UCase(Parameters!Location.Value)</Value>
-                  <Style>
-                    <FontFamily>Tahoma</FontFamily>
-                    <FontSize>8pt</FontSize>
-                    <FontWeight>Normal</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Verifier</rd:DefaultName>
-          <Top>0.65111in</Top>
-          <Left>2.8586in</Left>
-          <Height>0.14in</Height>
-          <Width>2.78279in</Width>
-          <ZIndex>2</ZIndex>
-          <Style>
-            <Border>
-              <Color>White</Color>
-              <Style>Solid</Style>
-            </Border>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-        </Textbox>
         <Textbox Name="Verifier5">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
@@ -576,11 +476,20 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=String.Format("Generated on: {0}", DateTime.Now.ToString("MMM dd, yyyy hh:mm"))</Value>
+                  <Value>Generated on: </Value>
                   <Style>
                     <FontFamily>Tahoma</FontFamily>
                     <FontSize>8pt</FontSize>
                     <FontWeight>Normal</FontWeight>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>=Globals!ExecutionTime</Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Normal</FontWeight>
+                    <Format>f</Format>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -594,7 +503,6 @@
           <Left>0.79792in</Left>
           <Height>0.1375in</Height>
           <Width>4.40779in</Width>
-          <ZIndex>3</ZIndex>
           <Style>
             <Border>
               <Color>White</Color>
@@ -605,18 +513,85 @@
             <PaddingRight>2pt</PaddingRight>
           </Style>
         </Textbox>
-        <Textbox Name="Verifier6">
+        <Textbox Name="Verifier2">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=String.Format("Coverage: {0} - {1}", Format(Parameters!FromDate.Value, "MMM dd, yyyy"), Format(Parameters!ToDate.Value, "MMM dd, yyyy"))</Value>
+                  <Value>=Parameters!Office.Value</Value>
                   <Style>
                     <FontFamily>Tahoma</FontFamily>
                     <FontSize>8pt</FontSize>
-                    <FontWeight>Normal</FontWeight>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!Station.Value</Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!Location.Value</Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Coverage: </Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>=Parameters!FromDate.Value</Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <Format>MMM dd, yyyy</Format>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value> to </Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <Format>MMM dd, yyyy</Format>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>=Parameters!ToDate.Value</Value>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <Format>MMM dd, yyyy</Format>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -626,11 +601,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Verifier</rd:DefaultName>
-          <Top>0.79583in</Top>
+          <Top>0.32757in</Top>
           <Left>2.8586in</Left>
-          <Height>0.14in</Height>
+          <Height>0.59694in</Height>
           <Width>2.78279in</Width>
-          <ZIndex>4</ZIndex>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Color>White</Color>

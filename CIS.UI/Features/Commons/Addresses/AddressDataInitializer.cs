@@ -71,9 +71,6 @@ namespace CIS.UI.Features.Commons.Addresses
                 transaction.Commit();
             }
 
-            //Note: remove this soon
-            return;
-
             var provinces = new List<Province>();
 
             using (var session = _sessionFactory.OpenStatelessSession())

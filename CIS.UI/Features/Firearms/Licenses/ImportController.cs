@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Windows;
 using CIS.UI.Bootstraps.DependencyInjection;
@@ -9,7 +10,7 @@ namespace CIS.UI.Features.Firearms.Licenses
 {
     public class ImportController : ControllerBase<ImportViewModel>
     {
-        private readonly System.ComponentModel.BackgroundWorker _importWorker;
+        private readonly BackgroundWorker _importWorker;
 
         public ImportController(ImportViewModel viewModel) : base(viewModel)
         {

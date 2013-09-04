@@ -83,6 +83,17 @@ namespace CIS.UI.Features.Firearms.Licenses
             var dialog = new DialogService<LicenseView, LicenseViewModel>();
             var result = dialog.ShowModal(this, "Create License", null);
             if (result != null)
+            {
+                var item = new LicenseListItemViewModel()
+                {
+                    Id = result.Id,
+                    Owner = result.Person.FullName,
+                    Gun = result.Gun.Kind.Name + ": " + result.Gun.Model,
+                };
+
+                this.ViewModel.Items.Add(item);
+                this.ViewModel.SelectedItem = item;
+            }
                 this.Search();
         }
 

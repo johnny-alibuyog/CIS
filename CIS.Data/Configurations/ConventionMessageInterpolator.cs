@@ -42,7 +42,6 @@ namespace CIS.Data.Configurations
 
         #endregion
 
-
         #region Routine Helpers
 
         private string CreateDefaultMessage(InterpolationInfo info)
@@ -71,12 +70,32 @@ namespace CIS.Data.Configurations
                 : entityValidatorName;
         }
 
+        private string CleanEntityPostfix(string entityName)
+        {
+            var name = entityName;
+            var postfixIndex = default(int);
+
+            postfixIndex = name.LastIndexOf("ViewModel");
+            if (postfixIndex > 0)
+                name = name.Substring(0, postfixIndex);
+
+            postfixIndex = name.LastIndexOf("Entity");
+            if (postfixIndex > 0)
+                name = name.Substring(0, postfixIndex);
+
+            postfixIndex = name.LastIndexOf("Model");
+            if (postfixIndex > 0)
+                name = name.Substring(0, postfixIndex);
+
+            return name;
+        }
+
         private string Replace(string originalMessage, Type entity, string propName)
         {
             return SubstitutionExpression.Replace(originalMessage, match =>
             {
                 if ("[EntityName]".Equals(match.Value))
-                    return entity.Name;
+                    return CleanEntityPostfix(entity.Name);//return entity.Name;
 
                 if ((!string.IsNullOrEmpty(propName) && "[PropertyName]".Equals(match.Value)))
                     return propName;

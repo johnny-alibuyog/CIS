@@ -128,9 +128,9 @@ namespace CIS.UI.Features.Polices.Clearances
 
             var viewModel = new ArchiveReportViewModel()
             {
-                Station = station.Name,
-                Office = station.Office,
-                Location = station.Location,
+                Station = station.Name.ToUpper(),
+                Office = station.Office.ToUpper(),
+                Location = station.Location.ToUpper(),
                 FromDate = this.ViewModel.Criteria.FromDate,
                 ToDate = this.ViewModel.Criteria.ToDate,
                 FilterDate = this.ViewModel.Criteria.FilterDate,

@@ -97,6 +97,11 @@ namespace CIS.UI.Features.Commons.Biometrics
             FingerViewModel.LeftPinky
         };
 
+        public static IList<FingerViewModel> GetByIds(IList<string> ids)
+        {
+            return FingerViewModel.All.Where(x => ids.Contains(x.Id)).ToList();
+        }
+
         #endregion
 
         #region Equality Comparer

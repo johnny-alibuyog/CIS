@@ -10,8 +10,8 @@
                 <ResourceDictionary Source="/Assets/Styles/DialogBase.xaml" />
                 <!--<ResourceDictionary Source="/Assets/Styles/FieldContainer.xaml" />-->
                 <ResourceDictionary Source="/Assets/Icons/AppBar.xaml" />
-                <ResourceDictionary Source="/Assets/Icons/AppBar2.xaml" />
-                <ResourceDictionary Source="/Assets/Icons/appbar.edit.xaml" />
+                <!--<ResourceDictionary Source="/Assets/Icons/AppBar2.xaml" />-->
+                <!--<ResourceDictionary Source="/Assets/Icons/appbar.edit.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

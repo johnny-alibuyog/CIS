@@ -38,13 +38,6 @@ namespace CIS.UI.Bootstraps.DependencyInjection.Ninject
             {
                 if (_instance == null)
                 {
-                    //var kernel = new StandardKernel(new INinjectModule[]
-                    //{ 
-                    //    new PersistenceModule(),
-                    //    new MessageModule()
-
-                    //});
-
                     var kernel = new StandardKernel();
                     kernel.Load(AppDomain.CurrentDomain.GetAssemblies());
 

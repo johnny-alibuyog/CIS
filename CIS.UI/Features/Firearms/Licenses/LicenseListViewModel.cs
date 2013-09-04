@@ -16,7 +16,7 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public virtual LicenseListItemViewModel SelectedItem { get; set; }
 
-        public virtual IReactiveCollection<LicenseListItemViewModel> Items { get; set; }
+        public virtual ReactiveCollection<LicenseListItemViewModel> Items { get; set; }
 
         public virtual IReactiveCommand Search { get; set; }
 

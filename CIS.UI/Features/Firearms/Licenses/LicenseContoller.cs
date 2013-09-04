@@ -45,7 +45,7 @@ namespace CIS.UI.Features.Firearms.Licenses
         public virtual void Save()
         {
             var message = string.Format("Are you sure you want to save warrant?");
-            var confirm = MessageDialog.Show(message, "Delete", MessageBoxButton.YesNo);
+            var confirm = MessageDialog.Show(message, "Save", MessageBoxButton.YesNo);
             if (confirm == false)
                 return;
 
@@ -65,6 +65,8 @@ namespace CIS.UI.Features.Firearms.Licenses
                 transaction.Commit();
 
                 this.SessionProvider.ReleaseSharedSession();
+
+                this.ViewModel.Id = license.Id;
             }
 
             this.ViewModel.ActionResult = true;

@@ -48,10 +48,7 @@ namespace CIS.UI.Features.Commons.Biometrics
                     .Select(x => x.Id)
                     .ToList();
 
-                if (fingerIds == null || fingerIds.Count() == 0)
-                    fingerIds = Properties.Settings.Default.FingersToScan.Cast<string>().ToList();
-
-                _fingersToScan = FingerViewModel.All.Where(x => fingerIds.Contains(x.Id)).ToList();
+                _fingersToScan = FingerViewModel.GetByIds(fingerIds);
 
                 transaction.Commit();
             }
