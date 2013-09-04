@@ -23,8 +23,6 @@ namespace CIS.UI
                     .OfType<Window>()
                     .Where(x => x.IsActive)
                     .SingleOrDefault();
-
-
             }
         }
 
