@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -27,6 +28,7 @@ namespace CIS.Core.Entities.Memberships
         public Role() { }
 
         public Role(string id, string name)
+            : this()
         {
             _id = id;
             _name = name;
@@ -36,17 +38,28 @@ namespace CIS.Core.Entities.Memberships
 
         #region Static Members
 
-        public static readonly Role Administrator = new Role("A", "Administrator");
-        public static readonly Role Police = new Role("P", "Police");
-        public static readonly Role Barangay = new Role("B", "Barangay");
-        public static readonly Role Mayors = new Role("M", "Mayors");
-
+        public static readonly Role SystemAdministrator = new Role("SA", "System Administrator");
+        public static readonly Role PoliceAdministartor = new Role("PA", "Police Administrator");
+        public static readonly Role PoliceApprover = new Role("PAP", "Police Approver");
+        public static readonly Role PoliceEncoder = new Role("PE", "Police Encoder");
+        public static readonly Role BarangayAdministartor = new Role("BA", "Barangay Administrator");
+        public static readonly Role BarangayApprover = new Role("BAP", "Barangay Approver");
+        public static readonly Role BarangayEncoder = new Role("BAP", "Barangay Encoder");
+        public static readonly Role MayorAdministrator = new Role("MA", "Mayor Aministrator");
+        public static readonly Role MayorApprover = new Role("M", "Mayor Approver");
+        public static readonly Role MayorEncoder = new Role("ME", "Mayor Encoder");
         public static readonly IEnumerable<Role> All = new Role[] 
         { 
-            Administrator, 
-            Police, 
-            Barangay, 
-            Mayors 
+            SystemAdministrator, 
+            PoliceAdministartor, 
+            PoliceApprover, 
+            PoliceEncoder, 
+            BarangayAdministartor, 
+            BarangayApprover, 
+            BarangayEncoder, 
+            MayorAdministrator,
+            MayorApprover,
+            MayorEncoder,
         };
 
         #endregion

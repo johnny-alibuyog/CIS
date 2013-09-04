@@ -26,7 +26,7 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public virtual SettingFingerViewModel SelectedItem { get; set; }
 
-        public virtual ReactiveCollection<SettingFingerViewModel> FingersToScan { get; set; }
+        public virtual ReactiveList<SettingFingerViewModel> FingersToScan { get; set; }
 
         public virtual IReactiveCommand Load { get; set; }
 

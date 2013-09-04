@@ -26,9 +26,9 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual AddressViewModel Address { get; set; }
 
-        public virtual ReactiveCollection<string> Aliases { get; set; }
+        public virtual ReactiveList<string> Aliases { get; set; }
 
-        public virtual ReactiveCollection<string> Occupations { get; set; }
+        public virtual ReactiveList<string> Occupations { get; set; }
 
         public virtual string AliasToAdd { get; set; }
 
@@ -49,8 +49,8 @@ namespace CIS.UI.Features.Polices.Warrants
             this.Person = new PersonViewModel();
             this.PhysicalAttributes = new PhysicalAttributesViewModel();
             this.Address = new AddressViewModel();
-            this.Aliases = new ReactiveCollection<string>();
-            this.Occupations = new ReactiveCollection<string>();
+            this.Aliases = new ReactiveList<string>();
+            this.Occupations = new ReactiveList<string>();
 
             _controller = new SuspectController(this);
         }
@@ -84,8 +84,8 @@ namespace CIS.UI.Features.Polices.Warrants
                 target.Person.SerializeWith(source.Person);
                 target.PhysicalAttributes.SerializeWith(source.PhysicalAttributes);
                 target.Address.SerializeWith(source.Address);
-                target.Aliases = new ReactiveCollection<string>(source.Aliases);
-                target.Occupations = new ReactiveCollection<string>(source.Occupations);
+                target.Aliases = new ReactiveList<string>(source.Aliases);
+                target.Occupations = new ReactiveList<string>(source.Occupations);
                 return target;
             }
 

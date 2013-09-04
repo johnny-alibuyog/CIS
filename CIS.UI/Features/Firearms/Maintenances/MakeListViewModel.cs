@@ -16,7 +16,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
 
         public virtual MakeViewModel SelectedItem { get; set; }
 
-        public virtual ReactiveCollection<MakeViewModel> Items { get; set; }
+        public virtual ReactiveList<MakeViewModel> Items { get; set; }
 
         public virtual IReactiveCommand Load { get; set; }
 

@@ -36,7 +36,7 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual SuspectViewModel SelectedSuspect { get; set; }
 
-        public virtual ReactiveCollection<SuspectViewModel> Suspects { get; set; }
+        public virtual ReactiveList<SuspectViewModel> Suspects { get; set; }
 
         public virtual IReactiveCommand Load { get; set; }
 
@@ -52,7 +52,7 @@ namespace CIS.UI.Features.Polices.Warrants
         public WarrantViewModel()
         {
             this.IssuedAt = new AddressViewModel();
-            this.Suspects = new ReactiveCollection<SuspectViewModel>();
+            this.Suspects = new ReactiveList<SuspectViewModel>();
 
             _controller = new WarrantController(this);
         }

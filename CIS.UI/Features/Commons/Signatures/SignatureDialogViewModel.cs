@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NHibernate.Validator.Constraints;
+using ReactiveUI;
 using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Commons.Signatures

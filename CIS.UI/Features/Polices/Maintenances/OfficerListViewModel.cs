@@ -28,7 +28,6 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public OfficerListViewModel() 
         {
-            this.Criteria = new OfficerListCriteriaViewModel();
             _controller = new OfficerListController(this);
         }
     }

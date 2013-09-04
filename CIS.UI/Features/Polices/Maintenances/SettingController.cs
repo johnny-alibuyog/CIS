@@ -8,6 +8,7 @@ using CIS.Core.Entities.Polices;
 using CIS.UI.Utilities.CommonDialogs;
 using NHibernate;
 using NHibernate.Linq;
+using ReactiveUI;
 using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Maintenances

@@ -16,6 +16,8 @@ namespace CIS.UI.Features.Polices.Clearances
     {
         public ArchiveController(ArchiveViewModel viewModel) : base(viewModel)
         {
+            this.ViewModel.Criteria = new ArchiveCriteriaViewModel();
+
             this.ViewModel.Search = new ReactiveCommand();
             this.ViewModel.Search.Subscribe(x => Search());
 

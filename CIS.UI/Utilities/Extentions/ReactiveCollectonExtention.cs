@@ -9,9 +9,9 @@ namespace CIS.UI.Utilities.Extentions
 {
     public static class ReactiveCollectonExtention
     {
-        public static ReactiveCollection<T> ToReactiveColletion<T>(this IEnumerable<T> items)
+        public static ReactiveList<T> ToReactiveColletion<T>(this IEnumerable<T> items)
         {
-            return new ReactiveCollection<T>(items);
+            return new ReactiveList<T>(items);
         }
     }
 }

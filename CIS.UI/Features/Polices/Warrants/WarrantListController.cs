@@ -75,7 +75,7 @@ namespace CIS.UI.Features.Polices.Warrants
                     })
                     .ToList();
 
-                this.ViewModel.Items = new ReactiveCollection<WarrantListItemViewModel>(items);
+                this.ViewModel.Items = new ReactiveList<WarrantListItemViewModel>(items);
 
                 transaction.Commit();
             }

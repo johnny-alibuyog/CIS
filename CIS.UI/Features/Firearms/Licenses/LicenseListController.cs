@@ -19,7 +19,9 @@ namespace CIS.UI.Features.Firearms.Licenses
         public LicenseListController(LicenseListViewModel viewModel)
             : base(viewModel)
         {
-            ViewModel.Search = new ReactiveCommand(
+            this.ViewModel.Criteria = new LicenseListCriteriaViewModel();
+
+            this.ViewModel.Search = new ReactiveCommand(
                 this.ViewModel.WhenAny(
                     x => x.Criteria.FirstName,
                     x => x.Criteria.MiddleName,
@@ -30,16 +32,16 @@ namespace CIS.UI.Features.Firearms.Licenses
                         !string.IsNullOrWhiteSpace(lastName.Value)
                 )
             );
-            ViewModel.Search.Subscribe(x => Search());
+            this.ViewModel.Search.Subscribe(x => Search());
 
-            ViewModel.Create = new ReactiveCommand();
-            ViewModel.Create.Subscribe(x => Create());
+            this.ViewModel.Create = new ReactiveCommand();
+            this.ViewModel.Create.Subscribe(x => Create());
 
-            ViewModel.Edit = new ReactiveCommand();
-            ViewModel.Edit.Subscribe(x => { Edit((LicenseListItemViewModel)x); });
+            this.ViewModel.Edit = new ReactiveCommand();
+            this.ViewModel.Edit.Subscribe(x => { Edit((LicenseListItemViewModel)x); });
 
-            ViewModel.Delete = new ReactiveCommand();
-            ViewModel.Delete.Subscribe(x => { Delete((LicenseListItemViewModel)x); });
+            this.ViewModel.Delete = new ReactiveCommand();
+            this.ViewModel.Delete.Subscribe(x => { Delete((LicenseListItemViewModel)x); });
         }
 
         public virtual void Search()

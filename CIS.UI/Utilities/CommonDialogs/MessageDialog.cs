@@ -12,7 +12,20 @@ namespace CIS.UI.Utilities.CommonDialogs
     {
         public static bool? Show(string text, string title, MessageBoxButton button)
         {
-            return ModernDialog.ShowMessage(text, title, button);
+            var result = ModernDialog.ShowMessage(text, title, button);
+            switch (result)
+            {
+                case MessageBoxResult.OK:
+                case MessageBoxResult.Yes:
+                    return true;
+                case MessageBoxResult.No:
+                case MessageBoxResult.Cancel:
+                    return false;
+                case MessageBoxResult.None:
+                    return null;
+                default:
+                    return null;
+            }
         }
     }
 }

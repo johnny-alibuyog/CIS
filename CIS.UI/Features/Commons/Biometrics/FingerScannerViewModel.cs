@@ -21,7 +21,7 @@ namespace CIS.UI.Features.Commons.Biometrics
 
         public virtual FingerViewModel CurrentFinger { get; set; }
 
-        public virtual ReactiveCollection<string> EventLogs { get; set; }
+        public virtual ReactiveList<string> EventLogs { get; set; }
 
         public virtual string Prompt { get; set; }
 
@@ -33,7 +33,7 @@ namespace CIS.UI.Features.Commons.Biometrics
 
         public FingerScannerViewModel()
         {
-            this.EventLogs = new ReactiveCollection<string>();
+            this.EventLogs = new ReactiveList<string>();
             this.CurrentFinger = FingerViewModel.RightThumb;
             this.FingerImages = new Dictionary<FingerViewModel, BitmapSource>()
                 {

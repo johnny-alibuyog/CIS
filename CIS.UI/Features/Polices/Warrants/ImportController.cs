@@ -16,6 +16,7 @@ using CIS.UI.Utilities.Extentions;
 using LinqToExcel;
 using NHibernate;
 using NHibernate.Linq;
+using ReactiveUI;
 using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Warrants

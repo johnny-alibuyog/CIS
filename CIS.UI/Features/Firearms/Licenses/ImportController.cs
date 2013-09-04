@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows;
 using CIS.UI.Bootstraps.DependencyInjection;
 using CIS.UI.Utilities.CommonDialogs;
+using ReactiveUI;
 using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Firearms.Licenses

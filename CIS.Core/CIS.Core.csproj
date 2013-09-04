@@ -140,7 +140,6 @@
     <Compile Include="Entities\Mayors\Secretary.cs">
       <DependentUpon>Official.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Memberships\Permission.cs" />
     <Compile Include="Entities\Memberships\Role.cs" />
     <Compile Include="Entities\Memberships\User.cs" />
     <Compile Include="Entities\Polices\Applicant.cs" />

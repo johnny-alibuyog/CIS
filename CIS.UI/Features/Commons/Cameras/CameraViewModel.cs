@@ -22,7 +22,7 @@ namespace CIS.UI.Features.Commons.Cameras
 
         public virtual Camera SelectedCamera { get; set; }
 
-        public virtual ReactiveCollection<Camera> Cameras { get; set; }
+        public virtual ReactiveList<Camera> Cameras { get; set; }
 
         public virtual string SelectedDevice { get; set; }
 

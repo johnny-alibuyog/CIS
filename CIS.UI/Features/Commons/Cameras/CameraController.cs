@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
+using ReactiveUI;
 using ReactiveUI.Xaml;
 using Touchless.Vision.Camera;
 using Touchless.Vision.Contracts;

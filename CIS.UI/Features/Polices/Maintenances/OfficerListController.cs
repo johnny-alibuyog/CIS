@@ -19,17 +19,19 @@ namespace CIS.UI.Features.Polices.Maintenances
         public OfficerListController(OfficerListViewModel viewModel)
             : base(viewModel)
         {
-            ViewModel.Search = new ReactiveCommand();
-            ViewModel.Search.Subscribe(x => Search());
+            this.ViewModel.Criteria = new OfficerListCriteriaViewModel();
 
-            ViewModel.Create = new ReactiveCommand();
-            ViewModel.Create.Subscribe(x => Create());
+            this.ViewModel.Search = new ReactiveCommand();
+            this.ViewModel.Search.Subscribe(x => Search());
 
-            ViewModel.Edit = new ReactiveCommand();
-            ViewModel.Edit.Subscribe(x => { Edit((OfficerListItemViewModel)x); });
+            this.ViewModel.Create = new ReactiveCommand();
+            this.ViewModel.Create.Subscribe(x => Create());
 
-            ViewModel.Delete = new ReactiveCommand();
-            ViewModel.Delete.Subscribe(x => { Delete((OfficerListItemViewModel)x); });
+            this.ViewModel.Edit = new ReactiveCommand();
+            this.ViewModel.Edit.Subscribe(x => { Edit((OfficerListItemViewModel)x); });
+
+            this.ViewModel.Delete = new ReactiveCommand();
+            this.ViewModel.Delete.Subscribe(x => { Delete((OfficerListItemViewModel)x); });
         }
 
         public virtual void Search()
@@ -60,7 +62,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                     })
                     .ToList();
 
-                this.ViewModel.Items = new ReactiveCollection<OfficerListItemViewModel>(items);
+                this.ViewModel.Items = new ReactiveList<OfficerListItemViewModel>(items);
 
                 transaction.Commit();
             }
