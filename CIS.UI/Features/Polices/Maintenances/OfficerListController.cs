@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Polices;
 using CIS.UI.Utilities.CommonDialogs;
+using CIS.UI.Utilities.Extentions;
 using NHibernate;
 using NHibernate.Exceptions;
 using NHibernate.Linq;
@@ -50,7 +51,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 if (!string.IsNullOrWhiteSpace(this.ViewModel.Criteria.LastName))
                     query = query.Where(x => x.Person.LastName.StartsWith(this.ViewModel.Criteria.LastName));
 
-                var items = query
+                this.ViewModel.Items = query
                     .OrderBy(x => x.Person.FirstName)
                     .ThenBy(x => x.Person.MiddleName)
                     .ThenBy(x => x.Person.LastName)
@@ -60,9 +61,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                         Name = x.Person.FirstName + " " + x.Person.MiddleName + " " + x.Person.LastName,
                         Rank = x.Rank.Name,
                     })
-                    .ToList();
-
-                this.ViewModel.Items = new ReactiveList<OfficerListItemViewModel>(items);
+                    .ToReactiveList();
 
                 transaction.Commit();
             }
@@ -75,7 +74,16 @@ namespace CIS.UI.Features.Polices.Maintenances
             if (result != null)
             {
                 this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
-                this.Search();
+
+                var item = new OfficerListItemViewModel();
+                item.Id = result.Id;
+                item.Name = result.Person.FullName;
+                item.Rank = result.Rank.Name;
+
+                this.ViewModel.Items.Add(item);
+                this.ViewModel.SelectedItem = item;
+
+                //this.Search();
             }
         }
 
@@ -87,7 +95,12 @@ namespace CIS.UI.Features.Polices.Maintenances
             if (result != null)
             {
                 this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
-                this.Search();
+
+                item.Id = result.Id;
+                item.Name = result.Person.FullName;
+                item.Rank = result.Rank.Name;
+
+                //this.Search();
             }
         }
 
@@ -95,9 +108,9 @@ namespace CIS.UI.Features.Polices.Maintenances
         {
             try
             {
-                var question = string.Format("Are you sure you want to delete officer {0} {1}.", item.Rank, item.Name);
-                var result = this.Confirm(question, "Delete");
-                if (result == false)
+                var message = string.Format("Are you sure you want to delete officer {0} {1}.", item.Rank, item.Name);
+                var confirmed = this.MessageBox.Confirm(message, "Delete");
+                if (confirmed == false)
                     return;
 
                 using (var session = this.SessionFactory.OpenSession())
@@ -110,15 +123,19 @@ namespace CIS.UI.Features.Polices.Maintenances
                 }
 
                 this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
+
+                this.ViewModel.Items.Remove(item);
+                this.ViewModel.SelectedItem = null;
+
             }
-            catch (GenericADOException)
+            catch (GenericADOException ex)
             {
                 var message = string.Format("Unable to delete. Officer {0} may already be in use.", item.Name);
-                this.Warn(message, "Error");
+                this.MessageBox.Warn(message, ex, "Error");
             }
             catch (Exception ex)
             {
-                this.Warn(ex.Message, "Error");
+                this.MessageBox.Warn(ex.Message, ex, "Error");
             }
         }
     }
