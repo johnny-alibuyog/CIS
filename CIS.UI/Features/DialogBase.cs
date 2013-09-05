@@ -53,7 +53,7 @@ namespace CIS.UI.Features
 
         public DialogBase()
         {
-            this.Style = (Style)App.Current.Resources["EmptyWindow"];
+            this.Style = (Style)App.Current.Resources["DialogBaseStyle"];
             this.DefaultStyleKey = typeof(DialogBase);
             this.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
