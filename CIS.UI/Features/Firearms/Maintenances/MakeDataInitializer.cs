@@ -94,9 +94,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var makes = session.Query<Make>()
-                    .Cacheable()
-                    .ToFuture();
+                var makes = session.Query<Make>().Cacheable().ToFuture();
 
                 foreach (var item in this.Data)
                 {

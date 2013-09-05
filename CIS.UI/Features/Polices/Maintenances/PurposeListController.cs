@@ -68,7 +68,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                         Id = x.Id,
                         Name = x.Name
                     })
-                    .ToReactiveColletion();
+                    .ToReactiveList();
 
                 transaction.Commit();
             }
@@ -77,7 +77,7 @@ namespace CIS.UI.Features.Polices.Maintenances
         public virtual void Insert()
         {
             var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
-            var confirm = MessageDialog.Show(message, "Purpose", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm(message, "Purpose");
             if (confirm == false)
                 return;
 
@@ -87,7 +87,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 var exists = session.Query<Purpose>().Any(x => x.Name == this.ViewModel.NewItem);
                 if (exists)
                 {
-                    MessageDialog.Show("Item already exists", "Purpose", MessageBoxButton.YesNo);
+                    this.MessageBox.Inform("Item already exists", "Purpose");
                     return;
                 }
 
@@ -108,7 +108,7 @@ namespace CIS.UI.Features.Polices.Maintenances
         public virtual void Delete(PurposeViewModel item)
         {
             var message = string.Format("Do you want to delete {0}?", item.Name);
-            var confirm = MessageDialog.Show(message, "Purpose", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm(message, "Purpose");
             if (confirm == false)
                 return;
 
@@ -142,7 +142,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                         Id = x.Id,
                         Name = x.Name
                     })
-                    .ToReactiveColletion();
+                    .ToReactiveList();
 
                 transaction.Commit();
             }

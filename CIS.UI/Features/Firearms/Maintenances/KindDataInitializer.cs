@@ -43,9 +43,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var kinds = session.Query<Kind>()
-                    .Cacheable()
-                    .ToFuture();
+                var kinds = session.Query<Kind>().Cacheable().ToFuture();
 
                 foreach (var item in this.Data)
                 {

@@ -29,7 +29,7 @@ namespace CIS.UI.Features.Polices.Maintenances
         [NotNull(Message = "Rank is mandatory.")]
         public virtual Lookup<string> Rank { get; set; }
 
-        public virtual ReactiveList<Lookup<string>> Ranks { get; set; }
+        public virtual IReactiveList<Lookup<string>> Ranks { get; set; }
 
         [NotNullNotEmpty(Message = "Positon is mandatory.")]
         public virtual string Position { get; set; }
@@ -112,7 +112,6 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public OfficerViewModel()
         {
-            this.Person = new PersonViewModel();
             _controller = new OfficerController(this);
         }
     }

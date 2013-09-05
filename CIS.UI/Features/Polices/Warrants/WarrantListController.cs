@@ -106,7 +106,7 @@ namespace CIS.UI.Features.Polices.Warrants
                 return;
 
             var message = string.Format("Are you sure you want to delete warrant for {0} with case {1}", selected.Suspect, selected.Crime);
-            var confirm = MessageDialog.Show(message, "Delete", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm(message, "Delete");
             if (confirm == false)
                 return;
 

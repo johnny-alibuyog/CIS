@@ -163,12 +163,12 @@ namespace CIS.UI.Features.Polices.Clearances
 
 
                 this.ViewModel.PersonalInformation.Purposes = purposeQuery
-                  .Select(x => new Lookup<Guid>()
-                  {
-                      Id = x.Id,
-                      Name = x.Name
-                  })
-                  .ToReactiveColletion();
+                    .Select(x => new Lookup<Guid>()
+                    {
+                        Id = x.Id,
+                        Name = x.Name
+                    })
+                    .ToReactiveList();
 
                 this.ViewModel.PersonalInformation.Verifiers = officerQuery
                     .Select(x => new Lookup<Guid>()
@@ -176,7 +176,7 @@ namespace CIS.UI.Features.Polices.Clearances
                         Id = x.Id,
                         Name = x.Person.Fullname
                     })
-                    .ToReactiveColletion();
+                    .ToReactiveList();
 
                 this.ViewModel.PersonalInformation.Certifiers = officerQuery
                     .Select(x => new Lookup<Guid>()
@@ -184,7 +184,7 @@ namespace CIS.UI.Features.Polices.Clearances
                         Id = x.Id,
                         Name = x.Person.Fullname
                     })
-                    .ToReactiveColletion();
+                    .ToReactiveList();
 
                 var setting = settingQuery;
                 if (setting != null)
@@ -432,8 +432,8 @@ namespace CIS.UI.Features.Polices.Clearances
 
                 if (!string.IsNullOrWhiteSpace(result.PartialMatchFindings))
                 {
-                    var question = result.PartialMatchFindings + " This will not reflect in the findings. Do you still want to proceed?";
-                    var confirm = MessageDialog.Show(question, "Clearance", MessageBoxButton.YesNo);
+                    var message = result.PartialMatchFindings + " This will not reflect in the findings. Do you still want to proceed?";
+                    var confirm = this.MessageBox.Confirm(message, "Clearance");
                     if (confirm == false)
                         return null;
                 }
@@ -442,7 +442,7 @@ namespace CIS.UI.Features.Polices.Clearances
             }
             catch (Exception ex)
             {
-                MessageDialog.Show(ex.Message, "Clearance Application", MessageBoxButton.OK);
+                this.MessageBox.Warn(ex.Message, ex, "Clearance Application");
                 return null;
             }
         }
@@ -487,7 +487,7 @@ namespace CIS.UI.Features.Polices.Clearances
         {
             if (this.ViewModel.CurrentViewModel.IsValid == false)
             {
-                MessageDialog.Show(this.ViewModel.CurrentViewModel.Error, "Application", MessageBoxButton.OK);
+                this.MessageBox.Warn(this.ViewModel.CurrentViewModel.Error, "Application");
                 return;
             }
 
@@ -505,7 +505,7 @@ namespace CIS.UI.Features.Polices.Clearances
         {
             try
             {
-                var confirm = MessageDialog.Show("Do you want to release clearance.", "Clearance", MessageBoxButton.YesNo);
+                var confirm = this.MessageBox.Confirm("Do you want to release clearance.", "Clearance");
                 if (confirm == false)
                     return;
 
@@ -513,13 +513,12 @@ namespace CIS.UI.Features.Polices.Clearances
                 if (data != null)
                 {
                     PrintClearance(data);
-                    MessageDialog.Show("Clearance has been sent to the printer.", "Clearance", MessageBoxButton.OK);
+                    this.MessageBox.Inform("Clearance has been sent to the printer.", "Clearance");
                 }
             }
             catch (Exception ex)
             {
-
-                MessageDialog.Show(ex.Message, "Clearance", MessageBoxButton.OK);
+                this.MessageBox.Warn(ex.Message, ex, "Clearance");
             }
         }
     }

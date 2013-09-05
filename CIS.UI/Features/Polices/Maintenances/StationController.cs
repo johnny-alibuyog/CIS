@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.DependencyInjection;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Utilities.CommonDialogs;
 using NHibernate;
@@ -20,7 +21,7 @@ namespace CIS.UI.Features.Polices.Maintenances
         public StationController(StationViewModel viewModel)
             : base(viewModel)
         {
-            Load();
+            this.Load();
 
             this.ViewModel.LookupLogo = new ReactiveCommand();
             this.ViewModel.LookupLogo.Subscribe(x => LookupLogo());
@@ -35,7 +36,8 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public virtual void LookupLogo()
         {
-            var logo = OpenImageDialog.Show();
+            var openImageDialog = IoC.Container.Resolve<IOpenImageDialogService>();
+            var logo = openImageDialog.Show();
             if (logo != null)
                 this.ViewModel.Logo = logo;
         }
@@ -57,12 +59,12 @@ namespace CIS.UI.Features.Polices.Maintenances
             }
 
             if (confirm)
-                MessageDialog.Show("Station configuration has loaded.", "Station", MessageBoxButton.OK);
+                this.MessageBox.Inform("Station configuration has loaded.", "Station");
         }
 
         public virtual void Save()
         {
-            var confirm = MessageDialog.Show("Do you want to save changes?.", "Station", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm("Do you want to save changes?.", "Station");
             if (confirm == false)
                 return;
 
@@ -83,7 +85,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 transaction.Commit();
             }
 
-            MessageDialog.Show("Station configuration has been saved.", "Station", MessageBoxButton.OK);
+            this.MessageBox.Inform("Station configuration has been saved.", "Station");
 
             this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Station"));
         }

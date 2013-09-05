@@ -70,7 +70,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
                         Id = x.Id,
                         Name = x.Name
                     })
-                    .ToReactiveColletion();
+                    .ToReactiveList();
 
                 transaction.Commit();
             }
@@ -79,7 +79,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
         public virtual void Insert()
         {
             var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
-            var confirm = MessageDialog.Show(message, "Classification (Kind)", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm(message, "Classification (Kind)");
             if (confirm == false)
                 return;
 
@@ -89,7 +89,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
                 var exists = session.Query<Kind>().Any(x => x.Name == this.ViewModel.NewItem);
                 if (exists)
                 {
-                    MessageDialog.Show("Item already exists", "Classification (Kind)", MessageBoxButton.YesNo);
+                    this.MessageBox.Warn("Item already exists", "Classification (Kind)");
                     return;
                 }
 
@@ -98,9 +98,9 @@ namespace CIS.UI.Features.Firearms.Maintenances
                 session.Save(entity);
                 transaction.Commit();
 
-                var newlyCreatedItem = new KindViewModel() { Id = entity.Id, Name = entity.Name };
-                this.ViewModel.Items.Insert(0, newlyCreatedItem);
-                this.ViewModel.SelectedItem = newlyCreatedItem;
+                var item = new KindViewModel() { Id = entity.Id, Name = entity.Name };
+                this.ViewModel.Items.Insert(0, item);
+                this.ViewModel.SelectedItem = item;
                 this.ViewModel.NewItem = string.Empty;
             }
         }
@@ -108,7 +108,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
         public virtual void Delete(KindViewModel item)
         {
             var message = string.Format("Do you want to delete {0}?", item.Name);
-            var confirm = MessageDialog.Show(message, "Classification (Kind)", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm(message, "Classification (Kind)");
             if (confirm == false)
                 return;
 
@@ -140,7 +140,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
                         Id = x.Id,
                         Name = x.Name
                     })
-                    .ToReactiveColletion();
+                    .ToReactiveList();
 
                 transaction.Commit();
             }

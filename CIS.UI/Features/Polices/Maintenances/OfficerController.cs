@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Features.Commons.Persons;
 using CIS.UI.Features.Commons.Signatures;
 using CIS.UI.Utilities.Extentions;
 using NHibernate;
@@ -17,14 +18,15 @@ namespace CIS.UI.Features.Polices.Maintenances
     {
         public OfficerController(OfficerViewModel viewModel) : base(viewModel) 
         {
-            PopulateLookup();
+            this.ViewModel.Person = new PersonViewModel();
+
+            this.PopulateLookup();
 
             this.ViewModel.CaptureSignature = new ReactiveCommand();
             this.ViewModel.CaptureSignature.Subscribe(x => CaptureSignature());
 
             this.ViewModel.Load = new ReactiveCommand();
             this.ViewModel.Load.Subscribe(x => Load((Guid)x));
-
 
             this.ViewModel.Save = new ReactiveCommand(this.ViewModel
                 .WhenAny(x => x.IsValid, x => x.Value));
@@ -36,9 +38,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             using (var session = this.SessionFactory.OpenSession())
             using (var transacction = session.BeginTransaction())
             {
-                var ranks = session.Query<Rank>()
-                    .Cacheable()
-                    .ToFuture();
+                var ranks = session.Query<Rank>().Cacheable().ToFuture();
 
                 this.ViewModel.Ranks = ranks
                     .Select(x => new Lookup<string>()
@@ -46,7 +46,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                         Id = x.Id,
                         Name = x.Name
                     })
-                    .ToReactiveColletion();
+                    .ToReactiveList();
 
                 transacction.Commit();
             }
@@ -115,6 +115,8 @@ namespace CIS.UI.Features.Polices.Maintenances
 
                 session.SaveOrUpdate(station);
                 transaction.Commit();
+
+                this.ViewModel.Id = officer.Id;
 
                 this.SessionProvider.ReleaseSharedSession();
             }

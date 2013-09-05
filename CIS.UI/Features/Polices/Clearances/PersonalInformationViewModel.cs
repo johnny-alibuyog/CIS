@@ -40,28 +40,28 @@ namespace CIS.UI.Features.Polices.Clearances
         [NotNull(Message = "Civil status is mandatory.")]
         public virtual CivilStatus CivilStatus { get; set; }
 
-        public virtual ReactiveList<CivilStatus> CivilStatuses { get; private set; }
+        public virtual IReactiveList<CivilStatus> CivilStatuses { get; private set; }
 
         [NotNull(Message = "Purpose is mandatory.")]
         public virtual Lookup<Guid> Purpose { get; set; }
 
-        public virtual ReactiveList<Lookup<Guid>> Purposes { get; set; }
+        public virtual IReactiveList<Lookup<Guid>> Purposes { get; set; }
 
         [NotNull(Message = "Verifier is mandatory.")]
         public virtual Lookup<Guid> Verifier { get; set; } 
 
-        public virtual ReactiveList<Lookup<Guid>> Verifiers {get;set;}
+        public virtual IReactiveList<Lookup<Guid>> Verifiers {get;set;}
 
         [NotNull(Message = "Certifier is mandatory.")]
         public virtual Lookup<Guid> Certifier { get; set; }
 
-        public virtual ReactiveList<Lookup<Guid>> Certifiers { get; set; }
+        public virtual IReactiveList<Lookup<Guid>> Certifiers { get; set; }
 
         public PersonalInformationViewModel()
         {
             this.CivilStatuses = Enum.GetValues(typeof(CivilStatus))
                 .Cast<CivilStatus>()
-                .ToReactiveColletion();
+                .ToReactiveList();
 
             this.Citizenship = "Filipino";
             this.CivilStatus = CivilStatus.Single;

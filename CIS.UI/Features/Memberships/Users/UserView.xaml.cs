@@ -12,21 +12,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using FirstFloor.ModernUI.Windows.Controls;
 using ReactiveUI;
 
-namespace CIS.UI.Features.Polices.Warrants
+namespace CIS.UI.Features.Memberships.Users
 {
     /// <summary>
-    /// Interaction logic for WarratnView.xaml
+    /// Interaction logic for UserView.xaml
     /// </summary>
-    public partial class WarrantView : DialogBase, IViewFor<WarrantViewModel>
+    public partial class UserView : DialogBase, IViewFor<UserViewModel>
     {
-        #region IViewFor<WarrantViewModel> Members
+        #region IViewFor<UserViewModel> Members
 
-        public WarrantViewModel ViewModel
+        public UserViewModel ViewModel
         {
-            get { return this.DataContext as WarrantViewModel; }
+            get { return this.DataContext as UserViewModel; }
             set { this.DataContext = value; }
         }
 
@@ -34,18 +33,23 @@ namespace CIS.UI.Features.Polices.Warrants
         {
             get { return this.DataContext; }
             set { this.DataContext = value; }
-        }
+        } 
 
         #endregion
 
-        public WarrantView() : base()
+        public UserView()
         {
             InitializeComponent();
 
             if (!DesignerProperties.GetIsInDesignMode(this))
             {
-                this.ViewModel = new WarrantViewModel();
+                this.ViewModel = new UserViewModel();
             }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

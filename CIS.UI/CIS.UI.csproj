@@ -305,13 +305,24 @@
     <Compile Include="Features\Commons\Persons\PersonViewModel.cs" />
     <Compile Include="Features\DialogService.cs" />
     <Compile Include="Features\IDataInitializer.cs" />
+    <Compile Include="Features\Memberships\Users\UserListController.cs" />
     <Compile Include="Features\Memberships\Users\UserListCriteriaViewModel.cs">
       <DependentUpon>UserListViewModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\Memberships\Users\UserListItemViewModel.cs">
       <DependentUpon>UserListViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Memberships\Users\UserListView.xaml.cs">
+      <DependentUpon>UserListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Features\Memberships\Users\UserListViewModel.cs" />
+    <Compile Include="Features\Memberships\Users\UserRoleViewModel.cs">
+      <DependentUpon>UserViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Memberships\Users\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Memberships\Users\UserViewModel.cs" />
     <Compile Include="Features\Polices\Clearances\ApplicationController.cs" />
     <Compile Include="Features\Polices\Clearances\ApplicationView.xaml.cs">
       <DependentUpon>ApplicationView.xaml</DependentUpon>
@@ -433,9 +444,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\CommonDialogs\MessageDialog.cs" />
-    <Compile Include="Utilities\CommonDialogs\OpenDirectoryDialog.cs" />
-    <Compile Include="Utilities\CommonDialogs\OpenImageDialog.cs" />
+    <Compile Include="Utilities\CommonDialogs\IMessageBoxService.cs" />
+    <Compile Include="Utilities\CommonDialogs\IOpenDirectoryDialogService.cs" />
+    <Compile Include="Utilities\CommonDialogs\IOpenImageDialogService.cs" />
+    <Compile Include="Utilities\CommonDialogs\MessageBoxService.cs" />
+    <Compile Include="Utilities\CommonDialogs\OpenDirectoryDialogService.cs" />
+    <Compile Include="Utilities\CommonDialogs\OpenImageDialogService.cs" />
     <Compile Include="Utilities\Controls\WaterMarkAdorner.cs" />
     <Compile Include="Utilities\Controls\WaterMarkService.cs" />
     <Compile Include="Utilities\Converters\EnumToBooleanConverter.cs" />
@@ -560,6 +574,14 @@
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Features\Memberships\Users\UserListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Memberships\Users\UserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Features\Polices\Clearances\ApplicationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

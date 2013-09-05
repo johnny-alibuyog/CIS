@@ -40,9 +40,7 @@ namespace CIS.UI.Features.Commons.Addresses
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                provinces = session.Query<Province>()
-                    .Cacheable()
-                    .ToList();
+                provinces = session.Query<Province>().Cacheable().ToList();
 
                 transaction.Commit();
             }
@@ -54,7 +52,7 @@ namespace CIS.UI.Features.Commons.Addresses
                     Name = x.Name
                 })
                 .OrderBy(x => x.Name)
-                .ToReactiveColletion();
+                .ToReactiveList();
         }
 
         public virtual void PopulateCities(Lookup<Guid> provinceLookup)
@@ -85,7 +83,7 @@ namespace CIS.UI.Features.Commons.Addresses
                     Name = x.Name
                 })
                 .OrderBy(x => x.Name)
-                .ToReactiveColletion();
+                .ToReactiveList();
         }
 
         public virtual void PopulateBarangays(Lookup<Guid> cityLookup)
@@ -115,7 +113,7 @@ namespace CIS.UI.Features.Commons.Addresses
                     Name = x.Name
                 })
                 .OrderBy(x => x.Name)
-                .ToReactiveColletion();
+                .ToReactiveList();
         }
 
         public virtual void Import()

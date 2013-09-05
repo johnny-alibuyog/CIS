@@ -45,7 +45,7 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public virtual void Save()
         {
-            var confirm = MessageDialog.Show("Do you want to save changes?", "Settings", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm("Do you want to save changes?", "Settings");
             if (confirm == false)
                 return;
 

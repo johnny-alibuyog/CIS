@@ -45,7 +45,7 @@ namespace CIS.UI.Features.Firearms.Licenses
         public virtual void Save()
         {
             var message = string.Format("Are you sure you want to save warrant?");
-            var confirm = MessageDialog.Show(message, "Save", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm(message, "Save");
             if (confirm == false)
                 return;
 

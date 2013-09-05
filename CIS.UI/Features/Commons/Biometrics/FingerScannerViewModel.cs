@@ -21,7 +21,7 @@ namespace CIS.UI.Features.Commons.Biometrics
 
         public virtual FingerViewModel CurrentFinger { get; set; }
 
-        public virtual ReactiveList<string> EventLogs { get; set; }
+        public virtual IReactiveList<string> EventLogs { get; set; }
 
         public virtual string Prompt { get; set; }
 

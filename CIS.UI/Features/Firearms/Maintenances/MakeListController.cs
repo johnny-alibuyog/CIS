@@ -70,7 +70,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
                         Id = x.Id,
                         Name = x.Name
                     })
-                    .ToReactiveColletion();
+                    .ToReactiveList();
 
                 transaction.Commit();
             }
@@ -79,7 +79,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
         public virtual void Insert()
         {
             var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
-            var confirm = MessageDialog.Show(message, "Manufacture (Make)", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm(message, "Manufacture (Make)");
             if (confirm == false)
                 return;
 
@@ -89,7 +89,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
                 var exists = session.Query<Make>().Any(x => x.Name == this.ViewModel.NewItem);
                 if (exists)
                 {
-                    MessageDialog.Show("Item already exists", "Manufacture (Make)", MessageBoxButton.YesNo);
+                    this.MessageBox.Warn("Item already exists", "Manufacture (Make)");
                     return;
                 }
 
@@ -108,7 +108,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
         public virtual void Delete(MakeViewModel item)
         {
             var message = string.Format("Do you want to delete {0}?", item.Name);
-            var confirm = MessageDialog.Show(message, "Manufacture (Make)", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm(message, "Manufacture (Make)");
             if (confirm == false)
                 return;
 
@@ -140,7 +140,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
                         Id = x.Id,
                         Name = x.Name
                     })
-                    .ToReactiveColletion();
+                    .ToReactiveList();
 
                 transaction.Commit();
             }

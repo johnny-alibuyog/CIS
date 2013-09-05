@@ -60,7 +60,7 @@ namespace CIS.UI.Features.Firearms.Licenses
                 if (!string.IsNullOrWhiteSpace(this.ViewModel.Criteria.LastName))
                     query = query.Where(x => x.Person.LastName.StartsWith(this.ViewModel.Criteria.LastName));
 
-                var items = query
+                this.ViewModel.Items = query
                     .OrderBy(x => x.Person.FirstName)
                     .ThenBy(x => x.Person.MiddleName)
                     .ThenBy(x => x.Person.LastName)
@@ -72,9 +72,7 @@ namespace CIS.UI.Features.Firearms.Licenses
                         Gun = x.Gun.Kind.Name + ": " + x.Gun.Model,
                         ExpiryDate = x.ExpiryDate
                     })
-                    .ToReactiveColletion();
-
-                this.ViewModel.Items = items.ToReactiveColletion();
+                    .ToReactiveList();
 
                 transaction.Commit();
             }
@@ -116,7 +114,7 @@ namespace CIS.UI.Features.Firearms.Licenses
                 return;
 
             var message = string.Format("Are you sure you want to delete license for {0} for gun {1}", selected.Owner, selected.Gun);
-            var confirm = MessageDialog.Show(message, "Delete", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm(message, "Delete");
             if (confirm == false)
                 return;
 

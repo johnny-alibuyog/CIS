@@ -16,7 +16,7 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public virtual PurposeViewModel SelectedItem { get; set; }
 
-        public virtual ReactiveList<PurposeViewModel> Items { get; set; }
+        public virtual IReactiveList<PurposeViewModel> Items { get; set; }
 
         public virtual IReactiveCommand Load { get; set; }
 

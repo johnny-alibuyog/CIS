@@ -7,16 +7,13 @@ using System.Windows.Forms;
 
 namespace CIS.UI.Utilities.CommonDialogs
 {
-    public static class OpenDirectoryDialog
+    public class OpenDirectoryDialogService : IOpenDirectoryDialogService
     {
-        public static string Show()
+        public string Show()
         {
-            var dialog = new FolderBrowserDialog() {  };
+            var dialog = new FolderBrowserDialog() { };
             var result = dialog.ShowDialog();
-            if (result == DialogResult.OK)
-                return dialog.SelectedPath;
-            else
-                return null;
+            return (result == DialogResult.OK) ? dialog.SelectedPath : null;
         }
     }
 }

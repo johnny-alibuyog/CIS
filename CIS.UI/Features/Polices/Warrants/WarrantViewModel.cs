@@ -36,7 +36,7 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual SuspectViewModel SelectedSuspect { get; set; }
 
-        public virtual ReactiveList<SuspectViewModel> Suspects { get; set; }
+        public virtual IReactiveList<SuspectViewModel> Suspects { get; set; }
 
         public virtual IReactiveCommand Load { get; set; }
 
@@ -96,7 +96,7 @@ namespace CIS.UI.Features.Polices.Warrants
                 target.IssuedAt.SerializeWith(source.IssuedAt);
                 target.Suspects = source.Suspects
                     .Select(x => new SuspectViewModel().SerializeWith(x) as SuspectViewModel)
-                    .ToReactiveColletion();
+                    .ToReactiveList();
 
                 return target;
             }

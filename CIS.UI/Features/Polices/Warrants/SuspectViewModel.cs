@@ -26,9 +26,9 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual AddressViewModel Address { get; set; }
 
-        public virtual ReactiveList<string> Aliases { get; set; }
+        public virtual IReactiveList<string> Aliases { get; set; }
 
-        public virtual ReactiveList<string> Occupations { get; set; }
+        public virtual IReactiveList<string> Occupations { get; set; }
 
         public virtual string AliasToAdd { get; set; }
 

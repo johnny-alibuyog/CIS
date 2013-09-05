@@ -22,11 +22,11 @@ namespace CIS.UI.Features.Firearms.Licenses
 
                 this.ViewModel.Makes = makeQuery
                     .Select(x => new Lookup<Guid>(x.Id, x.Name))
-                    .ToReactiveColletion();
+                    .ToReactiveList();
 
                 this.ViewModel.Kinds = kindQuery
                     .Select(x => new Lookup<Guid>(x.Id, x.Name))
-                    .ToReactiveColletion();
+                    .ToReactiveList();
 
                 transaction.Commit();
             }

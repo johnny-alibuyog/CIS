@@ -20,7 +20,7 @@ namespace CIS.UI.Features.Commons.Cameras
 
         public CameraController(CameraViewModel viewModel) : base(viewModel)
         {
-            this.ViewModel.Cameras = CameraService.AvailableCameras.ToReactiveColletion();
+            this.ViewModel.Cameras = CameraService.AvailableCameras.ToReactiveList();
             this.ViewModel.SelectedCamera = CameraService.DefaultCamera;
 
             this.ViewModel.Start = new ReactiveCommand();
@@ -48,7 +48,7 @@ namespace CIS.UI.Features.Commons.Cameras
 
             if (this.ViewModel.SelectedCamera == null)
             {
-                MessageDialog.Show("No camera selected or no camera available.", "Police Clearance", MessageBoxButton.OK);
+                this.MessageBox.Warn("No camera selected or no camera available.", "Police Clearance");
                 return;
             }
 

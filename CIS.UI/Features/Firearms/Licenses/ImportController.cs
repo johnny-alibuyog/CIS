@@ -17,8 +17,8 @@ namespace CIS.UI.Features.Firearms.Licenses
         {
             _importWorker = new System.ComponentModel.BackgroundWorker();
             _importWorker.DoWork += (sender, e) => Import();
-            //_backgroundWorker.ProgressChanged += (sender, e) => ProgressChanged(this.ViewModel));
-            //_backgroundWorker.RunWorkerCompleted += (sender, e) => RunWorkerCompleted(this.ViewModel));
+            //_importWorker.ProgressChanged += (sender, e) => ProgressChanged(this.ViewModel));
+            //_importWorker.RunWorkerCompleted += (sender, e) => RunWorkerCompleted(this.ViewModel));
             _importWorker.WorkerReportsProgress = true;
             _importWorker.WorkerSupportsCancellation = true;
 
@@ -34,14 +34,15 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public virtual void LookupPath()
         {
-            var result = OpenDirectoryDialog.Show();
+            var openDirectoryDialog = IoC.Container.Resolve<IOpenDirectoryDialogService>();
+            var result = openDirectoryDialog.Show();
             if (result != null)
                 this.ViewModel.SourcePath = result;
         }
 
         public virtual void Reset()
         {
-            var confirm = MessageDialog.Show("Do you want to reset?", "Import", MessageBoxButton.OK);
+            var confirm = this.MessageBox.Confirm("Do you want to reset?", "Import");
             if (confirm == false)
                 return;
 
@@ -58,11 +59,11 @@ namespace CIS.UI.Features.Firearms.Licenses
         {
             if (!Directory.Exists(this.ViewModel.SourcePath))
             {
-                MessageDialog.Show("Please specify valid directory", "Import", MessageBoxButton.OK);
+                this.MessageBox.Inform("Please specify valid directory", "Import");
                 return;
             }
 
-            var confirm = MessageDialog.Show("Do you want to import from this directory?", "Import", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm("Do you want to import from this directory?", "Import");
             if (confirm == false)
                 return;
 

@@ -89,7 +89,7 @@ namespace CIS.UI.Features.Polices.Warrants
         public virtual void BatchSave()
         {
             var message = string.Format("Are you sure you want to save warrant?");
-            var confirm = MessageDialog.Show(message, "Delete", MessageBoxButton.YesNo);
+            var confirm = this.MessageBox.Confirm(message, "Delete");
             if (confirm == false)
                 return;
 

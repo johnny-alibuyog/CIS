@@ -20,6 +20,7 @@ namespace CIS.UI.Features
         private ILog _log;
         private TViewModel _viewModel;
         private IMessageBus _messageBus;
+        private IMessageBoxService _messageBox;
         private ISessionProvider _sessionProvider;
 
         internal virtual ILog Log
@@ -49,6 +50,17 @@ namespace CIS.UI.Features
             }
         }
 
+        internal virtual IMessageBoxService MessageBox
+        {
+            get
+            {
+                if (_messageBox == null)
+                    _messageBox = IoC.Container.Resolve<IMessageBoxService>();
+
+                return _messageBox;
+            }
+        }
+
         internal virtual ISessionFactory SessionFactory
         {
             get { return this.SessionProvider.SessionFactory; }
@@ -72,20 +84,20 @@ namespace CIS.UI.Features
             Application.Current.Dispatcher.Invoke(action);
         }
 
-        internal virtual bool? Inform(string text, string title)
-        {
-            return MessageDialog.Show(text, title, MessageBoxButton.OK);
-        }
+        //internal virtual bool? Inform(string text, string title)
+        //{
+        //    return MessageDialog.Show(text, title, MessageBoxButton.OK);
+        //}
 
-        internal virtual bool? Confirm(string text, string title)
-        {
-            return MessageDialog.Show(text, title, MessageBoxButton.YesNo);
-        }
+        //internal virtual bool? Confirm(string text, string title)
+        //{
+        //    return MessageDialog.Show(text, title, MessageBoxButton.YesNo);
+        //}
 
-        internal virtual bool? Warn(string text, string title)
-        {
-            return MessageDialog.Show(text, title, MessageBoxButton.OK);
-        }
+        //internal virtual bool? Warn(string text, string title)
+        //{
+        //    return MessageDialog.Show(text, title, MessageBoxButton.OK);
+        //}
 
         public ControllerBase(TViewModel viewModel)
         {
