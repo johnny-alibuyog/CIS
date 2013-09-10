@@ -55,6 +55,8 @@ namespace CIS.UI.Features.Polices.Clearances
                 );
             this.ViewModel.Previous.Subscribe(x => Previous());
 
+
+
             this.ViewModel.Next = new ReactiveCommand(this.ViewModel
                 .WhenAny(
                     x => x.CurrentViewModel,

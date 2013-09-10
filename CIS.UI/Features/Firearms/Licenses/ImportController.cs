@@ -42,8 +42,8 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public virtual void Reset()
         {
-            var confirm = this.MessageBox.Confirm("Do you want to reset?", "Import");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm("Do you want to reset?", "Import");
+            if (confirmed == false)
                 return;
 
             this.ViewModel.SourcePath = string.Empty;

@@ -54,6 +54,9 @@ namespace CIS.UI.Features.Polices.Warrants
             this.IssuedAt = new AddressViewModel();
             this.Suspects = new ReactiveList<SuspectViewModel>();
 
+            this.WhenAny(x => x.IssuedAt, x => true)
+                .Subscribe(x => this.Revalidate());
+
             _controller = new WarrantController(this);
         }
 

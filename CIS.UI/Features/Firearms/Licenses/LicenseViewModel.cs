@@ -15,14 +15,14 @@ namespace CIS.UI.Features.Firearms.Licenses
 {
     public class LicenseViewModel : ViewModelBase
     {
-        private readonly LicenseContoller _controller;
+        //private readonly LicenseContoller _controller;
 
         public virtual Guid Id { get; set; }
 
-        [NotNull]
+        [Valid]
         public virtual PersonViewModel Person { get; set; }
 
-        [NotNull]
+        [Valid]
         public virtual AddressViewModel Address { get; set; }
 
         [Valid]
@@ -44,12 +44,12 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public LicenseViewModel()
         {
-            IssueDate = DateTime.Today;
-            ExpiryDate = DateTime.Today;
+            this.IssueDate = DateTime.Today;
+            this.ExpiryDate = DateTime.Today;
 
-            Person = new PersonViewModel();
-            Address = new AddressViewModel();
-            Gun = new GunViewModel();
+            this.Person = new PersonViewModel();
+            this.Address = new AddressViewModel();
+            this.Gun = new GunViewModel();
 
             this.WhenAny(
                 x => x.Person.IsValid,
@@ -58,10 +58,6 @@ namespace CIS.UI.Features.Firearms.Licenses
                 (isPersonValid, isAddressValid, isGunValid) => true
             )
             .Subscribe(_ => this.Revalidate());
-
-
-
-            _controller = new LicenseContoller(this);
         }
 
         public override object SerializeWith(object instance)

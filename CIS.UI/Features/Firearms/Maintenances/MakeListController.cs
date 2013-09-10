@@ -30,7 +30,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
                 });
 
             this.ViewModel.Load = new ReactiveCommand();
-            this.ViewModel.Load.Subscribe(x => Load());
+            this.ViewModel.Load.Subscribe(x => Populate());
 
             this.ViewModel.Insert = new ReactiveCommand(this.ViewModel
                 .WhenAny(
@@ -53,24 +53,16 @@ namespace CIS.UI.Features.Firearms.Maintenances
             );
             this.ViewModel.Search.Subscribe(x => Search());
 
-            Load();
+            this.Populate();
         }
 
-        public virtual void Load()
+        public virtual void Populate()
         {
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var query = session.Query<Make>()
-                    .ToFuture();
-
-                this.ViewModel.Items = query
-                    .Select(x => new MakeViewModel()
-                    {
-                        Id = x.Id,
-                        Name = x.Name
-                    })
-                    .ToReactiveList();
+                var query = session.Query<Make>().ToFuture();
+                this.ViewModel.Items = query.Select(x => new MakeViewModel(x.Id, x.Name)).ToReactiveList();
 
                 transaction.Commit();
             }
@@ -98,7 +90,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
                 session.Save(entity);
                 transaction.Commit();
 
-                var newlyCreatedItem = new MakeViewModel() { Id = entity.Id, Name = entity.Name };
+                var newlyCreatedItem = new MakeViewModel(entity.Id, entity.Name);
                 this.ViewModel.Items.Insert(0, newlyCreatedItem);
                 this.ViewModel.SelectedItem = newlyCreatedItem;
                 this.ViewModel.NewItem = string.Empty;
@@ -130,17 +122,8 @@ namespace CIS.UI.Features.Firearms.Maintenances
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var query = session.Query<Make>()
-                    .Where(x => x.Name == this.ViewModel.NewItem)
-                    .ToFuture();
-
-                this.ViewModel.Items = query
-                    .Select(x => new MakeViewModel()
-                    {
-                        Id = x.Id,
-                        Name = x.Name
-                    })
-                    .ToReactiveList();
+                var query = session.Query<Make>().Where(x => x.Name == this.ViewModel.NewItem).ToFuture();
+                this.ViewModel.Items = query.Select(x => new MakeViewModel(x.Id, x.Name)).ToReactiveList();
 
                 transaction.Commit();
             }

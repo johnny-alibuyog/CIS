@@ -45,23 +45,15 @@ namespace CIS.Data
 
         public virtual ISession GetSharedSession()
         {
-            var session = (ISession)null;
-            var sessionFactory = SessionFactory;
-            if (CurrentSessionContext.HasBind(sessionFactory))
-            {
-                session = sessionFactory.GetCurrentSession();
-            }
-            else
-            {
-                session = sessionFactory.OpenSession();
-                CurrentSessionContext.Bind(session);
-            }
-            return session;
+            if (CurrentSessionContext.HasBind(_sessionFactory) != true)
+                CurrentSessionContext.Bind(_sessionFactory.OpenSession());
+
+            return _sessionFactory.GetCurrentSession();
         }
 
         public virtual ISession ReleaseSharedSession()
         {
-            return CurrentSessionContext.Unbind(SessionFactory);
+            return CurrentSessionContext.Unbind(_sessionFactory);
         }
 
         private ISessionFactory CreateSessionFactory()
@@ -78,7 +70,7 @@ namespace CIS.Data
                     .QuerySubstitutions("true 1, false 0, yes y, no n")
                     .AdoNetBatchSize(15)
                     .FormatSql()
-                    //.ShowSql()
+                //.ShowSql()
                 )
                 .Mappings(x => x
                     .FluentMappings.AddFromAssemblyOf<AuditMapping>()
@@ -98,7 +90,7 @@ namespace CIS.Data
 
         private SessionProvider()
         {
-             _sessionFactory = CreateSessionFactory();
+            _sessionFactory = this.CreateSessionFactory();
         }
     }
 }

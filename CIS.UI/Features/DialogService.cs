@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using CIS.UI.Bootstraps.DependencyInjection;
 using Microsoft.Win32;
+using ReactiveUI;
 
 namespace CIS.UI.Features
 {
     public class DialogService<TView, TViewModel>
-        where TView : DialogBase
+        where TView : DialogBase, IViewFor<TViewModel>
         where TViewModel : ViewModelBase
     {
         public virtual TView View
@@ -26,8 +27,6 @@ namespace CIS.UI.Features
         }
 
         #region Methods
-
-       
 
         public virtual TViewModel ShowModal()
         {
@@ -60,8 +59,8 @@ namespace CIS.UI.Features
         public DialogService()
         {
             this.View = IoC.Container.Resolve<TView>();
-            if (this.View.DataContext == null)
-                this.View.DataContext = IoC.Container.Resolve<TViewModel>();
+            if (this.View.ViewModel == null)
+                this.View.ViewModel = IoC.Container.Resolve<TViewModel>();
 
             // assign owner if View is not the main window
             if (!(this.View is MainView))

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Features.Commons.Signatures;
 using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
 using NHibernate;
@@ -33,6 +34,53 @@ namespace CIS.UI.Features.Polices.Maintenances
 
             this.ViewModel.Delete = new ReactiveCommand();
             this.ViewModel.Delete.Subscribe(x => { Delete((OfficerListItemViewModel)x); });
+        }
+
+        private void CaptureSignature(OfficerViewModel viewModel)
+        {
+            var dialog = new DialogService<SignatureDialogView, SignatureDialogViewModel>();
+            dialog.ViewModel.Signature.SignatureImage = viewModel.Signature;
+
+            var result = dialog.ShowModal(this, "Signature", null);
+            if (result != null)
+                viewModel.Signature = result.Signature.SignatureImage;
+        }
+
+        private OfficerViewModel New()
+        {
+            var viewModel = new OfficerViewModel();
+            using (var session = this.SessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var ranks = session.Query<Rank>().Cacheable().ToFuture();
+                viewModel.Ranks = ranks.Select(x => new Lookup<string>(x.Id, x.Name)).ToReactiveList();
+
+                transaction.Commit();
+            }
+            return viewModel;
+        }
+
+        private OfficerViewModel Get(Guid id)
+        {
+            var viewModel = new OfficerViewModel();
+            using (var session = this.SessionProvider.GetSharedSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var rankQuery = session.Query<Rank>().Cacheable().ToFuture();
+
+                var officerQuery = session.Query<Officer>()
+                    .Where(x => x.Id == id)
+                    .Fetch(x => x.Rank)
+                    .ToFutureValue();
+
+                viewModel.Ranks = rankQuery.Select(x => new Lookup<string>(x.Id, x.Name)).ToReactiveList();
+                viewModel.SerializeWith(officerQuery.Value);
+
+                transaction.Commit();
+
+                this.SessionProvider.ReleaseSharedSession();
+            }
+            return viewModel;
         }
 
         public virtual void Search()
@@ -70,38 +118,115 @@ namespace CIS.UI.Features.Polices.Maintenances
         public virtual void Create()
         {
             var dialog = new DialogService<OfficerView, OfficerViewModel>();
-            var result = dialog.ShowModal(this, "Create Officer", null);
-            if (result != null)
+            dialog.ViewModel = New();
+            dialog.ViewModel.CaptureSignature = new ReactiveCommand();
+            dialog.ViewModel.CaptureSignature.Subscribe(x => CaptureSignature(dialog.ViewModel));
+            dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
+            dialog.ViewModel.Save.Subscribe(x => Insert(dialog.ViewModel));
+            dialog.ShowModal(this, "Create Officer", null);
+        }
+
+        public virtual void Insert(OfficerViewModel value)
+        {
+            var message = string.Format("Are you sure you want to save officer {0} {1}.", value.Rank, value.Person.FullName);
+            var confirmed = this.MessageBox.Confirm(message, "Save");
+            if (confirmed == false)
+                return;
+
+            using (var session = this.SessionProvider.GetSharedSession())
+            using (var transaction = session.BeginTransaction())
             {
-                this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
+                var query = session.Query<Station>()
+                    .FetchMany(x => x.Officers)
+                    .ThenFetch(x => x.Rank)
+                    .ToFuture();
 
-                var item = new OfficerListItemViewModel();
-                item.Id = result.Id;
-                item.Name = result.Person.FullName;
-                item.Rank = result.Rank.Name;
+                var station = query.FirstOrDefault();
+                if (station == null)
+                {
+                    station = new Station()
+                    {
+                        Name = "Name not set",
+                        Office = "Office not set",
+                        Location = "Location not set",
+                        ClearanceValidityInDays = 60,
+                    };
+                }
 
-                this.ViewModel.Items.Add(item);
-                this.ViewModel.SelectedItem = item;
+                var officer = station.Officers.FirstOrDefault(x => x.Id == value.Id);
+                if (officer == null)
+                {
+                    officer = new Officer();
+                    station.AddOfficer(officer);
+                }
 
-                //this.Search();
+                value.SerializeInto(officer);
+
+                session.SaveOrUpdate(station);
+                transaction.Commit();
+
+                value.Id = officer.Id;
+
+                this.SessionProvider.ReleaseSharedSession();
             }
+
+            this.MessageBox.Inform("Save has been successfully completed.");
+
+            var item = new OfficerListItemViewModel();
+            item.Id = value.Id;
+            item.Name = value.Person.FullName;
+            item.Rank = value.Rank.Name;
+
+            this.ViewModel.Items.Add(item);
+            this.ViewModel.SelectedItem = item;
+
+            value.Close();
         }
 
         public virtual void Edit(OfficerListItemViewModel item)
         {
+            this.ViewModel.SelectedItem = item;
+
             var dialog = new DialogService<OfficerView, OfficerViewModel>();
-            dialog.ViewModel.Load.Execute(item.Id);
-            var result = dialog.ShowModal(this, "Edit Officer", null);
-            if (result != null)
+            dialog.ViewModel = Get(item.Id);
+            dialog.ViewModel.CaptureSignature = new ReactiveCommand();
+            dialog.ViewModel.CaptureSignature.Subscribe(x => CaptureSignature(dialog.ViewModel));
+            dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
+            dialog.ViewModel.Save.Subscribe(x => Update(dialog.ViewModel));
+            dialog.ShowModal(this, "Edit Officer", null);
+        }
+
+        public virtual void Update(OfficerViewModel value)
+        {
+            var message = string.Format("Are you sure you want to save officer {0} {1}.", value.Rank, value.Person.FullName);
+            var confirmed = this.MessageBox.Confirm(message, "Save");
+            if (confirmed == false)
+                return;
+
+            using (var session = this.SessionProvider.GetSharedSession())
+            using (var transaction = session.BeginTransaction())
             {
-                this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
+                var query = session.Query<Officer>()
+                    .Where(x => x.Id == value.Id)
+                    .Fetch(x => x.Rank)
+                    .ToFutureValue();
 
-                item.Id = result.Id;
-                item.Name = result.Person.FullName;
-                item.Rank = result.Rank.Name;
+                var officer = query.Value;
+                value.SerializeInto(query.Value);
 
-                //this.Search();
+                transaction.Commit();
+
+                this.SessionProvider.ReleaseSharedSession();
             }
+
+            this.MessageBox.Inform("Save has been successfully completed.");
+
+            var item = this.ViewModel.SelectedItem;
+            item.Id = value.Id;
+            item.Name = value.Person.FullName;
+            item.Rank = value.Rank.Name;
+
+            value.Close();
         }
 
         public virtual void Delete(OfficerListItemViewModel item)
@@ -124,9 +249,10 @@ namespace CIS.UI.Features.Polices.Maintenances
 
                 this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
 
+                this.MessageBox.Inform("Delete has been successfully completed.");
+
                 this.ViewModel.Items.Remove(item);
                 this.ViewModel.SelectedItem = null;
-
             }
             catch (GenericADOException ex)
             {

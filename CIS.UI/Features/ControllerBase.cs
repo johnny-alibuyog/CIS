@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
+using CIS.Core.Entities.Memberships;
 using CIS.Data;
 using CIS.UI.Bootstraps.DependencyInjection;
 using CIS.UI.Utilities.CommonDialogs;
@@ -71,9 +72,7 @@ namespace CIS.UI.Features
             get
             {
                 if (_sessionProvider == null)
-                {
                     _sessionProvider = IoC.Container.Resolve<ISessionProvider>();
-                }
 
                 return _sessionProvider;
             }
@@ -83,21 +82,6 @@ namespace CIS.UI.Features
         {
             Application.Current.Dispatcher.Invoke(action);
         }
-
-        //internal virtual bool? Inform(string text, string title)
-        //{
-        //    return MessageDialog.Show(text, title, MessageBoxButton.OK);
-        //}
-
-        //internal virtual bool? Confirm(string text, string title)
-        //{
-        //    return MessageDialog.Show(text, title, MessageBoxButton.YesNo);
-        //}
-
-        //internal virtual bool? Warn(string text, string title)
-        //{
-        //    return MessageDialog.Show(text, title, MessageBoxButton.OK);
-        //}
 
         public ControllerBase(TViewModel viewModel)
         {

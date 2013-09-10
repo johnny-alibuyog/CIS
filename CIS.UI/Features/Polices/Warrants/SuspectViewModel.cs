@@ -7,6 +7,7 @@ using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Features.Commons.Persons;
+using NHibernate.Validator.Constraints;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
@@ -20,10 +21,12 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual Nullable<ArrestStatus> ArrestStatus { get; set; }
 
+        [Valid]
         public virtual PersonViewModel Person { get; set; }
 
         public virtual PhysicalAttributesViewModel PhysicalAttributes { get; set; }
 
+        [Valid]
         public virtual AddressViewModel Address { get; set; }
 
         public virtual IReactiveList<string> Aliases { get; set; }
@@ -51,6 +54,13 @@ namespace CIS.UI.Features.Polices.Warrants
             this.Address = new AddressViewModel();
             this.Aliases = new ReactiveList<string>();
             this.Occupations = new ReactiveList<string>();
+
+            this.WhenAny(
+                x => x.Person.IsValid,
+                x => x.Address.IsValid,
+                (isPersonValid, isAddressValid) => true
+            )
+            .Subscribe(x => this.Revalidate());
 
             _controller = new SuspectController(this);
         }

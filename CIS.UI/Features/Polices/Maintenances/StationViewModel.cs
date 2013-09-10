@@ -34,6 +34,7 @@ namespace CIS.UI.Features.Polices.Maintenances
         //[IsNumeric(Message = "Clerance validity is numeric.")]
         public virtual int ClearanceValidityInDays { get; set; }
 
+        [Valid]
         [NotNull(Message = "Location is mandatory.")]
         public virtual AddressViewModel Address { get; set; }
 
@@ -46,7 +47,12 @@ namespace CIS.UI.Features.Polices.Maintenances
         public StationViewModel()
         {
             this.Address = new AddressViewModel();
+
             _controller = new StationController(this);
+
+            this.WhenAny(x => x.Address.IsValid, x => true)
+                .Subscribe(_ => this.Revalidate());
+
         }
 
         public override object SerializeWith(object instance)

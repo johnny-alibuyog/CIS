@@ -18,8 +18,6 @@ namespace CIS.UI.Features.Polices.Maintenances
     {
         public OfficerController(OfficerViewModel viewModel) : base(viewModel) 
         {
-            this.ViewModel.Person = new PersonViewModel();
-
             this.PopulateLookup();
 
             this.ViewModel.CaptureSignature = new ReactiveCommand();

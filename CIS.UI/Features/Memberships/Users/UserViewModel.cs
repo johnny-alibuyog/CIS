@@ -31,5 +31,11 @@ namespace CIS.UI.Features.Memberships.Users
         public virtual IReactiveList<UserRoleViewModel> Roles { get; set; }
 
         public virtual IReactiveCommand Save { get; set; }
+
+        public UserViewModel()
+        {
+            this.WhenAny(x => x.Person.IsValid, x => true)
+                .Subscribe(x => this.Revalidate());
+        }
     }
 }

@@ -13,8 +13,6 @@ namespace CIS.UI.Features.Firearms.Licenses
 {
     public class GunViewModel : ViewModelBase
     {
-        private readonly GunController _controller;
-
         [NotNullNotEmpty]
         public virtual string Model { get; set; }
 
@@ -33,11 +31,6 @@ namespace CIS.UI.Features.Firearms.Licenses
         public virtual IReactiveCollection<Lookup<Guid>> Kinds { get; set; }
 
         public virtual IReactiveCollection<Lookup<Guid>> Makes { get; set; }
-
-        public GunViewModel()
-        {
-            _controller = new GunController(this);
-        }
 
         public override object SerializeWith(object instance)
         {

@@ -66,7 +66,7 @@ namespace CIS.UI.Features.Commons.Cameras
 
         public virtual void Stop()
         {
-            // Trash the old camera
+            // dispose the old camera
             if (_frameSource != null)
             {
                 _frameSource.StopFrameCapture();

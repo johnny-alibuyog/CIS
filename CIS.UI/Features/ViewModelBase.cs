@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.UI.Bootstraps.DependencyInjection;
 using Common.Logging;
+using NHibernate.Validator.Constraints;
 using NHibernate.Validator.Engine;
 using ReactiveUI;
 
@@ -38,42 +39,21 @@ namespace CIS.UI.Features
             }
         }
 
+        #region Close Dialog Overload
+
+        public virtual void Close()
+        {
+            this.Close(true);
+        }
+
+        public virtual void Close(bool result)
+        {
+            this.ActionResult = result;
+        }
+
+        #endregion
+
         #region IDataErrorInfo Members
-
-        //public virtual string Error
-        //{
-        //    get { return this[string.Empty]; }
-        //}
-
-        //public virtual string this[string columnName]
-        //{
-        //    get
-        //    {
-        //        if (columnName == string.Empty)
-        //            return null;
-
-        //        var invalidValue = this.Validator
-        //            .ValidatePropertyValue(this, columnName)
-        //            .FirstOrDefault();
-
-        //        if (invalidValue != null)
-        //            return invalidValue.Message;
-        //        else
-        //            return null;
-        //    }
-        //}
-
-        //public virtual bool IsValid
-        //{
-        //    get
-        //    {
-        //        var invalidValues = this.Validator.Validate(this);
-        //        if (invalidValues == null || invalidValues.Count() == 0)
-        //            return true;
-        //        else
-        //            return false;
-        //    }
-        //}
 
         public virtual bool IsValid { get; private set; }
 
@@ -111,15 +91,76 @@ namespace CIS.UI.Features
             this.IsValid = (invalidValues.Count() == 0);
         }
 
+        public virtual IObservable<bool> IsValidObservable()
+        {
+            return this.WhenAny(x => x.IsValid, x => x.Value);
+        }
+        
         #endregion
 
-        //public ViewModelBase()
+        #region Constructors
+
+        public ViewModelBase()
+        {
+            //var type = this.GetType();
+
+            //var children = type.GetProperties()
+            //    .Where(x =>
+            //        x.PropertyType == typeof(ViewModelBase) &&
+            //        x.GetCustomAttributes(false).OfType<ValidAttribute>().Any()   //(typeof(ValidAttribute), true).Any()
+            //    )
+            //    .Select(x => x.GetValue(this) as ViewModelBase)
+            //    .ToList();
+
+            //Console.WriteLine(children.Count);
+
+            //children.WhenAnyObservable(x => x.
+
+            //foreach (var child in children)
+            //{
+            //    child..WhenAny(x => x.IsValid, x => x.Value)().Subscribe(x =>  x
+            //}
+        }
+
+        #endregion
+
+        #region IDataErrorInfo Members Old Implementation
+
+        //public virtual string Error
         //{
-        //    this.ValidationObservable.Subscribe(x => 
-        //    {
-        //        this.IsValid = this.IsObjectValid();
-        //        raisePropertyChanged("IsValid");
-        //    });
+        //    get { return this[string.Empty]; }
         //}
+
+        //public virtual string this[string columnName]
+        //{
+        //    get
+        //    {
+        //        if (columnName == string.Empty)
+        //            return null;
+
+        //        var invalidValue = this.Validator
+        //            .ValidatePropertyValue(this, columnName)
+        //            .FirstOrDefault();
+
+        //        if (invalidValue != null)
+        //            return invalidValue.Message;
+        //        else
+        //            return null;
+        //    }
+        //}
+
+        //public virtual bool IsValid
+        //{
+        //    get
+        //    {
+        //        var invalidValues = this.Validator.Validate(this);
+        //        if (invalidValues == null || invalidValues.Count() == 0)
+        //            return true;
+        //        else
+        //            return false;
+        //    }
+        //}
+
+        #endregion
     }
 }

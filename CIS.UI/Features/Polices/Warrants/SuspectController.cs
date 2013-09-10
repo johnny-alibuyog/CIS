@@ -26,8 +26,7 @@ namespace CIS.UI.Features.Polices.Warrants
             this.ViewModel.DeleteOccupation = new ReactiveCommand();
             this.ViewModel.DeleteOccupation.Subscribe(x => DeleteOccupation((string)x));
 
-            this.ViewModel.Save = new ReactiveCommand(this.ViewModel
-                .WhenAny(x => x.IsValid, x => x.Value));
+            this.ViewModel.Save = new ReactiveCommand(this.ViewModel.IsValidObservable());
             this.ViewModel.Save.Subscribe(x => Save());
         }
 
@@ -61,7 +60,7 @@ namespace CIS.UI.Features.Polices.Warrants
             if (!string.IsNullOrWhiteSpace(this.ViewModel.OccupationToAdd))
                 this.AddOccupation();
 
-            this.ViewModel.ActionResult = true;
+            this.ViewModel.Close();
         }
     }
 }

@@ -11,5 +11,11 @@ namespace CIS.UI.Features.Firearms.Maintenances
         public virtual Guid Id { get; set; }
 
         public virtual string Name { get; set; }
+
+        public MakeViewModel(Guid id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
     }
 }

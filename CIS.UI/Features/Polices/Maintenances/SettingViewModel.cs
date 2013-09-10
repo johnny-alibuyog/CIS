@@ -34,9 +34,7 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public SettingViewModel()
         {
-            FingersToScan = FingerViewModel.All
-                .Select(x => new SettingFingerViewModel(x))
-                .ToReactiveList();
+            this.FingersToScan = FingerViewModel.All.Select(x => new SettingFingerViewModel(x)).ToReactiveList();
 
             _controller = new SettingController(this);
         }

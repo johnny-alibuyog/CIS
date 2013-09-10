@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Firearms;
+using CIS.UI.Features.Commons.Addresses;
+using CIS.UI.Features.Commons.Persons;
 using CIS.UI.Utilities.CommonDialogs;
 using NHibernate;
 using NHibernate.Linq;
@@ -17,6 +19,13 @@ namespace CIS.UI.Features.Firearms.Licenses
     {
         public LicenseContoller(LicenseViewModel viewModel) : base(viewModel)
         {
+            this.ViewModel.IssueDate = DateTime.Today;
+            this.ViewModel.ExpiryDate = DateTime.Today;
+
+            this.ViewModel.Person = new PersonViewModel();
+            this.ViewModel.Address = new AddressViewModel();
+            this.ViewModel.Gun = new GunViewModel();
+
             this.ViewModel.Load = new ReactiveCommand();
             this.ViewModel.Load.Subscribe(x => Load((Guid)x));
 
@@ -34,9 +43,9 @@ namespace CIS.UI.Features.Firearms.Licenses
                     .Where(x => x.Id == id)
                     .ToFutureValue();
 
-                var warrant = query.Value;
+                var license = query.Value;
 
-                this.ViewModel.SerializeWith(warrant);
+                this.ViewModel.SerializeWith(license);
 
                 transaction.Commit();
             }
@@ -64,9 +73,9 @@ namespace CIS.UI.Features.Firearms.Licenses
                 session.SaveOrUpdate(license);
                 transaction.Commit();
 
-                this.SessionProvider.ReleaseSharedSession();
-
                 this.ViewModel.Id = license.Id;
+
+                this.SessionProvider.ReleaseSharedSession();
             }
 
             this.ViewModel.ActionResult = true;

@@ -200,6 +200,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Bootstraps\DependencyInjection\Ninject\Modules\DialogModule.cs" />
     <Compile Include="Features\Commons\Addresses\AddressDataInitializer.cs" />
     <Compile Include="Features\Commons\Addresses\BarangayLookup.cs">
       <DependentUpon>AddressViewModel.cs</DependentUpon>
@@ -259,7 +260,6 @@
       <DependentUpon>GunView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Firearms\Licenses\GunViewModel.cs" />
-    <Compile Include="Features\Firearms\Licenses\LicenseContoller.cs" />
     <Compile Include="Features\Firearms\Licenses\LicenseListController.cs" />
     <Compile Include="Features\Firearms\Licenses\LicenseListCriteriaViewModel.cs">
       <DependentUpon>LicenseListViewModel.cs</DependentUpon>
@@ -367,7 +367,6 @@
     <Compile Include="Features\Polices\Maintenances\PurposeListViewModel.cs" />
     <Compile Include="Features\Polices\Maintenances\PurposeViewModel.cs" />
     <Compile Include="Features\Polices\Maintenances\RankDataInitializer.cs" />
-    <Compile Include="Features\Polices\Maintenances\OfficerController.cs" />
     <Compile Include="Features\Polices\Maintenances\OfficerListController.cs" />
     <Compile Include="Features\Polices\Maintenances\OfficerListCriteriaViewModel.cs">
       <DependentUpon>OfficerListViewModel.cs</DependentUpon>

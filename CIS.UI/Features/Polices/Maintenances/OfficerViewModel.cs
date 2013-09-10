@@ -20,10 +20,9 @@ namespace CIS.UI.Features.Polices.Maintenances
 {
     public class OfficerViewModel : ViewModelBase
     {
-        private readonly OfficerController _controller;
-
         public virtual Guid Id { get; set; }
 
+        [Valid]
         public virtual PersonViewModel Person { get; set; }
 
         [NotNull(Message = "Rank is mandatory.")]
@@ -112,7 +111,11 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public OfficerViewModel()
         {
-            _controller = new OfficerController(this);
+            this.Person = new PersonViewModel();
+            this.Ranks = new ReactiveList<Lookup<string>>();
+
+            this.WhenAny(x => x.Person.IsValid, x => x.Value)
+                .Subscribe(x => this.Revalidate());
         }
     }
 }
