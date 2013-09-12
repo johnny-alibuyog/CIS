@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.UI.Bootstraps.InversionOfControl;
 using ReactiveUI;
 
 namespace CIS.UI.Features.Memberships.Users
@@ -27,7 +28,8 @@ namespace CIS.UI.Features.Memberships.Users
 
         public UserListViewModel()
         {
-            _controller = new UserListController(this);
+            //_controller = new UserListController(this);
+            _controller = IoC.Container.Resolve<UserListController>(new ViewModelDependency(this));
         }
     }
 }

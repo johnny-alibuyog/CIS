@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Utilities.Extentions;
 using NHibernate.Validator.Constraints;
@@ -48,11 +49,11 @@ namespace CIS.UI.Features.Polices.Maintenances
         {
             this.Address = new AddressViewModel();
 
-            _controller = new StationController(this);
-
             this.WhenAny(x => x.Address.IsValid, x => true)
                 .Subscribe(_ => this.Revalidate());
 
+            //_controller = new StationController(this);
+            _controller = IoC.Container.Resolve<StationController>(new ViewModelDependency(this));
         }
 
         public override object SerializeWith(object instance)

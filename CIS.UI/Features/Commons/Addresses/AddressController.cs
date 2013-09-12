@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Utilities.Extentions;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.Extentions;
 using LinqToExcel;
 using LinqToExcel.Domain;
@@ -17,10 +18,11 @@ namespace CIS.UI.Features.Commons.Addresses
 {
     public class AddressController : ControllerBase<AddressViewModel>
     {
-        public AddressController(AddressViewModel viewModel) : base(viewModel)
+        public AddressController(AddressViewModel viewModel)
+            : base(viewModel)
         {
             //Import();
-            PopulateProvinces();
+            this.PopulateProvinces();
 
             this.ViewModel.ObservableForProperty(x => x.SelectedProvince)
                 .Subscribe(x => PopulateCities(x.Value));
@@ -29,6 +31,7 @@ namespace CIS.UI.Features.Commons.Addresses
                 .Subscribe(x => PopulateBarangays(x.Value));
         }
 
+        [HandleError]
         private void PopulateProvinces()
         {
             this.ViewModel.Provinces = null;
@@ -55,6 +58,7 @@ namespace CIS.UI.Features.Commons.Addresses
                 .ToReactiveList();
         }
 
+        [HandleError]
         public virtual void PopulateCities(Lookup<Guid> provinceLookup)
         {
             this.ViewModel.Cities = null;
@@ -64,7 +68,7 @@ namespace CIS.UI.Features.Commons.Addresses
                 return;
 
             var cities = (IList<City>)null;
-            
+
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
@@ -86,6 +90,7 @@ namespace CIS.UI.Features.Commons.Addresses
                 .ToReactiveList();
         }
 
+        [HandleError]
         public virtual void PopulateBarangays(Lookup<Guid> cityLookup)
         {
             this.ViewModel.Barangay = null;
@@ -116,6 +121,7 @@ namespace CIS.UI.Features.Commons.Addresses
                 .ToReactiveList();
         }
 
+        [HandleError]
         public virtual void Import()
         {
             Func<string, string, bool> IsEqual = (item1, item2) => string.Compare(item1, item2, true) == 0;
@@ -139,7 +145,7 @@ namespace CIS.UI.Features.Commons.Addresses
             var batchSize = 1000;
 
             var regions = new List<Region>();
-            
+
             using (var session = this.SessionFactory.OpenStatelessSession())
             using (var transaction = session.BeginTransaction())
             {
@@ -178,7 +184,7 @@ namespace CIS.UI.Features.Commons.Addresses
                     .ToList();
 
                 var provincesToImport = itemsToImport
-                    .GroupBy(x => new 
+                    .GroupBy(x => new
                     {
                         Region = x.Region,
                         Province = x.Province,
@@ -188,7 +194,7 @@ namespace CIS.UI.Features.Commons.Addresses
                 foreach (var provinceToImport in provincesToImport)
                 {
                     var province = provinces
-                        .FirstOrDefault(x => 
+                        .FirstOrDefault(x =>
                             IsEqual(x.Name, provinceToImport.Key.Province) &&
                             IsEqual(x.Region.Name, provinceToImport.Key.Region)
                         );
@@ -240,7 +246,7 @@ namespace CIS.UI.Features.Commons.Addresses
                     {
                         city = new City();
                         city.Name = cityToImport.Key.City;
-                        city.Province = provinces.FirstOrDefault(x => 
+                        city.Province = provinces.FirstOrDefault(x =>
                             x.Name == cityToImport.Key.Province &&
                             x.Region.Name == cityToImport.Key.Region
                         );
@@ -266,14 +272,14 @@ namespace CIS.UI.Features.Commons.Addresses
                     .ToList();
 
                 var barangaysToImport = itemsToImport;
-                    //.GroupBy(x => new
-                    //{
-                    //    Region = x.Region,
-                    //    Province = x.Province,
-                    //    City = x.City,
-                    //    Barangay = x.Barangay,
-                    //})
-                    //.Distinct();
+                //.GroupBy(x => new
+                //{
+                //    Region = x.Region,
+                //    Province = x.Province,
+                //    City = x.City,
+                //    Barangay = x.Barangay,
+                //})
+                //.Distinct();
 
                 foreach (var barangayToImport in barangaysToImport)
                 {
@@ -289,7 +295,7 @@ namespace CIS.UI.Features.Commons.Addresses
                     {
                         barangay = new Barangay();
                         barangay.Name = barangayToImport.Barangay;
-                        barangay.City = cities.FirstOrDefault(x => 
+                        barangay.City = cities.FirstOrDefault(x =>
                             x.Name == barangayToImport.City &&
                             x.Province.Name == barangayToImport.Province &&
                             x.Province.Region.Name == barangayToImport.Region

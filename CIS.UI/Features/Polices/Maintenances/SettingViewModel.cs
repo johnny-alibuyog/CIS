@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Utilities.Extentions;
 using ReactiveUI;
@@ -36,7 +37,8 @@ namespace CIS.UI.Features.Polices.Maintenances
         {
             this.FingersToScan = FingerViewModel.All.Select(x => new SettingFingerViewModel(x)).ToReactiveList();
 
-            _controller = new SettingController(this);
+            //_controller = new SettingController(this);
+            _controller = IoC.Container.Resolve<SettingController>(new ViewModelDependency(this));
         }
 
         public override object SerializeWith(object instance)

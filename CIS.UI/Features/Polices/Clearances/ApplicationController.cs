@@ -9,6 +9,7 @@ using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Firearms;
 using CIS.Core.Entities.Polices;
 using CIS.Core.Utilities.Extentions;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Cameras;
 using CIS.UI.Features.Commons.Signatures;
@@ -309,144 +310,136 @@ namespace CIS.UI.Features.Polices.Clearances
 
         private ClearanceReportViewModel GenerateClearance()
         {
-            try
+            var result = new ClearanceReportViewModel();
+
+            using (var session = this.SessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
             {
-                var result = new ClearanceReportViewModel();
+                var person = this.ViewModel.PersonalInformation.Person;
 
-                using (var session = this.SessionFactory.OpenSession())
-                using (var transaction = session.BeginTransaction())
+                var clearanceAlias = (Clearance)null;
+                var applicantAlias = (Applicant)null;
+                var pictureAlias = (ImageBlob)null;
+                var fingerPrintAlias = (FingerPrint)null;
+                var stationAlias = (Station)null;
+                var verifierAlias = (Officer)null;
+                var certifierAlias = (Officer)null;
+                var barcodeAlais = (Barcode)null;
+
+                var clearanceQuery = session.QueryOver<Clearance>(() => clearanceAlias)
+                    .Left.JoinAlias(() => clearanceAlias.Applicant, () => applicantAlias)
+                    .Left.JoinAlias(() => clearanceAlias.Station, () => stationAlias)
+                    .Left.JoinAlias(() => clearanceAlias.Verifier, () => verifierAlias)
+                    .Left.JoinAlias(() => clearanceAlias.Certifier, () => certifierAlias)
+                    .Left.JoinAlias(() => clearanceAlias.Barcode, () => barcodeAlais)
+                    .Left.JoinAlias(() => applicantAlias.FingerPrint, () => fingerPrintAlias)
+                    .Left.JoinAlias(() => applicantAlias.Picture, () => pictureAlias)
+                    .Left.JoinQueryOver(() => stationAlias.Logo)
+                    .Left.JoinQueryOver(() => barcodeAlais.Image)
+                    .Left.JoinQueryOver(() => fingerPrintAlias.RightThumb)
+                    .Left.JoinQueryOver(() => fingerPrintAlias.RightIndex)
+                    .Left.JoinQueryOver(() => fingerPrintAlias.RightMiddle)
+                    .Left.JoinQueryOver(() => fingerPrintAlias.RightRing)
+                    .Left.JoinQueryOver(() => fingerPrintAlias.RightPinky)
+                    .Left.JoinQueryOver(() => fingerPrintAlias.LeftThumb)
+                    .Left.JoinQueryOver(() => fingerPrintAlias.LeftIndex)
+                    .Left.JoinQueryOver(() => fingerPrintAlias.LeftMiddle)
+                    .Left.JoinQueryOver(() => fingerPrintAlias.LeftRing)
+                    .Left.JoinQueryOver(() => fingerPrintAlias.LeftPinky)
+                    .Where(() =>
+                        applicantAlias.Person.FirstName == person.FirstName &&
+                        applicantAlias.Person.MiddleName == person.MiddleName &&
+                        applicantAlias.Person.LastName == person.LastName &&
+                        applicantAlias.Person.Suffix == person.Suffix &&
+                        clearanceAlias.IssueDate == DateTime.Today
+                    )
+                    .FutureValue();
+
+                var stationQuery = session.QueryOver<Station>()
+                    .Left.JoinQueryOver(x => x.Logo)
+                    .Future();
+
+                var officerAlias = (Officer)null;
+                var rankAlias = (Rank)null;
+
+                var certifierQuery = session.QueryOver<Officer>(() => officerAlias)
+                    .Left.JoinAlias(() => officerAlias.Rank, () => rankAlias)
+                    .Where(() => officerAlias.Id == this.ViewModel.PersonalInformation.Certifier.Id)
+                    .FutureValue();
+
+                var verifierQuery = session.QueryOver<Officer>(() => officerAlias)
+                    .Left.JoinAlias(() => officerAlias.Rank, () => rankAlias)
+                    .Where(() => officerAlias.Id == this.ViewModel.PersonalInformation.Verifier.Id)
+                    .FutureValue();
+
+                var settingQuery = session.Query<Setting>()
+                    .Where(x => x.Terminal.MachineName == Environment.MachineName)
+                    .Fetch(x => x.CurrentVerifier)
+                    .Fetch(x => x.CurrentCertifier)
+                    .Cacheable()
+                    .FirstOrDefault();
+
+                var setting = settingQuery;
+                if (setting != null)
                 {
-                    var person = this.ViewModel.PersonalInformation.Person;
-
-                    var clearanceAlias = (Clearance)null;
-                    var applicantAlias = (Applicant)null;
-                    var pictureAlias = (ImageBlob)null;
-                    var fingerPrintAlias = (FingerPrint)null;
-                    var stationAlias = (Station)null;
-                    var verifierAlias = (Officer)null;
-                    var certifierAlias = (Officer)null;
-                    var barcodeAlais = (Barcode)null;
-
-                    var clearanceQuery = session.QueryOver<Clearance>(() => clearanceAlias)
-                        .Left.JoinAlias(() => clearanceAlias.Applicant, () => applicantAlias)
-                        .Left.JoinAlias(() => clearanceAlias.Station, () => stationAlias)
-                        .Left.JoinAlias(() => clearanceAlias.Verifier, () => verifierAlias)
-                        .Left.JoinAlias(() => clearanceAlias.Certifier, () => certifierAlias)
-                        .Left.JoinAlias(() => clearanceAlias.Barcode, () => barcodeAlais)
-                        .Left.JoinAlias(() => applicantAlias.FingerPrint, () => fingerPrintAlias)
-                        .Left.JoinAlias(() => applicantAlias.Picture, () => pictureAlias)
-                        .Left.JoinQueryOver(() => stationAlias.Logo)
-                        .Left.JoinQueryOver(() => barcodeAlais.Image)
-                        .Left.JoinQueryOver(() => fingerPrintAlias.RightThumb)
-                        .Left.JoinQueryOver(() => fingerPrintAlias.RightIndex)
-                        .Left.JoinQueryOver(() => fingerPrintAlias.RightMiddle)
-                        .Left.JoinQueryOver(() => fingerPrintAlias.RightRing)
-                        .Left.JoinQueryOver(() => fingerPrintAlias.RightPinky)
-                        .Left.JoinQueryOver(() => fingerPrintAlias.LeftThumb)
-                        .Left.JoinQueryOver(() => fingerPrintAlias.LeftIndex)
-                        .Left.JoinQueryOver(() => fingerPrintAlias.LeftMiddle)
-                        .Left.JoinQueryOver(() => fingerPrintAlias.LeftRing)
-                        .Left.JoinQueryOver(() => fingerPrintAlias.LeftPinky)
-                        .Where(() =>
-                            applicantAlias.Person.FirstName == person.FirstName &&
-                            applicantAlias.Person.MiddleName == person.MiddleName &&
-                            applicantAlias.Person.LastName == person.LastName &&
-                            applicantAlias.Person.Suffix == person.Suffix &&
-                            clearanceAlias.IssueDate == DateTime.Today
-                        )
-                        .FutureValue();
-
-                    var stationQuery = session.QueryOver<Station>()
-                        .Left.JoinQueryOver(x => x.Logo)
-                        .Future();
-
-                    var officerAlias = (Officer)null;
-                    var rankAlias = (Rank)null;
-
-                    var certifierQuery = session.QueryOver<Officer>(() => officerAlias)
-                        .Left.JoinAlias(() => officerAlias.Rank, () => rankAlias)
-                        .Where(() => officerAlias.Id == this.ViewModel.PersonalInformation.Certifier.Id)
-                        .FutureValue();
-
-                    var verifierQuery = session.QueryOver<Officer>(() => officerAlias)
-                        .Left.JoinAlias(() => officerAlias.Rank, () => rankAlias)
-                        .Where(() => officerAlias.Id == this.ViewModel.PersonalInformation.Verifier.Id)
-                        .FutureValue();
-
-                    var settingQuery = session.Query<Setting>()
-                        .Where(x => x.Terminal.MachineName == Environment.MachineName)
-                        .Fetch(x => x.CurrentVerifier)
-                        .Fetch(x => x.CurrentCertifier)
-                        .Cacheable()
-                        .FirstOrDefault();
-
-                    var setting = settingQuery;
-                    if (setting != null)
-                    {
-                        setting.CurrentVerifier = verifierQuery.Value;
-                        setting.CurrentCertifier = certifierQuery.Value;
-                    }
-
-                    var clearance = clearanceQuery.Value;
-                    if (clearance == null)
-                        clearance = new Clearance();
-
-                    clearance.Applicant.Person = (Person)this.ViewModel.PersonalInformation.Person.SerializeInto(new Person());
-                    clearance.Applicant.Address = (Address)this.ViewModel.PersonalInformation.Address.SerializeInto(new Address());
-                    clearance.Applicant.Picture.Image = this.ViewModel.Camera.Picture.ToImage();
-                    clearance.Applicant.Signature.Image = this.ViewModel.Signature.SignatureImage.ToImage();
-                    clearance.Applicant.FingerPrint.RightThumb.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightThumb].ToImage();
-                    clearance.Applicant.FingerPrint.RightIndex.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightIndex].ToImage();
-                    clearance.Applicant.FingerPrint.RightMiddle.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightMiddle].ToImage();
-                    clearance.Applicant.FingerPrint.RightRing.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightRing].ToImage();
-                    clearance.Applicant.FingerPrint.RightPinky.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightPinky].ToImage();
-                    clearance.Applicant.FingerPrint.LeftThumb.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftThumb].ToImage();
-                    clearance.Applicant.FingerPrint.LeftIndex.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftIndex].ToImage();
-                    clearance.Applicant.FingerPrint.LeftMiddle.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftMiddle].ToImage();
-                    clearance.Applicant.FingerPrint.LeftRing.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftRing].ToImage();
-                    clearance.Applicant.FingerPrint.LeftPinky.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftPinky].ToImage();
-                    clearance.Applicant.Height = this.ViewModel.PersonalInformation.Height;
-                    clearance.Applicant.Weight = this.ViewModel.PersonalInformation.Weight;
-                    clearance.Applicant.AlsoKnownAs = this.ViewModel.PersonalInformation.AlsoKnownAs;
-                    clearance.Applicant.BirthPlace = this.ViewModel.PersonalInformation.BirthPlace;
-                    clearance.Applicant.Occupation = this.ViewModel.PersonalInformation.Occupation;
-                    clearance.Applicant.Religion = this.ViewModel.PersonalInformation.Religion;
-                    clearance.Applicant.Citizenship = this.ViewModel.PersonalInformation.Citizenship;
-                    clearance.Applicant.CivilStatus = this.ViewModel.PersonalInformation.CivilStatus;
-                    clearance.Applicant.Purpose = session.Get<Purpose>(this.ViewModel.PersonalInformation.Purpose.Id);
-
-                    clearance.SetVerifier(verifierQuery.Value);
-                    clearance.SetCertifier(certifierQuery.Value);
-                    clearance.SetStation(stationQuery.FirstOrDefault());
-                    clearance.IssueDate = this.ViewModel.Summary.IssuedDate;
-                    clearance.Validity = this.ViewModel.Summary.Validity;
-                    clearance.OfficialReceiptNumber = this.ViewModel.Summary.OfficialReceiptNumber;
-                    clearance.TaxCertificateNumber = this.ViewModel.Summary.TaxCertificateNumber;
-                    clearance.PartialMatchFindings = this.ViewModel.Summary.PartialMatchFindings;
-                    clearance.PerfectMatchFindings = this.ViewModel.Summary.PerfectMatchFindings;
-                    clearance.FinalFindings = this.ViewModel.Summary.FinalFindings;
-
-                    session.SaveOrUpdate(clearance);
-                    transaction.Commit();
-
-                    result.SerializeWith(clearance);
+                    setting.CurrentVerifier = verifierQuery.Value;
+                    setting.CurrentCertifier = certifierQuery.Value;
                 }
 
-                if (!string.IsNullOrWhiteSpace(result.PartialMatchFindings))
-                {
-                    var message = result.PartialMatchFindings + " This will not reflect in the findings. Do you still want to proceed?";
-                    var confirm = this.MessageBox.Confirm(message, "Clearance");
-                    if (confirm == false)
-                        return null;
-                }
+                var clearance = clearanceQuery.Value;
+                if (clearance == null)
+                    clearance = new Clearance();
 
-                return result;
+                clearance.Applicant.Person = (Person)this.ViewModel.PersonalInformation.Person.SerializeInto(new Person());
+                clearance.Applicant.Address = (Address)this.ViewModel.PersonalInformation.Address.SerializeInto(new Address());
+                clearance.Applicant.Picture.Image = this.ViewModel.Camera.Picture.ToImage();
+                clearance.Applicant.Signature.Image = this.ViewModel.Signature.SignatureImage.ToImage();
+                clearance.Applicant.FingerPrint.RightThumb.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightThumb].ToImage();
+                clearance.Applicant.FingerPrint.RightIndex.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightIndex].ToImage();
+                clearance.Applicant.FingerPrint.RightMiddle.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightMiddle].ToImage();
+                clearance.Applicant.FingerPrint.RightRing.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightRing].ToImage();
+                clearance.Applicant.FingerPrint.RightPinky.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightPinky].ToImage();
+                clearance.Applicant.FingerPrint.LeftThumb.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftThumb].ToImage();
+                clearance.Applicant.FingerPrint.LeftIndex.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftIndex].ToImage();
+                clearance.Applicant.FingerPrint.LeftMiddle.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftMiddle].ToImage();
+                clearance.Applicant.FingerPrint.LeftRing.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftRing].ToImage();
+                clearance.Applicant.FingerPrint.LeftPinky.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftPinky].ToImage();
+                clearance.Applicant.Height = this.ViewModel.PersonalInformation.Height;
+                clearance.Applicant.Weight = this.ViewModel.PersonalInformation.Weight;
+                clearance.Applicant.AlsoKnownAs = this.ViewModel.PersonalInformation.AlsoKnownAs;
+                clearance.Applicant.BirthPlace = this.ViewModel.PersonalInformation.BirthPlace;
+                clearance.Applicant.Occupation = this.ViewModel.PersonalInformation.Occupation;
+                clearance.Applicant.Religion = this.ViewModel.PersonalInformation.Religion;
+                clearance.Applicant.Citizenship = this.ViewModel.PersonalInformation.Citizenship;
+                clearance.Applicant.CivilStatus = this.ViewModel.PersonalInformation.CivilStatus;
+                clearance.Applicant.Purpose = session.Get<Purpose>(this.ViewModel.PersonalInformation.Purpose.Id);
+
+                clearance.SetVerifier(verifierQuery.Value);
+                clearance.SetCertifier(certifierQuery.Value);
+                clearance.SetStation(stationQuery.FirstOrDefault());
+                clearance.IssueDate = this.ViewModel.Summary.IssuedDate;
+                clearance.Validity = this.ViewModel.Summary.Validity;
+                clearance.OfficialReceiptNumber = this.ViewModel.Summary.OfficialReceiptNumber;
+                clearance.TaxCertificateNumber = this.ViewModel.Summary.TaxCertificateNumber;
+                clearance.PartialMatchFindings = this.ViewModel.Summary.PartialMatchFindings;
+                clearance.PerfectMatchFindings = this.ViewModel.Summary.PerfectMatchFindings;
+                clearance.FinalFindings = this.ViewModel.Summary.FinalFindings;
+
+                session.SaveOrUpdate(clearance);
+                transaction.Commit();
+
+                result.SerializeWith(clearance);
             }
-            catch (Exception ex)
+
+            if (!string.IsNullOrWhiteSpace(result.PartialMatchFindings))
             {
-                this.MessageBox.Warn(ex.Message, ex, "Clearance Application");
-                return null;
+                var message = result.PartialMatchFindings + " This will not reflect in the findings. Do you still want to proceed?";
+                var confirm = this.MessageBox.Confirm(message, "Clearance");
+                if (confirm == false)
+                    return null;
             }
+
+            return result;
         }
 
         private void PrintClearance(ClearanceReportViewModel data)
@@ -465,6 +458,7 @@ namespace CIS.UI.Features.Polices.Clearances
 
         #endregion
 
+        [HandleError]
         public virtual void Reset()
         {
             if (this.ViewModel.Camera != null)
@@ -477,6 +471,7 @@ namespace CIS.UI.Features.Polices.Clearances
             PopulateLookups();
         }
 
+        [HandleError]
         public virtual void Previous()
         {
             var currentIndex = this.ViewModel.ViewModels.IndexOf(this.ViewModel.CurrentViewModel);
@@ -485,6 +480,7 @@ namespace CIS.UI.Features.Polices.Clearances
             this.InitializeDevices();
         }
 
+        [HandleError]
         public virtual void Next()
         {
             if (this.ViewModel.CurrentViewModel.IsValid == false)
@@ -503,24 +499,18 @@ namespace CIS.UI.Features.Polices.Clearances
             }
         }
 
+        [HandleError]
         public virtual void Release()
         {
-            try
-            {
-                var confirm = this.MessageBox.Confirm("Do you want to release clearance.", "Clearance");
-                if (confirm == false)
-                    return;
+            var confirm = this.MessageBox.Confirm("Do you want to release clearance.", "Clearance");
+            if (confirm == false)
+                return;
 
-                var data = this.GenerateClearance();
-                if (data != null)
-                {
-                    PrintClearance(data);
-                    this.MessageBox.Inform("Clearance has been sent to the printer.", "Clearance");
-                }
-            }
-            catch (Exception ex)
+            var data = this.GenerateClearance();
+            if (data != null)
             {
-                this.MessageBox.Warn(ex.Message, ex, "Clearance");
+                PrintClearance(data);
+                this.MessageBox.Inform("Clearance has been sent to the printer.", "Clearance");
             }
         }
     }

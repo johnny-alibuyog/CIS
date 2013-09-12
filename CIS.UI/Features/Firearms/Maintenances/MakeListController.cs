@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Firearms;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
 using NHibernate;
@@ -56,6 +57,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
             this.Populate();
         }
 
+        [HandleError]
         public virtual void Populate()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -68,6 +70,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
             }
         }
 
+        [HandleError]
         public virtual void Insert()
         {
             var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
@@ -75,6 +78,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
             if (confirm == false)
                 return;
 
+            var newlyCreatedItem = (MakeViewModel)null;
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
@@ -90,13 +94,15 @@ namespace CIS.UI.Features.Firearms.Maintenances
                 session.Save(entity);
                 transaction.Commit();
 
-                var newlyCreatedItem = new MakeViewModel(entity.Id, entity.Name);
-                this.ViewModel.Items.Insert(0, newlyCreatedItem);
-                this.ViewModel.SelectedItem = newlyCreatedItem;
-                this.ViewModel.NewItem = string.Empty;
+                newlyCreatedItem = new MakeViewModel(entity.Id, entity.Name);
             }
+
+            this.ViewModel.Items.Insert(0, newlyCreatedItem);
+            this.ViewModel.SelectedItem = newlyCreatedItem;
+            this.ViewModel.NewItem = string.Empty;
         }
 
+        [HandleError]
         public virtual void Delete(MakeViewModel item)
         {
             var message = string.Format("Do you want to delete {0}?", item.Name);
@@ -111,12 +117,13 @@ namespace CIS.UI.Features.Firearms.Maintenances
 
                 session.Delete(entity);
                 transaction.Commit();
-
-                this.ViewModel.Items.Remove(item);
-                this.ViewModel.SelectedItem = null;
             }
+
+            this.ViewModel.Items.Remove(item);
+            this.ViewModel.SelectedItem = null;
         }
 
+        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())

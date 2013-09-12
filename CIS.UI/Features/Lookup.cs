@@ -59,5 +59,14 @@ namespace CIS.UI.Features
         }
 
         #endregion
+
+        #region Overrides
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
+
+        #endregion
     }
 }

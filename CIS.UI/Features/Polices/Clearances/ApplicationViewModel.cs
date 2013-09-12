@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Cameras;
 using CIS.UI.Features.Commons.Signatures;
@@ -39,7 +40,8 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public ApplicationViewModel()
         {
-            _controller = new ApplicationController(this);
+            //_controller = new ApplicationController(this);
+            _controller = IoC.Container.Resolve<ApplicationController>(new ViewModelDependency(this));
         }
     }
 }

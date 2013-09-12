@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
-using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Bootstraps.InversionOfControl;
 using NHibernate;
 using NHibernate.Linq;
 

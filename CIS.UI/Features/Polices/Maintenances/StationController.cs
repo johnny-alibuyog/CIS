@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Polices;
-using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Utilities.CommonDialogs;
 using NHibernate;
@@ -34,6 +35,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             this.ViewModel.Refresh.Subscribe(x => Load(confirm: true));
         }
 
+        [HandleError]
         public virtual void LookupLogo()
         {
             var openImageDialog = IoC.Container.Resolve<IOpenImageDialogService>();
@@ -42,6 +44,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 this.ViewModel.Logo = logo;
         }
 
+        [HandleError]
         public virtual void Load(bool confirm = false)
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -62,6 +65,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 this.MessageBox.Inform("Station configuration has loaded.", "Station");
         }
 
+        [HandleError]
         public virtual void Save()
         {
             var confirm = this.MessageBox.Confirm("Do you want to save changes?.", "Station");

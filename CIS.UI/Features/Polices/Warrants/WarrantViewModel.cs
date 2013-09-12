@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Utilities.Extentions;
 using ReactiveUI;
@@ -57,7 +58,8 @@ namespace CIS.UI.Features.Polices.Warrants
             this.WhenAny(x => x.IssuedAt, x => true)
                 .Subscribe(x => this.Revalidate());
 
-            _controller = new WarrantController(this);
+            //_controller = new WarrantController(this);
+            _controller = IoC.Container.Resolve<WarrantController>(new ViewModelDependency(this));
         }
 
         public override object SerializeWith(object instance)

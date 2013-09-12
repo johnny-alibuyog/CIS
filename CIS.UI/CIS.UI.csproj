@@ -13,7 +13,7 @@
     <AssemblyName>CIS.UI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <FodyPath>..\packages\Fody.1.16.2.0</FodyPath>
+    <FodyPath>..\packages\Fody.1.17.0.0</FodyPath>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -72,6 +72,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.0.0.4001\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
@@ -117,6 +120,12 @@
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.0.0.8\lib\net45-full\Ninject.Extensions.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception.DynamicProxy">
+      <HintPath>..\packages\Ninject.Extensions.Interception.DynamicProxy.3.0.0.8\lib\net45-full\Ninject.Extensions.Interception.DynamicProxy.dll</HintPath>
     </Reference>
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.2.0.1.2\lib\net45\NLog.dll</HintPath>
@@ -200,7 +209,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Bootstraps\DependencyInjection\Ninject\Modules\DialogModule.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Dependency.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\HandleErrorAttribute.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\HandleErrorInterceptor.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\CustomPlanningStrategy.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\DialogModule.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\ViewModelDependency.cs" />
     <Compile Include="Features\Commons\Addresses\AddressDataInitializer.cs" />
     <Compile Include="Features\Commons\Addresses\BarangayLookup.cs">
       <DependentUpon>AddressViewModel.cs</DependentUpon>
@@ -255,7 +269,6 @@
     </Compile>
     <Compile Include="Features\Firearms\Licenses\ImportViewModel.cs" />
     <Compile Include="Features\Firearms\Maintenances\KindDataInitializer.cs" />
-    <Compile Include="Features\Firearms\Licenses\GunController.cs" />
     <Compile Include="Features\Firearms\Licenses\GunView.xaml.cs">
       <DependentUpon>GunView.xaml</DependentUpon>
     </Compile>
@@ -546,11 +559,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Bootstraps\DependencyInjection\IDependencyResolver.cs" />
-    <Compile Include="Bootstraps\DependencyInjection\IoC.cs" />
-    <Compile Include="Bootstraps\DependencyInjection\Ninject\DependencyResolver.cs" />
-    <Compile Include="Bootstraps\DependencyInjection\Ninject\Modules\MessageModule.cs" />
-    <Compile Include="Bootstraps\DependencyInjection\Ninject\Modules\PersistenceModule.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\IDependencyResolver.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\IoC.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\DependencyResolver.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\MessageModule.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\PersistenceModule.cs" />
     <Compile Include="Features\ControllerBase.cs" />
     <Compile Include="Features\DialogBase.cs" />
     <Compile Include="Features\Homes\Class1.cs" />

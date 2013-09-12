@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.UI.Bootstraps.InversionOfControl;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
@@ -28,7 +29,8 @@ namespace CIS.UI.Features.Firearms.Maintenances
 
         public MakeListViewModel()
         {
-            _controller = new MakeListController(this);
+            //_controller = new MakeListController(this);
+            _controller = IoC.Container.Resolve<MakeListController>(new ViewModelDependency(this));
         }
     }
 }

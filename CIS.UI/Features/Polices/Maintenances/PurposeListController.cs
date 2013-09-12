@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
 using NHibernate;
@@ -54,6 +55,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             Load();
         }
 
+        [HandleError]
         public virtual void Load()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -74,12 +76,15 @@ namespace CIS.UI.Features.Polices.Maintenances
             }
         }
 
+        [HandleError]
         public virtual void Insert()
         {
             var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
             var confirm = this.MessageBox.Confirm(message, "Purpose");
             if (confirm == false)
                 return;
+
+            var newlyCreatedItem = (PurposeViewModel)null;
 
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
@@ -96,15 +101,17 @@ namespace CIS.UI.Features.Polices.Maintenances
                 session.Save(entity);
                 transaction.Commit();
 
-                var newlyCreatedItem = new PurposeViewModel() { Id = entity.Id, Name = entity.Name };
-                this.ViewModel.Items.Insert(0, newlyCreatedItem);
-                this.ViewModel.SelectedItem = newlyCreatedItem;
-                this.ViewModel.NewItem = string.Empty;
+                newlyCreatedItem = new PurposeViewModel() { Id = entity.Id, Name = entity.Name };
             }
+
+            this.ViewModel.Items.Insert(0, newlyCreatedItem);
+            this.ViewModel.SelectedItem = newlyCreatedItem;
+            this.ViewModel.NewItem = string.Empty;
 
             this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Purpose"));
         }
 
+        [HandleError]
         public virtual void Delete(PurposeViewModel item)
         {
             var message = string.Format("Do you want to delete {0}?", item.Name);
@@ -119,14 +126,15 @@ namespace CIS.UI.Features.Polices.Maintenances
 
                 session.Delete(entity);
                 transaction.Commit();
-
-                this.ViewModel.Items.Remove(item);
-                this.ViewModel.SelectedItem = null;
             }
+
+            this.ViewModel.Items.Remove(item);
+            this.ViewModel.SelectedItem = null;
 
             this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Purpose"));
         }
 
+        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())

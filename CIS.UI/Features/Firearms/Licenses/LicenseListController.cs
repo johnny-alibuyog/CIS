@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Firearms;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
 using NHibernate;
@@ -16,7 +17,8 @@ namespace CIS.UI.Features.Firearms.Licenses
 {
     public class LicenseListController : ControllerBase<LicenseListViewModel>
     {
-        public LicenseListController(LicenseListViewModel viewModel) : base(viewModel)
+        public LicenseListController(LicenseListViewModel viewModel)
+            : base(viewModel)
         {
             this.ViewModel.Criteria = new LicenseListCriteriaViewModel();
 
@@ -79,6 +81,7 @@ namespace CIS.UI.Features.Firearms.Licenses
             return viewModel;
         }
 
+        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -113,15 +116,17 @@ namespace CIS.UI.Features.Firearms.Licenses
             }
         }
 
+        [HandleError]
         public virtual void Create()
         {
             var dialog = new DialogService<LicenseView, LicenseViewModel>();
             dialog.ViewModel = New();
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
-            dialog.ViewModel.Save.Subscribe(x => Insert((LicenseViewModel)x));
+            dialog.ViewModel.Save.Subscribe(x => Insert(dialog.ViewModel));
             dialog.ShowModal(this, "Create License", null);
         }
 
+        [HandleError]
         public virtual void Insert(LicenseViewModel value)
         {
             var message = string.Format("Are you sure you want to save license?");
@@ -151,6 +156,7 @@ namespace CIS.UI.Features.Firearms.Licenses
             value.Close();
         }
 
+        [HandleError]
         public virtual void Edit(LicenseListItemViewModel item)
         {
             this.ViewModel.SelectedItem = item;
@@ -158,10 +164,11 @@ namespace CIS.UI.Features.Firearms.Licenses
             var dialog = new DialogService<LicenseView, LicenseViewModel>();
             dialog.ViewModel = Get(item.Id);
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
-            dialog.ViewModel.Save.Subscribe(x => Update((LicenseViewModel)x));
+            dialog.ViewModel.Save.Subscribe(x => Update(dialog.ViewModel));
             dialog.ShowModal(this, "Edit License", null);
         }
 
+        [HandleError]
         public virtual void Update(LicenseViewModel value)
         {
             var message = string.Format("Are you sure you want to save license?");
@@ -188,14 +195,10 @@ namespace CIS.UI.Features.Firearms.Licenses
 
             this.Search();
 
-            //var item = this.ViewModel.SelectedItem;
-            //item.Id = value.Id;
-            //item.Owner = value.Person.FullName;
-            //item.Gun = value.Gun.Kind.Name + ": " + value.Gun.Model;
-
             value.Close();
         }
 
+        [HandleError]
         public virtual void Delete(LicenseListItemViewModel item)
         {
             this.ViewModel.SelectedItem = item;
@@ -224,11 +227,6 @@ namespace CIS.UI.Features.Firearms.Licenses
             this.MessageBox.Inform("Delete has been successfully completed.");
 
             this.Search();
-
-            //this.ViewModel.Items.Remove(item);
-            //this.ViewModel.SelectedItem = null;
-
-            //this.Search();
         }
     }
 }

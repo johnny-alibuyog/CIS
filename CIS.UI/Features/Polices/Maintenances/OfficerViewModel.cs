@@ -7,7 +7,7 @@ using System.Windows.Media.Imaging;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
 using CIS.Data;
-using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features.Commons.Persons;
 using CIS.UI.Utilities.Extentions;
 using NHibernate;

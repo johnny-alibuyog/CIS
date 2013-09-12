@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Firearms;
-using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features.Firearms.Maintenances;
 using CIS.UI.Utilities.Extentions;
 using LinqToExcel;

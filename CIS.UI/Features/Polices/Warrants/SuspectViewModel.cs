@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Features.Commons.Persons;
 using NHibernate.Validator.Constraints;
@@ -62,7 +63,8 @@ namespace CIS.UI.Features.Polices.Warrants
             )
             .Subscribe(x => this.Revalidate());
 
-            _controller = new SuspectController(this);
+            //_controller = new SuspectController(this);
+            _controller = IoC.Container.Resolve<SuspectController>(new ViewModelDependency(this));
         }
 
         public override object SerializeWith(object instance)

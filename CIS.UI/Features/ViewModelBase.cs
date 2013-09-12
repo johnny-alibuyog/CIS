@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Bootstraps.InversionOfControl;
 using Common.Logging;
 using NHibernate.Validator.Constraints;
 using NHibernate.Validator.Engine;

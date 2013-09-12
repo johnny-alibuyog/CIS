@@ -11,5 +11,11 @@ namespace CIS.UI.Features.Firearms
         public virtual Guid Id { get; set; }
 
         public virtual string Name { get; set; }
+
+        public KindViewModel(Guid id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
     }
 }

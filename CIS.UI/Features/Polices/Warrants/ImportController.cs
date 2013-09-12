@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
-using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
 using LinqToExcel;
@@ -25,7 +26,8 @@ namespace CIS.UI.Features.Polices.Warrants
     {
         private readonly BackgroundWorker _importWorker;
 
-        public ImportController(ImportViewModel viewModel) : base(viewModel)
+        public ImportController(ImportViewModel viewModel)
+            : base(viewModel)
         {
             _importWorker = new BackgroundWorker();
             _importWorker.DoWork += (sender, e) => Import();
@@ -44,6 +46,7 @@ namespace CIS.UI.Features.Polices.Warrants
             this.ViewModel.Import.Subscribe(x => RunImportWorker());
         }
 
+        [HandleError]
         public virtual void LookupPath()
         {
             var openDirectoryDialog = IoC.Container.Resolve<IOpenDirectoryDialogService>();
@@ -52,6 +55,7 @@ namespace CIS.UI.Features.Polices.Warrants
                 this.ViewModel.SourcePath = result;
         }
 
+        [HandleError]
         public virtual void Reset()
         {
             var confirm = this.MessageBox.Confirm("Do you want to reset?", "Import");
@@ -68,6 +72,7 @@ namespace CIS.UI.Features.Polices.Warrants
             this.ViewModel.Status = string.Empty;
         }
 
+        [HandleError]
         public virtual void RunImportWorker()
         {
             if (!Directory.Exists(this.ViewModel.SourcePath))
@@ -83,6 +88,7 @@ namespace CIS.UI.Features.Polices.Warrants
             _importWorker.RunWorkerAsync();
         }
 
+        [HandleError]
         public virtual void Import()
         {
             this.ViewModel.ImportStart = null;

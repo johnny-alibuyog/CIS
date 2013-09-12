@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.Extentions;
 using DPFP;
 using DPFP.Capture;
@@ -75,7 +76,7 @@ namespace CIS.UI.Features.Commons.Biometrics
         private Bitmap ConvertSampleToBitmap(Sample sample)
         {
             var converter = new SampleConversion();
-            Bitmap bitmap = null;
+            var bitmap = (Bitmap)null;
             converter.ConvertToPicture(sample, ref bitmap);
             return bitmap;
         }
@@ -84,7 +85,7 @@ namespace CIS.UI.Features.Commons.Biometrics
 
         #region Public Members
 
-        public void Start()
+        public virtual void Start()
         {
             if (_scanner != null)
             {
@@ -100,7 +101,7 @@ namespace CIS.UI.Features.Commons.Biometrics
             }
         }
 
-        public void Stop()
+        public virtual void Stop()
         {
             if (_scanner != null)
             {
@@ -119,7 +120,8 @@ namespace CIS.UI.Features.Commons.Biometrics
 
         #region DPFP.Capture.EventHandler Members
 
-        public void OnComplete(object captured, string readerSerialNumber, Sample sample)
+        [HandleError]
+        public virtual void OnComplete(object captured, string readerSerialNumber, Sample sample)
         {
             DispatcherInvoke(() =>
             {
@@ -129,27 +131,32 @@ namespace CIS.UI.Features.Commons.Biometrics
             });
         }
 
-        public void OnFingerGone(object captured, string readerSerialNumber)
+        [HandleError]
+        public virtual void OnFingerGone(object captured, string readerSerialNumber)
         {
             DispatcherInvoke(() => this.ViewModel.EventLogs.Insert(0, "The finger was removed from the fingerprint reader."));
         }
 
-        public void OnFingerTouch(object capture, string readerSerialNumber)
+        [HandleError]
+        public virtual void OnFingerTouch(object capture, string readerSerialNumber)
         {
             DispatcherInvoke(() => this.ViewModel.EventLogs.Insert(0, "The fingerprint reader was touched."));
         }
 
-        public void OnReaderConnect(object capture, string readerSerialNumber)
+        [HandleError]
+        public virtual void OnReaderConnect(object capture, string readerSerialNumber)
         {
             DispatcherInvoke(() => this.ViewModel.EventLogs.Insert(0, "The fingerprint reader was connected."));
         }
 
-        public void OnReaderDisconnect(object capture, string readerSerialNumber)
+        [HandleError]
+        public virtual void OnReaderDisconnect(object capture, string readerSerialNumber)
         {
             DispatcherInvoke(() => this.ViewModel.EventLogs.Insert(0, "The fingerprint reader was disconnected."));
         }
 
-        public void OnSampleQuality(object capture, string readerSerialNumber, CaptureFeedback captureFeedback)
+        [HandleError]
+        public virtual void OnSampleQuality(object capture, string readerSerialNumber, CaptureFeedback captureFeedback)
         {
             DispatcherInvoke(() =>
             {

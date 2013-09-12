@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
 using NHibernate;
 using NHibernate.Linq;
@@ -17,7 +18,7 @@ namespace CIS.UI.Features.Polices.Maintenances
     {
         public SettingController(SettingViewModel viewModel) : base(viewModel)
         {
-            Load();
+            this.Load();
 
             this.ViewModel.Load = new ReactiveCommand();
             this.ViewModel.Load.Subscribe(x => Load());
@@ -26,6 +27,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             this.ViewModel.Save.Subscribe(x => Save());
         }
 
+        [HandleError]
         public virtual void Load()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -43,6 +45,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             }
         }
 
+        [HandleError]
         public virtual void Save()
         {
             var confirm = this.MessageBox.Confirm("Do you want to save changes?", "Settings");

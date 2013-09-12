@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.UI.Bootstraps.InversionOfControl;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
@@ -32,7 +33,8 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public ImportViewModel()
         {
-            _controller = new ImportController(this);
+            //_controller = new ImportController(this);
+            _controller = IoC.Container.Resolve<ImportController>(new ViewModelDependency(this));
         }
     }
 }

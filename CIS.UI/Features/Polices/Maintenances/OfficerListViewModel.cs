@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.UI.Bootstraps.InversionOfControl;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
@@ -28,7 +29,8 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public OfficerListViewModel() 
         {
-            _controller = new OfficerListController(this);
+            //_controller = new OfficerListController(this);
+            _controller = IoC.Container.Resolve<OfficerListController>(new ViewModelDependency(this));
         }
     }
 }

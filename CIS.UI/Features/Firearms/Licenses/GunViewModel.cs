@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Firearms;
 using CIS.Data;
-using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Bootstraps.InversionOfControl;
 using NHibernate.Validator.Constraints;
 using ReactiveUI;
 

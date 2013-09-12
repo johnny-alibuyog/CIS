@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
+using CIS.UI.Bootstraps.InversionOfControl;
 using ReactiveUI;
 
 namespace CIS.UI.Features.Commons.Addresses
@@ -36,7 +37,8 @@ namespace CIS.UI.Features.Commons.Addresses
 
         public AddressViewModel()
         {
-            _controller = new AddressController(this);
+            //_controller = new AddressController(this);
+            _controller = IoC.Container.Resolve<AddressController>(new ViewModelDependency(this));
         }
 
         public override object SerializeWith(object instance)

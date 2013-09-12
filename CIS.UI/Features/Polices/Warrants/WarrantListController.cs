@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
 using FirstFloor.ModernUI.Windows.Controls;
 using NHibernate;
@@ -44,6 +45,7 @@ namespace CIS.UI.Features.Polices.Warrants
             ViewModel.Delete.Subscribe(x => { Delete((WarrantListItemViewModel)x); });
         }
 
+        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -81,6 +83,7 @@ namespace CIS.UI.Features.Polices.Warrants
             }
         }
 
+        [HandleError]
         public virtual void Create()
         {
             var dialog = new DialogService<WarrantView, WarrantViewModel>();
@@ -89,6 +92,7 @@ namespace CIS.UI.Features.Polices.Warrants
                 this.Search();
         }
 
+        [HandleError]
         public virtual void Edit(WarrantListItemViewModel item)
         {
             var dialog = new DialogService<WarrantView, WarrantViewModel>();
@@ -98,6 +102,7 @@ namespace CIS.UI.Features.Polices.Warrants
                 this.Search();
         }
 
+        [HandleError]
         public virtual void Delete(WarrantListItemViewModel item)
         {
             this.ViewModel.SelectedItem = item;

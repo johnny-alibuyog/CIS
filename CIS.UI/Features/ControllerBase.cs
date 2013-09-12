@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Threading;
 using CIS.Core.Entities.Memberships;
 using CIS.Data;
-using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Utilities.CommonDialogs;
 using Common.Logging;
 using NHibernate;

@@ -2,7 +2,8 @@
 using System.ComponentModel;
 using System.IO;
 using System.Windows;
-using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
 using ReactiveUI;
 using ReactiveUI.Xaml;
@@ -32,6 +33,7 @@ namespace CIS.UI.Features.Firearms.Licenses
             this.ViewModel.Import.Subscribe(x => RunImportWorker());
         }
 
+        [HandleError]
         public virtual void LookupPath()
         {
             var openDirectoryDialog = IoC.Container.Resolve<IOpenDirectoryDialogService>();
@@ -40,6 +42,7 @@ namespace CIS.UI.Features.Firearms.Licenses
                 this.ViewModel.SourcePath = result;
         }
 
+        [HandleError]
         public virtual void Reset()
         {
             var confirmed = this.MessageBox.Confirm("Do you want to reset?", "Import");
@@ -55,6 +58,7 @@ namespace CIS.UI.Features.Firearms.Licenses
             this.ViewModel.Status = string.Empty;
         }
 
+        [HandleError]
         public virtual void RunImportWorker()
         {
             if (!Directory.Exists(this.ViewModel.SourcePath))
@@ -70,6 +74,7 @@ namespace CIS.UI.Features.Firearms.Licenses
             _importWorker.RunWorkerAsync();
         }
 
+        [HandleError]
         public virtual void Import()
         {
             this.ViewModel.ImportStart = null;

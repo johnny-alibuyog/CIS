@@ -13,7 +13,7 @@ namespace CIS.UI.Features.Commons.Signatures
         public SignatureDialogController(SignatureDialogViewModel viewModel) : base(viewModel)
         {
             this.ViewModel.Accept = new ReactiveCommand();
-            this.ViewModel.Accept.Subscribe(x => this.ViewModel.ActionResult = true);
+            this.ViewModel.Accept.Subscribe(x => this.ViewModel.Close());
         }
     }
 }

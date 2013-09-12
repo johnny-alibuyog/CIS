@@ -14,7 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Memberships;
-using CIS.UI.Bootstraps.DependencyInjection;
+using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Terminals;
@@ -38,6 +39,7 @@ namespace CIS.UI.Features
             InitializeComponent();
 
             var dataInitializer = (IDataInitializer)null;
+
 
             //dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
             //dataInitializer.Execute();
@@ -65,8 +67,16 @@ namespace CIS.UI.Features
 
             dataInitializer = IoC.Container.Resolve<StationDataInitializer>();
             dataInitializer.Execute();
-
-
         }
+
+        public class TestClass
+        {
+            [HandleError]
+            public virtual void DoSomething()
+            {
+                throw new UnauthorizedAccessException("Meyn!");
+            }
+        }
+
     }
 }

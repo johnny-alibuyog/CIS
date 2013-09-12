@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Firearms;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
 using NHibernate;
@@ -30,7 +31,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
                 });
 
             this.ViewModel.Load = new ReactiveCommand();
-            this.ViewModel.Load.Subscribe(x => Load());
+            this.ViewModel.Load.Subscribe(x => Populate());
 
             this.ViewModel.Insert = new ReactiveCommand(this.ViewModel
                 .WhenAny(
@@ -53,35 +54,31 @@ namespace CIS.UI.Features.Firearms.Maintenances
             );
             this.ViewModel.Search.Subscribe(x => Search());
 
-            Load();
+            this.Populate();
         }
 
-        public virtual void Load()
+        [HandleError]
+        public virtual void Populate()
         {
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var query = session.Query<Kind>()
-                    .ToFuture();
-
-                this.ViewModel.Items = query
-                    .Select(x => new KindViewModel()
-                    {
-                        Id = x.Id,
-                        Name = x.Name
-                    })
-                    .ToReactiveList();
+                var query = session.Query<Kind>().ToFuture();
+                this.ViewModel.Items = query.Select(x => new KindViewModel(x.Id, x.Name)).ToReactiveList();
 
                 transaction.Commit();
             }
         }
 
+        [HandleError]
         public virtual void Insert()
         {
             var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
             var confirm = this.MessageBox.Confirm(message, "Classification (Kind)");
             if (confirm == false)
                 return;
+
+            var item = (KindViewModel)null;
 
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
@@ -98,13 +95,15 @@ namespace CIS.UI.Features.Firearms.Maintenances
                 session.Save(entity);
                 transaction.Commit();
 
-                var item = new KindViewModel() { Id = entity.Id, Name = entity.Name };
-                this.ViewModel.Items.Insert(0, item);
-                this.ViewModel.SelectedItem = item;
-                this.ViewModel.NewItem = string.Empty;
+                item = new KindViewModel(entity.Id, entity.Name);
             }
+
+            this.ViewModel.Items.Insert(0, item);
+            this.ViewModel.SelectedItem = item;
+            this.ViewModel.NewItem = string.Empty;
         }
 
+        [HandleError]
         public virtual void Delete(KindViewModel item)
         {
             var message = string.Format("Do you want to delete {0}?", item.Name);
@@ -119,28 +118,20 @@ namespace CIS.UI.Features.Firearms.Maintenances
 
                 session.Delete(entity);
                 transaction.Commit();
-
-                this.ViewModel.Items.Remove(item);
-                this.ViewModel.SelectedItem = null;
             }
+
+            this.ViewModel.Items.Remove(item);
+            this.ViewModel.SelectedItem = null;
         }
 
+        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var query = session.Query<Kind>()
-                    .Where(x => x.Name == this.ViewModel.NewItem)
-                    .ToFuture();
-
-                this.ViewModel.Items = query
-                    .Select(x => new KindViewModel()
-                    {
-                        Id = x.Id,
-                        Name = x.Name
-                    })
-                    .ToReactiveList();
+                var query = session.Query<Kind>().Where(x => x.Name == this.ViewModel.NewItem).ToFuture();
+                this.ViewModel.Items = query.Select(x => new KindViewModel(x.Id, x.Name)).ToReactiveList();
 
                 transaction.Commit();
             }

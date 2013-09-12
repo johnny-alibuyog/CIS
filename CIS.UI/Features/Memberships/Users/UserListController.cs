@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Memberships;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.Extentions;
 using NHibernate;
 using NHibernate.Linq;
@@ -15,7 +16,8 @@ namespace CIS.UI.Features.Memberships.Users
     {
         private IReactiveList<UserRoleViewModel> _roles;
 
-        public UserListController(UserListViewModel viewModel) : base(viewModel)
+        public UserListController(UserListViewModel viewModel)
+            : base(viewModel)
         {
             this.PopulatePulldown();
 
@@ -35,6 +37,7 @@ namespace CIS.UI.Features.Memberships.Users
             this.ViewModel.Delete.Subscribe(x => this.Delete((Guid)x));
         }
 
+        [HandleError]
         private void PopulatePulldown()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -55,6 +58,7 @@ namespace CIS.UI.Features.Memberships.Users
             }
         }
 
+        [HandleError]
         public virtual void Search()
         {
             var criteria = this.ViewModel.Criteria;
@@ -83,7 +87,7 @@ namespace CIS.UI.Features.Memberships.Users
                         Id = x.Id,
                         Username = x.Username,
                         Email = x.Email,
-                        FullName = x.Person.FirstName + " " + 
+                        FullName = x.Person.FirstName + " " +
                             x.Person.MiddleName + " " + x.Person.LastName
                     })
                     .ToReactiveList();
@@ -92,23 +96,28 @@ namespace CIS.UI.Features.Memberships.Users
             }
         }
 
+        [HandleError]
         public virtual void Create()
         {
 
         }
 
+        [HandleError]
         public virtual void Insert(UserViewModel value)
         {
         }
 
+        [HandleError]
         public virtual void Edit(Guid id)
         {
         }
 
-        public virtual void Update(UserViewModel value) 
-        { 
+        [HandleError]
+        public virtual void Update(UserViewModel value)
+        {
         }
 
+        [HandleError]
         public virtual void Delete(Guid id)
         {
         }

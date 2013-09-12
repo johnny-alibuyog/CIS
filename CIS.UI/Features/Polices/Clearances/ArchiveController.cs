@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using NHibernate;
 using NHibernate.Linq;
 using ReactiveUI;
@@ -29,6 +30,7 @@ namespace CIS.UI.Features.Polices.Clearances
             this.ViewModel.ViewReport.Subscribe(x => ViewReport());
         }
 
+        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -65,6 +67,7 @@ namespace CIS.UI.Features.Polices.Clearances
             }
         }
 
+        [HandleError]
         public virtual void ViewItem(ArchiveItemViewModel item)
         {
             var reportData = new ClearanceReportViewModel();
@@ -116,6 +119,7 @@ namespace CIS.UI.Features.Polices.Clearances
             dialog.ShowModal(this, "Clearance", reportData);
         }
 
+        [HandleError]
         public virtual void ViewReport()
         {
             var station = (Station)null;

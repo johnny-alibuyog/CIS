@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
 using NHibernate;
 using NHibernate.Linq;
@@ -37,6 +38,7 @@ namespace CIS.UI.Features.Polices.Warrants
             this.ViewModel.BatchSave.Subscribe(x => BatchSave());
         }
 
+        [HandleError]
         public virtual void Load(Guid id)
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -62,6 +64,7 @@ namespace CIS.UI.Features.Polices.Warrants
             }
         }
 
+        [HandleError]
         public virtual void CreateSuspect()
         {
             var dialog = new DialogService<SuspectView, SuspectViewModel>();
@@ -70,6 +73,7 @@ namespace CIS.UI.Features.Polices.Warrants
                 this.ViewModel.Suspects.Add(value);
         }
 
+        [HandleError]
         public virtual void EditSuspect(SuspectViewModel item)
         {
             this.ViewModel.SelectedSuspect = item;
@@ -80,12 +84,14 @@ namespace CIS.UI.Features.Polices.Warrants
                 this.ViewModel.SelectedSuspect.SerializeWith(value);
         }
 
+        [HandleError]
         public virtual void DeleteSuspect(SuspectViewModel item)
         {
             this.ViewModel.Suspects.Remove(item);
             this.ViewModel.SelectedSuspect = null;
         }
 
+        [HandleError]
         public virtual void BatchSave()
         {
             var message = string.Format("Are you sure you want to save warrant?");

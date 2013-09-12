@@ -15,8 +15,6 @@ namespace CIS.UI.Features.Firearms.Licenses
 {
     public class LicenseViewModel : ViewModelBase
     {
-        //private readonly LicenseContoller _controller;
-
         public virtual Guid Id { get; set; }
 
         [Valid]

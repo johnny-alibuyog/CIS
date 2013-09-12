@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Features.Commons.Signatures;
 using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
@@ -83,6 +84,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             return viewModel;
         }
 
+        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -115,6 +117,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             }
         }
 
+        [HandleError]
         public virtual void Create()
         {
             var dialog = new DialogService<OfficerView, OfficerViewModel>();
@@ -126,9 +129,10 @@ namespace CIS.UI.Features.Polices.Maintenances
             dialog.ShowModal(this, "Create Officer", null);
         }
 
+        [HandleError]
         public virtual void Insert(OfficerViewModel value)
         {
-            var message = string.Format("Are you sure you want to save officer {0} {1}.", value.Rank, value.Person.FullName);
+            var message = string.Format("Are you sure you want to save officer {0} {1}.", value.Rank.Name, value.Person.FullName);
             var confirmed = this.MessageBox.Confirm(message, "Save");
             if (confirmed == false)
                 return;
@@ -183,6 +187,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             value.Close();
         }
 
+        [HandleError]
         public virtual void Edit(OfficerListItemViewModel item)
         {
             this.ViewModel.SelectedItem = item;
@@ -196,6 +201,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             dialog.ShowModal(this, "Edit Officer", null);
         }
 
+        [HandleError]
         public virtual void Update(OfficerViewModel value)
         {
             var message = string.Format("Are you sure you want to save officer {0} {1}.", value.Rank, value.Person.FullName);
@@ -229,6 +235,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             value.Close();
         }
 
+        [HandleError]
         public virtual void Delete(OfficerListItemViewModel item)
         {
             try
@@ -256,12 +263,11 @@ namespace CIS.UI.Features.Polices.Maintenances
             }
             catch (GenericADOException ex)
             {
-                var message = string.Format("Unable to delete. Officer {0} may already be in use.", item.Name);
-                this.MessageBox.Warn(message, ex, "Error");
+                throw new InvalidOperationException(string.Format("Unable to delete. Officer {0} may already be in use.", item.Name));
             }
             catch (Exception ex)
             {
-                this.MessageBox.Warn(ex.Message, ex, "Error");
+                throw;
             }
         }
     }

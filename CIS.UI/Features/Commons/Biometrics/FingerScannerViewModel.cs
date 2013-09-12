@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
+using CIS.UI.Bootstraps.InversionOfControl;
 using NHibernate.Validator.Constraints;
 using ReactiveUI;
 using ReactiveUI.Xaml;
@@ -49,7 +50,9 @@ namespace CIS.UI.Features.Commons.Biometrics
                     { FingerViewModel.LeftPinky, (BitmapSource)null },
                 };
 
-            _controller = new FingerScannerController(this);
+            //_controller = new FingerScannerController(this);
+            _controller = IoC.Container.Resolve<FingerScannerController>(new ViewModelDependency(this));
+
         }
     }
 }
