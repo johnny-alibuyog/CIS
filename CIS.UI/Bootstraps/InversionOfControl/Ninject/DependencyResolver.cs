@@ -61,8 +61,6 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject
                     kernel.Load(Assembly.GetExecutingAssembly());
                     kernel.Components.Add<IPlanningStrategy, CustomPlanningStrategy<HandleErrorAttribute, HandleErrorInterceptor>>();
 
-                    kernel.Bind<Features.MainView.TestClass>().ToSelf();
-
                     _instance = new DependencyResolver(kernel);
                 }
                 return _instance;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Memberships;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.Extentions;
 using NHibernate;
@@ -40,22 +41,23 @@ namespace CIS.UI.Features.Memberships.Users
         [HandleError]
         private void PopulatePulldown()
         {
-            using (var session = this.SessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
-            {
-                var roles = session.Query<Role>().Cacheable().ToList();
+            // Todo: fix
+            //using (var session = this.SessionFactory.OpenSession())
+            //using (var transaction = session.BeginTransaction())
+            //{
+            //    var roles = session.Query<Role>().Cacheable().ToList();
 
-                _roles = roles
-                    .Select(x => new UserRoleViewModel()
-                    {
-                        Id = x.Id,
-                        Name = x.Name,
-                        Checked = false
-                    })
-                    .ToReactiveList();
+            //    _roles = roles
+            //        .Select(x => new UserRoleViewModel()
+            //        {
+            //            Id = x.Id,
+            //            Name = x.Name,
+            //            Checked = false
+            //        })
+            //        .ToReactiveList();
 
-                transaction.Commit();
-            }
+            //    transaction.Commit();
+            //}
         }
 
         [HandleError]
@@ -99,12 +101,26 @@ namespace CIS.UI.Features.Memberships.Users
         [HandleError]
         public virtual void Create()
         {
-
+            var dialog = new DialogService<UserView, UserViewModel>();
+            dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
+            dialog.ViewModel.Save.Subscribe(x => Insert(dialog.ViewModel));
+            dialog.ShowModal(this, "Create User", null);
         }
 
         [HandleError]
         public virtual void Insert(UserViewModel value)
         {
+            using (var session = this.SessionProvider.GetSharedSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var user = new User();
+
+
+
+                transaction.Commit();
+            }
+
+            this.Search();
         }
 
         [HandleError]

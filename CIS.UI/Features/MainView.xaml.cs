@@ -38,45 +38,37 @@ namespace CIS.UI.Features
         {
             InitializeComponent();
 
-            var dataInitializer = (IDataInitializer)null;
-
-
-            //dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
-            //dataInitializer.Execute();
-
-            dataInitializer = IoC.Container.Resolve<FingerDataInitializer>();
-            dataInitializer.Execute();
-
-            dataInitializer = IoC.Container.Resolve<TerminalDataInitializer>();
-            dataInitializer.Execute();
-
-            dataInitializer = IoC.Container.Resolve<SettingDataInitializer>();
-            dataInitializer.Execute();
-
-            dataInitializer = IoC.Container.Resolve<RankDataInitializer>();
-            dataInitializer.Execute();
-
-            dataInitializer = IoC.Container.Resolve<PurposeDataInitializer>();
-            dataInitializer.Execute();
-
-            dataInitializer = IoC.Container.Resolve<MakeDataInitializer>();
-            dataInitializer.Execute();
-
-            dataInitializer = IoC.Container.Resolve<KindDataInitializer>();
-            dataInitializer.Execute();
-
-            dataInitializer = IoC.Container.Resolve<StationDataInitializer>();
-            dataInitializer.Execute();
-        }
-
-        public class TestClass
-        {
-            [HandleError]
-            public virtual void DoSomething()
+            Task.Factory.StartNew(() =>
             {
-                throw new UnauthorizedAccessException("Meyn!");
-            }
-        }
+                var dataInitializer = (IDataInitializer)null;
 
+                //dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
+                //dataInitializer.Execute();
+
+                dataInitializer = IoC.Container.Resolve<FingerDataInitializer>();
+                dataInitializer.Execute();
+
+                dataInitializer = IoC.Container.Resolve<TerminalDataInitializer>();
+                dataInitializer.Execute();
+
+                dataInitializer = IoC.Container.Resolve<SettingDataInitializer>();
+                dataInitializer.Execute();
+
+                dataInitializer = IoC.Container.Resolve<RankDataInitializer>();
+                dataInitializer.Execute();
+
+                dataInitializer = IoC.Container.Resolve<PurposeDataInitializer>();
+                dataInitializer.Execute();
+
+                dataInitializer = IoC.Container.Resolve<MakeDataInitializer>();
+                dataInitializer.Execute();
+
+                dataInitializer = IoC.Container.Resolve<KindDataInitializer>();
+                dataInitializer.Execute();
+
+                dataInitializer = IoC.Container.Resolve<StationDataInitializer>();
+                dataInitializer.Execute();
+            }, TaskCreationOptions.LongRunning);
+        }
     }
 }

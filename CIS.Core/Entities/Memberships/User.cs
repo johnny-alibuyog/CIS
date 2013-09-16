@@ -125,6 +125,12 @@ namespace CIS.Core.Entities.Memberships
             return _roles.Any(x => x == Role.MayorEncoder);
         }
 
+        public virtual bool IsAuthorized(Role[] Roles)
+        {
+
+            return false;
+        }
+
         #endregion
 
         #region Constructors

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Features.Commons.Signatures;
 using CIS.UI.Utilities.CommonDialogs;
@@ -35,6 +36,8 @@ namespace CIS.UI.Features.Polices.Maintenances
 
             this.ViewModel.Delete = new ReactiveCommand();
             this.ViewModel.Delete.Subscribe(x => { Delete((OfficerListItemViewModel)x); });
+
+            this.Search();
         }
 
         private void CaptureSignature(OfficerViewModel viewModel)
@@ -49,7 +52,7 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         private OfficerViewModel New()
         {
-            var viewModel = new OfficerViewModel();
+            var viewModel = IoC.Container.Resolve<OfficerViewModel>();
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
@@ -63,7 +66,7 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         private OfficerViewModel Get(Guid id)
         {
-            var viewModel = new OfficerViewModel();
+            var viewModel = IoC.Container.Resolve<OfficerViewModel>();
             using (var session = this.SessionProvider.GetSharedSession())
             using (var transaction = session.BeginTransaction())
             {
@@ -176,13 +179,15 @@ namespace CIS.UI.Features.Polices.Maintenances
 
             this.MessageBox.Inform("Save has been successfully completed.");
 
-            var item = new OfficerListItemViewModel();
-            item.Id = value.Id;
-            item.Name = value.Person.FullName;
-            item.Rank = value.Rank.Name;
+            //var item = new OfficerListItemViewModel();
+            //item.Id = value.Id;
+            //item.Name = value.Person.FullName;
+            //item.Rank = value.Rank.Name;
 
-            this.ViewModel.Items.Add(item);
-            this.ViewModel.SelectedItem = item;
+            //this.ViewModel.Items.Add(item);
+            //this.ViewModel.SelectedItem = item;
+
+            this.Search();
 
             value.Close();
         }
@@ -227,10 +232,12 @@ namespace CIS.UI.Features.Polices.Maintenances
 
             this.MessageBox.Inform("Save has been successfully completed.");
 
-            var item = this.ViewModel.SelectedItem;
-            item.Id = value.Id;
-            item.Name = value.Person.FullName;
-            item.Rank = value.Rank.Name;
+            //var item = this.ViewModel.SelectedItem;
+            //item.Id = value.Id;
+            //item.Name = value.Person.FullName;
+            //item.Rank = value.Rank.Name;
+
+            this.Search();
 
             value.Close();
         }
@@ -258,8 +265,10 @@ namespace CIS.UI.Features.Polices.Maintenances
 
                 this.MessageBox.Inform("Delete has been successfully completed.");
 
-                this.ViewModel.Items.Remove(item);
-                this.ViewModel.SelectedItem = null;
+                this.Search();
+
+                //this.ViewModel.Items.Remove(item);
+                //this.ViewModel.SelectedItem = null;
             }
             catch (GenericADOException ex)
             {

@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Utilities.Extentions;
 using ReactiveUI;
 
 namespace CIS.UI.Features.Memberships.Users
@@ -41,15 +43,13 @@ namespace CIS.UI.Features.Memberships.Users
         {
             InitializeComponent();
 
-            if (!DesignerProperties.GetIsInDesignMode(this))
-            {
-                this.ViewModel = new UserViewModel();
-            }
-        }
+            this.CreateViewModel(() => IoC.Container.Resolve<UserViewModel>());
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
 
+            //if (!DesignerProperties.GetIsInDesignMode(this))
+            //{
+            //    this.ViewModel = new UserViewModel();
+            //}
         }
     }
 }

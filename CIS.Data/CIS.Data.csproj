@@ -198,7 +198,6 @@
     <Compile Include="EntityDefinitions\Mayors\SecretaryMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntityDefinitions\Memberships\RoleMapping.cs" />
     <Compile Include="EntityDefinitions\Memberships\UserMapping.cs" />
     <Compile Include="EntityDefinitions\Polices\ClearanceMapping.cs" />
     <Compile Include="EntityDefinitions\Polices\OfficerMapping.cs" />
@@ -277,7 +276,6 @@
     <Compile Include="EntityDefinitions\Mayors\SecretaryValidation.cs">
       <DependentUpon>OfficialValidation.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntityDefinitions\Memberships\RoleValidation.cs" />
     <Compile Include="EntityDefinitions\Memberships\UserValidation.cs" />
     <Compile Include="EntityDefinitions\Polices\ClearanceValidaton.cs" />
     <Compile Include="EntityDefinitions\Polices\OfficerValidation.cs" />

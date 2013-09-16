@@ -210,6 +210,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bootstraps\InversionOfControl\Dependency.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\AuthorizeAttribute.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\AuthorizeInterceptor.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\HandleErrorAttribute.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\HandleErrorInterceptor.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\CustomPlanningStrategy.cs" />
@@ -468,6 +470,7 @@
     <Compile Include="Utilities\Extentions\BitmapExtention.cs" />
     <Compile Include="Utilities\Extentions\EnumExtention.cs" />
     <Compile Include="Utilities\Extentions\ReactiveCollectonExtention.cs" />
+    <Compile Include="Utilities\Extentions\ViewExtention.cs" />
     <Compile Include="Utilities\Reports\ReportPrintDocument.cs">
       <SubType>Component</SubType>
     </Compile>

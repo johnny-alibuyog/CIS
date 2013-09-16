@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Utilities.Extentions;
 using FirstFloor.ModernUI.Windows;
 using ReactiveUI;
 
@@ -36,12 +39,14 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public void OnNavigatedTo(FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs e)
         {
-            this.ViewModel.Reset.Execute(null);
+            if (this.ViewModel != null)
+                this.ViewModel.Reset.Execute(null);
         }
 
         public void OnNavigatingFrom(FirstFloor.ModernUI.Windows.Navigation.NavigatingCancelEventArgs e)
         {
-            this.ViewModel.Reset.Execute(null);
+            if (this.ViewModel != null)
+                this.ViewModel.Reset.Execute(null);
         }
 
         #endregion
@@ -66,7 +71,7 @@ namespace CIS.UI.Features.Polices.Clearances
         {
             InitializeComponent();
 
-            ViewModel = new ApplicationViewModel();
+            this.CreateViewModel(() => IoC.Container.Resolve<ApplicationViewModel>());
         }
     }
 }

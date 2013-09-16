@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using NHibernate;
 using NHibernate.Linq;
@@ -132,16 +133,14 @@ namespace CIS.UI.Features.Polices.Clearances
                 transaction.Commit();
             }
 
-            var viewModel = new ArchiveReportViewModel()
-            {
-                Station = station.Name.ToUpper(),
-                Office = station.Office.ToUpper(),
-                Location = station.Location.ToUpper(),
-                FromDate = this.ViewModel.Criteria.FromDate,
-                ToDate = this.ViewModel.Criteria.ToDate,
-                FilterDate = this.ViewModel.Criteria.FilterDate,
-                Items = this.ViewModel.Items,
-            };
+            var viewModel = IoC.Container.Resolve< ArchiveReportViewModel>();
+            viewModel.Station = station.Name.ToUpper();
+            viewModel.Office = station.Office.ToUpper();
+            viewModel.Location = station.Location.ToUpper();
+            viewModel.FromDate = this.ViewModel.Criteria.FromDate;
+            viewModel.ToDate = this.ViewModel.Criteria.ToDate;
+            viewModel.FilterDate = this.ViewModel.Criteria.FilterDate;
+            viewModel.Items = this.ViewModel.Items;
 
             var dialog = new DialogService<ArchiveReportView, ArchiveReportViewModel>();
             dialog.ViewModel = viewModel;

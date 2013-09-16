@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Utilities.Extentions;
 using ReactiveUI;
 
 namespace CIS.UI.Features.Polices.Maintenances
@@ -41,7 +43,9 @@ namespace CIS.UI.Features.Polices.Maintenances
         {
             InitializeComponent();
 
-            ViewModel = new SettingViewModel();
+            this.CreateViewModel(() => IoC.Container.Resolve<SettingViewModel>());
+
+            //ViewModel = new SettingViewModel();
         }
     }
 }

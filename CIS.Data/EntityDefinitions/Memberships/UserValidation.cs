@@ -32,8 +32,8 @@ namespace CIS.Data.EntityDefinition.Memberships
                 .And.IsValid();
 
             Define(x => x.Roles)
-                .NotNullableAndNotEmpty()
-                .And.HasValidElements();
+                .NotNullableAndNotEmpty();
+                //.And.HasValidElements();
         }
     }
 }

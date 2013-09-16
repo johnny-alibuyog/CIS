@@ -28,10 +28,8 @@ namespace CIS.UI
 
         public static class Data
         {
-            public static User CurrentUser { get; set; }
+            public static User User { get; set; }
             public static City City { get; set; }
         }
-
-
     }
 }

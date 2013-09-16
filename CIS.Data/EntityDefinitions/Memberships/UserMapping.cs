@@ -27,11 +27,17 @@ namespace CIS.Data.EntityDefinition.Memberships
 
             Component(x => x.Person);
 
-            HasManyToMany(x => x.Roles)
-                .Access.CamelCaseField(Prefix.Underscore)
+            HasMany<string>(x => x.Roles)
                 .Schema(GetType().ParseSchema())
                 .Table("UsersRoles")
+                .Element("Role")
                 .AsSet();
+
+            //HasManyToMany(x => x.Roles)
+            //    .Access.CamelCaseField(Prefix.Underscore)
+            //    .Schema(GetType().ParseSchema())
+            //    .Table("UsersRoles")
+            //    .AsSet();
         }
     }
 }

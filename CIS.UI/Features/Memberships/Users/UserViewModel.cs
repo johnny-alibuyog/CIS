@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.Core.Entities.Commons;
+using CIS.Core.Entities.Memberships;
 using CIS.UI.Features.Commons.Persons;
 using NHibernate.Validator.Constraints;
 using ReactiveUI;
@@ -32,10 +34,52 @@ namespace CIS.UI.Features.Memberships.Users
 
         public virtual IReactiveCommand Save { get; set; }
 
+        public virtual string[] GetSelctedRoleIds()
+        {
+            return this.Roles.Where(x => x.Checked).Select(x => x.Id).ToArray();
+        }
+
         public UserViewModel()
         {
             this.WhenAny(x => x.Person.IsValid, x => true)
                 .Subscribe(x => this.Revalidate());
         }
+
+        public override object SerializeInto(object instance)
+        {
+            if (instance == null)
+                return null;
+
+            if (instance is UserViewModel)
+            {
+                var source = this;
+                var target = instance as UserViewModel;
+
+                target.SerializeWith(source);
+                return target;
+            }
+            else if (instance is User)
+            {
+                var source = this;
+                var target = instance as User;
+
+                target.Username = source.Username;
+                target.Password = source.Password;
+                target.Email = source.Email;
+                target.Person = (Person)source.SerializeInto(new Person());
+                //target.Roles = Role.GetByIds(source.GetSelctedRoleIds()); // Todo: fix
+
+                return target;
+            }
+
+            return null;
+        }
+
+        public override object SerializeWith(object instance)
+        {
+            return base.SerializeWith(instance);
+        }
+
+
     }
 }

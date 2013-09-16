@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Firearms;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
@@ -47,7 +48,7 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         private LicenseViewModel New()
         {
-            var viewModel = new LicenseViewModel();
+            var viewModel = IoC.Container.Resolve<LicenseViewModel>();
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
@@ -64,7 +65,7 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         private LicenseViewModel Get(Guid id)
         {
-            var viewModel = new LicenseViewModel();
+            var viewModel = IoC.Container.Resolve<LicenseViewModel>();
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {

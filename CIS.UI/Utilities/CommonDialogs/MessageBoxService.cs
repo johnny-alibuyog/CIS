@@ -15,24 +15,28 @@ namespace CIS.UI.Utilities.CommonDialogs
 
         public void Warn(string message, string caption = "Error")
         {
-            ModernDialog.ShowMessage(message, caption, MessageBoxButton.OK);
+            Application.Current.Dispatcher.Invoke(() => ModernDialog.ShowMessage(message, caption, MessageBoxButton.OK));
+            //ModernDialog.ShowMessage(message, caption, MessageBoxButton.OK);
         }
 
         public void Warn(string message, Exception ex, string caption = "Error")
         {
             _log.Error(ex.Message, ex);
-            ModernDialog.ShowMessage(message, caption, MessageBoxButton.OK);
+            Application.Current.Dispatcher.Invoke(() => ModernDialog.ShowMessage(message, caption, MessageBoxButton.OK));
+            //ModernDialog.ShowMessage(message, caption, MessageBoxButton.OK);
         }
 
         public bool Confirm(string message, string caption = "Confirmation")
         {
-            var result = ModernDialog.ShowMessage(message, caption, MessageBoxButton.YesNo);
+            //var result = ModernDialog.ShowMessage(message, caption, MessageBoxButton.YesNo);
+            var result = Application.Current.Dispatcher.Invoke(() => ModernDialog.ShowMessage(message, caption, MessageBoxButton.YesNo));
             return (result == MessageBoxResult.Yes);
         }
 
         public void Inform(string message, string caption = "Information")
         {
-            ModernDialog.ShowMessage(message, caption, MessageBoxButton.OK);
+            Application.Current.Dispatcher.Invoke(() => ModernDialog.ShowMessage(message, caption, MessageBoxButton.OK));
+            //ModernDialog.ShowMessage(message, caption, MessageBoxButton.OK);
         }
     }
 }

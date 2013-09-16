@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Utilities.Extentions;
 using FirstFloor.ModernUI.Windows.Controls;
 using ReactiveUI;
 
@@ -42,10 +44,12 @@ namespace CIS.UI.Features.Polices.Warrants
         {
             InitializeComponent();
 
-            if (!DesignerProperties.GetIsInDesignMode(this))
-            {
-                this.ViewModel = new WarrantViewModel();
-            }
+            this.CreateViewModel(() => IoC.Container.Resolve<WarrantViewModel>());
+
+            //if (!DesignerProperties.GetIsInDesignMode(this))
+            //{
+            //    this.ViewModel = new WarrantViewModel();
+            //}
         }
     }
 }

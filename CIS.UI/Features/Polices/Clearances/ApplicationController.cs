@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Forms;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Firearms;
+using CIS.Core.Entities.Memberships;
 using CIS.Core.Entities.Polices;
 using CIS.Core.Utilities.Extentions;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
@@ -55,8 +56,6 @@ namespace CIS.UI.Features.Polices.Clearances
                     })
                 );
             this.ViewModel.Previous.Subscribe(x => Previous());
-
-
 
             this.ViewModel.Next = new ReactiveCommand(this.ViewModel
                 .WhenAny(
@@ -480,7 +479,8 @@ namespace CIS.UI.Features.Polices.Clearances
             this.InitializeDevices();
         }
 
-        [HandleError]
+        [HandleError(Order = 1)]
+        [Authorize(Roles = new Role[] { Role.BarangayAdministartor }, Order = 0)]
         public virtual void Next()
         {
             if (this.ViewModel.CurrentViewModel.IsValid == false)
