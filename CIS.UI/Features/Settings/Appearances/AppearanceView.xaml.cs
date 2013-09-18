@@ -13,16 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CIS.UI.Features.Settings.Abouts
+namespace CIS.UI.Features.Settings.Appearances
 {
     /// <summary>
-    /// Interaction logic for About.xaml
+    /// Interaction logic for SettingsAppearance.xaml
     /// </summary>
-    public partial class View : UserControl
+    public partial class AppearanceView : UserControl
     {
-        public View()
+        public AppearanceView()
         {
             InitializeComponent();
+
+            // create and assign the appearance view model
+            this.DataContext = new AppearanceViewModel();
         }
     }
 }

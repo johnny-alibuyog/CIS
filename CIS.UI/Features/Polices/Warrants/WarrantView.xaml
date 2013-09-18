@@ -109,7 +109,7 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <mui:DataGridTextColumn Header="Name"  Binding="{Binding Person.FullName}"/>
-                    <mui:DataGridComboBoxColumn Header="Status" SelectedItemBinding="{Binding ArestStatus}" ItemsSource="{Binding Source={StaticResource ArrestStatusEnum}}" />
+                    <mui:DataGridComboBoxColumn Header="Status" SelectedItemBinding="{Binding ArrestStatus}" ItemsSource="{Binding Source={StaticResource ArrestStatusEnum}}" />
                     <mui:DataGridComboBoxColumn Header="Gender" SelectedItemBinding="{Binding Person.Gender}" ItemsSource="{Binding Source={StaticResource GenderEnum}}" />
                 </DataGrid.Columns>
             </DataGrid>

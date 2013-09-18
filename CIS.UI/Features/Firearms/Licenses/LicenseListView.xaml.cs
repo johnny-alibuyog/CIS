@@ -41,11 +41,8 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public LicenseListView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<LicenseListViewModel>());
-
-            //ViewModel = new LicenseListViewModel();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<LicenseListViewModel>());
         }
     }
 }

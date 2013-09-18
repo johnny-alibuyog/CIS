@@ -54,6 +54,12 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual void Save()
         {
+            var message = string.Format("Do you want to save {0}?", this.ViewModel.Person.FullName);
+            var confirm = this.MessageBox.Confirm(message, "Save");
+            if (confirm == false)
+                return;
+
+
             if (!string.IsNullOrWhiteSpace(this.ViewModel.AliasToAdd))
                 this.AddAlias();
 

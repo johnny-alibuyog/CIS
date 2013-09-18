@@ -270,11 +270,11 @@ namespace CIS.UI.Features.Polices.Maintenances
                 //this.ViewModel.Items.Remove(item);
                 //this.ViewModel.SelectedItem = null;
             }
-            catch (GenericADOException ex)
+            catch (GenericADOException)
             {
                 throw new InvalidOperationException(string.Format("Unable to delete. Officer {0} may already be in use.", item.Name));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

@@ -12,13 +12,14 @@ namespace CIS.UI.Features.Settings.Appearances
     /// <summary>
     /// A simple view model for configuring theme, font and accent colors.
     /// </summary>
-    public class ViewModel : NotifyPropertyChanged
+    public class AppearanceViewModel : NotifyPropertyChanged
     {
         private const string FontSmall = "small";
         private const string FontLarge = "large";
 
         // 9 accent colors from metro design principles
-        /*private Color[] accentColors = new Color[]{
+        /*private Color[] accentColors = new Color[]
+         * {
             Color.FromRgb(0x33, 0x99, 0xff),   // blue
             Color.FromRgb(0x00, 0xab, 0xa9),   // teal
             Color.FromRgb(0x33, 0x99, 0x33),   // green
@@ -31,7 +32,8 @@ namespace CIS.UI.Features.Settings.Appearances
         };*/
 
         // 20 accent colors from Windows Phone 8
-        private Color[] accentColors = new Color[]{
+        private Color[] _accentColors = new Color[]
+        {
             Color.FromRgb(0xa4, 0xc4, 0x00),   // lime
             Color.FromRgb(0x60, 0xa9, 0x17),   // green
             Color.FromRgb(0x00, 0x8a, 0x00),   // emerald
@@ -54,19 +56,19 @@ namespace CIS.UI.Features.Settings.Appearances
             Color.FromRgb(0x87, 0x79, 0x4e),   // taupe
         };
 
-        private Color selectedAccentColor;
-        private LinkCollection themes = new LinkCollection();
-        private Link selectedTheme;
-        private string selectedFontSize;
+        private Color _selectedAccentColor;
+        private LinkCollection _themes = new LinkCollection();
+        private Link _selectedTheme;
+        private string _selectedFontSize;
 
-        public ViewModel()
+        public AppearanceViewModel()
         {
             // add the default themes
-            this.themes.Add(new Link { DisplayName = "dark", Source = AppearanceManager.DarkThemeSource });
-            this.themes.Add(new Link { DisplayName = "light", Source = AppearanceManager.LightThemeSource });
+            this._themes.Add(new Link { DisplayName = "dark", Source = AppearanceManager.DarkThemeSource });
+            this._themes.Add(new Link { DisplayName = "light", Source = AppearanceManager.LightThemeSource });
 
             this.SelectedFontSize = AppearanceManager.Current.FontSize == FontSize.Large ? FontLarge : FontSmall;
-            SyncThemeAndColor();
+            this.SyncThemeAndColor();
 
             AppearanceManager.Current.PropertyChanged += OnAppearanceManagerPropertyChanged;
         }
@@ -74,7 +76,7 @@ namespace CIS.UI.Features.Settings.Appearances
         private void SyncThemeAndColor()
         {
             // synchronizes the selected viewmodel theme with the actual theme used by the appearance manager.
-            this.SelectedTheme = this.themes.FirstOrDefault(l => l.Source.Equals(AppearanceManager.Current.ThemeSource));
+            this.SelectedTheme = this._themes.FirstOrDefault(l => l.Source.Equals(AppearanceManager.Current.ThemeSource));
 
             // and make sure accent color is up-to-date
             this.SelectedAccentColor = AppearanceManager.Current.AccentColor;
@@ -88,29 +90,29 @@ namespace CIS.UI.Features.Settings.Appearances
             }
         }
 
-        public LinkCollection Themes
+        public virtual LinkCollection Themes
         {
-            get { return this.themes; }
+            get { return this._themes; }
         }
 
-        public string[] FontSizes
+        public virtual string[] FontSizes
         {
             get { return new string[] { FontSmall, FontLarge }; }
         }
 
-        public Color[] AccentColors
+        public virtual Color[] AccentColors
         {
-            get { return this.accentColors; }
+            get { return this._accentColors; }
         }
 
-        public Link SelectedTheme
+        public virtual Link SelectedTheme
         {
-            get { return this.selectedTheme; }
+            get { return this._selectedTheme; }
             set
             {
-                if (this.selectedTheme != value)
+                if (this._selectedTheme != value)
                 {
-                    this.selectedTheme = value;
+                    this._selectedTheme = value;
                     OnPropertyChanged("SelectedTheme");
 
                     // and update the actual theme
@@ -119,14 +121,14 @@ namespace CIS.UI.Features.Settings.Appearances
             }
         }
 
-        public string SelectedFontSize
+        public virtual string SelectedFontSize
         {
-            get { return this.selectedFontSize; }
+            get { return this._selectedFontSize; }
             set
             {
-                if (this.selectedFontSize != value)
+                if (this._selectedFontSize != value)
                 {
-                    this.selectedFontSize = value;
+                    this._selectedFontSize = value;
                     OnPropertyChanged("SelectedFontSize");
 
                     AppearanceManager.Current.FontSize = value == FontLarge ? FontSize.Large : FontSize.Small;
@@ -134,14 +136,14 @@ namespace CIS.UI.Features.Settings.Appearances
             }
         }
 
-        public Color SelectedAccentColor
+        public virtual Color SelectedAccentColor
         {
-            get { return this.selectedAccentColor; }
+            get { return this._selectedAccentColor; }
             set
             {
-                if (this.selectedAccentColor != value)
+                if (this._selectedAccentColor != value)
                 {
-                    this.selectedAccentColor = value;
+                    this._selectedAccentColor = value;
                     OnPropertyChanged("SelectedAccentColor");
 
                     AppearanceManager.Current.AccentColor = value;

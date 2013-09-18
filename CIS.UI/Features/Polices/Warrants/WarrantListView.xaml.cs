@@ -42,9 +42,8 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public ListView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<WarrantListViewModel>());
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<WarrantListViewModel>());
 
             //this.ViewModel = new WarrantListViewModel();
 

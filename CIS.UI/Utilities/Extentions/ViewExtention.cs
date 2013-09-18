@@ -11,12 +11,9 @@ namespace CIS.UI.Utilities.Extentions
 {
     public static class ViewExtention
     {
-        public static void CreateViewModel<T>(this IViewFor<T> view, Func<T> create) where T : ViewModelBase
+        public static void InitializeViewModelAsync<T>(this IViewFor<T> view, Func<T> create) where T : ViewModelBase
         {
-            Task.Factory.StartNew(() => 
-                Application.Current.Dispatcher.Invoke(() => view.ViewModel = create()),
-                TaskCreationOptions.LongRunning
-            );
+            Task.Factory.StartNew(() => Application.Current.Dispatcher.Invoke(() => view.ViewModel = create.Invoke()), TaskCreationOptions.LongRunning);
         }
     }
 }

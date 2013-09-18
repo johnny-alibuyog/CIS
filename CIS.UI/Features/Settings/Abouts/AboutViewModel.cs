@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CIS.UI.Features.Settings.Abouts
 {
-    class ViewModel
+    class AboutViewModel
     {
     }
 }

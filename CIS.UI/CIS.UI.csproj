@@ -331,6 +331,9 @@
       <DependentUpon>UserListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Memberships\Users\UserListViewModel.cs" />
+    <Compile Include="Features\Memberships\Users\UserPage.xaml.cs">
+      <DependentUpon>UserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Features\Memberships\Users\UserRoleViewModel.cs">
       <DependentUpon>UserViewModel.cs</DependentUpon>
     </Compile>
@@ -469,6 +472,7 @@
     <Compile Include="Utilities\Converters\EnumToBooleanConverter.cs" />
     <Compile Include="Utilities\Extentions\BitmapExtention.cs" />
     <Compile Include="Utilities\Extentions\EnumExtention.cs" />
+    <Compile Include="Utilities\Extentions\EnumerationExtention.cs" />
     <Compile Include="Utilities\Extentions\ReactiveCollectonExtention.cs" />
     <Compile Include="Utilities\Extentions\ViewExtention.cs" />
     <Compile Include="Utilities\Reports\ReportPrintDocument.cs">
@@ -580,7 +584,7 @@
       <DependentUpon>WarrantListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Warrants\WarrantListViewModel.cs" />
-    <Compile Include="Features\Settings\Abouts\ViewModel.cs" />
+    <Compile Include="Features\Settings\Abouts\AboutViewModel.cs" />
     <Compile Include="Features\Settings\Appearances\Class1.cs" />
     <Compile Include="Features\Settings\Class1.cs" />
     <Compile Include="Features\ViewModelBase.cs" />
@@ -590,6 +594,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Features\Memberships\Users\UserListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Memberships\Users\UserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -669,21 +677,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Settings\Abouts\View.xaml">
+    <Page Include="Features\Settings\Abouts\AboutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Features\Settings\Abouts\View.xaml.cs">
-      <DependentUpon>View.xaml</DependentUpon>
+    <Compile Include="Features\Settings\Abouts\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Features\Settings\Appearances\View.xaml">
+    <Page Include="Features\Settings\Appearances\AppearanceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Features\Settings\Appearances\View.xaml.cs">
-      <DependentUpon>View.xaml</DependentUpon>
+    <Compile Include="Features\Settings\Appearances\AppearanceView.xaml.cs">
+      <DependentUpon>AppearanceView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Settings\Appearances\ViewModel.cs" />
+    <Compile Include="Features\Settings\Appearances\AppearanceViewModel.cs" />
     <Page Include="Features\Homes\Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

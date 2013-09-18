@@ -211,7 +211,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.2257in</Height>
+              <Height>0.20487in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -428,7 +428,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.16in</Height>
+              <Height>0.13917in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -643,7 +643,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.16in</Height>
+              <Height>0.13917in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -858,7 +858,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.16in</Height>
+              <Height>0.13917in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1085,7 +1085,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.16in</Height>
+              <Height>0.13917in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1300,7 +1300,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.50375in</Height>
+              <Height>0.48292in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1544,9 +1544,9 @@
         </TablixRowHierarchy>
         <KeepTogether>true</KeepTogether>
         <DataSetName>ItemDataSet</DataSetName>
-        <Top>2.46805in</Top>
+        <Top>2.39305in</Top>
         <Left>0.505in</Left>
-        <Height>1.36945in</Height>
+        <Height>1.24445in</Height>
         <Width>5.46529in</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -2238,7 +2238,31 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=String.Format("Entry Operator: {0} Date Printed: {1}", First(Fields!Issuer.Value, "ItemDataSet"), Format(Globals!ExecutionTime, "MMM-dd-yyyy hh:mm tt"))</Value>
+                <Value>Entry Operator: </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!Issuer.Value, "ItemDataSet")</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> Date Printed: </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Format(First(Fields!IssueDate.Value, "ItemDataSet"), "MMM-dd-yyyy")</Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>Tahoma</FontFamily>
@@ -2554,7 +2578,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.2257in</Height>
+              <Height>0.20487in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -2771,7 +2795,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.16in</Height>
+              <Height>0.13917in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -2986,7 +3010,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.16in</Height>
+              <Height>0.13917in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -3201,7 +3225,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.16in</Height>
+              <Height>0.13917in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -3428,7 +3452,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.16in</Height>
+              <Height>0.13917in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -3643,7 +3667,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.50375in</Height>
+              <Height>0.48292in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -3887,9 +3911,9 @@
         </TablixRowHierarchy>
         <KeepTogether>true</KeepTogether>
         <DataSetName>ItemDataSet</DataSetName>
-        <Top>7.48493in</Top>
+        <Top>7.40993in</Top>
         <Left>0.51007in</Left>
-        <Height>1.36945in</Height>
+        <Height>1.24445in</Height>
         <Width>5.46529in</Width>
         <ZIndex>21</ZIndex>
         <Style>
@@ -4403,40 +4427,6 @@
           </Border>
         </Style>
       </Image>
-      <Textbox Name="Textbox93">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=System.String.Format("Entry Operator: {0} Date Printed: {1}", First(Fields!Issuer.Value, "ItemDataSet"), First(Fields!IssueDate.Value, "ItemDataSet"))</Value>
-                <Style>
-                  <FontStyle>Italic</FontStyle>
-                  <FontFamily>Tahoma</FontFamily>
-                  <FontSize>8pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>10.13021in</Top>
-        <Left>0.53299in</Left>
-        <Height>0.17708in</Height>
-        <Width>5.26042in</Width>
-        <ZIndex>35</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox94">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -4460,7 +4450,197 @@
         <Left>0.53299in</Left>
         <Height>0.17708in</Height>
         <Width>5.26042in</Width>
+        <ZIndex>35</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox97">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Verified By:</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox23</rd:DefaultName>
+        <Top>3.63924in</Top>
+        <Left>1.08114in</Left>
+        <Height>0.19791in</Height>
+        <Width>0.87084in</Width>
         <ZIndex>36</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox98">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Certified By:</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox23</rd:DefaultName>
+        <Top>3.63785in</Top>
+        <Left>3.54802in</Left>
+        <Height>0.19791in</Height>
+        <Width>0.87084in</Width>
+        <ZIndex>37</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox95">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Verified By:</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox23</rd:DefaultName>
+        <Top>8.65174in</Top>
+        <Left>1.08114in</Left>
+        <Height>0.19791in</Height>
+        <Width>0.87084in</Width>
+        <ZIndex>38</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox96">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Certified By:</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox23</rd:DefaultName>
+        <Top>8.65035in</Top>
+        <Left>3.54802in</Left>
+        <Height>0.19791in</Height>
+        <Width>0.87084in</Width>
+        <ZIndex>39</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox93">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Entry Operator: </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!Issuer.Value, "ItemDataSet")</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> Date Printed: </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Microsoft.VisualBasic.Strings.Format(First(Fields!IssueDate.Value, "ItemDataSet"), "MMM-dd-yyyy")</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox23</rd:DefaultName>
+        <Top>10.12952in</Top>
+        <Left>0.52792in</Left>
+        <Height>0.17708in</Height>
+        <Width>5.26042in</Width>
+        <ZIndex>40</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>

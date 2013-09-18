@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Memberships;
 using CIS.UI.Features.Commons.Persons;
+using CIS.UI.Utilities.Extentions;
 using NHibernate.Validator.Constraints;
 using ReactiveUI;
 
@@ -33,11 +34,6 @@ namespace CIS.UI.Features.Memberships.Users
         public virtual IReactiveList<UserRoleViewModel> Roles { get; set; }
 
         public virtual IReactiveCommand Save { get; set; }
-
-        public virtual string[] GetSelctedRoleIds()
-        {
-            return this.Roles.Where(x => x.Checked).Select(x => x.Id).ToArray();
-        }
 
         public UserViewModel()
         {
@@ -67,8 +63,7 @@ namespace CIS.UI.Features.Memberships.Users
                 target.Password = source.Password;
                 target.Email = source.Email;
                 target.Person = (Person)source.SerializeInto(new Person());
-                //target.Roles = Role.GetByIds(source.GetSelctedRoleIds()); // Todo: fix
-
+                target.Roles = source.Roles.Where(x => x.IsChecked).Select(x => x.Role);
                 return target;
             }
 
@@ -77,7 +72,37 @@ namespace CIS.UI.Features.Memberships.Users
 
         public override object SerializeWith(object instance)
         {
-            return base.SerializeWith(instance);
+            if (instance == null)
+                return null;
+
+            if (instance is UserViewModel)
+            {
+                var source = instance as UserViewModel;
+                var target = this;
+
+                target.Username = source.Username;
+                target.Password = source.Password;
+                target.Email = source.Email;
+                target.Person.SerializeWith(source.Person);
+                target.Roles = source.Roles.ToReactiveList(); // new instance of reactive lists
+                return target;
+            }
+            else if (instance is User)
+            {
+                var source = instance as User;
+                var target = this;
+
+                target.Username = source.Username;
+                target.Password = source.Password;
+                target.Email = source.Email;
+                target.Person.SerializeWith(source.Person);
+                target.Roles = Enum.GetValues(typeof(Role)).Cast<Role>()
+                    .Select(x => new UserRoleViewModel(source.Roles.Contains(x), x))
+                    .ToReactiveList(); ;
+                return target;
+            }
+            return null;
+
         }
 
 

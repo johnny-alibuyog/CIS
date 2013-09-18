@@ -41,11 +41,8 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public ImportView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<ImportViewModel>());
-
-            //ViewModel = new ImportViewModel();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<ImportViewModel>());
         }
     }
 }

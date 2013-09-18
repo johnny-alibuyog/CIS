@@ -74,8 +74,8 @@ namespace CIS.UI.Features.Firearms.Maintenances
         public virtual void Insert()
         {
             var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
-            var confirm = this.MessageBox.Confirm(message, "Manufacture (Make)");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm(message, "Save");
+            if (confirmed == false)
                 return;
 
             var newlyCreatedItem = (MakeViewModel)null;
@@ -106,8 +106,8 @@ namespace CIS.UI.Features.Firearms.Maintenances
         public virtual void Delete(MakeViewModel item)
         {
             var message = string.Format("Do you want to delete {0}?", item.Name);
-            var confirm = this.MessageBox.Confirm(message, "Manufacture (Make)");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm(message, "Delete");
+            if (confirmed == false)
                 return;
 
             using (var session = this.SessionFactory.OpenSession())

@@ -111,8 +111,8 @@ namespace CIS.UI.Features.Polices.Warrants
                 return;
 
             var message = string.Format("Are you sure you want to delete warrant for {0} with case {1}", selected.Suspect, selected.Crime);
-            var confirm = this.MessageBox.Confirm(message, "Delete");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm(message, "Delete");
+            if (confirmed == false)
                 return;
 
             using (var session = this.SessionFactory.OpenSession())

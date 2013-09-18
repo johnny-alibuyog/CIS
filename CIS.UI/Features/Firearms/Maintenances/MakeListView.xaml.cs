@@ -41,11 +41,8 @@ namespace CIS.UI.Features.Firearms.Maintenances
 
         public MakeListView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<MakeListViewModel>());
-
-            //ViewModel = new MakeListViewModel();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<MakeListViewModel>());
         }
     }
 }

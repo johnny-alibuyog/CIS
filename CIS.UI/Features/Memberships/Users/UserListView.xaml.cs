@@ -25,11 +25,8 @@ namespace CIS.UI.Features.Memberships.Users
     {
         public UserListView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<UserListViewModel>());
-
-            //this.ViewModel = new UserListViewModel();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<UserListViewModel>());
         }
 
         #region IViewFor<UserListViewModel>

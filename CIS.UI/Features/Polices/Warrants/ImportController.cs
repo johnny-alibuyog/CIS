@@ -58,8 +58,8 @@ namespace CIS.UI.Features.Polices.Warrants
         [HandleError]
         public virtual void Reset()
         {
-            var confirm = this.MessageBox.Confirm("Do you want to reset?", "Import");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm("Do you want to reset?", "Import");
+            if (confirmed == false)
                 return;
 
             this.ViewModel.SourcePath = string.Empty;
@@ -81,8 +81,8 @@ namespace CIS.UI.Features.Polices.Warrants
                 return;
             }
 
-            var confirm = this.MessageBox.Confirm("Do you want to import from this directory?", "Import");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm("Do you want to import from this directory?", "Import");
+            if (confirmed == false)
                 return;
 
             _importWorker.RunWorkerAsync();

@@ -41,11 +41,8 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public SettingView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<SettingViewModel>());
-
-            //ViewModel = new SettingViewModel();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<SettingViewModel>());
         }
     }
 }

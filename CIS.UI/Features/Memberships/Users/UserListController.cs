@@ -15,13 +15,8 @@ namespace CIS.UI.Features.Memberships.Users
 {
     public class UserListController : ControllerBase<UserListViewModel>
     {
-        private IReactiveList<UserRoleViewModel> _roles;
-
-        public UserListController(UserListViewModel viewModel)
-            : base(viewModel)
+        public UserListController(UserListViewModel viewModel) : base(viewModel)
         {
-            this.PopulatePulldown();
-
             this.ViewModel.Criteria = new UserListCriteriaViewModel();
             this.ViewModel.Items = new ReactiveList<UserListItemViewModel>();
 
@@ -38,27 +33,37 @@ namespace CIS.UI.Features.Memberships.Users
             this.ViewModel.Delete.Subscribe(x => this.Delete((Guid)x));
         }
 
-        [HandleError]
-        private void PopulatePulldown()
+        private UserViewModel New()
         {
-            // Todo: fix
-            //using (var session = this.SessionFactory.OpenSession())
-            //using (var transaction = session.BeginTransaction())
-            //{
-            //    var roles = session.Query<Role>().Cacheable().ToList();
-
-            //    _roles = roles
-            //        .Select(x => new UserRoleViewModel()
-            //        {
-            //            Id = x.Id,
-            //            Name = x.Name,
-            //            Checked = false
-            //        })
-            //        .ToReactiveList();
-
-            //    transaction.Commit();
-            //}
+            var viewModel = IoC.Container.Resolve<UserViewModel>();
+            viewModel.Roles = Enum.GetValues(typeof(Role)).Cast<Role>()
+                .Select(x => new UserRoleViewModel(false, x))
+                .ToReactiveList();
+            return viewModel;
         }
+
+        private UserViewModel Get(Guid id)
+        {
+            var viewModel = IoC.Container.Resolve<UserViewModel>();
+            viewModel.Roles = Enum.GetValues(typeof(Role)).Cast<Role>()
+                .Select(x => new UserRoleViewModel(false, x))
+                .ToReactiveList();
+
+            using (var session = this.SessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var userQuery = session.Query<User>()
+                    .Where(x => x.Id == id)
+                    .Fetch(x => x.Roles)
+                    .ToFutureValue();
+
+                viewModel.SerializeWith(userQuery.Value);
+
+                transaction.Commit();
+            }
+            return viewModel;
+        }
+
 
         [HandleError]
         public virtual void Search()
@@ -82,7 +87,6 @@ namespace CIS.UI.Features.Memberships.Users
                 if (!string.IsNullOrWhiteSpace(criteria.Username))
                     query = query.Where(x => x.Username.StartsWith(criteria.Username));
 
-
                 this.ViewModel.Items = query
                     .Select(x => new UserListItemViewModel()
                     {
@@ -102,9 +106,10 @@ namespace CIS.UI.Features.Memberships.Users
         public virtual void Create()
         {
             var dialog = new DialogService<UserView, UserViewModel>();
+            dialog.ViewModel = New();
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
             dialog.ViewModel.Save.Subscribe(x => Insert(dialog.ViewModel));
-            dialog.ShowModal(this, "Create User", null);
+            dialog.ShowModal(this, "Create User");
         }
 
         [HandleError]
@@ -115,7 +120,7 @@ namespace CIS.UI.Features.Memberships.Users
             {
                 var user = new User();
 
-
+                value.SerializeInto(user);
 
                 transaction.Commit();
             }
@@ -126,16 +131,48 @@ namespace CIS.UI.Features.Memberships.Users
         [HandleError]
         public virtual void Edit(Guid id)
         {
+            var dialog = new DialogService<UserView, UserViewModel>();
+            dialog.ViewModel = Get(id);
+            dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
+            dialog.ViewModel.Save.Subscribe(x => Insert(dialog.ViewModel));
+            dialog.ShowModal(this, "Edit User");
         }
 
         [HandleError]
         public virtual void Update(UserViewModel value)
         {
+            using (var session = this.SessionProvider.GetSharedSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var userQuery = session.Query<User>()
+                    .Where(x => x.Id == value.Id)
+                    .Fetch(x => x.Roles)
+                    .ToFutureValue();
+
+                var user = userQuery.Value;
+
+                value.SerializeInto(user);
+
+                transaction.Commit();
+            }
+
+            this.Search();
         }
 
         [HandleError]
         public virtual void Delete(Guid id)
         {
+            using (var session = this.SessionProvider.GetSharedSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                var user = session.Get<User>(id);
+                
+                session.Delete(user);
+
+                transaction.Commit();
+            }
+
+            this.Search();
         }
     }
 }

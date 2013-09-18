@@ -433,8 +433,8 @@ namespace CIS.UI.Features.Polices.Clearances
             if (!string.IsNullOrWhiteSpace(result.PartialMatchFindings))
             {
                 var message = result.PartialMatchFindings + " This will not reflect in the findings. Do you still want to proceed?";
-                var confirm = this.MessageBox.Confirm(message, "Clearance");
-                if (confirm == false)
+                var confirmed = this.MessageBox.Confirm(message, "Clearance");
+                if (confirmed == false)
                     return null;
             }
 
@@ -502,8 +502,8 @@ namespace CIS.UI.Features.Polices.Clearances
         [HandleError]
         public virtual void Release()
         {
-            var confirm = this.MessageBox.Confirm("Do you want to release clearance.", "Clearance");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm("Do you want to release clearance.", "Clearance");
+            if (confirmed == false)
                 return;
 
             var data = this.GenerateClearance();

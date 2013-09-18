@@ -68,8 +68,8 @@ namespace CIS.UI.Features.Polices.Maintenances
         [HandleError]
         public virtual void Save()
         {
-            var confirm = this.MessageBox.Confirm("Do you want to save changes?.", "Station");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm("Do you want to save changes?.", "Save");
+            if (confirmed == false)
                 return;
 
             using (var session = this.SessionFactory.OpenSession())

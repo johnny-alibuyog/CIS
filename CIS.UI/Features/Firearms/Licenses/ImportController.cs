@@ -67,8 +67,8 @@ namespace CIS.UI.Features.Firearms.Licenses
                 return;
             }
 
-            var confirm = this.MessageBox.Confirm("Do you want to import from this directory?", "Import");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm("Do you want to import from this directory?", "Import");
+            if (confirmed == false)
                 return;
 
             _importWorker.RunWorkerAsync();

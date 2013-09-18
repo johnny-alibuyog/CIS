@@ -131,8 +131,8 @@ namespace CIS.UI.Features.Firearms.Licenses
         public virtual void Insert(LicenseViewModel value)
         {
             var message = string.Format("Are you sure you want to save license?");
-            var confirm = this.MessageBox.Confirm(message, "Save");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm(message, "Save");
+            if (confirmed == false)
                 return;
 
             using (var session = this.SessionProvider.GetSharedSession())
@@ -173,8 +173,8 @@ namespace CIS.UI.Features.Firearms.Licenses
         public virtual void Update(LicenseViewModel value)
         {
             var message = string.Format("Are you sure you want to save license?");
-            var confirm = this.MessageBox.Confirm(message, "Save");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm(message, "Save");
+            if (confirmed == false)
                 return;
 
             using (var session = this.SessionProvider.GetSharedSession())
@@ -207,8 +207,8 @@ namespace CIS.UI.Features.Firearms.Licenses
                 return;
 
             var message = string.Format("Are you sure you want to delete license for {0} for gun {1}", item.Owner, item.Gun);
-            var confirm = this.MessageBox.Confirm(message, "Delete");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm(message, "Delete");
+            if (confirmed == false)
                 return;
 
             using (var session = this.SessionFactory.OpenSession())

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="CIS.UI.Features.Settings.Appearances.View"
+﻿<UserControl x:Class="CIS.UI.Features.Settings.Appearances.AppearanceView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

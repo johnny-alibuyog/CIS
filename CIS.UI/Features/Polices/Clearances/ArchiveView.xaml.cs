@@ -41,11 +41,8 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public ArchiveView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<ArchiveViewModel>());
-
-            //ViewModel = new ArchiveViewModel();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<ArchiveViewModel>());
         }
     }
 }

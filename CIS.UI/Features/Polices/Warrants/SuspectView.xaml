@@ -4,6 +4,7 @@
         xmlns:s="clr-namespace:System;assembly=mscorlib"
         xmlns:mui="http://firstfloorsoftware.com/ModernUI"
         xmlns:local="clr-namespace:CIS.UI.Features"
+        xmlns:ext="clr-namespace:CIS.UI.Utilities.Extentions"
         xmlns:core="clr-namespace:CIS.Core.Entities.Commons;assembly=CIS.Core"
         xmlns:polices="clr-namespace:CIS.Core.Entities.Polices;assembly=CIS.Core"
         xmlns:persons="clr-namespace:CIS.UI.Features.Commons.Persons"
@@ -24,9 +25,23 @@
 
             <!-- personal information -->
             <StackPanel Grid.Column="0" Orientation="Vertical">
+                <StackPanel.Resources>
+                    <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
+                </StackPanel.Resources>
+
                 <TextBlock Style="{StaticResource Heading2}" Text="Personal Information" Margin="0,8,0,8"/>
                 <persons:PersonView DataContext="{Binding Person}"/>
                 <addresses:AddresssView DataContext="{Binding Address}"/>
+                <StackPanel Style="{StaticResource FieldSet}">
+                    <Label Content="Arrest Status"/>
+                    <ComboBox 
+                        ItemsSource="{Binding Source={ext:EnumerationExtention {x:Type polices:ArrestStatus}}}"
+                        SelectedValue="{Binding ArrestStatus, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                        SelectedValuePath="Value"
+                        DisplayMemberPath="Description" />
+                    
+                </StackPanel>
+
             </StackPanel>
 
             <!-- seperator -->
@@ -42,7 +57,7 @@
                 <persons:PhysicalAttributesView DataContext="{Binding PhysicalAttributes}" />
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Alias"/>
-                    <TextBox x:Name="textBox" Text="{Binding AliasToAdd, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox Text="{Binding AliasToAdd, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     <mui:ModernButton Command="{Binding AddAlias}" Style="{StaticResource app_bar_add}" Margin="4,0,0,0" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">

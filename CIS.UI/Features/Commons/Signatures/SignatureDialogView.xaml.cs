@@ -40,11 +40,8 @@ namespace CIS.UI.Features.Commons.Signatures
 
         public SignatureDialogView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<SignatureDialogViewModel>());
-
-            //this.ViewModel = new SignatureDialogViewModel();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<SignatureDialogViewModel>());
         }
     }
 }

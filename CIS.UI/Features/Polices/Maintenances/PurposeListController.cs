@@ -80,8 +80,8 @@ namespace CIS.UI.Features.Polices.Maintenances
         public virtual void Insert()
         {
             var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
-            var confirm = this.MessageBox.Confirm(message, "Purpose");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm(message, "Save");
+            if (confirmed == false)
                 return;
 
             var newlyCreatedItem = (PurposeViewModel)null;
@@ -115,8 +115,8 @@ namespace CIS.UI.Features.Polices.Maintenances
         public virtual void Delete(PurposeViewModel item)
         {
             var message = string.Format("Do you want to delete {0}?", item.Name);
-            var confirm = this.MessageBox.Confirm(message, "Purpose");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm(message, "Purpose");
+            if (confirmed == false)
                 return;
 
             using (var session = this.SessionFactory.OpenSession())

@@ -40,11 +40,8 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public PurposeListView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<PurposeListViewModel>());
-
-            //ViewModel = new PurposeListViewModel();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<PurposeListViewModel>());
         }
     }
 }

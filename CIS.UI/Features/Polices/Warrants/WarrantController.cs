@@ -68,7 +68,7 @@ namespace CIS.UI.Features.Polices.Warrants
         public virtual void CreateSuspect()
         {
             var dialog = new DialogService<SuspectView, SuspectViewModel>();
-            var value = dialog.ShowModal(this, "Create Susptect");
+            var value = dialog.ShowModal(this, "Create Suspect");
             if (value != null)
                 this.ViewModel.Suspects.Add(value);
         }
@@ -95,8 +95,8 @@ namespace CIS.UI.Features.Polices.Warrants
         public virtual void BatchSave()
         {
             var message = string.Format("Are you sure you want to save warrant?");
-            var confirm = this.MessageBox.Confirm(message, "Delete");
-            if (confirm == false)
+            var confirmed = this.MessageBox.Confirm(message, "Save");
+            if (confirmed == false)
                 return;
 
             using (var session = this.SessionFactory.OpenSession())
@@ -131,7 +131,8 @@ namespace CIS.UI.Features.Polices.Warrants
                 transaction.Commit();
             }
 
-            this.ViewModel.ActionResult = true;
+
+            this.ViewModel.Close();
         }
     }
 }

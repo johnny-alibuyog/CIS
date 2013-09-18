@@ -69,9 +69,8 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public ApplicationView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<ApplicationViewModel>());
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<ApplicationViewModel>());
         }
     }
 }

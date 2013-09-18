@@ -40,11 +40,8 @@ namespace CIS.UI.Features.Firearms.Maintenances
 
         public KindListView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<KindListViewModel>());
-
-            //ViewModel = new KindListViewModel();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<KindListViewModel>());
         }
     }
 }

@@ -42,9 +42,7 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public WarrantView() : base()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<WarrantViewModel>());
+            this.InitializeComponent();
 
             //if (!DesignerProperties.GetIsInDesignMode(this))
             //{

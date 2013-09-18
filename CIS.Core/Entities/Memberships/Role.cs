@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -8,15 +9,34 @@ namespace CIS.Core.Entities.Memberships
 {
     public enum Role
     {
+        [Description("System Administrator")]
         SystemAdministrator,
+
+        [Description("Police Administartor")]
         PoliceAdministartor,
+
+        [Description("Police Approver")]
         PoliceApprover,
+
+        [Description("Police Encoder")]
         PoliceEncoder,
+
+        [Description("Barangay Administartor")]
         BarangayAdministartor,
+
+        [Description("Barangay Approver")]
         BarangayApprover,
+
+        [Description("Barangay Encoder")]
         BarangayEncoder,
+
+        [Description("Mayor Administrator")]
         MayorAdministrator,
+
+        [Description("Mayor Approver")]
         MayorApprover,
+
+        [Description("Mayor Encoder")]
         MayorEncoder,
     }
 

@@ -41,11 +41,8 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public ImportView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<ImportViewModel>());
-
-            //this.ViewModel = new ImportViewModel();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<ImportViewModel>());
         }
     }
 }

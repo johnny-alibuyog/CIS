@@ -41,10 +41,8 @@ namespace CIS.UI.Features.Memberships.Users
 
         public UserView()
         {
-            InitializeComponent();
-
-            this.CreateViewModel(() => IoC.Container.Resolve<UserViewModel>());
-
+            this.InitializeComponent();
+            //this.InitializeViewModelAsync(() => IoC.Container.Resolve<UserViewModel>());
 
             //if (!DesignerProperties.GetIsInDesignMode(this))
             //{
