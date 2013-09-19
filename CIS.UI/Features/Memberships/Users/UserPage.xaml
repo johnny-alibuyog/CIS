@@ -7,11 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
-        <ScrollViewer>
-            <StackPanel MinWidth="200">
-                <TextBlock Text="BASIC PAGE" Style="{StaticResource Heading2}" />
-                <TextBlock Text="Content goes here" />
-            </StackPanel>
-        </ScrollViewer>
+        <mui:ModernTab Layout="List" SelectedSource="/Features/Memberships/Users/UserListView.xaml">
+            <mui:ModernTab.Links>
+                <mui:Link DisplayName="Master List" Source="/Features/Memberships/Users/UserListView.xaml" />
+            </mui:ModernTab.Links>
+        </mui:ModernTab>
     </Grid>
 </UserControl>

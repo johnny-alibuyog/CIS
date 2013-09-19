@@ -41,6 +41,11 @@
                 <mui:Link DisplayName="Office" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>-->
+        <mui:LinkGroup DisplayName="membership">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="User" Source="/Features/Memberships/Users/UserPage.xaml" />
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
         <mui:LinkGroup DisplayName="settings">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="software" Source="/Features/Settings/Page.xaml" />

@@ -10,7 +10,7 @@ namespace CIS.UI.Utilities.CommonDialogs
     {
         void Warn(string message, string caption = "Warning");
         void Warn(string message, Exception ex, string caption = "Warning");
-        bool Confirm(string message, string caption = "Confirmation");
+        Nullable<bool> Confirm(string message, string caption = "Confirmation", bool withCancel = false);
         void Inform(string message, string caption = "Information");
     }
 }

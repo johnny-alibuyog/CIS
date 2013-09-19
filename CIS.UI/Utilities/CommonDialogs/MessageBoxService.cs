@@ -26,11 +26,20 @@ namespace CIS.UI.Utilities.CommonDialogs
             //ModernDialog.ShowMessage(message, caption, MessageBoxButton.OK);
         }
 
-        public bool Confirm(string message, string caption = "Confirmation")
+        public Nullable<bool> Confirm(string message, string caption = "Confirmation", bool withCancel = false)
         {
             //var result = ModernDialog.ShowMessage(message, caption, MessageBoxButton.YesNo);
-            var result = Application.Current.Dispatcher.Invoke(() => ModernDialog.ShowMessage(message, caption, MessageBoxButton.YesNo));
-            return (result == MessageBoxResult.Yes);
+            var button = withCancel ? MessageBoxButton.YesNoCancel : MessageBoxButton.YesNo;
+            var result = Application.Current.Dispatcher.Invoke(() => ModernDialog.ShowMessage(message, caption, button));
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    return true;
+                case MessageBoxResult.No:
+                    return false;
+                default:
+                    return null;
+            }
         }
 
         public void Inform(string message, string caption = "Information")

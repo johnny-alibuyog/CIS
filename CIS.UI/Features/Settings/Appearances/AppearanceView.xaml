@@ -37,6 +37,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
 
                     <TextBlock Text="Theme:" VerticalAlignment="Center" Margin="0,0,16,4" />
@@ -44,6 +45,8 @@
 
                     <TextBlock Grid.Row="1" Text="Font size:" VerticalAlignment="Center" Margin="0,0,16,0" />
                     <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding FontSizes}" SelectedItem="{Binding SelectedFontSize, Mode=TwoWay}" VerticalAlignment="Center" />
+
+                    <Button Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="16" Command="{Binding Save}">Save</Button>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

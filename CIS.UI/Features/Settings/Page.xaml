@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
-        <mui:ModernTab Layout="List" SelectedSource="Features/Settings/Appearances/View.xaml">
+        <mui:ModernTab Layout="List" SelectedSource="Features/Settings/Appearances/AppearanceView.xaml">
             <mui:ModernTab.Links>
                 <mui:Link DisplayName="appearance" Source="Features/Settings/Appearances/AppearanceView.xaml" />
                 <mui:Link DisplayName="about" Source="Features/Settings/Abouts/AboutView.xaml" />

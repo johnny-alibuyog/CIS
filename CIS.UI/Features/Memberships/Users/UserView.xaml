@@ -35,7 +35,7 @@
                     <TextBox Text="{Binding Password, Mode=TwoWay, ValidatesOnDataErrors=True}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
-                    <Label Content="Confirm Passowrd"/>
+                    <Label Content="Confirm"/>
                     <TextBox Text="{Binding ConfirmPassowrd, Mode=TwoWay, ValidatesOnDataErrors=True}" />
                 </StackPanel>
                 <persons:PersonView DataContext="{Binding Person}"/>
@@ -57,7 +57,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <CheckBox IsChecked="{Binding IsChecked}"/>
-                                <TextBlock Text="{Binding Name}" />
+                                <TextBlock Text="{Binding Role}" />
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

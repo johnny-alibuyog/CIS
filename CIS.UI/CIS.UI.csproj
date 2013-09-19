@@ -195,6 +195,9 @@
     <Reference Include="WebCam_Capture">
       <HintPath>..\..\..\third party sdk\WebCam\EasyWebCam\WebCam_Capture.dll</HintPath>
     </Reference>
+    <Reference Include="Westwind.Utilities.Configuration">
+      <HintPath>..\packages\Westwind.Utilities.Configuration.2.10\lib\net40\Westwind.Utilities.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -475,6 +478,7 @@
     <Compile Include="Features\Polices\Warrants\WarrantPage.xaml.cs">
       <DependentUpon>WarrantPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\Settings\Appearances\AppearanceController.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -486,6 +490,14 @@
     <Compile Include="Utilities\CommonDialogs\MessageBoxService.cs" />
     <Compile Include="Utilities\CommonDialogs\OpenDirectoryDialogService.cs" />
     <Compile Include="Utilities\CommonDialogs\OpenImageDialogService.cs" />
+    <Compile Include="Utilities\Configurations\AppearanceColorConfiguration.cs">
+      <DependentUpon>AppearanceConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Configurations\AppearanceThemeConfiguration.cs">
+      <DependentUpon>AppearanceConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Configurations\ApplicationConfiguration.cs" />
+    <Compile Include="Utilities\Configurations\AppearanceConfiguration.cs" />
     <Compile Include="Utilities\Controls\WaterMarkAdorner.cs" />
     <Compile Include="Utilities\Controls\WaterMarkService.cs" />
     <Compile Include="Utilities\Converters\EnumToBooleanConverter.cs" />

@@ -35,6 +35,8 @@ namespace CIS.UI.Features
         {
             InitializeComponent();
 
+            App.Configuration.Apprearance.Apply();
+
             Task.Factory.StartNew(() =>
             {
                 var dataInitializer = (IDataInitializer)null;

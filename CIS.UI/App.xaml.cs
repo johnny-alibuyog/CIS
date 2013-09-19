@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Memberships;
+using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Utilities.Configurations;
 
 namespace CIS.UI
 {
@@ -26,10 +28,17 @@ namespace CIS.UI
             }
         }
 
+        public static ApplicationConfiguration Configuration { get; set; }
+
         public static class Data
         {
             public static User User { get; set; }
             public static City City { get; set; }
+        }
+
+        public App()
+        {
+            App.Configuration = IoC.Container.Resolve<ApplicationConfiguration>();
         }
     }
 }
