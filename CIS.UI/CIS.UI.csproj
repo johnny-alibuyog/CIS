@@ -217,7 +217,9 @@
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\CustomPlanningStrategy.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\DialogModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\ViewModelDependency.cs" />
-    <Compile Include="Features\Commons\Addresses\AddressDataInitializer.cs" />
+    <Compile Include="Features\Commons\Addresses\AddressDataInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Features\Commons\Addresses\BarangayLookup.cs">
       <DependentUpon>AddressViewModel.cs</DependentUpon>
     </Compile>
@@ -232,9 +234,11 @@
       <DependentUpon>AddressView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Commons\Addresses\AddressViewModel.cs" />
+    <Compile Include="Features\Commons\Biometrics\FingerDataInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Features\Commons\Biometrics\FingerPrintViewModel.cs" />
     <Compile Include="Features\Commons\Biometrics\FingerViewModel.cs" />
-    <Compile Include="Features\Commons\Biometrics\FingerDataInitializer.cs" />
     <Compile Include="Features\Commons\Biometrics\FingerScannerController.cs" />
     <Compile Include="Features\Commons\Biometrics\FingerScannerView.xaml.cs">
       <DependentUpon>FingerScannerView.xaml</DependentUpon>
@@ -258,9 +262,19 @@
       <DependentUpon>SignatureDialogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Commons\Signatures\SignatureViewModel.cs" />
-    <Compile Include="Features\Commons\Terminals\TerminalDataInitializer.cs" />
+    <Compile Include="Features\Commons\Terminals\TerminalDataInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Features\Firearms\Maintenances\KindDataInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Features\Firearms\Maintenances\MakeDataInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Features\IDataInitializer.cs" />
+    <Compile Include="Features\IImportService.cs" />
     <Compile Include="Features\Firearms\Licenses\ImportController.cs" />
-    <Compile Include="Features\Firearms\Licenses\ImportDataInitializer.cs">
+    <Compile Include="Features\Firearms\Licenses\ImportService.cs">
       <DependentUpon>ImportController.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\Firearms\Licenses\ImportLicenseViewModel.cs">
@@ -270,7 +284,6 @@
       <DependentUpon>ImportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Firearms\Licenses\ImportViewModel.cs" />
-    <Compile Include="Features\Firearms\Maintenances\KindDataInitializer.cs" />
     <Compile Include="Features\Firearms\Licenses\GunView.xaml.cs">
       <DependentUpon>GunView.xaml</DependentUpon>
     </Compile>
@@ -308,7 +321,6 @@
       <DependentUpon>MakeListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Firearms\Maintenances\MakeViewModel.cs" />
-    <Compile Include="Features\Firearms\Maintenances\MakeDataInitializer.cs" />
     <Compile Include="Features\Lookup.cs" />
     <Compile Include="Features\Commons\Persons\PhysicalAttributesView.xaml.cs">
       <DependentUpon>PhysicalAttributesView.xaml</DependentUpon>
@@ -319,7 +331,6 @@
     </Compile>
     <Compile Include="Features\Commons\Persons\PersonViewModel.cs" />
     <Compile Include="Features\DialogService.cs" />
-    <Compile Include="Features\IDataInitializer.cs" />
     <Compile Include="Features\Memberships\Users\UserListController.cs" />
     <Compile Include="Features\Memberships\Users\UserListCriteriaViewModel.cs">
       <DependentUpon>UserListViewModel.cs</DependentUpon>
@@ -369,7 +380,6 @@
     </Compile>
     <Compile Include="Features\Polices\Clearances\ClearanceReportViewModel.cs" />
     <Compile Include="Features\Polices\Maintenances\MaintenanceMessage.cs" />
-    <Compile Include="Features\Polices\Maintenances\PurposeDataInitializer.cs" />
     <Compile Include="Features\Polices\Clearances\SummaryViewModel.cs" />
     <Compile Include="Features\Polices\Clearances\PersonalInformationView.xaml.cs">
       <DependentUpon>PersonalInformationView.xaml</DependentUpon>
@@ -378,13 +388,15 @@
     <Compile Include="Features\Polices\Clearances\SummaryView.xaml.cs">
       <DependentUpon>SummaryView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\Polices\Maintenances\PurposeDataInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Features\Polices\Maintenances\PurposeListController.cs" />
     <Compile Include="Features\Polices\Maintenances\PurposeListView.xaml.cs">
       <DependentUpon>PurposeListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Maintenances\PurposeListViewModel.cs" />
     <Compile Include="Features\Polices\Maintenances\PurposeViewModel.cs" />
-    <Compile Include="Features\Polices\Maintenances\RankDataInitializer.cs" />
     <Compile Include="Features\Polices\Maintenances\OfficerListController.cs" />
     <Compile Include="Features\Polices\Maintenances\OfficerListCriteriaViewModel.cs">
       <DependentUpon>OfficerListViewModel.cs</DependentUpon>
@@ -400,8 +412,13 @@
       <DependentUpon>OfficerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Maintenances\OfficerViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\RankDataInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Features\Polices\Maintenances\SettingController.cs" />
-    <Compile Include="Features\Polices\Maintenances\SettingDataInitializer.cs" />
+    <Compile Include="Features\Polices\Maintenances\SettingDataInitializer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Features\Polices\Maintenances\SettingFingerViewModel.cs">
       <DependentUpon>SettingViewModel.cs</DependentUpon>
     </Compile>
@@ -410,36 +427,38 @@
     </Compile>
     <Compile Include="Features\Polices\Maintenances\SettingViewModel.cs" />
     <Compile Include="Features\Polices\Maintenances\StationController.cs" />
-    <Compile Include="Features\Polices\Maintenances\StationDataInitializer.cs" />
     <Compile Include="Features\Polices\Maintenances\MaintenancePage.xaml.cs">
       <DependentUpon>MaintenancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Maintenances\StationDataInitializer.cs">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Features\Polices\Maintenances\StationView.xaml.cs">
       <DependentUpon>StationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Maintenances\StationViewModel.cs" />
     <Compile Include="Features\Polices\Warrants\ImportController.cs" />
-    <Compile Include="Features\Polices\Warrants\LitusImportDataInitializer.cs">
-      <DependentUpon>ImportController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Polices\Warrants\LitusImportSuspect.cs">
-      <DependentUpon>LitusImportDataInitializer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Features\Polices\Warrants\ImportView.xaml.cs">
       <DependentUpon>ImportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Warrants\ImportViewModel.cs" />
-    <Compile Include="Features\Polices\Warrants\LitusImportWarrant.cs">
-      <DependentUpon>LitusImportDataInitializer.cs</DependentUpon>
+    <Compile Include="Features\Polices\Warrants\LitusImportService.cs">
+      <DependentUpon>ImportController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\NaraImportDataInitializer.cs">
+    <Compile Include="Features\Polices\Warrants\LitusImportSuspect.cs">
+      <DependentUpon>LitusImportService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Warrants\LitusImportWarrant.cs">
+      <DependentUpon>LitusImportService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Warrants\NaraImportService.cs">
       <DependentUpon>ImportController.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Warrants\NaraImportSuspect.cs">
-      <DependentUpon>NaraImportDataInitializer.cs</DependentUpon>
+      <DependentUpon>NaraImportService.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Warrants\NaraImportWarrant.cs">
-      <DependentUpon>NaraImportDataInitializer.cs</DependentUpon>
+      <DependentUpon>NaraImportService.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Warrants\WarrantListCriteriaViewModel.cs">
       <DependentUpon>WarrantListViewModel.cs</DependentUpon>

@@ -15,17 +15,16 @@ using NHibernate.Linq;
 
 namespace CIS.UI.Features.Firearms.Licenses
 {
-    public class ImportDataInitializer : IDataInitializer
+    public class ImportService : IImportService
     {
         private readonly ISessionFactory _sessionFactory;
-
-        public virtual ImportViewModel ViewModel { get; set; }
+        private readonly ImportViewModel _viewModel;
 
         #region  Routine Helpers
 
         private IEnumerable<ImportLicenseViewModel> ParseFromFile()
         {
-            var directoryInfo = new DirectoryInfo(this.ViewModel.SourcePath);
+            var directoryInfo = new DirectoryInfo(this._viewModel.SourcePath);
             var licenseFiles = directoryInfo.GetFiles("*license*xls*", SearchOption.AllDirectories).ToList();
 
             var licenses = new List<ImportLicenseViewModel>();
@@ -99,7 +98,7 @@ namespace CIS.UI.Features.Firearms.Licenses
 
                         session.Insert(license);
 
-                        this.ViewModel.TotalLicenses++;
+                        this._viewModel.TotalLicenses++;
                     }
                 }
 
@@ -111,9 +110,10 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         #region Constructors
 
-        public ImportDataInitializer(ISessionFactory sessionFactory)
+        public ImportService(ISessionFactory sessionFactory, ImportViewModel viewModel)
         {
             _sessionFactory = sessionFactory;
+            _viewModel = viewModel;
         }
 
         #endregion
@@ -142,10 +142,6 @@ namespace CIS.UI.Features.Firearms.Licenses
             var makeDataInitializer = IoC.Container.Resolve<MakeDataInitializer>();
             makeDataInitializer.Data = licensesToImport.Select(x => x.Make).Distinct();
             makeDataInitializer.Execute();
-
-            this.ViewModel.ImportStart = null;
-            this.ViewModel.ImportEnd = null;
-            this.ViewModel.TotalLicenses = 0M;
 
             for (var batchNumber = 0; batchNumber < batchCount; batchNumber++)
             {

@@ -61,17 +61,17 @@ namespace CIS.UI.Features.Polices.Warrants
          w.CaseNumber is not null     
     */
 
-    public class NaraImportDataInitializer : IDataInitializer
+    public class NaraImportService : IImportService
     {
         private readonly ISessionFactory _sessionFactory;
-
-        public virtual ImportViewModel ViewModel { get; set; }
+        private readonly ImportViewModel _viewModel;
 
         #region Constructors
 
-        public NaraImportDataInitializer(ISessionFactory sessionFactory)
+        public NaraImportService(ISessionFactory sessionFactory, ImportViewModel viewModel)
         {
             _sessionFactory = sessionFactory;
+            _viewModel = viewModel;
         }
 
         #endregion
@@ -80,7 +80,7 @@ namespace CIS.UI.Features.Polices.Warrants
 
         private IEnumerable<NaraImportWarrant> ParseFromFile()
         {
-            var directoryInfo = new DirectoryInfo(this.ViewModel.SourcePath);
+            var directoryInfo = new DirectoryInfo(this._viewModel.SourcePath);
             var warrantFiles = directoryInfo.GetFiles("*warrant_list*xls*", SearchOption.AllDirectories).ToList();
             //var suspectFiles = directoryInfo.GetFiles("*name*xls*", SearchOption.AllDirectories).ToList();
 
@@ -249,8 +249,8 @@ namespace CIS.UI.Features.Polices.Warrants
 
                     session.SaveOrUpdate(warrant);
 
-                    this.ViewModel.TotalCases++;
-                    this.ViewModel.TotalSuspects += warrant.Suspects.Count();
+                    this._viewModel.TotalCases++;
+                    this._viewModel.TotalSuspects += warrant.Suspects.Count();
                 }
 
                 transaction.Commit();

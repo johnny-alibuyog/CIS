@@ -43,7 +43,7 @@ namespace CIS.Core.Utilities.Extentions
             var value = capitaliseFirstLetter(word);
 
             // Special cases:
-            value = ProperSuffix(value, "'");       // D'Artagnon, D'Silva
+            //value = ProperSuffix(value, "'");       // D'Artagnon, D'Silva
             value = ProperSuffix(value, ".");       // ???
             value = ProperSuffix(value, "-");       // Oscar-Meyer-Weiner
             value = ProperSuffix(value, "(");       

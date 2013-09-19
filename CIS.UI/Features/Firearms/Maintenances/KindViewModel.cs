@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CIS.UI.Features.Firearms
+namespace CIS.UI.Features.Firearms.Maintenances
 {
     public class KindViewModel : ViewModelBase
     {

@@ -1546,7 +1546,7 @@
         <DataSetName>ItemDataSet</DataSetName>
         <Top>2.39305in</Top>
         <Left>0.505in</Left>
-        <Height>1.24445in</Height>
+        <Height>1.24447in</Height>
         <Width>5.46529in</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -1927,9 +1927,9 @@
         <Value>=First(Fields!VerifierSignature.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>3.88819in</Top>
+        <Top>3.93819in</Top>
         <Left>1.07792in</Left>
-        <Height>0.5in</Height>
+        <Height>0.4625in</Height>
         <Width>1.5in</Width>
         <ZIndex>8</ZIndex>
         <Style>
@@ -1943,9 +1943,9 @@
         <Value>=First(Fields!CertifierSignature.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>3.88819in</Top>
+        <Top>3.93819in</Top>
         <Left>3.53973in</Left>
-        <Height>0.5in</Height>
+        <Height>0.4625in</Height>
         <Width>1.5in</Width>
         <ZIndex>9</ZIndex>
         <Style>
@@ -3913,7 +3913,7 @@
         <DataSetName>ItemDataSet</DataSetName>
         <Top>7.40993in</Top>
         <Left>0.51007in</Left>
-        <Height>1.24445in</Height>
+        <Height>1.24447in</Height>
         <Width>5.46529in</Width>
         <ZIndex>21</ZIndex>
         <Style>
@@ -4294,9 +4294,9 @@
         <Value>=First(Fields!VerifierSignature.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>8.90507in</Top>
+        <Top>8.95507in</Top>
         <Left>1.08299in</Left>
-        <Height>0.5in</Height>
+        <Height>0.4625in</Height>
         <Width>1.5in</Width>
         <ZIndex>28</ZIndex>
         <Style>
@@ -4310,9 +4310,9 @@
         <Value>=First(Fields!CertifierSignature.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>8.90507in</Top>
+        <Top>8.95507in</Top>
         <Left>3.5448in</Left>
-        <Height>0.5in</Height>
+        <Height>0.4625in</Height>
         <Width>1.5in</Width>
         <ZIndex>29</ZIndex>
         <Style>
@@ -4479,7 +4479,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>3.63924in</Top>
+        <Top>3.70174in</Top>
         <Left>1.08114in</Left>
         <Height>0.19791in</Height>
         <Width>0.87084in</Width>
@@ -4512,7 +4512,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>3.63785in</Top>
+        <Top>3.70035in</Top>
         <Left>3.54802in</Left>
         <Height>0.19791in</Height>
         <Width>0.87084in</Width>
@@ -4545,7 +4545,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>8.65174in</Top>
+        <Top>8.71424in</Top>
         <Left>1.08114in</Left>
         <Height>0.19791in</Height>
         <Width>0.87084in</Width>
@@ -4578,7 +4578,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>8.65035in</Top>
+        <Top>8.71285in</Top>
         <Left>3.54802in</Left>
         <Height>0.19791in</Height>
         <Width>0.87084in</Width>

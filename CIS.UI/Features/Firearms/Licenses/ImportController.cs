@@ -83,9 +83,8 @@ namespace CIS.UI.Features.Firearms.Licenses
 
             var start = DateTime.Now;
 
-            var importer = IoC.Container.Resolve<ImportDataInitializer>();
-            importer.ViewModel = this.ViewModel;
-            importer.Execute();
+            var service = (IImportService)IoC.Container.Resolve<ImportService>(new Dependency("viewModel", this.ViewModel));
+            service.Execute();
 
             var end = DateTime.Now;
             var duration = end - start;

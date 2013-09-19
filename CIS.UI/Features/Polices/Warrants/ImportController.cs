@@ -97,13 +97,13 @@ namespace CIS.UI.Features.Polices.Warrants
             this.ViewModel.TotalSuspects = 0M;
             var start = DateTime.Now;
 
-            var litusDataImporter = IoC.Container.Resolve<LitusImportDataInitializer>();
-            litusDataImporter.ViewModel = this.ViewModel;
-            litusDataImporter.Execute();
+            var importer = (IImportService)null;
 
-            var naraDataImporter = IoC.Container.Resolve<NaraImportDataInitializer>();
-            naraDataImporter.ViewModel = this.ViewModel;
-            naraDataImporter.Execute();
+            importer = (IImportService)IoC.Container.Resolve<LitusImportService>(new Dependency("viewModel", this.ViewModel));
+            importer.Execute();
+
+            importer = (IImportService)IoC.Container.Resolve<NaraImportService>(new Dependency("viewModel", this.ViewModel));
+            importer.Execute();
 
             var end = DateTime.Now;
             var duration = end - start;

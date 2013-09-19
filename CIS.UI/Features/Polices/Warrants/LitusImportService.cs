@@ -14,17 +14,17 @@ using NHibernate.Linq;
 
 namespace CIS.UI.Features.Polices.Warrants
 {
-    public class LitusImportDataInitializer : IDataInitializer
+    public class LitusImportService : IImportService
     {
         private readonly ISessionFactory _sessionFactory;
+        private readonly ImportViewModel _viewModel;
 
-        public virtual ImportViewModel ViewModel { get; set; }
 
         #region Routine Helpers
 
         private IEnumerable<LitusImportWarrant> ParseFromFile()
         {
-            var directoryInfo = new DirectoryInfo(this.ViewModel.SourcePath);
+            var directoryInfo = new DirectoryInfo(this._viewModel.SourcePath);
             var warrantFiles = directoryInfo.GetFiles("*arrest*xls*", SearchOption.AllDirectories).ToList();
             var suspectFiles = directoryInfo.GetFiles("*name*xls*", SearchOption.AllDirectories).ToList();
 
@@ -183,8 +183,8 @@ namespace CIS.UI.Features.Polices.Warrants
 
                     session.SaveOrUpdate(warrant);
 
-                    this.ViewModel.TotalCases++;
-                    this.ViewModel.TotalSuspects += warrant.Suspects.Count();
+                    this._viewModel.TotalCases++;
+                    this._viewModel.TotalSuspects += warrant.Suspects.Count();
 
                     //if (warrant.Id == Guid.Empty)
                     //    session.Insert(warrant);
@@ -208,9 +208,10 @@ namespace CIS.UI.Features.Polices.Warrants
 
         #region Constructors
 
-        public LitusImportDataInitializer(ISessionFactory sessionFactory)
+        public LitusImportService(ISessionFactory sessionFactory, ImportViewModel viewModel)
         {
             _sessionFactory = sessionFactory;
+            _viewModel = viewModel;
         }
 
         #endregion
