@@ -41,7 +41,7 @@ namespace CIS.Data.Configurations
         {
             var updatedOn = DateTime.Now;
             var updatedBy = WindowsIdentity.GetCurrent().Name;
-            return Audit.Create(this.CurrentAudit, updatedBy, updatedOn);
+            return Audit.Create(updatedBy, updatedOn, this.CurrentAudit);
         }
     }
 }

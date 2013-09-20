@@ -123,6 +123,8 @@ namespace CIS.UI.Features.Memberships.Users
                 value.SerializeInto(user);
 
                 transaction.Commit();
+
+                this.SessionProvider.ReleaseSharedSession();
             }
 
             this.Search();
@@ -154,6 +156,8 @@ namespace CIS.UI.Features.Memberships.Users
                 value.SerializeInto(user);
 
                 transaction.Commit();
+
+                this.SessionProvider.ReleaseSharedSession();
             }
 
             this.Search();
@@ -170,6 +174,8 @@ namespace CIS.UI.Features.Memberships.Users
                 session.Delete(user);
 
                 transaction.Commit();
+
+                this.SessionProvider.ReleaseSharedSession();
             }
 
             this.Search();

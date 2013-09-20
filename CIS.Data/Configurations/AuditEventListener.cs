@@ -23,14 +23,6 @@ namespace CIS.Data.Configurations
 
         private AuditResolver GetAuditResolver(AbstractPreDatabaseOperationEvent @event)
         {
-            var isAuditable = @event.Entity
-                .GetType()
-                .GetProperties()
-                .Any(x => x.PropertyType == typeof(Audit));
-
-            if (!isAuditable)
-                return null;
-
             var auditInfo = @event.Entity
                 .GetType()
                 .GetProperties()
@@ -41,6 +33,9 @@ namespace CIS.Data.Configurations
                     Value = x.GetValue(@event.Entity, null) as Audit
                 })
                 .FirstOrDefault();
+
+            if (auditInfo == null)
+                return null;
 
             var auditResolver = SessionProvider.Instance.AuditResolver;
             if (auditResolver == null)

@@ -19,7 +19,7 @@
                 <StackPanel.Resources>
                     <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                 </StackPanel.Resources>
-                
+
                 <TextBlock Style="{StaticResource Heading2}" Text="User Info" Margin="0,8,0,8"/>
 
                 <StackPanel Style="{StaticResource FieldSet}">
@@ -55,9 +55,9 @@
                 <ItemsControl ItemsSource="{Binding Roles}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <CheckBox IsChecked="{Binding IsChecked}"/>
-                                <TextBlock Text="{Binding Role}" />
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource FieldSet}">
+                                <CheckBox IsChecked="{Binding IsChecked}" Width="{StaticResource LabelWidth}" FlowDirection="RightToLeft" Padding="20,0" />
+                                <TextBlock Text="{Binding Description}" Width="{StaticResource InputWidth}" />
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

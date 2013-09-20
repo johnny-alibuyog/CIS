@@ -34,7 +34,7 @@ namespace CIS.UI.Utilities
             var updatedOn = DateTime.Now;
             var updatedBy = this.GetCurrentUserName();
 
-            return Audit.Create(this.CurrentAudit, updatedBy, updatedOn);
+            return Audit.Create(updatedBy, updatedOn, this.CurrentAudit);
         }
     }
 }

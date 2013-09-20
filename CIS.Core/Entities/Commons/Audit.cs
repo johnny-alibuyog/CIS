@@ -38,12 +38,6 @@ namespace CIS.Core.Entities.Commons
 
         #region Static Members
 
-        //public Audit()
-        //{
-        //    _createdBy = string.Empty;
-        //    _createdOn = DateTime.Now;
-        //}
-
         public static Audit Create(string createdBy, DateTime createdOn)
         {
             return new Audit()
@@ -53,7 +47,7 @@ namespace CIS.Core.Entities.Commons
             };
         }
 
-        public static Audit Create(Audit currentAudit, string updatedBy, DateTime updatedOn)
+        public static Audit Create(string updatedBy, DateTime updatedOn, Audit currentAudit)
         {
             return new Audit()
             {

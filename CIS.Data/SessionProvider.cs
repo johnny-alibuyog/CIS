@@ -66,7 +66,13 @@ namespace CIS.Data
             return Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2008
                     .DefaultSchema("dbo")
-                    .ConnectionString(x => x.FromConnectionStringWithKey("ConnectionString"))
+                    .ConnectionString(x => x
+                        //.FromConnectionStringWithKey("ConnectionString")
+                        .Server("(local)")
+                        .Database("cisdb")
+                        .Username("sa")
+                        .Password("admin123")
+                    )
                     .QuerySubstitutions("true 1, false 0, yes y, no n")
                     .AdoNetBatchSize(15)
                     .FormatSql()

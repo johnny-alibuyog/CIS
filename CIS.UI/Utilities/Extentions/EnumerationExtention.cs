@@ -49,14 +49,6 @@ namespace CIS.UI.Utilities.Extentions
                     Description = GetDescription(x)
                 })
                 .ToArray();
-
-            //return (
-            //  from object enumValue in enumValues
-            //  select new EnumerationMember
-            //  {
-            //      Value = enumValue,
-            //      Description = GetDescription(enumValue)
-            //  }).ToArray();
         }
 
         private string GetDescription(object enumValue)
@@ -65,7 +57,6 @@ namespace CIS.UI.Utilities.Extentions
               .GetField(enumValue.ToString())
               .GetCustomAttributes(typeof(DescriptionAttribute), false)
               .FirstOrDefault() as DescriptionAttribute;
-
 
             return descriptionAttribute != null
               ? descriptionAttribute.Description
