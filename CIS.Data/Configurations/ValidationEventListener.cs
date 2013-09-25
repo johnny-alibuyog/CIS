@@ -11,7 +11,7 @@ namespace CIS.Data.Configurations
     {
         private void PerformValidation(object entity)
         {
-            var validator = SessionProvider.Instance.ValidatorEngine;
+            var validator = SessionProvider.Validator;
             var invalidValues = validator.Validate(entity);
             if (invalidValues.Count() > 0)
                 throw new BusinessExceptionBuilder().Build(invalidValues);

@@ -8,7 +8,7 @@ using NHibernate.Mapping;
 
 namespace CIS.Data.Configurations
 {
-    internal class IndexForeignKeyConfiguration
+    internal static class IndexForeignKeyConfiguration
     {
         private static readonly PropertyInfo TableMappingsProperty = typeof(Configuration)
                  .GetProperty("TableMappings", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);

@@ -59,6 +59,7 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject
                     var kernel = new StandardKernel();
                     //kernel.Load(AppDomain.CurrentDomain.GetAssemblies());
                     kernel.Load(Assembly.GetExecutingAssembly());
+                    kernel.Components.Add<IPlanningStrategy, CustomPlanningStrategy<AuthorizeAttribute, AuthorizeInterceptor>>();
                     kernel.Components.Add<IPlanningStrategy, CustomPlanningStrategy<HandleErrorAttribute, HandleErrorInterceptor>>();
 
                     _instance = new DependencyResolver(kernel);

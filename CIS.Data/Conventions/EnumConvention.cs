@@ -10,14 +10,14 @@ using FluentNHibernate.Conventions.Instances;
 
 namespace CIS.Data.Conventions
 {
-    public class EnumConvention : IPropertyConvention, IPropertyConventionAcceptance
+    public class EnumConvention : IPropertyConvention, IPropertyConventionAcceptance, IUserTypeConvention
     {
         #region IPropertyConvention Members
 
         public void Apply(IPropertyInstance instance)
         {
             //instance.CustomType(instance.Property.PropertyType); // map to int
-            instance.Length(50);
+            instance.Length(100);
         }
 
         #endregion

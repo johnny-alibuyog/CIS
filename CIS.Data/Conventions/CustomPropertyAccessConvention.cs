@@ -18,9 +18,7 @@ namespace CIS.Data.Conventions
 
             bool hasBackingField = HasField(entityType, camelCaseUnderscoreName);
 
-            // Default is to use property setter, so only modify mapping
-            // if there is a backing field
-
+            // Default is to use property setter, so only modify mapping if there is a backing field
             if (hasBackingField)
                 instance.Access.CamelCaseField(CamelCasePrefix.Underscore);
         }

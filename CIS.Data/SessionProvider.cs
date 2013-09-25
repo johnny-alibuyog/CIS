@@ -18,13 +18,29 @@ namespace CIS.Data
 {
     public class SessionProvider : ISessionProvider
     {
-        private AuditResolver _auditResolver;
         private readonly ISessionFactory _sessionFactory;
-        private static ISessionProvider _instance = new SessionProvider();
 
-        public static ISessionProvider Instance
+        private static ValidatorEngine _validator;
+        private static AuditResolver _auditResolver;
+
+        //private static ISessionProvider _instance = new SessionProvider();
+
+        //public static ISessionProvider Instance
+        //{
+        //    get { return _instance; }
+        //}
+
+        internal static ValidatorEngine Validator
         {
-            get { return _instance; }
+            //get { return ValidatorConfiguration.ValidatorEngine; }
+            get { return _validator; }
+            set { _validator = value; }
+        }
+
+        internal static AuditResolver AuditResolver
+        {
+            get { return _auditResolver; }
+            set { _auditResolver = value; }
         }
 
         public virtual ISessionFactory SessionFactory
@@ -32,21 +48,19 @@ namespace CIS.Data
             get { return _sessionFactory; }
         }
 
-        public virtual ValidatorEngine ValidatorEngine
-        {
-            get { return ValidatorConfiguration.ValidatorEngine; }
-        }
-
-        public virtual AuditResolver AuditResolver
-        {
-            get { return _auditResolver; }
-            set { _auditResolver = value; }
-        }
-
         public virtual ISession GetSharedSession()
         {
             if (CurrentSessionContext.HasBind(_sessionFactory) != true)
+            {
                 CurrentSessionContext.Bind(_sessionFactory.OpenSession());
+            }
+
+            if (_sessionFactory.GetCurrentSession().IsConnected == false || 
+                _sessionFactory.GetCurrentSession().IsOpen == false)
+            {
+                CurrentSessionContext.Unbind(_sessionFactory);
+                CurrentSessionContext.Bind(_sessionFactory.OpenSession());
+            }
 
             return _sessionFactory.GetCurrentSession();
         }
@@ -56,27 +70,68 @@ namespace CIS.Data
             return CurrentSessionContext.Unbind(_sessionFactory);
         }
 
-        private ISessionFactory CreateSessionFactory()
+        //private ISessionFactory CreateSessionFactory()
+        //{
+        //    var schemaExportPath = Path.Combine(System.Environment.CurrentDirectory, "Mappings");
+
+        //    if (!Directory.Exists(schemaExportPath))
+        //        Directory.CreateDirectory(schemaExportPath);
+
+        //    return Fluently.Configure()
+        //        .Database(MsSqlConfiguration.MsSql2008
+        //            .DefaultSchema("dbo")
+        //            .ConnectionString(x => x
+        //                //.FromConnectionStringWithKey("ConnectionString")
+        //                .Server("(local)")
+        //                .Database("cisdb")
+        //                .Username("sa")
+        //                .Password("admin123")
+        //            )
+        //            .QuerySubstitutions("true 1, false 0, yes y, no n")
+        //            .AdoNetBatchSize(15)
+        //            .FormatSql()
+        //        //.ShowSql()
+        //        )
+        //        .Mappings(x => x
+        //            .FluentMappings.AddFromAssemblyOf<AuditMapping>()
+        //            .Conventions.AddFromAssemblyOf<_CustomJoinedSubclassConvention>()
+        //            .Conventions.Setup(o => o.Add(AutoImport.Never()))
+        //            .ExportTo(schemaExportPath)
+        //        )
+        //        .ProxyFactoryFactory<DefaultProxyFactoryFactory>()
+        //        .ExposeConfiguration(EventListenerConfiguration.Configure)
+        //        .ExposeConfiguration(CacheConfiguration.Configure)
+        //        .ExposeConfiguration(ValidatorConfiguration.Configure)
+        //        .ExposeConfiguration(IndexForeignKeyConfiguration.Configure)
+        //        .ExposeConfiguration(SchemaConfiguration.Configure)
+        //        .ExposeConfiguration(SessionContextConfiguration.Configure)
+        //        .BuildSessionFactory();
+        //}
+
+        public SessionProvider(ValidatorEngine validator, AuditResolver auditResolver, string serverName, string databaseName, string username, string password)
         {
+            //_sessionFactory = this.CreateSessionFactory();
+
+            _validator = validator;
+            _auditResolver = auditResolver;
+
             var schemaExportPath = Path.Combine(System.Environment.CurrentDirectory, "Mappings");
 
             if (!Directory.Exists(schemaExportPath))
                 Directory.CreateDirectory(schemaExportPath);
 
-            return Fluently.Configure()
+            _sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2008
                     .DefaultSchema("dbo")
                     .ConnectionString(x => x
-                        //.FromConnectionStringWithKey("ConnectionString")
-                        .Server("(local)")
-                        .Database("cisdb")
-                        .Username("sa")
-                        .Password("admin123")
+                        .Server(serverName)
+                        .Database(databaseName)
+                        .Username(username)
+                        .Password(password)
                     )
                     .QuerySubstitutions("true 1, false 0, yes y, no n")
                     .AdoNetBatchSize(15)
                     .FormatSql()
-                //.ShowSql()
                 )
                 .Mappings(x => x
                     .FluentMappings.AddFromAssemblyOf<AuditMapping>()
@@ -92,11 +147,6 @@ namespace CIS.Data
                 .ExposeConfiguration(SchemaConfiguration.Configure)
                 .ExposeConfiguration(SessionContextConfiguration.Configure)
                 .BuildSessionFactory();
-        }
-
-        private SessionProvider()
-        {
-            _sessionFactory = this.CreateSessionFactory();
         }
     }
 }

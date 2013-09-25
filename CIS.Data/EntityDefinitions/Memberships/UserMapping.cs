@@ -19,7 +19,8 @@ namespace CIS.Data.EntityDefinition.Memberships
 
             Version(x => x.Version);
 
-            Map(x => x.Username);
+            Map(x => x.Username)
+                .Unique();
 
             Map(x => x.Password);
 
@@ -27,11 +28,12 @@ namespace CIS.Data.EntityDefinition.Memberships
 
             Component(x => x.Person);
 
-            HasMany<string>(x => x.Roles)
+            HasMany<Role>(x => x.Roles)
+                .Access.CamelCaseField(Prefix.Underscore)
                 .Schema(GetType().ParseSchema())
                 .Table("UsersRoles")
                 .Element("Role")
-                .AsSet();
+                .AsBag();
 
             //HasManyToMany(x => x.Roles)
             //    .Access.CamelCaseField(Prefix.Underscore)

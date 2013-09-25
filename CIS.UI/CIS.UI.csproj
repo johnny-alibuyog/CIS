@@ -13,7 +13,7 @@
     <AssemblyName>CIS.UI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <FodyPath>..\packages\Fody.1.17.0.0</FodyPath>
+    <FodyPath>..\packages\Fody.1.17.4.0</FodyPath>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -218,6 +218,8 @@
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\HandleErrorAttribute.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\HandleErrorInterceptor.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\CustomPlanningStrategy.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\ConfigurationModule.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\ControllerModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\DialogModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\ViewModelDependency.cs" />
     <Compile Include="Features\Commons\Addresses\AddressDataInitializer.cs">
@@ -498,6 +500,7 @@
     </Compile>
     <Compile Include="Utilities\Configurations\ApplicationConfiguration.cs" />
     <Compile Include="Utilities\Configurations\AppearanceConfiguration.cs" />
+    <Compile Include="Utilities\Configurations\DatabaseConfiguraton.cs" />
     <Compile Include="Utilities\Controls\WaterMarkAdorner.cs" />
     <Compile Include="Utilities\Controls\WaterMarkService.cs" />
     <Compile Include="Utilities\Converters\EnumToBooleanConverter.cs" />

@@ -7,10 +7,10 @@ namespace CIS.Data
 {
     public interface ISessionProvider
     {
-        AuditResolver AuditResolver { get; set; }
+        //AuditResolver AuditResolver { get; set; }
+        //ValidatorEngine ValidatorEngine { get; }
         ISession GetSharedSession();
         ISession ReleaseSharedSession();
         ISessionFactory SessionFactory { get; }
-        ValidatorEngine ValidatorEngine { get; }
     }
 }

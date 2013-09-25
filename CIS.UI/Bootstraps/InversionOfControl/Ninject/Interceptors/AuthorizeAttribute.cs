@@ -18,6 +18,8 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors
 
         public override IInterceptor CreateInterceptor(IProxyRequest request)
         {
+            //return IoC.Container.Resolve<AuthorizeInterceptor>(new Dependency("roles", Roles));
+
             return request.Context.Kernel.Get<AuthorizeInterceptor>(new ConstructorArgument("roles", Roles));
         }
     }

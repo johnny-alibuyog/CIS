@@ -86,6 +86,7 @@ namespace CIS.UI.Features
         public ControllerBase(TViewModel viewModel)
         {
             _viewModel = viewModel;
+
         }
     }
 }

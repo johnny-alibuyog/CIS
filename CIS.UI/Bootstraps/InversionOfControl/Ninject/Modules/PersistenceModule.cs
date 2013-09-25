@@ -9,8 +9,10 @@ using CIS.UI.Utilities;
 using NHibernate;
 using NHibernate.Context;
 using NHibernate.Validator.Engine;
+using Ninject;
 using Ninject.Modules;
 using Ninject.Extensions.Interception;
+using CIS.UI.Utilities.Configurations;
 
 namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Modules
 {
@@ -18,23 +20,42 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Modules
     {
         public override void Load()
         {
-            SessionProvider.Instance.AuditResolver = new UserAuditResolver();
+            //SessionProvider.Instance.AuditResolver = new UserAuditResolver();
 
-            Bind<ISessionProvider>()
-                .ToMethod(x => SessionProvider.Instance)
-                .InSingletonScope();
-
-            Bind<ISessionFactory>()
-                .ToMethod(x => SessionProvider.Instance.SessionFactory)
+            Bind<AuditResolver>()
+                .ToMethod(x => new UserAuditResolver())
                 .InSingletonScope();
 
             Bind<ValidatorEngine>()
-                .ToMethod(x => SessionProvider.Instance.ValidatorEngine)
+                .ToMethod(x => new ValidatorEngine())
                 .InSingletonScope();
 
-            Bind<AuditResolver>()
-                .ToMethod(x => SessionProvider.Instance.AuditResolver)
+            Bind<ISessionProvider>()
+                .ToMethod(x =>
+                {
+                    var configuration = x.Kernel.Get<ApplicationConfiguration>();
+                    return new SessionProvider(
+                        validator: x.Kernel.Get<ValidatorEngine>(),
+                        auditResolver: x.Kernel.Get<AuditResolver>(),
+                        serverName: configuration.Database.ServerName,
+                        databaseName: configuration.Database.DatabaseName,
+                        username: configuration.Database.Username,
+                        password: configuration.Database.Password
+                    );
+                })
                 .InSingletonScope();
+
+            Bind<ISessionFactory>()
+                .ToMethod(x => x.Kernel.Get<ISessionProvider>().SessionFactory)
+                .InSingletonScope();
+
+            //Bind<ValidatorEngine>()
+            //    .ToMethod(x => SessionProvider.Instance.ValidatorEngine)
+            //    .InSingletonScope();
+
+            //Bind<AuditResolver>()
+            //    .ToMethod(x => SessionProvider.Instance.AuditResolver)
+            //    .InSingletonScope();
         }
     }
 }

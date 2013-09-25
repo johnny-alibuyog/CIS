@@ -37,7 +37,7 @@ namespace CIS.Data.Configurations
             if (auditInfo == null)
                 return null;
 
-            var auditResolver = SessionProvider.Instance.AuditResolver;
+            var auditResolver = SessionProvider.AuditResolver;
             if (auditResolver == null)
                 auditResolver = new AuditResolver();
 

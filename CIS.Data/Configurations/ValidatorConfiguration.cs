@@ -14,13 +14,6 @@ namespace CIS.Data.Configurations
 {
     internal static class ValidatorConfiguration
     {
-        private static readonly ValidatorEngine _validatorEnine = new ValidatorEngine();
-
-        public static ValidatorEngine ValidatorEngine
-        {
-            get { return _validatorEnine; }
-        }
-
         public static void Configure(this Configuration configuration)
         {
             var validatorEngine = GetValidatorEngine();
@@ -31,8 +24,8 @@ namespace CIS.Data.Configurations
         private static ValidatorEngine GetValidatorEngine()
         {
             var configuration = GetConfiguration();
-            _validatorEnine.Configure(configuration);
-            return _validatorEnine;
+            SessionProvider.Validator.Configure(configuration);
+            return SessionProvider.Validator;
         }
 
         private static FluentConfiguration GetConfiguration()

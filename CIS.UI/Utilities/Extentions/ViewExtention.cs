@@ -13,7 +13,8 @@ namespace CIS.UI.Utilities.Extentions
     {
         public static void InitializeViewModelAsync<T>(this IViewFor<T> view, Func<T> create) where T : ViewModelBase
         {
-            Task.Factory.StartNew(() => Application.Current.Dispatcher.Invoke(() => view.ViewModel = create.Invoke()), TaskCreationOptions.LongRunning);
+            view.ViewModel = create.Invoke();
+            //Task.Factory.StartNew(() => Application.Current.Dispatcher.Invoke(() => view.ViewModel = create.Invoke()), TaskCreationOptions.AttachedToParent);
         }
     }
 }

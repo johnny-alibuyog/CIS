@@ -20,6 +20,7 @@ namespace CIS.UI.Features.Memberships.Users
         public virtual string Username { get; set; }
 
         [Email(Message = "Invalid email address.")]
+        [NotNullNotEmpty(Message = "Email is required.")]
         public virtual string Email { get; set; }
 
         [NotNullNotEmpty(Message = "Password is mandatory.")]
@@ -31,12 +32,15 @@ namespace CIS.UI.Features.Memberships.Users
         [Valid]
         public virtual PersonViewModel Person { get; set; }
 
+        [NotNullNotEmpty(Message = "Role is mandatory.")]
         public virtual IReactiveList<UserRoleViewModel> Roles { get; set; }
 
         public virtual IReactiveCommand Save { get; set; }
 
         public UserViewModel()
         {
+            this.Person = new PersonViewModel();
+
             this.WhenAny(x => x.Person.IsValid, x => true)
                 .Subscribe(x => this.Revalidate());
         }
@@ -62,7 +66,7 @@ namespace CIS.UI.Features.Memberships.Users
                 target.Username = source.Username;
                 target.Password = source.Password;
                 target.Email = source.Email;
-                target.Person = (Person)source.SerializeInto(new Person());
+                target.Person = (Person)source.Person.SerializeInto(new Person());
                 target.Roles = source.Roles.Where(x => x.IsChecked).Select(x => x.Role);
                 return target;
             }
@@ -92,8 +96,10 @@ namespace CIS.UI.Features.Memberships.Users
                 var source = instance as User;
                 var target = this;
 
+                target.Id = source.Id;
                 target.Username = source.Username;
                 target.Password = source.Password;
+                target.ConfirmPassowrd = source.Password;
                 target.Email = source.Email;
                 target.Person.SerializeWith(source.Person);
                 target.Roles = Enum.GetValues(typeof(Role)).Cast<Role>()
