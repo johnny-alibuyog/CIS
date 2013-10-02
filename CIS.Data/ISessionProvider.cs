@@ -9,6 +9,7 @@ namespace CIS.Data
     {
         //AuditResolver AuditResolver { get; set; }
         //ValidatorEngine ValidatorEngine { get; }
+
         ISession GetSharedSession();
         ISession ReleaseSharedSession();
         ISessionFactory SessionFactory { get; }
