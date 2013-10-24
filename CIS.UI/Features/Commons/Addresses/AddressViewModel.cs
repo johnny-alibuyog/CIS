@@ -29,11 +29,11 @@ namespace CIS.UI.Features.Commons.Addresses
 
         public virtual Lookup<Guid> SelectedProvince { get; set; }
 
-        public virtual IReactiveCollection<Lookup<Guid>> Barangays { get; set; }
+        public virtual IReactiveList<Lookup<Guid>> Barangays { get; set; }
 
-        public virtual IReactiveCollection<Lookup<Guid>> Cities { get; set; }
+        public virtual IReactiveList<Lookup<Guid>> Cities { get; set; }
 
-        public virtual IReactiveCollection<Lookup<Guid>> Provinces { get; set; }
+        public virtual IReactiveList<Lookup<Guid>> Provinces { get; set; }
 
         public AddressViewModel()
         {
@@ -74,7 +74,7 @@ namespace CIS.UI.Features.Commons.Addresses
             return null;
         }
 
-        public override object SerializeInto(object instance)
+        public override object DeserializeInto(object instance)
         {
             if (instance == null)
                 return null;

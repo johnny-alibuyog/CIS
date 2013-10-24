@@ -64,7 +64,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             return target;
         }
 
-        public override object SerializeInto(object instance)
+        public override object DeserializeInto(object instance)
         {
             var target = instance as Setting;
             if (target == null)

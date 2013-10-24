@@ -16,7 +16,7 @@ using ReactiveUI;
 
 namespace CIS.UI.Features
 {
-    public class ControllerBase<TViewModel> where TViewModel : ViewModelBase
+    public abstract class ControllerBase<TViewModel> : IControllerBase where TViewModel : ViewModelBase
     {
         private ILog _log;
         private TViewModel _viewModel;
@@ -24,7 +24,7 @@ namespace CIS.UI.Features
         private IMessageBoxService _messageBox;
         private ISessionProvider _sessionProvider;
 
-        internal virtual ILog Log
+        public virtual ILog Log
         {
             get
             {
@@ -35,12 +35,12 @@ namespace CIS.UI.Features
             }
         }
 
-        internal virtual TViewModel ViewModel
+        public virtual TViewModel ViewModel
         {
             get { return _viewModel; }
         }
 
-        internal virtual IMessageBus MessageBus
+        public virtual IMessageBus MessageBus
         {
             get
             {
@@ -51,7 +51,7 @@ namespace CIS.UI.Features
             }
         }
 
-        internal virtual IMessageBoxService MessageBox
+        public virtual IMessageBoxService MessageBox
         {
             get
             {
@@ -62,12 +62,12 @@ namespace CIS.UI.Features
             }
         }
 
-        internal virtual ISessionFactory SessionFactory
+        public virtual ISessionFactory SessionFactory
         {
             get { return this.SessionProvider.SessionFactory; }
         }
 
-        internal virtual ISessionProvider SessionProvider
+        public virtual ISessionProvider SessionProvider
         {
             get
             {
@@ -78,7 +78,7 @@ namespace CIS.UI.Features
             }
         }
 
-        internal virtual void DispatcherInvoke(Action action)
+        public virtual void DispatcherInvoke(Action action)
         {
             Application.Current.Dispatcher.Invoke(action);
         }

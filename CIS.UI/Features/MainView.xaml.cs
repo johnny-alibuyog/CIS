@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Memberships;
 using CIS.UI.Bootstraps.InversionOfControl;
-using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Terminals;
 using CIS.UI.Features.Firearms.Maintenances;
@@ -43,6 +42,8 @@ namespace CIS.UI.Features
 
                 //dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
                 //dataInitializer.Execute();
+
+                //var x = IoC.Container.Resolve<CIS.UI.Features.Polices.Clearances.ApplicationViewModel>();
 
                 dataInitializer = IoC.Container.Resolve<FingerDataInitializer>();
                 dataInitializer.Execute();

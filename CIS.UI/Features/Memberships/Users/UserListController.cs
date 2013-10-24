@@ -13,6 +13,7 @@ using ReactiveUI;
 
 namespace CIS.UI.Features.Memberships.Users
 {
+    [HandleError]
     public class UserListController : ControllerBase<UserListViewModel>
     {
         public UserListController(UserListViewModel viewModel)
@@ -23,12 +24,16 @@ namespace CIS.UI.Features.Memberships.Users
 
             this.ViewModel.Search = new ReactiveCommand();
             this.ViewModel.Search.Subscribe(x => Search());
+            this.ViewModel.Search.ThrownExceptions.Handle(this);
 
             this.ViewModel.Create = new ReactiveCommand();
             this.ViewModel.Create.Subscribe(x => Create());
+            this.ViewModel.Create.ThrownExceptions.Handle(this);
 
             this.ViewModel.Edit = new ReactiveCommand();
             this.ViewModel.Edit.Subscribe(x => Edit((UserListItemViewModel)x));
+            this.ViewModel.Edit.ThrownExceptions.Handle(this);
+
             //this.ViewModel.Edit.Subscribe(x =>
             //{
             //    var task = new Task(() => Edit((UserListItemViewModel)x));
@@ -41,6 +46,7 @@ namespace CIS.UI.Features.Memberships.Users
 
             this.ViewModel.Delete = new ReactiveCommand();
             this.ViewModel.Delete.Subscribe(x => Delete((UserListItemViewModel)x));
+            this.ViewModel.Delete.ThrownExceptions.Handle(this);
 
             this.Search();
         }
@@ -78,8 +84,6 @@ namespace CIS.UI.Features.Memberships.Users
             return viewModel;
         }
 
-
-        [HandleError]
         public virtual void Search()
         {
             var criteria = this.ViewModel.Criteria;
@@ -116,75 +120,71 @@ namespace CIS.UI.Features.Memberships.Users
             }
         }
 
-        [HandleError]
+        [Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Create()
         {
             var dialog = new DialogService<UserView, UserViewModel>();
-            dialog.ViewModel = New();
+            dialog.ViewModel.SerializeWith(New());
+
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
             dialog.ViewModel.Save.Subscribe(x => Insert(dialog.ViewModel));
+            dialog.ViewModel.Save.ThrownExceptions.Handle(this);
+
             dialog.ShowModal(this, "Create User");
         }
 
-        [HandleError]
-        [Authorize(Roles = new Role[] { Role.PoliceAdministartor }, Order = 1)]
+        [Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Insert(UserViewModel value)
         {
-            try
+            var message = string.Format("Are you sure you want to save user {0}?", value.Username);
+            var confirmed = this.MessageBox.Confirm(message, "Save");
+            if (confirmed == false)
+                return;
+
+            using (var session = this.SessionProvider.GetSharedSession())
+            using (var transaction = session.BeginTransaction())
             {
-                var message = string.Format("Are you sure you want to save user {0}?", value.Username);
-                var confirmed = this.MessageBox.Confirm(message, "Save");
-                if (confirmed == false)
-                    return;
-
-                using (var session = this.SessionProvider.GetSharedSession())
-                using (var transaction = session.BeginTransaction())
+                var exists = session.Query<User>().Any(x => x.Username == value.Username);
+                if (exists)
                 {
-                    var exists = session.Query<User>().Any(x => x.Username == value.Username);
-                    if (exists)
-                    {
-                        this.MessageBox.Warn(string.Format("User {0} already exists.", value.Username));
-                        return;
-                    }
-
-                    var user = new User();
-
-                    value.SerializeInto(user);
-
-                    session.Save(user);
-
-                    transaction.Commit();
-
-                    this.SessionProvider.ReleaseSharedSession();
+                    this.MessageBox.Warn(string.Format("User {0} already exists.", value.Username));
+                    return;
                 }
 
-                this.MessageBox.Inform("Save has been successfully completed.");
+                var user = new User();
 
-                this.Search();
+                value.DeserializeInto(user);
 
-                value.Close();
+                session.Save(user);
+
+                transaction.Commit();
+
+                this.SessionProvider.ReleaseSharedSession();
             }
-            catch (Exception ex)
-            {
-                this.MessageBox.Warn(ex.Message, ex);
-            }
+
+            this.MessageBox.Inform("Save has been successfully completed.");
+
+            this.Search();
+
+            value.Close();
         }
 
-        [HandleError]
-        [Authorize(Roles = new Role[] { Role.PoliceAdministartor }, Order = 1)]
+        [Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Edit(UserListItemViewModel item)
         {
             this.ViewModel.SelectedItem = item;
 
             var dialog = new DialogService<UserView, UserViewModel>();
-            dialog.ViewModel = Get(item.Id);
+
+            dialog.ViewModel.SerializeWith(Get(item.Id));
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
             dialog.ViewModel.Save.Subscribe(x => this.Update(dialog.ViewModel));
+            dialog.ViewModel.Save.ThrownExceptions.Handle(this);
+
             dialog.ShowModal(this, "Edit User");
         }
 
-        [HandleError]
-        [Authorize(Roles = new Role[] { Role.PoliceAdministartor }, Order = 1)]
+        [Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Update(UserViewModel value)
         {
             var message = string.Format("Are you sure you want to save user {0}?", value.Username);
@@ -202,7 +202,7 @@ namespace CIS.UI.Features.Memberships.Users
 
                 var user = userQuery.Value;
 
-                value.SerializeInto(user);
+                value.DeserializeInto(user);
 
                 transaction.Commit();
 
@@ -216,7 +216,7 @@ namespace CIS.UI.Features.Memberships.Users
             value.Close();
         }
 
-        [HandleError]
+        [Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Delete(UserListItemViewModel item)
         {
             this.ViewModel.SelectedItem = item;

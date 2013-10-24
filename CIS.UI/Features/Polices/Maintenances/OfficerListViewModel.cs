@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.UI.Bootstraps.InversionOfControl;
 using ReactiveUI;
-using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Maintenances
 {
@@ -17,7 +16,7 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public virtual OfficerListItemViewModel SelectedItem { get; set; }
 
-        public virtual IReactiveCollection<OfficerListItemViewModel> Items { get; set; }
+        public virtual IReactiveList<OfficerListItemViewModel> Items { get; set; }
 
         public virtual IReactiveCommand Search { get; set; }
 

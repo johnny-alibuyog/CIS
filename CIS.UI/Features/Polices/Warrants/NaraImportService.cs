@@ -150,12 +150,11 @@ namespace CIS.UI.Features.Polices.Warrants
                     }
                 )
                 .Where(x =>
-                    x.Suspects
-                        .All(o =>
-                            !string.IsNullOrWhiteSpace(o.FirstName) &&
-                                //string.IsNullOrWhiteSpace(o.MiddleName) ||
-                            !string.IsNullOrWhiteSpace(o.LastName)
-                        ) &&
+                    x.Suspects.All(o =>
+                        !string.IsNullOrWhiteSpace(o.FirstName) &&
+                        //string.IsNullOrWhiteSpace(o.MiddleName) ||
+                        !string.IsNullOrWhiteSpace(o.LastName)
+                    ) &&
                     x.Suspects.Count() > 0
                 )
                 .ToList();

@@ -25,15 +25,19 @@ namespace CIS.UI.Features.Commons.Cameras
 
             this.ViewModel.Start = new ReactiveCommand();
             this.ViewModel.Start.Subscribe(x => Start());
+            this.ViewModel.Start.ThrownExceptions.Handle(this);
 
             this.ViewModel.Stop = new ReactiveCommand();
             this.ViewModel.Stop.Subscribe(x => Stop());
+            this.ViewModel.Stop.ThrownExceptions.Handle(this);
 
             this.ViewModel.Continue = new ReactiveCommand();
             this.ViewModel.Continue.Subscribe(x => Continue());
+            this.ViewModel.Continue.ThrownExceptions.Handle(this);
 
             this.ViewModel.Capture = new ReactiveCommand();
             this.ViewModel.Capture.Subscribe(x => Capture());
+            this.ViewModel.Capture.ThrownExceptions.Handle(this);
         }
 
         private void CaptureNewFrame(IFrameSource frameSource, Frame frame, double fps)

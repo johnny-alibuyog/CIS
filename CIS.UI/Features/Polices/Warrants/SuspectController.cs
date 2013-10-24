@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.UI.Utilities.Extentions;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
@@ -12,22 +13,35 @@ namespace CIS.UI.Features.Polices.Warrants
     {
         public SuspectController(SuspectViewModel viewModel) : base(viewModel)
         {
-            this.ViewModel.AddAlias = new ReactiveCommand(this.ViewModel
-                .WhenAny(x => x.AliasToAdd, x => !string.IsNullOrWhiteSpace(x.Value)));
+            this.ViewModel.AddAlias = new ReactiveCommand(
+                this.ViewModel.WhenAny(
+                    x => x.AliasToAdd, 
+                    x => !string.IsNullOrWhiteSpace(x.Value)
+                )
+            );
             this.ViewModel.AddAlias.Subscribe(x => AddAlias());
+            this.ViewModel.AddAlias.ThrownExceptions.Handle(this);
 
             this.ViewModel.DeleteAlias = new ReactiveCommand();
             this.ViewModel.DeleteAlias.Subscribe(x => DeleteAlias((string)x));
+            this.ViewModel.DeleteAlias.ThrownExceptions.Handle(this);
 
-            this.ViewModel.AddOccupation = new ReactiveCommand(this.ViewModel
-                .WhenAny(x => x.OccupationToAdd, x => !string.IsNullOrWhiteSpace(x.Value)));
+            this.ViewModel.AddOccupation = new ReactiveCommand(
+                this.ViewModel.WhenAny(
+                    x => x.OccupationToAdd, 
+                    x => !string.IsNullOrWhiteSpace(x.Value)
+                )
+            );
             this.ViewModel.AddOccupation.Subscribe(x => AddOccupation());
+            this.ViewModel.AddOccupation.ThrownExceptions.Handle(this);
 
             this.ViewModel.DeleteOccupation = new ReactiveCommand();
             this.ViewModel.DeleteOccupation.Subscribe(x => DeleteOccupation((string)x));
+            this.ViewModel.DeleteOccupation.ThrownExceptions.Handle(this);
 
             this.ViewModel.Save = new ReactiveCommand(this.ViewModel.IsValidObservable());
             this.ViewModel.Save.Subscribe(x => Save());
+            this.ViewModel.Save.ThrownExceptions.Handle(this);
         }
 
         public virtual void AddAlias()
@@ -58,7 +72,6 @@ namespace CIS.UI.Features.Polices.Warrants
             var confirm = this.MessageBox.Confirm(message, "Save");
             if (confirm == false)
                 return;
-
 
             if (!string.IsNullOrWhiteSpace(this.ViewModel.AliasToAdd))
                 this.AddAlias();

@@ -9,6 +9,7 @@ using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Utilities.CommonDialogs;
+using CIS.UI.Utilities.Extentions;
 using NHibernate;
 using NHibernate.Context;
 using NHibernate.Linq;
@@ -17,6 +18,7 @@ using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Maintenances
 {
+    [HandleError]
     public class StationController : ControllerBase<StationViewModel>
     {
         public StationController(StationViewModel viewModel)
@@ -26,16 +28,19 @@ namespace CIS.UI.Features.Polices.Maintenances
 
             this.ViewModel.LookupLogo = new ReactiveCommand();
             this.ViewModel.LookupLogo.Subscribe(x => LookupLogo());
+            this.ViewModel.LookupLogo.ThrownExceptions.Handle(this);
 
-            this.ViewModel.Save = new ReactiveCommand(this.ViewModel
-                .WhenAny(x => x.IsValid, x => x.Value));
+            this.ViewModel.Save = new ReactiveCommand(
+                this.ViewModel.WhenAny(x => x.IsValid, x => x.Value)
+            );
             this.ViewModel.Save.Subscribe(x => Save());
+            this.ViewModel.Save.ThrownExceptions.Handle(this);
 
             this.ViewModel.Refresh = new ReactiveCommand();
             this.ViewModel.Refresh.Subscribe(x => Load(confirm: true));
+            this.ViewModel.Refresh.ThrownExceptions.Handle(this);
         }
 
-        [HandleError]
         public virtual void LookupLogo()
         {
             var openImageDialog = IoC.Container.Resolve<IOpenImageDialogService>();
@@ -44,7 +49,6 @@ namespace CIS.UI.Features.Polices.Maintenances
                 this.ViewModel.Logo = logo;
         }
 
-        [HandleError]
         public virtual void Load(bool confirm = false)
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -65,7 +69,6 @@ namespace CIS.UI.Features.Polices.Maintenances
                 this.MessageBox.Inform("Station configuration has loaded.", "Station");
         }
 
-        [HandleError]
         public virtual void Save()
         {
             var confirmed = this.MessageBox.Confirm("Do you want to save changes?.", "Save");
@@ -83,7 +86,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 if (station == null)
                     station = new Station();
 
-                this.ViewModel.SerializeInto(station);
+                this.ViewModel.DeserializeInto(station);
 
                 session.SaveOrUpdate(station);
                 transaction.Commit();

@@ -9,6 +9,7 @@ using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
+using CIS.UI.Utilities.Extentions;
 using NHibernate;
 using NHibernate.Linq;
 using ReactiveUI;
@@ -16,6 +17,7 @@ using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Warrants
 {
+    [HandleError]
     public class WarrantController : ControllerBase<WarrantViewModel>
     {
         public WarrantController(WarrantViewModel viewModel)
@@ -23,22 +25,25 @@ namespace CIS.UI.Features.Polices.Warrants
         {
             this.ViewModel.Load = new ReactiveCommand();
             this.ViewModel.Load.Subscribe(x => Load((Guid)x));
+            this.ViewModel.Load.ThrownExceptions.Handle(this);
 
             this.ViewModel.CreateSupect = new ReactiveCommand();
             this.ViewModel.CreateSupect.Subscribe(x => CreateSuspect());
+            this.ViewModel.CreateSupect.ThrownExceptions.Handle(this);
 
             this.ViewModel.EditSuspect = new ReactiveCommand();
             this.ViewModel.EditSuspect.Subscribe(x => EditSuspect((SuspectViewModel)x));
+            this.ViewModel.EditSuspect.ThrownExceptions.Handle(this);
 
             this.ViewModel.DeleteSuspect = new ReactiveCommand();
             this.ViewModel.DeleteSuspect.Subscribe(x => DeleteSuspect((SuspectViewModel)x));
+            this.ViewModel.DeleteSuspect.ThrownExceptions.Handle(this);
 
-            this.ViewModel.BatchSave = new ReactiveCommand(this.ViewModel
-                .WhenAny(x => x.IsValid, x => x.Value));
+            this.ViewModel.BatchSave = new ReactiveCommand(this.ViewModel.IsValidObservable());
             this.ViewModel.BatchSave.Subscribe(x => BatchSave());
+            this.ViewModel.BatchSave.ThrownExceptions.Handle(this);
         }
 
-        [HandleError]
         public virtual void Load(Guid id)
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -64,7 +69,6 @@ namespace CIS.UI.Features.Polices.Warrants
             }
         }
 
-        [HandleError]
         public virtual void CreateSuspect()
         {
             var dialog = new DialogService<SuspectView, SuspectViewModel>();
@@ -73,7 +77,6 @@ namespace CIS.UI.Features.Polices.Warrants
                 this.ViewModel.Suspects.Add(value);
         }
 
-        [HandleError]
         public virtual void EditSuspect(SuspectViewModel item)
         {
             this.ViewModel.SelectedSuspect = item;
@@ -84,14 +87,12 @@ namespace CIS.UI.Features.Polices.Warrants
                 this.ViewModel.SelectedSuspect.SerializeWith(value);
         }
 
-        [HandleError]
         public virtual void DeleteSuspect(SuspectViewModel item)
         {
             this.ViewModel.Suspects.Remove(item);
             this.ViewModel.SelectedSuspect = null;
         }
 
-        [HandleError]
         public virtual void BatchSave()
         {
             var message = string.Format("Are you sure you want to save warrant?");
@@ -126,7 +127,7 @@ namespace CIS.UI.Features.Polices.Warrants
                     warrant = query.Value;
                 }
 
-                this.ViewModel.SerializeInto(warrant);
+                this.ViewModel.DeserializeInto(warrant);
 
                 transaction.Commit();
             }

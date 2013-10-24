@@ -16,6 +16,7 @@ using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Commons.Biometrics
 {
+    [HandleError]
     public class FingerScannerController : ControllerBase<FingerScannerViewModel>, DPFP.Capture.EventHandler
     {
         private readonly Capture _scanner;
@@ -31,9 +32,11 @@ namespace CIS.UI.Features.Commons.Biometrics
 
             this.ViewModel.Stop = new ReactiveCommand();
             this.ViewModel.Stop.Subscribe(x => Stop());
+            this.ViewModel.Stop.ThrownExceptions.Handle(this);
 
             this.ViewModel.Start = new ReactiveCommand();
             this.ViewModel.Start.Subscribe(x => Start());
+            this.ViewModel.Start.ThrownExceptions.Handle(this);
         }
 
         #region Routine Helpers
@@ -120,7 +123,6 @@ namespace CIS.UI.Features.Commons.Biometrics
 
         #region DPFP.Capture.EventHandler Members
 
-        [HandleError]
         public virtual void OnComplete(object captured, string readerSerialNumber, Sample sample)
         {
             DispatcherInvoke(() =>
@@ -131,31 +133,26 @@ namespace CIS.UI.Features.Commons.Biometrics
             });
         }
 
-        [HandleError]
         public virtual void OnFingerGone(object captured, string readerSerialNumber)
         {
             DispatcherInvoke(() => this.ViewModel.EventLogs.Insert(0, "The finger was removed from the fingerprint reader."));
         }
 
-        [HandleError]
         public virtual void OnFingerTouch(object capture, string readerSerialNumber)
         {
             DispatcherInvoke(() => this.ViewModel.EventLogs.Insert(0, "The fingerprint reader was touched."));
         }
 
-        [HandleError]
         public virtual void OnReaderConnect(object capture, string readerSerialNumber)
         {
             DispatcherInvoke(() => this.ViewModel.EventLogs.Insert(0, "The fingerprint reader was connected."));
         }
 
-        [HandleError]
         public virtual void OnReaderDisconnect(object capture, string readerSerialNumber)
         {
             DispatcherInvoke(() => this.ViewModel.EventLogs.Insert(0, "The fingerprint reader was disconnected."));
         }
 
-        [HandleError]
         public virtual void OnSampleQuality(object capture, string readerSerialNumber, CaptureFeedback captureFeedback)
         {
             DispatcherInvoke(() =>

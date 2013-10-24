@@ -8,14 +8,13 @@ using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 
 namespace CIS.UI.Features.Commons.Signatures
 {
+    [HandleError]
     public class SignatureController : ControllerBase<SignatureViewModel>
     {
         public SignatureController(SignatureViewModel viewModel) : base(viewModel) { }
 
-        [HandleError]
         public virtual void Capture() { }
 
-        [HandleError]
         public virtual void Clear()
         {
             //this.ViewModel.Strokes.Clear();

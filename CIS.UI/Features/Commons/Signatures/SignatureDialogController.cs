@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.UI.Utilities.Extentions;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
@@ -14,6 +15,7 @@ namespace CIS.UI.Features.Commons.Signatures
         {
             this.ViewModel.Accept = new ReactiveCommand();
             this.ViewModel.Accept.Subscribe(x => this.ViewModel.Close());
+            this.ViewModel.Accept.ThrownExceptions.Handle(this);
         }
     }
 }

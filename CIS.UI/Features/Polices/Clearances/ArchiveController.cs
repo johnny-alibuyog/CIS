@@ -7,6 +7,7 @@ using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
 using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
+using CIS.UI.Utilities.Extentions;
 using NHibernate;
 using NHibernate.Linq;
 using ReactiveUI;
@@ -14,6 +15,7 @@ using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Clearances
 {
+    [HandleError]
     public class ArchiveController : ControllerBase<ArchiveViewModel>
     {
         public ArchiveController(ArchiveViewModel viewModel) : base(viewModel)
@@ -22,16 +24,22 @@ namespace CIS.UI.Features.Polices.Clearances
 
             this.ViewModel.Search = new ReactiveCommand();
             this.ViewModel.Search.Subscribe(x => Search());
+            this.ViewModel.Search.ThrownExceptions.Handle(this);
 
             this.ViewModel.ViewItem = new ReactiveCommand();
             this.ViewModel.ViewItem.Subscribe(x => ViewItem((ArchiveItemViewModel)x));
+            this.ViewModel.ViewItem.ThrownExceptions.Handle(this);
 
-            this.ViewModel.ViewReport = new ReactiveCommand(this.ViewModel
-                .WhenAny(x => x.Items, x => x.Value != null && x.Value.Count > 0));
+            this.ViewModel.ViewReport = new ReactiveCommand(
+                this.ViewModel.WhenAny(
+                    x => x.Items, 
+                    x => x.Value != null && x.Value.Count > 0
+                )
+            );
             this.ViewModel.ViewReport.Subscribe(x => ViewReport());
+            this.ViewModel.ViewReport.ThrownExceptions.Handle(this);
         }
 
-        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -68,7 +76,6 @@ namespace CIS.UI.Features.Polices.Clearances
             }
         }
 
-        [HandleError]
         public virtual void ViewItem(ArchiveItemViewModel item)
         {
             var reportData = new ClearanceReportViewModel();
@@ -120,7 +127,6 @@ namespace CIS.UI.Features.Polices.Clearances
             dialog.ShowModal(this, "Clearance", reportData);
         }
 
-        [HandleError]
         public virtual void ViewReport()
         {
             var station = (Station)null;

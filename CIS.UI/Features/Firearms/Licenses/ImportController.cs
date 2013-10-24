@@ -5,11 +5,13 @@ using System.Windows;
 using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
+using CIS.UI.Utilities.Extentions;
 using ReactiveUI;
 using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Firearms.Licenses
 {
+    [HandleError]
     public class ImportController : ControllerBase<ImportViewModel>
     {
         private readonly BackgroundWorker _importWorker;
@@ -25,15 +27,17 @@ namespace CIS.UI.Features.Firearms.Licenses
 
             this.ViewModel.LookupPath = new ReactiveCommand();
             this.ViewModel.LookupPath.Subscribe(x => LookupPath());
+            this.ViewModel.LookupPath.ThrownExceptions.Handle(this);
 
             this.ViewModel.Reset = new ReactiveCommand();
             this.ViewModel.Reset.Subscribe(x => Reset());
+            this.ViewModel.Reset.ThrownExceptions.Handle(this);
 
             this.ViewModel.Import = new ReactiveCommand();
             this.ViewModel.Import.Subscribe(x => RunImportWorker());
+            this.ViewModel.Import.ThrownExceptions.Handle(this);
         }
 
-        [HandleError]
         public virtual void LookupPath()
         {
             var openDirectoryDialog = IoC.Container.Resolve<IOpenDirectoryDialogService>();
@@ -42,7 +46,6 @@ namespace CIS.UI.Features.Firearms.Licenses
                 this.ViewModel.SourcePath = result;
         }
 
-        [HandleError]
         public virtual void Reset()
         {
             var confirmed = this.MessageBox.Confirm("Do you want to reset?", "Import");
@@ -58,7 +61,6 @@ namespace CIS.UI.Features.Firearms.Licenses
             this.ViewModel.Status = string.Empty;
         }
 
-        [HandleError]
         public virtual void RunImportWorker()
         {
             if (!Directory.Exists(this.ViewModel.SourcePath))
@@ -74,7 +76,6 @@ namespace CIS.UI.Features.Firearms.Licenses
             _importWorker.RunWorkerAsync();
         }
 
-        [HandleError]
         public virtual void Import()
         {
             this.ViewModel.ImportStart = null;

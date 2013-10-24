@@ -41,6 +41,7 @@ namespace CIS.UI.Features.Polices.Clearances
         public ApplicationViewModel()
         {
             //_controller = new ApplicationController(this);
+            //var c = IoC.Container.Resolve<ControllerBase<ApplicationViewModel>>(new ViewModelDependency(this));
             _controller = IoC.Container.Resolve<ApplicationController>(new ViewModelDependency(this));
         }
     }

@@ -26,13 +26,12 @@ namespace CIS.UI.Utilities.Configurations
 
             this.Provider = new XmlFileConfigurationProvider<ApplicationConfiguration>()
             {
-                PropertiesToEncrypt = "MailserverPassword,ConnectionString,Database.Username,Database.Password",
+                //PropertiesToEncrypt = "MailserverPassword,ConnectionString,Database.Username,Database.Password",
                 EncryptionKey = "_secretive_",
                 XmlConfigurationFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ApplicationConfiguration.config")
             };
 
             this.Provider.Read(this);
-            //this.Provider.Write(this);
         }
     }
 }

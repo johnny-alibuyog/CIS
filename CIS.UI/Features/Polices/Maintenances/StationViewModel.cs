@@ -49,7 +49,7 @@ namespace CIS.UI.Features.Polices.Maintenances
         {
             this.Address = new AddressViewModel();
 
-            this.WhenAny(x => x.Address.IsValid, x => true)
+            this.WhenAnyValue(x => x.Address.IsValid)
                 .Subscribe(_ => this.Revalidate());
 
             //_controller = new StationController(this);
@@ -98,7 +98,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             return null;
         }
 
-        public override object SerializeInto(object instance)
+        public override object DeserializeInto(object instance)
         {
             if (instance == null)
                 return null;
@@ -122,7 +122,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 target.Office = source.Office;
                 target.Location = source.Location;
                 target.ClearanceValidityInDays = source.ClearanceValidityInDays;
-                target.Address = (Address)source.Address.SerializeInto(new Address());
+                target.Address = (Address)source.Address.DeserializeInto(new Address());
                 //target.Officers = source.Officers
                 //    .Select(x => x.SerializeInto(new Officer()) as Officer)
                 //    .ToReactiveColletion();

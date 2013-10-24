@@ -16,6 +16,7 @@ using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Firearms.Licenses
 {
+    [HandleError]
     public class LicenseListController : ControllerBase<LicenseListViewModel>
     {
         public LicenseListController(LicenseListViewModel viewModel)
@@ -35,15 +36,19 @@ namespace CIS.UI.Features.Firearms.Licenses
                 )
             );
             this.ViewModel.Search.Subscribe(x => Search());
+            this.ViewModel.Search.ThrownExceptions.Handle(this);
 
             this.ViewModel.Create = new ReactiveCommand();
             this.ViewModel.Create.Subscribe(x => Create());
+            this.ViewModel.Create.ThrownExceptions.Handle(this);
 
             this.ViewModel.Edit = new ReactiveCommand();
             this.ViewModel.Edit.Subscribe(x => { Edit((LicenseListItemViewModel)x); });
+            this.ViewModel.Edit.ThrownExceptions.Handle(this);
 
             this.ViewModel.Delete = new ReactiveCommand();
             this.ViewModel.Delete.Subscribe(x => { Delete((LicenseListItemViewModel)x); });
+            this.ViewModel.Delete.ThrownExceptions.Handle(this);
         }
 
         private LicenseViewModel New()
@@ -82,7 +87,6 @@ namespace CIS.UI.Features.Firearms.Licenses
             return viewModel;
         }
 
-        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -117,17 +121,18 @@ namespace CIS.UI.Features.Firearms.Licenses
             }
         }
 
-        [HandleError]
         public virtual void Create()
         {
             var dialog = new DialogService<LicenseView, LicenseViewModel>();
-            dialog.ViewModel = New();
+            dialog.ViewModel.SerializeWith(New());
+
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
             dialog.ViewModel.Save.Subscribe(x => Insert(dialog.ViewModel));
+            dialog.ViewModel.Save.ThrownExceptions.Handle(this);
+
             dialog.ShowModal(this, "Create License", null);
         }
 
-        [HandleError]
         public virtual void Insert(LicenseViewModel value)
         {
             var message = string.Format("Are you sure you want to save license?");
@@ -140,7 +145,7 @@ namespace CIS.UI.Features.Firearms.Licenses
             {
                 var license = new License();
 
-                value.SerializeInto(license);
+                value.DeserializeInto(license);
 
                 session.Save(license);
                 transaction.Commit();
@@ -157,19 +162,20 @@ namespace CIS.UI.Features.Firearms.Licenses
             value.Close();
         }
 
-        [HandleError]
         public virtual void Edit(LicenseListItemViewModel item)
         {
             this.ViewModel.SelectedItem = item;
 
             var dialog = new DialogService<LicenseView, LicenseViewModel>();
-            dialog.ViewModel = Get(item.Id);
+            dialog.ViewModel.SerializeWith(Get(item.Id));
+
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
             dialog.ViewModel.Save.Subscribe(x => Update(dialog.ViewModel));
+            dialog.ViewModel.Save.ThrownExceptions.Handle(this);
+
             dialog.ShowModal(this, "Edit License", null);
         }
 
-        [HandleError]
         public virtual void Update(LicenseViewModel value)
         {
             var message = string.Format("Are you sure you want to save license?");
@@ -182,7 +188,7 @@ namespace CIS.UI.Features.Firearms.Licenses
             {
                 var license = session.Get<License>(value.Id);
 
-                value.SerializeInto(license);
+                value.DeserializeInto(license);
 
                 session.Save(license);
                 transaction.Commit();
@@ -199,7 +205,6 @@ namespace CIS.UI.Features.Firearms.Licenses
             value.Close();
         }
 
-        [HandleError]
         public virtual void Delete(LicenseListItemViewModel item)
         {
             this.ViewModel.SelectedItem = item;

@@ -56,15 +56,15 @@ namespace CIS.UI.Features.Polices.Warrants
             this.Aliases = new ReactiveList<string>();
             this.Occupations = new ReactiveList<string>();
 
-            this.WhenAny(
+            this.WhenAnyValue(
                 x => x.Person.IsValid,
                 x => x.Address.IsValid,
                 (isPersonValid, isAddressValid) => true
             )
             .Subscribe(x => this.Revalidate());
 
-            //_controller = new SuspectController(this);
-            _controller = IoC.Container.Resolve<SuspectController>(new ViewModelDependency(this));
+            _controller = new SuspectController(this);
+            //_controller = IoC.Container.Resolve<SuspectController>(new ViewModelDependency(this));
         }
 
         public override object SerializeWith(object instance)
@@ -104,7 +104,7 @@ namespace CIS.UI.Features.Polices.Warrants
             return null;
         }
 
-        public override object SerializeInto(object instance)
+        public override object DeserializeInto(object instance)
         {
             if (instance == null)
                 return null;
@@ -124,9 +124,9 @@ namespace CIS.UI.Features.Polices.Warrants
 
                 target.Id = source.Id;
                 target.ArrestStatus = source.ArrestStatus;
-                target.Person = (Person)source.Person.SerializeInto(new Person());
-                target.PhysicalAttributes = (PhysicalAttributes)source.PhysicalAttributes.SerializeInto(new PhysicalAttributes());
-                target.Address = (Address)source.Address.SerializeInto(new Address());
+                target.Person = (Person)source.Person.DeserializeInto(new Person());
+                target.PhysicalAttributes = (PhysicalAttributes)source.PhysicalAttributes.DeserializeInto(new PhysicalAttributes());
+                target.Address = (Address)source.Address.DeserializeInto(new Address());
                 target.Aliases = source.Aliases;
                 target.Occupations = source.Occupations;
 

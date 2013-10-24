@@ -54,7 +54,7 @@ namespace CIS.UI.Features.Commons.Persons
             return null;
         }
 
-        public override object SerializeInto(object instance)
+        public override object DeserializeInto(object instance)
         {
             if (instance == null)
                 return null;

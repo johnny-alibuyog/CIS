@@ -15,26 +15,27 @@ using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Firearms.Maintenances
 {
+    [HandleError]
     public class KindListController : ControllerBase<KindListViewModel>
     {
         public KindListController(KindListViewModel viewModel)
             : base(viewModel)
         {
-            this.ViewModel.ObservableForProperty(x => x.NewItem)
-                .Subscribe(x =>
-                {
-                    var matchedItem = this.ViewModel.Items
-                        .Where(o => o.Name.Contains(this.ViewModel.NewItem))
-                        .FirstOrDefault();
+            this.ViewModel.ObservableForProperty(x => x.NewItem).Subscribe(x =>
+            {
+                var matchedItem = this.ViewModel.Items
+                    .Where(o => o.Name.Contains(this.ViewModel.NewItem))
+                    .FirstOrDefault();
 
-                    this.ViewModel.SelectedItem = matchedItem;
-                });
+                this.ViewModel.SelectedItem = matchedItem;
+            });
 
             this.ViewModel.Load = new ReactiveCommand();
             this.ViewModel.Load.Subscribe(x => Populate());
+            this.ViewModel.Load.ThrownExceptions.Handle(this);
 
-            this.ViewModel.Insert = new ReactiveCommand(this.ViewModel
-                .WhenAny(
+            this.ViewModel.Insert = new ReactiveCommand(
+                this.ViewModel.WhenAny(
                     x => x.NewItem,
                     x =>
                         !string.IsNullOrWhiteSpace(x.Value) &&
@@ -42,22 +43,24 @@ namespace CIS.UI.Features.Firearms.Maintenances
                 )
             );
             this.ViewModel.Insert.Subscribe(x => Insert());
+            this.ViewModel.Insert.ThrownExceptions.Handle(this);
 
             this.ViewModel.Delete = new ReactiveCommand();
             this.ViewModel.Delete.Subscribe(x => Delete((KindViewModel)x));
+            this.ViewModel.Delete.ThrownExceptions.Handle(this);
 
-            this.ViewModel.Search = new ReactiveCommand(this.ViewModel
-                .WhenAny(
+            this.ViewModel.Search = new ReactiveCommand(
+                this.ViewModel.WhenAny(
                     x => x.NewItem,
                     x => !string.IsNullOrWhiteSpace(x.Value)
                 )
             );
             this.ViewModel.Search.Subscribe(x => Search());
+            this.ViewModel.Search.ThrownExceptions.Handle(this);
 
             this.Populate();
         }
 
-        [HandleError]
         public virtual void Populate()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -70,7 +73,6 @@ namespace CIS.UI.Features.Firearms.Maintenances
             }
         }
 
-        [HandleError]
         public virtual void Insert()
         {
             var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
@@ -103,7 +105,6 @@ namespace CIS.UI.Features.Firearms.Maintenances
             this.ViewModel.NewItem = string.Empty;
         }
 
-        [HandleError]
         public virtual void Delete(KindViewModel item)
         {
             var message = string.Format("Do you want to delete {0}?", item.Name);
@@ -124,7 +125,6 @@ namespace CIS.UI.Features.Firearms.Maintenances
             this.ViewModel.SelectedItem = null;
         }
 
-        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())

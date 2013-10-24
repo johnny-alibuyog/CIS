@@ -11,7 +11,6 @@ using NHibernate.Context;
 using NHibernate.Validator.Engine;
 using Ninject;
 using Ninject.Modules;
-using Ninject.Extensions.Interception;
 using CIS.UI.Utilities.Configurations;
 
 namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Modules

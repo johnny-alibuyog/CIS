@@ -23,7 +23,7 @@ namespace CIS.UI.Features
             throw new NotImplementedException();
         }
 
-        public virtual object SerializeInto(object instance)
+        public virtual object DeserializeInto(object instance)
         {
             throw new NotImplementedException();
         }
@@ -93,7 +93,7 @@ namespace CIS.UI.Features
 
         public virtual IObservable<bool> IsValidObservable()
         {
-            return this.WhenAny(x => x.IsValid, x => x.Value);
+            return this.WhenAnyValue(x => x.IsValid);
         }
         
         #endregion

@@ -18,6 +18,7 @@ using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Maintenances
 {
+    [HandleError]
     public class OfficerListController : ControllerBase<OfficerListViewModel>
     {
         public OfficerListController(OfficerListViewModel viewModel)
@@ -27,15 +28,19 @@ namespace CIS.UI.Features.Polices.Maintenances
 
             this.ViewModel.Search = new ReactiveCommand();
             this.ViewModel.Search.Subscribe(x => Search());
+            this.ViewModel.Search.ThrownExceptions.Handle(this);
 
             this.ViewModel.Create = new ReactiveCommand();
             this.ViewModel.Create.Subscribe(x => Create());
+            this.ViewModel.Create.ThrownExceptions.Handle(this);
 
             this.ViewModel.Edit = new ReactiveCommand();
-            this.ViewModel.Edit.Subscribe(x => { Edit((OfficerListItemViewModel)x); });
+            this.ViewModel.Edit.Subscribe(x => Edit((OfficerListItemViewModel)x));
+            this.ViewModel.Edit.ThrownExceptions.Handle(this);
 
             this.ViewModel.Delete = new ReactiveCommand();
-            this.ViewModel.Delete.Subscribe(x => { Delete((OfficerListItemViewModel)x); });
+            this.ViewModel.Delete.Subscribe(x => Delete((OfficerListItemViewModel)x));
+            this.ViewModel.Delete.ThrownExceptions.Handle(this);
 
             this.Search();
         }
@@ -87,7 +92,6 @@ namespace CIS.UI.Features.Polices.Maintenances
             return viewModel;
         }
 
-        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -120,19 +124,22 @@ namespace CIS.UI.Features.Polices.Maintenances
             }
         }
 
-        [HandleError]
         public virtual void Create()
         {
             var dialog = new DialogService<OfficerView, OfficerViewModel>();
-            dialog.ViewModel = New();
+            dialog.ViewModel.SerializeWith(New());
+
             dialog.ViewModel.CaptureSignature = new ReactiveCommand();
             dialog.ViewModel.CaptureSignature.Subscribe(x => CaptureSignature(dialog.ViewModel));
+            dialog.ViewModel.CaptureSignature.ThrownExceptions.Handle(this);
+
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
             dialog.ViewModel.Save.Subscribe(x => Insert(dialog.ViewModel));
+            dialog.ViewModel.Save.ThrownExceptions.Handle(this);
+
             dialog.ShowModal(this, "Create Officer", null);
         }
 
-        [HandleError]
         public virtual void Insert(OfficerViewModel value)
         {
             var message = string.Format("Are you sure you want to save officer {0} {1}.", value.Rank.Name, value.Person.FullName);
@@ -167,7 +174,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                     station.AddOfficer(officer);
                 }
 
-                value.SerializeInto(officer);
+                value.DeserializeInto(officer);
 
                 session.SaveOrUpdate(station);
                 transaction.Commit();
@@ -176,6 +183,8 @@ namespace CIS.UI.Features.Polices.Maintenances
 
                 this.SessionProvider.ReleaseSharedSession();
             }
+
+            this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
 
             this.MessageBox.Inform("Save has been successfully completed.");
 
@@ -192,21 +201,24 @@ namespace CIS.UI.Features.Polices.Maintenances
             value.Close();
         }
 
-        [HandleError]
         public virtual void Edit(OfficerListItemViewModel item)
         {
             this.ViewModel.SelectedItem = item;
 
             var dialog = new DialogService<OfficerView, OfficerViewModel>();
-            dialog.ViewModel = Get(item.Id);
+            dialog.ViewModel.SerializeWith(Get(item.Id));
+
             dialog.ViewModel.CaptureSignature = new ReactiveCommand();
             dialog.ViewModel.CaptureSignature.Subscribe(x => CaptureSignature(dialog.ViewModel));
+            dialog.ViewModel.CaptureSignature.ThrownExceptions.Handle(this);
+
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
             dialog.ViewModel.Save.Subscribe(x => Update(dialog.ViewModel));
+            dialog.ViewModel.Save.ThrownExceptions.Handle(this);
+
             dialog.ShowModal(this, "Edit Officer", null);
         }
 
-        [HandleError]
         public virtual void Update(OfficerViewModel value)
         {
             var message = string.Format("Are you sure you want to save officer {0} {1}.", value.Rank, value.Person.FullName);
@@ -223,12 +235,14 @@ namespace CIS.UI.Features.Polices.Maintenances
                     .ToFutureValue();
 
                 var officer = query.Value;
-                value.SerializeInto(query.Value);
+                value.DeserializeInto(query.Value);
 
                 transaction.Commit();
 
                 this.SessionProvider.ReleaseSharedSession();
             }
+
+            this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Officer"));
 
             this.MessageBox.Inform("Save has been successfully completed.");
 
@@ -242,7 +256,6 @@ namespace CIS.UI.Features.Polices.Maintenances
             value.Close();
         }
 
-        [HandleError]
         public virtual void Delete(OfficerListItemViewModel item)
         {
             try

@@ -30,6 +30,7 @@ namespace CIS.UI.Features
 
         private bool IsValueDefault(T value)
         {
+            //return EqualityComparer<T>.Default.Equals(value, default(T));
             return EqualityComparer<T>.Default.Equals(value, default(T));
         }
 
@@ -43,7 +44,7 @@ namespace CIS.UI.Features
             if (IsValueDefault(that.Id) && IsValueDefault(this.Id))
                 return object.ReferenceEquals(that, this);
 
-            return (that.Id.Equals(this.Id));
+            return EqualityComparer<T>.Default.Equals(that.Id, this.Id); //(that.Id == this.Id);
         }
 
         public override int GetHashCode()

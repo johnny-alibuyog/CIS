@@ -10,6 +10,7 @@ using CIS.Core.Entities.Firearms;
 using CIS.Core.Entities.Memberships;
 using CIS.Core.Entities.Polices;
 using CIS.Core.Utilities.Extentions;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Cameras;
@@ -27,6 +28,7 @@ using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Clearances
 {
+    [HandleError]
     public class ApplicationController : ControllerBase<ApplicationViewModel>
     {
         public ApplicationController(ApplicationViewModel viewModel)
@@ -43,8 +45,8 @@ namespace CIS.UI.Features.Polices.Clearances
                         PopulateLookups();
                 });
 
-            this.ViewModel.Previous = new ReactiveCommand(this.ViewModel
-                .WhenAny(
+            this.ViewModel.Previous = new ReactiveCommand(
+                this.ViewModel.WhenAny(
                     x => x.CurrentViewModel,
                     x => x.CurrentViewModel.IsValid,
                     (current, isValid) =>
@@ -53,12 +55,14 @@ namespace CIS.UI.Features.Polices.Clearances
                             return false;
 
                         return true;
-                    })
-                );
+                    }
+                )
+            );
             this.ViewModel.Previous.Subscribe(x => Previous());
+            this.ViewModel.Previous.ThrownExceptions.Handle(this);
 
-            this.ViewModel.Next = new ReactiveCommand(this.ViewModel
-                .WhenAny(
+            this.ViewModel.Next = new ReactiveCommand(
+                this.ViewModel.WhenAny(
                     x => x.CurrentViewModel,
                     x => x.CurrentViewModel.IsValid,
                     (current, isValid) =>
@@ -70,15 +74,18 @@ namespace CIS.UI.Features.Polices.Clearances
                             return false;
 
                         return true;
-                    })
-                );
+                    }
+                )
+            );
             this.ViewModel.Next.Subscribe(x => Next());
+            this.ViewModel.Next.ThrownExceptions.Handle(this);
 
             this.ViewModel.Reset = new ReactiveCommand();
             this.ViewModel.Reset.Subscribe(x => Reset());
+            this.ViewModel.Reset.ThrownExceptions.Handle(this);
 
-            this.ViewModel.Release = new ReactiveCommand(this.ViewModel
-                .WhenAny(
+            this.ViewModel.Release = new ReactiveCommand(
+                this.ViewModel.WhenAny(
                     x => x.CurrentViewModel,
                     x => x.CurrentViewModel.IsValid,
                     (current, isValid) =>
@@ -93,6 +100,7 @@ namespace CIS.UI.Features.Polices.Clearances
                     })
                 );
             this.ViewModel.Release.Subscribe(x => Release());
+            this.ViewModel.Release.ThrownExceptions.Handle(this);
         }
 
         #region Routine Helpers
@@ -112,11 +120,18 @@ namespace CIS.UI.Features.Polices.Clearances
 
         private void InitializeViews()
         {
-            this.ViewModel.PersonalInformation = new PersonalInformationViewModel();
-            this.ViewModel.Camera = new CameraViewModel();
-            this.ViewModel.FingerScanner = new FingerScannerViewModel();
-            this.ViewModel.Signature = new SignatureViewModel();
-            this.ViewModel.Summary = new SummaryViewModel();
+            //this.ViewModel.PersonalInformation = new PersonalInformationViewModel();
+            //this.ViewModel.Camera = new CameraViewModel();
+            //this.ViewModel.FingerScanner = new FingerScannerViewModel();
+            //this.ViewModel.Signature = new SignatureViewModel();
+            //this.ViewModel.Summary = new SummaryViewModel();
+
+            this.ViewModel.PersonalInformation = IoC.Container.Resolve<PersonalInformationViewModel>();
+            this.ViewModel.Camera = IoC.Container.Resolve<CameraViewModel>();
+            this.ViewModel.FingerScanner = IoC.Container.Resolve<FingerScannerViewModel>();
+            this.ViewModel.Signature = IoC.Container.Resolve<SignatureViewModel>();
+            this.ViewModel.Summary = IoC.Container.Resolve<SummaryViewModel>();
+
 
             this.ViewModel.ViewModels = new List<ViewModelBase>();
 
@@ -389,8 +404,8 @@ namespace CIS.UI.Features.Polices.Clearances
                 if (clearance == null)
                     clearance = new Clearance();
 
-                clearance.Applicant.Person = (Person)this.ViewModel.PersonalInformation.Person.SerializeInto(new Person());
-                clearance.Applicant.Address = (Address)this.ViewModel.PersonalInformation.Address.SerializeInto(new Address());
+                clearance.Applicant.Person = (Person)this.ViewModel.PersonalInformation.Person.DeserializeInto(new Person());
+                clearance.Applicant.Address = (Address)this.ViewModel.PersonalInformation.Address.DeserializeInto(new Address());
                 clearance.Applicant.Picture.Image = this.ViewModel.Camera.Picture.ToImage();
                 clearance.Applicant.Signature.Image = this.ViewModel.Signature.SignatureImage.ToImage();
                 clearance.Applicant.FingerPrint.RightThumb.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightThumb].ToImage();
@@ -457,7 +472,6 @@ namespace CIS.UI.Features.Polices.Clearances
 
         #endregion
 
-        [HandleError]
         public virtual void Reset()
         {
             if (this.ViewModel.Camera != null)
@@ -470,7 +484,6 @@ namespace CIS.UI.Features.Polices.Clearances
             PopulateLookups();
         }
 
-        [HandleError]
         public virtual void Previous()
         {
             var currentIndex = this.ViewModel.ViewModels.IndexOf(this.ViewModel.CurrentViewModel);
@@ -479,8 +492,7 @@ namespace CIS.UI.Features.Polices.Clearances
             this.InitializeDevices();
         }
 
-        [HandleError(Order = 1)]
-        [Authorize(Roles = new Role[] { Role.BarangayAdministartor }, Order = 0)]
+        [Authorize(Roles = new Role[] { Role.PoliceEncoder })]
         public virtual void Next()
         {
             if (this.ViewModel.CurrentViewModel.IsValid == false)
@@ -499,7 +511,6 @@ namespace CIS.UI.Features.Polices.Clearances
             }
         }
 
-        [HandleError]
         public virtual void Release()
         {
             var confirmed = this.MessageBox.Confirm("Do you want to release clearance.", "Clearance");

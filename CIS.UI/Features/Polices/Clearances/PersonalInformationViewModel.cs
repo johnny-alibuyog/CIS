@@ -69,7 +69,7 @@ namespace CIS.UI.Features.Polices.Clearances
             this.Person = new PersonViewModel();
             this.Address = new AddressViewModel();
 
-            this.WhenAny(
+            this.WhenAnyValue(
                 x => x.Person.IsValid,
                 x => x.Address.IsValid,
                 (isPersonValid, isAddressValid) => true

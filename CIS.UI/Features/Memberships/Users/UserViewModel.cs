@@ -41,11 +41,11 @@ namespace CIS.UI.Features.Memberships.Users
         {
             this.Person = new PersonViewModel();
 
-            this.WhenAny(x => x.Person.IsValid, x => true)
+            this.WhenAnyValue(x => x.Person.IsValid)
                 .Subscribe(x => this.Revalidate());
         }
 
-        public override object SerializeInto(object instance)
+        public override object DeserializeInto(object instance)
         {
             if (instance == null)
                 return null;
@@ -66,7 +66,7 @@ namespace CIS.UI.Features.Memberships.Users
                 target.Username = source.Username;
                 target.Password = source.Password;
                 target.Email = source.Email;
-                target.Person = (Person)source.Person.SerializeInto(new Person());
+                target.Person = (Person)source.Person.DeserializeInto(new Person());
                 target.Roles = source.Roles.Where(x => x.IsChecked).Select(x => x.Role);
                 return target;
             }

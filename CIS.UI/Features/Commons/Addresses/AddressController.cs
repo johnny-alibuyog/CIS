@@ -16,6 +16,7 @@ using ReactiveUI;
 
 namespace CIS.UI.Features.Commons.Addresses
 {
+    [HandleError]
     public class AddressController : ControllerBase<AddressViewModel>
     {
         public AddressController(AddressViewModel viewModel)
@@ -31,8 +32,7 @@ namespace CIS.UI.Features.Commons.Addresses
                 .Subscribe(x => PopulateBarangays(x.Value));
         }
 
-        [HandleError]
-        private void PopulateProvinces()
+        public virtual void PopulateProvinces()
         {
             this.ViewModel.Provinces = null;
             this.ViewModel.Cities = null;
@@ -58,7 +58,6 @@ namespace CIS.UI.Features.Commons.Addresses
                 .ToReactiveList();
         }
 
-        [HandleError]
         public virtual void PopulateCities(Lookup<Guid> provinceLookup)
         {
             this.ViewModel.Cities = null;
@@ -90,7 +89,6 @@ namespace CIS.UI.Features.Commons.Addresses
                 .ToReactiveList();
         }
 
-        [HandleError]
         public virtual void PopulateBarangays(Lookup<Guid> cityLookup)
         {
             this.ViewModel.Barangay = null;
@@ -121,7 +119,6 @@ namespace CIS.UI.Features.Commons.Addresses
                 .ToReactiveList();
         }
 
-        [HandleError]
         public virtual void Import()
         {
             Func<string, string, bool> IsEqual = (item1, item2) => string.Compare(item1, item2, true) == 0;

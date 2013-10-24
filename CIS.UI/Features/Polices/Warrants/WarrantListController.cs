@@ -9,6 +9,7 @@ using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.CommonDialogs;
+using CIS.UI.Utilities.Extentions;
 using FirstFloor.ModernUI.Windows.Controls;
 using NHibernate;
 using NHibernate.Linq;
@@ -17,12 +18,13 @@ using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Warrants
 {
+    [HandleError]
     public class WarrantListController : ControllerBase<WarrantListViewModel>
     {
         public WarrantListController(WarrantListViewModel viewModel) : base(viewModel)
         {
 
-            ViewModel.Search = new ReactiveCommand(
+            this.ViewModel.Search = new ReactiveCommand(
                 this.ViewModel.WhenAny(
                     x => x.Criteria.FirstName,
                     x => x.Criteria.MiddleName,
@@ -33,19 +35,22 @@ namespace CIS.UI.Features.Polices.Warrants
                         !string.IsNullOrWhiteSpace(lastName.Value)
                 )
             );
-            ViewModel.Search.Subscribe(x => Search());
+            this.ViewModel.Search.Subscribe(x => Search());
+            this.ViewModel.Search.ThrownExceptions.Handle(this);
 
-            ViewModel.Create = new ReactiveCommand();
-            ViewModel.Create.Subscribe(x => Create());
+            this.ViewModel.Create = new ReactiveCommand();
+            this.ViewModel.Create.Subscribe(x => Create());
+            this.ViewModel.Create.ThrownExceptions.Handle(this);
 
-            ViewModel.Edit = new ReactiveCommand();
-            ViewModel.Edit.Subscribe(x => { Edit((WarrantListItemViewModel)x); });
+            this.ViewModel.Edit = new ReactiveCommand();
+            this.ViewModel.Edit.Subscribe(x => Edit((WarrantListItemViewModel)x));
+            this.ViewModel.Edit.ThrownExceptions.Handle(this);
 
-            ViewModel.Delete = new ReactiveCommand();
-            ViewModel.Delete.Subscribe(x => { Delete((WarrantListItemViewModel)x); });
+            this.ViewModel.Delete = new ReactiveCommand();
+            this.ViewModel.Delete.Subscribe(x => Delete((WarrantListItemViewModel)x));
+            this.ViewModel.Delete.ThrownExceptions.Handle(this);
         }
 
-        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -83,7 +88,6 @@ namespace CIS.UI.Features.Polices.Warrants
             }
         }
 
-        [HandleError]
         public virtual void Create()
         {
             var dialog = new DialogService<WarrantView, WarrantViewModel>();
@@ -92,7 +96,6 @@ namespace CIS.UI.Features.Polices.Warrants
                 this.Search();
         }
 
-        [HandleError]
         public virtual void Edit(WarrantListItemViewModel item)
         {
             var dialog = new DialogService<WarrantView, WarrantViewModel>();
@@ -102,7 +105,6 @@ namespace CIS.UI.Features.Polices.Warrants
                 this.Search();
         }
 
-        [HandleError]
         public virtual void Delete(WarrantListItemViewModel item)
         {
             this.ViewModel.SelectedItem = item;

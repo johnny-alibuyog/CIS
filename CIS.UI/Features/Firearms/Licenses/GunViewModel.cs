@@ -28,9 +28,9 @@ namespace CIS.UI.Features.Firearms.Licenses
         [NotNull]
         public virtual Lookup<Guid> Make { get; set; }
 
-        public virtual IReactiveCollection<Lookup<Guid>> Kinds { get; set; }
+        public virtual IReactiveList<Lookup<Guid>> Kinds { get; set; }
 
-        public virtual IReactiveCollection<Lookup<Guid>> Makes { get; set; }
+        public virtual IReactiveList<Lookup<Guid>> Makes { get; set; }
 
         public override object SerializeWith(object instance)
         {
@@ -47,6 +47,8 @@ namespace CIS.UI.Features.Firearms.Licenses
                 target.SerialNumber = source.SerialNumber;
                 target.Kind = source.Kind;
                 target.Make = source.Make;
+                target.Kinds = new ReactiveList<Lookup<Guid>>(source.Kinds);
+                target.Makes = new ReactiveList<Lookup<Guid>>(source.Makes);
 
                 return target;
             }
@@ -67,7 +69,7 @@ namespace CIS.UI.Features.Firearms.Licenses
             return null;
         }
 
-        public override object SerializeInto(object instance)
+        public override object DeserializeInto(object instance)
         {
             if (instance == null)
                 return null;

@@ -3,7 +3,6 @@
   <metadata>
     <id>Ninject.Extensions.Interception</id>
     <version>3.0.0.8</version>
-    <title>Ninject.Extensions.Interception</title>
     <authors>Ninject Project Contributors</authors>
     <owners>Ninject Project Contributors</owners>
     <licenseUrl>https://github.com/ninject/ninject.extensions.interception/raw/master/LICENSE.txt</licenseUrl>
@@ -11,9 +10,6 @@
     <iconUrl>https://github.com/ninject/ninject/raw/master/logos/Ninject-Logo32.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Interception extension for Ninject</description>
-    <releaseNotes />
-    <copyright />
-    <language />
     <tags>Ninject ioc di interception aop dynamicproxy</tags>
     <dependencies>
       <dependency id="Ninject" version="[3.0.0.0, 3.1.0.0)" />

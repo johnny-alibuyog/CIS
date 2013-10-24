@@ -17,7 +17,7 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual WarrantListItemViewModel SelectedItem { get; set; }
 
-        public virtual IReactiveCollection<WarrantListItemViewModel> Items { get; set; }
+        public virtual IReactiveList<WarrantListItemViewModel> Items { get; set; }
 
         public virtual IReactiveCommand Search { get; set; }
 

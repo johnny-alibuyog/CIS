@@ -49,13 +49,12 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual IReactiveCommand BatchSave { get; set; }
 
-
         public WarrantViewModel()
         {
             this.IssuedAt = new AddressViewModel();
             this.Suspects = new ReactiveList<SuspectViewModel>();
 
-            this.WhenAny(x => x.IssuedAt, x => true)
+            this.WhenAnyValue(x => x.IssuedAt)
                 .Subscribe(x => this.Revalidate());
 
             //_controller = new WarrantController(this);
@@ -109,7 +108,7 @@ namespace CIS.UI.Features.Polices.Warrants
             return null;
         }
 
-        public override object SerializeInto(object instance)
+        public override object DeserializeInto(object instance)
         {
             if (instance == null)
                 return null;
@@ -134,9 +133,9 @@ namespace CIS.UI.Features.Polices.Warrants
                 target.BailAmount = source.BailAmount;
                 target.IssuedOn = source.IssuedOn;
                 target.IssuedBy = source.IssuedBy;
-                target.IssuedAt = (Address)source.IssuedAt.SerializeInto(new Address());
+                target.IssuedAt = (Address)source.IssuedAt.DeserializeInto(new Address());
                 target.Suspects = source.Suspects
-                    .Select(x => (Suspect)x.SerializeInto(new Suspect()))
+                    .Select(x => (Suspect)x.DeserializeInto(new Suspect()))
                     .ToList();
 
                 return target;

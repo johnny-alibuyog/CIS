@@ -9,6 +9,6 @@ namespace CIS.UI.Features.Commons.Addresses
 {
     public class CityLookup : Lookup<Guid>
     {
-        public virtual IReactiveCollection<BarangayLookup> Barangays { get; set; }
+        public virtual IReactiveList<BarangayLookup> Barangays { get; set; }
     }
 }

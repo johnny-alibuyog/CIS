@@ -1,0 +1,41 @@
+﻿<local:DialogBase x:Class="CIS.UI.Features.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:CIS.UI.Features"
+        Title="Window1" SizeToContent="WidthAndHeight">
+    <StackPanel Style="{StaticResource ContentRoot}">
+        <StackPanel Orientation="Horizontal" Margin="20, 10, 20, 0">
+            <Label Content="Text1:" />
+            <Label Margin="10" />
+            <TextBox Text="{Binding Path=Text1, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="20, 10, 20, 0">
+            <Label Content="Text2:" />
+            <Label Margin="10" />
+            <TextBox Text="{Binding Path=Text2, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="20, 10, 20, 0">
+            <Label Content="Text3:" />
+            <Label Margin="10" />
+            <TextBox Text="{Binding Path=Text3, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="20, 10, 20, 0">
+            <Label Content="Text4:" />
+            <Label Margin="10" />
+            <TextBox Text="{Binding Path=Child.ChildText1, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="20, 10, 20, 0">
+            <Label Content="Text5:" />
+            <Label Margin="10" />
+            <TextBox Text="{Binding Path=Child.ChildText2, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="20, 10, 20, 0">
+            <Label Content="Text6:" />
+            <Label Margin="10" />
+            <TextBox Text="{Binding Path=Child.ChildText3, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="20, 10, 20, 20">
+            <Button Content="Submit" Command="{Binding Path=Submit}" />
+        </StackPanel>
+    </StackPanel>
+</local:DialogBase>

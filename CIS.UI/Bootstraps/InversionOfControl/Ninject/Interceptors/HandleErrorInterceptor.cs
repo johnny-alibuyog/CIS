@@ -27,11 +27,6 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors
             }
             catch (Exception ex)
             {
-                //var x = (ControllerBase<>)invocation.Request.Proxy;
-                //if (invocation.Request.Method.DeclaringType == typeof(ControllerBase<>))
-                //{ 
-                //}
-                //else
                 _messageBox.Warn(ex.Message, ex);
             }
         }

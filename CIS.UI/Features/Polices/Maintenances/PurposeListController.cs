@@ -15,6 +15,7 @@ using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Maintenances
 {
+    [HandleError]
     public class PurposeListController : ControllerBase<PurposeListViewModel>
     {
         public PurposeListController(PurposeListViewModel viewModel) : base(viewModel)
@@ -30,9 +31,10 @@ namespace CIS.UI.Features.Polices.Maintenances
 
             this.ViewModel.Load = new ReactiveCommand();
             this.ViewModel.Load.Subscribe(x => Load());
+            this.ViewModel.Load.ThrownExceptions.Handle(this);
 
-            this.ViewModel.Insert = new ReactiveCommand(this.ViewModel
-                .WhenAny(
+            this.ViewModel.Insert = new ReactiveCommand(
+                this.ViewModel.WhenAny(
                     x => x.NewItem,
                     x =>
                         !string.IsNullOrWhiteSpace(x.Value) &&
@@ -40,22 +42,24 @@ namespace CIS.UI.Features.Polices.Maintenances
                 )
             );
             this.ViewModel.Insert.Subscribe(x => Insert());
+            this.ViewModel.Insert.ThrownExceptions.Handle(this);
 
             this.ViewModel.Delete = new ReactiveCommand();
             this.ViewModel.Delete.Subscribe(x => Delete((PurposeViewModel)x));
+            this.ViewModel.Delete.ThrownExceptions.Handle(this);
 
-            this.ViewModel.Search = new ReactiveCommand(this.ViewModel
-                .WhenAny(
+            this.ViewModel.Search = new ReactiveCommand(
+                this.ViewModel.WhenAny(
                     x => x.NewItem,
                     x => !string.IsNullOrWhiteSpace(x.Value)
                 )
             );
             this.ViewModel.Search.Subscribe(x => Search());
+            this.ViewModel.Search.ThrownExceptions.Handle(this);
 
-            Load();
+            this.Load();
         }
 
-        [HandleError]
         public virtual void Load()
         {
             using (var session = this.SessionFactory.OpenSession())
@@ -76,7 +80,6 @@ namespace CIS.UI.Features.Polices.Maintenances
             }
         }
 
-        [HandleError]
         public virtual void Insert()
         {
             var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
@@ -111,7 +114,6 @@ namespace CIS.UI.Features.Polices.Maintenances
             this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Purpose"));
         }
 
-        [HandleError]
         public virtual void Delete(PurposeViewModel item)
         {
             var message = string.Format("Do you want to delete {0}?", item.Name);
@@ -134,7 +136,6 @@ namespace CIS.UI.Features.Polices.Maintenances
             this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Purpose"));
         }
 
-        [HandleError]
         public virtual void Search()
         {
             using (var session = this.SessionFactory.OpenSession())

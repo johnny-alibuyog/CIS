@@ -14,7 +14,6 @@ using NHibernate;
 using NHibernate.Context;
 using NHibernate.Validator.Constraints;
 using ReactiveUI;
-using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Maintenances
 {
@@ -54,6 +53,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 target.Id = source.Id;
                 target.Person.SerializeWith(source.Person);
                 target.Rank = source.Rank;
+                target.Ranks = new ReactiveList<Lookup<string>>(source.Ranks);
                 target.Position = source.Position;
                 target.Signature = source.Signature;
                 return target;
@@ -79,7 +79,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             return null;
         }
 
-        public override object SerializeInto(object instance)
+        public override object DeserializeInto(object instance)
         {
             if (instance == null)
                 return null;
@@ -98,7 +98,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 var target = instance as Officer;
 
                 target.Id = source.Id;
-                target.Person = (Person)source.Person.SerializeInto(new Person());
+                target.Person = (Person)source.Person.DeserializeInto(new Person());
                 target.Rank = IoC.Container.Resolve<ISessionProvider>().GetSharedSession().Load<Rank>(source.Rank.Id);
                 target.Position = source.Position;
                 target.Signature.Image = source.Signature.ToImage();
@@ -111,10 +111,10 @@ namespace CIS.UI.Features.Polices.Maintenances
 
         public OfficerViewModel()
         {
-            this.Person = new PersonViewModel();
+            this.Person = IoC.Container.Resolve<PersonViewModel>(); //new PersonViewModel(); // 
             this.Ranks = new ReactiveList<Lookup<string>>();
 
-            this.WhenAny(x => x.Person.IsValid, x => x.Value)
+            this.WhenAnyValue(x => x.Person.IsValid)
                 .Subscribe(x => this.Revalidate());
         }
     }

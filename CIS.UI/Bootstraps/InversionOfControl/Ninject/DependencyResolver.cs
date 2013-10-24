@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Modules;
 using Ninject;
 using Ninject.Modules;
-using Ninject.Extensions;
-using Ninject.Extensions.Interception;
-using Ninject.Planning.Strategies;
-using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
-using System.Reflection;
 using Ninject.Parameters;
+using Ninject.Planning.Strategies;
 
 namespace CIS.UI.Bootstraps.InversionOfControl.Ninject
 {

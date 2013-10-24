@@ -49,7 +49,7 @@ namespace CIS.UI.Features.Firearms.Licenses
             this.Address = new AddressViewModel();
             this.Gun = new GunViewModel();
 
-            this.WhenAny(
+            this.WhenAnyValue(
                 x => x.Person.IsValid,
                 x => x.Address.IsValid,
                 x => x.Gun.IsValid,
@@ -99,7 +99,7 @@ namespace CIS.UI.Features.Firearms.Licenses
             return null;
         }
 
-        public override object SerializeInto(object instance)
+        public override object DeserializeInto(object instance)
         {
             if (instance == null)
                 return null;
@@ -118,9 +118,9 @@ namespace CIS.UI.Features.Firearms.Licenses
                 var target = instance as License;
 
                 target.Id = source.Id;
-                target.Person = (Person)source.Person.SerializeInto(new Person());
-                target.Address = (Address)source.Address.SerializeInto(new Address());
-                target.Gun = (Gun)source.Gun.SerializeInto(new Gun());
+                target.Person = (Person)source.Person.DeserializeInto(new Person());
+                target.Address = (Address)source.Address.DeserializeInto(new Address());
+                target.Gun = (Gun)source.Gun.DeserializeInto(new Gun());
                 target.LicenseNumber = source.LicenseNumber;
                 target.ControlNumber = source.ControlNumber;
                 target.IssueDate = source.IssueDate;

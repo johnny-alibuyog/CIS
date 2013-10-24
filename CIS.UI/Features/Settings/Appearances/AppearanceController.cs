@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.Configurations;
+using CIS.UI.Utilities.Extentions;
 using FirstFloor.ModernUI.Presentation;
 using ReactiveUI;
 
 namespace CIS.UI.Features.Settings.Appearances
 {
+    [HandleError]
     public class AppearanceController : ControllerBase<AppearanceViewModel>
     {
         private AppearanceConfiguration _originalAppearance;
@@ -19,17 +21,18 @@ namespace CIS.UI.Features.Settings.Appearances
         {
             this.Initiaize();
 
-            this.ViewModel.WhenAny(x => x.SelectedTheme, x => x.Value)
-                .Subscribe(x => AppearanceManager.Current.ThemeSource = x.Source);
+            this.ViewModel.ObservableForProperty(x => x.SelectedTheme)
+                .Subscribe(x => AppearanceManager.Current.ThemeSource = x.Value.Source);
 
-            this.ViewModel.WhenAny(x => x.SelectedAccentColor, x => x.Value)
-                .Subscribe(x => AppearanceManager.Current.AccentColor = x);
+            this.ViewModel.ObservableForProperty(x => x.SelectedAccentColor)
+                .Subscribe(x => AppearanceManager.Current.AccentColor = x.Value);
 
-            this.ViewModel.WhenAny(x => x.SelectedFontSize, x => x.Value)
-                .Subscribe(x => AppearanceManager.Current.FontSize = x);
+            this.ViewModel.ObservableForProperty(x => x.SelectedFontSize)
+                .Subscribe(x => AppearanceManager.Current.FontSize = x.Value);
 
             this.ViewModel.Save = new ReactiveCommand();
             this.ViewModel.Save.Subscribe(x => Save());
+            this.ViewModel.Save.ThrownExceptions.Handle(this);
 
             AppearanceManager.Current.WhenAny(
                 x => x.ThemeSource,
@@ -100,13 +103,14 @@ namespace CIS.UI.Features.Settings.Appearances
 
             this.ViewModel.FontSizes = Enum.GetValues(typeof(FontSize)).Cast<FontSize>().ToArray();
 
-
             this.ViewModel.SelectedTheme = App.Configuration.Apprearance.Theme == AppearanceThemeConfiguration.Empty
                 ? this.ViewModel.Themes.FirstOrDefault(o => o.Source.Equals(AppearanceManager.Current.ThemeSource))
                 : App.Configuration.Apprearance.Theme.Value;
+
             this.ViewModel.SelectedAccentColor = App.Configuration.Apprearance.Color == AppearanceColorConfiguration.Empty
                 ? AppearanceManager.Current.AccentColor
                 : App.Configuration.Apprearance.Color.Value;
+
             this.ViewModel.SelectedFontSize = App.Configuration.Apprearance.FontSize;
 
             _originalAppearance = new AppearanceConfiguration();
@@ -115,7 +119,6 @@ namespace CIS.UI.Features.Settings.Appearances
             _originalAppearance.Color.Value = this.ViewModel.SelectedAccentColor;
         }
 
-        [HandleError]
         private void Save()
         {
             var confirmed = this.MessageBox.Confirm("Do you want to save changes?", "Confirmation", true);
