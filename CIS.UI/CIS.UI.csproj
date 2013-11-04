@@ -72,6 +72,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.0.0.4001\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
@@ -92,9 +95,6 @@
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="LinFu.DynamicProxy">
-      <HintPath>..\packages\Ninject.Extensions.Interception.Linfu.3.0.0.8\lib\net35\LinFu.DynamicProxy.dll</HintPath>
     </Reference>
     <Reference Include="LinqToExcel, Version=1.7.1.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -122,12 +122,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject.Extensions.Conventions">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.0.0.11\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject.Extensions.Interception, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Ninject.Extensions.Interception.3.0.0.8\lib\net45-full\Ninject.Extensions.Interception.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Extensions.Interception.LinFu">
-      <HintPath>..\packages\Ninject.Extensions.Interception.Linfu.3.0.0.8\lib\net35\Ninject.Extensions.Interception.LinFu.dll</HintPath>
+    <Reference Include="Ninject.Extensions.Interception.DynamicProxy">
+      <HintPath>..\packages\Ninject.Extensions.Interception.DynamicProxy.3.0.0.8\lib\net45-full\Ninject.Extensions.Interception.DynamicProxy.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=2.1.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -228,10 +231,10 @@
     </Compile>
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\HandleErrorInterceptor.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\ConfigurationModule.cs" />
-    <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\ControllerModule.cs" />
-    <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\DialogModule.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\CommonDialogModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\MessageModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\PersistenceModule.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\ViewModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\ViewModelDependency.cs">
       <DependentUpon>Dependency.cs</DependentUpon>
     </Compile>
@@ -350,6 +353,17 @@
     </Compile>
     <Compile Include="Features\Commons\Persons\PersonViewModel.cs" />
     <Compile Include="Features\DialogService.cs" />
+    <Compile Include="Features\MainViewModel.cs" />
+    <Compile Include="Features\Memberships\Users\ApprovalView.xaml.cs">
+      <DependentUpon>ApprovalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Memberships\Users\LoginController.cs" />
+    <Compile Include="Features\Memberships\Users\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Memberships\Users\LoginViewModel.cs" />
+    <Compile Include="Features\Memberships\Users\ApprovalController.cs" />
+    <Compile Include="Features\Memberships\Users\ApprovalViewModel.cs" />
     <Compile Include="Features\Memberships\Users\UserListController.cs" />
     <Compile Include="Features\Memberships\Users\UserListCriteriaViewModel.cs">
       <DependentUpon>UserListViewModel.cs</DependentUpon>
@@ -371,6 +385,9 @@
       <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Memberships\Users\UserViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\AmendmentViewModel.cs">
+      <DependentUpon>FindingViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Polices\Clearances\ApplicationController.cs" />
     <Compile Include="Features\Polices\Clearances\ApplicationView.xaml.cs">
       <DependentUpon>ApplicationView.xaml</DependentUpon>
@@ -398,6 +415,19 @@
       <DependentUpon>ClearanceReportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Clearances\ClearanceReportViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\ExpiredLicenseHitViewModel.cs">
+      <DependentUpon>HitViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Clearances\FindingView.xaml.cs">
+      <DependentUpon>FindingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Clearances\FindingViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\HitViewModel.cs">
+      <DependentUpon>FindingViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Clearances\SuspectHitViewModel.cs">
+      <DependentUpon>HitViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Polices\Maintenances\MaintenanceMessage.cs" />
     <Compile Include="Features\Polices\Clearances\SummaryViewModel.cs" />
     <Compile Include="Features\Polices\Clearances\PersonalInformationView.xaml.cs">
@@ -495,14 +525,11 @@
       <DependentUpon>WarrantPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Settings\Appearances\AppearanceController.cs" />
-    <Compile Include="Features\Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
+    <Compile Include="Features\SplashScreenController.cs" />
+    <Compile Include="Features\SplashScreenView.xaml.cs">
+      <DependentUpon>SplashScreenView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Window1ChildViewModel.cs">
-      <DependentUpon>Window1ViewModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Features\Window1Controller.cs" />
-    <Compile Include="Features\Window1ViewModel.cs" />
+    <Compile Include="Features\SplashScreenViewModel.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -523,6 +550,7 @@
     <Compile Include="Utilities\Configurations\ApplicationConfiguration.cs" />
     <Compile Include="Utilities\Configurations\AppearanceConfiguration.cs" />
     <Compile Include="Utilities\Configurations\DatabaseConfiguraton.cs" />
+    <Compile Include="Utilities\Controls\PasswordService.cs" />
     <Compile Include="Utilities\Controls\WaterMarkAdorner.cs" />
     <Compile Include="Utilities\Controls\WaterMarkService.cs" />
     <Compile Include="Utilities\Converters\EnumToBooleanConverter.cs" />
@@ -646,6 +674,14 @@
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Features\Memberships\Users\ApprovalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Memberships\Users\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Features\Memberships\Users\UserListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -675,6 +711,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\Polices\Clearances\ClearanceReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Polices\Clearances\FindingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -760,7 +800,7 @@
       <DependentUpon>Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Page Include="Features\Window1.xaml">
+    <Page Include="Features\SplashScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -95,6 +95,8 @@ namespace CIS.Core.Entities.Polices
 
         private void SyncAliases(IEnumerable<string> items)
         {
+            items = items.Where(x => !string.IsNullOrWhiteSpace(x));
+
             var itemsToInsert = items.Except(_aliases).ToList();
             var itemsToRemove = _aliases.Except(items).ToList();
 
@@ -109,7 +111,9 @@ namespace CIS.Core.Entities.Polices
 
         private void SyncOccupations(IEnumerable<string> items)
         {
-            var itemsToInsert = items.Except(_occupations).ToList();
+            var itemsToInsert = items = items.Where(x => !string.IsNullOrWhiteSpace(x));
+
+            items.Except(_occupations).ToList();
             var itemsToRemove = _occupations.Except(items).ToList();
 
             // insert

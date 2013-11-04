@@ -10,23 +10,6 @@ namespace CIS.Core.Utilities.Extentions
 {
     public static class StringExtention
     {
-        //public static string ToProperCase(this string input)
-        //{
-        //    if (input == null)
-        //        return null;
-
-        //    var characters = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input.ToLower()).ToCharArray();
-
-        //    for (int i = 0; i + 1 < characters.Length; i++)
-        //    {
-        //        if ((characters[i].Equals('\'')) || (characters[i].Equals('-')))
-        //        {
-        //            characters[i + 1] = Char.ToUpper(characters[i + 1]);
-        //        }
-        //    }
-        //    return new string(characters);
-        //}
-
         #region Routine Helpers
 
         private static bool IsAllUpperOrAllLower(this string input)
@@ -40,7 +23,7 @@ namespace CIS.Core.Utilities.Extentions
                 return word;
 
             // Standard case
-            var value = capitaliseFirstLetter(word);
+            var value = CapitaliseFirstLetter(word);
 
             // Special cases:
             //value = ProperSuffix(value, "'");       // D'Artagnon, D'Silva
@@ -48,8 +31,8 @@ namespace CIS.Core.Utilities.Extentions
             value = ProperSuffix(value, "-");       // Oscar-Meyer-Weiner
             value = ProperSuffix(value, "(");       
             value = ProperSuffix(value, ")");       
-            value = ProperSuffix(value, "Mc");      // Scots
-            value = ProperSuffix(value, "Mac");     // Scots
+            //value = ProperSuffix(value, "Mc");      // Scots
+            //value = ProperSuffix(value, "Mac");     // Scots
 
             // Special words:
             value = SpecialWords(value, "van");     // Dick van Dyke
@@ -82,11 +65,11 @@ namespace CIS.Core.Utilities.Extentions
 
             var index = lowerWord.IndexOf(lowerPrefix);
 
-            // If the search string is at the end of the word ignore.
+            // if the search string is at the end of the word ignore.
             if (index + prefix.Length == word.Length) 
                 return word;
 
-            return word.Substring(0, index) + prefix + capitaliseFirstLetter(word.Substring(index + prefix.Length));
+            return word.Substring(0, index) + prefix + CapitaliseFirstLetter(word.Substring(index + prefix.Length));
         }
 
         private static string SpecialWords(string word, string specialWord)
@@ -101,8 +84,8 @@ namespace CIS.Core.Utilities.Extentions
         {
             var ones = new List<string>() { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
             var tens = new List<string>() { "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC", "C" };
-            // assume nobody uses hundreds
 
+            // assume nobody uses hundreds
             foreach (string number in ones)
             {
                 if (word.Equals(number, StringComparison.InvariantCultureIgnoreCase))
@@ -125,7 +108,7 @@ namespace CIS.Core.Utilities.Extentions
             return word;
         }
 
-        private static string capitaliseFirstLetter(string word)
+        private static string CapitaliseFirstLetter(string word)
         {
             return char.ToUpper(word[0]) + word.Substring(1).ToLower();
         }
@@ -157,6 +140,23 @@ namespace CIS.Core.Utilities.Extentions
             //    // leave the CamelCase or Propercase names alone
             //    return input;
             //}
+
+            /* 
+             * original implementation
+             */
+            //    if (input == null)
+            //        return null;
+
+            //    var characters = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input.ToLower()).ToCharArray();
+
+            //    for (int i = 0; i + 1 < characters.Length; i++)
+            //    {
+            //        if ((characters[i].Equals('\'')) || (characters[i].Equals('-')))
+            //        {
+            //            characters[i + 1] = Char.ToUpper(characters[i + 1]);
+            //        }
+            //    }
+            //    return new string(characters);
         }
     }
 }

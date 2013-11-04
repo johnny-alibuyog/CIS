@@ -82,53 +82,55 @@ namespace CIS.Core.Entities.Memberships
 
         public virtual bool IsPoliceAdministartor()
         {
-            return _roles.Any(x => x == Role.PoliceAdministartor);
+            return this.Has(Role.PoliceAdministartor);
         }
 
         public virtual bool IsPoliceApprover()
         {
-            return _roles.Any(x => x == Role.PoliceApprover);
+            return this.Has(Role.PoliceApprover);
         }
 
         public virtual bool IsPoliceEncoder()
         {
-            return _roles.Any(x => x == Role.PoliceEncoder);
+            return this.Has(Role.PoliceEncoder);
         }
 
         public virtual bool IsBarangayAdministartor()
         {
-            return _roles.Any(x => x == Role.BarangayAdministartor);
+            return this.Has(Role.BarangayAdministartor);
         }
 
         public virtual bool IsBarangayApprover()
         {
-            return _roles.Any(x => x == Role.BarangayApprover);
+            return this.Has(Role.BarangayApprover);
         }
 
         public virtual bool IsBarangayEncoder()
         {
-            return _roles.Any(x => x == Role.BarangayEncoder);
+            return this.Has(Role.BarangayEncoder);
         }
 
         public virtual bool IsMayorAdministrator()
         {
-            return _roles.Any(x => x == Role.MayorAdministrator);
+            return this.Has(Role.MayorAdministrator);
         }
 
         public virtual bool IsMayorApprover()
         {
-            return _roles.Any(x => x == Role.MayorApprover);
+            return this.Has(Role.MayorApprover);
         }
 
         public virtual bool IsMayorEncoder()
         {
-            return _roles.Any(x => x == Role.MayorEncoder);
+            return this.Has(Role.MayorEncoder);
         }
 
-        public virtual bool IsAuthorized(Role[] Roles)
+        public virtual bool Has(params Role[] roles)
         {
+            if (this.IsSystemAdministrator())
+                return true;
 
-            return false;
+            return this.Roles.Any(x => roles.Contains(x));
         }
 
         #endregion

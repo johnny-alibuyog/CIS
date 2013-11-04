@@ -20,7 +20,10 @@ namespace CIS.UI.Features.Commons.Persons
 
         public virtual string Suffix { get; set; }
 
-        public virtual string FullName { get { return string.Format("{0} {1} {2}", this.FirstName, this.MiddleName, this.LastName); } }
+        public virtual string FullName
+        {
+            get { return string.Format("{0} {1} {2}", this.FirstName ?? string.Empty, this.MiddleName ?? string.Empty, this.LastName ?? string.Empty); }
+        }
 
         //[NotNull(Message = "Gender is mandatory.")]
         public virtual Nullable<Gender> Gender { get; set; }

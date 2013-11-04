@@ -37,6 +37,9 @@
                     <TextBox IsReadOnly="True" Text="{Binding TotalLicenses, Mode=TwoWay}" />
                 </StackPanel>
             </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="#FFdc000c" Text="{Binding ErrorMessage}" />
+            </StackPanel>
 
             <!-- buttons -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">

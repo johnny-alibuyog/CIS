@@ -48,7 +48,9 @@
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
+
         <GridSplitter Grid.Column="1" />
+
         <ScrollViewer Grid.Column="2 " Margin="{StaticResource SplitRight}">
             <StackPanel>
                 <TextBlock Text="Address" Style="{StaticResource Heading2}" />

@@ -40,6 +40,8 @@ namespace CIS.Core.Entities.Commons
                 using (var stream = new MemoryStream())
                 {
                     _image.Save(stream, ImageFormat.Bmp);
+                    //_image.Save(stream, ImageFormat.Png);
+                    //_image.Save(stream, ImageFormat.Jpeg);
                     this.Bytes = stream.ToArray();
                 }
             }

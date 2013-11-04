@@ -139,10 +139,28 @@
     <Compile Include="EntityDefinitions\FireArms\MakeValidation.cs" />
     <Compile Include="EntityDefinitions\FireArms\LicenseMapping.cs" />
     <Compile Include="EntityDefinitions\FireArms\LicenseValidation.cs" />
+    <Compile Include="EntityDefinitions\Polices\AmendmentMapping.cs" />
+    <Compile Include="EntityDefinitions\Polices\AmendmentValidation.cs" />
     <Compile Include="EntityDefinitions\Polices\ApplicantMapping.cs" />
     <Compile Include="EntityDefinitions\Polices\ApplicantValidation.cs" />
+    <Compile Include="EntityDefinitions\Polices\ExpiredLicenseHitMapping.cs">
+      <DependentUpon>HitMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\Polices\ExpiredLicenseHitValidation.cs">
+      <DependentUpon>HitValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\Polices\FindingMapping.cs" />
+    <Compile Include="EntityDefinitions\Polices\FindingValidation.cs" />
+    <Compile Include="EntityDefinitions\Polices\HitMapping.cs" />
+    <Compile Include="EntityDefinitions\Polices\HitValidation.cs" />
     <Compile Include="EntityDefinitions\Polices\SettingMapping.cs" />
     <Compile Include="EntityDefinitions\Polices\SettingValidation.cs" />
+    <Compile Include="EntityDefinitions\Polices\SuspectHitMapping.cs">
+      <DependentUpon>HitMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\Polices\SuspectHitValidation.cs">
+      <DependentUpon>HitValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="ISessionProvider.cs" />
     <Compile Include="EntityDefinitions\Barangays\CaptainMapping.cs">
       <DependentUpon>OfficialMapping.cs</DependentUpon>

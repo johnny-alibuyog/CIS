@@ -4,6 +4,7 @@
         xmlns:mui="http://firstfloorsoftware.com/ModernUI"
         xmlns:local="clr-namespace:CIS.UI.Features"
         xmlns:persons="clr-namespace:CIS.UI.Features.Commons.Persons"
+        xmlns:controls="clr-namespace:CIS.UI.Utilities.Controls"
         local:DialogBase.DialogResult="{Binding Path=ActionResult}" 
         Title="User" SizeToContent="WidthAndHeight">
     <StackPanel Style="{StaticResource ContentRoot}" >
@@ -24,19 +25,20 @@
 
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Username"/>
-                    <TextBox Text="{Binding Username, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+                    <TextBox Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Email"/>
-                    <TextBox Text="{Binding Email, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+                    <TextBox Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Password"/>
-                    <TextBox Text="{Binding Password, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+                    <PasswordBox  controls:PasswordService.Attach="True" controls:PasswordService.Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Confirm"/>
-                    <TextBox Text="{Binding ConfirmPassowrd, Mode=TwoWay, ValidatesOnDataErrors=True}" />
+                    <PasswordBox  controls:PasswordService.Attach="True" controls:PasswordService.Password="{Binding Path=ConfirmPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                    <!--<TextBox Text="{Binding ConfirmPassowrd, Mode=TwoWay, ValidatesOnDataErrors=True}" />-->
                 </StackPanel>
                 <persons:PersonView DataContext="{Binding Person}"/>
             </StackPanel>

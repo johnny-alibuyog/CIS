@@ -30,7 +30,7 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors
                     return;
                 }
 
-                if (App.Data.User.IsAuthorized(_roles) != true)
+                if (App.Data.User.Has(_roles) != true)
                 {
                     _messageBox.Warn(string.Format("User is not authorized. (Authorized Roles: {0})", string.Join<Role>(", ", _roles)));
                     return;

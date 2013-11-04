@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using CIS.Core.Entities.Memberships;
 using CIS.Core.Entities.Polices;
 using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
@@ -124,6 +125,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             }
         }
 
+        [Authorize(Roles = new Role[] { Role.PoliceAdministartor, Role.PoliceEncoder })]
         public virtual void Create()
         {
             var dialog = new DialogService<OfficerView, OfficerViewModel>();

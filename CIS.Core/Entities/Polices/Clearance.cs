@@ -29,9 +29,10 @@ namespace CIS.Core.Entities.Polices
         private string _partialMatchFindings;
         private string _perfectMatchFindings;
         private string _finalFindings;
-        private ICollection<Suspect> _suspectPartialMatches;
-        private ICollection<Suspect> _suspectPerfectMatches;
-        private ICollection<License> _expiredLicenseMatches;
+        private Finding _finding;
+        //private ICollection<Suspect> _suspectPartialMatches;
+        //private ICollection<Suspect> _suspectPerfectMatches;
+        //private ICollection<License> _expiredLicenseMatches;
 
 
         public virtual Guid Id
@@ -148,23 +149,29 @@ namespace CIS.Core.Entities.Polices
             set { _finalFindings = value; }
         }
 
-        public virtual IEnumerable<Suspect> SuspectPartialMatches
+        public virtual Finding Finding
         {
-            get { return _suspectPartialMatches; }
-            set { SyncSuspectPartialMatches(value); }
+            get { return _finding; }
+            set { _finding = value; }
         }
 
-        public virtual IEnumerable<Suspect> SuspectPerfectMatches
-        {
-            get { return _suspectPerfectMatches; }
-            set { SyncSuspectPerfectMatches(value); }
-        }
+        //public virtual IEnumerable<Suspect> SuspectPartialMatches
+        //{
+        //    get { return _suspectPartialMatches; }
+        //    set { SyncSuspectPartialMatches(value); }
+        //}
 
-        public virtual IEnumerable<License> ExpiredLicenseMatches
-        {
-            get { return _expiredLicenseMatches; }
-            set { SyncExpiredLicenseMatches(value); }
-        }
+        //public virtual IEnumerable<Suspect> SuspectPerfectMatches
+        //{
+        //    get { return _suspectPerfectMatches; }
+        //    set { SyncSuspectPerfectMatches(value); }
+        //}
+
+        //public virtual IEnumerable<License> ExpiredLicenseMatches
+        //{
+        //    get { return _expiredLicenseMatches; }
+        //    set { SyncExpiredLicenseMatches(value); }
+        //}
 
         #region Methods
 
@@ -189,47 +196,47 @@ namespace CIS.Core.Entities.Polices
             this.Validity = station.GetValidity(this.IssueDate);
         }
 
-        private void SyncSuspectPartialMatches(IEnumerable<Suspect> items)
-        {
-            var itemsToInsert = items.Except(_suspectPartialMatches).ToList();
-            var itemsToRemove = _suspectPartialMatches.Except(items).ToList();
+        //private void SyncSuspectPartialMatches(IEnumerable<Suspect> items)
+        //{
+        //    var itemsToInsert = items.Except(_suspectPartialMatches).ToList();
+        //    var itemsToRemove = _suspectPartialMatches.Except(items).ToList();
 
-            // insert
-            foreach (var item in itemsToInsert)
-                _suspectPartialMatches.Add(item);
+        //    // insert
+        //    foreach (var item in itemsToInsert)
+        //        _suspectPartialMatches.Add(item);
 
-            // delete
-            foreach (var item in itemsToRemove)
-                _suspectPartialMatches.Remove(item);
-        }
+        //    // delete
+        //    foreach (var item in itemsToRemove)
+        //        _suspectPartialMatches.Remove(item);
+        //}
 
-        private void SyncSuspectPerfectMatches(IEnumerable<Suspect> items)
-        {
-            var itemsToInsert = items.Except(_suspectPerfectMatches).ToList();
-            var itemsToRemove = _suspectPerfectMatches.Except(items).ToList();
+        //private void SyncSuspectPerfectMatches(IEnumerable<Suspect> items)
+        //{
+        //    var itemsToInsert = items.Except(_suspectPerfectMatches).ToList();
+        //    var itemsToRemove = _suspectPerfectMatches.Except(items).ToList();
 
-            // insert
-            foreach (var item in itemsToInsert)
-                _suspectPerfectMatches.Add(item);
+        //    // insert
+        //    foreach (var item in itemsToInsert)
+        //        _suspectPerfectMatches.Add(item);
 
-            // delete
-            foreach (var item in itemsToRemove)
-                _suspectPerfectMatches.Remove(item);
-        }
+        //    // delete
+        //    foreach (var item in itemsToRemove)
+        //        _suspectPerfectMatches.Remove(item);
+        //}
 
-        private void SyncExpiredLicenseMatches(IEnumerable<License> items)
-        {
-            var itemsToInsert = items.Except(_expiredLicenseMatches).ToList();
-            var itemsToRemove = _expiredLicenseMatches.Except(items).ToList();
+        //private void SyncExpiredLicenseMatches(IEnumerable<License> items)
+        //{
+        //    var itemsToInsert = items.Except(_expiredLicenseMatches).ToList();
+        //    var itemsToRemove = _expiredLicenseMatches.Except(items).ToList();
 
-            // insert
-            foreach (var item in itemsToInsert)
-                _expiredLicenseMatches.Add(item);
+        //    // insert
+        //    foreach (var item in itemsToInsert)
+        //        _expiredLicenseMatches.Add(item);
 
-            // delete
-            foreach (var item in itemsToRemove)
-                _expiredLicenseMatches.Remove(item);
-        }
+        //    // delete
+        //    foreach (var item in itemsToRemove)
+        //        _expiredLicenseMatches.Remove(item);
+        //}
 
         #endregion
 
@@ -239,9 +246,9 @@ namespace CIS.Core.Entities.Polices
         {
             _applicant = new Applicant();
             _barcode = Barcode.GenerateBarcode();
-            _suspectPartialMatches = new Collection<Suspect>();
-            _suspectPerfectMatches = new Collection<Suspect>();
-            _expiredLicenseMatches = new Collection<License>();
+            //_suspectPartialMatches = new Collection<Suspect>();
+            //_suspectPerfectMatches = new Collection<Suspect>();
+            //_expiredLicenseMatches = new Collection<License>();
         }
 
         #endregion

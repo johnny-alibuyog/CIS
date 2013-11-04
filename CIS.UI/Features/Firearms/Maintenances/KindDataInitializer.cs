@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Firearms;
+using CIS.Core.Utilities.Extentions;
 using NHibernate;
 using NHibernate.Linq;
 
@@ -28,11 +29,11 @@ namespace CIS.UI.Features.Firearms.Maintenances
                 "Bullpup Rifle",
                 "Battle Rifle",
                 "Machine Pistol", 
-                "Submachine Gun ",
+                "Submachine Gun",
                 "Machine Gun",
                 "Light Machine Gun",
                 "Medium Machine Gun",
-                "Heavy Machine Guns ",
+                "Heavy Machine Guns",
             };
 
             _sessionFactory = sessionFactory;
@@ -47,7 +48,8 @@ namespace CIS.UI.Features.Firearms.Maintenances
 
                 foreach (var item in this.Data)
                 {
-                    if (kinds.Any(x => x.Name == item))
+                    //if (kinds.Any(x => x.Name == item))
+                    if (kinds.Any(x => x.Name.IsEqualTo(item)))
                         continue;
 
                     var kind = new Kind();

@@ -34,6 +34,7 @@ namespace CIS.UI.Features.Commons.Cameras
             get { return this.DataContext; }
             set { this.DataContext = value; }
         }
+
         #endregion
 
         public CameraView()

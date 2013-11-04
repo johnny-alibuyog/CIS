@@ -13,7 +13,7 @@ using ReactiveUI;
 
 namespace CIS.UI.Features.Memberships.Users
 {
-    [HandleError]
+    //[HandleError]
     public class UserListController : ControllerBase<UserListViewModel>
     {
         public UserListController(UserListViewModel viewModel)
@@ -221,8 +221,8 @@ namespace CIS.UI.Features.Memberships.Users
         {
             this.ViewModel.SelectedItem = item;
 
-            var message = string.Format("Are you sure you want to save user {0}?", item.Username);
-            var confirmed = this.MessageBox.Confirm(message, "Save");
+            var message = string.Format("Are you sure you want to delete user {0}?", item.Username);
+            var confirmed = this.MessageBox.Confirm(message, "Delete");
             if (confirmed == false)
                 return;
 

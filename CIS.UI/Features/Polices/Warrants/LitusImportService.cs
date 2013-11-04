@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
+using CIS.Core.Utilities.Extentions;
 using LinqToExcel;
 using NHibernate;
 using NHibernate.Linq;
@@ -129,7 +130,7 @@ namespace CIS.UI.Features.Polices.Warrants
 
                 foreach (var item in batchToImport)
                 {
-                    var warrant = warrantsInDb.FirstOrDefault(x => string.Compare(x.WarrantCode, item.WarrantCode, true) == 0);
+                    var warrant = warrantsInDb.FirstOrDefault(x => x.WarrantCode.IsEqualTo(item.WarrantCode));
                     if (warrant == null)
                         warrant = new Warrant();
 
@@ -150,13 +151,12 @@ namespace CIS.UI.Features.Polices.Warrants
 
                     foreach (var item1 in item.Suspects)
                     {
-                        var suspect = warrant.Suspects
-                            .Where(x =>
-                                x.Person.FirstName == item1.FirstName &&
-                                x.Person.MiddleName == item1.MiddleName &&
-                                x.Person.LastName == item1.LastName &&
-                                x.Person.Suffix == item1.Suffix)
-                            .FirstOrDefault();
+                        var suspect = warrant.Suspects.FirstOrDefault(x =>
+                            x.Person.FirstName.IsEqualTo(item1.FirstName) &&
+                            x.Person.MiddleName.IsEqualTo(item1.MiddleName) &&
+                            x.Person.LastName.IsEqualTo(item1.LastName) &&
+                            x.Person.Suffix.IsEqualTo(item1.Suffix)
+                        );
 
                         if (suspect == null)
                         {

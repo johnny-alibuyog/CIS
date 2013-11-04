@@ -17,8 +17,8 @@ namespace CIS.Core.Entities.Firearms
         private Gun _gun;
         private string _licenseNumber;
         private string _controlNumber;
-        private DateTime _issueDate;
-        private DateTime _expiryDate;
+        private Nullable<DateTime> _issueDate;
+        private Nullable<DateTime> _expiryDate;
 
         public virtual Guid Id
         {
@@ -68,13 +68,13 @@ namespace CIS.Core.Entities.Firearms
             set { _controlNumber = value; }
         }
 
-        public virtual DateTime IssueDate
+        public virtual Nullable<DateTime> IssueDate
         {
             get { return _issueDate; }
             set { _issueDate = value; }
         }
 
-        public virtual DateTime ExpiryDate
+        public virtual Nullable<DateTime> ExpiryDate
         {
             get { return _expiryDate; }
             set { _expiryDate = value; }

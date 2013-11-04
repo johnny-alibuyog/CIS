@@ -32,9 +32,9 @@ namespace CIS.UI.Features.Firearms.Licenses
         [NotNullNotEmpty]
         public virtual string ControlNumber { get; set; }
 
-        public virtual DateTime IssueDate { get; set; }
+        public virtual Nullable<DateTime> IssueDate { get; set; }
 
-        public virtual DateTime ExpiryDate { get; set; }
+        public virtual Nullable<DateTime> ExpiryDate { get; set; }
 
         public virtual IReactiveCommand Load { get; set; }
 

@@ -54,23 +54,26 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Map(x => x.FinalFindings);
 
-            HasManyToMany(x => x.SuspectPartialMatches)
-                .Access.CamelCaseField(Prefix.Underscore)
-                .Schema(GetType().ParseSchema())
-                .Table("ClearancesSuspectPartialMatches")
-                .AsSet();
+            References(x => x.Finding)
+                .Cascade.All();
 
-            HasManyToMany(x => x.SuspectPerfectMatches)
-                .Access.CamelCaseField(Prefix.Underscore)
-                .Schema(GetType().ParseSchema())
-                .Table("ClearancesSuspectPerfectMatches")
-                .AsSet();
+            //HasManyToMany(x => x.SuspectPartialMatches)
+            //    .Access.CamelCaseField(Prefix.Underscore)
+            //    .Schema(GetType().ParseSchema())
+            //    .Table("ClearancesSuspectPartialMatches")
+            //    .AsSet();
 
-            HasManyToMany(x => x.ExpiredLicenseMatches)
-                .Access.CamelCaseField(Prefix.Underscore)
-                .Schema(GetType().ParseSchema())
-                .Table("ClearancesExpiredLicenseMatches")
-                .AsSet();
+            //HasManyToMany(x => x.SuspectPerfectMatches)
+            //    .Access.CamelCaseField(Prefix.Underscore)
+            //    .Schema(GetType().ParseSchema())
+            //    .Table("ClearancesSuspectPerfectMatches")
+            //    .AsSet();
+
+            //HasManyToMany(x => x.ExpiredLicenseMatches)
+            //    .Access.CamelCaseField(Prefix.Underscore)
+            //    .Schema(GetType().ParseSchema())
+            //    .Table("ClearancesExpiredLicenseMatches")
+            //    .AsSet();
         }
     }
 }

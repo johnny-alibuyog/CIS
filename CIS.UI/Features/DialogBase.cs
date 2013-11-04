@@ -14,14 +14,12 @@ namespace CIS.UI.Features
         #region Static Members
 
         public static readonly DependencyProperty DialogResultProperty =
-            DependencyProperty.RegisterAttached("DialogResult",
-                typeof(bool?), typeof(DialogBase),
-                new PropertyMetadata(DialogResultChanged)
-            );
+            DependencyProperty.RegisterAttached("DialogResult", typeof(bool?), typeof(DialogBase),
+            new PropertyMetadata(DialogResultChanged));
 
-        private static void DialogResultChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void DialogResultChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            var window = d as Window;
+            var window = dependencyObject as Window;
             if (window != null)
                 window.DialogResult = e.NewValue as bool?;
         }

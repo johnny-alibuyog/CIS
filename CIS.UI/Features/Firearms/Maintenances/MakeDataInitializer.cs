@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Firearms;
+using CIS.Core.Utilities.Extentions;
 using NHibernate;
 using NHibernate.Linq;
 
@@ -96,9 +97,14 @@ namespace CIS.UI.Features.Firearms.Maintenances
             {
                 var makes = session.Query<Make>().Cacheable().ToFuture();
 
+                var dataxx = this.Data.Select(x => x.ToLower()).GroupBy(x => x).Where(x => x.Count() > 1);
+                var xxxd = this.Data.Select(x => x.ToLower());
+                var ddf = makes.Where(x => xxxd.Contains(x.Name, StringComparer.OrdinalIgnoreCase));
+
                 foreach (var item in this.Data)
                 {
-                    if (makes.Any(x => x.Name == item))
+                    //if (makes.Any(x => x.Name == item))
+                    if (makes.Any(x => x.Name.IsEqualTo(item)))
                         continue;
 
                     var make = new Make();

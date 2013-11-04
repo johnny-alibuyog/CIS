@@ -27,6 +27,8 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual string Status { get; set; }
 
+        public virtual string ErrorMessage { get; set; }
+
         public virtual IReactiveCommand LookupPath { get; set; }
 
         public virtual IReactiveCommand Reset { get; set; }

@@ -25,6 +25,8 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public virtual string Status { get; set; }
 
+        public virtual string ErrorMessage { get; set; }
+
         public virtual IReactiveCommand LookupPath { get; set; }
 
         public virtual IReactiveCommand Reset { get; set; }

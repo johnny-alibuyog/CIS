@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Firearms;
+using CIS.Core.Utilities.Extentions;
 using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features.Firearms.Maintenances;
 using CIS.UI.Utilities.Extentions;
@@ -35,7 +36,23 @@ namespace CIS.UI.Features.Firearms.Licenses
                 licenses.AddRange(excel.Worksheet<ImportLicenseViewModel>(firstSheet).ToList());
             }
 
-            // ensure uniqueness by LicenseNumber
+            var sqlMinimumDate = new DateTime(1900, 1, 1);
+
+            var birthInvalidDate = string.Join(Environment.NewLine, licenses
+                .Where(x => x.BirthDate < sqlMinimumDate)
+                .Select(x => x.LicenseNumber)
+            );
+
+            var expiryInvalidDate = string.Join(Environment.NewLine, licenses
+                .Where(x => x.ExpiryDate < sqlMinimumDate)
+                .Select(x => x.LicenseNumber)
+            );
+
+            var issueDateInvalidDate = string.Join(Environment.NewLine, licenses
+                .Where(x => x.IssueDate < sqlMinimumDate)
+                .Select(x => x.LicenseNumber)
+            );
+
             return licenses
                 .GroupBy(x => x.LicenseNumber)
                 .Select(x => x.First())
@@ -48,7 +65,7 @@ namespace CIS.UI.Features.Firearms.Licenses
                 .Select(x => x.LicenseNumber)
                 .ToList();
 
-            using (var session = _sessionFactory.OpenStatelessSession())
+            using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
                 session.SetBatchSize(batchSize);
@@ -62,44 +79,46 @@ namespace CIS.UI.Features.Firearms.Licenses
 
                 foreach (var item in batchToImport)
                 {
-                    var license = licensesInDb.FirstOrDefault(x => string.Compare(x.LicenseNumber, item.LicenseNumber, true) == 0);
-                    if (license == null)
-                    {
+                    var license = licensesInDb.FirstOrDefault(x => x.LicenseNumber.IsEqualTo(item.LicenseNumber));
+                    var exists = (license != null);
+                    if (exists == false)
                         license = new License();
-                        license.LicenseNumber = item.LicenseNumber;
-                        license.ControlNumber = item.ControlNumber;
-                        license.IssueDate = item.IssueDate;
-                        license.ExpiryDate = item.ExpiryDate;
-                        license.Person = new Person()
-                        {
-                            FirstName = item.FirstName,
-                            MiddleName = item.MiddleName,
-                            LastName = item.LastName,
-                            Suffix = item.Suffix,
-                            Gender = item.Gender.As<Gender>(),
-                            BirthDate = item.BirthDate
-                        };
-                        license.Address = new Address()
-                        {
-                            Address1 = item.Address1,
-                            Address2 = item.Address2,
-                            Barangay = item.Barangay,
-                            City = item.City,
-                            Province = item.Province,
-                        };
-                        license.Gun = new Gun()
-                        {
-                            Model = item.Model,
-                            Caliber = item.Caliber,
-                            SerialNumber = item.SerialNumber,
-                            Kind = kinds.FirstOrDefault(x => string.Compare(x.Name, item.Kind, true) == 0),
-                            Make = makes.FirstOrDefault(x => string.Compare(x.Name, item.Make, true) == 0)
-                        };
 
-                        session.Insert(license);
+                    license = new License();
+                    license.LicenseNumber = item.LicenseNumber;
+                    license.ControlNumber = item.ControlNumber;
+                    license.IssueDate = item.IssueDate;
+                    license.ExpiryDate = item.ExpiryDate;
+                    license.Person = new Person()
+                    {
+                        FirstName = item.FirstName,
+                        MiddleName = item.MiddleName,
+                        LastName = item.LastName,
+                        Suffix = item.Suffix,
+                        Gender = item.Gender.As<Gender>(),
+                        BirthDate = item.BirthDate
+                    };
+                    license.Address = new Address()
+                    {
+                        Address1 = item.Address1,
+                        Address2 = item.Address2,
+                        Barangay = item.Barangay,
+                        City = item.City,
+                        Province = item.Province,
+                    };
+                    license.Gun = new Gun()
+                    {
+                        Model = item.Model,
+                        Caliber = item.Caliber,
+                        SerialNumber = item.SerialNumber,
+                        Kind = kinds.FirstOrDefault(x => x.Name.IsEqualTo(item.Kind)),
+                        Make = makes.FirstOrDefault(x => x.Name.IsEqualTo(item.Make))
+                    };
 
-                        this._viewModel.TotalLicenses++;
-                    }
+                    if (exists == false)
+                        session.Save(license);
+
+                    this._viewModel.TotalLicenses++;
                 }
 
                 transaction.Commit();
@@ -136,11 +155,11 @@ namespace CIS.UI.Features.Firearms.Licenses
 
             // get new lookup data(Kind, Make)
             var kindDataInitializer = IoC.Container.Resolve<KindDataInitializer>();
-            kindDataInitializer.Data = licensesToImport.Select(x => x.Kind).Distinct();
+            kindDataInitializer.Data = licensesToImport.OrderBy(x => x.Kind).Select(x => x.Kind).Distinct();
             kindDataInitializer.Execute();
 
             var makeDataInitializer = IoC.Container.Resolve<MakeDataInitializer>();
-            makeDataInitializer.Data = licensesToImport.Select(x => x.Make).Distinct();
+            makeDataInitializer.Data = licensesToImport.OrderBy(x => x.Make).Select(x => x.Make).Distinct();
             makeDataInitializer.Execute();
 
             for (var batchNumber = 0; batchNumber < batchCount; batchNumber++)

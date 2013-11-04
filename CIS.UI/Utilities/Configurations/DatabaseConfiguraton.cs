@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.Core.Entities.Commons;
+using CIS.Core.Entities.Memberships;
 
 namespace CIS.UI.Utilities.Configurations
 {
@@ -36,14 +38,6 @@ namespace CIS.UI.Utilities.Configurations
         {
             get { return _password; }
             set { _password = value; }
-        }
-
-        public DatabaseConfiguraton()
-        {
-            _serverName = "(local)";
-            _databaseName = "cisdb";
-            _username = "sa";
-            _password = "admin123";
         }
     }
 }

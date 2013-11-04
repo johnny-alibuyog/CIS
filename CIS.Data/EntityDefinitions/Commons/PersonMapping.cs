@@ -11,11 +11,14 @@ namespace CIS.Data.EntityDefinition.Commons
     {
         public PersonMapping()
         {
-            Map(x => x.FirstName);
+            Map(x => x.FirstName)
+                .Index("FirstNameIndex");
 
-            Map(x => x.MiddleName);
+            Map(x => x.MiddleName)
+                .Index("MiddleNameIndex");
 
-            Map(x => x.LastName);
+            Map(x => x.LastName)
+                .Index("LastNameIndex");
 
             Map(x => x.Suffix);
 
@@ -28,11 +31,11 @@ namespace CIS.Data.EntityDefinition.Commons
         {
             return mapping =>
             {
-                mapping.Map(x => x.FirstName, columnPrefix + "FirstName");
+                mapping.Map(x => x.FirstName, columnPrefix + "FirstName").Index("FirstNameIndex");
 
-                mapping.Map(x => x.MiddleName, columnPrefix + "MiddleName");
+                mapping.Map(x => x.MiddleName, columnPrefix + "MiddleName").Index("MiddelNameIndex");
 
-                mapping.Map(x => x.LastName, columnPrefix + "LastName");
+                mapping.Map(x => x.LastName, columnPrefix + "LastName").Index("LastNameIndex");
 
                 mapping.Map(x => x.Suffix, columnPrefix + "Suffix");
 
@@ -47,11 +50,11 @@ namespace CIS.Data.EntityDefinition.Commons
         {
             return mapping =>
             {
-                mapping.Map(x => x.FirstName, columnPrefix + "FirstName");
+                mapping.Map(x => x.FirstName, columnPrefix + "FirstName").Index("FirstNameIndex");
 
-                mapping.Map(x => x.MiddleName, columnPrefix + "MiddleName");
+                mapping.Map(x => x.MiddleName, columnPrefix + "MiddleName").Index("MiddleNameIndex");
 
-                mapping.Map(x => x.LastName, columnPrefix + "LastName");
+                mapping.Map(x => x.LastName, columnPrefix + "LastName").Index("LastNameIndex");
 
                 mapping.Map(x => x.Suffix, columnPrefix + "Suffix");
             };

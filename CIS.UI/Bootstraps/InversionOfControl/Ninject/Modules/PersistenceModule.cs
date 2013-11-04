@@ -19,8 +19,6 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Modules
     {
         public override void Load()
         {
-            //SessionProvider.Instance.AuditResolver = new UserAuditResolver();
-
             Bind<AuditResolver>()
                 .ToMethod(x => new UserAuditResolver())
                 .InSingletonScope();
@@ -47,14 +45,6 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Modules
             Bind<ISessionFactory>()
                 .ToMethod(x => x.Kernel.Get<ISessionProvider>().SessionFactory)
                 .InSingletonScope();
-
-            //Bind<ValidatorEngine>()
-            //    .ToMethod(x => SessionProvider.Instance.ValidatorEngine)
-            //    .InSingletonScope();
-
-            //Bind<AuditResolver>()
-            //    .ToMethod(x => SessionProvider.Instance.AuditResolver)
-            //    .InSingletonScope();
         }
     }
 }

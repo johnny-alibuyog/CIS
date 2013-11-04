@@ -19,64 +19,62 @@ namespace CIS.UI.Utilities.Controls
         /// <summary>
         /// Watermark Attached Dependency Property
         /// </summary>
-        public static readonly DependencyProperty WatermarkProperty = DependencyProperty.RegisterAttached(
-           "Watermark",
-           typeof(object),
-           typeof(WatermarkService),
-           new FrameworkPropertyMetadata((object)null, new PropertyChangedCallback(OnWatermarkChanged)));
+        public static readonly DependencyProperty WatermarkProperty = 
+            DependencyProperty.RegisterAttached("Watermark", typeof(object), typeof(WatermarkService),
+             new FrameworkPropertyMetadata((object)null, new PropertyChangedCallback(OnWatermarkChanged)));
 
         #region Private Fields
 
         /// <summary>
         /// Dictionary of ItemsControls
         /// </summary>
-        private static readonly Dictionary<object, ItemsControl> itemsControls = new Dictionary<object, ItemsControl>();
+        private static readonly Dictionary<object, ItemsControl> _itemsControls = new Dictionary<object, ItemsControl>();
 
         #endregion
 
         /// <summary>
         /// Gets the Watermark property.  This dependency property indicates the watermark for the control.
         /// </summary>
-        /// <param name="d"><see cref="DependencyObject"/> to get the property from</param>
+        /// <param name="dependencyObject"><see cref="DependencyObject"/> to get the property from</param>
         /// <returns>The value of the Watermark property</returns>
-        public static object GetWatermark(DependencyObject d)
+        public static object GetWatermark(DependencyObject dependencyObject)
         {
-            return (object)d.GetValue(WatermarkProperty);
+            return (object)dependencyObject.GetValue(WatermarkProperty);
         }
 
         /// <summary>
         /// Sets the Watermark property.  This dependency property indicates the watermark for the control.
         /// </summary>
-        /// <param name="d"><see cref="DependencyObject"/> to set the property on</param>
+        /// <param name="dependencyObject"><see cref="DependencyObject"/> to set the property on</param>
         /// <param name="value">value of the property</param>
-        public static void SetWatermark(DependencyObject d, object value)
+        public static void SetWatermark(DependencyObject dependencyObject, object value)
         {
-            d.SetValue(WatermarkProperty, value);
+            dependencyObject.SetValue(WatermarkProperty, value);
         }
 
         /// <summary>
         /// Handles changes to the Watermark property.
         /// </summary>
-        /// <param name="d"><see cref="DependencyObject"/> that fired the event</param>
+        /// <param name="dependencyObject"><see cref="DependencyObject"/> that fired the event</param>
         /// <param name="e">A <see cref="DependencyPropertyChangedEventArgs"/> that contains the event data.</param>
-        private static void OnWatermarkChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnWatermarkChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            var control = (Control)d;
+            var control = (Control)dependencyObject;
             control.Loaded += Control_Loaded;
 
-            if (d is ComboBox || d is TextBox)
+            if (dependencyObject is ComboBox || dependencyObject is TextBox)
             {
                 control.GotKeyboardFocus += Control_GotKeyboardFocus;
                 control.LostKeyboardFocus += Control_Loaded;
             }
 
-            if (d is ItemsControl && !(d is ComboBox))
+            if (dependencyObject is ItemsControl && !(dependencyObject is ComboBox))
             {
-                var i = (ItemsControl)d;
+                var i = (ItemsControl)dependencyObject;
 
                 // for Items property  
                 i.ItemContainerGenerator.ItemsChanged += ItemsChanged;
-                itemsControls.Add(i.ItemContainerGenerator, i);
+                _itemsControls.Add(i.ItemContainerGenerator, i);
 
                 // for ItemsSource property  
                 var prop = DependencyPropertyDescriptor.FromProperty(ItemsControl.ItemsSourceProperty, i.GetType());
@@ -147,7 +145,7 @@ namespace CIS.UI.Utilities.Controls
         private static void ItemsChanged(object sender, ItemsChangedEventArgs e)
         {
             var control = (ItemsControl)null;
-            if (itemsControls.TryGetValue(sender, out control))
+            if (_itemsControls.TryGetValue(sender, out control))
             {
                 if (ShouldShowWatermark(control))
                 {
@@ -210,21 +208,21 @@ namespace CIS.UI.Utilities.Controls
         /// <summary>
         /// Indicates whether or not the watermark should be shown on the specified control
         /// </summary>
-        /// <param name="c"><see cref="Control"/> to test</param>
+        /// <param name="control"><see cref="Control"/> to test</param>
         /// <returns>true if the watermark should be shown; false otherwise</returns>
-        private static bool ShouldShowWatermark(Control c)
+        private static bool ShouldShowWatermark(Control control)
         {
-            if (c is ComboBox)
+            if (control is ComboBox)
             {
-                return (c as ComboBox).Text == string.Empty;
+                return (control as ComboBox).Text == string.Empty;
             }
-            else if (c is TextBoxBase)
+            else if (control is TextBoxBase)
             {
-                return (c as TextBox).Text == string.Empty;
+                return (control as TextBox).Text == string.Empty;
             }
-            else if (c is ItemsControl)
+            else if (control is ItemsControl)
             {
-                return (c as ItemsControl).Items.Count == 0;
+                return (control as ItemsControl).Items.Count == 0;
             }
             else
             {

@@ -144,9 +144,16 @@
     </Compile>
     <Compile Include="Entities\Memberships\Role.cs" />
     <Compile Include="Entities\Memberships\User.cs" />
+    <Compile Include="Entities\Polices\Amendment.cs" />
     <Compile Include="Entities\Polices\Applicant.cs" />
     <Compile Include="Entities\Polices\ArrestStatus.cs" />
     <Compile Include="Entities\Polices\Clearance.cs" />
+    <Compile Include="Entities\Polices\ExpiredLicenseHit.cs">
+      <DependentUpon>Hit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Polices\Finding.cs" />
+    <Compile Include="Entities\Polices\Hit.cs" />
+    <Compile Include="Entities\Polices\HitScore.cs" />
     <Compile Include="Entities\Polices\Officer.cs" />
     <Compile Include="Entities\Polices\Purpose.cs" />
     <Compile Include="Entities\Polices\Rank.cs" />
@@ -154,6 +161,9 @@
     <Compile Include="Entities\Polices\Setting.cs" />
     <Compile Include="Entities\Polices\Station.cs" />
     <Compile Include="Entities\Polices\Suspect.cs" />
+    <Compile Include="Entities\Polices\SuspectHit.cs">
+      <DependentUpon>Hit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Polices\Warrant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Extentions\StringExtention.cs" />

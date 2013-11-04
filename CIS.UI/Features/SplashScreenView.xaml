@@ -1,0 +1,10 @@
+﻿<local:DialogBase x:Class="CIS.UI.Features.SplashScreenView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:CIS.UI.Features"
+        local:DialogBase.DialogResult="{Binding Path=ActionResult}" 
+        Title="Splash Screen" Height="400" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <StackPanel Style="{StaticResource ContentRoot}">
+        <TextBlock Style="{StaticResource Heading2}" TextAlignment="Center" Text="JLRC Manasoft" Margin="0,8,0,8"/>
+    </StackPanel>
+</local:DialogBase>

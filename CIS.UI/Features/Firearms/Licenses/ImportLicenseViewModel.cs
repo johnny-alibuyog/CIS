@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.UI.Features.Firearms.Licenses
 {
@@ -74,13 +75,13 @@ namespace CIS.UI.Features.Firearms.Licenses
         public virtual string Kind
         {
             get { return _kind; }
-            set { _kind = (value ?? string.Empty).Trim(); }
+            set { _kind = (value ?? string.Empty).ToProperCase(); }
         }
 
         public virtual string Make
         {
             get { return _make; }
-            set { _make = (value ?? string.Empty).Trim(); }
+            set { _make = (value ?? string.Empty).ToProperCase(); }
         }
 
         public virtual string FirstName

@@ -10,34 +10,34 @@ namespace CIS.Core.Entities.Memberships
     public enum Role
     {
         [Description("System Administrator")]
-        SystemAdministrator,
+        SystemAdministrator = 0,
 
         [Description("Police Administartor")]
-        PoliceAdministartor,
+        PoliceAdministartor = 101,
 
         [Description("Police Approver")]
-        PoliceApprover,
+        PoliceApprover = 102,
 
         [Description("Police Encoder")]
-        PoliceEncoder,
+        PoliceEncoder = 103,
 
         [Description("Barangay Administartor")]
-        BarangayAdministartor,
+        BarangayAdministartor = 201,
 
         [Description("Barangay Approver")]
-        BarangayApprover,
+        BarangayApprover = 202,
 
         [Description("Barangay Encoder")]
-        BarangayEncoder,
+        BarangayEncoder = 203,
 
         [Description("Mayor Administrator")]
-        MayorAdministrator,
+        MayorAdministrator = 301,
 
         [Description("Mayor Approver")]
-        MayorApprover,
+        MayorApprover = 302,
 
         [Description("Mayor Encoder")]
-        MayorEncoder,
+        MayorEncoder = 303,
     }
 
     //public class Role

@@ -14,6 +14,6 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public virtual string Gun { get; set; }
 
-        public virtual DateTime ExpiryDate { get; set; }
+        public virtual Nullable<DateTime> ExpiryDate { get; set; }
     }
 }

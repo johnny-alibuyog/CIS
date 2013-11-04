@@ -27,7 +27,7 @@ namespace CIS.UI.Features.Memberships.Users
         public virtual string Password { get; set; }
 
         [NotNullNotEmpty(Message = "Confirm Password is mandatory.")]
-        public virtual string ConfirmPassowrd { get; set; }
+        public virtual string ConfirmPassword { get; set; }
 
         [Valid]
         public virtual PersonViewModel Person { get; set; }
@@ -84,8 +84,10 @@ namespace CIS.UI.Features.Memberships.Users
                 var source = instance as UserViewModel;
                 var target = this;
 
+                target.Id = source.Id;
                 target.Username = source.Username;
                 target.Password = source.Password;
+                target.ConfirmPassword = source.ConfirmPassword;
                 target.Email = source.Email;
                 target.Person.SerializeWith(source.Person);
                 target.Roles = source.Roles.ToReactiveList(); // new instance of reactive lists
@@ -99,7 +101,7 @@ namespace CIS.UI.Features.Memberships.Users
                 target.Id = source.Id;
                 target.Username = source.Username;
                 target.Password = source.Password;
-                target.ConfirmPassowrd = source.Password;
+                target.ConfirmPassword = source.Password;
                 target.Email = source.Email;
                 target.Person.SerializeWith(source.Person);
                 target.Roles = Enum.GetValues(typeof(Role)).Cast<Role>()

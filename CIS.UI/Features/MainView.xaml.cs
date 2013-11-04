@@ -22,53 +22,70 @@ using CIS.UI.Features.Polices.Maintenances;
 using FirstFloor.ModernUI.Windows.Controls;
 using NHibernate;
 using NHibernate.Linq;
+using ReactiveUI;
 
 namespace CIS.UI.Features
 {
     /// <summary>
     /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainView : ModernWindow
+    public partial class MainView : ModernWindow, IViewFor<MainViewModel>
     {
+        #region IViewFor<MainViewModel> Members
+
+        public MainViewModel ViewModel
+        {
+            get { return this.DataContext as MainViewModel; }
+            set { this.DataContext = value; }
+        }
+
+        object IViewFor.ViewModel
+        {
+            get { return this.DataContext; }
+            set { this.DataContext = value; }
+        }
+
+        #endregion
+
         public MainView()
         {
             InitializeComponent();
 
-            App.Configuration.Apprearance.Apply();
+            //App.Configuration.Apprearance.Apply();
 
-            Task.Factory.StartNew(() =>
-            {
-                var dataInitializer = (IDataInitializer)null;
+            //Task.Factory.StartNew(() =>
+            //{
+            //    var dataInitializer = (IDataInitializer)null;
 
-                //dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
-                //dataInitializer.Execute();
+            //    //dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
+            //    //dataInitializer.Execute();
 
-                //var x = IoC.Container.Resolve<CIS.UI.Features.Polices.Clearances.ApplicationViewModel>();
+            //    //var x = IoC.Container.Resolve<CIS.UI.Features.Polices.Clearances.ApplicationViewModel>();
 
-                dataInitializer = IoC.Container.Resolve<FingerDataInitializer>();
-                dataInitializer.Execute();
+            //    dataInitializer = IoC.Container.Resolve<FingerDataInitializer>();
+            //    dataInitializer.Execute();
 
-                dataInitializer = IoC.Container.Resolve<TerminalDataInitializer>();
-                dataInitializer.Execute();
+            //    dataInitializer = IoC.Container.Resolve<TerminalDataInitializer>();
+            //    dataInitializer.Execute();
 
-                dataInitializer = IoC.Container.Resolve<SettingDataInitializer>();
-                dataInitializer.Execute();
+            //    dataInitializer = IoC.Container.Resolve<SettingDataInitializer>();
+            //    dataInitializer.Execute();
 
-                dataInitializer = IoC.Container.Resolve<RankDataInitializer>();
-                dataInitializer.Execute();
+            //    dataInitializer = IoC.Container.Resolve<RankDataInitializer>();
+            //    dataInitializer.Execute();
 
-                dataInitializer = IoC.Container.Resolve<PurposeDataInitializer>();
-                dataInitializer.Execute();
+            //    dataInitializer = IoC.Container.Resolve<PurposeDataInitializer>();
+            //    dataInitializer.Execute();
 
-                dataInitializer = IoC.Container.Resolve<MakeDataInitializer>();
-                dataInitializer.Execute();
+            //    dataInitializer = IoC.Container.Resolve<MakeDataInitializer>();
+            //    dataInitializer.Execute();
 
-                dataInitializer = IoC.Container.Resolve<KindDataInitializer>();
-                dataInitializer.Execute();
+            //    dataInitializer = IoC.Container.Resolve<KindDataInitializer>();
+            //    dataInitializer.Execute();
 
-                dataInitializer = IoC.Container.Resolve<StationDataInitializer>();
-                dataInitializer.Execute();
-            }, TaskCreationOptions.LongRunning);
+            //    dataInitializer = IoC.Container.Resolve<StationDataInitializer>();
+            //    dataInitializer.Execute();
+            //}, TaskCreationOptions.LongRunning);
         }
     }
 }

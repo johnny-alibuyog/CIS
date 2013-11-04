@@ -59,6 +59,7 @@ namespace CIS.UI.Features.Firearms.Licenses
             this.ViewModel.TotalTime = null;
             this.ViewModel.TotalLicenses = null;
             this.ViewModel.Status = string.Empty;
+            this.ViewModel.ErrorMessage = string.Empty;
         }
 
         public virtual void RunImportWorker()
@@ -80,12 +81,21 @@ namespace CIS.UI.Features.Firearms.Licenses
         {
             this.ViewModel.ImportStart = null;
             this.ViewModel.ImportEnd = null;
+            this.ViewModel.TotalTime = null;
             this.ViewModel.TotalLicenses = 0M;
+            this.ViewModel.ErrorMessage = string.Empty;
 
             var start = DateTime.Now;
 
-            var service = (IImportService)IoC.Container.Resolve<ImportService>(new Dependency("viewModel", this.ViewModel));
-            service.Execute();
+            try
+            {
+                var service = (IImportService)IoC.Container.Resolve<ImportService>(new Dependency("viewModel", this.ViewModel));
+                service.Execute();
+            }
+            catch (Exception ex)
+            {
+                this.ViewModel.ErrorMessage = ex.Message;
+            }
 
             var end = DateTime.Now;
             var duration = end - start;

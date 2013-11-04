@@ -56,12 +56,16 @@
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Findings"/>
-                        <TextBox Foreground="Red" Text="{Binding PerfectMatchFindings, Mode=OneWay}" Height="60" IsEnabled="False" TextWrapping="WrapWithOverflow" />
+                        <TextBox Foreground="Red" Text="{Binding FinalFindings, Mode=OneWay}" Height="60" IsEnabled="False" TextWrapping="WrapWithOverflow" />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
+
+        <!-- seperator -->
         <GridSplitter Grid.Column="1" />
+        <!--<Rectangle Grid.Column="1" Fill="{DynamicResource SeparatorBackground}" Width="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" />-->
+        
         <ScrollViewer Grid.Column="2 " Margin="{StaticResource SplitRight}">
             <StackPanel>
                 <TextBlock Text="Images" Style="{StaticResource Heading2}" />

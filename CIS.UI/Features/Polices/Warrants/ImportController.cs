@@ -72,6 +72,7 @@ namespace CIS.UI.Features.Polices.Warrants
             this.ViewModel.TotalCases = null;
             this.ViewModel.TotalSuspects = null;
             this.ViewModel.Status = string.Empty;
+            this.ViewModel.ErrorMessage = string.Empty;
         }
 
         public virtual void RunImportWorker()
@@ -93,17 +94,25 @@ namespace CIS.UI.Features.Polices.Warrants
         {
             this.ViewModel.ImportStart = null;
             this.ViewModel.ImportEnd = null;
+            this.ViewModel.TotalTime = null;
             this.ViewModel.TotalCases = 0M;
             this.ViewModel.TotalSuspects = 0M;
             var start = DateTime.Now;
 
-            var importer = (IImportService)null;
+            try
+            {
+                var importer = (IImportService)null;
 
-            importer = (IImportService)IoC.Container.Resolve<LitusImportService>(new Dependency("viewModel", this.ViewModel));
-            importer.Execute();
+                importer = (IImportService)IoC.Container.Resolve<LitusImportService>(new Dependency("viewModel", this.ViewModel));
+                importer.Execute();
 
-            importer = (IImportService)IoC.Container.Resolve<NaraImportService>(new Dependency("viewModel", this.ViewModel));
-            importer.Execute();
+                importer = (IImportService)IoC.Container.Resolve<NaraImportService>(new Dependency("viewModel", this.ViewModel));
+                importer.Execute();
+            }
+            catch (Exception ex)
+            {
+                this.ViewModel.ErrorMessage = ex.Message;
+            }
 
             var end = DateTime.Now;
             var duration = end - start;
