@@ -3,8 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:CIS.UI.Features"
         local:DialogBase.DialogResult="{Binding Path=ActionResult}" 
-        Title="Splash Screen" Height="400" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <StackPanel Style="{StaticResource ContentRoot}">
-        <TextBlock Style="{StaticResource Heading2}" TextAlignment="Center" Text="JLRC Manasoft" Margin="0,8,0,8"/>
-    </StackPanel>
+        Title="JLRC Manasoft" Height="400" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <!--<TextBlock Style="{StaticResource Heading2}" TextAlignment="Center" Text="JLRC Manasoft" Margin="0,8,0,8"/>-->
+    <DockPanel Style="{StaticResource ContentRoot}">
+        <StackPanel VerticalAlignment="Bottom">
+            <TextBlock Text="Loading" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+            <ProgressBar Minimum="0" Maximum="1" Height="16" IsIndeterminate="True" Margin="0,0,0,16" />
+        </StackPanel>
+    </DockPanel>
 </local:DialogBase>

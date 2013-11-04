@@ -666,7 +666,15 @@ namespace CIS.UI.Features.Polices.Clearances
         public virtual void Previous()
         {
             var currentIndex = this.ViewModel.ViewModels.IndexOf(this.ViewModel.CurrentViewModel);
-            this.ViewModel.CurrentViewModel = this.ViewModel.ViewModels[currentIndex - 1];
+
+            var movement = 0;
+            if (this.ViewModel.Finding == this.ViewModel.ViewModels[currentIndex - 1] && this.ViewModel.Finding.Hits.Count() == 0)
+                movement = 2;
+            else
+                movement = 1;
+
+
+            this.ViewModel.CurrentViewModel = this.ViewModel.ViewModels[currentIndex - movement];
 
             this.InitializeScreen(Direction.Previous);
         }
@@ -678,7 +686,14 @@ namespace CIS.UI.Features.Polices.Clearances
                 return;
 
             var currentIndex = this.ViewModel.ViewModels.IndexOf(this.ViewModel.CurrentViewModel);
-            this.ViewModel.CurrentViewModel = this.ViewModel.ViewModels[currentIndex + 1];
+
+            var movement = 0;
+            if (this.ViewModel.Finding == this.ViewModel.ViewModels[currentIndex + 1] && this.ViewModel.Finding.Hits.Count() == 0)
+                movement = 2;
+            else
+                movement = 1;
+
+            this.ViewModel.CurrentViewModel = this.ViewModel.ViewModels[currentIndex + movement];
 
             this.InitializeScreen(Direction.Next);
         }

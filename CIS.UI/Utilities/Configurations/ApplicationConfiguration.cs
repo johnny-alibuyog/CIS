@@ -22,9 +22,14 @@ namespace CIS.UI.Utilities.Configurations
         public virtual bool UserPowerUser { get; set; }
         public virtual DatabaseConfiguraton Database { get; set; }
         public virtual AppearanceConfiguration Apprearance { get; set; }
+        public virtual string ApplicationDataLocation { get; set; }
 
         public ApplicationConfiguration()
         {
+            this.ApplicationDataLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CIS");
+            if (Directory.Exists(this.ApplicationDataLocation) == false)
+                Directory.CreateDirectory(this.ApplicationDataLocation);
+
             this.Licensee = "JLRC Manasoft";
             this.Plugins = new[] 
             { 
@@ -36,7 +41,7 @@ namespace CIS.UI.Utilities.Configurations
             this.ConnectionString = "connection string #";
             this.MailserverPassword = "12345a#";
 
-            this.PowerUser = "power_admin";
+            this.PowerUser = "power_user";
             this.UserPowerUser = true;
 
             this.Database = new DatabaseConfiguraton()
@@ -59,7 +64,7 @@ namespace CIS.UI.Utilities.Configurations
                 //PropertiesToEncrypt = "MailserverPassword,ConnectionString,Database.Username,Database.Password",
                 PropertiesToEncrypt = "MailserverPassword,ConnectionString",
                 EncryptionKey = "_secretive_",
-                XmlConfigurationFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "cis.config")
+                XmlConfigurationFile = Path.Combine(this.ApplicationDataLocation, "cis.config")
             };
 
             this.Provider.Read(this);

@@ -127,7 +127,7 @@
                 <ScrollViewer Grid.Column="0" Margin="{StaticResource SplitLeft}">
                     <StackPanel>
                         <TextBlock Style="{StaticResource Heading2}" Text="Findings" Margin="0,8,0,8" />
-                        <mui:BBCodeBlock BBCode="Mark [color=#ff4500][b]checked[/b][/color] if identical." Margin="0,0,0,2" />
+                        <mui:BBCodeBlock BBCode="[color=#ff4500][b]Check[/b][/color] if identical." Margin="0,0,0,2" />
 
                         <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Hits, Mode=TwoWay, ValidatesOnDataErrors=True}" 
                                  SelectedItem="{Binding SelectedHit, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Width="200">
