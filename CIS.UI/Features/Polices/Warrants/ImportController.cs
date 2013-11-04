@@ -112,6 +112,7 @@ namespace CIS.UI.Features.Polices.Warrants
             catch (Exception ex)
             {
                 this.ViewModel.ErrorMessage = ex.Message;
+                this.Log.Error(ex.Message, ex);
             }
 
             var end = DateTime.Now;
