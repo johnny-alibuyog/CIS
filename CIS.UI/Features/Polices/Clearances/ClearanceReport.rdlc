@@ -57,7 +57,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Tax Certificate Number (Cedula)</Value>
+                              <Value>Residential Certificate (Cedula)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1156,7 +1156,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Purpose.Value</Value>
+                              <Value>=UCase(Fields!Purpose.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1830,7 +1830,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!VerifierPosition.Value</Value>
+                              <Value>=UCase(Fields!VerifierPosition.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -1862,7 +1862,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CertifierPosition.Value</Value>
+                              <Value>=UCase(Fields!CertifierPosition.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2064,7 +2064,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.78279in</Width>
+              <Width>3.36612in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -2203,9 +2203,9 @@
         <KeepTogether>true</KeepTogether>
         <DataSetName>ItemDataSet</DataSetName>
         <Top>0.5043in</Top>
-        <Left>2.92917in</Left>
+        <Left>2.55834in</Left>
         <Height>0.45in</Height>
-        <Width>2.78279in</Width>
+        <Width>3.36612in</Width>
         <ZIndex>15</ZIndex>
         <Style>
           <Border>
@@ -2423,7 +2423,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Tax Certificate Number (Cedula)</Value>
+                              <Value>Residential Certificat (Cedula)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -3523,7 +3523,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Purpose.Value</Value>
+                              <Value>=UCase(Fields!Purpose.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -4197,7 +4197,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!VerifierPosition.Value</Value>
+                              <Value>=UCase(Fields!VerifierPosition.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -4229,7 +4229,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CertifierPosition.Value</Value>
+                              <Value>=UCase(Fields!CertifierPosition.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>

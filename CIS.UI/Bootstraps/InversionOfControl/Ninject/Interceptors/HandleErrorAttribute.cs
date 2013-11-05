@@ -10,6 +10,8 @@ using Ninject.Extensions.Interception.Request;
 
 namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors
 {
+    //public class HandleErrorAttribute : Attribute { }
+
     public class HandleErrorAttribute : InterceptAttribute
     {
         public override IInterceptor CreateInterceptor(IProxyRequest request)

@@ -19,7 +19,7 @@ namespace CIS.UI.Utilities.Configurations
         public virtual string ConnectionString { get; set; }
         public virtual string MailserverPassword { get; set; }
         public virtual string PowerUser { get; set; }
-        public virtual bool UserPowerUser { get; set; }
+        public virtual bool UsePowerUser { get; set; }
         public virtual DatabaseConfiguraton Database { get; set; }
         public virtual AppearanceConfiguration Apprearance { get; set; }
         public virtual string ApplicationDataLocation { get; set; }
@@ -42,7 +42,7 @@ namespace CIS.UI.Utilities.Configurations
             this.MailserverPassword = "12345a#";
 
             this.PowerUser = "power_user";
-            this.UserPowerUser = true;
+            this.UsePowerUser = false;
 
             this.Database = new DatabaseConfiguraton()
             {

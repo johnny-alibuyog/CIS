@@ -26,7 +26,7 @@ namespace CIS.UI.Features.Memberships.Users
 
         public virtual void Initialize()
         {
-            if (App.Configuration.UserPowerUser == false)
+            if (App.Configuration.UsePowerUser == false)
                 return;
 
             using (var session = this.SessionFactory.OpenSession())

@@ -52,7 +52,7 @@ namespace CIS.UI.Features.Memberships.Users
                 transaction.Commit();
             }
 
-            if (App.Configuration.UserPowerUser)
+            if (App.Configuration.UsePowerUser)
             {
                 this.ViewModel.Username = powerUser.Username;
                 this.ViewModel.Password = powerUser.Password;

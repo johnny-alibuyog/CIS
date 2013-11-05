@@ -12,7 +12,12 @@ using Ninject.Parameters;
 
 namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors
 {
-    public class AuthorizeAttribute :InterceptAttribute
+    //public class AuthorizeAttribute : Attribute
+    //{
+    //    public virtual Role[] Roles { get; set; }
+    //}
+
+    public class AuthorizeAttribute : InterceptAttribute
     {
         public virtual Role[] Roles { get; set; }
 

@@ -21,9 +21,9 @@ namespace CIS.Core.Entities.Commons
 
                 if (this.Bytes != null)
                 {
-                    using (var ms = new MemoryStream(this.Bytes))
+                    using (var stream = new MemoryStream(this.Bytes))
                     {
-                        _image = new Bitmap(Image.FromStream(ms));
+                        _image = new Bitmap(Image.FromStream(stream));
                     }
                 }
                 return _image;
@@ -40,8 +40,6 @@ namespace CIS.Core.Entities.Commons
                 using (var stream = new MemoryStream())
                 {
                     _image.Save(stream, ImageFormat.Bmp);
-                    //_image.Save(stream, ImageFormat.Png);
-                    //_image.Save(stream, ImageFormat.Jpeg);
                     this.Bytes = stream.ToArray();
                 }
             }
