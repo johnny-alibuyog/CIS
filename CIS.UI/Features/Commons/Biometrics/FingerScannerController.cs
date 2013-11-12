@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,7 +82,12 @@ namespace CIS.UI.Features.Commons.Biometrics
             var converter = new SampleConversion();
             var bitmap = (Bitmap)null;
             converter.ConvertToPicture(sample, ref bitmap);
+
+            bitmap.Save(Path.Combine(App.Config.ApplicationDataLocation, "rawFingerPrint.bmp"));
+            bitmap.ReduceSize().Save(Path.Combine(App.Config.ApplicationDataLocation, "reducedFingerPrint.bmp"));
+
             return bitmap;
+            //return bitmap.ReduceSize();
         }
 
         #endregion

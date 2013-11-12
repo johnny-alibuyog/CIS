@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,8 @@ namespace CIS.UI.Features.Commons.Cameras
     {
         private CameraFrameSource _frameSource;
 
-        public CameraController(CameraViewModel viewModel) : base(viewModel)
+        public CameraController(CameraViewModel viewModel)
+            : base(viewModel)
         {
             this.ViewModel.Cameras = CameraService.AvailableCameras.ToReactiveList();
             this.ViewModel.SelectedCamera = CameraService.DefaultCamera;
@@ -42,7 +44,7 @@ namespace CIS.UI.Features.Commons.Cameras
 
         private void CaptureNewFrame(IFrameSource frameSource, Frame frame, double fps)
         {
-            var bitmap = frame.Image.Clone() as Bitmap; 
+            var bitmap = frame.Image.Clone() as Bitmap;
             this.ViewModel.ImagePreview = bitmap.ToBitmapSource();
         }
 
@@ -65,7 +67,7 @@ namespace CIS.UI.Features.Commons.Cameras
             _frameSource.Camera.Fps = 20;
             _frameSource.NewFrame += CaptureNewFrame;
             _frameSource.StartFrameCapture();
-        
+
         }
 
         public virtual void Stop()
@@ -88,6 +90,10 @@ namespace CIS.UI.Features.Commons.Cameras
         public virtual void Capture()
         {
             this.ViewModel.Picture = this.ViewModel.ImagePreview;
+            //this.ViewModel.Picture = this.ViewModel.ImagePreview.ReduceSize();
+
+            //this.ViewModel.ImagePreview.ToImage().Save(Path.Combine(App.Config.ApplicationDataLocation, "raw.bmp"));
+            //this.ViewModel.ImagePreview.ReduceSize().ToImage().Save(Path.Combine(App.Config.ApplicationDataLocation, "resized.bmp"));
         }
     }
 }

@@ -26,13 +26,13 @@ namespace CIS.UI.Features.Memberships.Users
 
         public virtual void Initialize()
         {
-            if (App.Configuration.UsePowerUser == false)
+            if (App.Config.UsePowerUser == false)
                 return;
 
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var powerUser = session.Query<User>().FirstOrDefault(x => x.Username == App.Configuration.PowerUser);
+                var powerUser = session.Query<User>().FirstOrDefault(x => x.Username == App.Config.PowerUser);
                 if (powerUser == null)
                 {
                     this.ViewModel.Username = powerUser.Username;

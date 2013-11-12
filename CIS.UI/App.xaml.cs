@@ -25,11 +25,11 @@ namespace CIS.UI
             get { return Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive); }
         }
 
-        public static ApplicationConfiguration Configuration { get; set; }
+        public static ApplicationConfiguration Config { get; set; }
 
         public App()
         {
-            App.Configuration = IoC.Container.Resolve<ApplicationConfiguration>();
+            App.Config = IoC.Container.Resolve<ApplicationConfiguration>();
         }
 
         private Mutex _instanceMutex = null;
@@ -52,7 +52,7 @@ namespace CIS.UI
 
         protected override void OnExit(ExitEventArgs e)
         {
-            App.Configuration.Provider.Write(App.Configuration);
+            App.Config.Provider.Write(App.Config);
 
             if (_instanceMutex != null)
                 _instanceMutex.ReleaseMutex();

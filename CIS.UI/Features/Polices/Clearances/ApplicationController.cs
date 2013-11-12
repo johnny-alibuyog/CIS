@@ -1,32 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Firearms;
 using CIS.Core.Entities.Memberships;
 using CIS.Core.Entities.Polices;
 using CIS.Core.Utilities.Extentions;
-using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.Data.Commons.Exceptions;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Cameras;
-using CIS.UI.Features.Commons.Persons;
 using CIS.UI.Features.Commons.Signatures;
 using CIS.UI.Features.Memberships.Users;
 using CIS.UI.Features.Polices.Maintenances;
-using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
 using CIS.UI.Utilities.Reports;
-using FirstFloor.ModernUI.Windows.Controls;
 using Microsoft.Reporting.WinForms;
-using NHibernate;
 using NHibernate.Linq;
 using ReactiveUI;
-using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Clearances
 {
@@ -36,8 +28,7 @@ namespace CIS.UI.Features.Polices.Clearances
     {
         private enum Direction { Previous, Next }
 
-        public ApplicationController(ApplicationViewModel viewModel)
-            : base(viewModel)
+        public ApplicationController(ApplicationViewModel viewModel) : base(viewModel)
         {
             this.Reset();
 
@@ -118,6 +109,12 @@ namespace CIS.UI.Features.Polices.Clearances
                 return false;
             }
 
+            if (this.ViewModel.PersonalInformation == this.ViewModel.CurrentViewModel)
+            {
+                if (this.ViewModel.PersonalInformation.Person.MiddleName == null)
+                    throw new BusinessException("Middle name is mandatory.");
+            }
+
             if (this.ViewModel.Finding == this.ViewModel.CurrentViewModel)
             {
                 if (this.ViewModel.Finding.Amendment != null)
@@ -133,6 +130,28 @@ namespace CIS.UI.Features.Polices.Clearances
             return true;
         }
 
+        private int GetMovementPosition(Direction direction)
+        {
+            var movement = 1;
+            var currentIndex = this.ViewModel.ViewModels.IndexOf(this.ViewModel.CurrentViewModel);
+            var targetViewModel = direction == Direction.Next
+                ? this.ViewModel.ViewModels[currentIndex + 1]
+                : this.ViewModel.ViewModels[currentIndex - 1];
+
+            if (this.ViewModel.Finding == targetViewModel)
+            {
+                if (direction == Direction.Next)
+                    this.Evaluate2();
+
+                if (this.ViewModel.Finding.Hits.Count() == 0)
+                    movement = 2;
+            }
+
+            return direction == Direction.Next
+                ? currentIndex + movement
+                : currentIndex - movement;
+        }
+
         private void InitializeScreen(Direction direction)
         {
             if (this.ViewModel.Camera == this.ViewModel.CurrentViewModel)
@@ -144,15 +163,6 @@ namespace CIS.UI.Features.Polices.Clearances
                 this.ViewModel.FingerScanner.Start.Execute(null);
             else
                 this.ViewModel.FingerScanner.Stop.Execute(null);
-
-            if (direction == Direction.Next)
-            {
-                if (this.ViewModel.Finding == this.ViewModel.CurrentViewModel)
-                    this.PopulateFinding();
-
-                if (this.ViewModel.Summary == this.ViewModel.CurrentViewModel)
-                    this.PopulateSummary();
-            }
         }
 
         private void InitializeViews()
@@ -249,15 +259,6 @@ namespace CIS.UI.Features.Polices.Clearances
 
                 transaction.Commit();
             }
-        }
-
-        private void PopulateView()
-        {
-            if (this.ViewModel.Finding == this.ViewModel.CurrentViewModel)
-                this.PopulateFinding();
-
-            if (this.ViewModel.Summary == this.ViewModel.CurrentViewModel)
-                this.PopulateSummary();
         }
 
         private void Evaluate()
@@ -358,7 +359,7 @@ namespace CIS.UI.Features.Polices.Clearances
             //}
         }
 
-        private void PopulateFinding()
+        private void Evaluate2()
         {
             this.ViewModel.Finding.Amendment = null;
             ((ICollection<HitViewModel>)this.ViewModel.Finding.Hits).Clear();
@@ -378,7 +379,7 @@ namespace CIS.UI.Features.Polices.Clearances
                             (
                                 x.Person.MiddleName.Length == 1 || x.Person.MiddleName.Contains(".")
                                     ? x.Person.MiddleName.Substring(0, 1) == person.MiddleName.Substring(0, 1)
-                                    : x.Person.MiddleName == person.MiddleName
+                                    : x.Person.MiddleName == (person.MiddleName ?? string.Empty)
                             )
                         )
                     )
@@ -397,7 +398,7 @@ namespace CIS.UI.Features.Polices.Clearances
                             (
                                 x.Person.MiddleName.Length == 1 || x.Person.MiddleName.Contains(".")
                                     ? x.Person.MiddleName.Substring(0, 1) == person.MiddleName.Substring(0, 1)
-                                    : x.Person.MiddleName == person.MiddleName
+                                    : x.Person.MiddleName == (person.MiddleName ?? string.Empty)
                             )
                         )
                     )
@@ -440,10 +441,7 @@ namespace CIS.UI.Features.Polices.Clearances
             }
 
             this.ViewModel.Finding.SelectedHit = this.ViewModel.Finding.Hits.FirstOrDefault();
-        }
 
-        private void PopulateSummary()
-        {
             this.ViewModel.Summary.FinalFindings = this.ViewModel.Finding.Evaluate();
             this.ViewModel.Summary.Picture = this.ViewModel.Camera.Picture;
             this.ViewModel.Summary.RightThumb = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightThumb];
@@ -451,7 +449,6 @@ namespace CIS.UI.Features.Polices.Clearances
             this.ViewModel.Summary.FullName = this.ViewModel.PersonalInformation.Person.FullName;
             this.ViewModel.Summary.BirthDate = this.ViewModel.PersonalInformation.Person.BirthDate;
             this.ViewModel.Summary.BirthPlace = this.ViewModel.PersonalInformation.BirthPlace;
-
         }
 
         private ClearanceReportViewModel GenerateClearance()
@@ -541,18 +538,18 @@ namespace CIS.UI.Features.Polices.Clearances
 
                 clearance.Applicant.Person = (Person)this.ViewModel.PersonalInformation.Person.DeserializeInto(new Person());
                 clearance.Applicant.Address = (Address)this.ViewModel.PersonalInformation.Address.DeserializeInto(new Address());
-                clearance.Applicant.Picture.Image = this.ViewModel.Camera.Picture.ToImage();
-                clearance.Applicant.Signature.Image = this.ViewModel.Signature.SignatureImage.ToImage();
-                clearance.Applicant.FingerPrint.RightThumb.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightThumb].ToImage();
-                clearance.Applicant.FingerPrint.RightIndex.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightIndex].ToImage();
-                clearance.Applicant.FingerPrint.RightMiddle.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightMiddle].ToImage();
-                clearance.Applicant.FingerPrint.RightRing.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightRing].ToImage();
-                clearance.Applicant.FingerPrint.RightPinky.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightPinky].ToImage();
-                clearance.Applicant.FingerPrint.LeftThumb.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftThumb].ToImage();
-                clearance.Applicant.FingerPrint.LeftIndex.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftIndex].ToImage();
-                clearance.Applicant.FingerPrint.LeftMiddle.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftMiddle].ToImage();
-                clearance.Applicant.FingerPrint.LeftRing.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftRing].ToImage();
-                clearance.Applicant.FingerPrint.LeftPinky.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftPinky].ToImage();
+                clearance.Applicant.Picture.Image = this.ViewModel.Camera.Picture.ReduceSize().ToImage();
+                clearance.Applicant.Signature.Image = this.ViewModel.Signature.SignatureImage.ReduceSize().ToImage();
+                clearance.Applicant.FingerPrint.RightThumb.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightThumb].ReduceSize().ToImage();
+                clearance.Applicant.FingerPrint.RightIndex.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightIndex].ReduceSize().ToImage();
+                clearance.Applicant.FingerPrint.RightMiddle.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightMiddle].ReduceSize().ToImage();
+                clearance.Applicant.FingerPrint.RightRing.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightRing].ReduceSize().ToImage();
+                clearance.Applicant.FingerPrint.RightPinky.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightPinky].ReduceSize().ToImage();
+                clearance.Applicant.FingerPrint.LeftThumb.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftThumb].ReduceSize().ToImage();
+                clearance.Applicant.FingerPrint.LeftIndex.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftIndex].ReduceSize().ToImage();
+                clearance.Applicant.FingerPrint.LeftMiddle.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftMiddle].ReduceSize().ToImage();
+                clearance.Applicant.FingerPrint.LeftRing.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftRing].ReduceSize().ToImage();
+                clearance.Applicant.FingerPrint.LeftPinky.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftPinky].ReduceSize().ToImage();
                 clearance.Applicant.Height = this.ViewModel.PersonalInformation.Height;
                 clearance.Applicant.Weight = this.ViewModel.PersonalInformation.Weight;
                 clearance.Applicant.AlsoKnownAs = this.ViewModel.PersonalInformation.AlsoKnownAs;
@@ -665,17 +662,8 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual void Previous()
         {
-            var currentIndex = this.ViewModel.ViewModels.IndexOf(this.ViewModel.CurrentViewModel);
-
-            var movement = 0;
-            if (this.ViewModel.Finding == this.ViewModel.ViewModels[currentIndex - 1] && this.ViewModel.Finding.Hits.Count() == 0)
-                movement = 2;
-            else
-                movement = 1;
-
-
-            this.ViewModel.CurrentViewModel = this.ViewModel.ViewModels[currentIndex - movement];
-
+            var position = this.GetMovementPosition(Direction.Previous);
+            this.ViewModel.CurrentViewModel = this.ViewModel.ViewModels[position];
             this.InitializeScreen(Direction.Previous);
         }
 
@@ -685,16 +673,8 @@ namespace CIS.UI.Features.Polices.Clearances
             if (this.ValidateScreen() == false)
                 return;
 
-            var currentIndex = this.ViewModel.ViewModels.IndexOf(this.ViewModel.CurrentViewModel);
-
-            var movement = 0;
-            if (this.ViewModel.Finding == this.ViewModel.ViewModels[currentIndex + 1] && this.ViewModel.Finding.Hits.Count() == 0)
-                movement = 2;
-            else
-                movement = 1;
-
-            this.ViewModel.CurrentViewModel = this.ViewModel.ViewModels[currentIndex + movement];
-
+            var position = this.GetMovementPosition(Direction.Next);
+            this.ViewModel.CurrentViewModel = this.ViewModel.ViewModels[position];
             this.InitializeScreen(Direction.Next);
         }
 

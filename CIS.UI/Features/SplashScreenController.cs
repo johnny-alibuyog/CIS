@@ -20,8 +20,8 @@ namespace CIS.UI.Features
         public SplashScreenController(SplashScreenViewModel viewModel)
             : base(viewModel)
         {
-            this.ViewModel.Licensee = App.Configuration.Licensee;
-            this.ViewModel.Plugins = App.Configuration.Plugins;
+            this.ViewModel.Licensee = App.Config.Licensee;
+            this.ViewModel.Plugins = App.Config.Plugins;
 
             _backgroundWorker = new BackgroundWorker();
             _backgroundWorker.DoWork += (sender, e) => InitializeData();

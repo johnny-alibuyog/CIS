@@ -155,14 +155,43 @@ namespace CIS.UI.Utilities.Extentions
         //    return target;
         //}
 
+        public static BitmapSource ReduceSize(this BitmapSource bitmapSource)
+        {
+            return bitmapSource.ReduceSize(App.Config.ImageResizeScaleFactor);
+        }
+
+        public static BitmapSource ReduceSize(this BitmapSource bitmapSource, double scaleFactor)
+        {
+            if (bitmapSource == null)
+                return null;
+
+            using (var bitmap = bitmapSource.ToImage() as Bitmap)
+            using (var reducedBitmap = bitmap.ReduceSize())
+            {
+                return reducedBitmap.ToBitmapSource();
+            }
+        }
+
         public static Bitmap ReduceSize(this Bitmap source)
         {
+            return ReduceSize(source, App.Config.ImageResizeScaleFactor);
+        }
+
+        public static Bitmap ReduceSize(this Bitmap source, double scaleFactor)
+        {
+            if (source == null)
+                return null;
+
             using (var sourceStream = new MemoryStream())
             using (var targetStream = new MemoryStream())
             {
-                source.Save(sourceStream, source.RawFormat);
-                ResizeImage(100D, sourceStream, targetStream);
-                return new Bitmap(targetStream);
+                //source.Save(sourceStream, source.RawFormat);
+                source.Save(sourceStream, ImageFormat.Bmp);
+                ResizeImage(scaleFactor, sourceStream, targetStream);
+                using (var tempBitmap = new Bitmap(targetStream))
+                {
+                    return new Bitmap(tempBitmap);
+                }
             }
         }
 
@@ -185,7 +214,6 @@ namespace CIS.UI.Utilities.Extentions
                     thumbnailBitmap.Save(toStream, image.RawFormat);
                 }
             }
-
 
             //var image = Image.FromStream(fromStream);
             //var newWidth = (int)(image.Width * scaleFactor);

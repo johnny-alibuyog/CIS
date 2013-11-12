@@ -40,7 +40,7 @@ namespace CIS.UI.Features.Memberships.Users
         {
             InitializeComponent();
 
-            App.Configuration.Apprearance.Apply();
+            App.Config.Apprearance.Apply();
         }
     }
 }

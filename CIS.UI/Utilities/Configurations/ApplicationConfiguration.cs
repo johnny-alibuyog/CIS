@@ -23,12 +23,15 @@ namespace CIS.UI.Utilities.Configurations
         public virtual DatabaseConfiguraton Database { get; set; }
         public virtual AppearanceConfiguration Apprearance { get; set; }
         public virtual string ApplicationDataLocation { get; set; }
+        public virtual double ImageResizeScaleFactor { get; set; }
 
         public ApplicationConfiguration()
         {
             this.ApplicationDataLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CIS");
             if (Directory.Exists(this.ApplicationDataLocation) == false)
                 Directory.CreateDirectory(this.ApplicationDataLocation);
+
+            this.ImageResizeScaleFactor = 0.25D;
 
             this.Licensee = "JLRC Manasoft";
             this.Plugins = new[] 

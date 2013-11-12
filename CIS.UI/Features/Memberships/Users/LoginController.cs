@@ -30,12 +30,12 @@ namespace CIS.UI.Features.Memberships.Users
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                powerUser = session.Query<User>().FirstOrDefault(x => x.Username == App.Configuration.PowerUser);
+                powerUser = session.Query<User>().FirstOrDefault(x => x.Username == App.Config.PowerUser);
                 if (powerUser == null)
                 {
                     powerUser = new User()
                     {
-                        Username = App.Configuration.PowerUser,
+                        Username = App.Config.PowerUser,
                         Password = "admin123",
                         Email = "admin@jlrc.manasoft.com",
                         Person = new Person()
@@ -52,7 +52,7 @@ namespace CIS.UI.Features.Memberships.Users
                 transaction.Commit();
             }
 
-            if (App.Configuration.UsePowerUser)
+            if (App.Config.UsePowerUser)
             {
                 this.ViewModel.Username = powerUser.Username;
                 this.ViewModel.Password = powerUser.Password;

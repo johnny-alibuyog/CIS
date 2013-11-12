@@ -103,15 +103,15 @@ namespace CIS.UI.Features.Settings.Appearances
 
             this.ViewModel.FontSizes = Enum.GetValues(typeof(FontSize)).Cast<FontSize>().ToArray();
 
-            this.ViewModel.SelectedTheme = App.Configuration.Apprearance.Theme == AppearanceThemeConfiguration.Empty
+            this.ViewModel.SelectedTheme = App.Config.Apprearance.Theme == AppearanceThemeConfiguration.Empty
                 ? this.ViewModel.Themes.FirstOrDefault(o => o.Source.Equals(AppearanceManager.Current.ThemeSource))
-                : App.Configuration.Apprearance.Theme.Value;
+                : App.Config.Apprearance.Theme.Value;
 
-            this.ViewModel.SelectedAccentColor = App.Configuration.Apprearance.Color == AppearanceColorConfiguration.Empty
+            this.ViewModel.SelectedAccentColor = App.Config.Apprearance.Color == AppearanceColorConfiguration.Empty
                 ? AppearanceManager.Current.AccentColor
-                : App.Configuration.Apprearance.Color.Value;
+                : App.Config.Apprearance.Color.Value;
 
-            this.ViewModel.SelectedFontSize = App.Configuration.Apprearance.FontSize;
+            this.ViewModel.SelectedFontSize = App.Config.Apprearance.FontSize;
 
             _originalAppearance = new AppearanceConfiguration();
             _originalAppearance.FontSize = this.ViewModel.SelectedFontSize;
@@ -127,11 +127,11 @@ namespace CIS.UI.Features.Settings.Appearances
 
             if (confirmed == true)
             {
-                App.Configuration.Apprearance.Theme.Value = this.ViewModel.SelectedTheme;
-                App.Configuration.Apprearance.Color.Value = this.ViewModel.SelectedAccentColor;
-                App.Configuration.Apprearance.FontSize = this.ViewModel.SelectedFontSize;
-                App.Configuration.Provider.Write(App.Configuration);
-                App.Configuration.Apprearance.Apply();
+                App.Config.Apprearance.Theme.Value = this.ViewModel.SelectedTheme;
+                App.Config.Apprearance.Color.Value = this.ViewModel.SelectedAccentColor;
+                App.Config.Apprearance.FontSize = this.ViewModel.SelectedFontSize;
+                App.Config.Provider.Write(App.Config);
+                App.Config.Apprearance.Apply();
 
                 _originalAppearance = new AppearanceConfiguration();
                 _originalAppearance.FontSize = this.ViewModel.SelectedFontSize;

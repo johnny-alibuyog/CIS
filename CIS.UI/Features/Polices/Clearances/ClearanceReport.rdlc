@@ -1150,7 +1150,6 @@
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Purpose">
-                      <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -2353,7 +2352,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>6.30521in</Top>
+        <Top>6.18021in</Top>
         <Left>0.29945in</Left>
         <Height>0.47916in</Height>
         <Width>6.76042in</Width>
@@ -2423,7 +2422,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Residential Certificat (Cedula)</Value>
+                              <Value>Residential Certificate (Cedula)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2538,7 +2537,7 @@
         </TablixRowHierarchy>
         <KeepTogether>true</KeepTogether>
         <DataSetName>ItemDataSet</DataSetName>
-        <Top>6.95522in</Top>
+        <Top>6.83022in</Top>
         <Left>3.75313in</Left>
         <Height>0.34723in</Height>
         <Width>3.26388in</Width>
@@ -3517,7 +3516,6 @@
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Purpose2">
-                      <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -3911,7 +3909,7 @@
         </TablixRowHierarchy>
         <KeepTogether>true</KeepTogether>
         <DataSetName>ItemDataSet</DataSetName>
-        <Top>7.40993in</Top>
+        <Top>7.28493in</Top>
         <Left>0.51007in</Left>
         <Height>1.24447in</Height>
         <Width>5.46529in</Width>
@@ -3929,7 +3927,7 @@
         <Value>=First(Fields!Picture.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>7.4366in</Top>
+        <Top>7.3116in</Top>
         <Left>6.45174in</Left>
         <Height>0.84in</Height>
         <Width>1.125in</Width>
@@ -3945,7 +3943,7 @@
         <Value>=First(Fields!LeftThumb.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>Fit</Sizing>
-        <Top>8.34604in</Top>
+        <Top>8.22104in</Top>
         <Left>6.03854in</Left>
         <Height>0.92291in</Height>
         <Width>0.94791in</Width>
@@ -3961,7 +3959,7 @@
         <Value>=First(Fields!RightThumb.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>Fit</Sizing>
-        <Top>8.34604in</Top>
+        <Top>8.22104in</Top>
         <Left>7.04201in</Left>
         <Height>0.92291in</Height>
         <Width>0.94791in</Width>
@@ -3992,7 +3990,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox35</rd:DefaultName>
-        <Top>9.29673in</Top>
+        <Top>9.17173in</Top>
         <Left>6.02466in</Left>
         <Height>0.17361in</Height>
         <Width>0.94791in</Width>
@@ -4023,7 +4021,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox35</rd:DefaultName>
-        <Top>9.29673in</Top>
+        <Top>9.17173in</Top>
         <Left>7.02813in</Left>
         <Height>0.17361in</Height>
         <Width>0.9618in</Width>
@@ -4276,7 +4274,7 @@
         </TablixRowHierarchy>
         <KeepTogether>true</KeepTogether>
         <DataSetName>ItemDataSet</DataSetName>
-        <Top>9.46063in</Top>
+        <Top>9.33563in</Top>
         <Left>0.51007in</Left>
         <Height>0.45in</Height>
         <Width>5.0625in</Width>
@@ -4294,7 +4292,7 @@
         <Value>=First(Fields!VerifierSignature.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>8.95507in</Top>
+        <Top>8.83007in</Top>
         <Left>1.08299in</Left>
         <Height>0.4625in</Height>
         <Width>1.5in</Width>
@@ -4310,7 +4308,7 @@
         <Value>=First(Fields!CertifierSignature.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>8.95507in</Top>
+        <Top>8.83007in</Top>
         <Left>3.5448in</Left>
         <Height>0.4625in</Height>
         <Width>1.5in</Width>
@@ -4326,7 +4324,7 @@
         <Value>=First(Fields!Barcode.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>Fit</Sizing>
-        <Top>6.89272in</Top>
+        <Top>6.76772in</Top>
         <Left>1.08993in</Left>
         <Height>0.27779in</Height>
         <Width>2.32292in</Width>
@@ -4357,7 +4355,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox35</rd:DefaultName>
-        <Top>7.17745in</Top>
+        <Top>7.05245in</Top>
         <Left>1.08993in</Left>
         <Height>0.13194in</Height>
         <Width>2.32292in</Width>
@@ -4369,7 +4367,7 @@
         </Style>
       </Textbox>
       <Line Name="Line2">
-        <Top>10.10521in</Top>
+        <Top>9.98021in</Top>
         <Left>6.02466in</Left>
         <Height>0in</Height>
         <Width>1.96527in</Width>
@@ -4400,7 +4398,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox35</rd:DefaultName>
-        <Top>10.13299in</Top>
+        <Top>10.00799in</Top>
         <Left>6.02466in</Left>
         <Height>0.17361in</Height>
         <Width>1.96526in</Width>
@@ -4416,7 +4414,7 @@
         <Value>=First(Fields!Signature.Value, "ItemDataSet")</Value>
         <MIMEType>image/bmp</MIMEType>
         <Sizing>FitProportional</Sizing>
-        <Top>9.56355in</Top>
+        <Top>9.43855in</Top>
         <Left>6.24896in</Left>
         <Height>0.5in</Height>
         <Width>1.5in</Width>
@@ -4446,7 +4444,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>9.94953in</Top>
+        <Top>9.82453in</Top>
         <Left>0.53299in</Left>
         <Height>0.17708in</Height>
         <Width>5.26042in</Width>
@@ -4545,7 +4543,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>8.71424in</Top>
+        <Top>8.58924in</Top>
         <Left>1.08114in</Left>
         <Height>0.19791in</Height>
         <Width>0.87084in</Width>
@@ -4578,7 +4576,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>8.71285in</Top>
+        <Top>8.58785in</Top>
         <Left>3.54802in</Left>
         <Height>0.19791in</Height>
         <Width>0.87084in</Width>
@@ -4636,7 +4634,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
-        <Top>10.12952in</Top>
+        <Top>10.00452in</Top>
         <Left>0.52792in</Left>
         <Height>0.17708in</Height>
         <Width>5.26042in</Width>

@@ -120,9 +120,11 @@ namespace CIS.UI.Features.Memberships.Users
             }
         }
 
-        [Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
+        //[Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Create()
         {
+            //this.Authorize(new Role[] { Role.PoliceAdministartor });
+
             var dialog = new DialogService<UserView, UserViewModel>();
             dialog.ViewModel.SerializeWith(New());
 
@@ -133,9 +135,11 @@ namespace CIS.UI.Features.Memberships.Users
             dialog.ShowModal(this, "Create User");
         }
 
-        [Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
+        //[Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Insert(UserViewModel value)
         {
+            //this.Authorize(new Role[] { Role.PoliceAdministartor });
+
             var message = string.Format("Are you sure you want to save user {0}?", value.Username);
             var confirmed = this.MessageBox.Confirm(message, "Save");
             if (confirmed == false)

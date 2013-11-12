@@ -428,6 +428,7 @@
     <Compile Include="Features\Polices\Clearances\HitViewModel.cs">
       <DependentUpon>FindingViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Polices\Clearances\OtherInformationViewModel.cs" />
     <Compile Include="Features\Polices\Clearances\SuspectHitViewModel.cs">
       <DependentUpon>HitViewModel.cs</DependentUpon>
     </Compile>
