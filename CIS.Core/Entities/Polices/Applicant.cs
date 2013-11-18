@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,11 @@ namespace CIS.Core.Entities.Polices
     {
         private Guid _id;
         private Person _person;
+        private Person _father;
+        private Person _mother;
+        private ICollection<Person> _relatives;
         private Address _address;
+        private Address _provincialAddress;
         private ImageBlob _picture;
         private ImageBlob _signature;
         private FingerPrint _fingerPrint;
@@ -38,10 +43,34 @@ namespace CIS.Core.Entities.Polices
             set { _person = value; }
         }
 
+        public virtual Person Father
+        {
+            get { return _father; }
+            set { _father = value; }
+        }
+
+        public virtual Person Mother
+        {
+            get { return _mother; }
+            set { _mother = value; }
+        }
+
+        public virtual IEnumerable<Person> Relatives
+        {
+            get { return _relatives; }
+            set { SyncRelatives(value); }
+        }
+
         public virtual Address Address
         {
             get { return _address; }
             set { _address = value; }
+        }
+
+        public virtual Address ProvincialAddress
+        {
+            get { return _provincialAddress; }
+            set { _provincialAddress = value; }
         }
 
         public virtual ImageBlob Picture
@@ -123,6 +152,37 @@ namespace CIS.Core.Entities.Polices
             _picture = new ImageBlob();
             _signature = new ImageBlob();
             _fingerPrint = new FingerPrint();
+            _relatives = new Collection<Person>();
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void SyncRelatives(IEnumerable<Person> items)
+        {
+            var itemsToInsert = items.Except(_relatives).ToList();
+            var itemsToUpdate = _relatives.Where(x => items.Contains(x)).ToList();
+            var itemsToRemove = _relatives.Except(items).ToList();
+
+            // insert
+            foreach (var item in itemsToInsert)
+            {
+                _relatives.Add(item);
+            }
+
+            // update
+            foreach (var item in itemsToUpdate)
+            {
+                var value = items.Single(x => x == item);
+                item.SerializeWith(value);
+            }
+
+            // delete
+            foreach (var item in itemsToRemove)
+            {
+                _relatives.Remove(item);
+            }
         }
 
         #endregion

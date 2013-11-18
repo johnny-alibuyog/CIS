@@ -43,18 +43,17 @@ namespace CIS.UI.Features.Polices.Clearances
         public FindingViewModel()
         {
             this.Amendment = new AmendmentViewModel();
-            this.ObservableForProperty(x => x.Amendment)
-                .Subscribe(x =>
+            this.ObservableForProperty(x => x.Amendment).Subscribe(x =>
+            {
+                var amendment = x.Value;
+                if (amendment != null)
                 {
-                    var amendment = x.Value;
-                    if (amendment != null)
-                    {
-                        amendment.IsValidObservable()
-                            .Subscribe(o => this.Revalidate());
-                    }
+                    amendment.IsValidObservable()
+                        .Subscribe(o => this.Revalidate());
+                }
 
-                    this.Revalidate();
-                });
+                this.Revalidate();
+            });
 
             this.Hits = new ReactiveList<HitViewModel>();
             this.Hits.ChangeTrackingEnabled = true;

@@ -59,5 +59,20 @@ namespace CIS.Data.EntityDefinition.Commons
                 mapping.Map(x => x.Suffix, columnPrefix + "Suffix");
             };
         }
+
+        internal static Action<CompositeElementPart<Person>> MapBasicCollection()
+        {
+            return mapping =>
+            {
+                mapping.Map(x => x.FirstName).Index("FirstNameIndex");
+
+                mapping.Map(x => x.MiddleName).Index("MiddleNameIndex");
+
+                mapping.Map(x => x.LastName).Index("LastNameIndex");
+
+                mapping.Map(x => x.Suffix);
+            };
+        }
+
     }
 }

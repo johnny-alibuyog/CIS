@@ -13,6 +13,9 @@
         <DataTemplate DataType="{x:Type local:PersonalInformationViewModel}">
             <local:PersonalInformationView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:OtherInformationViewModel}">
+            <local:OtherInformationView />
+        </DataTemplate>
         <DataTemplate DataType="{x:Type local:FindingViewModel}">
             <local:FindingView />
         </DataTemplate>

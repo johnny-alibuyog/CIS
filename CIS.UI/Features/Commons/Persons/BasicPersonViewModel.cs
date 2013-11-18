@@ -9,7 +9,7 @@ using NHibernate.Validator.Constraints;
 
 namespace CIS.UI.Features.Commons.Persons
 {
-    public class PersonViewModel : ViewModelBase
+    public class BasicPersonViewModel : ViewModelBase
     {
         [NotNullNotEmpty(Message = "First name is mandatory.")]
         public virtual string FirstName { get; set; }
@@ -23,22 +23,16 @@ namespace CIS.UI.Features.Commons.Persons
 
         public virtual string FullName
         {
-            get
-            {
-                return string.Format("{0} {1} {2}",
-                    this.FirstName ?? string.Empty,
-                    this.MiddleName ?? string.Empty,
+            get 
+            { 
+                return string.Format("{0} {1} {2}", 
+                    this.FirstName ?? string.Empty, 
+                    this.MiddleName ?? string.Empty, 
                     this.LastName ?? string.Empty
                 )
-                .ToProperCase();
+                .ToProperCase(); 
             }
         }
-
-        //[NotNull(Message = "Gender is mandatory.")]
-        public virtual Nullable<Gender> Gender { get; set; }
-
-        //[NotNull(Message = "BirthDate is mandatory.")]
-        public virtual Nullable<DateTime> BirthDate { get; set; }
 
         public override string ToString()
         {
@@ -50,17 +44,15 @@ namespace CIS.UI.Features.Commons.Persons
             if (instance == null)
                 return null;
 
-            if (instance is PersonViewModel)
+            if (instance is BasicPersonViewModel)
             {
-                var source = instance as PersonViewModel;
+                var source = instance as BasicPersonViewModel;
                 var target = this;
 
                 target.FirstName = source.FirstName;
                 target.MiddleName = source.MiddleName;
                 target.LastName = source.LastName;
                 target.Suffix = source.Suffix;
-                target.Gender = source.Gender;
-                target.BirthDate = source.BirthDate;
                 return target;
             }
             else if (instance is Person)
@@ -72,8 +64,6 @@ namespace CIS.UI.Features.Commons.Persons
                 target.MiddleName = source.MiddleName;
                 target.LastName = source.LastName;
                 target.Suffix = source.Suffix;
-                target.Gender = source.Gender;
-                target.BirthDate = source.BirthDate;
                 return target;
             }
 
@@ -85,10 +75,10 @@ namespace CIS.UI.Features.Commons.Persons
             if (instance == null)
                 return null;
 
-            if (instance is PersonViewModel)
+            if (instance is BasicPersonViewModel)
             {
                 var source = this;
-                var target = instance as PersonViewModel;
+                var target = instance as BasicPersonViewModel;
 
                 target.SerializeWith(source);
                 return target;
@@ -102,8 +92,6 @@ namespace CIS.UI.Features.Commons.Persons
                 target.MiddleName = source.MiddleName;
                 target.LastName = source.LastName;
                 target.Suffix = source.Suffix;
-                target.Gender = source.Gender;
-                target.BirthDate = source.BirthDate;
 
                 return target;
             }

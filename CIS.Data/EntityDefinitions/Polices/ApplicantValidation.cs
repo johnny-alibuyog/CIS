@@ -18,9 +18,21 @@ namespace CIS.Data.EntityDefinitions.Polices
                 .NotNullable()
                 .And.IsValid();
 
+            Define(x => x.Mother)
+                .IsValid();
+
+            Define(x => x.Father)
+                .IsValid();
+
+            Define(x => x.Relatives)
+                .HasValidElements();
+
             Define(x => x.Address)
                 .NotNullable()
                 .And.IsValid();
+
+            Define(x => x.ProvincialAddress)
+                .IsValid();
 
             Define(x => x.Picture);
 

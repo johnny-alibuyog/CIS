@@ -62,6 +62,20 @@ namespace CIS.Core.Entities.Commons
             get { return Person.GetFullName(this); }
         }
 
+        #region Methods
+
+        public virtual void SerializeWith(Person value)
+        {
+            this.FirstName = value.FirstName;
+            this.MiddleName = value.MiddleName;
+            this.LastName = value.LastName;
+            this.Suffix = value.Suffix;
+            this.Gender = value.Gender;
+            this.BirthDate = value.BirthDate;
+        }
+
+        #endregion
+
         #region Static Members
 
         public static string GetFullName(Person person)

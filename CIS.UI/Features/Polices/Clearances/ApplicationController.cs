@@ -168,6 +168,7 @@ namespace CIS.UI.Features.Polices.Clearances
         private void InitializeViews()
         {
             this.ViewModel.PersonalInformation = new PersonalInformationViewModel();
+            this.ViewModel.OtherInformation = new OtherInformationViewModel();
             this.ViewModel.Camera = new CameraViewModel();
             this.ViewModel.FingerScanner = new FingerScannerViewModel();
             this.ViewModel.Signature = new SignatureViewModel();
@@ -193,6 +194,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 var setting = query.Value;
 
                 this.ViewModel.ViewModels.Add(this.ViewModel.PersonalInformation);
+                this.ViewModel.ViewModels.Add(this.ViewModel.OtherInformation);
 
                 if (setting.WithCameraDevice)
                     this.ViewModel.ViewModels.Add(this.ViewModel.Camera);
@@ -537,7 +539,11 @@ namespace CIS.UI.Features.Polices.Clearances
                     clearance = new Clearance();
 
                 clearance.Applicant.Person = (Person)this.ViewModel.PersonalInformation.Person.DeserializeInto(new Person());
+                clearance.Applicant.Mother = (Person)this.ViewModel.OtherInformation.Mother.DeserializeInto(new Person());
+                clearance.Applicant.Father = (Person)this.ViewModel.OtherInformation.Father.DeserializeInto(new Person());
+                clearance.Applicant.Relatives = this.ViewModel.OtherInformation.Relatives.Select(x => x.DeserializeInto(new Person()) as Person);
                 clearance.Applicant.Address = (Address)this.ViewModel.PersonalInformation.Address.DeserializeInto(new Address());
+                clearance.Applicant.ProvincialAddress = (Address)this.ViewModel.OtherInformation.ProvincialAddress.DeserializeInto(new Address());
                 clearance.Applicant.Picture.Image = this.ViewModel.Camera.Picture.ReduceSize().ToImage();
                 clearance.Applicant.Signature.Image = this.ViewModel.Signature.SignatureImage.ReduceSize().ToImage();
                 clearance.Applicant.FingerPrint.RightThumb.Image = this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightThumb].ReduceSize().ToImage();

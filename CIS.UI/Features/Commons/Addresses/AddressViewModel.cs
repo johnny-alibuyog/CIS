@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
+using CIS.Core.Utilities.Extentions;
 using CIS.UI.Bootstraps.InversionOfControl;
 using ReactiveUI;
 
@@ -106,7 +107,14 @@ namespace CIS.UI.Features.Commons.Addresses
 
         public override string ToString()
         {
-            return Address1 + " " + Address2 + " " + Barangay + " " + City + " " + Province;
+            return string.Format("{0} {1} {2} {3} {4}", 
+                Address1 ?? string.Empty,
+                Address2 ?? string.Empty, 
+                Barangay ?? string.Empty, 
+                City ?? string.Empty,
+                Province ?? string.Empty
+            )
+            .ToProperCase();
         }
     }
 }

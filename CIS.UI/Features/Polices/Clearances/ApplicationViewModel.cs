@@ -18,6 +18,8 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual PersonalInformationViewModel PersonalInformation { get; set; }
 
+        public virtual OtherInformationViewModel OtherInformation { get; set; }
+
         public virtual CameraViewModel Camera { get; set; }
 
         public virtual FingerScannerViewModel FingerScanner { get; set; }
