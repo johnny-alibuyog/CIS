@@ -6,10 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.26389in</Width>
+              <Width>2.21181in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.17014in</Width>
+              <Width>4.55556in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -28,7 +28,7 @@
                               <Value>Applicant</Value>
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -61,7 +61,7 @@
                               <Value>Purpose</Value>
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>6pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -99,7 +99,7 @@
                               <Value>=Fields!Applicant.Value</Value>
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>6pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -131,7 +131,7 @@
                               <Value>=Fields!Purpose.Value</Value>
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>6pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -168,7 +168,7 @@
                               <Value />
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -203,7 +203,7 @@
                               <Value>=String.Format("Total: {0}", Count(Fields!Applicant.Value))</Value>
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>6pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -277,7 +277,7 @@
                               <Value>=String.Format("Grand Total: {0}", Count(Fields!Applicant.Value))</Value>
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>6pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -313,7 +313,7 @@
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>1.11805in</Size>
+                <Size>0.88888in</Size>
                 <CellContents>
                   <Textbox Name="Textbox10">
                     <CanGrow>true</CanGrow>
@@ -325,7 +325,7 @@
                             <Value>Issue Date</Value>
                             <Style>
                               <FontFamily>tahoma</FontFamily>
-                              <FontSize>8pt</FontSize>
+                              <FontSize>6pt</FontSize>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
@@ -363,7 +363,7 @@
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>1.11805in</Size>
+                <Size>0.88888in</Size>
                 <CellContents>
                   <Textbox Name="IssueDate">
                     <CanGrow>true</CanGrow>
@@ -375,12 +375,14 @@
                             <Value>=Fields!IssueDate.Value</Value>
                             <Style>
                               <FontFamily>tahoma</FontFamily>
-                              <FontSize>8pt</FontSize>
+                              <FontSize>6pt</FontSize>
                               <Format>yyyy-MM-dd</Format>
                             </Style>
                           </TextRun>
                         </TextRuns>
-                        <Style />
+                        <Style>
+                          <TextAlign>Left</TextAlign>
+                        </Style>
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>IssueDate</rd:DefaultName>
@@ -408,7 +410,7 @@
             </TablixMember>
             <TablixMember>
               <TablixHeader>
-                <Size>1.11805in</Size>
+                <Size>0.88888in</Size>
                 <CellContents>
                   <Textbox Name="Textbox19">
                     <CanGrow>true</CanGrow>
@@ -446,16 +448,16 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>ItemDataSet</DataSetName>
-        <Top>0.11333in</Top>
-        <Left>0.50417in</Left>
+        <Top>0.11395in</Top>
+        <Left>0.42188in</Left>
         <Height>0.71416in</Height>
-        <Width>7.55209in</Width>
+        <Width>7.65625in</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
           <FontFamily>Tahoma</FontFamily>
-          <FontSize>8pt</FontSize>
+          <FontSize>6pt</FontSize>
         </Style>
       </Tablix>
     </ReportItems>

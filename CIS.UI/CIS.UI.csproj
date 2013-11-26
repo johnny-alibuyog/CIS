@@ -400,6 +400,11 @@
     <Compile Include="Features\Polices\Clearances\AmendmentViewModel.cs">
       <DependentUpon>FindingViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Polices\Clearances\ApplicantReportController.cs" />
+    <Compile Include="Features\Polices\Clearances\ApplicantReportView.xaml.cs">
+      <DependentUpon>ApplicantReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Polices\Clearances\ApplicantReportViewModel.cs" />
     <Compile Include="Features\Polices\Clearances\ApplicationController.cs" />
     <Compile Include="Features\Polices\Clearances\ApplicationView.xaml.cs">
       <DependentUpon>ApplicationView.xaml</DependentUpon>
@@ -503,6 +508,7 @@
       <DependentUpon>StationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Maintenances\StationViewModel.cs" />
+    <Compile Include="Features\Polices\Warrants\CodelessWarrant.cs" />
     <Compile Include="Features\Polices\Warrants\ImportController.cs" />
     <Compile Include="Features\Polices\Warrants\ImportView.xaml.cs">
       <DependentUpon>ImportView.xaml</DependentUpon>
@@ -541,6 +547,7 @@
     <Compile Include="Features\Polices\Warrants\WarrantPage.xaml.cs">
       <DependentUpon>WarrantPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\Polices\Warrants\CodelessImportService.cs" />
     <Compile Include="Features\Settings\Appearances\AppearanceController.cs" />
     <Compile Include="Features\SplashScreenController.cs" />
     <Compile Include="Features\SplashScreenView.xaml.cs">
@@ -716,6 +723,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Features\Memberships\Users\UserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Polices\Clearances\ApplicantReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -915,6 +926,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CIS.UI.Features.Polices.Clearances.ApplicantReportViewModel.datasource" />
     <None Include="Properties\DataSources\CIS.UI.Features.Polices.Clearances.ArchiveItemViewModel.datasource" />
     <None Include="Properties\DataSources\CIS.UI.Features.Polices.Clearances.ClearanceReportViewModel.datasource" />
     <None Include="Properties\Settings.settings">
@@ -965,6 +977,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Features\Polices\Clearances\ApplicantReport.rdlc" />
     <EmbeddedResource Include="Features\Polices\Clearances\ArchiveReport.rdlc" />
     <EmbeddedResource Include="Features\Polices\Clearances\ClearanceReport.rdlc" />
   </ItemGroup>

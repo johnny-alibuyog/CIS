@@ -23,13 +23,20 @@ namespace CIS.Core.Entities.Polices
         private FingerPrint _fingerPrint;
         private string _height;
         private string _weight;
+        private string _build;
+        private string _marks;
         private string _alsoKnownAs;
         private string _birthPlace;
         private string _occupation;
         private string _religion;
         private string _citizenship;
+        private string _emailAddress;
+        private string _telephoneNumber;
+        private string _cellphoneNumber;
+        private string _passportNumber;
+        private string _taxIdentificationNumber;
+        private string _socialSecuritySystemNumber;
         private CivilStatus _civilStatus;
-        private Purpose _purpose;
 
         public virtual Guid Id
         {
@@ -103,6 +110,18 @@ namespace CIS.Core.Entities.Polices
             set { _weight = value; }
         }
 
+        public virtual string Build
+        {
+            get { return _build; }
+            set { _build = value; }
+        }
+
+        public virtual string Marks
+        {
+            get { return _marks; }
+            set { _marks = value; }
+        }
+
         public virtual string AlsoKnownAs
         {
             get { return _alsoKnownAs; }
@@ -133,16 +152,46 @@ namespace CIS.Core.Entities.Polices
             set { _citizenship = value.ToProperCase(); }
         }
 
+        public virtual string EmailAddress
+        {
+            get { return _emailAddress; }
+            set { _emailAddress = value; }
+        }
+
+        public virtual string TelephoneNumber
+        {
+            get { return _telephoneNumber; }
+            set { _telephoneNumber = value; }
+        }
+
+        public virtual string CellphoneNumber
+        {
+            get { return _cellphoneNumber; }
+            set { _cellphoneNumber = value; }
+        }
+
+        public virtual string PassportNumber
+        {
+            get { return _passportNumber; }
+            set { _passportNumber = value; }
+        }
+
+        public virtual string TaxIdentificationNumber
+        {
+            get { return _taxIdentificationNumber; }
+            set { _taxIdentificationNumber = value; }
+        }
+
+        public virtual string SocialSecuritySystemNumber
+        {
+            get { return _socialSecuritySystemNumber; }
+            set { _socialSecuritySystemNumber = value; }
+        }
+
         public virtual CivilStatus CivilStatus
         {
             get { return _civilStatus; }
             set { _civilStatus = value; }
-        }
-
-        public virtual Purpose Purpose
-        {
-            get { return _purpose; }
-            set { _purpose = value; }
         }
 
         #region Constructors

@@ -19,9 +19,11 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual IReactiveCommand Search { get; set; }
 
-        public virtual IReactiveCommand ViewItem { get; set; }
+        public virtual IReactiveCommand ViewApplicant { get; set; }
 
-        public virtual IReactiveCommand ViewReport { get; set; }
+        public virtual IReactiveCommand ViewClearance { get; set; }
+
+        public virtual IReactiveCommand GenerateListReport { get; set; }
 
         public ArchiveViewModel()
         {

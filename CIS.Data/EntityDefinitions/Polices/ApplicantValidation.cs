@@ -48,6 +48,12 @@ namespace CIS.Data.EntityDefinitions.Polices
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(20);
 
+            Define(x => x.Build)
+                .MaxLength(150);
+
+            Define(x => x.Marks)
+                .MaxLength(150);
+
             Define(x => x.AlsoKnownAs)
                 .MaxLength(150);
 
@@ -63,10 +69,25 @@ namespace CIS.Data.EntityDefinitions.Polices
             Define(x => x.Citizenship)
                 .MaxLength(100);
 
-            Define(x => x.CivilStatus);
+            Define(x => x.EmailAddress)
+                .MaxLength(100);
 
-            Define(x => x.Purpose)
-                .NotNullable();
+            Define(x => x.TelephoneNumber)
+                .MaxLength(100);
+
+            Define(x => x.CellphoneNumber)
+                .MaxLength(100);
+
+            Define(x => x.PassportNumber)
+                .MaxLength(50);
+
+            Define(x => x.TaxIdentificationNumber)
+                .MaxLength(50);
+
+            Define(x => x.SocialSecuritySystemNumber)
+                .MaxLength(50);
+
+            Define(x => x.CivilStatus);
         }
     }
 }

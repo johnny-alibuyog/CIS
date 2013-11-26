@@ -23,6 +23,10 @@ namespace CIS.UI.Features.Polices.Clearances
         [NotNullNotEmpty(Message = "Weight is mandatory.")]
         public virtual string Weight { get; set; }
 
+        public virtual string Build { get; set; }
+
+        public virtual string Marks { get; set; }
+
         public virtual string AlsoKnownAs { get; set; }
 
         [Valid]

@@ -22,10 +22,6 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual Nullable<DateTime> BirthDate { get; set; }
 
-        public virtual string PartialMatchFindings { get; set; }
-
-        public virtual string PerfectMatchFindings { get; set; }
-
         public virtual string FinalFindings { get; set; }
 
         public virtual string Validity { get; set; }
@@ -35,6 +31,9 @@ namespace CIS.UI.Features.Polices.Clearances
 
         [NotNullNotEmpty(Message = "Tax Certificate Number is mandatory.")]
         public virtual string TaxCertificateNumber { get; set; }
+
+        [IsNumeric(Message = "Years of Residency should be numeric.")]
+        public virtual Nullable<int> YearsOfResidency { get; set; }
 
         public virtual DateTime IssuedDate { get; set; }
 

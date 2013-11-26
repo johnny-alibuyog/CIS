@@ -61,7 +61,7 @@
                             <!-- buttons -->
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                 <mui:ModernButton Command="{Binding Search}" Content="Search" Style="{StaticResource app_bar_find}" Margin="4,0,4,0"/>
-                                <mui:ModernButton Command="{Binding ViewReport}" Content="Report" Style="{StaticResource app_bar_export}" Margin="4,0,4,0"/>
+                                <mui:ModernButton Command="{Binding GenerateListReport}" Content="Report" Style="{StaticResource app_bar_export}" Margin="4,0,4,0"/>
                             </StackPanel>
                         </StackPanel>
                     </Grid>
@@ -78,7 +78,8 @@
                                 <DataTemplate>
                                     <ContentControl>
                                         <StackPanel Orientation="Horizontal">
-                                            <mui:ModernButton Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ViewItem}" CommandParameter="{Binding}" Style="{StaticResource app_bar_view_detials}" Margin="4,0,4,0"/>
+                                            <mui:ModernButton Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ViewClearance}" CommandParameter="{Binding}" Style="{StaticResource app_bar_certificate}" Margin="4,0,4,0"/>
+                                            <mui:ModernButton Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ViewApplicant}" CommandParameter="{Binding}" Style="{StaticResource app_bar_view_detials}" Margin="4,0,4,0"/>
                                         </StackPanel>
                                     </ContentControl>
                                 </DataTemplate>

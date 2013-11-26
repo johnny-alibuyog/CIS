@@ -48,32 +48,14 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Map(x => x.TaxCertificateNumber);
 
-            Map(x => x.PartialMatchFindings);
-
-            Map(x => x.PerfectMatchFindings);
+            Map(x => x.YearsResident);
 
             Map(x => x.FinalFindings);
 
             References(x => x.Finding)
                 .Cascade.All();
 
-            //HasManyToMany(x => x.SuspectPartialMatches)
-            //    .Access.CamelCaseField(Prefix.Underscore)
-            //    .Schema(GetType().ParseSchema())
-            //    .Table("ClearancesSuspectPartialMatches")
-            //    .AsSet();
-
-            //HasManyToMany(x => x.SuspectPerfectMatches)
-            //    .Access.CamelCaseField(Prefix.Underscore)
-            //    .Schema(GetType().ParseSchema())
-            //    .Table("ClearancesSuspectPerfectMatches")
-            //    .AsSet();
-
-            //HasManyToMany(x => x.ExpiredLicenseMatches)
-            //    .Access.CamelCaseField(Prefix.Underscore)
-            //    .Schema(GetType().ParseSchema())
-            //    .Table("ClearancesExpiredLicenseMatches")
-            //    .AsSet();
+            References(x => x.Purpose);
         }
     }
 }

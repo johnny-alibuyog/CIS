@@ -12,15 +12,21 @@ namespace CIS.Data.EntityDefinition.Commons
         public PersonValidation()
         {
             Define(x => x.FirstName)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+                .MaxLength(150);
+
+            //Define(x => x.FirstName)
+            //    .NotNullableAndNotEmpty()
+            //    .And.MaxLength(150);
 
             Define(x => x.MiddleName)
                 .MaxLength(150);
 
             Define(x => x.LastName)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+                .MaxLength(150);
+            
+            //Define(x => x.LastName)
+            //    .NotNullableAndNotEmpty()
+            //    .And.MaxLength(150);
 
             Define(x => x.Suffix)
                 .MaxLength(150);

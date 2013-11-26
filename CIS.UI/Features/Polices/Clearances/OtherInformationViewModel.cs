@@ -24,6 +24,18 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual BasicPersonViewModel SelectedRelative { get; set; }
 
+        public virtual string EmailAddress { get; set; }
+
+        public virtual string TelephoneNumber { get; set; }
+
+        public virtual string CellphoneNumber { get; set; }
+
+        public virtual string PassportNumber { get; set; }
+
+        public virtual string TaxIdentificationNumber { get; set; }
+
+        public virtual string SocialSecuritySystemNumber { get; set; }
+
         public virtual IReactiveCommand EditFather { get; set; }
 
         public virtual IReactiveCommand EditMother { get; set; }

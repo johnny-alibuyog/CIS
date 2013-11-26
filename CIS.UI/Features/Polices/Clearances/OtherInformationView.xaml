@@ -59,6 +59,30 @@
                         </Border>
                         <mui:ModernButton Grid.Column="1" Command="{Binding CreateRelative}" Style="{StaticResource app_bar_add}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,4,0" />
                     </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Email Address"/>
+                        <TextBox Text="{Binding EmailAddress, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Telephone"/>
+                        <TextBox Text="{Binding TelephoneNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Cellphone"/>
+                        <TextBox Text="{Binding CellphoneNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Passport"/>
+                        <TextBox Text="{Binding PassportNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="TIN"/>
+                        <TextBox Text="{Binding TaxIdentificationNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="SSS"/>
+                        <TextBox Text="{Binding SocialSecuritySystemNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

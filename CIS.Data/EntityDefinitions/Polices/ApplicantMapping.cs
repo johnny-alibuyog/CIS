@@ -71,6 +71,10 @@ namespace CIS.Data.EntityDefinitions.Polices
 
             Map(x => x.Weight);
 
+            Map(x => x.Build);
+
+            Map(x => x.Marks);
+
             Map(x => x.AlsoKnownAs);
 
             Map(x => x.BirthPlace);
@@ -81,9 +85,19 @@ namespace CIS.Data.EntityDefinitions.Polices
 
             Map(x => x.Citizenship);
 
-            Map(x => x.CivilStatus);
+            Map(x => x.EmailAddress);
 
-            References(x => x.Purpose);
+            Map(x => x.TelephoneNumber);
+
+            Map(x => x.CellphoneNumber);
+
+            Map(x => x.PassportNumber);
+
+            Map(x => x.TaxIdentificationNumber);
+
+            Map(x => x.SocialSecuritySystemNumber);
+
+            Map(x => x.CivilStatus);
         }
     }
 }

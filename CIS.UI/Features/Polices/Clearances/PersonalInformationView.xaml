@@ -42,9 +42,19 @@
                         <TextBox Text="{Binding Weight, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
-                        <Label Content="Religion"/>
-                        <TextBox Text="{Binding Religion, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        <Label Content="Build"/>
+                        <TextBox Text="{Binding Build, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Marks"/>
+                        <TextBox Text="{Binding Marks, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <!--
+                        <StackPanel Style="{StaticResource FieldSet}">
+                            <Label Content="Passport Number"/>
+                            <TextBox Text="{Binding PassportNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                    -->
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
@@ -68,6 +78,10 @@
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Citizenship"/>
                         <TextBox Text="{Binding Citizenship, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Religion"/>
+                        <TextBox Text="{Binding Religion, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Occupation"/>

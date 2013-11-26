@@ -62,27 +62,15 @@ namespace CIS.Data.EntityDefinition.Polices
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(50);
 
-
-            Define(x => x.PartialMatchFindings)
-                .MaxLength(2000);
-
-            Define(x => x.PerfectMatchFindings)
-                .MaxLength(2000);
+            Define(x => x.YearsResident);
 
             Define(x => x.FinalFindings)
                 .MaxLength(2000);
 
             Define(x => x.Finding);
 
-            //Define(x => x.SuspectPartialMatches)
-            //    .HasValidElements();
-
-            //Define(x => x.SuspectPerfectMatches)
-            //    .HasValidElements();
-
-            //Define(x => x.ExpiredLicenseMatches)
-            //    .HasValidElements();
-
+            Define(x => x.Purpose)
+                .NotNullable();
         }
     }
 }

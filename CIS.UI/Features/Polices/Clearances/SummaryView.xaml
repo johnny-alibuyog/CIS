@@ -14,8 +14,7 @@
 
         <ScrollViewer Margin="{StaticResource SplitLeft}">
             <StackPanel>
-                <TextBlock Text="Summary" Style="{StaticResource Heading2}" />
-                <TextBlock Text="Applicaton Summary" />
+                <TextBlock Text="Applicaton Summary" Style="{StaticResource Heading2}" />
 
                 <StackPanel Margin="0,10,0,0">
                     <StackPanel.Resources>
@@ -37,6 +36,10 @@
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Residential Cert"/>
                         <TextBox Text="{Binding TaxCertificateNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Recidency Years"/>
+                        <TextBox Text="{Binding YearsOfRecidency, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Name"/>
@@ -68,8 +71,7 @@
         
         <ScrollViewer Grid.Column="2 " Margin="{StaticResource SplitRight}">
             <StackPanel>
-                <TextBlock Text="Images" Style="{StaticResource Heading2}" />
-                <TextBlock Text="Captured digital data" />
+                <TextBlock Text="Captured Digital Data" Style="{StaticResource Heading2}" />
 
                 <StackPanel Margin="0,10,0,0" Orientation="Vertical">
                     <StackPanel>

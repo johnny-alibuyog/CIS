@@ -25,15 +25,11 @@ namespace CIS.Core.Entities.Polices
         private DateTime _issueDate;
         private string _validity;
         private string _officialReceiptNumber;
-        private string _communityTaxCertificateNumber;
-        private string _partialMatchFindings;
-        private string _perfectMatchFindings;
+        private string _taxCertificateNumber;
+        private Nullable<int> _yearsResident;
         private string _finalFindings;
         private Finding _finding;
-        //private ICollection<Suspect> _suspectPartialMatches;
-        //private ICollection<Suspect> _suspectPerfectMatches;
-        //private ICollection<License> _expiredLicenseMatches;
-
+        private Purpose _purpose;
 
         public virtual Guid Id
         {
@@ -127,20 +123,14 @@ namespace CIS.Core.Entities.Polices
 
         public virtual string TaxCertificateNumber
         {
-            get { return _communityTaxCertificateNumber; }
-            set { _communityTaxCertificateNumber = value; }
+            get { return _taxCertificateNumber; }
+            set { _taxCertificateNumber = value; }
         }
 
-        public virtual string PartialMatchFindings
+        public virtual Nullable<int> YearsResident
         {
-            get { return _partialMatchFindings; }
-            set { _partialMatchFindings = value; }
-        }
-
-        public virtual string PerfectMatchFindings
-        {
-            get { return _perfectMatchFindings; }
-            set { _perfectMatchFindings = value; }
+            get { return _yearsResident; }
+            set { _yearsResident = value; }
         }
 
         public virtual string FinalFindings
@@ -155,23 +145,11 @@ namespace CIS.Core.Entities.Polices
             set { _finding = value; }
         }
 
-        //public virtual IEnumerable<Suspect> SuspectPartialMatches
-        //{
-        //    get { return _suspectPartialMatches; }
-        //    set { SyncSuspectPartialMatches(value); }
-        //}
-
-        //public virtual IEnumerable<Suspect> SuspectPerfectMatches
-        //{
-        //    get { return _suspectPerfectMatches; }
-        //    set { SyncSuspectPerfectMatches(value); }
-        //}
-
-        //public virtual IEnumerable<License> ExpiredLicenseMatches
-        //{
-        //    get { return _expiredLicenseMatches; }
-        //    set { SyncExpiredLicenseMatches(value); }
-        //}
+        public virtual Purpose Purpose
+        {
+            get { return _purpose; }
+            set { _purpose = value; }
+        }
 
         #region Methods
 
@@ -195,48 +173,6 @@ namespace CIS.Core.Entities.Polices
             this.IssueDate = DateTime.Today;
             this.Validity = station.GetValidity(this.IssueDate);
         }
-
-        //private void SyncSuspectPartialMatches(IEnumerable<Suspect> items)
-        //{
-        //    var itemsToInsert = items.Except(_suspectPartialMatches).ToList();
-        //    var itemsToRemove = _suspectPartialMatches.Except(items).ToList();
-
-        //    // insert
-        //    foreach (var item in itemsToInsert)
-        //        _suspectPartialMatches.Add(item);
-
-        //    // delete
-        //    foreach (var item in itemsToRemove)
-        //        _suspectPartialMatches.Remove(item);
-        //}
-
-        //private void SyncSuspectPerfectMatches(IEnumerable<Suspect> items)
-        //{
-        //    var itemsToInsert = items.Except(_suspectPerfectMatches).ToList();
-        //    var itemsToRemove = _suspectPerfectMatches.Except(items).ToList();
-
-        //    // insert
-        //    foreach (var item in itemsToInsert)
-        //        _suspectPerfectMatches.Add(item);
-
-        //    // delete
-        //    foreach (var item in itemsToRemove)
-        //        _suspectPerfectMatches.Remove(item);
-        //}
-
-        //private void SyncExpiredLicenseMatches(IEnumerable<License> items)
-        //{
-        //    var itemsToInsert = items.Except(_expiredLicenseMatches).ToList();
-        //    var itemsToRemove = _expiredLicenseMatches.Except(items).ToList();
-
-        //    // insert
-        //    foreach (var item in itemsToInsert)
-        //        _expiredLicenseMatches.Add(item);
-
-        //    // delete
-        //    foreach (var item in itemsToRemove)
-        //        _expiredLicenseMatches.Remove(item);
-        //}
 
         #endregion
 

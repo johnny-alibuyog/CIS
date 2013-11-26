@@ -47,8 +47,6 @@ namespace CIS.UI.Features.Polices.Clearances
         public virtual string Location { get; set; }
         public virtual string OfficialReceiptNumber { get; set; }
         public virtual string TaxCertificateNumber { get; set; }
-        public virtual string PartialMatchFindings { get; set; }
-        public virtual string PerfectMatchFindings { get; set; }
         public virtual string FinalFindings { get; set; }
 
         public override object SerializeWith(object instance)
@@ -94,8 +92,6 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.Location = source.Location;
                 target.OfficialReceiptNumber = source.OfficialReceiptNumber;
                 target.TaxCertificateNumber = source.TaxCertificateNumber;
-                target.PartialMatchFindings = source.PartialMatchFindings;
-                target.PerfectMatchFindings = source.PerfectMatchFindings;
                 target.FinalFindings = source.FinalFindings;
 
                 return target;
@@ -117,7 +113,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.Signature = source.Applicant.Signature.Bytes;
                 target.RightThumb = source.Applicant.FingerPrint.RightThumb.Bytes;
                 target.LeftThumb = source.Applicant.FingerPrint.LeftThumb.Bytes;
-                target.Purpose = source.Applicant.Purpose.Name;
+                target.Purpose = source.Purpose.Name;
                 target.Validity = source.Validity;
                 target.Barcode = source.Barcode.Image.Bytes;
                 target.BarcodeText = source.Barcode.Text;
@@ -139,8 +135,6 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.Location = source.Station.Location;
                 target.OfficialReceiptNumber = source.OfficialReceiptNumber;
                 target.TaxCertificateNumber = source.TaxCertificateNumber;
-                target.PartialMatchFindings = source.PartialMatchFindings;
-                target.PerfectMatchFindings = source.PerfectMatchFindings;
                 target.FinalFindings = source.FinalFindings;
 
                 return target;
