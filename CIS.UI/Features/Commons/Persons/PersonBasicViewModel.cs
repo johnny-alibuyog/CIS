@@ -9,7 +9,7 @@ using NHibernate.Validator.Constraints;
 
 namespace CIS.UI.Features.Commons.Persons
 {
-    public class BasicPersonViewModel : ViewModelBase
+    public class PersonBasicViewModel : ViewModelBase
     {
         [NotNullNotEmpty(Message = "First name is mandatory.")]
         public virtual string FirstName { get; set; }
@@ -44,12 +44,12 @@ namespace CIS.UI.Features.Commons.Persons
             if (instance == null)
                 return null;
 
-            if (instance == BasicPersonViewModel.Empty)
+            if (instance == PersonBasicViewModel.Empty)
                 return null;
 
-            if (instance is BasicPersonViewModel)
+            if (instance is PersonBasicViewModel)
             {
-                var source = instance as BasicPersonViewModel;
+                var source = instance as PersonBasicViewModel;
                 var target = this;
 
                 target.FirstName = source.FirstName;
@@ -58,9 +58,9 @@ namespace CIS.UI.Features.Commons.Persons
                 target.Suffix = source.Suffix;
                 return target;
             }
-            else if (instance is Person)
+            else if (instance is PersonBasic)
             {
-                var source = instance as Person;
+                var source = instance as PersonBasic;
                 var target = this;
 
                 target.FirstName = source.FirstName;
@@ -78,13 +78,13 @@ namespace CIS.UI.Features.Commons.Persons
             if (instance == null)
                 return null;
 
-            if (this == BasicPersonViewModel.Empty)
+            if (this == PersonBasicViewModel.Empty)
                 return null;
 
-            if (instance is BasicPersonViewModel)
+            if (instance is PersonBasicViewModel)
             {
                 var source = this;
-                var target = instance as BasicPersonViewModel;
+                var target = instance as PersonBasicViewModel;
 
                 target.SerializeWith(source);
                 return target;
@@ -105,7 +105,7 @@ namespace CIS.UI.Features.Commons.Persons
             return null;
         }
 
-        public static readonly BasicPersonViewModel Empty = new BasicPersonViewModel();
+        public static readonly PersonBasicViewModel Empty = new PersonBasicViewModel();
 
         #region Equality Comparer
 
@@ -113,7 +113,7 @@ namespace CIS.UI.Features.Commons.Persons
 
         public override bool Equals(object obj)
         {
-            var that = obj as BasicPersonViewModel;
+            var that = obj as PersonBasicViewModel;
 
             if (that == null)
                 return false;
@@ -150,12 +150,12 @@ namespace CIS.UI.Features.Commons.Persons
             return _hashCode.Value;
         }
 
-        public static bool operator ==(BasicPersonViewModel x, BasicPersonViewModel y)
+        public static bool operator ==(PersonBasicViewModel x, PersonBasicViewModel y)
         {
             return Equals(x, y);
         }
 
-        public static bool operator !=(BasicPersonViewModel x, BasicPersonViewModel y)
+        public static bool operator !=(PersonBasicViewModel x, PersonBasicViewModel y)
         {
             return !Equals(x, y);
         }

@@ -14,6 +14,7 @@ namespace CIS.UI.Features.Commons.Persons
         [NotNullNotEmpty(Message = "First name is mandatory.")]
         public virtual string FirstName { get; set; }
 
+        //[NotNullNotEmpty(Message = "Middle name is mandatory.")]
         public virtual string MiddleName { get; set; }
 
         [NotNullNotEmpty(Message = "Last name is mandatory.")]

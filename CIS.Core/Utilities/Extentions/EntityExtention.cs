@@ -24,6 +24,16 @@ namespace CIS.Core.Utilities.Extentions
             return string.Join(", ", values.Select(x => x.GetDisplayValue()));
         }
 
+        public static string GetDisplayValue(this PersonBasic entity)
+        {
+            return entity != null ? entity.Fullname : string.Empty;
+        }
+
+        public static string GetDisplayValue(this IEnumerable<PersonBasic> values)
+        {
+            return string.Join(", ", values.Select(x => x.GetDisplayValue()));
+        }
+
         public static Nullable<int> DifferenceInYears(this DateTime dateTime1, Nullable<DateTime> dateTime2)
         {
             return DifferenceInYears(new Nullable<DateTime>(dateTime1), dateTime2);

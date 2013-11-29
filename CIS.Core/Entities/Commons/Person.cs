@@ -54,12 +54,12 @@ namespace CIS.Core.Entities.Commons
 
         public virtual Nullable<int> Age
         {
-            get { return this.BirthDate != null ? Person.ComputeAge(this.BirthDate.Value) : null; }
+            get { return this.ComputeAge(); }
         }
 
         public virtual string Fullname
         {
-            get { return Person.GetFullName(this); }
+            get { return this.GetFullName(); }
         }
 
         #region Methods
@@ -74,25 +74,25 @@ namespace CIS.Core.Entities.Commons
             this.BirthDate = value.BirthDate;
         }
 
-        #endregion
-
-        #region Static Members
-
-        public static string GetFullName(Person person)
+        private string GetFullName()
         {
             return
-                (!string.IsNullOrWhiteSpace(person.FirstName) ? person.FirstName : string.Empty) +
-                (!string.IsNullOrWhiteSpace(person.MiddleName) ? " " + person.MiddleName : string.Empty) +
-                (!string.IsNullOrWhiteSpace(person.LastName) ? " " + person.LastName : string.Empty) +
-                (!string.IsNullOrWhiteSpace(person.Suffix) ? " " + person.Suffix : string.Empty);
+                (!string.IsNullOrWhiteSpace(this.FirstName) ? this.FirstName : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.MiddleName) ? " " + this.MiddleName : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.LastName) ? " " + this.LastName : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.Suffix) ? " " + this.Suffix : string.Empty);
         }
 
-        public static Nullable<int> ComputeAge(DateTime birthDate)
+        private Nullable<int> ComputeAge()
         {
-            var now = DateTime.Now;
-            var age = now.Year - birthDate.Year;
+            if (this.BirthDate == null)
+                return null;
 
-            if (now.Month < birthDate.Month || (now.Month == birthDate.Month && now.Day < birthDate.Day))
+            var value = this.BirthDate.Value;
+            var now = DateTime.Now;
+            var age = now.Year - value.Year;
+
+            if (now.Month < value.Month || (now.Month == value.Month && now.Day < value.Day))
                 age--;
 
             return age;

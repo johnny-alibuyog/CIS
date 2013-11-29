@@ -13,9 +13,9 @@ namespace CIS.Core.Entities.Polices
     {
         private Guid _id;
         private Person _person;
-        private Person _father;
-        private Person _mother;
-        private ICollection<Person> _relatives;
+        private PersonBasic _father;
+        private PersonBasic _mother;
+        private ICollection<PersonBasic> _relatives;
         private Address _address;
         private Address _provincialAddress;
         private ImageBlob _picture;
@@ -50,19 +50,19 @@ namespace CIS.Core.Entities.Polices
             set { _person = value; }
         }
 
-        public virtual Person Father
+        public virtual PersonBasic Father
         {
             get { return _father; }
             set { _father = value; }
         }
 
-        public virtual Person Mother
+        public virtual PersonBasic Mother
         {
             get { return _mother; }
             set { _mother = value; }
         }
 
-        public virtual IEnumerable<Person> Relatives
+        public virtual IEnumerable<PersonBasic> Relatives
         {
             get { return _relatives; }
             set { SyncRelatives(value); }
@@ -201,14 +201,14 @@ namespace CIS.Core.Entities.Polices
             _picture = new ImageBlob();
             _signature = new ImageBlob();
             _fingerPrint = new FingerPrint();
-            _relatives = new Collection<Person>();
+            _relatives = new Collection<PersonBasic>();
         }
 
         #endregion
 
         #region Methods
 
-        private void SyncRelatives(IEnumerable<Person> items)
+        private void SyncRelatives(IEnumerable<PersonBasic> items)
         {
             var itemsToInsert = items.Except(_relatives).ToList();
             var itemsToUpdate = _relatives.Where(x => items.Contains(x)).ToList();

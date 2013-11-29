@@ -10,27 +10,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ReactiveUI;
+using CIS.UI.Utilities.Extentions;
+using CIS.UI.Bootstraps.InversionOfControl;
 
 namespace CIS.UI.Features.Commons.Persons
 {
     /// <summary>
-    /// Interaction logic for BasicPersonView.xaml
+    /// Interaction logic for BasicPersonDialogView.xaml
     /// </summary>
-    public partial class BasicPersonView : UserControl, IViewFor<BasicPersonViewModel>
+    public partial class PersonBasicDialogView : DialogBase, IViewFor<PersonBasicDialogViewModel>
     {
-        public BasicPersonView()
+        public PersonBasicDialogView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+            //this.InitializeViewModelAsync(() => IoC.Container.Resolve<BasicPersonDialogViewModel>());
         }
 
-        #region IViewFor<BasicPersonViewModel> Members
+        #region IViewFor<BasicPersonDialogViewModel> Members
 
-        public BasicPersonViewModel ViewModel
+        public PersonBasicDialogViewModel ViewModel
         {
-            get { return this.DataContext as BasicPersonViewModel; }
+            get { return this.DataContext as PersonBasicDialogViewModel; }
             set { this.DataContext = value; }
         }
 

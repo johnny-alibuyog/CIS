@@ -2,33 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using NHibernate.Validator.Cfg.Loquacious;
 
-namespace CIS.Data.EntityDefinition.Commons
+namespace CIS.Data.EntityDefinitions.Commons
 {
-    public class PersonValidation : ValidationDef<Person>
+    public class PersonBasicValidation : ValidationDef<PersonBasic>
     {
-        public PersonValidation()
+        public PersonBasicValidation()
         {
             Define(x => x.FirstName)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+                .MaxLength(150);
 
             Define(x => x.MiddleName)
                 .MaxLength(150);
 
             Define(x => x.LastName)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+                .MaxLength(150);
 
             Define(x => x.Suffix)
                 .MaxLength(150);
-
-            Define(x => x.Gender);
-
-            Define(x => x.BirthDate)
-                .IsInThePast();
         }
     }
 }

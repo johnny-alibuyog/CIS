@@ -108,6 +108,9 @@ namespace CIS.UI.Features.Polices.Warrants
 
                 importer = (IImportService)IoC.Container.Resolve<NaraImportService>(new Dependency("viewModel", this.ViewModel));
                 importer.Execute();
+
+                importer = (IImportService)IoC.Container.Resolve<CodelessImportService>(new Dependency("viewModel", this.ViewModel));
+                importer.Execute();
             }
             catch (Exception ex)
             {

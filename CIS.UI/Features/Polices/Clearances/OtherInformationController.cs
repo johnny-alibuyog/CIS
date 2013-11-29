@@ -27,17 +27,17 @@ namespace CIS.UI.Features.Polices.Clearances
             this.ViewModel.CreateRelative.ThrownExceptions.Handle(this);
 
             this.ViewModel.EditRelative = new ReactiveCommand(this.ViewModel.WhenAny(x => x.SelectedRelative, x => x.Value != null));
-            this.ViewModel.EditRelative.Subscribe(x => this.EditRelative((BasicPersonViewModel)x));
+            this.ViewModel.EditRelative.Subscribe(x => this.EditRelative((PersonBasicViewModel)x));
             this.ViewModel.EditRelative.ThrownExceptions.Handle(this);
 
             this.ViewModel.DeleteRelative = new ReactiveCommand(this.ViewModel.WhenAny(x => x.SelectedRelative, x => x.Value != null));
-            this.ViewModel.DeleteRelative.Subscribe(x => this.DeleteRelative((BasicPersonViewModel)x));
+            this.ViewModel.DeleteRelative.Subscribe(x => this.DeleteRelative((PersonBasicViewModel)x));
             this.ViewModel.DeleteRelative.ThrownExceptions.Handle(this);
         }
 
         public virtual void EditFather()
         {
-            var dialog = new DialogService<BasicPersonDialogViewModel>();
+            var dialog = new DialogService<PersonBasicDialogViewModel>();
             dialog.ViewModel.Person.SerializeWith(this.ViewModel.Father);
             dialog.ViewModel.Accept = new ReactiveCommand(dialog.ViewModel.Person.IsValidObservable());
             dialog.ViewModel.Accept.Subscribe(x => UpdateFather(dialog.ViewModel.Person));
@@ -45,7 +45,7 @@ namespace CIS.UI.Features.Polices.Clearances
             dialog.ShowModal(this, "Father");
         }
 
-        public virtual void UpdateFather(BasicPersonViewModel value)
+        public virtual void UpdateFather(PersonBasicViewModel value)
         {
             this.ViewModel.Father.SerializeWith(value);
             value.Close();
@@ -53,7 +53,7 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual void EditMother()
         {
-            var dialog = new DialogService<BasicPersonDialogViewModel>();
+            var dialog = new DialogService<PersonBasicDialogViewModel>();
             dialog.ViewModel.Person.SerializeWith(this.ViewModel.Mother);
             dialog.ViewModel.Accept = new ReactiveCommand(dialog.ViewModel.Person.IsValidObservable());
             dialog.ViewModel.Accept.Subscribe(x => UpdateMother(dialog.ViewModel.Person));
@@ -61,7 +61,7 @@ namespace CIS.UI.Features.Polices.Clearances
             dialog.ShowModal(this, "Mother");
         }
 
-        public virtual void UpdateMother(BasicPersonViewModel value)
+        public virtual void UpdateMother(PersonBasicViewModel value)
         {
             this.ViewModel.Mother.SerializeWith(value);
             value.Close();
@@ -69,25 +69,25 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual void CreateRelative()
         {
-            var dialog = new DialogService<BasicPersonDialogViewModel>();
+            var dialog = new DialogService<PersonBasicDialogViewModel>();
             dialog.ViewModel.Accept = new ReactiveCommand(dialog.ViewModel.Person.IsValidObservable());
             dialog.ViewModel.Accept.Subscribe(x => InsertRelative(dialog.ViewModel.Person));
             dialog.ViewModel.Accept.ThrownExceptions.Handle(this);
             dialog.ShowModal(this, "Relative");
         }
 
-        public virtual void InsertRelative(BasicPersonViewModel value)
+        public virtual void InsertRelative(PersonBasicViewModel value)
         {
             this.ViewModel.Relatives.Add(value);
             this.ViewModel.SelectedRelative = value;
             value.Close();
         }
 
-        public virtual void EditRelative(BasicPersonViewModel value)
+        public virtual void EditRelative(PersonBasicViewModel value)
         {
             this.ViewModel.SelectedRelative = value;
 
-            var dialog = new DialogService<BasicPersonDialogViewModel>();
+            var dialog = new DialogService<PersonBasicDialogViewModel>();
             dialog.ViewModel.Person.SerializeWith(this.ViewModel.SelectedRelative);
             dialog.ViewModel.Accept = new ReactiveCommand(dialog.ViewModel.Person.IsValidObservable());
             dialog.ViewModel.Accept.Subscribe(x => InsertRelative(dialog.ViewModel.Person));
@@ -95,13 +95,13 @@ namespace CIS.UI.Features.Polices.Clearances
             dialog.ShowModal(this, "Relative");
         }
 
-        public virtual void UpdateRelative(BasicPersonViewModel value)
+        public virtual void UpdateRelative(PersonBasicViewModel value)
         {
             this.ViewModel.SelectedRelative.SerializeWith(value);
             value.Close();
         }
 
-        public virtual void DeleteRelative(BasicPersonViewModel value)
+        public virtual void DeleteRelative(PersonBasicViewModel value)
         {
             this.ViewModel.SelectedRelative = value;
 

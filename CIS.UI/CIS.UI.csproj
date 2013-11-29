@@ -276,15 +276,15 @@
     <Compile Include="Features\Commons\Cameras\SplitPage1.xaml.cs">
       <DependentUpon>SplitPage1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Commons\Persons\BasicPersonDialogController.cs" />
-    <Compile Include="Features\Commons\Persons\BasicPersonDialogViewModel.cs" />
-    <Compile Include="Features\Commons\Persons\BasicPersonDialogView.xaml.cs">
-      <DependentUpon>BasicPersonDialogView.xaml</DependentUpon>
+    <Compile Include="Features\Commons\Persons\PersonBasicDialogController.cs" />
+    <Compile Include="Features\Commons\Persons\PersonBasicDialogViewModel.cs" />
+    <Compile Include="Features\Commons\Persons\PersonBasicDialogView.xaml.cs">
+      <DependentUpon>PersonBasicDialogView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Commons\Persons\BasicPersonView.xaml.cs">
-      <DependentUpon>BasicPersonView.xaml</DependentUpon>
+    <Compile Include="Features\Commons\Persons\PersonBasicView.xaml.cs">
+      <DependentUpon>PersonBasicView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Commons\Persons\BasicPersonViewModel.cs" />
+    <Compile Include="Features\Commons\Persons\PersonBasicViewModel.cs" />
     <Compile Include="Features\Commons\Signatures\SignatureController.cs" />
     <Compile Include="Features\Commons\Signatures\SignatureDialogController.cs" />
     <Compile Include="Features\Commons\Signatures\SignatureDialogViewModel.cs" />
@@ -508,7 +508,9 @@
       <DependentUpon>StationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Maintenances\StationViewModel.cs" />
-    <Compile Include="Features\Polices\Warrants\CodelessWarrant.cs" />
+    <Compile Include="Features\Polices\Warrants\CodelessWarrant.cs">
+      <DependentUpon>CodelessImportService.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Polices\Warrants\ImportController.cs" />
     <Compile Include="Features\Polices\Warrants\ImportView.xaml.cs">
       <DependentUpon>ImportView.xaml</DependentUpon>
@@ -547,7 +549,9 @@
     <Compile Include="Features\Polices\Warrants\WarrantPage.xaml.cs">
       <DependentUpon>WarrantPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\CodelessImportService.cs" />
+    <Compile Include="Features\Polices\Warrants\CodelessImportService.cs">
+      <DependentUpon>ImportController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features\Settings\Appearances\AppearanceController.cs" />
     <Compile Include="Features\SplashScreenController.cs" />
     <Compile Include="Features\SplashScreenView.xaml.cs">
@@ -622,11 +626,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Commons\Persons\BasicPersonDialogView.xaml">
+    <Page Include="Features\Commons\Persons\PersonBasicDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Commons\Persons\BasicPersonView.xaml">
+    <Page Include="Features\Commons\Persons\PersonBasicView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

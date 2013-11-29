@@ -19,9 +19,11 @@ namespace CIS.Data.EntityDefinitions.Polices
 
             Component(x => x.Person);
 
-            Component(x => x.Father, PersonMapping.MapBasic("Father"));
+            Component(x => x.Father)
+                .ColumnPrefix("Father");
 
-            Component(x => x.Mother, PersonMapping.MapBasic("Mother"));
+            Component(x => x.Mother)
+                .ColumnPrefix("Mother");
 
             HasMany<Person>(x => x.Relatives)
                 .Schema(GetType().ParseSchema())
@@ -37,7 +39,8 @@ namespace CIS.Data.EntityDefinitions.Polices
 
                     component.Map(x => x.MiddleName)
                         .Index("MiddleNameIndex")
-                        .Length(150);
+                        .Length(150)
+                        .Nullable();
 
                     component.Map(x => x.LastName)
                         .Index("LastNameIndex")

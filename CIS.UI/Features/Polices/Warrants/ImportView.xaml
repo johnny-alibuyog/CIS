@@ -22,23 +22,23 @@
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Start"/>
-                    <TextBox IsReadOnly="True" Text="{Binding ImportStart, Mode=TwoWay}" />
+                    <TextBox IsReadOnly="True" Text="{Binding ImportStart, Mode=TwoWay}" TextAlignment="Right" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="End"/>
-                    <TextBox IsReadOnly="True" Text="{Binding ImportEnd, Mode=TwoWay}" />
+                    <TextBox IsReadOnly="True" Text="{Binding ImportEnd, Mode=TwoWay}" TextAlignment="Right" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Total Time"/>
-                    <TextBox IsReadOnly="True" Text="{Binding TotalTime, Mode=TwoWay}" />
+                    <TextBox IsReadOnly="True" Text="{Binding TotalTime, Mode=TwoWay}" TextAlignment="Right" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Total Cases"/>
-                    <TextBox IsReadOnly="True" Text="{Binding TotalCases, Mode=TwoWay}" />
+                    <TextBox IsReadOnly="True" Text="{Binding TotalCases, Mode=TwoWay}" TextAlignment="Right" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Total Suspects"/>
-                    <TextBox IsReadOnly="True" Text="{Binding TotalSuspects, Mode=TwoWay}" />
+                    <TextBox IsReadOnly="True" Text="{Binding TotalSuspects, Mode=TwoWay}" TextAlignment="Right" />
                 </StackPanel>
             </StackPanel>
             <StackPanel>

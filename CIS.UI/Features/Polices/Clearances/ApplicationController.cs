@@ -550,9 +550,9 @@ namespace CIS.UI.Features.Polices.Clearances
                 clearance.Applicant.Religion = this.ViewModel.PersonalInformation.Religion;
                 clearance.Applicant.Citizenship = this.ViewModel.PersonalInformation.Citizenship;
                 clearance.Applicant.CivilStatus = this.ViewModel.PersonalInformation.CivilStatus;
-                clearance.Applicant.Mother = (Person)this.ViewModel.OtherInformation.Mother.DeserializeInto(new Person());
-                clearance.Applicant.Father = (Person)this.ViewModel.OtherInformation.Father.DeserializeInto(new Person());
-                clearance.Applicant.Relatives = this.ViewModel.OtherInformation.Relatives.Select(x => x.DeserializeInto(new Person()) as Person);
+                clearance.Applicant.Mother = (PersonBasic)this.ViewModel.OtherInformation.Mother.DeserializeInto(new PersonBasic());
+                clearance.Applicant.Father = (PersonBasic)this.ViewModel.OtherInformation.Father.DeserializeInto(new PersonBasic());
+                clearance.Applicant.Relatives = this.ViewModel.OtherInformation.Relatives.Select(x => x.DeserializeInto(new PersonBasic()) as PersonBasic);
                 clearance.Applicant.ProvincialAddress = (Address)this.ViewModel.OtherInformation.ProvincialAddress.DeserializeInto(new Address());
                 clearance.Applicant.EmailAddress = this.ViewModel.OtherInformation.EmailAddress;
                 clearance.Applicant.TelephoneNumber = this.ViewModel.OtherInformation.TelephoneNumber;

@@ -14,15 +14,15 @@ namespace CIS.UI.Features.Polices.Clearances
     {
         private readonly OtherInformationController _controller;
 
-        public virtual BasicPersonViewModel Father { get; set; }
+        public virtual PersonBasicViewModel Father { get; set; }
 
-        public virtual BasicPersonViewModel Mother { get; set; }
+        public virtual PersonBasicViewModel Mother { get; set; }
 
-        public virtual IReactiveList<BasicPersonViewModel> Relatives { get; set; }
+        public virtual IReactiveList<PersonBasicViewModel> Relatives { get; set; }
 
         public virtual AddressViewModel ProvincialAddress { get; set; }
 
-        public virtual BasicPersonViewModel SelectedRelative { get; set; }
+        public virtual PersonBasicViewModel SelectedRelative { get; set; }
 
         public virtual string EmailAddress { get; set; }
 
@@ -48,9 +48,9 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public OtherInformationViewModel()
         {
-            this.Father = new BasicPersonViewModel();
-            this.Mother = new BasicPersonViewModel();
-            this.Relatives = new ReactiveList<BasicPersonViewModel>();
+            this.Father = new PersonBasicViewModel();
+            this.Mother = new PersonBasicViewModel();
+            this.Relatives = new ReactiveList<PersonBasicViewModel>();
             this.ProvincialAddress = new AddressViewModel();
 
             _controller = IoC.Container.Resolve<OtherInformationController>(new ViewModelDependency(this));

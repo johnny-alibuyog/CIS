@@ -8,9 +8,9 @@ using CIS.UI.Utilities.Extentions;
 
 namespace CIS.UI.Features.Commons.Persons
 {
-    public class BasicPersonDialogController : ControllerBase<BasicPersonDialogViewModel>
+    public class PersonBasicDialogController : ControllerBase<PersonBasicDialogViewModel>
     {
-        public BasicPersonDialogController(BasicPersonDialogViewModel viewModel) : base(viewModel)
+        public PersonBasicDialogController(PersonBasicDialogViewModel viewModel) : base(viewModel)
         {
             //this.ViewModel.Accept = new ReactiveCommand(this.ViewModel.IsValidObservable());
             //this.ViewModel.Accept.Subscribe(x => this.ViewModel.Close());

@@ -20,7 +20,6 @@ namespace CIS.UI.Features.Polices.Warrants
         private readonly ISessionFactory _sessionFactory;
         private readonly ImportViewModel _viewModel;
 
-
         #region Routine Helpers
 
         private IEnumerable<LitusImportWarrant> ParseFromFile()

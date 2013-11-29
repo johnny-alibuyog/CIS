@@ -8,17 +8,17 @@ using ReactiveUI;
 
 namespace CIS.UI.Features.Commons.Persons
 {
-    public class BasicPersonDialogViewModel : ViewModelBase
+    public class PersonBasicDialogViewModel : ViewModelBase
     {
-        private readonly BasicPersonDialogController _controller;
+        private readonly PersonBasicDialogController _controller;
 
-        public virtual BasicPersonViewModel Person { get; set; }
+        public virtual PersonBasicViewModel Person { get; set; }
 
         public virtual IReactiveCommand Accept { get; set; }  
 
-        public BasicPersonDialogViewModel()
+        public PersonBasicDialogViewModel()
         {
-            this.Person = new BasicPersonViewModel();
+            this.Person = new PersonBasicViewModel();
 
             this.WhenAnyValue(x => x.Person.IsValid)
                 .Subscribe(x => this.Revalidate());
@@ -26,7 +26,7 @@ namespace CIS.UI.Features.Commons.Persons
             this.ObservableForProperty(x => x.Person.ActionResult)
                 .Subscribe(x => this.ActionResult = x.Value);
 
-            _controller = IoC.Container.Resolve<BasicPersonDialogController>(new ViewModelDependency(this));
+            _controller = IoC.Container.Resolve<PersonBasicDialogController>(new ViewModelDependency(this));
         }
     }
 }
