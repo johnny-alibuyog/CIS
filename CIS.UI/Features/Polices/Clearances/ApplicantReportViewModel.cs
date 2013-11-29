@@ -123,7 +123,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.BirthPlace = source.Applicant.BirthPlace;
                 target.AgeUponApplication = source.IssueDate.DifferenceInYears(source.Applicant.Person.GetBirthDate());
                 target.Father = source.Applicant.Father.GetDisplayValue();
-                target.Mother = source.Applicant.Father.GetDisplayValue();
+                target.Mother = source.Applicant.Mother.GetDisplayValue();
                 target.Relatives = source.Applicant.Relatives.GetDisplayValue();
                 target.CivilStatus = source.Applicant.CivilStatus.ToString();
                 target.Religion = source.Applicant.Religion;

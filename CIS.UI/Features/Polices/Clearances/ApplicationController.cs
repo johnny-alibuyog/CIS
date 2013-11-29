@@ -32,14 +32,13 @@ namespace CIS.UI.Features.Polices.Clearances
         {
             this.Reset();
 
-            this.MessageBus.Listen<MaintenanceMessage>()
-                .Subscribe(x =>
-                {
-                    if (x.Identifier == "Setting")
-                        Reset();
-                    else
-                        PopulateLookups();
-                });
+            this.MessageBus.Listen<MaintenanceMessage>().Subscribe(x =>
+            {
+                if (x.Identifier == "Setting")
+                    Reset();
+                else
+                    PopulateLookups();
+            });
 
             this.ViewModel.Previous = new ReactiveCommand(
                 this.ViewModel.WhenAny(

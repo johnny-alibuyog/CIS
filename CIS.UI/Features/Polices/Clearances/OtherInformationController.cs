@@ -90,7 +90,7 @@ namespace CIS.UI.Features.Polices.Clearances
             var dialog = new DialogService<PersonBasicDialogViewModel>();
             dialog.ViewModel.Person.SerializeWith(this.ViewModel.SelectedRelative);
             dialog.ViewModel.Accept = new ReactiveCommand(dialog.ViewModel.Person.IsValidObservable());
-            dialog.ViewModel.Accept.Subscribe(x => InsertRelative(dialog.ViewModel.Person));
+            dialog.ViewModel.Accept.Subscribe(x => UpdateRelative(dialog.ViewModel.Person));
             dialog.ViewModel.Accept.ThrownExceptions.Handle(this);
             dialog.ShowModal(this, "Relative");
         }

@@ -25,10 +25,11 @@ namespace CIS.UI.Features.Commons.Persons
         {
             get 
             { 
-                return string.Format("{0} {1} {2}", 
+                return string.Format("{0} {1} {2} {3}", 
                     this.FirstName ?? string.Empty, 
                     this.MiddleName ?? string.Empty, 
-                    this.LastName ?? string.Empty
+                    this.LastName ?? string.Empty,
+                    this.Suffix ?? string.Empty
                 )
                 .ToProperCase(); 
             }
@@ -89,10 +90,10 @@ namespace CIS.UI.Features.Commons.Persons
                 target.SerializeWith(source);
                 return target;
             }
-            else if (instance is Person)
+            else if (instance is PersonBasic)
             {
                 var source = this;
-                var target = instance as Person;
+                var target = instance as PersonBasic;
 
                 target.FirstName = source.FirstName;
                 target.MiddleName = source.MiddleName;
@@ -127,7 +128,7 @@ namespace CIS.UI.Features.Commons.Persons
             if (this.LastName != this.LastName)
                 return false;
 
-            if (this.Suffix != this.LastName)
+            if (this.Suffix != this.Suffix)
                 return false;
 
             return true;
