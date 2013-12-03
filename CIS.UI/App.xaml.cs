@@ -52,7 +52,8 @@ namespace CIS.UI
 
         protected override void OnExit(ExitEventArgs e)
         {
-            App.Config.Provider.Write(App.Config);
+            //App.Config.Provider.Write(App.Config);
+            App.Config.Write();
 
             if (_instanceMutex != null)
                 _instanceMutex.ReleaseMutex();

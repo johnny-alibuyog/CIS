@@ -101,15 +101,27 @@ namespace CIS.UI.Features.Polices.Clearances
                 var target = this;
                 var source = instance as Clearance;
 
+                if (source.ApplicantPicture == null)
+                    source.ApplicantPicture = new ImageBlob(source.Applicant.Picture.Image);
+
+                if (source.ApplicantCivilStatus == null)
+                    source.ApplicantCivilStatus = source.Applicant.CivilStatus;
+
+                if (source.ApplicantAddress == null)
+                    source.ApplicantAddress = source.Applicant.Address.ToString();
+
+                if (source.ApplicantCitizenship == null)
+                    source.ApplicantCitizenship = source.Applicant.Citizenship;
+
                 target.Id = source.Id;
                 target.Applicant = source.Applicant.Person.Fullname;
                 target.BirthDate = source.Applicant.Person.BirthDate;
                 target.BirthPlace = source.Applicant.BirthPlace;
                 target.Gender = source.Applicant.Person.Gender.ToString();
-                target.CivilStatus = source.Applicant.CivilStatus.ToString();
-                target.Citizenship = source.Applicant.Citizenship;
-                target.Address = source.Applicant.Address.ToString();
-                target.Picture = source.Applicant.Picture.Bytes;
+                target.CivilStatus = source.ApplicantCivilStatus.Value.ToString();
+                target.Citizenship = source.ApplicantCitizenship;
+                target.Address = source.ApplicantAddress;
+                target.Picture = source.ApplicantPicture.Bytes;
                 target.Signature = source.Applicant.Signature.Bytes;
                 target.RightThumb = source.Applicant.FingerPrint.RightThumb.Bytes;
                 target.LeftThumb = source.Applicant.FingerPrint.LeftThumb.Bytes;

@@ -21,6 +21,16 @@ namespace CIS.Data.EntityDefinition.Polices
                 .NotNullable()
                 .And.IsValid();
 
+            Define(x => x.ApplicantPicture);
+
+            Define(x => x.ApplicantCivilStatus);
+
+            Define(x => x.ApplicantAddress)
+                .MaxLength(700);
+
+            Define(x => x.ApplicantCitizenship)
+                .MaxLength(100);
+
             Define(x => x.Barcode)
                 .IsValid();
 

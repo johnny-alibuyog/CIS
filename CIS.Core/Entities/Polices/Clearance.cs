@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Firearms;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Polices
 {
@@ -14,6 +15,10 @@ namespace CIS.Core.Entities.Polices
         private int _version;
         private Audit _audit;
         private Applicant _applicant;
+        private ImageBlob _applicantPicture;
+        private Nullable<CivilStatus> _applicantCivilStatus;
+        private string _applicantAddress;
+        private string _applicantCitizenship;
         private Barcode _barcode;
         private Officer _verifier;
         private string _verifierRank;
@@ -53,6 +58,30 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _applicant; }
             set { _applicant = value; }
+        }
+
+        public virtual ImageBlob ApplicantPicture
+        {
+            get { return _applicantPicture; }
+            set { _applicantPicture = value; }
+        }
+
+        public virtual Nullable<CivilStatus> ApplicantCivilStatus
+        {
+            get { return _applicantCivilStatus; }
+            set { _applicantCivilStatus = value; }
+        }
+
+        public virtual string ApplicantAddress
+        {
+            get { return _applicantAddress; }
+            set { _applicantAddress = value.ToProperCase(); }
+        }
+
+        public virtual string ApplicantCitizenship
+        {
+            get { return _applicantCitizenship; }
+            set { _applicantCitizenship = value.ToProperCase(); }
         }
 
         public virtual Barcode Barcode
@@ -180,8 +209,9 @@ namespace CIS.Core.Entities.Polices
 
         public Clearance()
         {
-            _applicant = new Applicant();
+            //_applicant = new Applicant();
             _barcode = Barcode.GenerateBarcode();
+            _applicantPicture = new ImageBlob();
             //_suspectPartialMatches = new Collection<Suspect>();
             //_suspectPerfectMatches = new Collection<Suspect>();
             //_expiredLicenseMatches = new Collection<License>();

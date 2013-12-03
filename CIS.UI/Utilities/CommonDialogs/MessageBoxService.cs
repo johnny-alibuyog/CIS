@@ -11,7 +11,7 @@ namespace CIS.UI.Utilities.CommonDialogs
 {
     public class MessageBoxService : IMessageBoxService
     {
-        private readonly ILog _log = LogManager.GetCurrentClassLogger();
+        private static readonly ILog _log = LogManager.GetCurrentClassLogger();
 
         public void Warn(string message, string caption = "Error")
         {

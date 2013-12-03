@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reactive;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Firearms;
@@ -21,14 +23,16 @@ namespace CIS.UI.Features.Firearms.Maintenances
         public MakeListController(MakeListViewModel viewModel)
             : base(viewModel)
         {
-            this.ViewModel.ObservableForProperty(x => x.NewItem).Subscribe(x =>
-            {
-                var matchedItem = this.ViewModel.Items
-                    .Where(o => o.Name.Contains(this.ViewModel.NewItem))
-                    .FirstOrDefault();
+            this.ViewModel.ObservableForProperty(x => x.NewItem)
+                .Throttle(TimeSpan.FromMilliseconds(500))
+                .Subscribe(x =>
+                {
+                    var matchedItem = this.ViewModel.Items
+                        .Where(o => o.Name.ToLower().Contains(this.ViewModel.NewItem.ToLower()))
+                        .FirstOrDefault();
 
-                this.ViewModel.SelectedItem = matchedItem;
-            });
+                    this.ViewModel.SelectedItem = matchedItem;
+                });
 
             this.ViewModel.Load = new ReactiveCommand();
             this.ViewModel.Load.Subscribe(x => Populate());
@@ -67,7 +71,10 @@ namespace CIS.UI.Features.Firearms.Maintenances
             using (var transaction = session.BeginTransaction())
             {
                 var query = session.Query<Make>().ToFuture();
-                this.ViewModel.Items = query.Select(x => new MakeViewModel(x.Id, x.Name)).ToReactiveList();
+                this.ViewModel.Items = query
+                    .Select(x => new MakeViewModel(x.Id, x.Name))
+                    .OrderBy(x => x.Name)
+                    .ToReactiveList();
 
                 transaction.Commit();
             }
@@ -129,8 +136,14 @@ namespace CIS.UI.Features.Firearms.Maintenances
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var query = session.Query<Make>().Where(x => x.Name == this.ViewModel.NewItem).ToFuture();
-                this.ViewModel.Items = query.Select(x => new MakeViewModel(x.Id, x.Name)).ToReactiveList();
+                var query = session.Query<Make>()
+                    .Where(x => x.Name == this.ViewModel.NewItem)
+                    .ToFuture();
+
+                this.ViewModel.Items = query
+                    .Select(x => new MakeViewModel(x.Id, x.Name))
+                    .OrderBy(x => x.Name)
+                    .ToReactiveList();
 
                 transaction.Commit();
             }

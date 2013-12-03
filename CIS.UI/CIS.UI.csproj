@@ -13,7 +13,7 @@
     <AssemblyName>CIS.UI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <FodyPath>..\packages\Fody.1.17.4.0</FodyPath>
+    <FodyPath>..\packages\Fody.1.18.0.0</FodyPath>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -73,9 +73,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core">
-      <HintPath>..\packages\Castle.Core.3.0.0.4001\lib\net40-client\Castle.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
@@ -128,36 +125,29 @@
       <HintPath>..\packages\Ninject.Extensions.Conventions.3.0.0.11\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="Ninject.Extensions.Interception, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Ninject.Extensions.Interception.3.0.0.8\lib\net45-full\Ninject.Extensions.Interception.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject.Extensions.Interception.DynamicProxy">
-      <HintPath>..\packages\Ninject.Extensions.Interception.DynamicProxy.3.0.0.8\lib\net45-full\Ninject.Extensions.Interception.DynamicProxy.dll</HintPath>
-    </Reference>
     <Reference Include="NLog, Version=2.1.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NLog.2.1.0\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="PropertyChanged">
-      <HintPath>..\packages\PropertyChanged.Fody.1.41.0.0\Lib\NET35\PropertyChanged.dll</HintPath>
+      <HintPath>..\packages\PropertyChanged.Fody.1.42.0.0\Lib\NET35\PropertyChanged.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PropertyChanging">
       <HintPath>..\packages\PropertyChanging.Fody.1.25.3\Lib\NET35\PropertyChanging.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ReactiveUI, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ReactiveUI, Version=5.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\reactiveui-core.5.2.0\lib\Portable-Net45+WinRT45+WP8\ReactiveUI.dll</HintPath>
+      <HintPath>..\packages\reactiveui-core.5.3.0\lib\Portable-Net45+WinRT45+WP8\ReactiveUI.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI.Blend, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ReactiveUI.Blend, Version=5.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\reactiveui-platforms.5.2.0\lib\net45\ReactiveUI.Blend.dll</HintPath>
+      <HintPath>..\packages\reactiveui-platforms.5.3.0\lib\net45\ReactiveUI.Blend.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI.Xaml, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ReactiveUI.Xaml, Version=5.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\reactiveui-platforms.5.2.0\lib\net45\ReactiveUI.Xaml.dll</HintPath>
+      <HintPath>..\packages\reactiveui-platforms.5.3.0\lib\net45\ReactiveUI.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="Remotion, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -207,8 +197,9 @@
     <Reference Include="WebCam_Capture">
       <HintPath>..\..\..\third party sdk\WebCam\EasyWebCam\WebCam_Capture.dll</HintPath>
     </Reference>
-    <Reference Include="Westwind.Utilities.Configuration">
-      <HintPath>..\packages\Westwind.Utilities.Configuration.2.10\lib\net40\Westwind.Utilities.Configuration.dll</HintPath>
+    <Reference Include="Westwind.Utilities.Configuration, Version=2.15.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Westwind.Utilities.Configuration.2.15\lib\net40\Westwind.Utilities.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -227,12 +218,9 @@
     <Compile Include="Bootstraps\InversionOfControl\Dependency.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\DependencyResolver.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\AuthorizeAttribute.cs" />
-    <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\AuthorizeInterceptor.cs" />
-    <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\CustomPlanningStrategy.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\HandleErrorAttribute.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Bootstraps\InversionOfControl\Ninject\Interceptors\HandleErrorInterceptor.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\ConfigurationModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\CommonDialogModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\MessageModule.cs" />

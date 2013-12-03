@@ -16,6 +16,7 @@ namespace CIS.Core.Entities.Polices
         private PersonBasic _father;
         private PersonBasic _mother;
         private ICollection<PersonBasic> _relatives;
+        private ICollection<Clearance> _clearances;
         private Address _address;
         private Address _provincialAddress;
         private ImageBlob _picture;
@@ -60,6 +61,11 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _mother; }
             set { _mother = value; }
+        }
+
+        public virtual IEnumerable<Clearance> Clearances
+        {
+            get { return _clearances; }
         }
 
         public virtual IEnumerable<PersonBasic> Relatives
@@ -202,11 +208,18 @@ namespace CIS.Core.Entities.Polices
             _signature = new ImageBlob();
             _fingerPrint = new FingerPrint();
             _relatives = new Collection<PersonBasic>();
+            _clearances = new Collection<Clearance>();
         }
 
         #endregion
 
         #region Methods
+
+        public virtual void AddClearance(Clearance clearance)
+        {
+            clearance.Applicant = this;
+            _clearances.Add(clearance);
+        }
 
         private void SyncRelatives(IEnumerable<PersonBasic> items)
         {

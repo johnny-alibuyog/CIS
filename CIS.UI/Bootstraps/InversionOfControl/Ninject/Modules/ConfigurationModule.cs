@@ -12,7 +12,13 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Modules
     {
         public override void Load()
         {
-            Bind<ApplicationConfiguration>().ToSelf()
+            Bind<ApplicationConfiguration>()//.ToSelf()
+                .ToMethod(x =>
+                {
+                    var appConfig = new ApplicationConfiguration();
+                    appConfig.Initialize();
+                    return appConfig;
+                })
                 .InSingletonScope();
         }
     }

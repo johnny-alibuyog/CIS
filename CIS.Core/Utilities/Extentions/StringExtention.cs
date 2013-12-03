@@ -35,9 +35,11 @@ namespace CIS.Core.Utilities.Extentions
             //value = ProperSuffix(value, "Mac");     // Scots
 
             // Special words:
+            value = SpecialWords(value, "dela");    // dela Cruz
+            value = SpecialWords(value, "del");     // del Rosario
+            value = SpecialWords(value, "de");      // de Guzman
             value = SpecialWords(value, "van");     // Dick van Dyke
             value = SpecialWords(value, "von");     // Baron von Bruin-Valt
-            value = SpecialWords(value, "de");
             value = SpecialWords(value, "di");
             value = SpecialWords(value, "da");      // Leonardo da Vinci, Eduardo da Silva
             value = SpecialWords(value, "of");      // The Grand Old Duke of York
@@ -125,10 +127,17 @@ namespace CIS.Core.Utilities.Extentions
 
         public static string ToProperCase(this string input)
         {
-            if (string.IsNullOrWhiteSpace(input))
+            if (input == null)
                 return null;
 
-            return string.Join(" ", input.Split(' ').Select(word => WordToProperCase(word)));
+            if (string.IsNullOrWhiteSpace(input))
+                return string.Empty;
+
+            var words = input.Split(' ')
+                .Where(word => !string.IsNullOrWhiteSpace(word))
+                .Select(word => WordToProperCase(word));
+
+            return string.Join(" ", words);
 
             //if (IsAllUpperOrAllLower(input))
             //{

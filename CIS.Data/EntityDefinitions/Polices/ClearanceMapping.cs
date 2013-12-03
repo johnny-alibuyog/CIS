@@ -23,6 +23,15 @@ namespace CIS.Data.EntityDefinition.Polices
             References(x => x.Applicant)
                 .Cascade.All();
 
+            References(x => x.ApplicantPicture)
+                .Cascade.All();
+
+            Map(x => x.ApplicantCivilStatus);
+
+            Map(x => x.ApplicantAddress);
+
+            Map(x => x.ApplicantCitizenship);
+
             References(x => x.Barcode)
                 .Cascade.All();
 

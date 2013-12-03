@@ -35,6 +35,13 @@ namespace CIS.UI.Features.Commons.Persons
             }
         }
 
+        public PersonBasicViewModel() { }
+
+        public PersonBasicViewModel(PersonBasic value)
+        {
+            this.SerializeWith(value);
+        }
+
         public override string ToString()
         {
             return this.FullName;

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reactive;
+using System.Reactive.Linq;
 using System.Windows;
 using CIS.Core.Entities.Polices;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
@@ -20,14 +22,16 @@ namespace CIS.UI.Features.Polices.Maintenances
     {
         public PurposeListController(PurposeListViewModel viewModel) : base(viewModel)
         {
-            this.ViewModel.ObservableForProperty(x => x.NewItem).Subscribe(x =>
-            {
-                var matchedItem = this.ViewModel.Items
-                    .Where(o => o.Name.Contains(this.ViewModel.NewItem))
-                    .FirstOrDefault();
+            this.ViewModel.ObservableForProperty(x => x.NewItem)
+                .Throttle(TimeSpan.FromMilliseconds(500))
+                .Subscribe(x =>
+                {
+                    var matchedItem = this.ViewModel.Items
+                        .Where(o => o.Name.Contains(this.ViewModel.NewItem))
+                        .FirstOrDefault();
 
-                this.ViewModel.SelectedItem = matchedItem;
-            });
+                    this.ViewModel.SelectedItem = matchedItem;
+                });
 
             this.ViewModel.Load = new ReactiveCommand();
             this.ViewModel.Load.Subscribe(x => Load());

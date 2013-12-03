@@ -25,7 +25,15 @@ namespace CIS.Data.EntityDefinitions.Polices
             Component(x => x.Mother)
                 .ColumnPrefix("Mother");
 
-            HasMany<Person>(x => x.Relatives)
+            HasMany(x => x.Clearances)
+                .Access.CamelCaseField(Prefix.Underscore)
+                .Cascade.AllDeleteOrphan()
+                .Not.KeyNullable()
+                .Not.KeyUpdate()
+                .Inverse()
+                .AsBag();
+
+            HasMany<PersonBasic>(x => x.Relatives)
                 .Schema(GetType().ParseSchema())
                 .Table("ApplicantsRelatives")
                 .KeyColumn("ApplicantsRelativesId")

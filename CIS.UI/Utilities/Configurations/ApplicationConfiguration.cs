@@ -23,7 +23,9 @@ namespace CIS.UI.Utilities.Configurations
         public virtual DatabaseConfiguraton Database { get; set; }
         public virtual AppearanceConfiguration Apprearance { get; set; }
         public virtual string ApplicationDataLocation { get; set; }
-        public virtual double ImageResizeScaleFactor { get; set; }
+        public virtual double DefaultResizeScaleFactor { get; set; }
+        public virtual double PictureResizeScaleFactor { get; set; }
+        public virtual double FingerPrintResizeScaleFactor { get; set; }
 
         public ApplicationConfiguration()
         {
@@ -31,7 +33,9 @@ namespace CIS.UI.Utilities.Configurations
             if (Directory.Exists(this.ApplicationDataLocation) == false)
                 Directory.CreateDirectory(this.ApplicationDataLocation);
 
-            this.ImageResizeScaleFactor = 0.25D;
+            this.DefaultResizeScaleFactor = 0.25D;
+            this.PictureResizeScaleFactor = 0.25D;
+            this.FingerPrintResizeScaleFactor = 0.25D; //0.20D;
 
             this.Licensee = "JLRC Manasoft";
             this.Plugins = new[] 
@@ -61,17 +65,17 @@ namespace CIS.UI.Utilities.Configurations
                 Color = new AppearanceColorConfiguration(),
                 Theme = new AppearanceThemeConfiguration()
             };
+        }
 
-            this.Provider = new XmlFileConfigurationProvider<ApplicationConfiguration>()
+        protected override IConfigurationProvider OnCreateDefaultProvider(string sectionName, object configData)
+        {
+            return new XmlFileConfigurationProvider<ApplicationConfiguration>()
             {
                 //PropertiesToEncrypt = "MailserverPassword,ConnectionString,Database.Username,Database.Password",
                 PropertiesToEncrypt = "MailserverPassword,ConnectionString",
                 EncryptionKey = "_secretive_",
                 XmlConfigurationFile = Path.Combine(this.ApplicationDataLocation, "cis.config")
             };
-
-            this.Provider.Read(this);
-            //this.Provider.Write(this);
         }
     }
 }

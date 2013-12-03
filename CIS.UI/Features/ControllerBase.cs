@@ -19,7 +19,7 @@ namespace CIS.UI.Features
 {
     public abstract class ControllerBase<TViewModel> : IControllerBase where TViewModel : ViewModelBase
     {
-        private ILog _log;
+        private static ILog _log;
         private TViewModel _viewModel;
         private IMessageBus _messageBus;
         private IMessageBoxService _messageBox;

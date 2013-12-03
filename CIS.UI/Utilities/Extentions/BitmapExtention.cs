@@ -31,6 +31,11 @@ namespace CIS.UI.Utilities.Extentions
 
                 using (var tempBitmap = new Bitmap(stream))
                 {
+                    #if DEBUG
+                        var id = Guid.NewGuid();
+                        new Bitmap(tempBitmap).Save(Path.Combine(App.Config.ApplicationDataLocation, string.Format("saved.{0}.bmp", id)));
+                    #endif
+
                     // According to MSDN, one "must keep the stream open for the lifetime of the Bitmap."
                     // So we return a copy of the new bitmap, allowing us to dispose both the bitmap and the stream.
                     return new Bitmap(tempBitmap);
@@ -157,7 +162,7 @@ namespace CIS.UI.Utilities.Extentions
 
         public static BitmapSource ReduceSize(this BitmapSource bitmapSource)
         {
-            return bitmapSource.ReduceSize(App.Config.ImageResizeScaleFactor);
+            return bitmapSource.ReduceSize(App.Config.DefaultResizeScaleFactor);
         }
 
         public static BitmapSource ReduceSize(this BitmapSource bitmapSource, double scaleFactor)
@@ -174,7 +179,7 @@ namespace CIS.UI.Utilities.Extentions
 
         public static Bitmap ReduceSize(this Bitmap source)
         {
-            return ReduceSize(source, App.Config.ImageResizeScaleFactor);
+            return ReduceSize(source, App.Config.DefaultResizeScaleFactor);
         }
 
         public static Bitmap ReduceSize(this Bitmap source, double scaleFactor)
@@ -190,6 +195,12 @@ namespace CIS.UI.Utilities.Extentions
                 ResizeImage(scaleFactor, sourceStream, targetStream);
                 using (var tempBitmap = new Bitmap(targetStream))
                 {
+                    #if DEBUG
+                        var id = Guid.NewGuid();
+                        source.Save(Path.Combine(App.Config.ApplicationDataLocation, string.Format("original.{0}.bmp", id)));
+                        new Bitmap(tempBitmap).Save(Path.Combine(App.Config.ApplicationDataLocation, string.Format("resized.{0}.bmp", id)));
+                    #endif
+
                     return new Bitmap(tempBitmap);
                 }
             }

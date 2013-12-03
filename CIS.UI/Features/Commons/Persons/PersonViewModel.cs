@@ -11,16 +11,37 @@ namespace CIS.UI.Features.Commons.Persons
 {
     public class PersonViewModel : ViewModelBase
     {
+        private string _firstName;
+        private string _middleName;
+        private string _lastName;
+        private string _suffix;
+
         [NotNullNotEmpty(Message = "First name is mandatory.")]
-        public virtual string FirstName { get; set; }
+        public virtual string FirstName
+        {
+            get { return _firstName; }
+            set { _firstName = value; }
+        }
 
         //[NotNullNotEmpty(Message = "Middle name is mandatory.")]
-        public virtual string MiddleName { get; set; }
+        public virtual string MiddleName
+        {
+            get { return _middleName; }
+            set { _middleName = value; }
+        }
 
         [NotNullNotEmpty(Message = "Last name is mandatory.")]
-        public virtual string LastName { get; set; }
+        public virtual string LastName 
+        {
+            get { return _lastName; }
+            set { _lastName = value; }
+        }
 
-        public virtual string Suffix { get; set; }
+        public virtual string Suffix 
+        {
+            get { return _suffix; }
+            set { _suffix = value; }
+        }
 
         public virtual string FullName
         {

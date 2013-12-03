@@ -97,6 +97,7 @@ namespace CIS.UI.Features.Polices.Warrants
             this.ViewModel.TotalTime = null;
             this.ViewModel.TotalCases = 0M;
             this.ViewModel.TotalSuspects = 0M;
+            this.ViewModel.ErrorMessage = string.Empty;
             var start = DateTime.Now;
 
             try

@@ -24,6 +24,9 @@ namespace CIS.Data.EntityDefinitions.Polices
             Define(x => x.Father)
                 .IsValid();
 
+            Define(x => x.Clearances)
+                .HasValidElements();
+
             Define(x => x.Relatives)
                 .HasValidElements();
 

@@ -44,6 +44,12 @@ namespace CIS.UI.Features.Commons.Addresses
 
         public override object SerializeWith(object instance)
         {
+            this.Address1 = string.Empty;
+            this.Address2 = string.Empty;
+            this.Barangay = string.Empty;
+            this.City = string.Empty;
+            this.Province = string.Empty;
+
             if (instance == null)
                 return null;
 

@@ -31,8 +31,8 @@ namespace CIS.UI.Features.Polices.Warrants
             {
                 var excel = new ExcelQueryFactory(file.FullName);
                 excel.AddMapping<CodelessWarrant>(x => x.LastName, "SURNAME");
-                excel.AddMapping<CodelessWarrant>(x => x.MiddleName, "GIVEN NAME");
-                excel.AddMapping<CodelessWarrant>(x => x.FirstName, "MIDDLE NAME");
+                excel.AddMapping<CodelessWarrant>(x => x.FirstName, "GIVEN NAME");
+                excel.AddMapping<CodelessWarrant>(x => x.MiddleName, "MIDDLE NAME");
                 //excel.AddMapping<CodelessWarrant>(x => x.Suffix, "BAIL_AMOUNT");
                 excel.AddMapping<CodelessWarrant>(x => x.Address, "ADDRESS");
                 excel.AddMapping<CodelessWarrant>(x => x.Case, "CASE");
@@ -43,7 +43,46 @@ namespace CIS.UI.Features.Polices.Warrants
                 warrants.AddRange(excel.Worksheet<CodelessWarrant>(firstSheet).ToList());
             }
 
+            this.Fix(warrants);
+
             return warrants;
+        }
+
+        private void Fix(IEnumerable<CodelessWarrant> warrants)
+        {
+            foreach (var item in warrants)
+            {
+                if (item.LastName != null && item.LastName.Contains(','))
+                {
+                    var names = item.LastName.Split(',')
+                        .Where(x => !string.IsNullOrWhiteSpace(x))
+                        .ToArray();
+
+                    item.LastName = names.FirstOrDefault();
+
+                    if (names.Count() > 1 && string.IsNullOrWhiteSpace(item.FirstName))
+                        item.FirstName = names.LastOrDefault();
+                }
+
+                if (item.FirstName != null && item.FirstName.Contains(' ') && 
+                    (
+                        item.FirstName.EndsWith("jr", StringComparison.InvariantCultureIgnoreCase) ||
+                        item.FirstName.EndsWith("jr.", StringComparison.InvariantCultureIgnoreCase) ||
+                        item.FirstName.EndsWith("sr", StringComparison.InvariantCultureIgnoreCase) ||
+                        item.FirstName.EndsWith("sr.", StringComparison.InvariantCultureIgnoreCase) ||
+                        item.FirstName.EndsWith("ii", StringComparison.InvariantCultureIgnoreCase) ||
+                        item.FirstName.EndsWith("iii", StringComparison.InvariantCultureIgnoreCase)
+                    ))
+                {
+                    item.Suffix = item.FirstName.Split(' ').Last();
+                    item.FirstName = item.FirstName.Replace(item.Suffix, string.Empty);
+                }
+
+                if (item.FirstName != null && item.FirstName.Contains(','))
+                {
+                    item.FirstName = item.FirstName.Replace(",", string.Empty);
+                }
+            }
         }
 
         private void SaveBatch(int batchSize, IEnumerable<CodelessWarrant> batchToImport)

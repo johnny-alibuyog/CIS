@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.UI.Features.Polices.Warrants
 {
@@ -20,49 +21,60 @@ namespace CIS.UI.Features.Polices.Warrants
         public virtual string LastName 
         {
             get { return _lastName; }
-            set { _lastName = (value ?? string.Empty).Trim(); } 
+            set { _lastName = value.ToProperCase(); } 
         }
 
         public virtual string MiddleName
         {
             get { return _middleName; }
-            set { _middleName = (value ?? string.Empty).Trim(); }
+            set { _middleName = value.ToProperCase(); }
         }
 
         public virtual string FirstName
         {
             get { return _firstName; }
-            set { _firstName = (value ?? string.Empty).Trim(); }
+            set { _firstName = value.ToProperCase(); }
         }
 
         public virtual string Suffix
         {
             get { return _suffix; }
-            set { _suffix = (value ?? string.Empty).Trim(); }
+            set { _suffix = value.ToProperCase(); }
         }
 
         public virtual string Address
         {
             get { return _address; }
-            set { _address = (value ?? string.Empty).Trim(); }
+            set { _address = value.ToProperCase(); }
         }
 
         public virtual string Case
         {
             get { return _case; }
-            set { _case = (value ?? string.Empty).Trim(); }
+            set { _case = value.ToProperCase(); }
         }
 
         public virtual string Disposition
         {
             get { return _disposition; }
-            set { _disposition = (value ?? string.Empty).Trim(); }
+            set { _disposition = value.ToProperCase(); }
         }
 
         public virtual Nullable<DateTime> DateArrested
         {
             get { return _dateArrested; }
             set { _dateArrested = value; }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1} {2} {3}",
+                this.FirstName ?? string.Empty,
+                this.MiddleName ?? string.Empty,
+                this.LastName ?? string.Empty,
+                this.Suffix ?? string.Empty
+            )
+            .ToProperCase();
         }
     }
 }
