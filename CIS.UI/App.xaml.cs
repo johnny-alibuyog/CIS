@@ -11,6 +11,7 @@ using CIS.Core.Entities.Memberships;
 using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features;
 using CIS.UI.Features.Memberships.Users;
+using CIS.UI.Utilities;
 using CIS.UI.Utilities.Configurations;
 
 namespace CIS.UI

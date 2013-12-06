@@ -57,8 +57,8 @@ namespace CIS.UI.Features.Firearms.Licenses
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var makeQuery = session.Query<Make>().Cacheable().ToFuture();
-                var kindQuery = session.Query<Kind>().Cacheable().ToFuture();
+                var makeQuery = session.Query<Make>().Cacheable().ToList();
+                var kindQuery = session.Query<Kind>().Cacheable().ToList();
 
                 viewModel.Gun.Makes = makeQuery.Select(x => new Lookup<Guid>(x.Id, x.Name)).ToReactiveList();
                 viewModel.Gun.Kinds = kindQuery.Select(x => new Lookup<Guid>(x.Id, x.Name)).ToReactiveList();
@@ -74,8 +74,8 @@ namespace CIS.UI.Features.Firearms.Licenses
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var makeQuery = session.Query<Make>().Cacheable().ToFuture();
-                var kindQuery = session.Query<Kind>().Cacheable().ToFuture();
+                var makeQuery = session.Query<Make>().Cacheable().ToList();
+                var kindQuery = session.Query<Kind>().Cacheable().ToList();
                 var licenseQuery = session.Query<License>().Where(x => x.Id == id).ToFutureValue();
 
                 viewModel.Gun.Makes = makeQuery.Select(x => new Lookup<Guid>(x.Id, x.Name)).ToReactiveList();
@@ -89,6 +89,11 @@ namespace CIS.UI.Features.Firearms.Licenses
 
         public virtual void Search()
         {
+            if (string.IsNullOrWhiteSpace(this.ViewModel.Criteria.FirstName) &&
+                string.IsNullOrWhiteSpace(this.ViewModel.Criteria.MiddleName) &&
+                string.IsNullOrWhiteSpace(this.ViewModel.Criteria.LastName))
+                return;
+
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {

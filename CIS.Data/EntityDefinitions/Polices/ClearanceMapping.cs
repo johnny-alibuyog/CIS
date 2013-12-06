@@ -23,8 +23,9 @@ namespace CIS.Data.EntityDefinition.Polices
             References(x => x.Applicant)
                 .Cascade.All();
 
-            References(x => x.ApplicantPicture)
-                .Cascade.All();
+            References(x => x.ApplicantPicture);
+
+            References(x => x.ApplicantSignature);
 
             Map(x => x.ApplicantCivilStatus);
 

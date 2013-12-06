@@ -62,7 +62,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var ranks = session.Query<Rank>().Cacheable().ToFuture();
+                var ranks = session.Query<Rank>().Cacheable().ToList();
                 viewModel.Ranks = ranks.Select(x => new Lookup<string>(x.Id, x.Name)).ToReactiveList();
 
                 transaction.Commit();
@@ -76,7 +76,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             using (var session = this.SessionProvider.GetSharedSession())
             using (var transaction = session.BeginTransaction())
             {
-                var rankQuery = session.Query<Rank>().Cacheable().ToFuture();
+                var rankQuery = session.Query<Rank>().Cacheable().ToList();
 
                 var officerQuery = session.Query<Officer>()
                     .Where(x => x.Id == id)

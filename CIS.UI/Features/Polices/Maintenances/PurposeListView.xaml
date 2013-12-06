@@ -16,13 +16,13 @@
 
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="New Item"/>
-                        <TextBox x:Name="textBox" Text="{Binding NewItem, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox x:Name="textBox" Text="{Binding NewItem, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Height="40" Width="500"/>
                         <mui:ModernButton Command="{Binding Insert}" Style="{StaticResource app_bar_add}" Margin="4,0,0,0" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label />
-                        <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1" Width="{StaticResource InputWidth}">
-                            <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Items, Mode=TwoWay, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedItem}">
+                        <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1"> <!--Width="{StaticResource InputWidth}">-->
+                            <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Items, Mode=TwoWay, ValidatesOnDataErrors=True}" SelectedItem="{Binding SelectedItem}" Width="500">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="ListBoxItem">
                                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -35,7 +35,9 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                            <StackPanel Orientation="Vertical" Width="400">
+                                                <TextBlock Grid.Column="0" Text="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                            </StackPanel>
                                             <mui:ModernButton Grid.Column="1" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Delete}" CommandParameter="{Binding}" Style="{StaticResource app_bar_delete}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,4,0" />
                                         </Grid>
                                     </DataTemplate>

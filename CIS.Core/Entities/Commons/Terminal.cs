@@ -63,7 +63,7 @@ namespace CIS.Core.Entities.Commons
 
         #region Static Members
 
-        public static Terminal CreateLocalTerminal()
+        public static Terminal GetLocalTerminal()
         {
             return new Terminal()
             {

@@ -24,6 +24,10 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Map(x => x.ArrestStatus);
 
+            Map(x => x.ArrestDate);
+
+            Map(x => x.Disposition);
+
             Component(x => x.Person);
 
             Component(x => x.Address);

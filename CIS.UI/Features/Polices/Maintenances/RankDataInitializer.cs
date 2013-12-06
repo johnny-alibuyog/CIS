@@ -23,7 +23,7 @@ namespace CIS.UI.Features.Polices.Maintenances
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var ranks = session.Query<Rank>().Cacheable().ToFuture();
+                var ranks = session.Query<Rank>().Cacheable().ToList();
 
                 foreach (var toSave in Rank.All)
                 {

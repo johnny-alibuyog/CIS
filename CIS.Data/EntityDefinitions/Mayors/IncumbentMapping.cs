@@ -25,7 +25,7 @@ namespace CIS.Data.EntityDefinition.Mayors
                 .Schema(GetType().ParseSchema())
                 .Table("IncumbentsOfficials")
                 .Cascade.AllDeleteOrphan()
-                .AsBag();
+                .AsSet();
 
             Map(x => x.Date);
         }

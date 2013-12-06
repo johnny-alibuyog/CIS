@@ -16,7 +16,7 @@ namespace CIS.UI.Features.Polices.Warrants
         private string _address;
         private string _case;
         private string _disposition;
-        private Nullable<DateTime> _dateArrested;
+        private Nullable<DateTime> _arrestedOn;
 
         public virtual string LastName 
         {
@@ -60,10 +60,10 @@ namespace CIS.UI.Features.Polices.Warrants
             set { _disposition = value.ToProperCase(); }
         }
 
-        public virtual Nullable<DateTime> DateArrested
+        public virtual Nullable<DateTime> ArrestedOn
         {
-            get { return _dateArrested; }
-            set { _dateArrested = value; }
+            get { return _arrestedOn; }
+            set { _arrestedOn = value; }
         }
 
         public override string ToString()

@@ -25,7 +25,7 @@ namespace CIS.Data.EntityDefinitions.Polices
                 .Not.KeyNullable()
                 .Not.KeyUpdate()
                 .Inverse()
-                .AsBag();
+                .AsSet();
         }
     }
 }

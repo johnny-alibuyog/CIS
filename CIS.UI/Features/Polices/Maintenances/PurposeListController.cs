@@ -27,7 +27,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 .Subscribe(x =>
                 {
                     var matchedItem = this.ViewModel.Items
-                        .Where(o => o.Name.Contains(this.ViewModel.NewItem))
+                        .Where(o => o.Name.ToLower().Contains(x.Value.ToLower()))
                         .FirstOrDefault();
 
                     this.ViewModel.SelectedItem = matchedItem;
@@ -78,6 +78,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                         Id = x.Id,
                         Name = x.Name
                     })
+                    .OrderBy(x => x.Name)
                     .ToReactiveList();
 
                 transaction.Commit();
@@ -155,6 +156,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                         Id = x.Id,
                         Name = x.Name
                     })
+                    .OrderBy(x => x.Name)
                     .ToReactiveList();
 
                 transaction.Commit();

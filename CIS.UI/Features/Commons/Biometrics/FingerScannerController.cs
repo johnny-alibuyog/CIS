@@ -51,6 +51,7 @@ namespace CIS.UI.Features.Commons.Biometrics
                     .Where(x => x.Terminal.MachineName == Environment.MachineName)
                     .SelectMany(x => x.FingersToScan)
                     .Select(x => x.Id)
+                    .Cacheable()
                     .ToList();
 
                 _fingersToScan = FingerViewModel.GetByIds(fingerIds);

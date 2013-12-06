@@ -19,8 +19,8 @@ namespace CIS.Core.Entities.Polices
         private ICollection<Clearance> _clearances;
         private Address _address;
         private Address _provincialAddress;
-        private ImageBlob _picture;
-        private ImageBlob _signature;
+        private ICollection<ImageBlob> _pictures;
+        private ICollection<ImageBlob> _signatures;
         private FingerPrint _fingerPrint;
         private string _height;
         private string _weight;
@@ -86,16 +86,14 @@ namespace CIS.Core.Entities.Polices
             set { _provincialAddress = value; }
         }
 
-        public virtual ImageBlob Picture
+        public virtual IEnumerable<ImageBlob> Pictures
         {
-            get { return _picture; }
-            set { _picture = value; }
+            get { return _pictures; }
         }
 
-        public virtual ImageBlob Signature
+        public virtual IEnumerable<ImageBlob> Signatures
         {
-            get { return _signature; }
-            set { _signature = value; }
+            get { return _signatures; }
         }
 
         public virtual FingerPrint FingerPrint
@@ -204,9 +202,11 @@ namespace CIS.Core.Entities.Polices
 
         public Applicant()
         {
-            _picture = new ImageBlob();
-            _signature = new ImageBlob();
+            //_picture = new ImageBlob();
+            //_signature = new ImageBlob();
             _fingerPrint = new FingerPrint();
+            _pictures = new Collection<ImageBlob>();
+            _signatures = new Collection<ImageBlob>();
             _relatives = new Collection<PersonBasic>();
             _clearances = new Collection<Clearance>();
         }
@@ -219,6 +219,16 @@ namespace CIS.Core.Entities.Polices
         {
             clearance.Applicant = this;
             _clearances.Add(clearance);
+        }
+
+        public virtual void AddPicture(ImageBlob picture)
+        {
+            _pictures.Add(picture);
+        }
+
+        public virtual void AddSignature(ImageBlob signature)
+        {
+            _signatures.Add(signature);
         }
 
         private void SyncRelatives(IEnumerable<PersonBasic> items)

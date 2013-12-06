@@ -28,7 +28,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
                 .Subscribe(x =>
                 {
                     var matchedItem = this.ViewModel.Items
-                        .Where(o => o.Name.ToLower().Contains(this.ViewModel.NewItem.ToLower()))
+                        .Where(o => o.Name.ToLower().Contains(x.Value.ToLower()))
                         .FirstOrDefault();
 
                     this.ViewModel.SelectedItem = matchedItem;
@@ -70,7 +70,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var query = session.Query<Make>().ToFuture();
+                var query = session.Query<Make>().Cacheable().ToList();
                 this.ViewModel.Items = query
                     .Select(x => new MakeViewModel(x.Id, x.Name))
                     .OrderBy(x => x.Name)

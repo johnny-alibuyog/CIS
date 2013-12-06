@@ -31,7 +31,7 @@ namespace CIS.Data.EntityDefinitions.Polices
                 .Not.KeyNullable()
                 .Not.KeyUpdate()
                 .Inverse()
-                .AsBag();
+                .AsSet();
 
             HasMany<PersonBasic>(x => x.Relatives)
                 .Schema(GetType().ParseSchema())
@@ -69,11 +69,19 @@ namespace CIS.Data.EntityDefinitions.Polices
             Component(x => x.ProvincialAddress)
                 .ColumnPrefix("Province");
 
-            References(x => x.Picture)
-                .Cascade.All();
+            HasManyToMany(x => x.Pictures)
+                .Access.CamelCaseField(Prefix.Underscore)
+                .Schema(GetType().ParseSchema())
+                .Table("ApplicantsPictures")
+                .Cascade.AllDeleteOrphan()
+                .AsSet();
 
-            References(x => x.Signature)
-                .Cascade.All();
+            HasManyToMany(x => x.Signatures)
+                .Access.CamelCaseField(Prefix.Underscore)
+                .Schema(GetType().ParseSchema())
+                .Table("ApplicantsSignatures")
+                .Cascade.AllDeleteOrphan()
+                .AsSet();
 
             References(x => x.FingerPrint)
                 .Cascade.All();

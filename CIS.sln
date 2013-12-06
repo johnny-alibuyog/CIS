@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{BF15
 		CIS.Data\database_creation_script.sql = CIS.Data\database_creation_script.sql
 		update_script.sql = update_script.sql
 		update_script2.sql = update_script2.sql
+		update_script3.sql = update_script3.sql
 	EndProjectSection
 EndProject
 Global

@@ -29,7 +29,7 @@ namespace CIS.Data.EntityDefinition.Barangays
                 .Schema(GetType().ParseSchema())
                 .Table("ClearancesOfficials")
                 .Cascade.SaveUpdate()
-                .AsBag();
+                .AsSet();
 
             Map(x => x.Purpose);
 

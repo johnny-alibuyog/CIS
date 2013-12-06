@@ -33,7 +33,7 @@ namespace CIS.Data.EntityDefinition.Memberships
                 .Schema(GetType().ParseSchema())
                 .Table("UsersRoles")
                 .Element("Role")
-                .AsBag();
+                .AsSet();
 
             //HasManyToMany(x => x.Roles)
             //    .Access.CamelCaseField(Prefix.Underscore)

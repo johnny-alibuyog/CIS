@@ -84,43 +84,31 @@ namespace CIS.UI.Features
 
         private void LoadImages()
         {
-            var images = new Dictionary<string, System.Drawing.Bitmap>();
+            var applicants = new List<Applicant>();
+
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var entities = session.Query<Applicant>()
+                applicants = session.Query<Applicant>()
                     .Where(x => 
                         x.Person.Gender == Gender.Female &&
                         x.CivilStatus == CivilStatus.Single &&
                         DateTime.Today.Year - x.Person.BirthDate.Value.Year < 21 
                     )
-                    .Select(x => new
-                    {
-                        Name = x.Person.FirstName + " " + x.Person.LastName,
-                        Picture = x.Picture
-                    })
+                    .Fetch(x => x.Pictures)
                     .ToList();
-
-                foreach (var entity in entities)
-                {
-                    if (images.ContainsKey(entity.Name))
-                        continue;
-
-                    images.Add(entity.Name, entity.Picture.Image as System.Drawing.Bitmap);
-                }
-
-                //images = entities.ToDictionary(x => x.Name, x => x.Picture.Image as System.Drawing.Bitmap);
 
                 transaction.Commit();
             }
 
-            foreach (var image in images)
+            foreach (var applicant in applicants)
+            foreach (var picture in applicant.Pictures)
             {
-                if (image.Value == null)
+                if (picture.Image == null)
                     continue;
 
-                var filename = Path.Combine(App.Config.ApplicationDataLocation, image.Key + ".bmp");
-                image.Value.Save(filename);
+                var filename = Path.Combine(App.Config.ApplicationDataLocation, applicant.Person.Fullname + ".bmp");
+                picture.Image.Save(filename);
             }
         }
     }

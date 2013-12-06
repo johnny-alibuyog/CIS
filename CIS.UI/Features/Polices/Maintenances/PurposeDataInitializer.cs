@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Polices;
+using CIS.Core.Utilities.Extentions;
 using NHibernate;
 using NHibernate.Linq;
 
@@ -30,7 +31,12 @@ namespace CIS.UI.Features.Polices.Maintenances
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var purposes = session.Query<Purpose>().Cacheable().ToFuture();
+                var purposes = session.Query<Purpose>().Cacheable().ToList();
+
+                foreach (var purpose in purposes)
+                {
+                    purpose.Name = purpose.Name.ToProperCase();
+                }
 
                 foreach (var item in data)
                 {

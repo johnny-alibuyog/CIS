@@ -30,7 +30,7 @@ namespace CIS.UI.Features.Commons.Terminals
                 var terminal = query.Value;
                 if (terminal == null)
                 {
-                    terminal = Terminal.CreateLocalTerminal();
+                    terminal = Terminal.GetLocalTerminal();
                     session.Save(terminal);
                 }
 

@@ -14,6 +14,8 @@ namespace CIS.Core.Entities.Polices
         private Audit _audit;
         private Warrant _warrant;
         private Nullable<ArrestStatus> _arrestStatus;
+        private Nullable<DateTime> _arrestDate;
+        private string _disposition;
         private Person _person;
         private Address _address;
         private PhysicalAttributes _physicalAttributes;
@@ -48,6 +50,18 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _arrestStatus; }
             set { _arrestStatus = value; }
+        }
+
+        public virtual Nullable<DateTime> ArrestDate
+        {
+            get { return _arrestDate; }
+            set { _arrestDate = value; }
+        }
+
+        public virtual string Disposition
+        {
+            get { return _disposition; }
+            set { _disposition = value; }
         }
 
         public virtual Person Person

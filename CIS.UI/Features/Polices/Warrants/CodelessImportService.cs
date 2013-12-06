@@ -37,7 +37,7 @@ namespace CIS.UI.Features.Polices.Warrants
                 excel.AddMapping<CodelessWarrant>(x => x.Address, "ADDRESS");
                 excel.AddMapping<CodelessWarrant>(x => x.Case, "CASE");
                 excel.AddMapping<CodelessWarrant>(x => x.Disposition, "DISPOSITION");
-                excel.AddMapping<CodelessWarrant>(x => x.DateArrested, "DATE ARRESTED");
+                excel.AddMapping<CodelessWarrant>(x => x.ArrestedOn, "DATE ARRESTED");
 
                 var firstSheet = excel.GetWorksheetNames().First();
                 warrants.AddRange(excel.Worksheet<CodelessWarrant>(firstSheet).ToList());
@@ -71,7 +71,9 @@ namespace CIS.UI.Features.Polices.Warrants
                         item.FirstName.EndsWith("sr", StringComparison.InvariantCultureIgnoreCase) ||
                         item.FirstName.EndsWith("sr.", StringComparison.InvariantCultureIgnoreCase) ||
                         item.FirstName.EndsWith("ii", StringComparison.InvariantCultureIgnoreCase) ||
-                        item.FirstName.EndsWith("iii", StringComparison.InvariantCultureIgnoreCase)
+                        item.FirstName.EndsWith("iii", StringComparison.InvariantCultureIgnoreCase) ||
+                        item.FirstName.EndsWith("iv", StringComparison.InvariantCultureIgnoreCase) ||
+                        item.FirstName.EndsWith("v", StringComparison.InvariantCultureIgnoreCase)
                     ))
                 {
                     item.Suffix = item.FirstName.Split(' ').Last();
@@ -100,6 +102,7 @@ namespace CIS.UI.Features.Polices.Warrants
                         x.Person.FirstName == item.FirstName &&
                         x.Person.MiddleName == item.MiddleName &&
                         x.Person.LastName == item.LastName &&
+                        x.Person.Suffix == item.Suffix &&
                         x.Warrant.Crime == item.Case
                     );
 
@@ -109,7 +112,6 @@ namespace CIS.UI.Features.Polices.Warrants
                     warrants.Add(new Warrant()
                     {
                         Crime = item.Case,
-                        Description = item.DateArrested != null ? string.Format("Arrested on {0}.", item.DateArrested.Value.ToString("MMM dd, yyyy")) : null,
                         Remarks = item.Disposition,
                         Suspects = new List<Suspect>()
                         {
@@ -119,12 +121,15 @@ namespace CIS.UI.Features.Polices.Warrants
                                 {
                                     LastName = item.LastName,
                                     MiddleName = item.MiddleName,
-                                    FirstName = item.FirstName
+                                    FirstName = item.FirstName,
+                                    Suffix = item.Suffix
                                 },
                                 Address = new Address()
                                 {
                                     City = item.Address
-                                }
+                                },
+                                ArrestDate = item.ArrestedOn,
+                                Disposition = item.Disposition
                             }
                         },
 
@@ -154,11 +159,12 @@ namespace CIS.UI.Features.Polices.Warrants
         public void Execute()
         {
             var parsed = ParseFromFile();
-            var warrantsToImport = parsed.Where(x =>
-                string.IsNullOrWhiteSpace(x.LastName) == false &&
-                string.IsNullOrWhiteSpace(x.FirstName) == false
-            )
-            .ToList();
+            var warrantsToImport = parsed
+                .Where(x =>
+                    string.IsNullOrWhiteSpace(x.LastName) == false &&
+                    string.IsNullOrWhiteSpace(x.FirstName) == false
+                )
+                .ToList();
 
             var batchSize = 1100;
             var batchCount = warrantsToImport.Count() / batchSize;

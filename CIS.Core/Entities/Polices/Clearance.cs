@@ -16,6 +16,7 @@ namespace CIS.Core.Entities.Polices
         private Audit _audit;
         private Applicant _applicant;
         private ImageBlob _applicantPicture;
+        private ImageBlob _applicantSignature;
         private Nullable<CivilStatus> _applicantCivilStatus;
         private string _applicantAddress;
         private string _applicantCitizenship;
@@ -64,6 +65,12 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _applicantPicture; }
             set { _applicantPicture = value; }
+        }
+
+        public virtual ImageBlob ApplicantSignature
+        {
+            get { return _applicantSignature; }
+            set { _applicantSignature = value; }
         }
 
         public virtual Nullable<CivilStatus> ApplicantCivilStatus
@@ -212,6 +219,7 @@ namespace CIS.Core.Entities.Polices
             //_applicant = new Applicant();
             _barcode = Barcode.GenerateBarcode();
             _applicantPicture = new ImageBlob();
+            _applicantSignature = new ImageBlob();
             //_suspectPartialMatches = new Collection<Suspect>();
             //_suspectPerfectMatches = new Collection<Suspect>();
             //_expiredLicenseMatches = new Collection<License>();

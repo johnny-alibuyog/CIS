@@ -34,16 +34,6 @@ namespace CIS.UI.Features.Memberships.Users
             this.ViewModel.Edit.Subscribe(x => Edit((UserListItemViewModel)x));
             this.ViewModel.Edit.ThrownExceptions.Handle(this);
 
-            //this.ViewModel.Edit.Subscribe(x =>
-            //{
-            //    var task = new Task(() => Edit((UserListItemViewModel)x));
-            //    task.Start(TaskScheduler.FromCurrentSynchronizationContext());
-
-            //    //Task.Factory.StartNew(() =>
-            //    //    Edit((UserListItemViewModel)x),
-            //    //)
-            //});
-
             this.ViewModel.Delete = new ReactiveCommand();
             this.ViewModel.Delete.Subscribe(x => Delete((UserListItemViewModel)x));
             this.ViewModel.Delete.ThrownExceptions.Handle(this);

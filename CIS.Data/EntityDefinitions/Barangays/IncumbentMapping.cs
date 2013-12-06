@@ -25,7 +25,7 @@ namespace CIS.Data.EntityDefinition.Barangays
                 .Schema(GetType().ParseSchema())
                 .Table("IncumbentsOfficials")
                 .Cascade.SaveUpdate()
-                .AsBag();
+                .AsSet();
 
             Map(x => x.Date);
         }

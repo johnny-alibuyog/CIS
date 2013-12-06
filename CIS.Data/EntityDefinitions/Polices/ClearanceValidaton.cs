@@ -23,6 +23,8 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Define(x => x.ApplicantPicture);
 
+            Define(x => x.ApplicantSignature);
+
             Define(x => x.ApplicantCivilStatus);
 
             Define(x => x.ApplicantAddress)

@@ -34,7 +34,7 @@ namespace CIS.Data.EntityDefinitions.Polices
                 .Schema(GetType().ParseSchema())
                 .Table("SettingsFingersToScan")
                 .Cascade.SaveUpdate()
-                .AsBag();
+                .AsSet();
 
             References(x => x.CurrentVerifier);
 

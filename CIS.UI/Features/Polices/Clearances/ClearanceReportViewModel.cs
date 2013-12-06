@@ -102,7 +102,20 @@ namespace CIS.UI.Features.Polices.Clearances
                 var source = instance as Clearance;
 
                 if (source.ApplicantPicture == null)
-                    source.ApplicantPicture = new ImageBlob(source.Applicant.Picture.Image);
+                {   
+                    if (source.Applicant.Pictures.Count() > 0)
+                        source.ApplicantPicture = source.Applicant.Pictures.First();
+                    else
+                        source.ApplicantPicture = new ImageBlob();
+                }
+
+                if (source.ApplicantSignature == null)
+                {
+                    if (source.Applicant.Signatures.Count() > 0)
+                        source.ApplicantSignature = source.Applicant.Signatures.First();
+                    else
+                        source.ApplicantSignature = new ImageBlob();
+                }
 
                 if (source.ApplicantCivilStatus == null)
                     source.ApplicantCivilStatus = source.Applicant.CivilStatus;
@@ -122,7 +135,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.Citizenship = source.ApplicantCitizenship;
                 target.Address = source.ApplicantAddress;
                 target.Picture = source.ApplicantPicture.Bytes;
-                target.Signature = source.Applicant.Signature.Bytes;
+                target.Signature = source.ApplicantSignature.Bytes;
                 target.RightThumb = source.Applicant.FingerPrint.RightThumb.Bytes;
                 target.LeftThumb = source.Applicant.FingerPrint.LeftThumb.Bytes;
                 target.Purpose = source.Purpose.Name;
@@ -164,7 +177,7 @@ namespace CIS.UI.Features.Polices.Clearances
             {
                 var clearanceAlias = (Clearance)null;
                 var applicantAlias = (Applicant)null;
-                var pictureAlias = (ImageBlob)null;
+                //var pictureAlias = (ImageBlob)null;
                 var fingerPrintAlias = (FingerPrint)null;
                 var verifierAlias = (Officer)null;
                 var certifierAlias = (Officer)null;
@@ -174,7 +187,7 @@ namespace CIS.UI.Features.Polices.Clearances
                     .Left.JoinAlias(() => clearanceAlias.Verifier, () => verifierAlias)
                     .Left.JoinAlias(() => clearanceAlias.Certifier, () => certifierAlias)
                     .Left.JoinAlias(() => applicantAlias.FingerPrint, () => fingerPrintAlias)
-                    .Left.JoinAlias(() => applicantAlias.Picture, () => pictureAlias)
+                    //.Left.JoinAlias(() => applicantAlias.Picture, () => pictureAlias)
                     .Left.JoinQueryOver(() => fingerPrintAlias.RightThumb)
                     .Left.JoinQueryOver(() => fingerPrintAlias.RightIndex)
                     .Left.JoinQueryOver(() => fingerPrintAlias.RightMiddle)
@@ -185,7 +198,11 @@ namespace CIS.UI.Features.Polices.Clearances
                     .Left.JoinQueryOver(() => fingerPrintAlias.LeftMiddle)
                     .Left.JoinQueryOver(() => fingerPrintAlias.LeftRing)
                     .Left.JoinQueryOver(() => fingerPrintAlias.LeftPinky)
+                    .Left.JoinQueryOver(() => clearanceAlias.ApplicantPicture)
+                    .Left.JoinQueryOver(() => clearanceAlias.ApplicantSignature)
                     .Future();
+
+
 
                 var stationQuery = session.QueryOver<Station>()
                     .Left.JoinQueryOver(x => x.Logo)

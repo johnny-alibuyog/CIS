@@ -49,6 +49,16 @@ namespace CIS.Data.Configurations
                     x.Strategy = EntityCacheUsage.ReadWrite;
                     x.RegionName = "User";
                 })
+                .EntityCache<Make>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Make";
+                })
+                .EntityCache<Kind>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Kind";
+                })
                 .EntityCache<Purpose>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
@@ -59,15 +69,25 @@ namespace CIS.Data.Configurations
                     x.Strategy = EntityCacheUsage.ReadWrite;
                     x.RegionName = "Rank";
                 })
-                .EntityCache<Make>(x =>
+                .EntityCache<Officer>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Make";
+                    x.RegionName = "Officer";
                 })
-                .EntityCache<Kind>(x =>
+                .EntityCache<Station>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Kind";
+                    x.RegionName = "Station";
+                })
+                .EntityCache<Setting>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Setting";
+                })
+                .EntityCache<Finger>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Finger";
                 });
         }
     }

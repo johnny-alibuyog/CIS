@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
 using CIS.Core.Utilities.Extentions;
 
@@ -114,6 +115,31 @@ namespace CIS.UI.Features.Polices.Clearances
                 var target = this;
                 var source = instance as Clearance;
 
+                if (source.ApplicantPicture == null)
+                {
+                    if (source.Applicant.Pictures.Count() > 0)
+                        source.ApplicantPicture = source.Applicant.Pictures.First();
+                    else
+                        source.ApplicantPicture = new ImageBlob();
+                }
+
+                if (source.ApplicantSignature == null)
+                {
+                    if (source.Applicant.Signatures.Count() > 0)
+                        source.ApplicantSignature = source.Applicant.Signatures.First();
+                    else
+                        source.ApplicantSignature = new ImageBlob();
+                }
+
+                if (source.ApplicantCivilStatus == null)
+                    source.ApplicantCivilStatus = source.Applicant.CivilStatus;
+
+                if (source.ApplicantAddress == null)
+                    source.ApplicantAddress = source.Applicant.Address.ToString();
+
+                if (source.ApplicantCitizenship == null)
+                    source.ApplicantCitizenship = source.Applicant.Citizenship;
+
                 target.Id = source.Id;
                 target.ApplicantName = source.Applicant.Person.GetDisplayValue();
                 target.ApplicantNickname = source.Applicant.AlsoKnownAs;
@@ -144,8 +170,8 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.Weight = source.Applicant.Weight;
                 target.Citizenship = source.Applicant.Citizenship;
                 target.IssueDate = source.IssueDate;
-                target.Picture = source.Applicant.Picture.Bytes;
-                target.Signature = source.Applicant.Signature.Bytes;
+                target.Picture = source.ApplicantPicture.Bytes;
+                target.Signature = source.ApplicantSignature.Bytes;
                 target.RightThumb = source.Applicant.FingerPrint.RightThumb.Bytes;
                 target.RightIndex = source.Applicant.FingerPrint.RightIndex.Bytes;
                 target.RightMiddle = source.Applicant.FingerPrint.RightMiddle.Bytes;

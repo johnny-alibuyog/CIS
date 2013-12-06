@@ -86,6 +86,10 @@
                     <Label Content="Serial Number"/>
                     <TextBlock Text="{Binding SerialNumber}" />
                 </StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
+                    <Label Content="Serial Number"/>
+                    <TextBlock Text="{Binding ExpiryDate, StringFormat={}{0:MM-dd-yyyy}}" />
+                </StackPanel>
             </StackPanel>
         </DataTemplate>
         <DataTemplate DataType="{x:Type clearances:AmendmentViewModel}">

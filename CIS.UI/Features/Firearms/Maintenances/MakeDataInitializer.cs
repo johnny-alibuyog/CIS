@@ -95,11 +95,7 @@ namespace CIS.UI.Features.Firearms.Maintenances
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var makes = session.Query<Make>().Cacheable().ToFuture();
-
-                var dataxx = this.Data.Select(x => x.ToLower()).GroupBy(x => x).Where(x => x.Count() > 1);
-                var xxxd = this.Data.Select(x => x.ToLower());
-                var ddf = makes.Where(x => xxxd.Contains(x.Name, StringComparer.OrdinalIgnoreCase));
+                var makes = session.Query<Make>().Cacheable().ToList();
 
                 foreach (var item in this.Data)
                 {

@@ -21,7 +21,7 @@ namespace CIS.Data.EntityDefinition.Commons
                 .Not.KeyNullable()
                 .Not.KeyUpdate()
                 .Inverse()
-                .AsBag();
+                .AsSet();
         }
     }
 }

@@ -37,9 +37,9 @@ namespace CIS.Data.EntityDefinitions.Polices
             Define(x => x.ProvincialAddress)
                 .IsValid();
 
-            Define(x => x.Picture);
+            Define(x => x.Pictures);
 
-            Define(x => x.Signature);
+            Define(x => x.Signatures);
 
             Define(x => x.FingerPrint);
 

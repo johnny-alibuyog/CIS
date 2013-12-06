@@ -87,7 +87,7 @@
                         </DataGridTemplateColumn>
                         <DataGridTextColumn Header="Issue Date" Binding="{Binding IssueDate, StringFormat={}{0:MM-dd-yyyy}}" />
                         <DataGridTextColumn Header="Applicant" Binding="{Binding Applicant}" />
-                        <DataGridTextColumn Header="Purpose" Binding="{Binding Purpose}" />
+                        <!--<DataGridTextColumn Header="Purpose" Binding="{Binding Purpose}" />-->
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

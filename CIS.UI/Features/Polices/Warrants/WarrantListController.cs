@@ -21,7 +21,8 @@ namespace CIS.UI.Features.Polices.Warrants
     [HandleError]
     public class WarrantListController : ControllerBase<WarrantListViewModel>
     {
-        public WarrantListController(WarrantListViewModel viewModel) : base(viewModel)
+        public WarrantListController(WarrantListViewModel viewModel)
+            : base(viewModel)
         {
 
             this.ViewModel.Search = new ReactiveCommand(
@@ -53,6 +54,11 @@ namespace CIS.UI.Features.Polices.Warrants
 
         public virtual void Search()
         {
+            if (string.IsNullOrWhiteSpace(this.ViewModel.Criteria.FirstName) &&
+                string.IsNullOrWhiteSpace(this.ViewModel.Criteria.MiddleName) &&
+                string.IsNullOrWhiteSpace(this.ViewModel.Criteria.LastName))
+                return;
+
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
@@ -75,7 +81,7 @@ namespace CIS.UI.Features.Polices.Warrants
                     {
                         Id = x.Warrant.Id,
                         SuspectId = x.Id,
-                        Suspect = x.Person.FirstName + " " + 
+                        Suspect = x.Person.FirstName + " " +
                             x.Person.MiddleName + " " + x.Person.LastName,
                         Crime = x.Warrant.Crime,
                         IssuedOn = x.Warrant.IssuedOn

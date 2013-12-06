@@ -22,6 +22,11 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Define(x => x.ArrestStatus);
 
+            Define(x => x.ArrestDate);
+
+            Define(x => x.Disposition)
+                .MaxLength(700);
+
             Define(x => x.Person)
                 .NotNullable()
                 .And.IsValid();

@@ -12,12 +12,10 @@ namespace CIS.UI.Utilities
 {
     public class UserAuditResolver : AuditResolver
     {
-        public static User CurrentUser { get; set; }
-
         private string GetCurrentUserName()
         {
-            return UserAuditResolver.CurrentUser != null
-                ? UserAuditResolver.CurrentUser.Username
+            return App.Data.User != null
+                ? App.Data.User.Username
                 : WindowsIdentity.GetCurrent().Name;
         }
 

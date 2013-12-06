@@ -24,7 +24,7 @@ namespace CIS.UI.Features.Commons.Biometrics
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var fingers = session.Query<Finger>().Cacheable().ToFuture();
+                var fingers = session.Query<Finger>().Cacheable().ToList();
 
                 foreach (var item in Finger.All)
                 {
