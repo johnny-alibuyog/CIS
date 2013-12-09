@@ -84,8 +84,10 @@ namespace CIS.UI.Features.Commons.Biometrics
             var bitmap = (Bitmap)null;
             converter.ConvertToPicture(sample, ref bitmap);
 
-            //bitmap.Save(Path.Combine(App.Config.ApplicationDataLocation, "rawFingerPrint.bmp"));
-            //bitmap.ReduceSize().Save(Path.Combine(App.Config.ApplicationDataLocation, "reducedFingerPrint.bmp"));
+#if DEBUG
+            bitmap.Save(Path.Combine(App.Config.ApplicationDataLocation, "rawFingerPrint.bmp"));
+            bitmap.ReduceSize().Save(Path.Combine(App.Config.ApplicationDataLocation, "reducedFingerPrint.bmp"));
+#endif
 
             //return bitmap;
 

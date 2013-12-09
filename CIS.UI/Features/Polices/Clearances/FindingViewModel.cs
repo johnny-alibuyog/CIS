@@ -20,6 +20,8 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual IReactiveList<HitViewModel> Hits { get; set; }
 
+        public virtual IReactiveDerivedList<HitViewModel> IdentifiedHits { get; set; }
+
         public virtual HitViewModel SelectedHit { get; set; }
 
         public virtual bool HasHits
@@ -34,9 +36,8 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual string Evaluate()
         {
-            var identicalHits = this.Hits.Where(x => x.IsIdentical);
-            return identicalHits.Count() > 0
-                ? string.Join("\n", identicalHits)
+            return this.IdentifiedHits.Count() > 0
+                ? string.Join("\n", this.IdentifiedHits)
                 : "No Derogatory Records/Information";
         }
 
@@ -59,8 +60,8 @@ namespace CIS.UI.Features.Polices.Clearances
             this.Hits.ChangeTrackingEnabled = true;
             this.Hits.ItemChanged.Subscribe(_ =>
             {
-                var hasChanges = this.Hits.Any(x => x.IsIdentical == false);
-                if (hasChanges)
+                var hasIdentifiedHit = this.Hits.Any(x => x.IsIdentifiedHit == false);
+                if (hasIdentifiedHit)
                 {
                     if (this.Amendment == null)
                         this.Amendment = new AmendmentViewModel();
@@ -71,6 +72,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 }
             });
 
+            this.IdentifiedHits = this.Hits.CreateDerivedCollection(x => x, x => x.IsIdentifiedHit);
         }
     }
 }

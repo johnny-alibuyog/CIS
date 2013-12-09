@@ -152,6 +152,7 @@ namespace CIS.UI.Features.Polices.Clearances
                         return false;
 
                     this.ViewModel.Finding.Amendment.ApproverUserId = result.UserId;
+                    this.ViewModel.Summary.FinalFindings = this.ViewModel.Finding.Evaluate();
                 }
             }
             return true;
@@ -294,6 +295,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 var applicantQuery = session.QueryOver<Applicant>(() => applicantAlias)
                     .Left.JoinAlias(() => applicantAlias.FingerPrint, () => fingerPrintAlias)
                     .Left.JoinQueryOver(() => applicantAlias.Relatives)
+                    .Left.JoinQueryOver(() => applicantAlias.Signatures)
                     .Left.JoinQueryOver(() => fingerPrintAlias.RightThumb)
                     .Left.JoinQueryOver(() => fingerPrintAlias.RightIndex)
                     .Left.JoinQueryOver(() => fingerPrintAlias.RightMiddle)
@@ -304,6 +306,28 @@ namespace CIS.UI.Features.Polices.Clearances
                     .Left.JoinQueryOver(() => fingerPrintAlias.LeftMiddle)
                     .Left.JoinQueryOver(() => fingerPrintAlias.LeftRing)
                     .Left.JoinQueryOver(() => fingerPrintAlias.LeftPinky)
+                    .Where(() =>
+                        applicantAlias.Person.FirstName == person.FirstName &&
+                        applicantAlias.Person.MiddleName == person.MiddleName &&
+                        applicantAlias.Person.LastName == person.LastName &&
+                        applicantAlias.Person.Suffix == person.Suffix
+                    )
+                    .FutureValue();
+
+                // fetch pictures
+                session.QueryOver<Applicant>(() => applicantAlias)
+                    .Left.JoinQueryOver(() => applicantAlias.Pictures)
+                    .Where(() =>
+                        applicantAlias.Person.FirstName == person.FirstName &&
+                        applicantAlias.Person.MiddleName == person.MiddleName &&
+                        applicantAlias.Person.LastName == person.LastName &&
+                        applicantAlias.Person.Suffix == person.Suffix
+                    )
+                    .FutureValue();
+
+                // fetch signatures
+                session.QueryOver<Applicant>(() => applicantAlias)
+                    .Left.JoinQueryOver(() => applicantAlias.Signatures)
                     .Where(() =>
                         applicantAlias.Person.FirstName == person.FirstName &&
                         applicantAlias.Person.MiddleName == person.MiddleName &&
@@ -344,6 +368,19 @@ namespace CIS.UI.Features.Polices.Clearances
                 this.ViewModel.OtherInformation.PassportNumber = applicant.PassportNumber;
                 this.ViewModel.OtherInformation.TaxIdentificationNumber = applicant.TaxIdentificationNumber;
                 this.ViewModel.OtherInformation.SocialSecuritySystemNumber = applicant.SocialSecuritySystemNumber;
+                this.ViewModel.Camera.Picture = applicant.Pictures.Last() != null ? applicant.Pictures.Last().Image.ToBitmapSource() : null;
+                this.ViewModel.Signature.SignatureImage = applicant.Signatures.Last() != null ? applicant.Signatures.Last().Image.ToBitmapSource() : null;
+                this.ViewModel.FingerScanner.CapturedFingerImage = applicant.FingerPrint.RightThumb.Image.ToBitmapSource();
+                this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightThumb] = applicant.FingerPrint.RightThumb.Image.ToBitmapSource();
+                this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightIndex] = applicant.FingerPrint.RightIndex.Image.ToBitmapSource();
+                this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightMiddle] = applicant.FingerPrint.RightMiddle.Image.ToBitmapSource();
+                this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightRing] = applicant.FingerPrint.RightRing.Image.ToBitmapSource();
+                this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightPinky] = applicant.FingerPrint.RightPinky.Image.ToBitmapSource();
+                this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftThumb] = applicant.FingerPrint.LeftThumb.Image.ToBitmapSource();
+                this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftIndex] = applicant.FingerPrint.LeftIndex.Image.ToBitmapSource();
+                this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftMiddle] = applicant.FingerPrint.LeftMiddle.Image.ToBitmapSource();
+                this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftRing] = applicant.FingerPrint.LeftRing.Image.ToBitmapSource();
+                this.ViewModel.FingerScanner.FingerImages[FingerViewModel.LeftPinky] = applicant.FingerPrint.LeftPinky.Image.ToBitmapSource();
             }
         }
 
@@ -639,7 +676,7 @@ namespace CIS.UI.Features.Polices.Clearances
                         .Select(x => new SuspectHit()
                         {
                             HitScore = x.HitScore,
-                            IsIdentical = x.IsIdentical,
+                            IsIdentical = x.IsIdentifiedHit,
                             Suspect = session.Load<Suspect>(x.SuspectId)
                         })
                         .AsEnumerable<Hit>()
@@ -648,7 +685,7 @@ namespace CIS.UI.Features.Polices.Clearances
                         .Select(x => new ExpiredLicenseHit()
                         {
                             HitScore = x.HitScore,
-                            IsIdentical = x.IsIdentical,
+                            IsIdentical = x.IsIdentifiedHit,
                             ExpiryDate = x.ExpiryDate,
                             License = session.Load<License>(x.LicenseId),
                         })

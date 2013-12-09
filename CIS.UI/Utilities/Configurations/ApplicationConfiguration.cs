@@ -37,7 +37,7 @@ namespace CIS.UI.Utilities.Configurations
             this.PictureResizeScaleFactor = 0.25D;
             this.FingerPrintResizeScaleFactor = 0.25D; //0.20D;
 
-            this.Licensee = "JLRC Manasoft";
+            this.Licensee = "JLRC IT Solutions";
             this.Plugins = new[] 
             { 
                 "NHibernate", 

@@ -31,11 +31,6 @@ namespace CIS.UI.Utilities.Extentions
 
                 using (var tempBitmap = new Bitmap(stream))
                 {
-                    #if DEBUG
-                        var id = Guid.NewGuid();
-                        new Bitmap(tempBitmap).Save(Path.Combine(App.Config.ApplicationDataLocation, string.Format("saved.{0}.bmp", id)));
-                    #endif
-
                     // According to MSDN, one "must keep the stream open for the lifetime of the Bitmap."
                     // So we return a copy of the new bitmap, allowing us to dispose both the bitmap and the stream.
                     return new Bitmap(tempBitmap);
@@ -195,12 +190,6 @@ namespace CIS.UI.Utilities.Extentions
                 ResizeImage(scaleFactor, sourceStream, targetStream);
                 using (var tempBitmap = new Bitmap(targetStream))
                 {
-                    #if DEBUG
-                        var id = Guid.NewGuid();
-                        source.Save(Path.Combine(App.Config.ApplicationDataLocation, string.Format("original.{0}.bmp", id)));
-                        new Bitmap(tempBitmap).Save(Path.Combine(App.Config.ApplicationDataLocation, string.Format("resized.{0}.bmp", id)));
-                    #endif
-
                     return new Bitmap(tempBitmap);
                 }
             }
@@ -219,7 +208,7 @@ namespace CIS.UI.Utilities.Extentions
                     thumbnailGraph.CompositingQuality = CompositingQuality.HighQuality;
                     thumbnailGraph.SmoothingMode = SmoothingMode.HighQuality;
                     thumbnailGraph.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                    
+
                     var imageRectangle = new Rectangle(0, 0, newWidth, newHeight);
                     thumbnailGraph.DrawImage(image, imageRectangle);
                     thumbnailBitmap.Save(toStream, image.RawFormat);

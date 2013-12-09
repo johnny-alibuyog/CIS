@@ -45,8 +45,14 @@ namespace CIS.UI.Features.Commons.Cameras
         private void CaptureNewFrame(IFrameSource frameSource, Frame frame, double fps)
         {
             var bitmap = frame.Image.Clone() as Bitmap;
-            this.ViewModel.ImagePreview = bitmap.ToBitmapSource();
-            //this.ViewModel.ImagePreview = bitmap.ReduceSize(App.Config.PictureResizeScaleFactor).ToBitmapSource();
+            //this.ViewModel.ImagePreview = bitmap.ToBitmapSource();
+
+#if DEBUG
+            bitmap.Save(Path.Combine(App.Config.ApplicationDataLocation, "rawPicture.bmp"));
+            bitmap.ReduceSize(App.Config.PictureResizeScaleFactor).Save(Path.Combine(App.Config.ApplicationDataLocation, "reducedPicture.bmp"));
+#endif
+
+            this.ViewModel.ImagePreview = bitmap.ReduceSize(App.Config.PictureResizeScaleFactor).ToBitmapSource();
         }
 
         public virtual void Start()
@@ -90,11 +96,9 @@ namespace CIS.UI.Features.Commons.Cameras
 
         public virtual void Capture()
         {
-            //this.ViewModel.Picture = this.ViewModel.ImagePreview;
-            this.ViewModel.Picture = this.ViewModel.ImagePreview.ReduceSize(App.Config.PictureResizeScaleFactor);
+            this.ViewModel.Picture = this.ViewModel.ImagePreview;
+            //this.ViewModel.Picture = this.ViewModel.ImagePreview.ReduceSize(App.Config.PictureResizeScaleFactor);
 
-            //this.ViewModel.ImagePreview.ToImage().Save(Path.Combine(App.Config.ApplicationDataLocation, "raw.bmp"));
-            //this.ViewModel.ImagePreview.ReduceSize().ToImage().Save(Path.Combine(App.Config.ApplicationDataLocation, "resized.bmp"));
         }
     }
 }

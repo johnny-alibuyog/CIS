@@ -19,6 +19,7 @@ namespace CIS.UI.Features
 
         public SplashScreenViewModel()
         {
+            this.Message = "Loading";
             _controller = IoC.Container.Resolve<SplashScreenController>(new ViewModelDependency(this));
         } 
 

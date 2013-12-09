@@ -87,7 +87,7 @@
                     <TextBlock Text="{Binding SerialNumber}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
-                    <Label Content="Serial Number"/>
+                    <Label Content="Expiration"/>
                     <TextBlock Text="{Binding ExpiryDate, StringFormat={}{0:MM-dd-yyyy}}" />
                 </StackPanel>
             </StackPanel>
@@ -131,7 +131,7 @@
                 <ScrollViewer Grid.Column="0" Margin="{StaticResource SplitLeft}">
                     <StackPanel>
                         <TextBlock Style="{StaticResource Heading2}" Text="Findings" Margin="0,8,0,8" />
-                        <mui:BBCodeBlock BBCode="[color=#ff4500][b]Check[/b][/color] if identical." Margin="0,0,0,2" />
+                        <mui:BBCodeBlock BBCode="[color=#ff4500][b]Check[/b][/color] if identified hit." Margin="0,0,0,2" />
 
                         <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Hits, Mode=TwoWay, ValidatesOnDataErrors=True}" 
                                  SelectedItem="{Binding SelectedHit, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Width="200">
@@ -147,7 +147,7 @@
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" IsChecked="{Binding IsIdentical, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                                        <CheckBox Grid.Column="0" IsChecked="{Binding IsIdentifiedHit, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                                         <TextBlock Grid.Column="1" Width="170"  Text="{Binding DisplayLabel}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                                     </Grid>
                                 </DataTemplate>

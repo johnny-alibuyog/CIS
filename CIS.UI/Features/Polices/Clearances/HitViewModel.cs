@@ -14,7 +14,7 @@ namespace CIS.UI.Features.Polices.Clearances
     {
         public virtual Guid Id { get; set; }
 
-        public virtual bool IsIdentical { get; set; }
+        public virtual bool IsIdentifiedHit { get; set; }
 
         public virtual PersonViewModel Applicant { get; set; }
 
@@ -28,7 +28,7 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public HitViewModel()
         {
-            this.IsIdentical = true;
+            this.IsIdentifiedHit = true;
         }
 
         protected HitScore ComputeHitScore(PersonViewModel person1, PersonViewModel person2)

@@ -15,7 +15,7 @@
 
         <ScrollViewer Margin="{StaticResource SplitLeft}">
             <StackPanel>
-                <TextBlock Text="Relatives" Style="{StaticResource Heading2}" />
+                <TextBlock Text="Relatives/ Contacts" Style="{StaticResource Heading2}" />
 
                 <StackPanel Margin="0,10,0,0">
                     <StackPanel.Resources>

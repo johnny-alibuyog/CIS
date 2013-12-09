@@ -36,7 +36,6 @@ namespace CIS.UI.Features
 
         #endregion
 
-
         public SplashScreenView()
         {
             InitializeComponent();
