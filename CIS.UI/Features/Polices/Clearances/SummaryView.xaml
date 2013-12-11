@@ -75,11 +75,15 @@
 
                 <StackPanel Margin="0,10,0,0" Orientation="Vertical">
                     <StackPanel>
-                        <Image Source="{Binding Picture}" Margin="10" Height="120" Width="171"/>
+                        <Border BorderThickness="2" BorderBrush="#FF000000" Margin="10" Height="151" Width="200">
+                            <Image Source="{Binding Picture}" />
+                        </Border>
                         <TextBlock Text="Picture" HorizontalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel>
-                        <Image Source="{Binding RightThumb}" Margin="10" Height="113" Width="171"/>
+                        <Border BorderThickness="2" BorderBrush="#FF000000" Margin="10" Height="151" Width="200">
+                            <Image Source="{Binding RightThumb}" />
+                        </Border>
                         <TextBlock Text="Right Thumb" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </StackPanel>
