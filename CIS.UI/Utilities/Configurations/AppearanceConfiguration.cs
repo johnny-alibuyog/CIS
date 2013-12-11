@@ -11,27 +11,9 @@ namespace CIS.UI.Utilities.Configurations
     [Serializable()]
     public class AppearanceConfiguration
     {
-        private FontSize _fontSize;
-        private AppearanceColorConfiguration _color;
-        private AppearanceThemeConfiguration _theme;
-
-        public virtual FontSize FontSize
-        {
-            get { return _fontSize; }
-            set { _fontSize = value; }
-        }
-
-        public virtual AppearanceColorConfiguration Color 
-        {
-            get { return _color; }
-            set { _color = value; } 
-        }
-
-        public virtual AppearanceThemeConfiguration Theme 
-        {
-            get { return _theme; }
-            set { _theme = value; } 
-        }
+        public virtual FontSize FontSize { get; set; }
+        public virtual AppearanceColorConfiguration Color { get; set; }
+        public virtual AppearanceThemeConfiguration Theme { get; set; }
 
         public AppearanceConfiguration()
         {

@@ -11,7 +11,7 @@
             <mui:ModernTab.Links>
                 <mui:Link DisplayName="Master List" Source="/Features/Polices/Warrants/WarrantListView.xaml" />
                 <mui:Link DisplayName="Import" Source="/Features/Polices/Warrants/ImportView.xaml"/>
-                <mui:Link DisplayName="Export" />
+                <!--<mui:Link DisplayName="Export" />-->
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

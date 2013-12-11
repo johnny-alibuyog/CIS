@@ -33,9 +33,12 @@ namespace CIS.UI.Features.Polices.Maintenances
             {
                 var purposes = session.Query<Purpose>().Cacheable().ToList();
 
-                foreach (var purpose in purposes)
+                if (!App.Config.ProperCasing.IsProperCasingInitialized)
                 {
-                    purpose.Name = purpose.Name.ToProperCase();
+                    foreach (var purpose in purposes)
+                    {
+                        purpose.Name = purpose.Name.ToProperCase();
+                    }
                 }
 
                 foreach (var item in data)

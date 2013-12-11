@@ -97,6 +97,14 @@ namespace CIS.UI.Features.Firearms.Maintenances
             {
                 var makes = session.Query<Make>().Cacheable().ToList();
 
+                if (!App.Config.ProperCasing.IsProperCasingInitialized)
+                {
+                    foreach (var make in makes)
+                    {
+                        make.Name = make.Name.ToProperCase();
+                    }
+                }
+
                 foreach (var item in this.Data)
                 {
                     //if (makes.Any(x => x.Name == item))

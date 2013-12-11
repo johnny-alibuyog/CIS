@@ -91,7 +91,7 @@ namespace CIS.UI.Features.Commons.Biometrics
 
             //return bitmap;
 
-            return bitmap.ReduceSize(App.Config.FingerPrintResizeScaleFactor);
+            return bitmap.ReduceSize(App.Config.Image.FingerPrintResizeScaleFactor);
         }
 
         #endregion

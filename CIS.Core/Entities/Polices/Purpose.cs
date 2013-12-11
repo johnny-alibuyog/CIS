@@ -21,7 +21,7 @@ namespace CIS.Core.Entities.Polices
         public virtual string Name
         {
             get { return _name; }
-            set { _name = value.ToProperCase(); }
+            set { _name = value; }
         }
 
         #region Equality Comparer

@@ -540,6 +540,7 @@
     <Compile Include="Features\Polices\Warrants\CodelessImportService.cs">
       <DependentUpon>ImportController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Settings\Abouts\AboutController.cs" />
     <Compile Include="Features\Settings\Appearances\AppearanceController.cs" />
     <Compile Include="Features\SplashScreenController.cs" />
     <Compile Include="Features\SplashScreenView.xaml.cs">
@@ -566,6 +567,10 @@
     <Compile Include="Utilities\Configurations\ApplicationConfiguration.cs" />
     <Compile Include="Utilities\Configurations\AppearanceConfiguration.cs" />
     <Compile Include="Utilities\Configurations\DatabaseConfiguraton.cs" />
+    <Compile Include="Utilities\Configurations\ImageScaleFactorConfiguration.cs" />
+    <Compile Include="Utilities\Configurations\LoginConfiguration.cs" />
+    <Compile Include="Utilities\Configurations\ProductConfiguration.cs" />
+    <Compile Include="Utilities\Configurations\ProperCasingConfiguration.cs" />
     <Compile Include="Utilities\Controls\PasswordService.cs" />
     <Compile Include="Utilities\Controls\WaterMarkAdorner.cs" />
     <Compile Include="Utilities\Controls\WaterMarkService.cs" />

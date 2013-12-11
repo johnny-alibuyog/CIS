@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Memberships;
@@ -22,19 +23,24 @@ namespace CIS.UI.Features.Memberships.Users
             this.ViewModel.Criteria = new UserListCriteriaViewModel();
             this.ViewModel.Items = new ReactiveList<UserListItemViewModel>();
 
+            var isAdministrator = App.Data.User.IsPoliceAdministartor();
+
             this.ViewModel.Search = new ReactiveCommand();
             this.ViewModel.Search.Subscribe(x => Search());
             this.ViewModel.Search.ThrownExceptions.Handle(this);
 
             this.ViewModel.Create = new ReactiveCommand();
+            this.ViewModel.Create.CanExecute(isAdministrator);
             this.ViewModel.Create.Subscribe(x => Create());
             this.ViewModel.Create.ThrownExceptions.Handle(this);
 
             this.ViewModel.Edit = new ReactiveCommand();
+            this.ViewModel.Edit.CanExecute(isAdministrator);
             this.ViewModel.Edit.Subscribe(x => Edit((UserListItemViewModel)x));
             this.ViewModel.Edit.ThrownExceptions.Handle(this);
 
             this.ViewModel.Delete = new ReactiveCommand();
+            this.ViewModel.Delete.CanExecute(isAdministrator);
             this.ViewModel.Delete.Subscribe(x => Delete((UserListItemViewModel)x));
             this.ViewModel.Delete.ThrownExceptions.Handle(this);
 
@@ -113,7 +119,7 @@ namespace CIS.UI.Features.Memberships.Users
         //[Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Create()
         {
-            //this.Authorize(new Role[] { Role.PoliceAdministartor });
+            this.Authorize(new Role[] { Role.PoliceAdministartor });
 
             var dialog = new DialogService<UserView, UserViewModel>();
             dialog.ViewModel.SerializeWith(New());
@@ -128,7 +134,7 @@ namespace CIS.UI.Features.Memberships.Users
         //[Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Insert(UserViewModel value)
         {
-            //this.Authorize(new Role[] { Role.PoliceAdministartor });
+            this.Authorize(new Role[] { Role.PoliceAdministartor });
 
             var message = string.Format("Are you sure you want to save user {0}?", value.Username);
             var confirmed = this.MessageBox.Confirm(message, "Save");
@@ -163,9 +169,11 @@ namespace CIS.UI.Features.Memberships.Users
             value.Close();
         }
 
-        [Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
+        //[Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Edit(UserListItemViewModel item)
         {
+            this.Authorize(new Role[] { Role.PoliceAdministartor });
+            
             this.ViewModel.SelectedItem = item;
 
             var dialog = new DialogService<UserView, UserViewModel>();
@@ -178,9 +186,11 @@ namespace CIS.UI.Features.Memberships.Users
             dialog.ShowModal(this, "Edit User");
         }
 
-        [Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
+        //[Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Update(UserViewModel value)
         {
+            this.Authorize(new Role[] { Role.PoliceAdministartor });
+
             var message = string.Format("Are you sure you want to save user {0}?", value.Username);
             var confirmed = this.MessageBox.Confirm(message, "Save");
             if (confirmed == false)
@@ -210,9 +220,11 @@ namespace CIS.UI.Features.Memberships.Users
             value.Close();
         }
 
-        [Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
+        //[Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Delete(UserListItemViewModel item)
         {
+            this.Authorize(new Role[] { Role.PoliceAdministartor });
+
             this.ViewModel.SelectedItem = item;
 
             var message = string.Format("Are you sure you want to delete user {0}?", item.Username);

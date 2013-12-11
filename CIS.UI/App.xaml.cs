@@ -54,6 +54,7 @@ namespace CIS.UI
         protected override void OnExit(ExitEventArgs e)
         {
             //App.Config.Provider.Write(App.Config);
+            App.Config.ProperCasing.IsProperCasingInitialized = true;
             App.Config.Write();
 
             if (_instanceMutex != null)

@@ -46,6 +46,14 @@ namespace CIS.UI.Features.Firearms.Maintenances
             {
                 var kinds = session.Query<Kind>().Cacheable().ToList();
 
+                if (!App.Config.ProperCasing.IsProperCasingInitialized)
+                {
+                    foreach (var kind in kinds)
+                    {
+                        kind.Name = kind.Name.ToProperCase();
+                    }
+                }
+
                 foreach (var item in this.Data)
                 {
                     //if (kinds.Any(x => x.Name == item))

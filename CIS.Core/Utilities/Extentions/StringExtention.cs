@@ -10,112 +10,22 @@ namespace CIS.Core.Utilities.Extentions
 {
     public static class StringExtention
     {
-        #region Routine Helpers
+        private static readonly StringFormatter _formatter = new StringFormatter();
 
-        private static bool IsAllUpperOrAllLower(this string input)
+        public static void SetProperCaseSuffix(IEnumerable<string> suffixes)
         {
-            return (input.ToLower().Equals(input) || input.ToUpper().Equals(input));
+            _formatter.SetSuffixes(suffixes);
         }
 
-        private static string WordToProperCase(string word)
+        public static void SetProperCaseSpecialWords(IEnumerable<string> specialWords)
         {
-            if (string.IsNullOrEmpty(word)) 
-                return word;
-
-            // Standard case
-            var value = CapitaliseFirstLetter(word);
-
-            // Special cases:
-            //value = ProperSuffix(value, "'");       // D'Artagnon, D'Silva
-            value = ProperSuffix(value, ".");       // ???
-            value = ProperSuffix(value, "-");       // Oscar-Meyer-Weiner
-            value = ProperSuffix(value, "(");       
-            value = ProperSuffix(value, ")");       
-            //value = ProperSuffix(value, "Mc");      // Scots
-            //value = ProperSuffix(value, "Mac");     // Scots
-
-            // Special words:
-            value = SpecialWords(value, "dela");    // dela Cruz
-            value = SpecialWords(value, "del");     // del Rosario
-            value = SpecialWords(value, "de");      // de Guzman
-            value = SpecialWords(value, "van");     // Dick van Dyke
-            value = SpecialWords(value, "von");     // Baron von Bruin-Valt
-            value = SpecialWords(value, "di");
-            value = SpecialWords(value, "da");      // Leonardo da Vinci, Eduardo da Silva
-            value = SpecialWords(value, "of");      // The Grand Old Duke of York
-            value = SpecialWords(value, "the");     // William the Conqueror
-            value = SpecialWords(value, "HRH");     // His/Her Royal Highness
-            value = SpecialWords(value, "HRM");     // His/Her Royal Majesty
-            value = SpecialWords(value, "H.R.H.");  // His/Her Royal Highness
-            value = SpecialWords(value, "H.R.M.");  // His/Her Royal Majesty
-
-            value = DealWithRomanNumerals(value);   // William Gates, III
-
-            return value;
+            _formatter.SetSpecialWords(specialWords);
         }
 
-        private static string ProperSuffix(string word, string prefix)
+        public static string ToProperCase(this string input)
         {
-            if (string.IsNullOrEmpty(word)) 
-                return word;
-
-            var lowerWord = word.ToLower();
-            var lowerPrefix = prefix.ToLower();
-
-            if (!lowerWord.Contains(lowerPrefix)) 
-                return word;
-
-            var index = lowerWord.IndexOf(lowerPrefix);
-
-            // if the search string is at the end of the word ignore.
-            if (index + prefix.Length == word.Length) 
-                return word;
-
-            return word.Substring(0, index) + prefix + CapitaliseFirstLetter(word.Substring(index + prefix.Length));
+            return _formatter.ToProperCase(input);
         }
-
-        private static string SpecialWords(string word, string specialWord)
-        {
-            if (word.Equals(specialWord, StringComparison.InvariantCultureIgnoreCase))
-                return specialWord;
-            else
-                return word;
-        }
-
-        private static string DealWithRomanNumerals(string word)
-        {
-            var ones = new List<string>() { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
-            var tens = new List<string>() { "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC", "C" };
-
-            // assume nobody uses hundreds
-            foreach (string number in ones)
-            {
-                if (word.Equals(number, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return number;
-                }
-            }
-
-            foreach (string ten in tens)
-            {
-                foreach (string one in ones)
-                {
-                    if (word.Equals(ten + one, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return ten + one;
-                    }
-                }
-            }
-
-            return word;
-        }
-
-        private static string CapitaliseFirstLetter(string word)
-        {
-            return char.ToUpper(word[0]) + word.Substring(1).ToLower();
-        }
-
-        #endregion
 
         public static bool IsEqualTo(this string stringA, string stringB)
         {
@@ -125,47 +35,154 @@ namespace CIS.Core.Utilities.Extentions
             return String.Equals(fixedStringA, fixedStringB, StringComparison.OrdinalIgnoreCase);
         }
 
-        public static string ToProperCase(this string input)
-        {
-            if (input == null)
-                return null;
+        //#region Proper Casing
 
-            if (string.IsNullOrWhiteSpace(input))
-                return string.Empty;
+        //private static bool IsAllUpperOrAllLower(this string input)
+        //{
+        //    return (input.ToLower().Equals(input) || input.ToUpper().Equals(input));
+        //}
 
-            var words = input.Split(' ')
-                .Where(word => !string.IsNullOrWhiteSpace(word))
-                .Select(word => WordToProperCase(word));
+        //private static string WordToProperCase(string word)
+        //{
+        //    if (string.IsNullOrEmpty(word)) 
+        //        return word;
 
-            return string.Join(" ", words);
+        //    // Standard case
+        //    var value = CapitaliseFirstLetter(word);
 
-            //if (IsAllUpperOrAllLower(input))
-            //{
-            //    // fix the ALL UPPERCASE or all lowercase names
-            //    return string.Join(" ", input.Split(' ').Select(word => WordToProperCase(word)));
-            //}
-            //else
-            //{
-            //    // leave the CamelCase or Propercase names alone
-            //    return input;
-            //}
+        //    // Special cases:
+        //    //value = ProperSuffix(value, "'");       // D'Artagnon, D'Silva
+        //    value = ProperSuffix(value, ".");       // ???
+        //    value = ProperSuffix(value, "-");       // Oscar-Meyer-Weiner
+        //    value = ProperSuffix(value, "(");       
+        //    value = ProperSuffix(value, ")");       
+        //    //value = ProperSuffix(value, "Mc");      // Scots
+        //    //value = ProperSuffix(value, "Mac");     // Scots
 
-            /* 
-             * original implementation
-             */
-            //    if (input == null)
-            //        return null;
+        //    // Special words:
+        //    value = SpecialWords(value, "dela");    // dela Cruz
+        //    value = SpecialWords(value, "del");     // del Rosario
+        //    value = SpecialWords(value, "de");      // de Guzman
+        //    value = SpecialWords(value, "van");     // Dick van Dyke
+        //    value = SpecialWords(value, "von");     // Baron von Bruin-Valt
+        //    value = SpecialWords(value, "di");
+        //    value = SpecialWords(value, "da");      // Leonardo da Vinci, Eduardo da Silva
+        //    value = SpecialWords(value, "of");      // The Grand Old Duke of York
+        //    value = SpecialWords(value, "the");     // William the Conqueror
+        //    value = SpecialWords(value, "HRH");     // His/Her Royal Highness
+        //    value = SpecialWords(value, "HRM");     // His/Her Royal Majesty
+        //    value = SpecialWords(value, "H.R.H.");  // His/Her Royal Highness
+        //    value = SpecialWords(value, "H.R.M.");  // His/Her Royal Majesty
 
-            //    var characters = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input.ToLower()).ToCharArray();
+        //    value = HandleRomanNumerals(value);   // William Gates, III
 
-            //    for (int i = 0; i + 1 < characters.Length; i++)
-            //    {
-            //        if ((characters[i].Equals('\'')) || (characters[i].Equals('-')))
-            //        {
-            //            characters[i + 1] = Char.ToUpper(characters[i + 1]);
-            //        }
-            //    }
-            //    return new string(characters);
-        }
+        //    return value;
+        //}
+
+        //private static string ProperSuffix(string word, string prefix)
+        //{
+        //    if (string.IsNullOrEmpty(word)) 
+        //        return word;
+
+        //    var lowerWord = word.ToLower();
+        //    var lowerPrefix = prefix.ToLower();
+
+        //    if (!lowerWord.Contains(lowerPrefix)) 
+        //        return word;
+
+        //    var index = lowerWord.IndexOf(lowerPrefix);
+
+        //    // if the search string is at the end of the word ignore.
+        //    if (index + prefix.Length == word.Length) 
+        //        return word;
+
+        //    return word.Substring(0, index) + prefix + CapitaliseFirstLetter(word.Substring(index + prefix.Length));
+        //}
+
+        //private static string SpecialWords(string word, string specialWord)
+        //{
+        //    if (word.Equals(specialWord, StringComparison.InvariantCultureIgnoreCase))
+        //        return specialWord;
+        //    else
+        //        return word;
+        //}
+
+        //private static string HandleRomanNumerals(string word)
+        //{
+        //    var ones = new List<string>() { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+        //    var tens = new List<string>() { "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC", "C" };
+
+        //    // assume nobody uses hundreds
+        //    foreach (string number in ones)
+        //    {
+        //        if (word.Equals(number, StringComparison.InvariantCultureIgnoreCase))
+        //        {
+        //            return number;
+        //        }
+        //    }
+
+        //    foreach (string ten in tens)
+        //    {
+        //        foreach (string one in ones)
+        //        {
+        //            if (word.Equals(ten + one, StringComparison.InvariantCultureIgnoreCase))
+        //            {
+        //                return ten + one;
+        //            }
+        //        }
+        //    }
+
+        //    return word;
+        //}
+
+        //private static string CapitaliseFirstLetter(string word)
+        //{
+        //    return char.ToUpper(word[0]) + word.Substring(1).ToLower();
+        //}
+
+        //public static string ToProperCase(this string input)
+        //{
+        //    if (input == null)
+        //        return null;
+
+        //    if (string.IsNullOrWhiteSpace(input))
+        //        return string.Empty;
+
+        //    var words = input.Split(' ')
+        //        .Where(word => !string.IsNullOrWhiteSpace(word))
+        //        .Select(word => WordToProperCase(word));
+
+        //    return string.Join(" ", words);
+
+        //    //if (IsAllUpperOrAllLower(input))
+        //    //{
+        //    //    // fix the ALL UPPERCASE or all lowercase names
+        //    //    return string.Join(" ", input.Split(' ').Select(word => WordToProperCase(word)));
+        //    //}
+        //    //else
+        //    //{
+        //    //    // leave the CamelCase or Propercase names alone
+        //    //    return input;
+        //    //}
+
+        //    /* 
+        //     * original implementation
+        //     */
+        //    //    if (input == null)
+        //    //        return null;
+
+        //    //    var characters = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input.ToLower()).ToCharArray();
+
+        //    //    for (int i = 0; i + 1 < characters.Length; i++)
+        //    //    {
+        //    //        if ((characters[i].Equals('\'')) || (characters[i].Equals('-')))
+        //    //        {
+        //    //            characters[i + 1] = Char.ToUpper(characters[i + 1]);
+        //    //        }
+        //    //    }
+        //    //    return new string(characters);
+        //}
+
+        //#endregion
     }
 }

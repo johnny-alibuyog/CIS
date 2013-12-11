@@ -11,33 +11,17 @@ namespace CIS.UI.Utilities.Configurations
     [Serializable()]
     public class DatabaseConfiguraton
     {
-        private string _serverName;
-        private string _databaseName;
-        private string _username;
-        private string _password;
+        public virtual string ServerName { get; set; }
+        public virtual string DatabaseName { get; set; }
+        public virtual string Username { get; set; }
+        public virtual string Password { get; set; }
 
-        public virtual string ServerName
+        public DatabaseConfiguraton()
         {
-            get { return _serverName; }
-            set { _serverName = value; }
-        }
-
-        public virtual string DatabaseName
-        {
-            get { return _databaseName; }
-            set { _databaseName = value; }
-        }
-
-        public virtual string Username
-        {
-            get { return _username; }
-            set { _username = value; }
-        }
-
-        public virtual string Password
-        {
-            get { return _password; }
-            set { _password = value; }
+            this.ServerName = "(local)";
+            this.DatabaseName = "cisdb";
+            this.Username = "sa";
+            this.Password = "admin123";
         }
     }
 }
