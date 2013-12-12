@@ -50,6 +50,8 @@ namespace CIS.Data.EntityDefinition.Polices
 
             References(x => x.Station);
 
+            Map(x => x.ApplicationDate);
+
             Map(x => x.IssueDate);
 
             Map(x => x.Validity);
@@ -57,6 +59,8 @@ namespace CIS.Data.EntityDefinition.Polices
             Map(x => x.OfficialReceiptNumber);
 
             Map(x => x.TaxCertificateNumber);
+
+            Map(x => x.Fee);
 
             Map(x => x.YearsResident);
 

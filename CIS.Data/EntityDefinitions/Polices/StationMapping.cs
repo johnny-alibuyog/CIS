@@ -29,6 +29,8 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Map(x => x.Location);
 
+            Map(x => x.ClearanceFee);
+
             Map(x => x.ClearanceValidityInDays);
 
             Component(x => x.Address);

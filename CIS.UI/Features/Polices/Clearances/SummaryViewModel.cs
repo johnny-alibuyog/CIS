@@ -32,13 +32,19 @@ namespace CIS.UI.Features.Polices.Clearances
         [NotNullNotEmpty(Message = "Tax Certificate Number is mandatory.")]
         public virtual string TaxCertificateNumber { get; set; }
 
+        //[IsNumeric(Message = "Fee should be numeric.")]
+        public virtual Nullable<decimal> ClearanceFee { get; set; }
+
         [IsNumeric(Message = "Years of Residency should be numeric.")]
         public virtual Nullable<int> YearsOfResidency { get; set; }
 
-        public virtual DateTime IssuedDate { get; set; }
+        public virtual Nullable<DateTime> ApplicationDate { get; set; }
+
+        public virtual Nullable<DateTime> IssuedDate { get; set; }
 
         public SummaryViewModel()
         {
+            ApplicationDate = DateTime.Today;
             IssuedDate = DateTime.Today;
         }
     }

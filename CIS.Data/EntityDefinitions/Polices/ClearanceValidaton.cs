@@ -60,6 +60,8 @@ namespace CIS.Data.EntityDefinition.Polices
                 .NotNullable()
                 .And.IsValid();
 
+            Define(x => x.ApplicationDate);
+
             Define(x => x.IssueDate);
 
             Define(x => x.Validity)
@@ -73,6 +75,8 @@ namespace CIS.Data.EntityDefinition.Polices
             Define(x => x.TaxCertificateNumber)
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(50);
+
+            Define(x => x.Fee);
 
             Define(x => x.YearsResident);
 

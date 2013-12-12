@@ -2042,7 +2042,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Entry Operator: </Value>
+                <Value>Issuer: </Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>Tahoma</FontFamily>
@@ -2058,7 +2058,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value> Date Printed: </Value>
+                <Value> Issue Date: </Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>Tahoma</FontFamily>
@@ -2066,11 +2066,47 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>=Format(First(Fields!IssueDate.Value, "ItemDataSet"), "MMM-dd-yyyy")</Value>
+                <Value>=First(Fields!IssueDate.Value, "ItemDataSet")</Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>Tahoma</FontFamily>
                   <FontSize>8pt</FontSize>
+                  <Format>MMM-dd-yyyy</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> Application Date: </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!ApplicationDate.Value, "ItemDataSet")</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Format>MMM-dd-yyyy</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> Paid Amount: </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Format>MMM-dd-yyyy</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!Fee.Value, "ItemDataSet")</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Format>#,0.00;(#,0.00)</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -2079,9 +2115,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
         <Top>5.11333in</Top>
-        <Left>0.52792in</Left>
-        <Height>0.17708in</Height>
-        <Width>5.26042in</Width>
+        <Left>0.29945in</Left>
+        <Height>0.18958in</Height>
+        <Width>5.63542in</Width>
         <ZIndex>17</ZIndex>
         <Style>
           <Border>
@@ -2113,9 +2149,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
         <Top>4.93265in</Top>
-        <Left>0.52792in</Left>
+        <Left>0.29945in</Left>
         <Height>0.17708in</Height>
-        <Width>5.26042in</Width>
+        <Width>5.63542in</Width>
         <ZIndex>18</ZIndex>
         <Style>
           <Border>
@@ -4055,9 +4091,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
         <Top>9.82453in</Top>
-        <Left>0.53299in</Left>
+        <Left>0.29945in</Left>
         <Height>0.17708in</Height>
-        <Width>5.26042in</Width>
+        <Width>5.63542in</Width>
         <ZIndex>35</ZIndex>
         <Style>
           <Border>
@@ -4208,7 +4244,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Entry Operator: </Value>
+                <Value>Issuer: </Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>Tahoma</FontFamily>
@@ -4224,7 +4260,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value> Date Printed: </Value>
+                <Value> Issue Date: </Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>Tahoma</FontFamily>
@@ -4232,11 +4268,47 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>=Microsoft.VisualBasic.Strings.Format(First(Fields!IssueDate.Value, "ItemDataSet"), "MMM-dd-yyyy")</Value>
+                <Value>=First(Fields!IssueDate.Value, "ItemDataSet")</Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>Tahoma</FontFamily>
                   <FontSize>8pt</FontSize>
+                  <Format>MMM-dd-yyyy</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> Application Date: </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!ApplicationDate.Value, "ItemDataSet")</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Format>MMM-dd-yyyy</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> Paid Amount: </Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Format>MMM-dd-yyyy</Format>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=First(Fields!Fee.Value, "ItemDataSet")</Value>
+                <Style>
+                  <FontStyle>Italic</FontStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <Format>#,0.00;(#,0.00)</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -4245,9 +4317,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox23</rd:DefaultName>
         <Top>10.00452in</Top>
-        <Left>0.52792in</Left>
-        <Height>0.17708in</Height>
-        <Width>5.26042in</Width>
+        <Left>0.29945in</Left>
+        <Height>0.20208in</Height>
+        <Width>5.63542in</Width>
         <ZIndex>40</ZIndex>
         <Style>
           <Border>
@@ -4300,6 +4372,10 @@
           <DataField>Applicant</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="ApplicationDate">
+          <DataField>ApplicationDate</DataField>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
         <Field Name="Barcode">
           <DataField>Barcode</DataField>
           <rd:TypeName>System.Byte[]</rd:TypeName>
@@ -4334,11 +4410,11 @@
         </Field>
         <Field Name="Changed">
           <DataField>Changed</DataField>
-          <rd:TypeName>System.IObservable`1[[ReactiveUI.IObservedChange`2[[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ReactiveUI, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null]]</rd:TypeName>
+          <rd:TypeName>System.IObservable`1[[ReactiveUI.IObservedChange`2[[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ReactiveUI, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]]</rd:TypeName>
         </Field>
         <Field Name="Changing">
           <DataField>Changing</DataField>
-          <rd:TypeName>System.IObservable`1[[ReactiveUI.IObservedChange`2[[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ReactiveUI, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null]]</rd:TypeName>
+          <rd:TypeName>System.IObservable`1[[ReactiveUI.IObservedChange`2[[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ReactiveUI, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]]</rd:TypeName>
         </Field>
         <Field Name="Citizenship">
           <DataField>Citizenship</DataField>
@@ -4351,6 +4427,10 @@
         <Field Name="Error">
           <DataField>Error</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Fee">
+          <DataField>Fee</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="FinalFindings">
           <DataField>FinalFindings</DataField>
@@ -4370,7 +4450,7 @@
         </Field>
         <Field Name="IssueDate">
           <DataField>IssueDate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="Issuer">
           <DataField>Issuer</DataField>
@@ -4398,14 +4478,6 @@
         </Field>
         <Field Name="OfficialReceiptNumber">
           <DataField>OfficialReceiptNumber</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PartialMatchFindings">
-          <DataField>PartialMatchFindings</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="PerfectMatchFindings">
-          <DataField>PerfectMatchFindings</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Picture">

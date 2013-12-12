@@ -31,6 +31,8 @@ namespace CIS.Data.EntityDefinition.Polices
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(150);
 
+            Define(x => x.ClearanceFee);
+
             Define(x => x.ClearanceValidityInDays);
 
             Define(x => x.Address)

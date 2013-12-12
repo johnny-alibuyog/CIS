@@ -28,10 +28,12 @@ namespace CIS.Core.Entities.Polices
         private string _certifierRank;
         private string _certifierPosition;
         private Station _station;
-        private DateTime _issueDate;
+        private Nullable<DateTime> _applicationDate;
+        private Nullable<DateTime> _issueDate;
         private string _validity;
         private string _officialReceiptNumber;
         private string _taxCertificateNumber;
+        private Nullable<decimal> _fee;
         private Nullable<int> _yearsResident;
         private string _finalFindings;
         private Finding _finding;
@@ -139,7 +141,13 @@ namespace CIS.Core.Entities.Polices
             protected set { _station = value; }
         }
 
-        public virtual DateTime IssueDate
+        public virtual Nullable<DateTime> ApplicationDate
+        {
+            get { return _applicationDate; }
+            set { _applicationDate = value; }
+        }
+
+        public virtual Nullable<DateTime> IssueDate
         {
             get { return _issueDate; }
             set { _issueDate = value; }
@@ -161,6 +169,12 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _taxCertificateNumber; }
             set { _taxCertificateNumber = value; }
+        }
+
+        public virtual Nullable<decimal> Fee
+        {
+            get { return _fee; }
+            set { _fee = value; }
         }
 
         public virtual Nullable<int> YearsResident

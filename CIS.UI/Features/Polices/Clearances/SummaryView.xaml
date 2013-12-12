@@ -22,20 +22,28 @@
                     </StackPanel.Resources>
 
                     <StackPanel Style="{StaticResource FieldSet}">
-                        <Label Content="Date"/>
-                        <DatePicker Text="{Binding IssuedDate, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:MM-dd-yyyy}}"  IsEnabled="False" />
+                        <Label Content="Application Date"/>
+                        <DatePicker Text="{Binding ApplicationDate, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:MM/dd/yyyy}}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Issue Date"/>
+                        <DatePicker Text="{Binding IssuedDate, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:MM/dd/yyyy}}" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Validity"/>
-                        <TextBox Text="{Binding Validity, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Text="{Binding Validity, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Residential Cert"/>
+                        <TextBox Text="{Binding TaxCertificateNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="OR #"/>
                         <TextBox Text="{Binding OfficialReceiptNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
-                        <Label Content="Residential Cert"/>
-                        <TextBox Text="{Binding TaxCertificateNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        <Label Content="Fee"/>
+                        <TextBox Text="{Binding ClearanceFee, StringFormat=N2, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Recidency Years"/>
@@ -47,7 +55,7 @@
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Birth Date"/>
-                        <TextBox Text="{Binding BirthDate, Mode=OneWay, StringFormat={}{0:MM-dd-yyyy}}" IsEnabled="False" />
+                        <TextBox Text="{Binding BirthDate, Mode=OneWay, StringFormat={}{0:MM/dd/yyyy}}" IsEnabled="False" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Birth Place"/>
@@ -75,13 +83,13 @@
 
                 <StackPanel Margin="0,10,0,0" Orientation="Vertical">
                     <StackPanel>
-                        <Border BorderThickness="2" BorderBrush="#FF000000" Margin="10" Height="151" Width="200">
+                        <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1" Margin="10" Height="150.75" Width="200.75">
                             <Image Source="{Binding Picture}" />
                         </Border>
                         <TextBlock Text="Picture" HorizontalAlignment="Center"/>
                     </StackPanel>
                     <StackPanel>
-                        <Border BorderThickness="2" BorderBrush="#FF000000" Margin="10" Height="151" Width="200">
+                        <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1" Margin="10" Height="150.75" Width="200.75">
                             <Image Source="{Binding RightThumb}" />
                         </Border>
                         <TextBlock Text="Right Thumb" HorizontalAlignment="Center"/>

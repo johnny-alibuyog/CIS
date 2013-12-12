@@ -40,7 +40,8 @@ namespace CIS.UI.Features.Polices.Clearances
         public virtual byte[] CertifierSignature { get; set; }
         public virtual string Issuer { get; set; }
         public virtual string IssueAddress { get; set; }
-        public virtual DateTime IssueDate { get; set; }
+        public virtual Nullable<DateTime> ApplicationDate { get; set; }
+        public virtual Nullable<DateTime> IssueDate { get; set; }
         public virtual byte[] Logo { get; set; }
         public virtual string Office { get; set; }
         public virtual string Station { get; set; }
@@ -48,6 +49,7 @@ namespace CIS.UI.Features.Polices.Clearances
         public virtual string OfficialReceiptNumber { get; set; }
         public virtual string TaxCertificateNumber { get; set; }
         public virtual string FinalFindings { get; set; }
+        public virtual Nullable<decimal> Fee { get; set; }
 
         public override object SerializeWith(object instance)
         {
@@ -84,6 +86,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.CertifierPosition = source.CertifierPosition;
                 target.CertifierSignature = source.CertifierSignature;
                 target.Issuer = source.Issuer;
+                target.ApplicationDate = source.ApplicationDate;
                 target.IssueDate = source.IssueDate;
                 target.IssueAddress = source.IssueAddress;
                 target.Logo = source.Logo;
@@ -93,6 +96,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.OfficialReceiptNumber = source.OfficialReceiptNumber;
                 target.TaxCertificateNumber = source.TaxCertificateNumber;
                 target.FinalFindings = source.FinalFindings;
+                target.Fee = source.Fee;
 
                 return target;
             }
@@ -151,6 +155,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.CertifierPosition = source.CertifierPosition;
                 target.CertifierSignature = source.Certifier.Signature.Bytes;
                 target.Issuer = source.Audit.CreatedBy;
+                target.ApplicationDate = source.ApplicationDate;
                 target.IssueDate = source.IssueDate;
                 target.IssueAddress = source.Station.Address.ToString();
                 target.Logo = source.Station.Logo.Bytes;
@@ -161,6 +166,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.OfficialReceiptNumber = source.OfficialReceiptNumber;
                 target.TaxCertificateNumber = source.TaxCertificateNumber;
                 target.FinalFindings = source.FinalFindings;
+                target.Fee = source.Fee;
 
                 return target;
             }

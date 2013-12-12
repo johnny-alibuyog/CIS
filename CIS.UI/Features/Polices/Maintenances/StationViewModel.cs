@@ -32,6 +32,8 @@ namespace CIS.UI.Features.Polices.Maintenances
         [NotNullNotEmpty(Message = "Location is mandatory.")]
         public virtual string Location { get; set; }
 
+        public virtual Nullable<decimal> ClearanceFee { get; set; }
+
         //[IsNumeric(Message = "Clerance validity is numeric.")]
         public virtual int ClearanceValidityInDays { get; set; }
 
@@ -71,6 +73,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 target.Name = source.Name;
                 target.Office = source.Office;
                 target.Location = source.Location;
+                target.ClearanceFee = source.ClearanceFee;
                 target.ClearanceValidityInDays = source.ClearanceValidityInDays;
                 target.Address.SerializeWith(source.Address);
                 //target.Officers = source.Officers;
@@ -86,6 +89,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 target.Name = source.Name;
                 target.Office = source.Office;
                 target.Location = source.Location;
+                target.ClearanceFee = source.ClearanceFee;
                 target.ClearanceValidityInDays = source.ClearanceValidityInDays;
                 target.Address.SerializeWith(source.Address);
                 //target.Officers = source.Officers
@@ -121,6 +125,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                 target.Name = source.Name;
                 target.Office = source.Office;
                 target.Location = source.Location;
+                target.ClearanceFee = source.ClearanceFee;
                 target.ClearanceValidityInDays = source.ClearanceValidityInDays;
                 target.Address = (Address)source.Address.DeserializeInto(new Address());
                 //target.Officers = source.Officers

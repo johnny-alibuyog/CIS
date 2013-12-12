@@ -32,6 +32,7 @@ namespace CIS.UI.Features.Polices.Maintenances
                         Name = "Name not set",
                         Office = "Office not set",
                         Location = "Location not set",
+                        ClearanceFee = 100.00M,
                         ClearanceValidityInDays = 60,
                         Address = new Address()
                         {

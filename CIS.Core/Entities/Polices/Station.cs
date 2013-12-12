@@ -17,6 +17,7 @@ namespace CIS.Core.Entities.Polices
         private string _name;
         private string _office;
         private string _location;
+        private Nullable<decimal> _clearanceFee;
         private int _clearanceValidityInDays;
         private Address _address;
         private ICollection<Officer> _officers;
@@ -61,6 +62,12 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _location; }
             set { _location = value.ToProperCase(); }
+        }
+
+        public virtual Nullable<decimal> ClearanceFee
+        {
+            get { return _clearanceFee; }
+            set { _clearanceFee = value; }
         }
 
         public virtual int ClearanceValidityInDays
@@ -120,9 +127,12 @@ namespace CIS.Core.Entities.Polices
             _officers.Add(item);
         }
 
-        public virtual string GetValidity(DateTime issueDate)
+        public virtual string GetValidity(Nullable<DateTime> issueDate)
         {
-            return string.Format("Clearance is valid until {0}.", issueDate.AddDays(this.ClearanceValidityInDays).ToString("MMM-dd-yyyy"));
+            if (issueDate == null)
+                return null;
+
+            return string.Format("Clearance is valid until {0}.", issueDate.Value.AddDays(this.ClearanceValidityInDays).ToString("MMM-dd-yyyy"));
         }
 
         #endregion

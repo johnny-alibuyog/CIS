@@ -10,7 +10,7 @@ namespace CIS.UI.Features.Polices.Clearances
     {
         public virtual Guid Id { get; set; }
 
-        public virtual DateTime IssueDate { get; set; }
+        public virtual Nullable<DateTime> IssueDate { get; set; }
 
         public virtual string Applicant { get; set; }
 

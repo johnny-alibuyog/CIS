@@ -275,9 +275,15 @@ namespace CIS.UI.Features.Polices.Clearances
                 }
 
                 var station = stationQuery.FirstOrDefault();
+                if (station.ClearanceFee == null || station.ClearanceFee <= 0M)
+                    station.ClearanceFee = 100.00M;
+
                 this.ViewModel.Summary.Validity = station.GetValidity(DateTime.Today);
+                this.ViewModel.Summary.ClearanceFee = station.ClearanceFee;
                 this.ViewModel.PersonalInformation.Address.City = station.Address.City;
                 this.ViewModel.PersonalInformation.Address.Province = station.Address.Province;
+                this.ViewModel.OtherInformation.ProvincialAddress.City = station.Address.City;
+                this.ViewModel.OtherInformation.ProvincialAddress.Province = station.Address.Province;
 
                 transaction.Commit();
             }
@@ -657,10 +663,12 @@ namespace CIS.UI.Features.Polices.Clearances
                 clearance.SetVerifier(verifier);
                 clearance.SetCertifier(certifier);
                 clearance.SetStation(stationQuery.FirstOrDefault());
+                clearance.ApplicationDate = this.ViewModel.Summary.ApplicationDate;
                 clearance.IssueDate = this.ViewModel.Summary.IssuedDate;
                 clearance.Validity = this.ViewModel.Summary.Validity;
                 clearance.OfficialReceiptNumber = this.ViewModel.Summary.OfficialReceiptNumber;
                 clearance.TaxCertificateNumber = this.ViewModel.Summary.TaxCertificateNumber;
+                clearance.Fee = this.ViewModel.Summary.ClearanceFee;
                 clearance.YearsResident = this.ViewModel.Summary.YearsOfResidency;
                 clearance.FinalFindings = this.ViewModel.Summary.FinalFindings;
                 clearance.Purpose = session.Get<Purpose>(this.ViewModel.PersonalInformation.Purpose.Id);

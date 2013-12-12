@@ -37,6 +37,11 @@
                         <TextBox Text="{Binding Location, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Clearance Fee"/>
+                        <TextBox Text="{Binding ClearanceFee, StringFormat=N2, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" />
+                        <TextBlock Text="  (Php)" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Clearance Validity"/>
                         <TextBox Text="{Binding ClearanceValidityInDays, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" />
                         <TextBlock Text="  (Days)" VerticalAlignment="Center"/>

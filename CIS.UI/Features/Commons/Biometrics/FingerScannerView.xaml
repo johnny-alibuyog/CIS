@@ -17,7 +17,7 @@
                 <TextBlock Text="Finger Print" Style="{StaticResource Heading2}" />
                 <TextBlock Text="Scanned finger preview" />
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Border BorderThickness="2" BorderBrush="#FF000000" Margin="10" Height="201" Width="178">
+                    <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1" Margin="10" Height="201" Width="178">
                         <Image Source="{Binding CapturedFingerImage, Mode=TwoWay, ValidatesOnDataErrors=True}" Stretch="Fill" />
                     </Border>
                     <Image Source="{Binding CurrentFinger.ImageUri}" Height="115" Width="273" Margin="5" Stretch="Fill"/>
