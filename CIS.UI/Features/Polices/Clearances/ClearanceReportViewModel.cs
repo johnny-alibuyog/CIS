@@ -154,7 +154,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 target.CertifierRank = source.CertifierRank;
                 target.CertifierPosition = source.CertifierPosition;
                 target.CertifierSignature = source.Certifier.Signature.Bytes;
-                target.Issuer = source.Audit.CreatedBy;
+                target.Issuer = source.Audit.UpdatedBy != null ? source.Audit.UpdatedBy : source.Audit.CreatedBy;
                 target.ApplicationDate = source.ApplicationDate;
                 target.IssueDate = source.IssueDate;
                 target.IssueAddress = source.Station.Address.ToString();

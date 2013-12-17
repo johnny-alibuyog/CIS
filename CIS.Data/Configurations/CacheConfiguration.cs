@@ -39,11 +39,6 @@ namespace CIS.Data.Configurations
                     x.Strategy = EntityCacheUsage.ReadWrite;
                     x.RegionName = "Region";
                 })
-                //.EntityCache<Role>(x => 
-                //{
-                //    x.Strategy = EntityCacheUsage.Readonly;
-                //    x.RegionName = "Role";
-                //})
                 .EntityCache<User>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
