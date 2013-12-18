@@ -161,6 +161,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\LinqToExcel.1.7.1\lib\Remotion.Interfaces.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack">
+      <HintPath>..\packages\ServiceStack.4.0.5\lib\net40\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Client">
+      <HintPath>..\packages\ServiceStack.Client.4.0.5\lib\net40\ServiceStack.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\packages\ServiceStack.Common.4.0.5\lib\net40\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\packages\ServiceStack.Interfaces.4.0.5\lib\net40\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.4.0.5\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -223,6 +238,7 @@
     </Compile>
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\ConfigurationModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\CommonDialogModule.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\DataStoreModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\MessageModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\PersistenceModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\ViewModule.cs" />
@@ -343,6 +359,7 @@
       <DependentUpon>MakeListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Firearms\Maintenances\MakeViewModel.cs" />
+    <Compile Include="Features\IStoreDataSyncronizer.cs" />
     <Compile Include="Features\Lookup.cs" />
     <Compile Include="Features\Commons\Persons\PhysicalAttributesView.xaml.cs">
       <DependentUpon>PhysicalAttributesView.xaml</DependentUpon>
@@ -540,6 +557,7 @@
     <Compile Include="Features\Polices\Warrants\CodelessImportService.cs">
       <DependentUpon>ImportController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Polices\Warrants\WarrantStoreDataSyncronizer.cs" />
     <Compile Include="Features\Settings\Abouts\AboutController.cs" />
     <Compile Include="Features\Settings\Appearances\AppearanceController.cs" />
     <Compile Include="Features\SplashScreenController.cs" />
@@ -567,6 +585,7 @@
     <Compile Include="Utilities\Configurations\ApplicationConfiguration.cs" />
     <Compile Include="Utilities\Configurations\AppearanceConfiguration.cs" />
     <Compile Include="Utilities\Configurations\DatabaseConfiguraton.cs" />
+    <Compile Include="Utilities\Configurations\DataStoreConfiguration.cs" />
     <Compile Include="Utilities\Configurations\ImageScaleFactorConfiguration.cs" />
     <Compile Include="Utilities\Configurations\LoginConfiguration.cs" />
     <Compile Include="Utilities\Configurations\ProductConfiguration.cs" />
@@ -942,6 +961,10 @@
     <ProjectReference Include="..\CIS.Data\CIS.Data.csproj">
       <Project>{b15d6aa5-7e64-4713-a754-44384474fa2e}</Project>
       <Name>CIS.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CIS.Store\CIS.Store.csproj">
+      <Project>{2f6805f7-7da8-4552-9f91-fdda6af9034f}</Project>
+      <Name>CIS.Store</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

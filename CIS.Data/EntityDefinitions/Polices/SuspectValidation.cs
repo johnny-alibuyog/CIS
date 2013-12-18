@@ -24,6 +24,8 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Define(x => x.ArrestDate);
 
+            Define(x => x.DataStoreId);
+
             Define(x => x.Disposition)
                 .MaxLength(700);
 

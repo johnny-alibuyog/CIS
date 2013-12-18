@@ -5,10 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Memberships;
+using CIS.Store.Services.Warrants;
+using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Utilities.Extentions;
 using NHibernate;
 using NHibernate.Linq;
 using ReactiveUI;
+using ServiceStack;
 
 namespace CIS.UI.Features.Memberships.Users
 {
@@ -21,6 +24,24 @@ namespace CIS.UI.Features.Memberships.Users
             this.ViewModel.Login.ThrownExceptions.Handle(this);
 
             this.Initialize();
+            this.TestRest();
+        }
+
+        private void TestRest()
+        {
+            var client = IoC.Container.Resolve<IRestClient>();
+
+            var getRequest = new GetWarrantRequest();
+            var getResponse = client.Get(getRequest);
+
+            var insertRequest = new InsertWarrantRequest();
+            var insertResponse = client.Post(insertRequest);
+
+            var updateRequest = new UpdateWarrantRequest();
+            var updateResponse = client.Patch(updateRequest);
+
+            var deleteRequest = new DeleteWarrantRequest();
+            var deleteResponse = client.Delete(deleteRequest);
         }
 
         public virtual void Initialize()

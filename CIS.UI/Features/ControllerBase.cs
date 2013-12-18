@@ -19,7 +19,8 @@ namespace CIS.UI.Features
 {
     public abstract class ControllerBase<TViewModel> : IControllerBase where TViewModel : ViewModelBase
     {
-        private static ILog _log;
+        private static readonly ILog _log = LogManager.GetCurrentClassLogger();
+
         private TViewModel _viewModel;
         private IMessageBus _messageBus;
         private IMessageBoxService _messageBox;
@@ -27,13 +28,14 @@ namespace CIS.UI.Features
 
         public virtual ILog Log
         {
-            get
-            {
-                if (_log == null)
-                    _log = Common.Logging.LogManager.GetCurrentClassLogger(); //IoC.Container.Resolve<ILog>();
+            get { return _log; }
+            //get
+            //{
+            //    if (_log == null)
+            //        _log = LogManager.GetCurrentClassLogger(); //IoC.Container.Resolve<ILog>();
 
-                return _log;
-            }
+            //    return _log;
+            //}
         }
 
         public virtual TViewModel ViewModel

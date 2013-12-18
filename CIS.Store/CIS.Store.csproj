@@ -84,14 +84,37 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Entities\Warrant.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Warrants\DeleteWarrantRequest.cs" />
+    <Compile Include="Services\Warrants\DeleteWarrantResponse.cs" />
+    <Compile Include="Services\Warrants\GetWarrantRequest.cs" />
+    <Compile Include="Services\Warrants\GetWarrantResponse.cs" />
+    <Compile Include="Services\Warrants\InsertWarrantRequest.cs" />
+    <Compile Include="Services\Warrants\InsertWarrantResponse.cs" />
+    <Compile Include="Services\Warrants\UpdateWarrantRequest.cs" />
+    <Compile Include="Services\Warrants\UpdateWarrantResponse.cs" />
+    <Compile Include="Services\Warrants\WarrantService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\cisstore.pubxml" />
+    <Content Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

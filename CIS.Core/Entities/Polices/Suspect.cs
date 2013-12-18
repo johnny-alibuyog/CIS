@@ -15,6 +15,7 @@ namespace CIS.Core.Entities.Polices
         private Warrant _warrant;
         private Nullable<ArrestStatus> _arrestStatus;
         private Nullable<DateTime> _arrestDate;
+        private Nullable<long> _dataStoreId;
         private string _disposition;
         private Person _person;
         private Address _address;
@@ -56,6 +57,12 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _arrestDate; }
             set { _arrestDate = value; }
+        }
+
+        public virtual Nullable<long> DataStoreId
+        {
+            get { return _dataStoreId; }
+            set { _dataStoreId = value; }
         }
 
         public virtual string Disposition
