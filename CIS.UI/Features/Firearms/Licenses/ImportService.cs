@@ -95,7 +95,7 @@ namespace CIS.UI.Features.Firearms.Licenses
                         MiddleName = item.MiddleName,
                         LastName = item.LastName,
                         Suffix = item.Suffix,
-                        Gender = item.Gender.As<Gender>(),
+                        Gender = item.Gender.AsNullableEnum<Gender>(),
                         BirthDate = item.BirthDate
                     };
                     license.Address = new Address()

@@ -130,8 +130,23 @@
     <Compile Include="Conventions\CustomTableNameConvention.cs" />
     <Compile Include="Conventions\EnumConvention.cs" />
     <Compile Include="Conventions\_CustomJoinedSubclassConvention.cs" />
+    <Compile Include="EntityDefinitions\Commons\ConfigurationMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\ConfigurationValidation.cs" />
     <Compile Include="EntityDefinitions\Commons\PersonBasicMapping.cs" />
     <Compile Include="EntityDefinitions\Commons\PersonBasicValidation.cs" />
+    <Compile Include="EntityDefinitions\Commons\PhysicalAttributesMapping.cs" />
+    <Compile Include="EntityDefinitions\Commons\ProductConfigurationMapping.cs">
+      <DependentUpon>ConfigurationMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\Commons\ProductConfigurationValidation.cs">
+      <DependentUpon>ConfigurationValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\Commons\ProperCasingConfigurationMapping.cs">
+      <DependentUpon>ConfigurationMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\Commons\ProperCasingConfigurationValidation.cs">
+      <DependentUpon>ConfigurationValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="EntityDefinitions\Commons\TerminalValidation.cs" />
     <Compile Include="EntityDefinitions\FireArms\GunMapping.cs" />
     <Compile Include="EntityDefinitions\FireArms\GunValidation.cs" />
@@ -215,7 +230,6 @@
       <DependentUpon>ContactMapping.cs</DependentUpon>
     </Compile>
     <Compile Include="EntityDefinitions\Commons\PersonMapping.cs" />
-    <Compile Include="EntityDefinitions\Commons\PhysicalAttributesMapping.cs" />
     <Compile Include="EntityDefinitions\Commons\ProvinceMapping.cs">
       <DependentUpon>AddressMapping.cs</DependentUpon>
     </Compile>

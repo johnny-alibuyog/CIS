@@ -10,6 +10,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{BF1537CD-A98C-4409-A1B0-41BD0CF28D75}"
 	ProjectSection(SolutionItems) = preProject
 		CIS.Data\database_creation_script.sql = CIS.Data\database_creation_script.sql
+		TextFile1.sql = TextFile1.sql
+		update_civil_status.sql = update_civil_status.sql
 		update_script.sql = update_script.sql
 		update_script2.sql = update_script2.sql
 		update_script3.sql = update_script3.sql

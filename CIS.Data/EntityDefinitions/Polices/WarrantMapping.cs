@@ -17,6 +17,9 @@ namespace CIS.Data.EntityDefinition.Polices
 
             //Version(x => x.Version);
 
+            Map(x => x.DataStoreParentKey)
+                .Index("DataStoreParentKeyIndex");
+
             Component(x => x.Audit);
 
             Map(x => x.WarrantCode)

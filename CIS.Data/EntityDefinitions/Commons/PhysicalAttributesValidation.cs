@@ -18,7 +18,7 @@ namespace CIS.Data.EntityDefinition.Commons
                 .MaxLength(250);
 
             Define(x => x.Complexion)
-                .MaxLength(200);
+                .MaxLength(250);
 
             Define(x => x.Build)
                 .MaxLength(250);

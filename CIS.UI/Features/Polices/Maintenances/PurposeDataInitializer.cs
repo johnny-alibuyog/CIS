@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
 using CIS.Core.Utilities.Extentions;
 using NHibernate;
@@ -31,9 +32,10 @@ namespace CIS.UI.Features.Polices.Maintenances
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var purposes = session.Query<Purpose>().Cacheable().ToList();
+                var purposes = session.QueryOver<Purpose>().Cacheable().List();
+                var properCasing = session.QueryOver<ProperCasingConfiguration>().Cacheable().SingleOrDefault();
 
-                if (!App.Config.ProperCasing.IsProperCasingInitialized)
+                if (!properCasing.IsProperCasingInitialized)
                 {
                     foreach (var purpose in purposes)
                     {

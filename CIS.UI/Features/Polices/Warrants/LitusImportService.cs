@@ -121,11 +121,19 @@ namespace CIS.UI.Features.Polices.Warrants
             {
                 session.SetBatchSize(batchSize);
 
-                var warrantsInDb = session.Query<Warrant>()
+                var query = session.Query<Warrant>()
                     .Where(x => batchCodesToImport.Contains(x.WarrantCode))
                     .FetchMany(x => x.Suspects)
                     .ThenFetchMany(x => x.Aliases)
-                    .ToList();
+                    .ToFuture();
+
+                session.Query<Warrant>()
+                    .Where(x => batchCodesToImport.Contains(x.WarrantCode))
+                    .FetchMany(x => x.Suspects)
+                    .ThenFetchMany(x => x.Occupations)
+                    .ToFuture();
+
+                var warrantsInDb = query.ToList();
 
                 foreach (var item in batchToImport)
                 {

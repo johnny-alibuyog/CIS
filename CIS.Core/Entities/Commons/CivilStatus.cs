@@ -11,6 +11,8 @@ namespace CIS.Core.Entities.Commons
         Single = 0,
         Married = 1,
         Divorced = 2,
-        Widowed = 3
+        Separated = 3,
+        Widow = 4,
+        Widower = 5,
     }
 }

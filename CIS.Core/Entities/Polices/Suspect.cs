@@ -10,12 +10,13 @@ namespace CIS.Core.Entities.Polices
     public class Suspect
     {
         private Guid _id;
+        private Nullable<long> _dataStoreId;
+        private Nullable<Guid> _dataStoreChildKey;
         //private int _version;
         private Audit _audit;
         private Warrant _warrant;
         private Nullable<ArrestStatus> _arrestStatus;
         private Nullable<DateTime> _arrestDate;
-        private Nullable<long> _dataStoreId;
         private string _disposition;
         private Person _person;
         private Address _address;
@@ -27,6 +28,18 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _id; }
             set { _id = value; }
+        }
+
+        public virtual Nullable<long> DataStoreId
+        {
+            get { return _dataStoreId; }
+            set { _dataStoreId = value; }
+        }
+
+        public virtual Nullable<Guid> DataStoreChildKey
+        {
+            get { return _dataStoreChildKey; }
+            set { _dataStoreChildKey = value; }
         }
 
         //public virtual int Version
@@ -57,12 +70,6 @@ namespace CIS.Core.Entities.Polices
         {
             get { return _arrestDate; }
             set { _arrestDate = value; }
-        }
-
-        public virtual Nullable<long> DataStoreId
-        {
-            get { return _dataStoreId; }
-            set { _dataStoreId = value; }
         }
 
         public virtual string Disposition
@@ -132,9 +139,9 @@ namespace CIS.Core.Entities.Polices
 
         private void SyncOccupations(IEnumerable<string> items)
         {
-            var itemsToInsert = items = items.Where(x => !string.IsNullOrWhiteSpace(x));
+            items = items.Where(x => !string.IsNullOrWhiteSpace(x));
 
-            items.Except(_occupations).ToList();
+            var itemsToInsert = items.Except(_occupations).ToList();
             var itemsToRemove = _occupations.Except(items).ToList();
 
             // insert

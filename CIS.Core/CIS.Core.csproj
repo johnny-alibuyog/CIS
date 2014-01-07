@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="Entities\Commons\AreaClass.cs" />
     <Compile Include="Entities\Commons\Barcode.cs" />
+    <Compile Include="Entities\Commons\Configuration.cs" />
     <Compile Include="Entities\Commons\PersonBasic.cs" />
     <Compile Include="Entities\Commons\Blob.cs" />
     <Compile Include="Entities\Commons\CivilStatus.cs" />
@@ -122,6 +123,12 @@
     </Compile>
     <Compile Include="Entities\Commons\Person.cs" />
     <Compile Include="Entities\Commons\PhysicalAttributes.cs" />
+    <Compile Include="Entities\Commons\ProductConfiguration.cs">
+      <DependentUpon>Configuration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Commons\ProperCasingConfiguration.cs">
+      <DependentUpon>Configuration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Commons\Province.cs">
       <DependentUpon>Address.cs</DependentUpon>
     </Compile>

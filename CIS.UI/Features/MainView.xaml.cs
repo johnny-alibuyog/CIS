@@ -19,6 +19,7 @@ using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Terminals;
 using CIS.UI.Features.Firearms.Maintenances;
 using CIS.UI.Features.Polices.Maintenances;
+using CIS.UI.Utilities.Extentions;
 using FirstFloor.ModernUI.Windows.Controls;
 using NHibernate;
 using NHibernate.Linq;
@@ -49,7 +50,8 @@ namespace CIS.UI.Features
 
         public MainView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<MainViewModel>());
 
             //App.Configuration.Apprearance.Apply();
 

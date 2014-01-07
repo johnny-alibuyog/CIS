@@ -68,6 +68,9 @@ namespace CIS.Data.EntityDefinition.Polices
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(250);
 
+            Define(x => x.ControlNumber)
+                .MaxLength(50);
+
             Define(x => x.OfficialReceiptNumber)
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(50);

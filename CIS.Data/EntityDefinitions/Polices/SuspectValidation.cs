@@ -13,6 +13,10 @@ namespace CIS.Data.EntityDefinition.Polices
         {
             Define(x => x.Id);
 
+            Define(x => x.DataStoreId);
+
+            Define(x => x.DataStoreChildKey);
+
             //Define(x => x.Version);
 
             Define(x => x.Audit);
@@ -23,8 +27,6 @@ namespace CIS.Data.EntityDefinition.Polices
             Define(x => x.ArrestStatus);
 
             Define(x => x.ArrestDate);
-
-            Define(x => x.DataStoreId);
 
             Define(x => x.Disposition)
                 .MaxLength(700);

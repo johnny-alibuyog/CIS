@@ -35,7 +35,7 @@ namespace CIS.UI.Features.Polices.Maintenances
         public virtual Nullable<decimal> ClearanceFee { get; set; }
 
         //[IsNumeric(Message = "Clerance validity is numeric.")]
-        public virtual int ClearanceValidityInDays { get; set; }
+        public virtual Nullable<int> ClearanceValidityInDays { get; set; }
 
         [Valid]
         [NotNull(Message = "Location is mandatory.")]

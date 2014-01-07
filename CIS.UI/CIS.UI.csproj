@@ -13,7 +13,7 @@
     <AssemblyName>CIS.UI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <FodyPath>..\packages\Fody.1.18.0.0</FodyPath>
+    <FodyPath>..\packages\Fody.1.19.1.0</FodyPath>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -93,7 +93,7 @@
     </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+      <HintPath>..\packages\Iesi.Collections.3.3.3.4001\lib\Net35\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="LinqToExcel, Version=1.7.1.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -130,24 +130,24 @@
       <HintPath>..\packages\NLog.2.1.0\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="PropertyChanged">
-      <HintPath>..\packages\PropertyChanged.Fody.1.42.0.0\Lib\NET35\PropertyChanged.dll</HintPath>
+      <HintPath>..\packages\PropertyChanged.Fody.1.43.1.0\Lib\NET35\PropertyChanged.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PropertyChanging">
-      <HintPath>..\packages\PropertyChanging.Fody.1.25.3\Lib\NET35\PropertyChanging.dll</HintPath>
+      <HintPath>..\packages\PropertyChanging.Fody.1.25.4.0\Lib\NET35\PropertyChanging.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ReactiveUI, Version=5.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ReactiveUI, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\reactiveui-core.5.3.0\lib\Portable-Net45+WinRT45+WP8\ReactiveUI.dll</HintPath>
+      <HintPath>..\packages\reactiveui-core.5.4.0\lib\Portable-Net45+WinRT45+WP8\ReactiveUI.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI.Blend, Version=5.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ReactiveUI.Blend, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\reactiveui-platforms.5.3.0\lib\net45\ReactiveUI.Blend.dll</HintPath>
+      <HintPath>..\packages\reactiveui-platforms.5.4.0\lib\net45\ReactiveUI.Blend.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI.Xaml, Version=5.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ReactiveUI.Xaml, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\reactiveui-platforms.5.3.0\lib\net45\ReactiveUI.Xaml.dll</HintPath>
+      <HintPath>..\packages\reactiveui-platforms.5.4.0\lib\net45\ReactiveUI.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="Remotion, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -181,20 +181,25 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
-    <Reference Include="System.Reactive.Core">
-      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net45\System.Reactive.Core.dll</HintPath>
+    <Reference Include="System.Reactive.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Core.2.2.2\lib\net45\System.Reactive.Core.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Interfaces">
-      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\Net45\System.Reactive.Interfaces.dll</HintPath>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Interfaces.2.2.2\lib\net45\System.Reactive.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Linq">
-      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net45\System.Reactive.Linq.dll</HintPath>
+    <Reference Include="System.Reactive.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Linq.2.2.2\lib\net45\System.Reactive.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.PlatformServices">
-      <HintPath>..\packages\Rx-PlatformServices.2.1.30214.0\lib\Net45\System.Reactive.PlatformServices.dll</HintPath>
+    <Reference Include="System.Reactive.PlatformServices, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-PlatformServices.2.2.2\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Windows.Threading">
-      <HintPath>..\packages\Rx-Xaml.2.1.30214.0\lib\Net45\System.Reactive.Windows.Threading.dll</HintPath>
+    <Reference Include="System.Reactive.Windows.Threading, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-XAML.2.2.2\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
@@ -241,6 +246,7 @@
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\DataStoreModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\MessageModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\PersistenceModule.cs" />
+    <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\TaskSchedulerModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\Ninject\Modules\ViewModule.cs" />
     <Compile Include="Bootstraps\InversionOfControl\ViewModelDependency.cs">
       <DependentUpon>Dependency.cs</DependentUpon>
@@ -280,6 +286,8 @@
     <Compile Include="Features\Commons\Cameras\SplitPage1.xaml.cs">
       <DependentUpon>SplitPage1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\Commons\Configurations\ProductConfigurationDataInitializer.cs" />
+    <Compile Include="Features\Commons\Configurations\ProperCasingConfigurationDataInitializer.cs" />
     <Compile Include="Features\Commons\Persons\PersonBasicDialogController.cs" />
     <Compile Include="Features\Commons\Persons\PersonBasicDialogViewModel.cs" />
     <Compile Include="Features\Commons\Persons\PersonBasicDialogView.xaml.cs">
@@ -359,7 +367,7 @@
       <DependentUpon>MakeListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Firearms\Maintenances\MakeViewModel.cs" />
-    <Compile Include="Features\IStoreDataSyncronizer.cs" />
+    <Compile Include="Features\ITaskScheduler.cs" />
     <Compile Include="Features\Lookup.cs" />
     <Compile Include="Features\Commons\Persons\PhysicalAttributesView.xaml.cs">
       <DependentUpon>PhysicalAttributesView.xaml</DependentUpon>
@@ -370,6 +378,7 @@
     </Compile>
     <Compile Include="Features\Commons\Persons\PersonViewModel.cs" />
     <Compile Include="Features\DialogService.cs" />
+    <Compile Include="Features\MainController.cs" />
     <Compile Include="Features\MainViewModel.cs" />
     <Compile Include="Features\Memberships\Users\ApprovalView.xaml.cs">
       <DependentUpon>ApprovalView.xaml</DependentUpon>
@@ -557,7 +566,7 @@
     <Compile Include="Features\Polices\Warrants\CodelessImportService.cs">
       <DependentUpon>ImportController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\WarrantStoreDataSyncronizer.cs" />
+    <Compile Include="Features\Polices\Warrants\WarrantSyncronizeTaskScheduler.cs" />
     <Compile Include="Features\Settings\Abouts\AboutController.cs" />
     <Compile Include="Features\Settings\Appearances\AppearanceController.cs" />
     <Compile Include="Features\SplashScreenController.cs" />
@@ -588,8 +597,6 @@
     <Compile Include="Utilities\Configurations\DataStoreConfiguration.cs" />
     <Compile Include="Utilities\Configurations\ImageScaleFactorConfiguration.cs" />
     <Compile Include="Utilities\Configurations\LoginConfiguration.cs" />
-    <Compile Include="Utilities\Configurations\ProductConfiguration.cs" />
-    <Compile Include="Utilities\Configurations\ProperCasingConfiguration.cs" />
     <Compile Include="Utilities\Controls\PasswordService.cs" />
     <Compile Include="Utilities\Controls\WaterMarkAdorner.cs" />
     <Compile Include="Utilities\Controls\WaterMarkService.cs" />

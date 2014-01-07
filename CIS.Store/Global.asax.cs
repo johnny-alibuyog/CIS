@@ -4,23 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using CIS.Store.Properties;
 using CIS.Store.Services.Warrants;
 using ServiceStack;
+using ServiceStack.Data;
+using ServiceStack.OrmLite;
 using ServiceStack.Text;
 
 namespace CIS.Store
 {
     public class Global : System.Web.HttpApplication
     {
-        public class AppHost : AppHostBase
-        {
-            public AppHost() : base("Warrant Service", typeof(WarrantService).Assembly) { }
-
-            public override void Configure(Funq.Container container)
-            {
-                JsConfig.EmitCamelCaseNames = true;
-            }
-        }
+        
 
 
         protected void Application_Start(object sender, EventArgs e)

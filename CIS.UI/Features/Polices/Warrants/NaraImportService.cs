@@ -174,11 +174,19 @@ namespace CIS.UI.Features.Polices.Warrants
             {
                 session.SetBatchSize(batchSize);
 
-                var warrantsInDb = session.Query<Warrant>()
+                var query = session.Query<Warrant>()
                     .Where(x => batchCodesToImport.Contains(x.CaseNumber))
                     .FetchMany(x => x.Suspects)
                     .ThenFetchMany(x => x.Aliases)
-                    .ToList();
+                    .ToFuture();
+
+                session.Query<Warrant>()
+                    .Where(x => batchCodesToImport.Contains(x.CaseNumber))
+                    .FetchMany(x => x.Suspects)
+                    .ThenFetchMany(x => x.Occupations)
+                    .ToFuture();
+
+                var warrantsInDb = query.ToList();
 
                 foreach (var item in batchToImport)
                 {
@@ -223,7 +231,7 @@ namespace CIS.UI.Features.Polices.Warrants
                             MiddleName = item1.MiddleName,
                             LastName = item1.LastName,
                             Suffix = item1.Suffix,
-                            Gender = item1.Gender.As<Gender>(),
+                            Gender = item1.Gender.AsNullableEnum<Gender>(),
                             BirthDate = item1.BirthDate
                         };
                         suspect.Address = new Address()

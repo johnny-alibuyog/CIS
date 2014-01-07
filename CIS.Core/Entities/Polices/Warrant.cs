@@ -12,6 +12,7 @@ namespace CIS.Core.Entities.Polices
     {
         private Guid _id;
         //private int _version;
+        private Nullable<Guid> _dataStoreParentKey;
         private Audit _audit;
         private string _warrantCode;
         private string _caseNumber;
@@ -35,6 +36,12 @@ namespace CIS.Core.Entities.Polices
         //    get { return _version; }
         //    protected set { _version = value; }
         //}
+
+        public virtual Nullable<Guid> DataStoreParentKey
+        {
+            get { return _dataStoreParentKey; }
+            set { _dataStoreParentKey = value; }
+        }
 
         public virtual Audit Audit
         {

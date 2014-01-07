@@ -16,11 +16,11 @@ namespace CIS.UI.Utilities.Configurations
     {
         public virtual string ApplicationDataLocation { get; set; }
         public virtual LoginConfiguration Login { get; set; }
-        public virtual ProductConfiguration Product { get; set; }
+        //public virtual ProductConfiguration Product { get; set; }
         public virtual DatabaseConfiguraton Database { get; set; }
         public virtual DataStoreConfiguration DataStore { get; set; }
         public virtual AppearanceConfiguration Apprearance { get; set; }
-        public virtual ProperCasingConfiguration ProperCasing { get; set; }
+        //public virtual ProperCasingConfiguration ProperCasing { get; set; }
         public virtual ImageScaleFactorConfiguration Image { get; set; }
 
         public ApplicationConfiguration()
@@ -30,11 +30,9 @@ namespace CIS.UI.Utilities.Configurations
                 Directory.CreateDirectory(this.ApplicationDataLocation);
 
             this.Login = new LoginConfiguration();
-            this.Product = new ProductConfiguration();
             this.Database = new DatabaseConfiguraton();
             this.DataStore = new DataStoreConfiguration();
             this.Apprearance = new AppearanceConfiguration();
-            this.ProperCasing = new ProperCasingConfiguration();
             this.Image = new ImageScaleFactorConfiguration();
         }
 

@@ -54,7 +54,6 @@ namespace CIS.UI
         protected override void OnExit(ExitEventArgs e)
         {
             //App.Config.Provider.Write(App.Config);
-            App.Config.ProperCasing.IsProperCasingInitialized = true;
             App.Config.Write();
 
             if (_instanceMutex != null)
@@ -92,6 +91,7 @@ namespace CIS.UI
         {
             public static User User { get; set; }
             public static City City { get; set; }
+            public static ProductConfiguration Product { get; set; }
         }
     }
 }

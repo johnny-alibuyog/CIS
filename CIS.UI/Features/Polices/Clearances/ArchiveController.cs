@@ -68,6 +68,8 @@ namespace CIS.UI.Features.Polices.Clearances
                     {
                         Id = x.Id,
                         IssueDate = x.IssueDate,
+                        ControlNumber = x.ControlNumber,
+                        OfficalReceiptNumber = x.OfficialReceiptNumber,
                         Applicant =
                             x.Applicant.Person.FirstName + " " +
                             x.Applicant.Person.MiddleName + " " +

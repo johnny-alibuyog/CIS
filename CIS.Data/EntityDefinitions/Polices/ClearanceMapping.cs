@@ -56,6 +56,8 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Map(x => x.Validity);
 
+            Map(x => x.ControlNumber);
+
             Map(x => x.OfficialReceiptNumber);
 
             Map(x => x.TaxCertificateNumber);

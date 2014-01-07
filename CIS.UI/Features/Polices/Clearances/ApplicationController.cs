@@ -278,8 +278,8 @@ namespace CIS.UI.Features.Polices.Clearances
                 if (station.ClearanceFee == null || station.ClearanceFee <= 0M)
                     station.ClearanceFee = 100.00M;
 
-                this.ViewModel.Summary.Validity = station.GetValidity(DateTime.Today);
                 this.ViewModel.Summary.ClearanceFee = station.ClearanceFee;
+                this.ViewModel.Summary.ClearanceValidityInDays = station.ClearanceValidityInDays;
                 this.ViewModel.PersonalInformation.Address.City = station.Address.City;
                 this.ViewModel.PersonalInformation.Address.Province = station.Address.Province;
                 this.ViewModel.OtherInformation.ProvincialAddress.City = station.Address.City;
@@ -666,6 +666,7 @@ namespace CIS.UI.Features.Polices.Clearances
                 clearance.ApplicationDate = this.ViewModel.Summary.ApplicationDate;
                 clearance.IssueDate = this.ViewModel.Summary.IssuedDate;
                 clearance.Validity = this.ViewModel.Summary.Validity;
+                clearance.ControlNumber = this.ViewModel.Summary.ControlNumber;
                 clearance.OfficialReceiptNumber = this.ViewModel.Summary.OfficialReceiptNumber;
                 clearance.TaxCertificateNumber = this.ViewModel.Summary.TaxCertificateNumber;
                 clearance.Fee = this.ViewModel.Summary.ClearanceFee;

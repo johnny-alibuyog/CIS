@@ -31,6 +31,7 @@ namespace CIS.Core.Entities.Polices
         private Nullable<DateTime> _applicationDate;
         private Nullable<DateTime> _issueDate;
         private string _validity;
+        private string _controlNumber;
         private string _officialReceiptNumber;
         private string _taxCertificateNumber;
         private Nullable<decimal> _fee;
@@ -159,6 +160,12 @@ namespace CIS.Core.Entities.Polices
             set { _validity = value; }
         }
 
+        public virtual string ControlNumber 
+        {
+            get { return _controlNumber; }
+            set { _controlNumber = value; } 
+        }
+
         public virtual string OfficialReceiptNumber
         {
             get { return _officialReceiptNumber; }
@@ -221,7 +228,6 @@ namespace CIS.Core.Entities.Polices
         {
             this.Station = station;
             this.IssueDate = DateTime.Today;
-            this.Validity = station.GetValidity(this.IssueDate);
         }
 
         #endregion

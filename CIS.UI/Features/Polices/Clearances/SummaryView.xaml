@@ -31,19 +31,27 @@
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Validity"/>
-                        <TextBox Text="{Binding Validity, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Text="{Binding Validity, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" IsEnabled="False"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Residential Cert"/>
                         <TextBox Text="{Binding TaxCertificateNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
-                        <Label Content="OR #"/>
+                        <Label Content="OR Number"/>
                         <TextBox Text="{Binding OfficialReceiptNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Control Number"/>
+                        <TextBox Text="{Binding ControlNumber, StringFormat=N2, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Fee"/>
                         <TextBox Text="{Binding ClearanceFee, StringFormat=N2, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Days Valid"/>
+                        <TextBox Text="{Binding ClearanceValidityInDays, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" />
                     </StackPanel>
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Recidency Years"/>
@@ -61,10 +69,10 @@
                         <Label Content="Birth Place"/>
                         <TextBox Text="{Binding BirthPlace, Mode=OneWay}" IsEnabled="False" />
                     </StackPanel>
-                    <StackPanel Style="{StaticResource FieldSet}">
+                    <!--<StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Address"/>
                         <TextBox Text="{Binding Address, Mode=OneWay}" Height="60" IsEnabled="False" TextWrapping="WrapWithOverflow" />
-                    </StackPanel>
+                    </StackPanel>-->
                     <StackPanel Style="{StaticResource FieldSet}">
                         <Label Content="Findings"/>
                         <TextBox Foreground="Red" Text="{Binding FinalFindings, Mode=OneWay}" Height="60" IsEnabled="False" TextWrapping="WrapWithOverflow" />

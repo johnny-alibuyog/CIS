@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using NHibernate.Validator.Constraints;
+using ReactiveUI;
+using System.Reactive.Linq;
 
 namespace CIS.UI.Features.Polices.Clearances
 {
@@ -26,6 +28,9 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual string Validity { get; set; }
 
+        //[NotNullNotEmpty(Message = "Control Number is mandatory.")]
+        public virtual string ControlNumber { get; set; }
+
         [NotNullNotEmpty(Message = "Offical Receipt Number is mandatory.")]
         public virtual string OfficialReceiptNumber { get; set; }
 
@@ -34,6 +39,8 @@ namespace CIS.UI.Features.Polices.Clearances
 
         //[IsNumeric(Message = "Fee should be numeric.")]
         public virtual Nullable<decimal> ClearanceFee { get; set; }
+
+        public virtual Nullable<int> ClearanceValidityInDays { get; set; }
 
         [IsNumeric(Message = "Years of Residency should be numeric.")]
         public virtual Nullable<int> YearsOfResidency { get; set; }
@@ -44,8 +51,19 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public SummaryViewModel()
         {
-            ApplicationDate = DateTime.Today;
-            IssuedDate = DateTime.Today;
+            this.ApplicationDate = DateTime.Today;
+            this.IssuedDate = DateTime.Today;
+
+            this.WhenAnyValue(x => x.ClearanceValidityInDays)
+                .Where(x => x != null)
+                .Subscribe(x =>
+                {
+                    var displayFormat = "Clearance is valid until {0}.";
+                    var validUntil = this.IssuedDate.Value.AddDays(x ?? 60).ToString("MMM-dd-yyyy");
+                    this.Validity = string.Format(displayFormat, validUntil);
+                });
+
         }
+
     }
 }

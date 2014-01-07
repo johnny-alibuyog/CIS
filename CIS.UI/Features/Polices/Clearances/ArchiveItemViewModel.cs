@@ -12,6 +12,10 @@ namespace CIS.UI.Features.Polices.Clearances
 
         public virtual Nullable<DateTime> IssueDate { get; set; }
 
+        public virtual string OfficalReceiptNumber { get; set; }
+
+        public virtual string ControlNumber { get; set; }
+
         public virtual string Applicant { get; set; }
 
         public virtual string Purpose { get; set; }

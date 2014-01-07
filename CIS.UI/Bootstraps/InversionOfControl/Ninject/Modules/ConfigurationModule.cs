@@ -13,15 +13,11 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Modules
     {
         public override void Load()
         {
-            Bind<ApplicationConfiguration>()//.ToSelf()
+            Bind<ApplicationConfiguration>()
                 .ToMethod(x =>
                 {
                     var appConfig = new ApplicationConfiguration();
                     appConfig.Initialize();
-
-                    StringExtention.SetProperCaseSuffix(appConfig.ProperCasing.Suffixes);
-                    StringExtention.SetProperCaseSpecialWords(appConfig.ProperCasing.SpecialWords);
-
                     return appConfig;
                 })
                 .InSingletonScope();

@@ -9,11 +9,24 @@ namespace CIS.UI.Utilities.Extentions
 {
     public static class EnumExtention
     {
-        public static T As<T>(this string value) where T : struct
+        public static T AsEnum<T>(this string value) where T : struct
         {
             T result;
 
             Enum.TryParse<T>(value, true, out result);
+
+            return result;
+        }
+
+        public static Nullable<T> AsNullableEnum<T>(this string value) where T : struct
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return null;
+
+            T result;
+
+            if (Enum.TryParse<T>(value, true, out result) == false)
+                return null;
 
             return result;
         }

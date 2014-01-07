@@ -13,12 +13,17 @@ namespace CIS.Data.Configurations
 {
     internal static class CacheConfiguration
     {
-        public static void Configure(this Configuration config)
+        public static void Configure(this NHibernate.Cfg.Configuration config)
         {
             config
                 .SetProperty(NHibernate.Cfg.Environment.UseSecondLevelCache, "true")
                 .SetProperty(NHibernate.Cfg.Environment.UseQueryCache, "true")
                 .Cache(c => c.Provider<SysCacheProvider>())
+                .EntityCache<Core.Entities.Commons.Configuration>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Configuration";
+                })
                 .EntityCache<Barangay>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;

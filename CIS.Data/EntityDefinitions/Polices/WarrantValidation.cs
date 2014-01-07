@@ -15,6 +15,8 @@ namespace CIS.Data.EntityDefinition.Polices
 
             //Define(x => x.Version);
 
+            Define(x => x.DataStoreParentKey);
+
             Define(x => x.Audit);
 
             Define(x => x.WarrantCode)

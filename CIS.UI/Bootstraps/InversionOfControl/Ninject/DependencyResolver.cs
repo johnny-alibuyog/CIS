@@ -22,26 +22,58 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject
             _kernel = kernel;
         }
 
-        public object Resolve(Type type)
-        {
-            return _kernel.Get(type);
-        }
-
         public object Resolve(Type type, params Dependency[] dependencies)
         {
-            var parameters = dependencies.Select(x => new ConstructorArgument(x.Name, x.Value)).ToArray();
-            return _kernel.Get(type, parameters);
-        }
-
-        public T Resolve<T>()
-        {
-            return _kernel.Get<T>();
+            if (dependencies != null && dependencies.Count() > 0)
+            {
+                var parameters = dependencies.Select(x => new ConstructorArgument(x.Name, x.Value)).ToArray();
+                return _kernel.Get(type, parameters);
+            }
+            else
+            {
+                return _kernel.Get(type);
+            }
         }
 
         public T Resolve<T>(params Dependency[] dependencies)
         {
-            var parameters = dependencies.Select(x => new ConstructorArgument(x.Name, x.Value)).ToArray();
-            return _kernel.Get<T>(parameters);
+            if (dependencies != null && dependencies.Count() > 0)
+            {
+                var parameters = dependencies.Select(x => new ConstructorArgument(x.Name, x.Value)).ToArray();
+                return _kernel.Get<T>(parameters);
+            }
+            else
+            {
+                return _kernel.Get<T>();
+            }
+
+        }
+
+        public IEnumerable<object> ResolveAll(Type type, params Dependency[] dependencies)
+        {
+            if (dependencies != null && dependencies.Count() > 0)
+            {
+                var parameters = dependencies.Select(x => new ConstructorArgument(x.Name, x.Value)).ToArray();
+                return _kernel.GetAll(type, parameters);
+            }
+            else
+            {
+                return _kernel.GetAll(type);
+            }
+        }
+
+        public IEnumerable<T> ResolveAll<T>(params Dependency[] dependencies)
+        {
+            if (dependencies != null && dependencies.Count() > 0)
+            {
+                var parameters = dependencies.Select(x => new ConstructorArgument(x.Name, x.Value)).ToArray();
+                return _kernel.GetAll<T>(parameters);
+            }
+            else
+            {
+                return _kernel.GetAll<T>();
+            }
+
         }
 
         #region Static Members
@@ -67,6 +99,5 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject
         }
 
         #endregion
-
     }
 }

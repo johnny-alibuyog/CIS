@@ -88,6 +88,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppHost.cs" />
+    <Compile Include="Domain\Entities\Address.cs" />
+    <Compile Include="Domain\Entities\AutditTrail.cs" />
+    <Compile Include="Domain\Entities\PhysicalAttributes.cs" />
     <Compile Include="Domain\Entities\Warrant.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -104,6 +108,10 @@
     <Compile Include="Services\Warrants\GetWarrantResponse.cs" />
     <Compile Include="Services\Warrants\InsertWarrantRequest.cs" />
     <Compile Include="Services\Warrants\InsertWarrantResponse.cs" />
+    <Compile Include="Services\Warrants\PullWarrantRequest.cs" />
+    <Compile Include="Services\Warrants\PullWarrantResponse.cs" />
+    <Compile Include="Services\Warrants\PushWarrantRequest.cs" />
+    <Compile Include="Services\Warrants\PushWarrantResponse.cs" />
     <Compile Include="Services\Warrants\UpdateWarrantRequest.cs" />
     <Compile Include="Services\Warrants\UpdateWarrantResponse.cs" />
     <Compile Include="Services\Warrants\WarrantService.cs" />
@@ -138,7 +146,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>58019</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:53890/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

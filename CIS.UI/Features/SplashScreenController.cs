@@ -10,6 +10,7 @@ using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
 using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features.Commons.Biometrics;
+using CIS.UI.Features.Commons.Configurations;
 using CIS.UI.Features.Commons.Terminals;
 using CIS.UI.Features.Firearms.Maintenances;
 using CIS.UI.Features.Polices.Maintenances;
@@ -25,9 +26,6 @@ namespace CIS.UI.Features
         public SplashScreenController(SplashScreenViewModel viewModel)
             : base(viewModel)
         {
-            this.ViewModel.Licensee = App.Config.Product.Licensee;
-            this.ViewModel.Plugins = App.Config.Product.Plugins;
-
             _backgroundWorker = new BackgroundWorker();
             _backgroundWorker.DoWork += (sender, e) => InitializeData();
             _backgroundWorker.RunWorkerCompleted += (sender, e) => this.ViewModel.Close();
@@ -40,44 +38,62 @@ namespace CIS.UI.Features
 
             //dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
             //dataInitializer.Execute();
-            Action<string> SendMessage = (message) =>
+            Action<string> SendMessageAndInitializeViewModel = (message) =>
             {
                 this.ViewModel.Message = message;
                 Thread.Sleep(300);
+
+                if (string.IsNullOrWhiteSpace(this.ViewModel.Licensee) && App.Data.Product != null)
+                    this.ViewModel.Licensee = App.Data.Product.Licensee;
+
+                if (this.ViewModel.Plugins == null && App.Data.Product != null)
+                    this.ViewModel.Plugins = App.Data.Product.Plugins;
             };
 
+            SendMessageAndInitializeViewModel("Initializing product configuration ...");
+            dataInitializer = IoC.Container.Resolve<ProductConfigurationDataInitializer>();
+            dataInitializer.Execute();
 
-            SendMessage("Initializing finger print scanner configuration ...");
+            SendMessageAndInitializeViewModel("Initializing proper casing configuration ...");
+            dataInitializer = IoC.Container.Resolve<ProperCasingConfigurationDataInitializer>();
+            dataInitializer.Execute();
+
+            SendMessageAndInitializeViewModel("Initializing finger print scanner configuration ...");
             dataInitializer = IoC.Container.Resolve<FingerDataInitializer>();
             dataInitializer.Execute();
 
-            SendMessage("Initializing terminal configuration ...");
+            SendMessageAndInitializeViewModel("Initializing terminal configuration ...");
             dataInitializer = IoC.Container.Resolve<TerminalDataInitializer>();
             dataInitializer.Execute();
 
-            SendMessage("Initializing settings ...");
+            SendMessageAndInitializeViewModel("Initializing settings ...");
             dataInitializer = IoC.Container.Resolve<SettingDataInitializer>();
             dataInitializer.Execute();
 
-            SendMessage("Initializing ranks ...");
+            SendMessageAndInitializeViewModel("Initializing ranks ...");
             dataInitializer = IoC.Container.Resolve<RankDataInitializer>();
             dataInitializer.Execute();
 
-            SendMessage("Initializing purposes ...");
+            SendMessageAndInitializeViewModel("Initializing purposes ...");
             dataInitializer = IoC.Container.Resolve<PurposeDataInitializer>();
             dataInitializer.Execute();
 
-            SendMessage("Initializing make ...");
+            SendMessageAndInitializeViewModel("Initializing make ...");
             dataInitializer = IoC.Container.Resolve<MakeDataInitializer>();
             dataInitializer.Execute();
 
-            SendMessage("Initializing kind ...");
+            SendMessageAndInitializeViewModel("Initializing kind ...");
             dataInitializer = IoC.Container.Resolve<KindDataInitializer>();
             dataInitializer.Execute();
 
-            SendMessage("Initializing station configuration ...");
+            SendMessageAndInitializeViewModel("Initializing station ...");
             dataInitializer = IoC.Container.Resolve<StationDataInitializer>();
             dataInitializer.Execute();
+
+            SendMessageAndInitializeViewModel("Set proper casing configuration as initialzed...");
+            var properCasingDataInitializer = (ProperCasingConfigurationDataInitializer)null;
+            properCasingDataInitializer = IoC.Container.Resolve<ProperCasingConfigurationDataInitializer>();
+            properCasingDataInitializer.SetProperCasingIsInitialized(true);
 
             //LoadImages();
         }
@@ -90,10 +106,10 @@ namespace CIS.UI.Features
             using (var transaction = session.BeginTransaction())
             {
                 applicants = session.Query<Applicant>()
-                    .Where(x => 
+                    .Where(x =>
                         x.Person.Gender == Gender.Female &&
                         x.CivilStatus == CivilStatus.Single &&
-                        DateTime.Today.Year - x.Person.BirthDate.Value.Year < 21 
+                        DateTime.Today.Year - x.Person.BirthDate.Value.Year < 21
                     )
                     .Fetch(x => x.Pictures)
                     .ToList();
@@ -102,14 +118,14 @@ namespace CIS.UI.Features
             }
 
             foreach (var applicant in applicants)
-            foreach (var picture in applicant.Pictures)
-            {
-                if (picture.Image == null)
-                    continue;
+                foreach (var picture in applicant.Pictures)
+                {
+                    if (picture.Image == null)
+                        continue;
 
-                var filename = Path.Combine(App.Config.ApplicationDataLocation, applicant.Person.Fullname + ".bmp");
-                picture.Image.Save(filename);
-            }
+                    var filename = Path.Combine(App.Config.ApplicationDataLocation, applicant.Person.Fullname + ".bmp");
+                    picture.Image.Save(filename);
+                }
         }
     }
 }

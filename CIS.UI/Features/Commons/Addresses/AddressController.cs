@@ -297,7 +297,7 @@ namespace CIS.UI.Features.Commons.Addresses
                             x.Province.Name == barangayToImport.Province &&
                             x.Province.Region.Name == barangayToImport.Region
                         );
-                        barangay.AreaClass = barangayToImport.AreaClass.As<AreaClass>();
+                        barangay.AreaClass = barangayToImport.AreaClass.AsNullableEnum<AreaClass>();
                         barangay.Population = barangayToImport.Population;
                         barangays.Add(barangay);
                         session.Insert(barangay);

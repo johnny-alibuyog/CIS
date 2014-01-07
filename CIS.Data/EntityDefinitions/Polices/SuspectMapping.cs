@@ -16,6 +16,12 @@ namespace CIS.Data.EntityDefinition.Polices
 
             Id(x => x.Id);
 
+            Map(x => x.DataStoreId)
+                .Index("DataStoreIdIndex");
+
+            Map(x => x.DataStoreChildKey)
+                .Index("DataStoreChildKey");
+
             //Version(x => x.Version);
 
             Component(x => x.Audit);
@@ -25,8 +31,6 @@ namespace CIS.Data.EntityDefinition.Polices
             Map(x => x.ArrestStatus);
 
             Map(x => x.ArrestDate);
-
-            Map(x => x.DataStoreId);
 
             Map(x => x.Disposition);
 
@@ -42,7 +46,8 @@ namespace CIS.Data.EntityDefinition.Polices
                 .Cascade.AllDeleteOrphan()
                 .Fetch.Subselect()
                 .Table("SuspectAliases")
-                .Element("Name");
+                .Element("Name")
+                .AsSet();
 
             HasMany(x => x.Occupations)
                 .Access.CamelCaseField(Prefix.Underscore)
@@ -50,7 +55,8 @@ namespace CIS.Data.EntityDefinition.Polices
                 .Cascade.AllDeleteOrphan()
                 .Fetch.Subselect()
                 .Table("SuspectOccupations")
-                .Element("Value");
+                .Element("Value")
+                .AsSet();
         }
     }
 }

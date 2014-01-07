@@ -6,16 +6,88 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.21181in</Width>
+              <Width>0.675in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.55556in</Width>
+              <Width>0.675in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.95537in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.94723in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.18in</Height>
+              <Height>0.15917in</Height>
               <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Official Receipt</Value>
+                              <Style>
+                                <FontFamily>tahoma</FontFamily>
+                                <FontSize>5pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox7">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Control Number</Value>
+                              <Style>
+                                <FontFamily>tahoma</FontFamily>
+                                <FontSize>5pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Textbox3">
@@ -28,7 +100,7 @@
                               <Value>Applicant</Value>
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>6pt</FontSize>
+                                <FontSize>5pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -61,7 +133,7 @@
                               <Value>Purpose</Value>
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>6pt</FontSize>
+                                <FontSize>5pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -85,8 +157,72 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.18in</Height>
+              <Height>0.14875in</Height>
               <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="OfficalReceiptNumber">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!OfficalReceiptNumber.Value</Value>
+                              <Style>
+                                <FontFamily>tahoma</FontFamily>
+                                <FontSize>5pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>OfficalReceiptNumber</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="ControlNumber">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!ControlNumber.Value</Value>
+                              <Style>
+                                <FontFamily>tahoma</FontFamily>
+                                <FontSize>5pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>ControlNumber</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Applicant">
@@ -99,7 +235,7 @@
                               <Value>=Fields!Applicant.Value</Value>
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>6pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -131,7 +267,7 @@
                               <Value>=Fields!Purpose.Value</Value>
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>6pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -154,8 +290,78 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.17708in</Height>
+              <Height>0.15625in</Height>
               <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox4">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox9">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>tahoma</FontFamily>
+                                <FontSize>7pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Textbox27">
@@ -203,7 +409,7 @@
                               <Value>=String.Format("Total: {0}", Count(Fields!Applicant.Value))</Value>
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>6pt</FontSize>
+                                <FontSize>4pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -230,6 +436,76 @@
             <TablixRow>
               <Height>0.17708in</Height>
               <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox6">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>tahoma</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox6</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox11">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>tahoma</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Textbox28">
@@ -277,7 +553,7 @@
                               <Value>=String.Format("Grand Total: {0}", Count(Fields!Applicant.Value))</Value>
                               <Style>
                                 <FontFamily>tahoma</FontFamily>
-                                <FontSize>6pt</FontSize>
+                                <FontSize>4pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -307,13 +583,15 @@
           <TablixMembers>
             <TablixMember />
             <TablixMember />
+            <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>0.88888in</Size>
+                <Size>0.675in</Size>
                 <CellContents>
                   <Textbox Name="Textbox10">
                     <CanGrow>true</CanGrow>
@@ -325,7 +603,7 @@
                             <Value>Issue Date</Value>
                             <Style>
                               <FontFamily>tahoma</FontFamily>
-                              <FontSize>6pt</FontSize>
+                              <FontSize>5pt</FontSize>
                               <FontWeight>Bold</FontWeight>
                             </Style>
                           </TextRun>
@@ -363,7 +641,7 @@
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>0.88888in</Size>
+                <Size>0.675in</Size>
                 <CellContents>
                   <Textbox Name="IssueDate">
                     <CanGrow>true</CanGrow>
@@ -375,7 +653,7 @@
                             <Value>=Fields!IssueDate.Value</Value>
                             <Style>
                               <FontFamily>tahoma</FontFamily>
-                              <FontSize>6pt</FontSize>
+                              <FontSize>5pt</FontSize>
                               <Format>yyyy-MM-dd</Format>
                             </Style>
                           </TextRun>
@@ -410,7 +688,7 @@
             </TablixMember>
             <TablixMember>
               <TablixHeader>
-                <Size>0.88888in</Size>
+                <Size>0.675in</Size>
                 <CellContents>
                   <Textbox Name="Textbox19">
                     <CanGrow>true</CanGrow>
@@ -448,16 +726,16 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>ItemDataSet</DataSetName>
-        <Top>0.11395in</Top>
-        <Left>0.42188in</Left>
-        <Height>0.71416in</Height>
-        <Width>7.65625in</Width>
+        <Top>0.15041in</Top>
+        <Left>0.2862in</Left>
+        <Height>0.64125in</Height>
+        <Width>7.9276in</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
           <FontFamily>Tahoma</FontFamily>
-          <FontSize>6pt</FontSize>
+          <FontSize>4pt</FontSize>
         </Style>
       </Tablix>
     </ReportItems>
@@ -501,8 +779,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Verifier</rd:DefaultName>
-          <Top>0.88889in</Top>
-          <Left>0.52917in</Left>
+          <Top>0.88145in</Top>
+          <Left>0.40417in</Left>
           <Height>0.1375in</Height>
           <Width>4.40779in</Width>
           <Style>
@@ -650,7 +928,7 @@
           </Paragraphs>
           <rd:DefaultName>Verifier</rd:DefaultName>
           <Top>0.1125in</Top>
-          <Left>0.52917in</Left>
+          <Left>0.40417in</Left>
           <Height>0.1375in</Height>
           <Width>4.40779in</Width>
           <Style>
@@ -689,24 +967,12 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="ActionResult">
-          <DataField>ActionResult</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
-        </Field>
         <Field Name="Applicant">
           <DataField>Applicant</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Changed">
-          <DataField>Changed</DataField>
-          <rd:TypeName>System.IObservable`1[[ReactiveUI.IObservedChange`2[[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ReactiveUI_Net45, Version=4.6.1.0, Culture=neutral, PublicKeyToken=null]]</rd:TypeName>
-        </Field>
-        <Field Name="Changing">
-          <DataField>Changing</DataField>
-          <rd:TypeName>System.IObservable`1[[ReactiveUI.IObservedChange`2[[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], ReactiveUI_Net45, Version=4.6.1.0, Culture=neutral, PublicKeyToken=null]]</rd:TypeName>
-        </Field>
-        <Field Name="Error">
-          <DataField>Error</DataField>
+        <Field Name="ControlNumber">
+          <DataField>ControlNumber</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Id">
@@ -715,11 +981,11 @@
         </Field>
         <Field Name="IssueDate">
           <DataField>IssueDate</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
-        <Field Name="IsValid">
-          <DataField>IsValid</DataField>
-          <rd:TypeName>System.Boolean</rd:TypeName>
+        <Field Name="OfficalReceiptNumber">
+          <DataField>OfficalReceiptNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Purpose">
           <DataField>Purpose</DataField>

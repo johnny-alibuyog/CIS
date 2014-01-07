@@ -26,9 +26,10 @@ namespace CIS.Store.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        public string Setting {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=cisstoredb;User ID=sa;Password=admin123")]
+        public string ConnectionString {
             get {
-                return ((string)(this["Setting"]));
+                return ((string)(this["ConnectionString"]));
             }
         }
     }
