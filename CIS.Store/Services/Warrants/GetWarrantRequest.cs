@@ -11,5 +11,6 @@ namespace CIS.Store.Services.Warrants
     public class GetWarrantRequest : IReturn<GetWarrantResponse>
     {
         public virtual long Id { get; set; }
+        public virtual ClientInfo Client { get; set; }
     }
 }

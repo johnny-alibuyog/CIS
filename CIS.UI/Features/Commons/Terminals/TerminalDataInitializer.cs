@@ -34,6 +34,8 @@ namespace CIS.UI.Features.Commons.Terminals
                     session.Save(terminal);
                 }
 
+                App.Data.Terminal = terminal;
+
                 transaction.Commit();
             }
         }

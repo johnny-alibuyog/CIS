@@ -32,5 +32,23 @@ namespace CIS.Store.Properties {
                 return ((string)(this["ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("cisstoredbuser")]
+        public string DefaultUserName {
+            get {
+                return ((string)(this["DefaultUserName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("!@#123qwe")]
+        public string DefaultUserPassword {
+            get {
+                return ((string)(this["DefaultUserPassword"]));
+            }
+        }
     }
 }

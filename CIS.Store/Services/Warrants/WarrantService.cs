@@ -9,6 +9,7 @@ using ServiceStack.OrmLite.SqlServer;
 
 namespace CIS.Store.Services.Warrants
 {
+    [Authenticate()]
     public class WarrantService : Service
     {
         public virtual GetWarrantResponse Get(GetWarrantRequest request)
@@ -39,13 +40,13 @@ namespace CIS.Store.Services.Warrants
                 warrant.PopulateWith(request.Warrant);
                 var count = Db.Update<Warrant>(warrant);
                 var remarks = string.Format("updated count: {0}", count);
-                Db.Insert<AutditTrail>(new AutditTrail("dummyUser", "dummyOrigin", "WarrantService", "InsertWarrant", remarks));
+                Db.Insert<AuditTrail>(new AuditTrail(request.Client.Username, request.Client.Origin, "WarrantService", "InsertWarrant", remarks));
             }
             else
             {
                 request.Warrant.Id = Db.Insert<Warrant>(request.Warrant, selectIdentity: true);
                 var remarks = string.Format("inserted id: {0}", warrant.Id);
-                Db.Insert<AutditTrail>(new AutditTrail("dummyUser", "dummyOrigin", "WarrantService", "InsertWarrant", remarks));
+                Db.Insert<AuditTrail>(new AuditTrail(request.Client.Username, request.Client.Origin, "WarrantService", "InsertWarrant", remarks));
             }
 
             return new InsertWarrantResponse() { Warrant = request.Warrant };
@@ -55,7 +56,7 @@ namespace CIS.Store.Services.Warrants
         {
             var count = Db.Update<Warrant>(request.Warrant);
             var remarks = string.Format("updated count: {0}", count);
-            Db.Insert<AutditTrail>(new AutditTrail("dummyUser", "dummyOrigin", "WarrantService", "UpdateWarrant", remarks));
+            Db.Insert<AuditTrail>(new AuditTrail(request.Client.Username, request.Client.Origin, "WarrantService", "UpdateWarrant", remarks));
 
             return new UpdateWarrantResponse() { Warrant = request.Warrant };
         }
@@ -75,7 +76,7 @@ namespace CIS.Store.Services.Warrants
             if (warrants.Count > 0)
             {
                 var remarks = string.Format("pulled count: {0}", warrants.Count);
-                Db.Insert<AutditTrail>(new AutditTrail("dummyUser", "dummyOrigin", "WarrantService", "PullWarrant", remarks));
+                Db.Insert<AuditTrail>(new AuditTrail(request.Client.Username, request.Client.Origin, "WarrantService", "PullWarrant", remarks));
             }
 
             return new PullWarrantResponse() { Warrants = warrants.ToArray() };
@@ -111,7 +112,7 @@ namespace CIS.Store.Services.Warrants
             if (pulledCount > 0 || pushedCount > 0)
             {
                 var remarks = string.Format("pulled count: {0} pushed count: {1}", pulledCount, pushedCount);
-                Db.Insert<AutditTrail>(new AutditTrail("dummyUser", "dummyOrigin", "WarrantService", "PushWarrant", remarks));
+                Db.Insert<AuditTrail>(new AuditTrail(request.Client.Username, request.Client.Origin, "WarrantService", "PushWarrant", remarks));
             }
 
             return new PushWarrantResponse() { Warrants = request.Warrants };
@@ -126,7 +127,7 @@ namespace CIS.Store.Services.Warrants
             else
                 remarks = string.Format("unable to delete id: {0}", request.Id);
 
-            Db.Insert<AutditTrail>(new AutditTrail("dummyUser", "dummyOrigin", "WarrantService", "PushWarrant", remarks));
+            Db.Insert<AuditTrail>(new AuditTrail(request.Client.Username, request.Client.Origin, "WarrantService", "PushWarrant", remarks));
 
             return new DeleteWarrantResponse();
         }

@@ -29,6 +29,10 @@ namespace CIS.UI.Features.Commons.Configurations
                     session.Save(dataStore);
                 }
 
+                dataStore.BaseUri = App.Config.ConnectToProductionEnvironment
+                    ? DataStoreConfiguration.ProductionBaseUri
+                    : DataStoreConfiguration.DevelopmentBaseUri;
+
                 App.Data.DataStore = dataStore;
 
                 transaction.Commit();

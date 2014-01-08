@@ -14,7 +14,7 @@ namespace CIS.UI.Features
 
         public MainController(MainViewModel viewModel) : base(viewModel)
         {
-            if (App.Data.DataStore.Syncronize)
+            if (App.Config.SyncronizeToDataStore)
             {
                 _tasks = IoC.Container.ResolveAll<ITaskScheduler>();
                 foreach (var task in _tasks)

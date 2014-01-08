@@ -11,5 +11,6 @@ namespace CIS.Store.Services.Warrants
     public class InsertWarrantRequest : IReturn<InsertWarrantResponse>
     {
         public virtual Warrant Warrant { get; set; }
+        public virtual ClientInfo Client { get; set; }
     }
 }

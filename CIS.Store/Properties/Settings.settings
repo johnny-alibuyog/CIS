@@ -10,5 +10,11 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=(local);Initial Catalog=cisstoredb;User ID=sa;Password=admin123</Value>
     </Setting>
+    <Setting Name="DefaultUserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">cisstoredbuser</Value>
+    </Setting>
+    <Setting Name="DefaultUserPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">!@#123qwe</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -90,7 +90,7 @@
   <ItemGroup>
     <Compile Include="AppHost.cs" />
     <Compile Include="Domain\Entities\Address.cs" />
-    <Compile Include="Domain\Entities\AutditTrail.cs" />
+    <Compile Include="Domain\Entities\AuditTrail.cs" />
     <Compile Include="Domain\Entities\PhysicalAttributes.cs" />
     <Compile Include="Domain\Entities\Warrant.cs" />
     <Compile Include="Global.asax.cs">
@@ -102,6 +102,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Services\ClientInfo.cs" />
+    <Compile Include="Services\Memberships\Registration.cs" />
     <Compile Include="Services\Warrants\DeleteWarrantRequest.cs" />
     <Compile Include="Services\Warrants\DeleteWarrantResponse.cs" />
     <Compile Include="Services\Warrants\GetWarrantRequest.cs" />

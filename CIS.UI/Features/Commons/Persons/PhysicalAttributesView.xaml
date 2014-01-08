@@ -34,5 +34,9 @@
             <Label Content="Race"/>
             <TextBox Text="{Binding Race, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
+        <StackPanel Style="{StaticResource FieldSet}">
+            <Label Content="Nationality"/>
+            <TextBox Text="{Binding Nationality, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
     </StackPanel>
 </UserControl>

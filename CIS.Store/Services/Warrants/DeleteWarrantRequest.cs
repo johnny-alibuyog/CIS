@@ -10,5 +10,6 @@ namespace CIS.Store.Services.Warrants
     public class DeleteWarrantRequest : IReturn<DeleteWarrantResponse>
     {
         public virtual long Id { get; set; }
+        public virtual ClientInfo Client { get; set; }
     }
 }

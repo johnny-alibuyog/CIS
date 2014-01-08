@@ -14,6 +14,8 @@ namespace CIS.UI.Utilities.Configurations
     [Serializable()]
     public class ApplicationConfiguration : AppConfiguration
     {
+        public virtual bool SyncronizeToDataStore { get; set; }
+        public virtual bool ConnectToProductionEnvironment { get; set; }
         public virtual string ApplicationDataLocation { get; set; }
         public virtual LoginConfiguration Login { get; set; }
         public virtual DatabaseConfiguraton Database { get; set; }
@@ -21,6 +23,8 @@ namespace CIS.UI.Utilities.Configurations
 
         public ApplicationConfiguration()
         {
+            this.SyncronizeToDataStore = false;
+            this.ConnectToProductionEnvironment = true;
             this.ApplicationDataLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CIS");
             if (Directory.Exists(this.ApplicationDataLocation) == false)
                 Directory.CreateDirectory(this.ApplicationDataLocation);

@@ -12,5 +12,6 @@ namespace CIS.Store.Services.Warrants
     {
         public virtual int FetchSize { get; set; }
         public virtual Warrant[] Warrants { get; set; }
+        public virtual ClientInfo Client { get; set; }
     }
 }

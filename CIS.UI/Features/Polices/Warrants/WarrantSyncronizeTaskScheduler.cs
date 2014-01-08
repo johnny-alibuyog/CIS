@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
 using CIS.Core.Utilities.Extentions;
+using CIS.Store.Services;
 using CIS.Store.Services.Warrants;
 using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Utilities.Extentions;
@@ -39,10 +40,10 @@ namespace CIS.UI.Features.Polices.Warrants
 
             _timer = new Timer();
             _timer.Interval = App.Data.DataStore.SyncronizeInterval * 1000;
-            _timer.Tick += (sender, e) => 
-            { 
-                if (!this.IsWorkInProgress) 
-                    _worker.RunWorkerAsync(); 
+            _timer.Tick += (sender, e) =>
+            {
+                if (!this.IsWorkInProgress)
+                    _worker.RunWorkerAsync();
             };
         }
 
@@ -92,6 +93,7 @@ namespace CIS.UI.Features.Polices.Warrants
                 request.FetchSize = App.Data.DataStore.FetchSize;
                 request.MissingIds = session.CreateSQLQuery(sql).List<long>().ToArray();
                 request.LatestId = session.Query<Suspect>().Max(o => o.DataStoreId) ?? 0;
+                request.Client = App.Data.GetClientInfo();
 
                 transaction.Commit();
             }
@@ -133,6 +135,7 @@ namespace CIS.UI.Features.Polices.Warrants
                         Remarks = x.Warrant.Remarks,
                         BailAmount = x.Warrant.BailAmount,
                         IssuedOn = x.Warrant.IssuedOn,
+                        IssuedBy = x.Warrant.IssuedBy,
                         IssuedAt = x.Warrant.IssuedAt != null
                             ? new Store.Domain.Entities.Address()
                             {
@@ -234,7 +237,6 @@ namespace CIS.UI.Features.Polices.Warrants
 
                     foreach (var warrant in warrants)
                     {
-
                         warrant.DataStoreParentKey = item.ParentKey;
                         warrant.WarrantCode = item.WarrantCode;
                         warrant.CaseNumber = item.CaseNumber;
@@ -454,7 +456,8 @@ namespace CIS.UI.Features.Polices.Warrants
                 var request = new PushWarrantRequest()
                 {
                     FetchSize = App.Data.DataStore.FetchSize,
-                    Warrants = warrants.ToArray()
+                    Warrants = warrants.ToArray(),
+                    Client = App.Data.GetClientInfo()
                 };
 
                 var response = _service.Patch(request);

@@ -6,7 +6,7 @@ using ServiceStack.DataAnnotations;
 
 namespace CIS.Store.Domain.Entities
 {
-    public class AutditTrail
+    public class AuditTrail
     {
         [AutoIncrement()]
         public virtual long Id { get; set; }
@@ -34,12 +34,12 @@ namespace CIS.Store.Domain.Entities
         [StringLength(250)]
         public virtual string Remarks { get; set; }
 
-        public AutditTrail()
+        public AuditTrail()
         {
             Date = DateTimeOffset.UtcNow;
         }
 
-        public AutditTrail(string user, string origin, string service, string operation, string remarks)
+        public AuditTrail(string user, string origin, string service, string operation, string remarks)
             : this()
         {
             this.User = user;

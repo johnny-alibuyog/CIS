@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Memberships;
+using CIS.Store.Services;
 using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features;
 using CIS.UI.Features.Memberships.Users;
@@ -94,9 +95,19 @@ namespace CIS.UI
         {
             public virtual User User { get; set; }
             public virtual City City { get; set; }
+            public virtual Terminal Terminal { get; set; }
             public virtual ProductConfiguration Product { get; set; }
             public virtual DataStoreConfiguration DataStore { get; set; }
             public virtual ImageScaleFactorConfiguration Image { get; set; }
+
+            public virtual ClientInfo GetClientInfo()
+            {
+                return new ClientInfo()
+                {
+                    Username = User.Username,
+                    Origin = Terminal.MachineName
+                };
+            }
         }
     }
 }

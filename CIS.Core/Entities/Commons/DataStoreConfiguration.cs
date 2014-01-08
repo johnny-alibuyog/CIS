@@ -8,6 +8,9 @@ namespace CIS.Core.Entities.Commons
 {
     public class DataStoreConfiguration : Configuration
     {
+        public static readonly string ProductionBaseUri = "http://cisstore.azurewebsites.net";
+        public static readonly string DevelopmentBaseUri = "http://localhost:53890/";
+
         public virtual string BaseUri
         {
             get { return this.GetPropertyValue("BaseUri"); }
@@ -46,10 +49,9 @@ namespace CIS.Core.Entities.Commons
 
         public DataStoreConfiguration()
         {
-            this.BaseUri = "http://localhost:53890/";
-            //this.BaseUri = "http://cisstore.azurewebsites.net";
-            this.Username = "cistoreuser";
-            this.Password = "123456a$";
+            this.BaseUri = DevelopmentBaseUri;
+            this.Username = "cisstoredbuser";
+            this.Password = "!@#123qwe";
             this.Syncronize = true;
             this.SyncronizeInterval = 60;
             this.FetchSize = 100;
