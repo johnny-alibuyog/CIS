@@ -17,13 +17,11 @@ namespace CIS.UI.Bootstraps.InversionOfControl.Ninject.Modules
             Bind<IRestClient>()
                 .ToMethod(x =>
                 {
-                    var appConfig = x.Kernel.Get<ApplicationConfiguration>();
-
                     return new JsonServiceClient() // XmlServiceClient, JsvServiceClient, MsgPackServiceClient
                     {
-                        BaseUri = appConfig.DataStore.BaseUri,
-                        UserName = appConfig.DataStore.Username,
-                        Password = appConfig.DataStore.Password
+                        BaseUri = App.Data.DataStore.BaseUri,
+                        UserName = App.Data.DataStore.Username,
+                        Password = App.Data.DataStore.Password
                     };
                 });
 

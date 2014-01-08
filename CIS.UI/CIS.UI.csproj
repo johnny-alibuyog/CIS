@@ -286,6 +286,8 @@
     <Compile Include="Features\Commons\Cameras\SplitPage1.xaml.cs">
       <DependentUpon>SplitPage1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\Commons\Configurations\DataStoreConfigurationDataInitializer.cs" />
+    <Compile Include="Features\Commons\Configurations\ImageScaleFactorConfigurationDataInitializer.cs" />
     <Compile Include="Features\Commons\Configurations\ProductConfigurationDataInitializer.cs" />
     <Compile Include="Features\Commons\Configurations\ProperCasingConfigurationDataInitializer.cs" />
     <Compile Include="Features\Commons\Persons\PersonBasicDialogController.cs" />
@@ -594,8 +596,6 @@
     <Compile Include="Utilities\Configurations\ApplicationConfiguration.cs" />
     <Compile Include="Utilities\Configurations\AppearanceConfiguration.cs" />
     <Compile Include="Utilities\Configurations\DatabaseConfiguraton.cs" />
-    <Compile Include="Utilities\Configurations\DataStoreConfiguration.cs" />
-    <Compile Include="Utilities\Configurations\ImageScaleFactorConfiguration.cs" />
     <Compile Include="Utilities\Configurations\LoginConfiguration.cs" />
     <Compile Include="Utilities\Controls\PasswordService.cs" />
     <Compile Include="Utilities\Controls\WaterMarkAdorner.cs" />

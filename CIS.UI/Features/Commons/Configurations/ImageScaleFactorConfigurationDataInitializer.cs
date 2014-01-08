@@ -5,15 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Commons;
 using NHibernate;
-using NHibernate.Linq;
 
 namespace CIS.UI.Features.Commons.Configurations
 {
-    public class ProductConfigurationDataInitializer : IDataInitializer
+    public class ImageScaleFactorConfigurationDataInitializer : IDataInitializer
     {
         private readonly ISessionFactory _sessionFactory;
 
-        public ProductConfigurationDataInitializer(ISessionFactory sessionFactory)
+        public ImageScaleFactorConfigurationDataInitializer(ISessionFactory sessionFactory)
         {
             _sessionFactory = sessionFactory;
         }
@@ -23,14 +22,14 @@ namespace CIS.UI.Features.Commons.Configurations
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var product = session.QueryOver<ProductConfiguration>().Cacheable().SingleOrDefault();
-                if (product == null)
+                var imageScaleFactor = session.QueryOver<ImageScaleFactorConfiguration>().Cacheable().SingleOrDefault();
+                if (imageScaleFactor == null)
                 {
-                    product = new ProductConfiguration();
-                    session.Save(product);
+                    imageScaleFactor = new ImageScaleFactorConfiguration();
+                    session.Save(imageScaleFactor);
                 }
 
-                App.Data.Product = product;
+                App.Data.Image = imageScaleFactor;
 
                 transaction.Commit();
             }

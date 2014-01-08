@@ -49,10 +49,10 @@ namespace CIS.UI.Features.Commons.Cameras
 
 #if DEBUG
             bitmap.Save(Path.Combine(App.Config.ApplicationDataLocation, "rawPicture.bmp"));
-            bitmap.ReduceSize(App.Config.Image.PictureResizeScaleFactor).Save(Path.Combine(App.Config.ApplicationDataLocation, "reducedPicture.bmp"));
+            bitmap.ReduceSize(App.Data.Image.PictureResizeScaleFactor).Save(Path.Combine(App.Config.ApplicationDataLocation, "reducedPicture.bmp"));
 #endif
 
-            this.ViewModel.ImagePreview = bitmap.ReduceSize(App.Config.Image.PictureResizeScaleFactor).ToBitmapSource();
+            this.ViewModel.ImagePreview = bitmap.ReduceSize(App.Data.Image.PictureResizeScaleFactor).ToBitmapSource();
         }
 
         public virtual void Start()

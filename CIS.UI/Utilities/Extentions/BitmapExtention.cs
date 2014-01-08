@@ -157,7 +157,7 @@ namespace CIS.UI.Utilities.Extentions
 
         public static BitmapSource ReduceSize(this BitmapSource bitmapSource)
         {
-            return bitmapSource.ReduceSize(App.Config.Image.DefaultResizeScaleFactor);
+            return bitmapSource.ReduceSize(App.Data.Image.DefaultResizeScaleFactor);
         }
 
         public static BitmapSource ReduceSize(this BitmapSource bitmapSource, double scaleFactor)
@@ -174,7 +174,7 @@ namespace CIS.UI.Utilities.Extentions
 
         public static Bitmap ReduceSize(this Bitmap source)
         {
-            return ReduceSize(source, App.Config.Image.DefaultResizeScaleFactor);
+            return ReduceSize(source, App.Data.Image.DefaultResizeScaleFactor);
         }
 
         public static Bitmap ReduceSize(this Bitmap source, double scaleFactor)

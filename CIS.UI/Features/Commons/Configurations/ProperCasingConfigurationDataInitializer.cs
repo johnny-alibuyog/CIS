@@ -25,15 +25,15 @@ namespace CIS.UI.Features.Commons.Configurations
             using (var session = _sessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
             {
-                var configuration = session.QueryOver<ProperCasingConfiguration>().Cacheable().SingleOrDefault();
-                if (configuration == null)
+                var properCasing = session.QueryOver<ProperCasingConfiguration>().Cacheable().SingleOrDefault();
+                if (properCasing == null)
                 {
-                    configuration = new ProperCasingConfiguration();
-                    session.Save(configuration);
+                    properCasing = new ProperCasingConfiguration();
+                    session.Save(properCasing);
                 }
 
-                StringExtention.SetProperCaseSuffix(configuration.Suffixes);
-                StringExtention.SetProperCaseSpecialWords(configuration.SpecialWords);
+                StringExtention.SetProperCaseSuffix(properCasing.Suffixes);
+                StringExtention.SetProperCaseSpecialWords(properCasing.SpecialWords);
 
                 transaction.Commit();
             }

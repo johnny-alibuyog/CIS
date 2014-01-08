@@ -132,6 +132,18 @@
     <Compile Include="Conventions\_CustomJoinedSubclassConvention.cs" />
     <Compile Include="EntityDefinitions\Commons\ConfigurationMapping.cs" />
     <Compile Include="EntityDefinitions\Commons\ConfigurationValidation.cs" />
+    <Compile Include="EntityDefinitions\Commons\DataStoreConfigurationMapping.cs">
+      <DependentUpon>ConfigurationMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\Commons\DataStoreConfigurationValidation.cs">
+      <DependentUpon>ConfigurationValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\Commons\ImageScaleFactorConfigurationMapping.cs">
+      <DependentUpon>ConfigurationMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\Commons\ImageScaleFactorConfigurationValidation.cs">
+      <DependentUpon>ConfigurationValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="EntityDefinitions\Commons\PersonBasicMapping.cs" />
     <Compile Include="EntityDefinitions\Commons\PersonBasicValidation.cs" />
     <Compile Include="EntityDefinitions\Commons\PhysicalAttributesMapping.cs" />

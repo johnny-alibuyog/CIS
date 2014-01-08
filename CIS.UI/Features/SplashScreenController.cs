@@ -36,8 +36,6 @@ namespace CIS.UI.Features
         {
             var dataInitializer = (IDataInitializer)null;
 
-            //dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
-            //dataInitializer.Execute();
             Action<string> SendMessageAndInitializeViewModel = (message) =>
             {
                 this.ViewModel.Message = message;
@@ -50,12 +48,23 @@ namespace CIS.UI.Features
                     this.ViewModel.Plugins = App.Data.Product.Plugins;
             };
 
+            //dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
+            //dataInitializer.Execute();
+
             SendMessageAndInitializeViewModel("Initializing product configuration ...");
             dataInitializer = IoC.Container.Resolve<ProductConfigurationDataInitializer>();
             dataInitializer.Execute();
 
             SendMessageAndInitializeViewModel("Initializing proper casing configuration ...");
             dataInitializer = IoC.Container.Resolve<ProperCasingConfigurationDataInitializer>();
+            dataInitializer.Execute();
+
+            SendMessageAndInitializeViewModel("Initializing data store configuration ...");
+            dataInitializer = IoC.Container.Resolve<DataStoreConfigurationDataInitializer>();
+            dataInitializer.Execute();
+
+            SendMessageAndInitializeViewModel("Initializing image resize scale factore configuration ...");
+            dataInitializer = IoC.Container.Resolve<ImageScaleFactorConfigurationDataInitializer>();
             dataInitializer.Execute();
 
             SendMessageAndInitializeViewModel("Initializing finger print scanner configuration ...");

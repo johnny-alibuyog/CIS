@@ -26,10 +26,13 @@ namespace CIS.UI
             get { return Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive); }
         }
 
+        public static ApplicationData Data { get; set; }
+
         public static ApplicationConfiguration Config { get; set; }
 
         public App()
         {
+            App.Data = IoC.Container.Resolve<ApplicationData>();
             App.Config = IoC.Container.Resolve<ApplicationConfiguration>();
         }
 
@@ -87,11 +90,13 @@ namespace CIS.UI
             this.Shutdown(1);
         }
 
-        public static class Data
+        public class ApplicationData
         {
-            public static User User { get; set; }
-            public static City City { get; set; }
-            public static ProductConfiguration Product { get; set; }
+            public virtual User User { get; set; }
+            public virtual City City { get; set; }
+            public virtual ProductConfiguration Product { get; set; }
+            public virtual DataStoreConfiguration DataStore { get; set; }
+            public virtual ImageScaleFactorConfiguration Image { get; set; }
         }
     }
 }

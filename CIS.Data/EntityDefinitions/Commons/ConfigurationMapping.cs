@@ -21,7 +21,6 @@ namespace CIS.Data.EntityDefinitions.Commons
                 .Schema(GetType().ParseSchema())
                 .Table("ConfigurationValues")
                 .Fetch.Join()
-                //.Not.LazyLoad()
                 .AsMap<string>(
                     index => index.Column("Identifier").Type<string>(),
                     element => element.Column("Value").Type<string>().Length(750)
@@ -30,7 +29,7 @@ namespace CIS.Data.EntityDefinitions.Commons
             DiscriminateSubClassesOnColumn("Discriminator")
                 .Index("DiscriminatorIndex")
                 .Not.Nullable()
-                .Length(25);
+                .Length(50);
         }
     }
 }

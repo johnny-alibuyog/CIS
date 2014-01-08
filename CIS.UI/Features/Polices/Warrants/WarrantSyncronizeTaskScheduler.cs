@@ -38,7 +38,7 @@ namespace CIS.UI.Features.Polices.Warrants
             _worker.WorkerSupportsCancellation = true;
 
             _timer = new Timer();
-            _timer.Interval = App.Config.DataStore.SyncronizeInterval * 1000;
+            _timer.Interval = App.Data.DataStore.SyncronizeInterval * 1000;
             _timer.Tick += (sender, e) => 
             { 
                 if (!this.IsWorkInProgress) 
@@ -86,10 +86,10 @@ namespace CIS.UI.Features.Polices.Warrants
                         where 
 	                        #Temp.Sequence between 1 and (select max(DataStoreId) from Polices.Suspects) and
 	                        #Temp.Sequence not in (select DataStoreId from Polices.Suspects where DataStoreId is not null)",
-                    App.Config.DataStore.FetchSize
+                    App.Data.DataStore.FetchSize
                 );
 
-                request.FetchSize = App.Config.DataStore.FetchSize;
+                request.FetchSize = App.Data.DataStore.FetchSize;
                 request.MissingIds = session.CreateSQLQuery(sql).List<long>().ToArray();
                 request.LatestId = session.Query<Suspect>().Max(o => o.DataStoreId) ?? 0;
 
@@ -109,14 +109,14 @@ namespace CIS.UI.Features.Polices.Warrants
             {
                 var query = session.Query<Suspect>()
                     .Where(x => x.DataStoreId == null)
-                    .Take(App.Config.DataStore.FetchSize)
+                    .Take(App.Data.DataStore.FetchSize)
                     .Fetch(x => x.Warrant)
                     .Fetch(x => x.Aliases)
                     .ToFuture();
 
                 session.Query<Suspect>()
                     .Where(x => x.DataStoreId == null)
-                    .Take(App.Config.DataStore.FetchSize)
+                    .Take(App.Data.DataStore.FetchSize)
                     .Fetch(x => x.Occupations)
                     .ToFuture();
 
@@ -453,7 +453,7 @@ namespace CIS.UI.Features.Polices.Warrants
 
                 var request = new PushWarrantRequest()
                 {
-                    FetchSize = App.Config.DataStore.FetchSize,
+                    FetchSize = App.Data.DataStore.FetchSize,
                     Warrants = warrants.ToArray()
                 };
 
