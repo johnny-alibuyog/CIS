@@ -251,6 +251,37 @@
     <Compile Include="Bootstraps\InversionOfControl\ViewModelDependency.cs">
       <DependentUpon>Dependency.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Barangays\Clearances\Applications\AmendmentViewModel.cs">
+      <DependentUpon>FindingViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\Applications\ApplicationController.cs" />
+    <Compile Include="Features\Barangays\Clearances\Applications\ApplicationView.xaml.cs">
+      <DependentUpon>ApplicationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\Applications\ApplicationViewModel.cs" />
+    <Compile Include="Features\Barangays\Clearances\Archives\ArchiveView.xaml.cs">
+      <DependentUpon>ArchiveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\ClearancePage.xaml.cs">
+      <DependentUpon>ClearancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\Applications\FindingView.xaml.cs">
+      <DependentUpon>FindingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\Applications\FindingViewModel.cs" />
+    <Compile Include="Features\Barangays\Clearances\Applications\HitViewModel.cs">
+      <DependentUpon>FindingViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\Applications\PersonalInformationView.xaml.cs">
+      <DependentUpon>PersonalInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\Applications\PersonalInformationViewModel.cs" />
+    <Compile Include="Features\Barangays\Clearances\Applications\SummaryView.xaml.cs">
+      <DependentUpon>SummaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\Applications\SummaryViewModel.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Offices\OfficeDataInitializer.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Positions\PositionDataInitializer.cs" />
     <Compile Include="Features\Commons\Addresses\AddressDataInitializer.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -312,63 +343,63 @@
     <Compile Include="Features\Commons\Terminals\TerminalDataInitializer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Features\Firearms\Maintenances\KindDataInitializer.cs">
+    <Compile Include="Features\Firearms\Maintenances\Kinds\KindDataInitializer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Features\Firearms\Maintenances\MakeDataInitializer.cs">
+    <Compile Include="Features\Firearms\Maintenances\Makes\MakeDataInitializer.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Features\IControllerBase.cs" />
     <Compile Include="Features\IDataInitializer.cs" />
     <Compile Include="Features\IImportService.cs" />
-    <Compile Include="Features\Firearms\Licenses\ImportController.cs" />
-    <Compile Include="Features\Firearms\Licenses\ImportService.cs">
+    <Compile Include="Features\Firearms\Licenses\Imports\ImportController.cs" />
+    <Compile Include="Features\Firearms\Licenses\Imports\ImportService.cs">
       <DependentUpon>ImportController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Licenses\ImportLicenseViewModel.cs">
+    <Compile Include="Features\Firearms\Licenses\Imports\ImportLicenseViewModel.cs">
       <DependentUpon>ImportViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Licenses\ImportView.xaml.cs">
+    <Compile Include="Features\Firearms\Licenses\Imports\ImportView.xaml.cs">
       <DependentUpon>ImportView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Licenses\ImportViewModel.cs" />
-    <Compile Include="Features\Firearms\Licenses\GunView.xaml.cs">
+    <Compile Include="Features\Firearms\Licenses\Imports\ImportViewModel.cs" />
+    <Compile Include="Features\Firearms\Licenses\Registrations\GunView.xaml.cs">
       <DependentUpon>GunView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Licenses\GunViewModel.cs" />
-    <Compile Include="Features\Firearms\Licenses\LicenseListController.cs" />
-    <Compile Include="Features\Firearms\Licenses\LicenseListCriteriaViewModel.cs">
+    <Compile Include="Features\Firearms\Licenses\Registrations\GunViewModel.cs" />
+    <Compile Include="Features\Firearms\Licenses\Registrations\LicenseListController.cs" />
+    <Compile Include="Features\Firearms\Licenses\Registrations\LicenseListCriteriaViewModel.cs">
       <DependentUpon>LicenseListViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Licenses\LicenseListItemViewModel.cs">
+    <Compile Include="Features\Firearms\Licenses\Registrations\LicenseListItemViewModel.cs">
       <DependentUpon>LicenseListViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Licenses\LicenseListView.xaml.cs">
+    <Compile Include="Features\Firearms\Licenses\Registrations\LicenseListView.xaml.cs">
       <DependentUpon>LicenseListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Licenses\LicenseListViewModel.cs" />
+    <Compile Include="Features\Firearms\Licenses\Registrations\LicenseListViewModel.cs" />
     <Compile Include="Features\Firearms\Licenses\LicensePage.xaml.cs">
       <DependentUpon>LicensePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Licenses\LicenseView.xaml.cs">
+    <Compile Include="Features\Firearms\Licenses\Registrations\LicenseView.xaml.cs">
       <DependentUpon>LicenseView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Licenses\LicenseViewModel.cs" />
-    <Compile Include="Features\Firearms\Maintenances\KindListController.cs" />
-    <Compile Include="Features\Firearms\Maintenances\KindListView.xaml.cs">
+    <Compile Include="Features\Firearms\Licenses\Registrations\LicenseViewModel.cs" />
+    <Compile Include="Features\Firearms\Maintenances\Kinds\KindListController.cs" />
+    <Compile Include="Features\Firearms\Maintenances\Kinds\KindListView.xaml.cs">
       <DependentUpon>KindListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Maintenances\KindListViewModel.cs" />
-    <Compile Include="Features\Firearms\Maintenances\KindViewModel.cs" />
+    <Compile Include="Features\Firearms\Maintenances\Kinds\KindListViewModel.cs" />
+    <Compile Include="Features\Firearms\Maintenances\Kinds\KindViewModel.cs" />
     <Compile Include="Features\Firearms\Maintenances\MaintenancePage.xaml.cs">
       <DependentUpon>MaintenancePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Maintenances\MakeListController.cs" />
-    <Compile Include="Features\Firearms\Maintenances\MakeListViewModel.cs" />
-    <Compile Include="Features\Firearms\Maintenances\MakeListView.xaml.cs">
+    <Compile Include="Features\Firearms\Maintenances\Makes\MakeListController.cs" />
+    <Compile Include="Features\Firearms\Maintenances\Makes\MakeListViewModel.cs" />
+    <Compile Include="Features\Firearms\Maintenances\Makes\MakeListView.xaml.cs">
       <DependentUpon>MakeListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Firearms\Maintenances\MakeViewModel.cs" />
+    <Compile Include="Features\Firearms\Maintenances\Makes\MakeViewModel.cs" />
     <Compile Include="Features\ITaskScheduler.cs" />
     <Compile Include="Features\Lookup.cs" />
     <Compile Include="Features\Commons\Persons\PhysicalAttributesView.xaml.cs">
@@ -382,193 +413,195 @@
     <Compile Include="Features\DialogService.cs" />
     <Compile Include="Features\MainController.cs" />
     <Compile Include="Features\MainViewModel.cs" />
-    <Compile Include="Features\Memberships\Users\ApprovalView.xaml.cs">
+    <Compile Include="Features\Memberships\Users\Approvals\ApprovalView.xaml.cs">
       <DependentUpon>ApprovalView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Memberships\Users\LoginController.cs" />
-    <Compile Include="Features\Memberships\Users\LoginView.xaml.cs">
+    <Compile Include="Features\Memberships\Users\Logins\LoginController.cs" />
+    <Compile Include="Features\Memberships\Users\Logins\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Memberships\Users\LoginViewModel.cs" />
-    <Compile Include="Features\Memberships\Users\ApprovalController.cs" />
-    <Compile Include="Features\Memberships\Users\ApprovalViewModel.cs" />
-    <Compile Include="Features\Memberships\Users\UserListController.cs" />
-    <Compile Include="Features\Memberships\Users\UserListCriteriaViewModel.cs">
+    <Compile Include="Features\Memberships\Users\Logins\LoginViewModel.cs" />
+    <Compile Include="Features\Memberships\Users\Approvals\ApprovalController.cs" />
+    <Compile Include="Features\Memberships\Users\Approvals\ApprovalViewModel.cs" />
+    <Compile Include="Features\Memberships\Users\MasterList\UserListController.cs" />
+    <Compile Include="Features\Memberships\Users\MasterList\UserListCriteriaViewModel.cs">
       <DependentUpon>UserListViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Memberships\Users\UserListItemViewModel.cs">
+    <Compile Include="Features\Memberships\Users\MasterList\UserListItemViewModel.cs">
       <DependentUpon>UserListViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Memberships\Users\UserListView.xaml.cs">
+    <Compile Include="Features\Memberships\Users\MasterList\UserListView.xaml.cs">
       <DependentUpon>UserListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Memberships\Users\UserListViewModel.cs" />
+    <Compile Include="Features\Memberships\Users\MasterList\UserListViewModel.cs" />
     <Compile Include="Features\Memberships\Users\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Memberships\Users\UserRoleViewModel.cs">
+    <Compile Include="Features\Memberships\Users\MasterList\UserRoleViewModel.cs">
       <DependentUpon>UserViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Memberships\Users\UserView.xaml.cs">
+    <Compile Include="Features\Memberships\Users\MasterList\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Memberships\Users\UserViewModel.cs" />
-    <Compile Include="Features\Polices\Clearances\AmendmentViewModel.cs">
+    <Compile Include="Features\Memberships\Users\MasterList\UserViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\Applications\AmendmentViewModel.cs">
       <DependentUpon>FindingViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\ApplicantReportController.cs" />
-    <Compile Include="Features\Polices\Clearances\ApplicantReportView.xaml.cs">
+    <Compile Include="Features\Polices\Clearances\Archives\ApplicantDataInitializer.cs" />
+    <Compile Include="Features\Polices\Clearances\Archives\ApplicantReportController.cs" />
+    <Compile Include="Features\Polices\Clearances\Archives\ApplicantReportView.xaml.cs">
       <DependentUpon>ApplicantReportView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\ApplicantReportViewModel.cs" />
-    <Compile Include="Features\Polices\Clearances\ApplicationController.cs" />
-    <Compile Include="Features\Polices\Clearances\ApplicationView.xaml.cs">
+    <Compile Include="Features\Polices\Clearances\Archives\ApplicantReportViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\Applications\ApplicationController.cs" />
+    <Compile Include="Features\Polices\Clearances\Applications\ApplicationView.xaml.cs">
       <DependentUpon>ApplicationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\ApplicationViewModel.cs" />
-    <Compile Include="Features\Polices\Clearances\ArchiveController.cs" />
-    <Compile Include="Features\Polices\Clearances\ArchiveCriteriaViewModel.cs">
+    <Compile Include="Features\Polices\Clearances\Applications\ApplicationViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\Archives\ArchiveController.cs" />
+    <Compile Include="Features\Polices\Clearances\Archives\ArchiveCriteriaViewModel.cs">
       <DependentUpon>ArchiveViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\ArchiveItemViewModel.cs">
+    <Compile Include="Features\Polices\Clearances\Archives\ArchiveItemViewModel.cs">
       <DependentUpon>ArchiveViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\ArchiveReportView.xaml.cs">
+    <Compile Include="Features\Polices\Clearances\Archives\ArchiveReportView.xaml.cs">
       <DependentUpon>ArchiveReportView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\ArchiveReportViewModel.cs" />
-    <Compile Include="Features\Polices\Clearances\ArchiveView.xaml.cs">
+    <Compile Include="Features\Polices\Clearances\Archives\ArchiveReportViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\Archives\ArchiveView.xaml.cs">
       <DependentUpon>ArchiveView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\ArchiveViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\Archives\ArchiveViewModel.cs" />
     <Compile Include="Features\Polices\Clearances\ClearancePage.xaml.cs">
       <DependentUpon>ClearancePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\ClearanceReportView.xaml.cs">
+    <Compile Include="Features\Polices\Clearances\Applications\ClearanceReportView.xaml.cs">
       <DependentUpon>ClearanceReportView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\ClearanceReportViewModel.cs" />
-    <Compile Include="Features\Polices\Clearances\ExpiredLicenseHitViewModel.cs">
+    <Compile Include="Features\Polices\Clearances\Applications\ClearanceReportViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\Applications\ExpiredLicenseHitViewModel.cs">
       <DependentUpon>HitViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\FindingView.xaml.cs">
+    <Compile Include="Features\Polices\Clearances\Applications\FindingView.xaml.cs">
       <DependentUpon>FindingView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\FindingViewModel.cs" />
-    <Compile Include="Features\Polices\Clearances\HitViewModel.cs">
+    <Compile Include="Features\Polices\Clearances\Applications\FindingViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\Applications\HitViewModel.cs">
       <DependentUpon>FindingViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\OtherInformationController.cs" />
-    <Compile Include="Features\Polices\Clearances\OtherInformationView.xaml.cs">
+    <Compile Include="Features\Polices\Clearances\Applications\OtherInformationController.cs" />
+    <Compile Include="Features\Polices\Clearances\Applications\OtherInformationView.xaml.cs">
       <DependentUpon>OtherInformationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\OtherInformationViewModel.cs" />
-    <Compile Include="Features\Polices\Clearances\SuspectHitViewModel.cs">
+    <Compile Include="Features\Polices\Clearances\Applications\OtherInformationViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\Applications\SuspectHitViewModel.cs">
       <DependentUpon>HitViewModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\Polices\Maintenances\MaintenanceMessage.cs" />
-    <Compile Include="Features\Polices\Clearances\SummaryViewModel.cs" />
-    <Compile Include="Features\Polices\Clearances\PersonalInformationView.xaml.cs">
+    <Compile Include="Features\Polices\Clearances\Applications\SummaryViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\Applications\PersonalInformationView.xaml.cs">
       <DependentUpon>PersonalInformationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Clearances\PersonalInformationViewModel.cs" />
-    <Compile Include="Features\Polices\Clearances\SummaryView.xaml.cs">
+    <Compile Include="Features\Polices\Clearances\Applications\PersonalInformationViewModel.cs" />
+    <Compile Include="Features\Polices\Clearances\Applications\SummaryView.xaml.cs">
       <DependentUpon>SummaryView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\PurposeDataInitializer.cs">
+    <Compile Include="Features\Polices\Maintenances\Purposes\PurposeDataInitializer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\PurposeListController.cs" />
-    <Compile Include="Features\Polices\Maintenances\PurposeListView.xaml.cs">
+    <Compile Include="Features\Polices\Maintenances\Purposes\PurposeListController.cs" />
+    <Compile Include="Features\Polices\Maintenances\Purposes\PurposeListView.xaml.cs">
       <DependentUpon>PurposeListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\PurposeListViewModel.cs" />
-    <Compile Include="Features\Polices\Maintenances\PurposeViewModel.cs" />
-    <Compile Include="Features\Polices\Maintenances\OfficerListController.cs" />
-    <Compile Include="Features\Polices\Maintenances\OfficerListCriteriaViewModel.cs">
+    <Compile Include="Features\Polices\Maintenances\Purposes\PurposeListViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\Purposes\PurposeViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\Officers\OfficerListController.cs" />
+    <Compile Include="Features\Polices\Maintenances\Officers\OfficerListCriteriaViewModel.cs">
       <DependentUpon>OfficerListViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\OfficerListItemViewModel.cs">
+    <Compile Include="Features\Polices\Maintenances\Officers\OfficerListItemViewModel.cs">
       <DependentUpon>OfficerListViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\OfficerListView.xaml.cs">
+    <Compile Include="Features\Polices\Maintenances\Officers\OfficerListView.xaml.cs">
       <DependentUpon>OfficerListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\OfficerListViewModel.cs" />
-    <Compile Include="Features\Polices\Maintenances\OfficerView.xaml.cs">
+    <Compile Include="Features\Polices\Maintenances\Officers\OfficerListViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\Officers\OfficerView.xaml.cs">
       <DependentUpon>OfficerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\OfficerViewModel.cs" />
-    <Compile Include="Features\Polices\Maintenances\RankDataInitializer.cs">
+    <Compile Include="Features\Polices\Maintenances\Officers\OfficerViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\Ranks\RankDataInitializer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\SettingController.cs" />
-    <Compile Include="Features\Polices\Maintenances\SettingDataInitializer.cs">
+    <Compile Include="Features\Polices\Maintenances\Settings\SettingController.cs" />
+    <Compile Include="Features\Polices\Maintenances\Settings\SettingDataInitializer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\SettingFingerViewModel.cs">
+    <Compile Include="Features\Polices\Maintenances\Settings\SettingFingerViewModel.cs">
       <DependentUpon>SettingViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\SettingView.xaml.cs">
+    <Compile Include="Features\Polices\Maintenances\Settings\SettingView.xaml.cs">
       <DependentUpon>SettingView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\SettingViewModel.cs" />
-    <Compile Include="Features\Polices\Maintenances\StationController.cs" />
+    <Compile Include="Features\Polices\Maintenances\Settings\SettingViewModel.cs" />
+    <Compile Include="Features\Polices\Maintenances\Stations\StationController.cs" />
     <Compile Include="Features\Polices\Maintenances\MaintenancePage.xaml.cs">
       <DependentUpon>MaintenancePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\StationDataInitializer.cs">
+    <Compile Include="Features\Polices\Maintenances\Stations\StationDataInitializer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\StationView.xaml.cs">
+    <Compile Include="Features\Polices\Maintenances\Stations\StationView.xaml.cs">
       <DependentUpon>StationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Maintenances\StationViewModel.cs" />
-    <Compile Include="Features\Polices\Warrants\CodelessWarrant.cs">
+    <Compile Include="Features\Polices\Maintenances\Stations\StationViewModel.cs" />
+    <Compile Include="Features\Polices\Warrants\Imports\CodelessWarrant.cs">
       <DependentUpon>CodelessImportService.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\ImportController.cs" />
-    <Compile Include="Features\Polices\Warrants\ImportView.xaml.cs">
+    <Compile Include="Features\Polices\Warrants\Imports\ImportController.cs" />
+    <Compile Include="Features\Polices\Warrants\Imports\ImportView.xaml.cs">
       <DependentUpon>ImportView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\ImportViewModel.cs" />
-    <Compile Include="Features\Polices\Warrants\LitusImportService.cs">
+    <Compile Include="Features\Polices\Warrants\Imports\ImportViewModel.cs" />
+    <Compile Include="Features\Polices\Warrants\Imports\LitusImportService.cs">
       <DependentUpon>ImportController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\LitusImportSuspect.cs">
+    <Compile Include="Features\Polices\Warrants\Imports\LitusImportSuspect.cs">
       <DependentUpon>LitusImportService.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\LitusImportWarrant.cs">
+    <Compile Include="Features\Polices\Warrants\Imports\LitusImportWarrant.cs">
       <DependentUpon>LitusImportService.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\NaraImportService.cs">
+    <Compile Include="Features\Polices\Warrants\Imports\NaraImportService.cs">
       <DependentUpon>ImportController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\NaraImportSuspect.cs">
+    <Compile Include="Features\Polices\Warrants\Imports\NaraImportSuspect.cs">
       <DependentUpon>NaraImportService.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\NaraImportWarrant.cs">
+    <Compile Include="Features\Polices\Warrants\Imports\NaraImportWarrant.cs">
       <DependentUpon>NaraImportService.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\WarrantListCriteriaViewModel.cs">
+    <Compile Include="Features\Polices\Warrants\MasterList\WarrantListCriteriaViewModel.cs">
       <DependentUpon>WarrantListViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\WarrantListItemViewModel.cs">
+    <Compile Include="Features\Polices\Warrants\MasterList\WarrantListItemViewModel.cs">
       <DependentUpon>WarrantListViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\WarrantController.cs" />
-    <Compile Include="Features\Polices\Warrants\SuspectController.cs" />
-    <Compile Include="Features\Polices\Warrants\SuspectView.xaml.cs">
+    <Compile Include="Features\Polices\Warrants\MasterList\WarrantController.cs" />
+    <Compile Include="Features\Polices\Warrants\MasterList\SuspectController.cs" />
+    <Compile Include="Features\Polices\Warrants\MasterList\SuspectView.xaml.cs">
       <DependentUpon>SuspectView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\SuspectViewModel.cs" />
+    <Compile Include="Features\Polices\Warrants\MasterList\SuspectViewModel.cs" />
     <Compile Include="Features\Polices\Warrants\WarrantPage.xaml.cs">
       <DependentUpon>WarrantPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\CodelessImportService.cs">
+    <Compile Include="Features\Polices\Warrants\Imports\CodelessImportService.cs">
       <DependentUpon>ImportController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\WarrantSyncronizeTaskScheduler.cs" />
+    <Compile Include="Features\Polices\Warrants\MasterList\WarrantSyncronizeTaskScheduler.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Settings\SettingDataInitializer.cs" />
     <Compile Include="Features\Settings\Abouts\AboutController.cs" />
     <Compile Include="Features\Settings\Appearances\AppearanceController.cs" />
     <Compile Include="Features\SplashScreenController.cs" />
@@ -629,6 +662,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Features\Barangays\Clearances\Applications\ApplicationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Clearances\Archives\ArchiveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Clearances\ClearancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Clearances\Applications\FindingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Clearances\Applications\PersonalInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Clearances\Applications\SummaryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Features\Commons\Addresses\AddressView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -669,15 +726,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Firearms\Licenses\GunView.xaml">
+    <Page Include="Features\Firearms\Licenses\Registrations\GunView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Firearms\Licenses\ImportView.xaml">
+    <Page Include="Features\Firearms\Licenses\Imports\ImportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Firearms\Licenses\LicenseListView.xaml">
+    <Page Include="Features\Firearms\Licenses\Registrations\LicenseListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -685,11 +742,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Firearms\Licenses\LicenseView.xaml">
+    <Page Include="Features\Firearms\Licenses\Registrations\LicenseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Firearms\Maintenances\KindListView.xaml">
+    <Page Include="Features\Firearms\Maintenances\Kinds\KindListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -697,7 +754,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Firearms\Maintenances\MakeListView.xaml">
+    <Page Include="Features\Firearms\Maintenances\Makes\MakeListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -710,16 +767,16 @@
     <Compile Include="Features\ControllerBase.cs" />
     <Compile Include="Features\DialogBase.cs" />
     <Compile Include="Features\Homes\Class1.cs" />
-    <Compile Include="Features\Polices\Warrants\WarrantView.xaml.cs">
+    <Compile Include="Features\Polices\Warrants\MasterList\WarrantView.xaml.cs">
       <DependentUpon>WarrantView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\WarrantListController.cs" />
-    <Compile Include="Features\Polices\Warrants\WarrantViewModel.cs" />
-    <Compile Include="Features\Polices\Warrants\WarrantListView.xaml.cs">
+    <Compile Include="Features\Polices\Warrants\MasterList\WarrantListController.cs" />
+    <Compile Include="Features\Polices\Warrants\MasterList\WarrantViewModel.cs" />
+    <Compile Include="Features\Polices\Warrants\MasterList\WarrantListView.xaml.cs">
       <DependentUpon>WarrantListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Polices\Warrants\WarrantListViewModel.cs" />
+    <Compile Include="Features\Polices\Warrants\MasterList\WarrantListViewModel.cs" />
     <Compile Include="Features\Settings\Abouts\AboutViewModel.cs" />
     <Compile Include="Features\Settings\Appearances\Class1.cs" />
     <Compile Include="Features\Settings\Class1.cs" />
@@ -729,15 +786,15 @@
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Features\Memberships\Users\ApprovalView.xaml">
+    <Page Include="Features\Memberships\Users\Approvals\ApprovalView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Memberships\Users\LoginView.xaml">
+    <Page Include="Features\Memberships\Users\Logins\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Memberships\Users\UserListView.xaml">
+    <Page Include="Features\Memberships\Users\MasterList\UserListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -745,23 +802,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Memberships\Users\UserView.xaml">
+    <Page Include="Features\Memberships\Users\MasterList\UserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Clearances\ApplicantReportView.xaml">
+    <Page Include="Features\Polices\Clearances\Archives\ApplicantReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Clearances\ApplicationView.xaml">
+    <Page Include="Features\Polices\Clearances\Applications\ApplicationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Clearances\ArchiveReportView.xaml">
+    <Page Include="Features\Polices\Clearances\Archives\ArchiveReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Clearances\ArchiveView.xaml">
+    <Page Include="Features\Polices\Clearances\Archives\ArchiveView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -769,31 +826,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Clearances\ClearanceReportView.xaml">
+    <Page Include="Features\Polices\Clearances\Applications\ClearanceReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Clearances\FindingView.xaml">
+    <Page Include="Features\Polices\Clearances\Applications\FindingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Clearances\OtherInformationView.xaml">
+    <Page Include="Features\Polices\Clearances\Applications\OtherInformationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Clearances\PersonalInformationView.xaml">
+    <Page Include="Features\Polices\Clearances\Applications\PersonalInformationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Clearances\SummaryView.xaml">
+    <Page Include="Features\Polices\Clearances\Applications\SummaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Maintenances\OfficerListView.xaml">
+    <Page Include="Features\Polices\Maintenances\Officers\OfficerListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Maintenances\OfficerView.xaml">
+    <Page Include="Features\Polices\Maintenances\Officers\OfficerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -801,27 +858,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Maintenances\PurposeListView.xaml">
+    <Page Include="Features\Polices\Maintenances\Purposes\PurposeListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Maintenances\SettingView.xaml">
+    <Page Include="Features\Polices\Maintenances\Settings\SettingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Maintenances\StationView.xaml">
+    <Page Include="Features\Polices\Maintenances\Stations\StationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Warrants\ImportView.xaml">
+    <Page Include="Features\Polices\Warrants\Imports\ImportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Warrants\SuspectView.xaml">
+    <Page Include="Features\Polices\Warrants\MasterList\SuspectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Warrants\WarrantView.xaml">
+    <Page Include="Features\Polices\Warrants\MasterList\WarrantView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -829,7 +886,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Polices\Warrants\WarrantListView.xaml">
+    <Page Include="Features\Polices\Warrants\MasterList\WarrantListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -899,6 +956,7 @@
     <Resource Include="Assets\Images\FF-R5.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Features\Barangays\Clearances\notes.txt" />
     <Content Include="philippine-barangays.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -981,7 +1039,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Themes\" />
-    <Folder Include="Features\Barangays\" />
+    <Folder Include="Features\Barangays\Blotters\" />
     <Folder Include="Features\Maintenances\" />
     <Folder Include="Features\Mayors\" />
     <Folder Include="Features\Memberships\Roles\" />
@@ -1004,9 +1062,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Features\Polices\Clearances\ApplicantReport.rdlc" />
-    <EmbeddedResource Include="Features\Polices\Clearances\ArchiveReport.rdlc" />
-    <EmbeddedResource Include="Features\Polices\Clearances\ClearanceReport.rdlc" />
+    <EmbeddedResource Include="Features\Polices\Clearances\Archives\ApplicantReport.rdlc" />
+    <EmbeddedResource Include="Features\Polices\Clearances\Archives\ArchiveReport.rdlc" />
+    <EmbeddedResource Include="Features\Polices\Clearances\Applications\ClearanceReport.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

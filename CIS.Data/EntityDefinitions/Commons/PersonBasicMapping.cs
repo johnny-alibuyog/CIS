@@ -12,6 +12,8 @@ namespace CIS.Data.EntityDefinitions.Commons
     {
         public PersonBasicMapping()
         {
+            Map(x => x.Prefix);
+
             Map(x => x.FirstName)
                 .Index("FirstNameIndex");
 

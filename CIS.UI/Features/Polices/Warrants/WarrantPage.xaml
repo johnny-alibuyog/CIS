@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
-        <mui:ModernTab Layout="List" SelectedSource="/Features/Polices/Warrants/WarrantListView.xaml">
+        <mui:ModernTab Layout="List" SelectedSource="/Features/Polices/Warrants/MasterList/WarrantListView.xaml">
             <mui:ModernTab.Links>
-                <mui:Link DisplayName="Master List" Source="/Features/Polices/Warrants/WarrantListView.xaml" />
-                <mui:Link DisplayName="Import" Source="/Features/Polices/Warrants/ImportView.xaml"/>
+                <mui:Link DisplayName="Master List" Source="/Features/Polices/Warrants/MasterList/WarrantListView.xaml" />
+                <mui:Link DisplayName="Import" Source="/Features/Polices/Warrants/Imports/ImportView.xaml"/>
                 <!--<mui:Link DisplayName="Export" />-->
             </mui:ModernTab.Links>
         </mui:ModernTab>

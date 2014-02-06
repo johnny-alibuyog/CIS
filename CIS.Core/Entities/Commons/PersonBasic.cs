@@ -10,10 +10,17 @@ namespace CIS.Core.Entities.Commons
 {
     public class PersonBasic
     {
+        private string _prefix;
         private string _firstName;
         private string _middleName;
         private string _lastName;
         private string _suffix;
+
+        public virtual string Prefix
+        {
+            get { return _prefix; }
+            set { _prefix = value.ToProperCase(); }
+        }
 
         public virtual string FirstName
         {
@@ -44,29 +51,39 @@ namespace CIS.Core.Entities.Commons
             get { return this.GetFullName(); }
         }
 
-        public virtual void SerializeWith(Person value)
+        public virtual void SerializeWith(PersonBasic value)
         {
+            this.Prefix = value.Prefix;
             this.FirstName = value.FirstName;
             this.MiddleName = value.MiddleName;
             this.LastName = value.LastName;
             this.Suffix = value.Suffix;
         }
+
+        //public virtual void SerializeWith(PersonBasic value)
+        //{
+        //    this.FirstName = value.FirstName;
+        //    this.MiddleName = value.MiddleName;
+        //    this.LastName = value.LastName;
+        //    this.Suffix = value.Suffix;
+        //}
 
         private string GetFullName()
         {
             return
-                (!string.IsNullOrWhiteSpace(this.FirstName) ? this.FirstName : string.Empty) +
+            (
+                (!string.IsNullOrWhiteSpace(this.Prefix) ? this.Prefix : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.FirstName) ? " " + this.FirstName : string.Empty) +
                 (!string.IsNullOrWhiteSpace(this.MiddleName) ? " " + this.MiddleName : string.Empty) +
                 (!string.IsNullOrWhiteSpace(this.LastName) ? " " + this.LastName : string.Empty) +
-                (!string.IsNullOrWhiteSpace(this.Suffix) ? " " + this.Suffix : string.Empty);
+                (!string.IsNullOrWhiteSpace(this.Suffix) ? " " + this.Suffix : string.Empty)
+            )
+            .Trim();
         }
 
-        public virtual void SerializeWith(PersonBasic value)
+        public override string ToString()
         {
-            this.FirstName = value.FirstName;
-            this.MiddleName = value.MiddleName;
-            this.LastName = value.LastName;
-            this.Suffix = value.Suffix;
+            return this.GetFullName();
         }
     }
 }

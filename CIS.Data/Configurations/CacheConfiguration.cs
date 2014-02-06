@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CIS.Core.Entities.Commons;
-using CIS.Core.Entities.Firearms;
-using CIS.Core.Entities.Memberships;
-using CIS.Core.Entities.Polices;
 using NHibernate.Caches.SysCache2;
 using NHibernate.Cfg;
+using Common = CIS.Core.Entities.Commons;
+using Barangays = CIS.Core.Entities.Barangays;
+using Firearms = CIS.Core.Entities.Firearms;
+using Memberships = CIS.Core.Entities.Memberships;
+using Polices = CIS.Core.Entities.Polices;
 
 namespace CIS.Data.Configurations
 {
@@ -19,75 +20,85 @@ namespace CIS.Data.Configurations
                 .SetProperty(NHibernate.Cfg.Environment.UseSecondLevelCache, "true")
                 .SetProperty(NHibernate.Cfg.Environment.UseQueryCache, "true")
                 .Cache(c => c.Provider<SysCacheProvider>())
-                .EntityCache<Core.Entities.Commons.Configuration>(x =>
+                .EntityCache<Common.Configuration>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Configuration";
+                    x.RegionName = "Common.Configuration";
                 })
-                .EntityCache<Barangay>(x =>
+                .EntityCache<Common.Barangay>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Barangay";
+                    x.RegionName = "Common.Barangay";
                 })
-                .EntityCache<City>(x =>
+                .EntityCache<Common.City>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "City";
+                    x.RegionName = "Common.City";
                 })
-                .EntityCache<Province>(x =>
+                .EntityCache<Common.Province>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Province";
+                    x.RegionName = "Common.Province";
                 })
-                .EntityCache<Region>(x =>
+                .EntityCache<Common.Region>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Region";
+                    x.RegionName = "Common.Region";
                 })
-                .EntityCache<User>(x =>
+                .EntityCache<Common.Finger>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "User";
+                    x.RegionName = "Common.Finger";
                 })
-                .EntityCache<Make>(x =>
+                .EntityCache<Memberships.User>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Make";
+                    x.RegionName = "Memberships.User";
                 })
-                .EntityCache<Kind>(x =>
+                .EntityCache<Firearms.Make>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Kind";
+                    x.RegionName = "Firearms.Make";
                 })
-                .EntityCache<Purpose>(x =>
+                .EntityCache<Firearms.Kind>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Purpose";
+                    x.RegionName = "Firearms.Kind";
                 })
-                .EntityCache<Rank>(x =>
+                .EntityCache<Polices.Purpose>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Rank";
+                    x.RegionName = "Polices.Purpose";
                 })
-                .EntityCache<Officer>(x =>
+                .EntityCache<Polices.Rank>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Officer";
+                    x.RegionName = "Polices.Rank";
                 })
-                .EntityCache<Station>(x =>
+                .EntityCache<Polices.Officer>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Station";
+                    x.RegionName = "Polices.Officer";
                 })
-                .EntityCache<Setting>(x =>
+                .EntityCache<Polices.Station>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Setting";
+                    x.RegionName = "Polices.Station";
                 })
-                .EntityCache<Finger>(x =>
+                .EntityCache<Polices.Setting>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Finger";
+                    x.RegionName = "Polices.Setting";
+                })
+                .EntityCache<Barangays.Position>(x => 
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Barangays.Position";
+                })
+                .EntityCache<Barangays.JobDescription>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Barangays.JobDescription";
                 });
         }
     }

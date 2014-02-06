@@ -87,15 +87,6 @@ namespace CIS.Core.Entities.Barangays
             set { _date = value; }
         }
 
-        #region Constructors
-
-        public Clearance()
-        {
-            _officials = new Collection<Official>();
-        }
-
-        #endregion
-
         #region Methods
 
         private void SyncOfficials(IEnumerable<Official> items)
@@ -122,6 +113,15 @@ namespace CIS.Core.Entities.Barangays
             {
                 _officials.Remove(item);
             }
+        }
+
+        #endregion
+
+        #region Constructors
+
+        public Clearance()
+        {
+            _officials = new Collection<Official>();
         }
 
         #endregion

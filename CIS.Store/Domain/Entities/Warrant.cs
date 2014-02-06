@@ -53,6 +53,10 @@ namespace CIS.Store.Domain.Entities
 
         [Index()]
         [StringLength(150)]
+        public virtual string SuspectPrefix { get; set; }
+
+        [Index()]
+        [StringLength(150)]
         public virtual string SuspectFirstName { get; set; }
 
         [Index()]

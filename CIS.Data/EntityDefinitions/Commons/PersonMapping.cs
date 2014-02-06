@@ -11,6 +11,8 @@ namespace CIS.Data.EntityDefinition.Commons
     {
         public PersonMapping()
         {
+            Map(x => x.Prefix);
+
             Map(x => x.FirstName)
                 .Index("FirstNameIndex");
 
@@ -31,6 +33,8 @@ namespace CIS.Data.EntityDefinition.Commons
         {
             return mapping =>
             {
+                mapping.Map(x => x.Prefix, columnPrefix + "Prefix");
+
                 mapping.Map(x => x.FirstName, columnPrefix + "FirstName").Index("FirstNameIndex");
 
                 mapping.Map(x => x.MiddleName, columnPrefix + "MiddleName").Index("MiddelNameIndex");
@@ -50,6 +54,8 @@ namespace CIS.Data.EntityDefinition.Commons
         {
             return mapping =>
             {
+                mapping.Map(x => x.Prefix, columnPrefix + "Prefix");
+
                 mapping.Map(x => x.FirstName, columnPrefix + "FirstName").Index("FirstNameIndex");
 
                 mapping.Map(x => x.MiddleName, columnPrefix + "MiddleName").Index("MiddleNameIndex");
@@ -64,6 +70,8 @@ namespace CIS.Data.EntityDefinition.Commons
         {
             return mapping =>
             {
+                mapping.Map(x => x.Prefix);
+
                 mapping.Map(x => x.FirstName).Index("FirstNameIndex");
 
                 mapping.Map(x => x.MiddleName).Index("MiddleNameIndex");

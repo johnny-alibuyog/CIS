@@ -12,6 +12,7 @@ namespace CIS.Core.Entities.Barangays
         private Guid _id;
         private int _version;
         private Audit _audit;
+        private Office _office;
         private ICollection<Official> _officials;
         private Nullable<DateTime> _date;
 

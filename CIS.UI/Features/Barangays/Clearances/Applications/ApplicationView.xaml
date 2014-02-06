@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="CIS.UI.Features.Barangays.Clearances.Applications.ApplicationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:local="clr-namespace:CIS.UI.Features.Barangays.Clearances.Applications"
+             xmlns:cameras="clr-namespace:CIS.UI.Features.Commons.Cameras"
+             xmlns:signatures="clr-namespace:CIS.UI.Features.Commons.Signatures"
+             xmlns:biometrics="clr-namespace:CIS.UI.Features.Commons.Biometrics"
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type local:PersonalInformationViewModel}">
+            <local:PersonalInformationView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:FindingViewModel}">
+            <local:FindingView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:SummaryViewModel}">
+            <local:SummaryView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type biometrics:FingerScannerViewModel}">
+            <biometrics:FingerScannerView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type cameras:CameraViewModel}">
+            <cameras:CameraView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type signatures:SignatureViewModel}">
+            <signatures:SignatureView />
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <ScrollViewer>
+            <DockPanel MinWidth="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <DockPanel HorizontalAlignment="Right" DockPanel.Dock="Bottom">
+                    <Button Content="Reset" Command="{Binding Reset}" Margin="0,0,8,0"/>
+                    <Button Content="&lt;&lt;" Command="{Binding Previous}" Margin="0,0,8,0"/>
+                    <Button Content="&gt;&gt;" Command="{Binding Next}" Margin="0,0,8,0"/>
+                    <Button Content="Release" Command="{Binding Release}" />
+                </DockPanel>
+                <Border DockPanel.Dock="Top" BorderBrush="{DynamicResource ButtonBorder}" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,16">
+                    <mui:ModernFrame Content="{Binding CurrentViewModel}" Padding="4" />
+                </Border>
+            </DockPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

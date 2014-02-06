@@ -12,6 +12,7 @@ using CIS.Store.Services;
 using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features;
 using CIS.UI.Features.Memberships.Users;
+using CIS.UI.Features.Memberships.Users.Logins;
 using CIS.UI.Utilities;
 using CIS.UI.Utilities.Configurations;
 

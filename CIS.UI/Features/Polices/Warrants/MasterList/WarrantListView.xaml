@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="CIS.UI.Features.Polices.Warrants.MasterList.ListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:controls="clr-namespace:CIS.UI.Utilities.Controls"
+             mc:Ignorable="d">
+    <Grid>
+        <ScrollViewer>
+            <StackPanel x:Name="Form">
+                <!-- Search Criteria-->
+                <StackPanel x:Name="SearchCriteria" Orientation="Horizontal">
+                    <!--<TextBlock Text="First Name:" Margin="0,0,10,0" HorizontalAlignment="Center"/>-->
+                    <TextBox Text="{Binding Criteria.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" x:Name="FirstNameTextBox" Width="100" Margin="0,0,10,0">
+                        <controls:WatermarkService.Watermark>
+                            <TextBox>First Name</TextBox>
+                        </controls:WatermarkService.Watermark>
+                    </TextBox>
+
+                    <TextBox Text="{Binding Criteria.MiddleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" x:Name="MiddleNameTextBox" Width="100" Margin="0,0,10,0" >
+                        <controls:WatermarkService.Watermark>
+                            <TextBox>Middle Name</TextBox>
+                        </controls:WatermarkService.Watermark>
+                    </TextBox>
+
+                    <TextBox Text="{Binding Criteria.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" x:Name="LastNameTextBox" Width="100" Margin="0,0,10,0">
+                        <controls:WatermarkService.Watermark>
+                            <TextBox>Last Name</TextBox>
+                        </controls:WatermarkService.Watermark>
+                    </TextBox>
+
+                    <mui:ModernButton Command="{Binding Search}" Content="Search" Style="{StaticResource app_bar_find}" Margin="4,0,4,0"/>
+                    <mui:ModernButton Command="{Binding Create}" Content="Create" Style="{StaticResource app_bar_add}" Margin="4,0,4,0"/>
+                </StackPanel>
+
+                <!-- Warrant List -->
+                <DataGrid x:Name="Items" AutoGenerateColumns="False" 
+                        HorizontalAlignment="Stretch" IsReadOnly="True"
+                        ItemsSource="{Binding Items, Mode=TwoWay}" 
+                        SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Action">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentControl>
+                                        <StackPanel Orientation="Horizontal">
+                                            <mui:ModernButton Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Edit}" CommandParameter="{Binding}" Style="{StaticResource app_bar_edit}" Margin="4,0,4,0"/>
+                                            <mui:ModernButton Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Delete}" CommandParameter="{Binding}" Style="{StaticResource app_bar_delete}" Margin="4,0,4,0"/>
+                                        </StackPanel>
+                                    </ContentControl>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Suspect" Binding="{Binding Suspect}" />
+                        <DataGridTextColumn Header="Crime" Binding="{Binding Crime}" />
+                        <DataGridTextColumn Header="Issued On" Binding="{Binding IssuedOn, StringFormat={}{0:MM-dd-yyyy}}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

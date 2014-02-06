@@ -16,6 +16,10 @@ namespace CIS.Data.Validations.Barangays
             Define(x => x.Name)
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(100);
+
+            Define(x => x.JobDescriptions)
+                .NotNullableAndNotEmpty()
+                .And.HasValidElements();
         }
     }
 }

@@ -29,9 +29,8 @@ namespace CIS.Data.EntityDefinition.Barangays
                 .NotNullable()
                 .And.IsValid();
 
-            Define(x => x.Incumbent)
-                .NotNullable()
-                .And.IsValid();
+            Define(x => x.Incumbents)
+                .HasValidElements();
         }
     }
 }

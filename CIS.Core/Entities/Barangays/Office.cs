@@ -15,7 +15,8 @@ namespace CIS.Core.Entities.Barangays
         private string _name;
         private string _location;
         private Address _address;
-        private Incumbent _incumbent;
+        private Nullable<decimal> _clearanceFee;
+        private ICollection<Incumbent> _incumbents;
 
         public virtual Guid Id
         {
@@ -53,10 +54,20 @@ namespace CIS.Core.Entities.Barangays
             set { _address = value; }
         }
 
-        public virtual Incumbent Incumbent
+        public virtual Nullable<decimal> ClearanceFee
         {
-            get { return _incumbent; }
-            set { _incumbent = value; }
+            get { return _clearanceFee; }
+            set { _clearanceFee = value; }
+        }
+
+        public virtual IEnumerable<Incumbent> Incumbents
+        {
+            get { return _incumbents; }
+        }
+
+        public Office()
+        {
+            _incumbents = new Collection<Incumbent>();
         }
 
         #region Equality Comparer

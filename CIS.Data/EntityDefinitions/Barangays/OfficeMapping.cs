@@ -25,8 +25,15 @@ namespace CIS.Data.EntityDefinition.Barangays
 
             Component(x => x.Address);
 
-            References(x => x.Incumbent)
-                .Cascade.SaveUpdate();
+            Map(x => x.ClearanceFee);
+
+            HasMany(x => x.Incumbents)
+                .Access.CamelCaseField(Prefix.Underscore)
+                .Cascade.AllDeleteOrphan()
+                .Not.KeyNullable()
+                .Not.KeyUpdate()
+                .Inverse()
+                .AsSet();
         }
     }
 }

@@ -14,13 +14,13 @@ namespace CIS.Data.Configurations
             /// WARNING: this line will recreate all your 
             ///     database object removing all the data,
             ///     not to be used in production
-            new SchemaExport(config).Create(true, true);
+            //new SchemaExport(config).Create(true, true);
 
             /// NOTE: this line will update your database
             ///     schema based on the changes you made
             ///     on your Entities(business models) if
             ///     there is any
-            //new SchemaUpdate(config).Execute(true, true);
+            new SchemaUpdate(config).Execute(true, true);
         }
     }
 }

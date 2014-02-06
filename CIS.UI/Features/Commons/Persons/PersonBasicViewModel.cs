@@ -11,6 +11,8 @@ namespace CIS.UI.Features.Commons.Persons
 {
     public class PersonBasicViewModel : ViewModelBase
     {
+        public virtual string Prefix { get; set; }
+
         [NotNullNotEmpty(Message = "First name is mandatory.")]
         public virtual string FirstName { get; set; }
 
@@ -23,16 +25,7 @@ namespace CIS.UI.Features.Commons.Persons
 
         public virtual string FullName
         {
-            get 
-            { 
-                return string.Format("{0} {1} {2} {3}", 
-                    this.FirstName ?? string.Empty, 
-                    this.MiddleName ?? string.Empty, 
-                    this.LastName ?? string.Empty,
-                    this.Suffix ?? string.Empty
-                )
-                .ToProperCase(); 
-            }
+            get { return this.GetFullName(); }
         }
 
         public PersonBasicViewModel() { }
@@ -42,9 +35,23 @@ namespace CIS.UI.Features.Commons.Persons
             this.SerializeWith(value);
         }
 
+        private string GetFullName()
+        {
+            return
+            (
+                (!string.IsNullOrWhiteSpace(this.Prefix) ? this.Prefix : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.FirstName) ? " " + this.FirstName : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.MiddleName) ? " " + this.MiddleName : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.LastName) ? " " + this.LastName : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.Suffix) ? " " + this.Suffix : string.Empty)
+            )
+            .ToProperCase()
+            .Trim();
+        }
+
         public override string ToString()
         {
-            return this.FullName;
+            return this.GetFullName();
         }
 
         public override object SerializeWith(object instance)
@@ -60,6 +67,7 @@ namespace CIS.UI.Features.Commons.Persons
                 var source = instance as PersonBasicViewModel;
                 var target = this;
 
+                target.Prefix = source.Prefix;
                 target.FirstName = source.FirstName;
                 target.MiddleName = source.MiddleName;
                 target.LastName = source.LastName;
@@ -71,6 +79,7 @@ namespace CIS.UI.Features.Commons.Persons
                 var source = instance as PersonBasic;
                 var target = this;
 
+                target.Prefix = source.Prefix;
                 target.FirstName = source.FirstName;
                 target.MiddleName = source.MiddleName;
                 target.LastName = source.LastName;
@@ -102,6 +111,7 @@ namespace CIS.UI.Features.Commons.Persons
                 var source = this;
                 var target = instance as PersonBasic;
 
+                target.Prefix = source.Prefix;
                 target.FirstName = source.FirstName;
                 target.MiddleName = source.MiddleName;
                 target.LastName = source.LastName;
@@ -126,6 +136,9 @@ namespace CIS.UI.Features.Commons.Persons
             if (that == null)
                 return false;
 
+            if (that.Prefix != this.Prefix)
+                return false;
+
             if (that.FirstName != this.FirstName)
                 return false;
 
@@ -148,6 +161,7 @@ namespace CIS.UI.Features.Commons.Persons
                 unchecked
                 {
                     _hashCode = 17;
+                    _hashCode = _hashCode * 23 + (!string.IsNullOrWhiteSpace(this.Prefix) ? this.Prefix.GetHashCode() : 0);
                     _hashCode = _hashCode * 23 + (!string.IsNullOrWhiteSpace(this.FirstName) ? this.FirstName.GetHashCode() : 0);
                     _hashCode = _hashCode * 23 + (!string.IsNullOrWhiteSpace(this.MiddleName) ? this.MiddleName.GetHashCode() : 0);
                     _hashCode = _hashCode * 23 + (!string.IsNullOrWhiteSpace(this.LastName) ? this.LastName.GetHashCode() : 0);

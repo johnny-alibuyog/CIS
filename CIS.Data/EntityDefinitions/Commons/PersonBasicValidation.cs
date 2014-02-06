@@ -12,6 +12,9 @@ namespace CIS.Data.EntityDefinitions.Commons
     {
         public PersonBasicValidation()
         {
+            Define(x => x.Prefix)
+                .MaxLength(150);
+
             Define(x => x.FirstName)
                 .MaxLength(150);
 

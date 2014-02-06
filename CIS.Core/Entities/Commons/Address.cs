@@ -108,11 +108,14 @@ namespace CIS.Core.Entities.Commons
         public override string ToString()
         {
             return
+            (
                 (!string.IsNullOrWhiteSpace(this.Address1) ? this.Address1 : string.Empty) +
                 (!string.IsNullOrWhiteSpace(this.Address2) ? " " + this.Address2 : string.Empty) +
                 (!string.IsNullOrWhiteSpace(this.Barangay) ? ", " + this.Barangay : string.Empty) +
                 (!string.IsNullOrWhiteSpace(this.City) ? ", " + this.City : string.Empty) +
-                (!string.IsNullOrWhiteSpace(this.Province) ? ", " + this.Province : string.Empty);
+                (!string.IsNullOrWhiteSpace(this.Province) ? ", " + this.Province : string.Empty)
+            )
+            .Trim();
         }
 
         #endregion

@@ -12,6 +12,9 @@ namespace CIS.Core.Entities.Barangays
         private int _version;
         private Audit _audit;
         private Person _person;
+        private Position _position;
+        private JobDescription _jobDescription;
+        private bool _isActive;
 
         public virtual Guid Id
         {
@@ -37,11 +40,31 @@ namespace CIS.Core.Entities.Barangays
             set { _person = value; }
         }
 
+        public virtual Position Position
+        {
+            get { return _position; }
+            set { _position = value; }
+        }
+
+        public virtual JobDescription JobDescription
+        {
+            get { return _jobDescription; }
+            set { _jobDescription = value; }
+        }
+
+        public virtual bool IsActive
+        {
+            get { return _isActive; }
+            set { _isActive = value; }
+        }
+
         #region Methods
 
         public virtual void SerializeWith(Official value)
         {
             this.Person = value.Person;
+            this.Position = value.Position;
+            this.IsActive = value.IsActive;
         }
 
         #endregion
@@ -86,5 +109,6 @@ namespace CIS.Core.Entities.Barangays
         }
 
         #endregion
+
     }
 }

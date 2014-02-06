@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
-        <mui:ModernTab Layout="List" SelectedSource="/Features/Memberships/Users/UserListView.xaml">
+        <mui:ModernTab Layout="List" SelectedSource="/Features/Memberships/Users/MasterList/UserListView.xaml">
             <mui:ModernTab.Links>
-                <mui:Link DisplayName="Master List" Source="/Features/Memberships/Users/UserListView.xaml" />
+                <mui:Link DisplayName="Master List" Source="/Features/Memberships/Users/MasterList/UserListView.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

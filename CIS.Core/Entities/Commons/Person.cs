@@ -9,12 +9,19 @@ namespace CIS.Core.Entities.Commons
 {
     public class Person
     {
+        private string _prefix;
         private string _firstName;
         private string _middleName;
         private string _lastName;
         private string _suffix;
         private Nullable<Gender> _gender;
         private Nullable<DateTime> _birthDate;
+
+        public virtual string Prefix
+        {
+            get { return _prefix; }
+            set { _prefix = value.ToProperCase(); }
+        }
 
         public virtual string FirstName
         {
@@ -66,6 +73,7 @@ namespace CIS.Core.Entities.Commons
 
         public virtual void SerializeWith(Person value)
         {
+            this.Prefix = value.Prefix;
             this.FirstName = value.FirstName;
             this.MiddleName = value.MiddleName;
             this.LastName = value.LastName;
@@ -77,10 +85,14 @@ namespace CIS.Core.Entities.Commons
         private string GetFullName()
         {
             return
-                (!string.IsNullOrWhiteSpace(this.FirstName) ? this.FirstName : string.Empty) +
+            (
+                (!string.IsNullOrWhiteSpace(this.Prefix) ? this.Prefix : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.FirstName) ? " " + this.FirstName : string.Empty) +
                 (!string.IsNullOrWhiteSpace(this.MiddleName) ? " " + this.MiddleName : string.Empty) +
                 (!string.IsNullOrWhiteSpace(this.LastName) ? " " + this.LastName : string.Empty) +
-                (!string.IsNullOrWhiteSpace(this.Suffix) ? " " + this.Suffix : string.Empty);
+                (!string.IsNullOrWhiteSpace(this.Suffix) ? " " + this.Suffix : string.Empty)
+            )
+            .Trim();
         }
 
         private Nullable<int> ComputeAge()
@@ -145,7 +157,7 @@ namespace CIS.Core.Entities.Commons
 
         public override string ToString()
         {
-            return this.Fullname;
+            return this.GetFullName();
         }
 
         #endregion

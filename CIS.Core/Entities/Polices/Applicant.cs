@@ -37,7 +37,7 @@ namespace CIS.Core.Entities.Polices
         private string _passportNumber;
         private string _taxIdentificationNumber;
         private string _socialSecuritySystemNumber;
-        private CivilStatus _civilStatus;
+        private Nullable<CivilStatus> _civilStatus;
 
         public virtual Guid Id
         {
@@ -192,7 +192,7 @@ namespace CIS.Core.Entities.Polices
             set { _socialSecuritySystemNumber = value; }
         }
 
-        public virtual CivilStatus CivilStatus
+        public virtual Nullable<CivilStatus> CivilStatus
         {
             get { return _civilStatus; }
             set { _civilStatus = value; }

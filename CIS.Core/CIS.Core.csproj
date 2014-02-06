@@ -66,28 +66,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Barangays\Captain.cs">
-      <DependentUpon>Official.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\Barangays\Blotter.cs" />
+    <Compile Include="Entities\Barangays\Citizen.cs" />
+    <Compile Include="Entities\Barangays\Complaint.cs" />
     <Compile Include="Entities\Barangays\Clearance.cs" />
-    <Compile Include="Entities\Barangays\Councilor.cs">
-      <DependentUpon>Official.cs</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Barangays\Incumbent.cs" />
-    <Compile Include="Entities\Barangays\Kagawad.cs">
-      <DependentUpon>Official.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\Barangays\JobDescription.cs" />
     <Compile Include="Entities\Barangays\Office.cs" />
     <Compile Include="Entities\Barangays\Official.cs" />
-    <Compile Include="Entities\Barangays\Secretary.cs">
-      <DependentUpon>Official.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Barangays\SKChairman.cs">
-      <DependentUpon>Official.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Barangays\Treasurer.cs">
-      <DependentUpon>Official.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Entities\Barangays\Position.cs" />
+    <Compile Include="Entities\Barangays\Purpose.cs" />
+    <Compile Include="Entities\Barangays\Setting.cs" />
     <Compile Include="Entities\Commons\Address.cs" />
     <Compile Include="Entities\Commons\Audit.cs" />
     <Compile Include="Entities\Commons\Barangay.cs">
@@ -163,7 +152,7 @@
     </Compile>
     <Compile Include="Entities\Polices\Finding.cs" />
     <Compile Include="Entities\Polices\Hit.cs" />
-    <Compile Include="Entities\Polices\HitScore.cs" />
+    <Compile Include="Entities\Commons\HitScore.cs" />
     <Compile Include="Entities\Polices\Officer.cs" />
     <Compile Include="Entities\Polices\Purpose.cs" />
     <Compile Include="Entities\Polices\Rank.cs" />

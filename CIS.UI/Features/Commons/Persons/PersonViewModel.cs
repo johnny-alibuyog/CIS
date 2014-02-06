@@ -11,10 +11,17 @@ namespace CIS.UI.Features.Commons.Persons
 {
     public class PersonViewModel : ViewModelBase
     {
+        private string _prefix;
         private string _firstName;
         private string _middleName;
         private string _lastName;
         private string _suffix;
+
+        public virtual string Prefix
+        {
+            get { return _prefix; }
+            set { _prefix = value; }
+        }
 
         [NotNullNotEmpty(Message = "First name is mandatory.")]
         public virtual string FirstName
@@ -45,15 +52,7 @@ namespace CIS.UI.Features.Commons.Persons
 
         public virtual string FullName
         {
-            get
-            {
-                return string.Format("{0} {1} {2}",
-                    this.FirstName ?? string.Empty,
-                    this.MiddleName ?? string.Empty,
-                    this.LastName ?? string.Empty
-                )
-                .ToProperCase();
-            }
+            get { return GetFullName(); }
         }
 
         //[NotNull(Message = "Gender is mandatory.")]
@@ -62,9 +61,24 @@ namespace CIS.UI.Features.Commons.Persons
         //[NotNull(Message = "BirthDate is mandatory.")]
         public virtual Nullable<DateTime> BirthDate { get; set; }
 
+
+        private string GetFullName()
+        {
+            return
+            (
+                (!string.IsNullOrWhiteSpace(this.Prefix) ? this.Prefix : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.FirstName) ? " " + this.FirstName : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.MiddleName) ? " " + this.MiddleName : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.LastName) ? " " + this.LastName : string.Empty) +
+                (!string.IsNullOrWhiteSpace(this.Suffix) ? " " + this.Suffix : string.Empty)
+            )
+            .ToProperCase()
+            .Trim();
+        }
+
         public override string ToString()
         {
-            return this.FullName;
+            return this.GetFullName();
         }
 
         public override object SerializeWith(object instance)
@@ -77,6 +91,7 @@ namespace CIS.UI.Features.Commons.Persons
                 var source = instance as PersonViewModel;
                 var target = this;
 
+                target.Prefix = source.Prefix;
                 target.FirstName = source.FirstName;
                 target.MiddleName = source.MiddleName;
                 target.LastName = source.LastName;
@@ -90,6 +105,7 @@ namespace CIS.UI.Features.Commons.Persons
                 var source = instance as Person;
                 var target = this;
 
+                target.Prefix = source.Prefix;
                 target.FirstName = source.FirstName;
                 target.MiddleName = source.MiddleName;
                 target.LastName = source.LastName;
@@ -120,6 +136,7 @@ namespace CIS.UI.Features.Commons.Persons
                 var source = this;
                 var target = instance as Person;
 
+                target.Prefix = source.Prefix;
                 target.FirstName = source.FirstName;
                 target.MiddleName = source.MiddleName;
                 target.LastName = source.LastName;

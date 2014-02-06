@@ -7,12 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
-        <mui:ModernTab Layout="List" SelectedSource="/Features/Polices/Maintenances/StationView.xaml">
+        <mui:ModernTab Layout="List" SelectedSource="/Features/Polices/Maintenances/Stations/StationView.xaml">
             <mui:ModernTab.Links>
-                <mui:Link DisplayName="Station" Source="/Features/Polices/Maintenances/StationView.xaml"/>
-                <mui:Link DisplayName="Setting" Source="/Features/Polices/Maintenances/SettingView.xaml"/>
-                <mui:Link DisplayName="Officers" Source="/Features/Polices/Maintenances/OfficerListView.xaml"/>
-                <mui:Link DisplayName="Purposes" Source="/Features/Polices/Maintenances/PurposeListView.xaml"/>
+                <mui:Link DisplayName="Station" Source="/Features/Polices/Maintenances/Stations/StationView.xaml"/>
+                <mui:Link DisplayName="Setting" Source="/Features/Polices/Maintenances/Settings/SettingView.xaml"/>
+                <mui:Link DisplayName="Officers" Source="/Features/Polices/Maintenances/Officers/OfficerListView.xaml"/>
+                <mui:Link DisplayName="Purposes" Source="/Features/Polices/Maintenances/Purposes/PurposeListView.xaml"/>
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

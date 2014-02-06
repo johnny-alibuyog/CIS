@@ -130,6 +130,16 @@
     <Compile Include="Conventions\CustomTableNameConvention.cs" />
     <Compile Include="Conventions\EnumConvention.cs" />
     <Compile Include="Conventions\_CustomJoinedSubclassConvention.cs" />
+    <Compile Include="EntityDefinitions\Barangays\BlotterMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\BlotterValidation.cs" />
+    <Compile Include="EntityDefinitions\Barangays\CitizenMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\CitizenValidation.cs" />
+    <Compile Include="EntityDefinitions\Barangays\JobDescriptionMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\JobDescriptionValidation.cs" />
+    <Compile Include="EntityDefinitions\Barangays\PositionValidation.cs" />
+    <Compile Include="EntityDefinitions\Barangays\PositionMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\SettingMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\SettingValidation.cs" />
     <Compile Include="EntityDefinitions\Commons\ConfigurationMapping.cs" />
     <Compile Include="EntityDefinitions\Commons\ConfigurationValidation.cs" />
     <Compile Include="EntityDefinitions\Commons\DataStoreConfigurationMapping.cs">
@@ -191,28 +201,10 @@
       <DependentUpon>HitValidation.cs</DependentUpon>
     </Compile>
     <Compile Include="ISessionProvider.cs" />
-    <Compile Include="EntityDefinitions\Barangays\CaptainMapping.cs">
-      <DependentUpon>OfficialMapping.cs</DependentUpon>
-    </Compile>
     <Compile Include="EntityDefinitions\Barangays\ClearanceMapping.cs" />
-    <Compile Include="EntityDefinitions\Barangays\CouncilorMapping.cs">
-      <DependentUpon>OfficialMapping.cs</DependentUpon>
-    </Compile>
     <Compile Include="EntityDefinitions\Barangays\IncumbentMapping.cs" />
-    <Compile Include="EntityDefinitions\Barangays\KagawadMapping.cs">
-      <DependentUpon>OfficialMapping.cs</DependentUpon>
-    </Compile>
     <Compile Include="EntityDefinitions\Barangays\OfficeMapping.cs" />
     <Compile Include="EntityDefinitions\Barangays\OfficialMapping.cs" />
-    <Compile Include="EntityDefinitions\Barangays\SecretaryMapping.cs">
-      <DependentUpon>OfficialMapping.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDefinitions\Barangays\SKChairmanMapping.cs">
-      <DependentUpon>OfficialMapping.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDefinitions\Barangays\TreasurerMapping.cs">
-      <DependentUpon>OfficialMapping.cs</DependentUpon>
-    </Compile>
     <Compile Include="EntityDefinitions\Commons\AddressMapping.cs" />
     <Compile Include="EntityDefinitions\Commons\AuditMapping.cs" />
     <Compile Include="EntityDefinitions\Commons\BarangayMapping.cs">
@@ -269,28 +261,10 @@
     <Compile Include="EntityDefinitions\Polices\WarrantMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionProvider.cs" />
-    <Compile Include="EntityDefinitions\Barangays\CaptainValidation.cs">
-      <DependentUpon>OfficialValidation.cs</DependentUpon>
-    </Compile>
     <Compile Include="EntityDefinitions\Barangays\ClearanceValidaton.cs" />
-    <Compile Include="EntityDefinitions\Barangays\CouncilorValidation.cs">
-      <DependentUpon>OfficialValidation.cs</DependentUpon>
-    </Compile>
     <Compile Include="EntityDefinitions\Barangays\IncumbentValidation.cs" />
-    <Compile Include="EntityDefinitions\Barangays\KagawadValidation.cs">
-      <DependentUpon>OfficialValidation.cs</DependentUpon>
-    </Compile>
     <Compile Include="EntityDefinitions\Barangays\OfficeValidation.cs" />
     <Compile Include="EntityDefinitions\Barangays\OfficialValidation.cs" />
-    <Compile Include="EntityDefinitions\Barangays\SecretaryValidaton.cs">
-      <DependentUpon>OfficialValidation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDefinitions\Barangays\SKChairmanValidation.cs">
-      <DependentUpon>OfficialValidation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EntityDefinitions\Barangays\TreasurerValidation.cs">
-      <DependentUpon>OfficialValidation.cs</DependentUpon>
-    </Compile>
     <Compile Include="EntityDefinitions\Commons\AddressValidation.cs" />
     <Compile Include="EntityDefinitions\Commons\AuditValidation.cs" />
     <Compile Include="EntityDefinitions\Commons\BarangayValidation.cs">

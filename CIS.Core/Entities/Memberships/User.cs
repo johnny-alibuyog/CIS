@@ -80,6 +80,11 @@ namespace CIS.Core.Entities.Memberships
             return _roles.Any(x => x == Role.SystemAdministrator);
         }
 
+        public virtual bool IsPoliceStaff()
+        {
+            return this.Has(Role.PoliceAdministartor, Role.PoliceApprover, Role.PoliceEncoder);
+        }
+
         public virtual bool IsPoliceAdministartor()
         {
             return this.Has(Role.PoliceAdministartor);
@@ -95,6 +100,11 @@ namespace CIS.Core.Entities.Memberships
             return this.Has(Role.PoliceEncoder);
         }
 
+        public virtual bool IsBarangayStaff()
+        {
+            return this.Has(Role.BarangayAdministartor, Role.BarangayApprover, Role.BarangayEncoder);
+        }
+
         public virtual bool IsBarangayAdministartor()
         {
             return this.Has(Role.BarangayAdministartor);
@@ -108,6 +118,11 @@ namespace CIS.Core.Entities.Memberships
         public virtual bool IsBarangayEncoder()
         {
             return this.Has(Role.BarangayEncoder);
+        }
+
+        public virtual bool IsMayorStaff()
+        {
+            return this.Has(Role.MayorAdministrator, Role.MayorApprover, Role.MayorEncoder);
         }
 
         public virtual bool IsMayorAdministrator()

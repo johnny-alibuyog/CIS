@@ -52,42 +52,6 @@ namespace CIS.UI.Features
         {
             this.InitializeComponent();
             this.InitializeViewModelAsync(() => IoC.Container.Resolve<MainViewModel>());
-
-            //App.Configuration.Apprearance.Apply();
-
-            //Task.Factory.StartNew(() =>
-            //{
-            //    var dataInitializer = (IDataInitializer)null;
-
-            //    //dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
-            //    //dataInitializer.Execute();
-
-            //    //var x = IoC.Container.Resolve<CIS.UI.Features.Polices.Clearances.ApplicationViewModel>();
-
-            //    dataInitializer = IoC.Container.Resolve<FingerDataInitializer>();
-            //    dataInitializer.Execute();
-
-            //    dataInitializer = IoC.Container.Resolve<TerminalDataInitializer>();
-            //    dataInitializer.Execute();
-
-            //    dataInitializer = IoC.Container.Resolve<SettingDataInitializer>();
-            //    dataInitializer.Execute();
-
-            //    dataInitializer = IoC.Container.Resolve<RankDataInitializer>();
-            //    dataInitializer.Execute();
-
-            //    dataInitializer = IoC.Container.Resolve<PurposeDataInitializer>();
-            //    dataInitializer.Execute();
-
-            //    dataInitializer = IoC.Container.Resolve<MakeDataInitializer>();
-            //    dataInitializer.Execute();
-
-            //    dataInitializer = IoC.Container.Resolve<KindDataInitializer>();
-            //    dataInitializer.Execute();
-
-            //    dataInitializer = IoC.Container.Resolve<StationDataInitializer>();
-            //    dataInitializer.Execute();
-            //}, TaskCreationOptions.LongRunning);
         }
     }
 }

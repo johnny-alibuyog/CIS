@@ -40,6 +40,9 @@ namespace CIS.Data.EntityDefinitions.Polices
                 //.Component(x => PersonMapping.MapBasicCollection())
                 .Component(component =>
                 {
+                    component.Map(x => x.Prefix)
+                        .Length(150);
+
                     component.Map(x => x.FirstName)
                         .Index("FirstNameIndex")
                         .Length(150)
