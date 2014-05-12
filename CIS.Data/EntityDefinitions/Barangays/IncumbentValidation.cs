@@ -17,11 +17,11 @@ namespace CIS.Data.EntityDefinition.Barangays
 
             Define(x => x.Audit);
 
+            Define(x => x.Date);
+
             Define(x => x.Officials)
                 .NotNullableAndNotEmpty()
                 .And.HasValidElements();
-
-            Define(x => x.Date);
 
             //ValidateInstance.By(instance =>
             //{

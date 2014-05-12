@@ -251,6 +251,42 @@
     <Compile Include="Bootstraps\InversionOfControl\ViewModelDependency.cs">
       <DependentUpon>Dependency.cs</DependentUpon>
     </Compile>
+    <Compile Include="Features\Barangays\Blotters\BlotterPage.xaml.cs">
+      <DependentUpon>BlotterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Blotters\MasterList\BlotterCitizenViewModel.cs">
+      <DependentUpon>BlotterViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Blotters\MasterList\BlotterController.cs" />
+    <Compile Include="Features\Barangays\Blotters\MasterList\BlotterListController.cs" />
+    <Compile Include="Features\Barangays\Blotters\MasterList\BlotterListCriteriaViewModel.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>BlotterListViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Blotters\MasterList\BlotterListItemViewModel.cs">
+      <DependentUpon>BlotterListViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Blotters\MasterList\BlotterListView.xaml.cs">
+      <DependentUpon>BlotterListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Blotters\MasterList\BlotterListViewModel.cs" />
+    <Compile Include="Features\Barangays\Blotters\MasterList\BlotterOfficialViewModel.cs">
+      <DependentUpon>BlotterViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Blotters\MasterList\BlotterView.xaml.cs">
+      <DependentUpon>BlotterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Blotters\MasterList\BlotterViewModel.cs" />
+    <Compile Include="Features\Barangays\Citizens\CitizenController.cs" />
+    <Compile Include="Features\Barangays\Citizens\CitizenDialogController.cs" />
+    <Compile Include="Features\Barangays\Citizens\CitizenDialogView.xaml.cs">
+      <DependentUpon>CitizenDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Citizens\CitizenDialogViewModel.cs" />
+    <Compile Include="Features\Barangays\Citizens\CitizenView.xaml.cs">
+      <DependentUpon>CitizenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Citizens\CitizenViewModel.cs" />
     <Compile Include="Features\Barangays\Clearances\Applications\AmendmentViewModel.cs">
       <DependentUpon>FindingViewModel.cs</DependentUpon>
     </Compile>
@@ -259,9 +295,28 @@
       <DependentUpon>ApplicationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Barangays\Clearances\Applications\ApplicationViewModel.cs" />
+    <Compile Include="Features\Barangays\Clearances\Applications\BlotterHitViewModel.cs">
+      <DependentUpon>HitViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\Applications\ClearanceReportViewModel.cs" />
+    <Compile Include="Features\Barangays\Clearances\Applications\HitViewModel.cs">
+      <DependentUpon>FindingViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\Archives\ArchiveController.cs" />
+    <Compile Include="Features\Barangays\Clearances\Archives\ArchiveCriteriaViewModel.cs">
+      <DependentUpon>ArchiveViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\Archives\ArchiveItemViewModel.cs">
+      <DependentUpon>ArchiveViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\Archives\ArchiveReportView.xaml.cs">
+      <DependentUpon>ArchiveReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Clearances\Archives\ArchiveReportViewModel.cs" />
     <Compile Include="Features\Barangays\Clearances\Archives\ArchiveView.xaml.cs">
       <DependentUpon>ArchiveView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\Barangays\Clearances\Archives\ArchiveViewModel.cs" />
     <Compile Include="Features\Barangays\Clearances\ClearancePage.xaml.cs">
       <DependentUpon>ClearancePage.xaml</DependentUpon>
     </Compile>
@@ -269,9 +324,6 @@
       <DependentUpon>FindingView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Barangays\Clearances\Applications\FindingViewModel.cs" />
-    <Compile Include="Features\Barangays\Clearances\Applications\HitViewModel.cs">
-      <DependentUpon>FindingViewModel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Features\Barangays\Clearances\Applications\PersonalInformationView.xaml.cs">
       <DependentUpon>PersonalInformationView.xaml</DependentUpon>
     </Compile>
@@ -280,8 +332,50 @@
       <DependentUpon>SummaryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Barangays\Clearances\Applications\SummaryViewModel.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Incumbents\IncumbentController.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Incumbents\IncumbentListController.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Incumbents\IncumbentListItemViewModel.cs">
+      <DependentUpon>IncumbentListViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Maintenances\Incumbents\IncumbentListView.xaml.cs">
+      <DependentUpon>IncumbentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Maintenances\Incumbents\IncumbentListViewModel.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Incumbents\IncumbentView.xaml.cs">
+      <DependentUpon>IncumbentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Maintenances\Incumbents\IncumbentViewModel.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Incumbents\OfficialView.xaml.cs">
+      <DependentUpon>OfficialView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Maintenances\Incumbents\OfficialViewModel.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Incumbents\PositionViewModel.cs" />
+    <Compile Include="Features\Barangays\Maintenances\MaintenanceMessage.cs" />
+    <Compile Include="Features\Barangays\Maintenances\MaintenancePage.xaml.cs">
+      <DependentUpon>MaintenancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Maintenances\Offices\OfficeController.cs" />
     <Compile Include="Features\Barangays\Maintenances\Offices\OfficeDataInitializer.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Offices\OfficeView.xaml.cs">
+      <DependentUpon>OfficeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Maintenances\Offices\OfficeViewModel.cs" />
     <Compile Include="Features\Barangays\Maintenances\Positions\PositionDataInitializer.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Purposes\PurposeDataInitializer.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Purposes\PurposeListController.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Purposes\PurposeListView.xaml.cs">
+      <DependentUpon>PurposeListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Maintenances\Purposes\PurposeListViewModel.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Purposes\PurposeViewModel.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Settings\SettingController.cs" />
+    <Compile Include="Features\Barangays\Maintenances\Settings\SettingFingerViewModel.cs">
+      <DependentUpon>SettingViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Maintenances\Settings\SettingView.xaml.cs">
+      <DependentUpon>SettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Barangays\Maintenances\Settings\SettingViewModel.cs" />
     <Compile Include="Features\Commons\Addresses\AddressDataInitializer.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -303,6 +397,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Features\Commons\Biometrics\FingerPrintViewModel.cs" />
+    <Compile Include="Features\Commons\Biometrics\FingerScannerDialog.xaml.cs">
+      <DependentUpon>FingerScannerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Commons\Biometrics\FingerScannerDialogController.cs" />
+    <Compile Include="Features\Commons\Biometrics\FingerScannerDialogView.xaml.cs">
+      <DependentUpon>FingerScannerDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Commons\Biometrics\FingerScannerDialogViewModel.cs" />
     <Compile Include="Features\Commons\Biometrics\FingerViewModel.cs" />
     <Compile Include="Features\Commons\Biometrics\FingerScannerController.cs" />
     <Compile Include="Features\Commons\Biometrics\FingerScannerView.xaml.cs">
@@ -310,6 +412,11 @@
     </Compile>
     <Compile Include="Features\Commons\Biometrics\FingerScannerViewModel.cs" />
     <Compile Include="Features\Commons\Cameras\CameraController.cs" />
+    <Compile Include="Features\Commons\Cameras\CameraDialogController.cs" />
+    <Compile Include="Features\Commons\Cameras\CameraDialogView.xaml.cs">
+      <DependentUpon>CameraDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Commons\Cameras\CameraDialogViewModel.cs" />
     <Compile Include="Features\Commons\Cameras\CameraView.xaml.cs">
       <DependentUpon>CameraView.xaml</DependentUpon>
     </Compile>
@@ -662,7 +769,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Features\Barangays\Blotters\BlotterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Blotters\MasterList\BlotterListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Blotters\MasterList\BlotterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Citizens\CitizenDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Citizens\CitizenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Features\Barangays\Clearances\Applications\ApplicationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Clearances\Archives\ArchiveReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -686,11 +817,51 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Features\Barangays\Maintenances\Incumbents\IncumbentListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Maintenances\Incumbents\IncumbentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Maintenances\Incumbents\OfficialView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Maintenances\MaintenancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Maintenances\Offices\OfficeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Maintenances\Purposes\PurposeListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Barangays\Maintenances\Settings\SettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Features\Commons\Addresses\AddressView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Features\Commons\Biometrics\FingerScannerDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Commons\Biometrics\FingerScannerDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Features\Commons\Biometrics\FingerScannerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Commons\Cameras\CameraDialogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1007,6 +1178,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CIS.UI.Features.Barangays.Clearances.Archives.ArchiveItemViewModel.datasource" />
     <None Include="Properties\DataSources\CIS.UI.Features.Polices.Clearances.ApplicantReportViewModel.datasource" />
     <None Include="Properties\DataSources\CIS.UI.Features.Polices.Clearances.ArchiveItemViewModel.datasource" />
     <None Include="Properties\DataSources\CIS.UI.Features.Polices.Clearances.ClearanceReportViewModel.datasource" />
@@ -1039,7 +1211,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Themes\" />
-    <Folder Include="Features\Barangays\Blotters\" />
     <Folder Include="Features\Maintenances\" />
     <Folder Include="Features\Mayors\" />
     <Folder Include="Features\Memberships\Roles\" />
@@ -1062,6 +1233,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Features\Barangays\Clearances\Archives\ArchiveReport.rdlc" />
     <EmbeddedResource Include="Features\Polices\Clearances\Archives\ApplicantReport.rdlc" />
     <EmbeddedResource Include="Features\Polices\Clearances\Archives\ArchiveReport.rdlc" />
     <EmbeddedResource Include="Features\Polices\Clearances\Applications\ClearanceReport.rdlc" />

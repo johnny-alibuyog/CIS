@@ -42,8 +42,8 @@ namespace CIS.UI.Features.Polices.Maintenances.Officers
         public OfficerListView()
         {
             this.InitializeComponent();
-            //this.InitializeViewModelAsync(() => IoC.Container.Resolve<OfficerListViewModel>());
-            this.ViewModel = new OfficerListViewModel();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<OfficerListViewModel>());
+            //this.ViewModel = new OfficerListViewModel();
         }
     }
 }

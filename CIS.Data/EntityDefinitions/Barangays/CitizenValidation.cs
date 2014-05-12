@@ -53,6 +53,12 @@ namespace CIS.Data.EntityDefinitions.Barangays
 
             Define(x => x.ProvincialAddress)
                 .IsValid();
+
+            Define(x => x.FingerPrint);
+
+            Define(x => x.Pictures);
+
+            Define(x => x.Signatures);
         }
     }
 }

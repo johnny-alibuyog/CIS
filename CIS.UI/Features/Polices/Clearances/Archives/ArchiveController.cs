@@ -200,7 +200,7 @@ namespace CIS.UI.Features.Polices.Clearances.Archives
             viewModel.FilterDate = this.ViewModel.Criteria.FilterDate;
             viewModel.Items = this.ViewModel.Items;
 
-            var dialog = new DialogService<ArchiveReportView, ArchiveReportViewModel>();
+            var dialog = new DialogService<ArchiveReportViewModel>();
             dialog.ViewModel = viewModel;
             dialog.ShowModal(this, "Archive");
         }

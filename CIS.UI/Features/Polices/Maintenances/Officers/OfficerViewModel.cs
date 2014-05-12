@@ -97,9 +97,11 @@ namespace CIS.UI.Features.Polices.Maintenances.Officers
                 var source = this;
                 var target = instance as Officer;
 
+                var session = IoC.Container.Resolve<ISessionProvider>().GetSharedSession();
+
                 target.Id = source.Id;
                 target.Person = (Person)source.Person.DeserializeInto(new Person());
-                target.Rank = IoC.Container.Resolve<ISessionProvider>().GetSharedSession().Load<Rank>(source.Rank.Id);
+                target.Rank = session.Load<Rank>(source.Rank.Id);
                 target.Position = source.Position;
                 target.Signature.Image = source.Signature.ToImage();
 
@@ -111,7 +113,7 @@ namespace CIS.UI.Features.Polices.Maintenances.Officers
 
         public OfficerViewModel()
         {
-            this.Person = IoC.Container.Resolve<PersonViewModel>(); //new PersonViewModel(); // 
+            this.Person = new PersonViewModel(); // 
             this.Ranks = new ReactiveList<Lookup<string>>();
 
             this.WhenAnyValue(x => x.Person.IsValid)

@@ -20,14 +20,15 @@ namespace CIS.Data.EntityDefinition.Barangays
 
             Component(x => x.Audit);
 
-            HasManyToMany(x => x.Officials)
-                .Access.CamelCaseField(Prefix.Underscore)
-                .Schema(GetType().ParseSchema())
-                .Table("IncumbentsOfficials")
-                .Cascade.SaveUpdate()
-                .AsSet();
-
             Map(x => x.Date);
+
+            HasMany(x => x.Officials)
+                .Access.CamelCaseField(Prefix.Underscore)
+                .Cascade.AllDeleteOrphan()
+                .Not.KeyNullable()
+                .Not.KeyUpdate()
+                .Inverse()
+                .AsSet();
         }
     }
 }

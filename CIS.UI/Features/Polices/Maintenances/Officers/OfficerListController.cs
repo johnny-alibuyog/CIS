@@ -48,7 +48,7 @@ namespace CIS.UI.Features.Polices.Maintenances.Officers
 
         private void CaptureSignature(OfficerViewModel viewModel)
         {
-            var dialog = new DialogService<SignatureDialogView, SignatureDialogViewModel>();
+            var dialog = new DialogService<SignatureDialogViewModel>();
             dialog.ViewModel.Signature.SignatureImage = viewModel.Signature;
 
             var result = dialog.ShowModal(this, "Signature", null);
@@ -125,10 +125,10 @@ namespace CIS.UI.Features.Polices.Maintenances.Officers
             }
         }
 
-        [Authorize(Roles = new Role[] { Role.PoliceAdministartor, Role.PoliceEncoder })]
+        //[Authorize(Roles = new Role[] { Role.PoliceAdministartor, Role.PoliceEncoder })]
         public virtual void Create()
         {
-            var dialog = new DialogService<OfficerView, OfficerViewModel>();
+            var dialog = new DialogService<OfficerViewModel>();
             dialog.ViewModel.SerializeWith(New());
 
             dialog.ViewModel.CaptureSignature = new ReactiveCommand();
@@ -144,7 +144,7 @@ namespace CIS.UI.Features.Polices.Maintenances.Officers
 
         public virtual void Insert(OfficerViewModel value)
         {
-            var message = string.Format("Are you sure you want to save officer {0} {1}.", value.Rank.Name, value.Person.FullName);
+            var message = string.Format("Do you want to save officer {0} {1}.", value.Rank.Name, value.Person.FullName);
             var confirmed = this.MessageBox.Confirm(message, "Save");
             if (confirmed == false)
                 return;
@@ -208,7 +208,7 @@ namespace CIS.UI.Features.Polices.Maintenances.Officers
         {
             this.ViewModel.SelectedItem = item;
 
-            var dialog = new DialogService<OfficerView, OfficerViewModel>();
+            var dialog = new DialogService<OfficerViewModel>();
             dialog.ViewModel.SerializeWith(Get(item.Id));
 
             dialog.ViewModel.CaptureSignature = new ReactiveCommand();
@@ -224,7 +224,7 @@ namespace CIS.UI.Features.Polices.Maintenances.Officers
 
         public virtual void Update(OfficerViewModel value)
         {
-            var message = string.Format("Are you sure you want to save officer {0} {1}.", value.Rank, value.Person.FullName);
+            var message = string.Format("Do you want to save officer {0} {1}.", value.Rank, value.Person.FullName);
             var confirmed = this.MessageBox.Confirm(message, "Save");
             if (confirmed == false)
                 return;
@@ -263,7 +263,7 @@ namespace CIS.UI.Features.Polices.Maintenances.Officers
         {
             try
             {
-                var message = string.Format("Are you sure you want to delete officer {0} {1}.", item.Rank, item.Name);
+                var message = string.Format("Do you want to delete officer {0} {1}.", item.Rank, item.Name);
                 var confirmed = this.MessageBox.Confirm(message, "Delete");
                 if (confirmed == false)
                     return;

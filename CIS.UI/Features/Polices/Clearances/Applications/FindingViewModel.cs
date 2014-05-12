@@ -13,6 +13,8 @@ namespace CIS.UI.Features.Polices.Clearances.Applications
 {
     public class FindingViewModel : ViewModelBase
     {
+        private static readonly string NoDerogatoryRemarks = "No Derogatory Records/Information";
+
         public virtual Guid Id { get; set; }
 
         [Valid]
@@ -36,9 +38,13 @@ namespace CIS.UI.Features.Polices.Clearances.Applications
 
         public virtual string Evaluate()
         {
-            return this.IdentifiedHits.Count() > 0
-                ? string.Join("\n", this.IdentifiedHits)
-                : "No Derogatory Records/Information";
+            if (this.Amendment != null)
+                return this.Amendment.Remarks;
+
+            if (this.IdentifiedHits.Count() > 0)
+                return string.Join("\n", this.IdentifiedHits);
+
+            return NoDerogatoryRemarks;
         }
 
         public FindingViewModel()
@@ -65,6 +71,11 @@ namespace CIS.UI.Features.Polices.Clearances.Applications
                 {
                     if (this.Amendment == null)
                         this.Amendment = new AmendmentViewModel();
+
+                    var identifiedHits = this.Hits.Where(x => x.IsIdentifiedHit);
+                    this.Amendment.Remarks = identifiedHits.Count() > 0
+                        ? string.Join("\n", identifiedHits)
+                        : NoDerogatoryRemarks;
                 }
                 else
                 {

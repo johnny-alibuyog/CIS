@@ -12,10 +12,14 @@ namespace CIS.Core.Entities.Barangays
         private Guid _id;
         private int _version;
         private Audit _audit;
+        private ImageBlob _logo;
         private string _name;
         private string _location;
         private Address _address;
+        private string _officialReceipt;
         private Nullable<decimal> _clearanceFee;
+        private Nullable<decimal> _certificationFee;
+        private Nullable<decimal> _documentStampTax;
         private ICollection<Incumbent> _incumbents;
 
         public virtual Guid Id
@@ -34,6 +38,12 @@ namespace CIS.Core.Entities.Barangays
         {
             get { return _audit; }
             set { _audit = value; }
+        }
+
+        public virtual ImageBlob Logo
+        {
+            get { return _logo; }
+            set { _logo = value; }
         }
 
         public virtual string Name
@@ -60,6 +70,18 @@ namespace CIS.Core.Entities.Barangays
             set { _clearanceFee = value; }
         }
 
+        public virtual Nullable<decimal> CertificationFee
+        {
+            get { return _certificationFee; }
+            set { _certificationFee = value; }
+        }
+
+        public virtual Nullable<decimal> DocumentStampTax
+        {
+            get { return _documentStampTax; }
+            set { _documentStampTax = value; }
+        }
+
         public virtual IEnumerable<Incumbent> Incumbents
         {
             get { return _incumbents; }
@@ -67,6 +89,7 @@ namespace CIS.Core.Entities.Barangays
 
         public Office()
         {
+            _logo = new ImageBlob();
             _incumbents = new Collection<Incumbent>();
         }
 

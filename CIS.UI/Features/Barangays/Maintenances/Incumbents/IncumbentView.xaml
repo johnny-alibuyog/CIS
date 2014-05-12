@@ -1,0 +1,208 @@
+﻿<local:DialogBase x:Class="CIS.UI.Features.Barangays.Maintenances.Incumbents.IncumbentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:CIS.UI.Features"
+        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+        xmlns:persons="clr-namespace:CIS.UI.Features.Commons.Persons"
+        xmlns:barangay="clr-namespace:CIS.Core.Entities.Barangays;assembly=CIS.Core"
+        local:DialogBase.DialogResult="{Binding Path=ActionResult}"
+        Title="Incumbent" SizeToContent="WidthAndHeight">
+    <local:DialogBase.Resources>
+        <sys:Double x:Key="InputDisplayWidth">450</sys:Double>
+    </local:DialogBase.Resources>
+    <StackPanel Style="{StaticResource ContentRoot}">
+        <ScrollViewer>
+            <StackPanel>
+                <TextBlock Text="Incumbents" Style="{StaticResource Heading2}" />
+                <mui:ModernButton Grid.Column="1" Command="{Binding CreateOfficial}" CommandParameter="Captain" Style="{StaticResource app_bar_add}" Content="New Official" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,4,0" />
+
+                <StackPanel Margin="0,10,0,0">
+                    <StackPanel.Resources>
+                        <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
+                    </StackPanel.Resources>
+
+                    <!-- Captains -->
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Captains"/>
+                        <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1">
+                            <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Captains, Mode=TwoWay, ValidatesOnDataErrors=True}" 
+                                     SelectedItem="{Binding SelectedOfficial}" Width="{StaticResource InputDisplayWidth}">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Display, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                            <mui:ModernButton Grid.Column="1" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DialogBase}}, Path=DataContext.EditOfficial}" CommandParameter="{Binding}" Style="{StaticResource app_bar_edit}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0" />
+                                            <mui:ModernButton Grid.Column="2" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DialogBase}}, Path=DataContext.DeleteOfficial}" CommandParameter="{Binding}" Style="{StaticResource app_bar_delete}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Councilors -->
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Councilors"/>
+                        <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1">
+                            <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Councilors, Mode=TwoWay, ValidatesOnDataErrors=True}" 
+                                     SelectedItem="{Binding SelectedOfficial}" Width="{StaticResource InputDisplayWidth}">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Display, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                            <mui:ModernButton Grid.Column="1" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DialogBase}}, Path=DataContext.EditOfficial}" CommandParameter="{Binding}" Style="{StaticResource app_bar_edit}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0" />
+                                            <mui:ModernButton Grid.Column="2" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DialogBase}}, Path=DataContext.DeleteOfficial}" CommandParameter="{Binding}" Style="{StaticResource app_bar_delete}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Secretaries -->
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Secretaries"/>
+                        <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1">
+                            <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Secretaries, Mode=TwoWay, ValidatesOnDataErrors=True}" 
+                                     SelectedItem="{Binding SelectedOfficial}" Width="{StaticResource InputDisplayWidth}">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Display, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                            <mui:ModernButton Grid.Column="1" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DialogBase}}, Path=DataContext.EditOfficial}" CommandParameter="{Binding}" Style="{StaticResource app_bar_edit}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0" />
+                                            <mui:ModernButton Grid.Column="2" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DialogBase}}, Path=DataContext.DeleteOfficial}" CommandParameter="{Binding}" Style="{StaticResource app_bar_delete}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Treasurers -->
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Treasurers"/>
+                        <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1">
+                            <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Treasurers, Mode=TwoWay, ValidatesOnDataErrors=True}" 
+                                     SelectedItem="{Binding SelectedOfficial}" Width="{StaticResource InputDisplayWidth}">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Display, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                            <mui:ModernButton Grid.Column="1" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DialogBase}}, Path=DataContext.EditOfficial}" CommandParameter="{Binding}" Style="{StaticResource app_bar_edit}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0" />
+                                            <mui:ModernButton Grid.Column="2" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DialogBase}}, Path=DataContext.DeleteOfficial}" CommandParameter="{Binding}" Style="{StaticResource app_bar_delete}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+                    </StackPanel>
+
+                    <!-- Kagawads -->
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Kagawads"/>
+                        <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1">
+                            <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Kagawads, Mode=TwoWay, ValidatesOnDataErrors=True}" 
+                                     SelectedItem="{Binding SelectedOfficial}" Width="{StaticResource InputDisplayWidth}">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Display, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                            <mui:ModernButton Grid.Column="1" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DialogBase}}, Path=DataContext.EditOfficial}" CommandParameter="{Binding}" Style="{StaticResource app_bar_edit}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0" />
+                                            <mui:ModernButton Grid.Column="2" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DialogBase}}, Path=DataContext.DeleteOfficial}" CommandParameter="{Binding}" Style="{StaticResource app_bar_delete}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+                    </StackPanel>
+
+                    <!-- SK Chairmans -->
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="SK Chairmans"/>
+                        <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1">
+                            <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding SKChairmans, Mode=TwoWay, ValidatesOnDataErrors=True}" 
+                                     SelectedItem="{Binding SelectedOfficial}" Width="{StaticResource InputDisplayWidth}">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Display, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                                            <mui:ModernButton Grid.Column="1" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DialogBase}}, Path=DataContext.EditOfficial}" CommandParameter="{Binding}" Style="{StaticResource app_bar_edit}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0" />
+                                            <mui:ModernButton Grid.Column="2" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:DialogBase}}, Path=DataContext.DeleteOfficial}" CommandParameter="{Binding}" Style="{StaticResource app_bar_delete}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="4,0,0,0" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- buttons -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button IsDefault="True" Content="Save" Command="{Binding Path=BatchSave}" Margin="4" />
+                    <Button IsCancel="True" Content="Cancel" Margin="4" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </StackPanel>
+</local:DialogBase >

@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="CIS.UI.Features.Barangays.Blotters.MasterList.BlotterListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:ext="clr-namespace:CIS.UI.Utilities.Extentions"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:controls="clr-namespace:CIS.UI.Utilities.Controls"
+             xmlns:masterList="clr-namespace:CIS.UI.Features.Barangays.Blotters.MasterList">
+    <Grid>
+        <ScrollViewer>
+            <StackPanel x:Name="Form">
+                <!-- Search Criteria-->
+
+                <StackPanel x:Name="SearchCriteria" Orientation="Horizontal">
+                    <ComboBox 
+                        ItemsSource="{Binding Source={ext:EnumerationExtention {x:Type masterList:ConcernedPersonType}}}"
+                        SelectedValue="{Binding Criteria.SearchPersonBy, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                        Width="120" Margin="0,0,10,0"
+                        SelectedValuePath="Value"
+                        DisplayMemberPath="Description" />
+
+                    <TextBox Text="{Binding Criteria.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" x:Name="FirstNameTextBox" Width="100" Margin="0,0,10,0">
+                        <controls:WatermarkService.Watermark>
+                            <TextBox>First Name</TextBox>
+                        </controls:WatermarkService.Watermark>
+                    </TextBox>
+
+                    <TextBox Text="{Binding Criteria.MiddleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" x:Name="MiddleNameTextBox" Width="100" Margin="0,0,10,0" >
+                        <controls:WatermarkService.Watermark>
+                            <TextBox>Middle Name</TextBox>
+                        </controls:WatermarkService.Watermark>
+                    </TextBox>
+
+                    <TextBox Text="{Binding Criteria.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" x:Name="LastNameTextBox" Width="100" Margin="0,0,10,0">
+                        <controls:WatermarkService.Watermark>
+                            <TextBox>Last Name</TextBox>
+                        </controls:WatermarkService.Watermark>
+                    </TextBox>
+
+                    <mui:ModernButton Command="{Binding Search}" Content="Search" Style="{StaticResource app_bar_find}" Margin="4,0,4,0"/>
+                    <mui:ModernButton Command="{Binding Create}" Content="Create" Style="{StaticResource app_bar_add}" Margin="4,0,4,0"/>
+                </StackPanel>
+
+                <!-- Blotter List -->
+                <DataGrid x:Name="Items" AutoGenerateColumns="False" 
+                        HorizontalAlignment="Stretch" IsReadOnly="True"
+                        ItemsSource="{Binding Items, Mode=TwoWay}" 
+                        SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Action">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ContentControl>
+                                        <StackPanel Orientation="Horizontal">
+                                            <mui:ModernButton Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Edit}" CommandParameter="{Binding}" Style="{StaticResource app_bar_edit}" Margin="4,0,4,0"/>
+                                            <mui:ModernButton Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Delete}" CommandParameter="{Binding}" Style="{StaticResource app_bar_delete}" Margin="4,0,4,0"/>
+                                        </StackPanel>
+                                    </ContentControl>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Filed On" Binding="{Binding FiledOn, StringFormat={}{0:MM-dd-yyyy}}" />
+                        <DataGridTextColumn Header="Complaint" Binding="{Binding Complaint}" />
+                        <DataGridTextColumn Header="Concerned" Binding="{Binding ConcernedPersonsDisplay}">
+                            <DataGridTextColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <ContentControl>
+                                        <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.Criteria.SearchPersonBy}" />
+                                    </ContentControl>
+                                </DataTemplate>
+                            </DataGridTextColumn.HeaderTemplate>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

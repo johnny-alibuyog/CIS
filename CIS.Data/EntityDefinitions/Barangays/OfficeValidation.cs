@@ -17,6 +17,8 @@ namespace CIS.Data.EntityDefinition.Barangays
 
             Define(x => x.Audit);
 
+            Define(x => x.Logo);
+
             Define(x => x.Name)
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(250);
@@ -28,6 +30,12 @@ namespace CIS.Data.EntityDefinition.Barangays
             Define(x => x.Address)
                 .NotNullable()
                 .And.IsValid();
+
+            Define(x => x.ClearanceFee);
+
+            Define(x => x.CertificationFee);
+
+            Define(x => x.DocumentStampTax);
 
             Define(x => x.Incumbents)
                 .HasValidElements();

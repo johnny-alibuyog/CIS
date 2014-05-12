@@ -18,9 +18,9 @@ namespace CIS.UI.Features.Polices.Maintenances
     /// <summary>
     /// Interaction logic for StationPage.xaml
     /// </summary>
-    public partial class StationPage : UserControl
+    public partial class MaintenancePage : UserControl
     {
-        public StationPage()
+        public MaintenancePage()
         {
             InitializeComponent();
         }

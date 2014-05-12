@@ -9,6 +9,7 @@ using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Utilities.Extentions;
 using NHibernate;
+using NHibernate.Exceptions;
 using NHibernate.Linq;
 using ReactiveUI;
 
@@ -121,7 +122,7 @@ namespace CIS.UI.Features.Memberships.Users.MasterList
         {
             this.Authorize(new Role[] { Role.PoliceAdministartor });
 
-            var dialog = new DialogService<UserView, UserViewModel>();
+            var dialog = new DialogService<UserViewModel>();
             dialog.ViewModel.SerializeWith(New());
 
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
@@ -136,7 +137,7 @@ namespace CIS.UI.Features.Memberships.Users.MasterList
         {
             this.Authorize(new Role[] { Role.PoliceAdministartor });
 
-            var message = string.Format("Are you sure you want to save user {0}?", value.Username);
+            var message = string.Format("Do you want to save user {0}?", value.Username);
             var confirmed = this.MessageBox.Confirm(message, "Save");
             if (confirmed == false)
                 return;
@@ -173,10 +174,10 @@ namespace CIS.UI.Features.Memberships.Users.MasterList
         public virtual void Edit(UserListItemViewModel item)
         {
             this.Authorize(new Role[] { Role.PoliceAdministartor });
-            
+
             this.ViewModel.SelectedItem = item;
 
-            var dialog = new DialogService<UserView, UserViewModel>();
+            var dialog = new DialogService<UserViewModel>();
 
             dialog.ViewModel.SerializeWith(Get(item.Id));
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
@@ -191,7 +192,7 @@ namespace CIS.UI.Features.Memberships.Users.MasterList
         {
             this.Authorize(new Role[] { Role.PoliceAdministartor });
 
-            var message = string.Format("Are you sure you want to save user {0}?", value.Username);
+            var message = string.Format("Do you want to save user {0}?", value.Username);
             var confirmed = this.MessageBox.Confirm(message, "Save");
             if (confirmed == false)
                 return;
@@ -223,30 +224,41 @@ namespace CIS.UI.Features.Memberships.Users.MasterList
         //[Authorize(Roles = new Role[] { Role.PoliceAdministartor })]
         public virtual void Delete(UserListItemViewModel item)
         {
-            this.Authorize(new Role[] { Role.PoliceAdministartor });
-
-            this.ViewModel.SelectedItem = item;
-
-            var message = string.Format("Are you sure you want to delete user {0}?", item.Username);
-            var confirmed = this.MessageBox.Confirm(message, "Delete");
-            if (confirmed == false)
-                return;
-
-            using (var session = this.SessionProvider.GetSharedSession())
-            using (var transaction = session.BeginTransaction())
+            try
             {
-                var user = session.Get<User>(item.Id);
+                this.Authorize(new Role[] { Role.PoliceAdministartor });
 
-                session.Delete(user);
+                this.ViewModel.SelectedItem = item;
 
-                transaction.Commit();
+                var message = string.Format("Do you want to delete user {0}?", item.Username);
+                var confirmed = this.MessageBox.Confirm(message, "Delete");
+                if (confirmed == false)
+                    return;
 
-                this.SessionProvider.ReleaseSharedSession();
+                using (var session = this.SessionProvider.GetSharedSession())
+                using (var transaction = session.BeginTransaction())
+                {
+                    var user = session.Get<User>(item.Id);
+
+                    session.Delete(user);
+
+                    transaction.Commit();
+
+                    this.SessionProvider.ReleaseSharedSession();
+                }
+
+                this.MessageBox.Inform("Delete has been successfully completed.");
+
+                this.Search();
             }
-
-            this.MessageBox.Inform("Delete has been successfully completed.");
-
-            this.Search();
+            catch (GenericADOException)
+            {
+                throw new InvalidOperationException(string.Format("Unable to delete. Officer {0} may already be in use.", item.FullName));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

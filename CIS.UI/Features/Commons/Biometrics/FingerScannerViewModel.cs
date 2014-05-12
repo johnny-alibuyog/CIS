@@ -37,22 +37,21 @@ namespace CIS.UI.Features.Commons.Biometrics
             this.EventLogs = new ReactiveList<string>();
             this.CurrentFinger = FingerViewModel.RightThumb;
             this.FingerImages = new Dictionary<FingerViewModel, BitmapSource>()
-                {
-                    { FingerViewModel.RightThumb, (BitmapSource)null },
-                    { FingerViewModel.RightIndex, (BitmapSource)null },
-                    { FingerViewModel.RightMiddle, (BitmapSource)null },
-                    { FingerViewModel.RightRing, (BitmapSource)null },
-                    { FingerViewModel.RightPinky, (BitmapSource)null },
-                    { FingerViewModel.LeftThumb, (BitmapSource)null },
-                    { FingerViewModel.LeftIndex, (BitmapSource)null },
-                    { FingerViewModel.LeftMiddle, (BitmapSource)null },
-                    { FingerViewModel.LeftRing, (BitmapSource)null },
-                    { FingerViewModel.LeftPinky, (BitmapSource)null },
-                };
+            {
+                { FingerViewModel.RightThumb, (BitmapSource)null },
+                { FingerViewModel.RightIndex, (BitmapSource)null },
+                { FingerViewModel.RightMiddle, (BitmapSource)null },
+                { FingerViewModel.RightRing, (BitmapSource)null },
+                { FingerViewModel.RightPinky, (BitmapSource)null },
+                { FingerViewModel.LeftThumb, (BitmapSource)null },
+                { FingerViewModel.LeftIndex, (BitmapSource)null },
+                { FingerViewModel.LeftMiddle, (BitmapSource)null },
+                { FingerViewModel.LeftRing, (BitmapSource)null },
+                { FingerViewModel.LeftPinky, (BitmapSource)null },
+            };
 
             //_controller = new FingerScannerController(this);
             _controller = IoC.Container.Resolve<FingerScannerController>(new ViewModelDependency(this));
-
         }
     }
 }

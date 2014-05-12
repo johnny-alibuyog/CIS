@@ -12,7 +12,6 @@ namespace CIS.Core.Entities.Barangays
         private Guid _id;
         private string _description;
         private string _detailedSummary;
-        private Blotter _blotter;
 
         public virtual Guid Id
         {
@@ -30,12 +29,6 @@ namespace CIS.Core.Entities.Barangays
         {
             get { return _detailedSummary; }
             set { _detailedSummary = value; }
-        }
-
-        public virtual Blotter Blotter
-        {
-            get { return _blotter; }
-            set { _blotter = value; }
         }
 
         #region Equality Comparer
@@ -78,6 +71,5 @@ namespace CIS.Core.Entities.Barangays
         }
 
         #endregion
-
     }
 }

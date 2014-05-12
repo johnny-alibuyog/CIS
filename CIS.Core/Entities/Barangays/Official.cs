@@ -6,20 +6,23 @@ using CIS.Core.Entities.Commons;
 
 namespace CIS.Core.Entities.Barangays
 {
-    public abstract class Official
+    public class Official
     {
         private Guid _id;
         private int _version;
         private Audit _audit;
         private Person _person;
         private Position _position;
-        private JobDescription _jobDescription;
+        private Committee _committee;
+        private Incumbent _incumbent;
+        private ImageBlob _picture;
+        private ImageBlob _signature;
         private bool _isActive;
 
         public virtual Guid Id
         {
             get { return _id; }
-            protected set { _id = value; }
+            set { _id = value; }
         }
 
         public virtual int Version
@@ -46,10 +49,28 @@ namespace CIS.Core.Entities.Barangays
             set { _position = value; }
         }
 
-        public virtual JobDescription JobDescription
+        public virtual Committee Committee
         {
-            get { return _jobDescription; }
-            set { _jobDescription = value; }
+            get { return _committee; }
+            set { _committee = value; }
+        }
+
+        public virtual Incumbent Incumbent
+        {
+            get { return _incumbent; }
+            set { _incumbent = value; }
+        }
+
+        public virtual ImageBlob Picture
+        {
+            get { return _picture; }
+            set { _picture = value; }
+        }
+
+        public virtual ImageBlob Signature
+        {
+            get { return _signature; }
+            set { _signature = value; }
         }
 
         public virtual bool IsActive
@@ -64,7 +85,22 @@ namespace CIS.Core.Entities.Barangays
         {
             this.Person = value.Person;
             this.Position = value.Position;
+            this.Committee = value.Committee;
+            this.Incumbent = value.Incumbent;
+            this.Picture.Image = value.Picture.Image;
+            this.Signature.Image = value.Signature.Image;
             this.IsActive = value.IsActive;
+        }
+
+        #endregion
+
+        #region Constructor
+
+        public Official()
+        {
+            _person = new Person();
+            _picture = new ImageBlob();
+            _signature = new ImageBlob();
         }
 
         #endregion

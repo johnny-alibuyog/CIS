@@ -19,6 +19,12 @@
 
                     <persons:PersonView DataContext="{Binding Person}" />
                     <addresses:AddresssView DataContext="{Binding Address}" />
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Purpose"/>
+                        <ComboBox ItemsSource="{Binding Purposes, Mode=TwoWay}"
+                                  SelectedValue="{Binding Purpose, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
+                                  DisplayMemberPath="Name"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

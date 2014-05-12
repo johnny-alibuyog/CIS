@@ -102,6 +102,10 @@ namespace CIS.UI.Features
             dataInitializer = IoC.Container.Resolve<Firearms.Maintenances.Kinds.KindDataInitializer>();
             dataInitializer.Execute();
 
+            SendMessageAndInitializeViewModel("Initializing barangay clearance purposes ...");
+            dataInitializer = IoC.Container.Resolve<Barangays.Maintenances.Purposes.PurposeDataInitializer>();
+            dataInitializer.Execute();
+
             SendMessageAndInitializeViewModel("Initializing barangay position ...");
             dataInitializer = IoC.Container.Resolve<Barangays.Maintenances.Positions.PositionDataInitializer>();
             dataInitializer.Execute();

@@ -130,14 +130,28 @@
     <Compile Include="Conventions\CustomTableNameConvention.cs" />
     <Compile Include="Conventions\EnumConvention.cs" />
     <Compile Include="Conventions\_CustomJoinedSubclassConvention.cs" />
+    <Compile Include="EntityDefinitions\Barangays\AmendmentMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\AmendmentValidation.cs" />
+    <Compile Include="EntityDefinitions\Barangays\BlotterHitMapping.cs">
+      <DependentUpon>HitMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDefinitions\Barangays\BlotterHitValidation.cs">
+      <DependentUpon>HitValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="EntityDefinitions\Barangays\BlotterMapping.cs" />
     <Compile Include="EntityDefinitions\Barangays\BlotterValidation.cs" />
     <Compile Include="EntityDefinitions\Barangays\CitizenMapping.cs" />
     <Compile Include="EntityDefinitions\Barangays\CitizenValidation.cs" />
-    <Compile Include="EntityDefinitions\Barangays\JobDescriptionMapping.cs" />
-    <Compile Include="EntityDefinitions\Barangays\JobDescriptionValidation.cs" />
+    <Compile Include="EntityDefinitions\Barangays\CommitteeMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\CommitteeValidation.cs" />
+    <Compile Include="EntityDefinitions\Barangays\FindingMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\FindingValidation.cs" />
+    <Compile Include="EntityDefinitions\Barangays\HitMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\HitValidation.cs" />
     <Compile Include="EntityDefinitions\Barangays\PositionValidation.cs" />
     <Compile Include="EntityDefinitions\Barangays\PositionMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\PurposeMapping.cs" />
+    <Compile Include="EntityDefinitions\Barangays\PurposeValidation.cs" />
     <Compile Include="EntityDefinitions\Barangays\SettingMapping.cs" />
     <Compile Include="EntityDefinitions\Barangays\SettingValidation.cs" />
     <Compile Include="EntityDefinitions\Commons\ConfigurationMapping.cs" />

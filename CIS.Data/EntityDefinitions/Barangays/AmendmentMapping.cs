@@ -8,15 +8,19 @@ using FluentNHibernate.Mapping;
 
 namespace CIS.Data.EntityDefinitions.Barangays
 {
-    public class JobDescriptionMapping : ClassMap<JobDescription>
+    public class AmendmentMapping : ClassMap<Amendment>
     {
-        public JobDescriptionMapping()
+        public AmendmentMapping()
         {
             Id(x => x.Id);
 
-            Map(x => x.Name);
+            References(x => x.Approver);
 
-            References(x => x.Position);
+            Map(x => x.DocumentNumber);
+
+            Map(x => x.Reason);
+
+            Map(x => x.Remarks);
         }
     }
 }

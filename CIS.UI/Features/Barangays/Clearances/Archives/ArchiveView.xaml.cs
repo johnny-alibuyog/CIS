@@ -12,17 +12,37 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Utilities.Extentions;
+using ReactiveUI;
 
-namespace CIS.UI.Features.Barangays.Clearances
+namespace CIS.UI.Features.Barangays.Clearances.Archives
 {
     /// <summary>
     /// Interaction logic for ArchiveView.xaml
     /// </summary>
-    public partial class ArchiveView : UserControl
+    public partial class ArchiveView : UserControl, IViewFor<ArchiveViewModel>
     {
+        #region IViewFor<ArchiveViewModel> Members
+
+        public ArchiveViewModel ViewModel
+        {
+            get { return this.DataContext as ArchiveViewModel; }
+            set { this.DataContext = value; }
+        }
+
+        object IViewFor.ViewModel
+        {
+            get { return this.DataContext; }
+            set { this.DataContext = value; }
+        }
+
+        #endregion
+
         public ArchiveView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<ArchiveViewModel>());
         }
     }
 }

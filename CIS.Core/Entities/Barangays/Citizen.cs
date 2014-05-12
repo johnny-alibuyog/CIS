@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,9 @@ namespace CIS.Core.Entities.Barangays
         private string _cellphoneNumber;
         private Address _currentAddress;
         private Address _provincialAddress;
+        private FingerPrint _fingerPrint;
+        private ICollection<ImageBlob> _pictures;
+        private ICollection<ImageBlob> _signatures;
 
         public virtual Guid Id
         {
@@ -48,7 +52,7 @@ namespace CIS.Core.Entities.Barangays
             get { return _person; }
             set { _person = value; }
         }
-        
+
         public virtual Nullable<CivilStatus> CivilStatus
         {
             get { return _civilStatus; }
@@ -115,6 +119,66 @@ namespace CIS.Core.Entities.Barangays
             set { _provincialAddress = value; }
         }
 
+        public virtual FingerPrint FingerPrint
+        {
+            get { return _fingerPrint; }
+            set { _fingerPrint = value; }
+        }
+
+        public virtual IEnumerable<ImageBlob> Pictures
+        {
+            get { return _pictures; }
+
+        }
+
+        public virtual IEnumerable<ImageBlob> Signatures
+        {
+            get { return _signatures; }
+        }
+
+        #region Methods
+
+        public virtual void SerializeWith(Citizen value)
+        {
+            this.Person = value.Person;
+            this.CivilStatus = value.CivilStatus;
+            this.AlsoKnownAs = value.AlsoKnownAs;
+            this.BirthPlace = value.BirthPlace;
+            this.Occupation = value.Occupation;
+            this.Religion = value.Religion;
+            this.Citizenship = value.Citizenship;
+            this.EmailAddress = value.EmailAddress;
+            this.TelephoneNumber = value.TelephoneNumber;
+            this.CellphoneNumber = value.CellphoneNumber;
+            this.CurrentAddress = value.CurrentAddress;
+            this.ProvincialAddress = value.ProvincialAddress;
+            //this.FingerPrint.SerializeWith(value.FingerPrint);
+            //this.Pictures = value.Pictures;
+            //this.Signatures = value.Signatures;
+        }
+
+        public virtual void AddPicture(ImageBlob picture)
+        {
+            _pictures.Add(picture);
+        }
+
+        public virtual void AddSignature(ImageBlob signature)
+        {
+            _signatures.Add(signature);
+        }
+
+        #endregion
+
+        #region Constructors
+
+        public Citizen()
+        {
+            _fingerPrint = new FingerPrint();
+            _pictures = new Collection<ImageBlob>();
+            _signatures = new Collection<ImageBlob>();
+        }
+
+        #endregion
 
         #region Equality Comparer
 

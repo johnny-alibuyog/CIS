@@ -68,6 +68,9 @@ namespace CIS.UI.Features.Polices.Maintenances.Settings
                 transaction.Commit();
             }
 
+            this.MessageBox.Inform("Save has been successfully completed.");
+            //this.MessageBox.Inform("Settings has been saved.", "Setting");
+            
             this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Setting"));
         }
     }

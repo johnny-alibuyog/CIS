@@ -11,7 +11,6 @@
             <StackPanel x:Name="Form">
                 <!-- Search Criteria-->
                 <StackPanel x:Name="SearchCriteria" Orientation="Horizontal">
-                    <!--<TextBlock Text="First Name:" Margin="0,0,10,0" HorizontalAlignment="Center"/>-->
                     <TextBox Text="{Binding Criteria.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" x:Name="FirstNameTextBox" Width="100" Margin="0,0,10,0">
                         <controls:WatermarkService.Watermark>
                             <TextBox>First Name</TextBox>

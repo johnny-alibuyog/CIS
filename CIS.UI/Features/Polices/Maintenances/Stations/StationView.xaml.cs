@@ -12,19 +12,37 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Utilities.Extentions;
+using ReactiveUI;
 
 namespace CIS.UI.Features.Polices.Maintenances.Stations
 {
     /// <summary>
     /// Interaction logic for StationView.xaml
     /// </summary>
-    public partial class StationView : UserControl
+    public partial class StationView : UserControl, IViewFor<StationViewModel>
     {
+        #region IViewFor<StationViewModel> Members
+
+        public StationViewModel ViewModel
+        {
+            get { return this.DataContext as StationViewModel; }
+            set { this.DataContext = value; }
+        }
+
+        object IViewFor.ViewModel
+        {
+            get { return this.DataContext; }
+            set { this.DataContext = value; }
+        }
+
+        #endregion
+
         public StationView()
         {
-            InitializeComponent();
-
-            DataContext = new StationViewModel();
+            this.InitializeComponent();
+            this.InitializeViewModelAsync(() => IoC.Container.Resolve<StationViewModel>());
         }
     }
 }

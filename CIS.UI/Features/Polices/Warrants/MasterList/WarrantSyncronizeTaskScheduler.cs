@@ -39,7 +39,7 @@ namespace CIS.UI.Features.Polices.Warrants.MasterList
             _worker.WorkerSupportsCancellation = true;
 
             _timer = new Timer();
-            _timer.Interval = App.Data.DataStore.SyncronizeInterval * 1000;
+            _timer.Interval = 1000; //App.Data.DataStore.SyncronizeInterval * 1000;
             _timer.Tick += (sender, e) =>
             {
                 if (!this.IsWorkInProgress)

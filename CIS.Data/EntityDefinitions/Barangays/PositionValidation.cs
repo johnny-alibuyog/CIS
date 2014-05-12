@@ -11,15 +11,16 @@ namespace CIS.Data.Validations.Barangays
     {
         public PositionValidation()
         {
-            Define(x => x.Id);
+            Define(x => x.Id)
+                .NotNullableAndNotEmpty()
+                .And.MaxLength(10);
 
             Define(x => x.Name)
                 .NotNullableAndNotEmpty()
                 .And.MaxLength(100);
 
-            Define(x => x.JobDescriptions)
-                .NotNullableAndNotEmpty()
-                .And.HasValidElements();
+            Define(x => x.Committees)
+                .HasValidElements();
         }
     }
 }

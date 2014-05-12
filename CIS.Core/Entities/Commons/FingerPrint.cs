@@ -86,6 +86,24 @@ namespace CIS.Core.Entities.Commons
             set { _leftPinky = value; }
         }
 
+        #region Methods
+
+        public virtual void SerializeWith(FingerPrint value)
+        {
+            this.RightThumb.Image = value.RightThumb.Image;
+            this.RightIndex.Image = value.RightIndex.Image;
+            this.RightMiddle.Image = value.RightMiddle.Image;
+            this.RightRing.Image = value.RightRing.Image;
+            this.RightPinky.Image = value.RightPinky.Image;
+            this.LeftThumb.Image = value.LeftThumb.Image;
+            this.LeftIndex.Image = value.LeftIndex.Image;
+            this.LeftMiddle.Image = value.LeftMiddle.Image;
+            this.LeftRing.Image = value.LeftRing.Image;
+            this.LeftPinky.Image = value.LeftPinky.Image;
+        }
+
+        #endregion
+
         #region Constructors
 
         public FingerPrint()

@@ -35,6 +35,16 @@ namespace CIS.UI.Features.Barangays.Maintenances.Positions
 
                 transaction.Commit();
             }
+
+            // load to cache
+            using (var session = _sessionFactory.OpenSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                session.Query<Position>().Cacheable().ToList();
+                session.Query<Committee>().Cacheable().ToList();
+
+                transaction.Commit();
+            }
         }
     }
 }

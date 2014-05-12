@@ -9,31 +9,35 @@
 
 
     <UserControl.Resources>
-        <DataTemplate DataType="{x:Type applications:HitViewModel}">
+        <DataTemplate DataType="{x:Type applications:BlotterHitViewModel}">
             <StackPanel>
                 <StackPanel.Resources>
                     <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                 </StackPanel.Resources>
 
                 <StackPanel Style="{StaticResource FieldSet}">
-                    <Label Content="Suspect"/>
-                    <TextBlock Text="{Binding Defendant}" />
+                    <Label Content="Respondent"/>
+                    <TextBlock Text="{Binding Respondent}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Hit Score"/>
                     <TextBlock Text="{Binding HitScore}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
-                    <Label Content="Crime"/>
-                    <TextBlock Text="{Binding Charge}" />
+                    <Label Content="OccuredOn"/>
+                    <TextBlock Text="{Binding OccuredOn, StringFormat={}{0:MM-dd-yyyy}}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
-                    <Label Content="Bail Amount"/>
-                    <TextBlock Text="{Binding Description}" />
+                    <Label Content="Status"/>
+                    <TextBlock Text="{Binding Status}" />
                 </StackPanel>
                 <StackPanel Style="{StaticResource FieldSet}">
-                    <Label Content="Issued By"/>
-                    <TextBlock Text="{Binding FiledOn}" />
+                    <Label Content="Complaint"/>
+                    <TextBlock Text="{Binding Complaint}" />
+                </StackPanel>
+                <StackPanel Style="{StaticResource FieldSet}">
+                    <Label Content="Remarks"/>
+                    <TextBlock Text="{Binding Remarks}" />
                 </StackPanel>
             </StackPanel>
         </DataTemplate>

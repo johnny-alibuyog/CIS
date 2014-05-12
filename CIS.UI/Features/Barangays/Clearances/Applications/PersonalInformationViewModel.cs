@@ -31,7 +31,10 @@ namespace CIS.UI.Features.Barangays.Clearances.Applications
             this.WhenAnyValue(
                 x => x.Person.IsValid,
                 x => x.Address.IsValid,
-                (isPersonValid, isAddressValid) => true
+                (
+                    isPersonValid, 
+                    isAddressValid
+                ) => true
             )
             .Subscribe(_ => this.Revalidate());
         }

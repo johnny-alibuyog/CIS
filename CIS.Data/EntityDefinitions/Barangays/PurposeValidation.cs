@@ -8,19 +8,15 @@ using NHibernate.Validator.Cfg.Loquacious;
 
 namespace CIS.Data.EntityDefinitions.Barangays
 {
-    public class JobDescriptionValidation : ValidationDef<JobDescription>
+    public class PurposeValidation : ValidationDef<Purpose>
     {
-        public JobDescriptionValidation()
+        public PurposeValidation()
         {
             Define(x => x.Id);
 
             Define(x => x.Name)
                 .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
-
-            Define(x => x.Position)
-                .NotNullable()
-                .And.IsValid();
+                .And.MaxLength(250);
         }
     }
 }

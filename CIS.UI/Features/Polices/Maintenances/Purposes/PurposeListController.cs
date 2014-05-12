@@ -87,7 +87,7 @@ namespace CIS.UI.Features.Polices.Maintenances.Purposes
 
         public virtual void Insert()
         {
-            var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
+            var message = string.Format("Do you want to save {0}?", this.ViewModel.NewItem);
             var confirmed = this.MessageBox.Confirm(message, "Save");
             if (confirmed == false)
                 return;
@@ -116,6 +116,10 @@ namespace CIS.UI.Features.Polices.Maintenances.Purposes
             this.ViewModel.SelectedItem = newlyCreatedItem;
             this.ViewModel.NewItem = string.Empty;
 
+
+            this.MessageBox.Inform("Save has been successfully completed.");
+            //this.MessageBox.Inform("Purpose has been added.", "Station");
+
             this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Purpose"));
         }
 
@@ -138,6 +142,9 @@ namespace CIS.UI.Features.Polices.Maintenances.Purposes
             this.ViewModel.Items.Remove(item);
             this.ViewModel.SelectedItem = null;
 
+            this.MessageBox.Inform("Delete has been successfully completed.");
+            //this.MessageBox.Inform("Purpose has been deleted.", "Purpose");
+            
             this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Purpose"));
         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CIS.Core.Entities.Barangays;
+using CIS.Data.Commons.Extentions;
 using FluentNHibernate.Mapping;
 
 namespace CIS.Data.EntityDefinitions.Barangays
@@ -40,9 +41,28 @@ namespace CIS.Data.EntityDefinitions.Barangays
 
             Map(x => x.CellphoneNumber);
 
-            Component(x => x.CurrentAddress);
+            Component(x => x.CurrentAddress)
+                .ColumnPrefix("Current");
 
-            Component(x => x.ProvincialAddress);
+            Component(x => x.ProvincialAddress)
+                .ColumnPrefix("Province");
+
+            References(x => x.FingerPrint)
+                .Cascade.All();
+
+            HasManyToMany(x => x.Pictures)
+                .Access.CamelCaseField(Prefix.Underscore)
+                .Schema(GetType().ParseSchema())
+                .Table("CitizensPictures")
+                .Cascade.AllDeleteOrphan()
+                .AsSet();
+
+            HasManyToMany(x => x.Signatures)
+                .Access.CamelCaseField(Prefix.Underscore)
+                .Schema(GetType().ParseSchema())
+                .Table("CitizensSignatures")
+                .Cascade.AllDeleteOrphan()
+                .AsSet();
         }
     }
 }

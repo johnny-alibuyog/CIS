@@ -28,7 +28,6 @@ using ReactiveUI.Xaml;
 
 namespace CIS.UI.Features.Polices.Clearances.Applications
 {
-
     [HandleError]
     public class ApplicationController : ControllerBase<ApplicationViewModel>
     {
@@ -111,7 +110,13 @@ namespace CIS.UI.Features.Polices.Clearances.Applications
                     x => x.PersonalInformation.Person.MiddleName,
                     x => x.PersonalInformation.Person.LastName,
                     x => x.PersonalInformation.Person.Suffix,
-                    (prefix, firstName, middleName, lastName, suffix) => new PersonBasicViewModel()
+                    (
+                        prefix,
+                        firstName,
+                        middleName,
+                        lastName,
+                        suffix
+                    ) => new PersonBasicViewModel()
                     {
                         Prefix = prefix,
                         FirstName = firstName,
@@ -183,6 +188,11 @@ namespace CIS.UI.Features.Polices.Clearances.Applications
 
                 if (this.ViewModel.Finding.Hits.Count() == 0)
                     movement = 2;
+            }
+
+            if (this.ViewModel.Summary == targetViewModel)
+            {
+                this.ViewModel.Summary.FinalFindings = this.ViewModel.Finding.Evaluate();
             }
 
             return direction == Direction.Next
@@ -384,8 +394,8 @@ namespace CIS.UI.Features.Polices.Clearances.Applications
                 this.ViewModel.OtherInformation.PassportNumber = applicant.PassportNumber;
                 this.ViewModel.OtherInformation.TaxIdentificationNumber = applicant.TaxIdentificationNumber;
                 this.ViewModel.OtherInformation.SocialSecuritySystemNumber = applicant.SocialSecuritySystemNumber;
-                this.ViewModel.Camera.Picture = applicant.Pictures.Last() != null ? applicant.Pictures.Last().Image.ToBitmapSource() : null;
-                this.ViewModel.Signature.SignatureImage = applicant.Signatures.Last() != null ? applicant.Signatures.Last().Image.ToBitmapSource() : null;
+                this.ViewModel.Camera.Picture = applicant.Pictures.Count() > 0 ? applicant.Pictures.Last().Image.ToBitmapSource() : null;
+                this.ViewModel.Signature.SignatureImage = applicant.Signatures.Count() > 0 ? applicant.Signatures.Last().Image.ToBitmapSource() : null;
                 this.ViewModel.FingerScanner.CapturedFingerImage = applicant.FingerPrint.RightThumb.Image.ToBitmapSource();
                 this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightThumb] = applicant.FingerPrint.RightThumb.Image.ToBitmapSource();
                 this.ViewModel.FingerScanner.FingerImages[FingerViewModel.RightIndex] = applicant.FingerPrint.RightIndex.Image.ToBitmapSource();

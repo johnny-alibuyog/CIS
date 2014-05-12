@@ -12,6 +12,7 @@ using CIS.UI.Utilities.CommonDialogs;
 using CIS.UI.Utilities.Extentions;
 using FirstFloor.ModernUI.Windows.Controls;
 using NHibernate;
+using NHibernate.Exceptions;
 using NHibernate.Linq;
 using ReactiveUI;
 using ReactiveUI.Xaml;
@@ -96,7 +97,7 @@ namespace CIS.UI.Features.Polices.Warrants.MasterList
 
         public virtual void Create()
         {
-            var dialog = new DialogService<WarrantView, WarrantViewModel>();
+            var dialog = new DialogService<WarrantViewModel>();
             var result = dialog.ShowModal(this, "Create Warrant", null);
             if (result != null)
                 this.Search();
@@ -104,7 +105,7 @@ namespace CIS.UI.Features.Polices.Warrants.MasterList
 
         public virtual void Edit(WarrantListItemViewModel item)
         {
-            var dialog = new DialogService<WarrantView, WarrantViewModel>();
+            var dialog = new DialogService<WarrantViewModel>();
             dialog.ViewModel.Load.Execute(item.Id);
             var result = dialog.ShowModal(this, "Edit Warrant", null);
             if (result != null)
@@ -113,39 +114,52 @@ namespace CIS.UI.Features.Polices.Warrants.MasterList
 
         public virtual void Delete(WarrantListItemViewModel item)
         {
-            this.ViewModel.SelectedItem = item;
-            var selected = this.ViewModel.SelectedItem;
-            if (selected == null)
-                return;
-
-            var message = string.Format("Are you sure you want to delete warrant for {0} with case {1}", selected.Suspect, selected.Crime);
-            var confirmed = this.MessageBox.Confirm(message, "Delete");
-            if (confirmed == false)
-                return;
-
-            using (var session = this.SessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
+            try
             {
-                var query = session.Query<Warrant>()
-                    .Where(x => x.Id == selected.Id)
-                    .FetchMany(x => x.Suspects)
-                    .ToFutureValue();
+                this.ViewModel.SelectedItem = item;
+                var selected = this.ViewModel.SelectedItem;
+                if (selected == null)
+                    return;
 
-                var warrant = query.Value;
-                var suspect = warrant.Suspects.FirstOrDefault(x => x.Id == selected.SuspectId);
-                if (suspect != null)
+                var message = string.Format("Do you want to delete warrant for {0} with case {1}", selected.Suspect, selected.Crime);
+                var confirmed = this.MessageBox.Confirm(message, "Delete");
+                if (confirmed == false)
+                    return;
+
+                using (var session = this.SessionFactory.OpenSession())
+                using (var transaction = session.BeginTransaction())
                 {
-                    warrant.DeleteSuspect(suspect);
-                    session.Delete(suspect);
+                    var query = session.Query<Warrant>()
+                        .Where(x => x.Id == selected.Id)
+                        .FetchMany(x => x.Suspects)
+                        .ToFutureValue();
+
+                    var warrant = query.Value;
+                    var suspect = warrant.Suspects.FirstOrDefault(x => x.Id == selected.SuspectId);
+                    if (suspect != null)
+                    {
+                        warrant.DeleteSuspect(suspect);
+                        session.Delete(suspect);
+                    }
+
+                    if (warrant.Suspects.Count() == 0)
+                        session.Delete(warrant);
+
+                    transaction.Commit();
                 }
 
-                if (warrant.Suspects.Count() == 0)
-                    session.Delete(warrant);
+                this.MessageBox.Inform("Delete has been successfully completed.");
 
-                transaction.Commit();
+                this.Search();
             }
-
-            this.Search();
+            catch (GenericADOException)
+            {
+                throw new InvalidOperationException(string.Format("Unable to delete. Suspect {0} may already be in use.", item.Suspect));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

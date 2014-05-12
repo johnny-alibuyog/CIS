@@ -31,7 +31,9 @@ namespace CIS.UI.Features.Barangays.Maintenances.Offices
                     {
                         Name = "Name not set",
                         Location = "Location not set",
-                        ClearanceFee = 100.00M,
+                        ClearanceFee = 500.00M,
+                        CertificationFee = 30.00M,
+                        DocumentStampTax = 15.00M,
                         Address = new Address()
                         {
                             Address1 = "addres1",

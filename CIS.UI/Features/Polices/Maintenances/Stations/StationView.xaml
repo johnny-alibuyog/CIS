@@ -10,7 +10,7 @@
         <ScrollViewer>
             <StackPanel>
                 <TextBlock Text="Station Configuration" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
-                <mui:BBCodeBlock BBCode="Station defenitions and configuration." Margin="0,0,0,16"/>
+                <mui:BBCodeBlock BBCode="Station definition and configuration." Margin="0,0,0,16"/>
 
                 <StackPanel x:Name="Form">
                     <StackPanel.Resources>

@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS.Core.Entities.Commons;
 
 namespace CIS.Core.Entities.Barangays
 {
-    public class JobDescription
+    public abstract class Hit
     {
         private Guid _id;
-        private string _name;
-        private Position _position;
+        private Finding _finding;
+        private HitScore _hitScore;
+        private bool _isIdentical;
 
         public virtual Guid Id
         {
@@ -18,34 +20,23 @@ namespace CIS.Core.Entities.Barangays
             protected set { _id = value; }
         }
 
-        public virtual string Name
+        public virtual Finding Finding
         {
-            get { return _name; }
-            protected set { _name = value; }
+            get { return _finding; }
+            set { _finding = value; }
         }
 
-        public virtual Position Position
+        public virtual HitScore HitScore
         {
-            get { return _position; }
-            set { _position = value; }
+            get { return _hitScore; }
+            set { _hitScore = value; }
         }
 
-        public virtual void SerializeWith(JobDescription value)
+        public virtual bool IsIdentical
         {
-            this.Name = value.Name;
-            this.Position = value.Position;
+            get { return _isIdentical; }
+            set { _isIdentical = value; }
         }
-
-        #region Constructor
-
-        public JobDescription() { }
-
-        public JobDescription(string name) : this()
-        {
-            this.Name = name;
-        }
-
-        #endregion
 
         #region Equality Comparer
 
@@ -53,7 +44,7 @@ namespace CIS.Core.Entities.Barangays
 
         public override bool Equals(object obj)
         {
-            var that = obj as JobDescription;
+            var that = obj as Amendment;
 
             if (that == null)
                 return false;
@@ -76,12 +67,12 @@ namespace CIS.Core.Entities.Barangays
             return _hashCode.Value;
         }
 
-        public static bool operator ==(JobDescription x, JobDescription y)
+        public static bool operator ==(Hit x, Hit y)
         {
             return Equals(x, y);
         }
 
-        public static bool operator !=(JobDescription x, JobDescription y)
+        public static bool operator !=(Hit x, Hit y)
         {
             return !Equals(x, y);
         }

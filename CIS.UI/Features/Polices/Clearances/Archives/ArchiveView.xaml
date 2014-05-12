@@ -70,8 +70,8 @@
                 <!-- Archive -->
                 <DataGrid x:Name="Items" AutoGenerateColumns="False" 
                         HorizontalAlignment="Stretch" IsReadOnly="True"
-                        ItemsSource="{Binding Items, Mode=TwoWay}" 
-                        SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">
+                        ItemsSource="{Binding Items, Mode=TwoWay}"> 
+                        <!--SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}">-->
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Header="Action">
                             <DataGridTemplateColumn.CellTemplate>

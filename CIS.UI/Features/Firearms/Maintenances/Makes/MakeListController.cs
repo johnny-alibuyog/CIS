@@ -82,7 +82,7 @@ namespace CIS.UI.Features.Firearms.Maintenances.Makes
 
         public virtual void Insert()
         {
-            var message = string.Format("Do you want to insert {0}?", this.ViewModel.NewItem);
+            var message = string.Format("Do you want to save {0}?", this.ViewModel.NewItem);
             var confirmed = this.MessageBox.Confirm(message, "Save");
             if (confirmed == false)
                 return;
@@ -105,10 +105,12 @@ namespace CIS.UI.Features.Firearms.Maintenances.Makes
 
                 newlyCreatedItem = new MakeViewModel(entity.Id, entity.Name);
             }
-
+            
             this.ViewModel.Items.Insert(0, newlyCreatedItem);
             this.ViewModel.SelectedItem = newlyCreatedItem;
             this.ViewModel.NewItem = string.Empty;
+
+            this.MessageBox.Inform("Save has been successfully completed.");
         }
 
         public virtual void Delete(MakeViewModel item)
@@ -129,6 +131,8 @@ namespace CIS.UI.Features.Firearms.Maintenances.Makes
 
             this.ViewModel.Items.Remove(item);
             this.ViewModel.SelectedItem = null;
+
+            this.MessageBox.Inform("Delete has been successfully completed.");
         }
 
         public virtual void Search()

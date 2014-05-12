@@ -7,10 +7,11 @@ using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Polices;
 using CIS.Core.Utilities.Extentions;
 using CIS.UI.Features.Commons.Persons;
+using ReactiveUI;
 
 namespace CIS.UI.Features.Barangays.Clearances.Applications
 {
-    public class HitViewModel
+    public class HitViewModel : ViewModelBase
     {
         public virtual Guid Id { get; set; }
 

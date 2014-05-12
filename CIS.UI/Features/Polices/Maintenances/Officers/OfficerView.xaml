@@ -5,7 +5,7 @@
         xmlns:mui="http://firstfloorsoftware.com/ModernUI"
         xmlns:persons="clr-namespace:CIS.UI.Features.Commons.Persons"
         local:DialogBase.DialogResult="{Binding Path=ActionResult}"
-        Title="OfficerView" SizeToContent="WidthAndHeight">
+        Title="Officer" SizeToContent="WidthAndHeight">
     <StackPanel Style="{StaticResource ContentRoot}">
         <StackPanel.Resources>
             <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />

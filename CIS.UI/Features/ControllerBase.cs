@@ -109,7 +109,7 @@ namespace CIS.UI.Features
                 throw new BusinessException("No user is currently logged-in.");
 
             if (App.Data.User.Has(roles) == false)
-                throw new BusinessException("You are not authorized for this action.");
+                throw new BusinessException("You are not authorized to perform this action.");
         }
 
         public ControllerBase(TViewModel viewModel)

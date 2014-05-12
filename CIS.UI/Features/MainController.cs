@@ -55,8 +55,8 @@ namespace CIS.UI.Features
                 linkGroup = new LinkGroup();
                 linkGroup.DisplayName = "barangay";
                 linkGroup.Links.Add(new Link() { DisplayName = "Clearance", Source = new Uri("/Features/Barangays/Clearances/ClearancePage.xaml", UriKind.Relative) });
-                linkGroup.Links.Add(new Link() { DisplayName = "Maintenance" });
-                linkGroup.Links.Add(new Link() { DisplayName = "Blotter" });
+                linkGroup.Links.Add(new Link() { DisplayName = "Blotter", Source = new Uri("/Features/Barangays/Blotters/BlotterPage.xaml", UriKind.Relative) });
+                linkGroup.Links.Add(new Link() { DisplayName = "Maintenance", Source = new Uri("/Features/Barangays/Maintenances/MaintenancePage.xaml", UriKind.Relative) });
                 this.ViewModel.LinkGroups.Add(linkGroup);
 
                 SetDefaultPage(linkGroup.Links.Select(x => x.Source).FirstOrDefault());

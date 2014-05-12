@@ -10,7 +10,7 @@ namespace CIS.Core.Entities.Barangays
     {
         private string _id;
         private string _name;
-        private ICollection<JobDescription> _jobDescriptions;
+        private ICollection<Committee> _committees;
 
         public virtual string Id
         {
@@ -24,17 +24,17 @@ namespace CIS.Core.Entities.Barangays
             protected set { _name = value; }
         }
 
-        public virtual IEnumerable<JobDescription> JobDescriptions
+        public virtual IEnumerable<Committee> Committees
         {
-            get { return _jobDescriptions; }
-            set { SyncJobDescriptions(value); }
+            get { return _committees; }
+            set { SyncCommittees(value); }
         }
 
         #region Constructors
 
         public Position() 
         {
-            _jobDescriptions = new Collection<JobDescription>();
+            _committees = new Collection<Committee>();
         }
 
         public Position(string id, string name)
@@ -48,20 +48,20 @@ namespace CIS.Core.Entities.Barangays
 
         #region Methods
 
-        private void SyncJobDescriptions(IEnumerable<JobDescription> items)
+        private void SyncCommittees(IEnumerable<Committee> items)
         {
             foreach (var item in items)
                 item.Position = this;
 
-            var itemsToInsert = items.Except(_jobDescriptions).ToList();
-            var itemsToUpdate = _jobDescriptions.Where(x => items.Contains(x)).ToList();
-            var itemsToRemove = _jobDescriptions.Except(items).ToList();
+            var itemsToInsert = items.Except(_committees).ToList();
+            var itemsToUpdate = _committees.Where(x => items.Contains(x)).ToList();
+            var itemsToRemove = _committees.Except(items).ToList();
 
             // insert
             foreach (var item in itemsToInsert)
             {
                 item.Position = this;
-                _jobDescriptions.Add(item);
+                _committees.Add(item);
             }
 
             // update
@@ -75,7 +75,7 @@ namespace CIS.Core.Entities.Barangays
             foreach (var item in itemsToRemove)
             {
                 item.Position = null;
-                _jobDescriptions.Remove(item);
+                _committees.Remove(item);
             }
         }
 
@@ -83,59 +83,24 @@ namespace CIS.Core.Entities.Barangays
 
         #region Static Members
 
-        public static readonly Position BarangayCaptain = new Position("BC", "Barangay Captain")
+        public static readonly Position BarangayCaptain = new Position("C", "Captain");
+        public static readonly Position BarangayCouncilor = new Position("L", "Councilor")
         {
-            JobDescriptions = new Collection<JobDescription>()
+            Committees = new Collection<Committee>()
             {
-                new JobDescription("Punong Barangay")
+                Committee.CommitteeOnEducationAndInformation,
+                Committee.CommitteeOnFinanceAndAppropriation,
+                Committee.CommitteeOnHealthAndSanitation,
+                Committee.CommitteeOnInfrastractures,
+                Committee.CommitteeOnLawsRulesAndRegulations,
+                Committee.CommitteeOnLivelihodAndAgriculture,
+                Committee.CommitteeOnPeaceAndOrderAndPublicSafety,
             }
         };
-
-        public static readonly Position BarangayCouncilor = new Position("BL", "Barangay Councilor")
-        {
-            JobDescriptions = new Collection<JobDescription>()
-            {
-                new JobDescription("Committee on Education and Information"),
-                new JobDescription("Committee on Finance and Appropriation"),
-                new JobDescription("Committee on Health and Sanitation"),
-                new JobDescription("Committee on Infrastractures"),
-                new JobDescription("Committee on Laws, Rules and Regulations"),
-                new JobDescription("Committee on Livelihod and Agriculture"),
-                new JobDescription("Committee on Peace and Order and Public Safety"),
-            }
-        };
-
-        public static readonly Position BarangaySecretary = new Position("BS", "Barangay Secretary")
-        {
-            JobDescriptions = new Collection<JobDescription>()
-            {
-                new JobDescription("Barangay Secretary")
-            }
-        };
-
-        public static readonly Position BarangayTreasurer = new Position("BT", "Barangay Treasurer")
-        {
-            JobDescriptions = new Collection<JobDescription>()
-            {
-                new JobDescription("Barangay Treasurer")
-            }
-        };
-
-        public static readonly Position Kagawad = new Position("K", "Kagawad")
-        {
-            JobDescriptions = new Collection<JobDescription>()
-            {
-                new JobDescription("Kagawad")
-            }
-        };
-
-        public static readonly Position SKChairman = new Position("SKC", "SK Chairman")
-        {
-            JobDescriptions = new Collection<JobDescription>()
-            {
-                new JobDescription("SK Chairman")
-            }
-        };
+        public static readonly Position BarangaySecretary = new Position("S", "Secretary");
+        public static readonly Position BarangayTreasurer = new Position("T", "Treasurer");
+        public static readonly Position Kagawad = new Position("K", "Kagawad");
+        public static readonly Position SKChairman = new Position("SKC", "SK Chairman");
 
         public static readonly IEnumerable<Position> All = new Position[] 
         { 

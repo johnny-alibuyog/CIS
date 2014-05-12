@@ -21,27 +21,40 @@ namespace CIS.Data.EntityDefinition.Barangays
                 .NotNullable()
                 .And.IsValid();
 
-            Define(x => x.Address)
-                .NotNullable()
-                .And.IsValid();
+            Define(x => x.ApplicantPicture);
+
+            Define(x => x.ApplicantSignature);
+
+            Define(x => x.ApplicantAddress)
+                .MaxLength(700);
+
+            Define(x => x.Office);
 
             Define(x => x.Officials)
-                .NotNullableAndNotEmpty()
-                .And.HasValidElements();
+                .HasValidElements();
 
-            Define(x => x.Purpose)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(100);
+            Define(x => x.ApplicationDate);
 
-            Define(x => x.ClearanceFee);
+            Define(x => x.IssueDate);
 
-            Define(x => x.CommunityTaxCertificateNumber)
-                .MaxLength(100);
+            Define(x => x.Fee);
+
+            Define(x => x.ControlNumber)
+                .MaxLength(50);
 
             Define(x => x.OfficialReceiptNumber)
-                .MaxLength(100);
+                .MaxLength(50);
 
-            Define(x => x.Date);
+            Define(x => x.TaxCertificateNumber)
+                .MaxLength(50);
+
+            Define(x => x.FinalFindings)
+                .MaxLength(2000);
+
+            Define(x => x.Finding);
+
+            Define(x => x.Purpose)
+                .NotNullable();
         }
     }
 }

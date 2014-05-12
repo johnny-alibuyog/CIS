@@ -90,15 +90,35 @@ namespace CIS.Data.Configurations
                     x.Strategy = EntityCacheUsage.ReadWrite;
                     x.RegionName = "Polices.Setting";
                 })
-                .EntityCache<Barangays.Position>(x => 
+                .EntityCache<Barangays.Office>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Barangays.Office";
+                })
+                .EntityCache<Barangays.Official>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Barangays.Official";
+                })
+                .EntityCache<Barangays.Purpose>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Barangays.Purpose";
+                })
+                .EntityCache<Barangays.Position>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
                     x.RegionName = "Barangays.Position";
                 })
-                .EntityCache<Barangays.JobDescription>(x =>
+                .EntityCache<Barangays.Committee>(x =>
                 {
                     x.Strategy = EntityCacheUsage.ReadWrite;
-                    x.RegionName = "Barangays.JobDescription";
+                    x.RegionName = "Barangays.Committee";
+                })
+                .EntityCache<Barangays.Setting>(x =>
+                {
+                    x.Strategy = EntityCacheUsage.ReadWrite;
+                    x.RegionName = "Barangays.Setting";
                 });
         }
     }

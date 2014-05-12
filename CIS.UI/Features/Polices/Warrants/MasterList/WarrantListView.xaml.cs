@@ -24,7 +24,7 @@ namespace CIS.UI.Features.Polices.Warrants.MasterList
     /// </summary>
     public partial class ListView : UserControl, IViewFor<WarrantListViewModel>
     {
-        #region IViewFor<ViewModel>
+        #region IViewFor<WarrantListViewModel>
 
         public WarrantListViewModel ViewModel 
         {

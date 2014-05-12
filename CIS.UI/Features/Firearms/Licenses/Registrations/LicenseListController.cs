@@ -128,7 +128,7 @@ namespace CIS.UI.Features.Firearms.Licenses.Registrations
 
         public virtual void Create()
         {
-            var dialog = new DialogService<LicenseView, LicenseViewModel>();
+            var dialog = new DialogService<LicenseViewModel>();
             dialog.ViewModel.SerializeWith(New());
 
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
@@ -140,7 +140,7 @@ namespace CIS.UI.Features.Firearms.Licenses.Registrations
 
         public virtual void Insert(LicenseViewModel value)
         {
-            var message = string.Format("Are you sure you want to save license?");
+            var message = string.Format("Do you want to save license?");
             var confirmed = this.MessageBox.Confirm(message, "Save");
             if (confirmed == false)
                 return;
@@ -171,7 +171,7 @@ namespace CIS.UI.Features.Firearms.Licenses.Registrations
         {
             this.ViewModel.SelectedItem = item;
 
-            var dialog = new DialogService<LicenseView, LicenseViewModel>();
+            var dialog = new DialogService<LicenseViewModel>();
             dialog.ViewModel.SerializeWith(Get(item.Id));
 
             dialog.ViewModel.Save = new ReactiveCommand(dialog.ViewModel.IsValidObservable());
@@ -183,7 +183,7 @@ namespace CIS.UI.Features.Firearms.Licenses.Registrations
 
         public virtual void Update(LicenseViewModel value)
         {
-            var message = string.Format("Are you sure you want to save license?");
+            var message = string.Format("Do you want to save license?");
             var confirmed = this.MessageBox.Confirm(message, "Save");
             if (confirmed == false)
                 return;
@@ -216,7 +216,7 @@ namespace CIS.UI.Features.Firearms.Licenses.Registrations
             if (this.ViewModel.SelectedItem == null)
                 return;
 
-            var message = string.Format("Are you sure you want to delete license for {0} for gun {1}", item.Owner, item.Gun);
+            var message = string.Format("Do you want to delete license for {0} for gun {1}", item.Owner, item.Gun);
             var confirmed = this.MessageBox.Confirm(message, "Delete");
             if (confirmed == false)
                 return;

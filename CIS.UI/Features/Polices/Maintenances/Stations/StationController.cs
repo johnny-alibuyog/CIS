@@ -30,9 +30,7 @@ namespace CIS.UI.Features.Polices.Maintenances.Stations
             this.ViewModel.LookupLogo.Subscribe(x => LookupLogo());
             this.ViewModel.LookupLogo.ThrownExceptions.Handle(this);
 
-            this.ViewModel.Save = new ReactiveCommand(
-                this.ViewModel.WhenAny(x => x.IsValid, x => x.Value)
-            );
+            this.ViewModel.Save = new ReactiveCommand(this.ViewModel.IsValidObservable());
             this.ViewModel.Save.Subscribe(x => Save());
             this.ViewModel.Save.ThrownExceptions.Handle(this);
 
@@ -92,7 +90,8 @@ namespace CIS.UI.Features.Polices.Maintenances.Stations
                 transaction.Commit();
             }
 
-            this.MessageBox.Inform("Station configuration has been saved.", "Station");
+            this.MessageBox.Inform("Save has been successfully completed.");
+            //this.MessageBox.Inform("Station configuration has been saved.", "Station");
 
             this.MessageBus.SendMessage<MaintenanceMessage>(new MaintenanceMessage("Station"));
         }

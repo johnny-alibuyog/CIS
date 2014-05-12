@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using CIS.Core.Entities.Commons;
+using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Barangays
 {
@@ -12,14 +13,21 @@ namespace CIS.Core.Entities.Barangays
         private Guid _id;
         private int _version;
         private Audit _audit;
-        private Person _applicant;
-        private Address _address;
+        private Citizen _applicant;
+        private ImageBlob _applicantPicture;
+        private ImageBlob _applicantSignature;
+        private string _applicantAddress;
+        private Office _office;
         private ICollection<Official> _officials;
-        private string _purpose;
-        private decimal _clearanceFee;
-        private string _communityTaxCertificateNumber;
+        private Nullable<DateTime> _applicationDate;
+        private Nullable<DateTime> _issueDate;
+        private Nullable<decimal> _fee;
+        private string _controlNumber;
         private string _officialReceiptNumber;
-        private DateTime _date;
+        private string _taxCertificateNumber;
+        private string _finalFindings;
+        private Finding _finding;
+        private Purpose _purpose;
         
         public virtual Guid Id
         {
@@ -39,16 +47,34 @@ namespace CIS.Core.Entities.Barangays
             set { _audit = value; }
         }
 
-        public virtual Person Applicant
+        public virtual Citizen Applicant
         {
             get { return _applicant; }
             set { _applicant = value; }
         }
 
-        public virtual Address Address
+        public virtual ImageBlob ApplicantPicture
         {
-            get { return _address; }
-            set { _address = value; }
+            get { return _applicantPicture; }
+            set { _applicantPicture = value; }
+        }
+
+        public virtual ImageBlob ApplicantSignature
+        {
+            get { return _applicantSignature; }
+            set { _applicantSignature = value; }
+        }
+
+        public virtual string ApplicantAddress
+        {
+            get { return _applicantAddress; }
+            set { _applicantAddress = value.ToProperCase(); }
+        }
+
+        public virtual Office Office
+        {
+            get { return _office; }
+            set { _office = value; }
         }
 
         public virtual IEnumerable<Official> Officials
@@ -57,22 +83,28 @@ namespace CIS.Core.Entities.Barangays
             set { SyncOfficials(value); }
         }
 
-        public virtual string Purpose
+        public virtual Nullable<DateTime> ApplicationDate
         {
-            get { return _purpose; }
-            set { _purpose = value; }
+            get { return _applicationDate; }
+            set { _applicationDate = value; }
         }
 
-        public virtual decimal ClearanceFee
+        public virtual Nullable<DateTime> IssueDate
         {
-            get { return _clearanceFee; }
-            set { _clearanceFee = value; }
+            get { return _issueDate; }
+            set { _issueDate = value; }
         }
 
-        public virtual string CommunityTaxCertificateNumber
+        public virtual Nullable<decimal> Fee
         {
-            get { return _communityTaxCertificateNumber; }
-            set { _communityTaxCertificateNumber = value; }
+            get { return _fee; }
+            set { _fee = value; }
+        }
+
+        public virtual string ControlNumber
+        {
+            get { return _controlNumber; }
+            set { _controlNumber = value; }
         }
 
         public virtual string OfficialReceiptNumber
@@ -81,10 +113,28 @@ namespace CIS.Core.Entities.Barangays
             set { _officialReceiptNumber = value; }
         }
 
-        public virtual DateTime Date
+        public virtual string TaxCertificateNumber
         {
-            get { return _date; }
-            set { _date = value; }
+            get { return _taxCertificateNumber; }
+            set { _taxCertificateNumber = value; }
+        }
+
+        public virtual string FinalFindings
+        {
+            get { return _finalFindings; }
+            set { _finalFindings = value; }
+        }
+
+        public virtual Finding Finding
+        {
+            get { return _finding; }
+            set { _finding = value; }
+        }
+
+        public virtual Purpose Purpose
+        {
+            get { return _purpose; }
+            set { _purpose = value; }
         }
 
         #region Methods

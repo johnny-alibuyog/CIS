@@ -13,6 +13,9 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
+            <TextBlock Text="Signature Specimen" Style="{StaticResource Heading2}" />
+            <TextBlock Text="Capture signature specimen here" />
+
             <StackPanel>
                 <Border Padding="8,8,8,8" Width="600" Height="200" BorderBrush="{DynamicResource InputBorder}" BorderThickness="1">
                     <InkCanvas Width="Auto" Height="Auto" x:Name="SignatureInkCanvas">

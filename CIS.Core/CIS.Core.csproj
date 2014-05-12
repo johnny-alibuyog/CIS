@@ -66,12 +66,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Barangays\Amendment.cs" />
     <Compile Include="Entities\Barangays\Blotter.cs" />
+    <Compile Include="Entities\Barangays\BlotterHit.cs">
+      <DependentUpon>Hit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Barangays\BlotterStatus.cs" />
     <Compile Include="Entities\Barangays\Citizen.cs" />
-    <Compile Include="Entities\Barangays\Complaint.cs" />
     <Compile Include="Entities\Barangays\Clearance.cs" />
+    <Compile Include="Entities\Barangays\Finding.cs" />
+    <Compile Include="Entities\Barangays\Hit.cs" />
     <Compile Include="Entities\Barangays\Incumbent.cs" />
-    <Compile Include="Entities\Barangays\JobDescription.cs" />
+    <Compile Include="Entities\Barangays\Committee.cs" />
     <Compile Include="Entities\Barangays\Office.cs" />
     <Compile Include="Entities\Barangays\Official.cs" />
     <Compile Include="Entities\Barangays\Position.cs" />

@@ -71,7 +71,7 @@ namespace CIS.UI.Features.Polices.Warrants.MasterList
 
         public virtual void CreateSuspect()
         {
-            var dialog = new DialogService<SuspectView, SuspectViewModel>();
+            var dialog = new DialogService<SuspectViewModel>();
             var value = dialog.ShowModal(this, "Create Suspect");
             if (value != null)
                 this.ViewModel.Suspects.Add(value);
@@ -81,7 +81,7 @@ namespace CIS.UI.Features.Polices.Warrants.MasterList
         {
             this.ViewModel.SelectedSuspect = item;
 
-            var dialog = new DialogService<SuspectView, SuspectViewModel>();
+            var dialog = new DialogService<SuspectViewModel>();
             var value = dialog.ShowModal(this, "Edit Susptect", this.ViewModel.SelectedSuspect);
             if (value != null)
                 this.ViewModel.SelectedSuspect.SerializeWith(value);
@@ -95,7 +95,7 @@ namespace CIS.UI.Features.Polices.Warrants.MasterList
 
         public virtual void BatchSave()
         {
-            var message = string.Format("Are you sure you want to save warrant?");
+            var message = string.Format("Do you want to save warrant?");
             var confirmed = this.MessageBox.Confirm(message, "Save");
             if (confirmed == false)
                 return;
@@ -132,6 +132,7 @@ namespace CIS.UI.Features.Polices.Warrants.MasterList
                 transaction.Commit();
             }
 
+            this.MessageBox.Inform("Save has been successfully completed.");
 
             this.ViewModel.Close();
         }

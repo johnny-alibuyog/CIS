@@ -20,9 +20,16 @@ namespace CIS.Data.EntityDefinition.Barangays
 
             Component(x => x.Audit);
 
-            Component(x => x.Applicant);
+            References(x => x.Applicant)
+                .Cascade.SaveUpdate();
 
-            Component(x => x.Address);
+            References(x => x.ApplicantPicture);
+
+            References(x => x.ApplicantSignature);
+
+            Map(x => x.ApplicantAddress);
+
+            References(x => x.Office);
 
             HasManyToMany(x => x.Officials)
                 .Access.CamelCaseField(Prefix.Underscore)
@@ -31,15 +38,24 @@ namespace CIS.Data.EntityDefinition.Barangays
                 .Cascade.SaveUpdate()
                 .AsSet();
 
-            Map(x => x.Purpose);
+            Map(x => x.ApplicationDate);
 
-            Map(x => x.ClearanceFee);
+            Map(x => x.IssueDate);
 
-            Map(x => x.CommunityTaxCertificateNumber);
+            Map(x => x.Fee);
+
+            Map(x => x.ControlNumber);
 
             Map(x => x.OfficialReceiptNumber);
 
-            Map(x => x.Date);
+            Map(x => x.TaxCertificateNumber);
+
+            Map(x => x.FinalFindings);
+
+            References(x => x.Finding)
+                .Cascade.All();
+
+            References(x => x.Purpose);
         }
     }
 }

@@ -13,8 +13,8 @@ namespace CIS.Core.Entities.Barangays
         private int _version;
         private Audit _audit;
         private Office _office;
-        private ICollection<Official> _officials;
         private Nullable<DateTime> _date;
+        private ICollection<Official> _officials;
 
         public virtual Guid Id
         {
@@ -34,22 +34,25 @@ namespace CIS.Core.Entities.Barangays
             set { _audit = value; }
         }
 
-        public virtual IEnumerable<Official> Officials
-        {
-            get { return _officials; }
-            set { SyncOfficials(value); }
-        }
-
         public virtual Nullable<DateTime> Date
         {
             get { return _date; }
             set { _date = value; }
         }
 
+        public virtual IEnumerable<Official> Officials
+        {
+            get { return _officials; }
+            set { SyncOfficials(value); }
+        }
+
         #region Methods
 
         private void SyncOfficials(IEnumerable<Official> items)
         {
+            foreach (var item in items)
+                item.Incumbent = this;
+
             var itemsToInsert = items.Except(_officials).ToList();
             var itemsToUpdate = _officials.Where(x => items.Contains(x)).ToList();
             var itemsToRemove = _officials.Except(items).ToList();
@@ -57,6 +60,7 @@ namespace CIS.Core.Entities.Barangays
             // insert
             foreach (var item in itemsToInsert)
             {
+                item.Incumbent = this;
                 _officials.Add(item);
             }
 
@@ -70,6 +74,7 @@ namespace CIS.Core.Entities.Barangays
             // delete
             foreach (var item in itemsToRemove)
             {
+                item.Incumbent = null;
                 _officials.Remove(item);
             }
         }

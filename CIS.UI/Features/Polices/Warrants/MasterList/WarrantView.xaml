@@ -27,6 +27,7 @@
                 <StackPanel.Resources>
                     <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
                 </StackPanel.Resources>
+                
                 <TextBlock Style="{StaticResource Heading2}" Text="Case Info" Margin="0,8,0,8"/>
                 <StackPanel Style="{StaticResource FieldSet}">
                     <Label Content="Case Number"/>

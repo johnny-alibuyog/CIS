@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:CIS.UI.Features"
         xmlns:signatures="clr-namespace:CIS.UI.Features.Commons.Signatures"
         local:DialogBase.DialogResult="{Binding Path=ActionResult}"
-        Title="SignatureViewDialog" SizeToContent="WidthAndHeight">
+        Title="SignatureDialogView" SizeToContent="WidthAndHeight">
     <StackPanel Style="{StaticResource ContentRoot}">
         <signatures:SignatureView DataContext="{Binding Signature}"/>
 

@@ -71,16 +71,16 @@ namespace CIS.Core.Entities.Commons
 
         #region Methods
 
-        public virtual void SerializeWith(Person value)
-        {
-            this.Prefix = value.Prefix;
-            this.FirstName = value.FirstName;
-            this.MiddleName = value.MiddleName;
-            this.LastName = value.LastName;
-            this.Suffix = value.Suffix;
-            this.Gender = value.Gender;
-            this.BirthDate = value.BirthDate;
-        }
+        //public virtual void SerializeWith(Person value)
+        //{
+        //    this.Prefix = value.Prefix;
+        //    this.FirstName = value.FirstName;
+        //    this.MiddleName = value.MiddleName;
+        //    this.LastName = value.LastName;
+        //    this.Suffix = value.Suffix;
+        //    this.Gender = value.Gender;
+        //    this.BirthDate = value.BirthDate;
+        //}
 
         private string GetFullName()
         {

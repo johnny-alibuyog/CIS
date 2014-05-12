@@ -21,10 +21,23 @@ namespace CIS.Data.EntityDefinition.Barangays
 
             Component(x => x.Person);
 
-            DiscriminateSubClassesOnColumn("Discriminator")
-                .Index("DiscriminatorIndex")
-                .Not.Nullable()
-                .Length(25);
+            References(x => x.Position)
+                .Fetch.Join();
+
+            References(x => x.Committee)
+                .Fetch.Join();
+
+            References(x => x.Incumbent);
+
+            References(x => x.Picture)
+                .Cascade.All()
+                .Fetch.Join();
+
+            References(x => x.Signature)
+                .Cascade.All()
+                .Fetch.Join();
+
+            Map(x => x.IsActive);
         }
     }
 }

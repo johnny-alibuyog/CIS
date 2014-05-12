@@ -16,13 +16,14 @@ namespace CIS.Data.Mappings.Barangays
 
             Map(x => x.Name);
 
-            HasMany(x => x.JobDescriptions)
+            HasMany(x => x.Committees)
                 .Access.CamelCaseField(Prefix.Underscore)
                 .Cascade.AllDeleteOrphan()
                 .Not.KeyNullable()
                 .Not.KeyUpdate()
                 .Inverse()
-                .AsSet();
+                .AsSet()
+                .Cache.ReadWrite();
         }
     }
 }

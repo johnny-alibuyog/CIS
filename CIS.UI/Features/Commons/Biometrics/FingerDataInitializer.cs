@@ -16,7 +16,6 @@ namespace CIS.UI.Features.Commons.Biometrics
         public FingerDataInitializer(ISessionFactory sessionFactory)
         {
             _sessionFactory = sessionFactory;
-
         }
 
         public void Execute()

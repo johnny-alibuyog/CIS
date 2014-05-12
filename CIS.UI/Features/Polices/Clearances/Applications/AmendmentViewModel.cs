@@ -17,6 +17,7 @@ namespace CIS.UI.Features.Polices.Clearances.Applications
         [NotNullNotEmpty(Message = "Reason is mandatory.")]
         public virtual string Reason { get; set; }
 
+        [NotNullNotEmpty(Message = "Remarks is mandatory.")]
         public virtual string Remarks { get; set; }
 
         public virtual bool IsApproved
