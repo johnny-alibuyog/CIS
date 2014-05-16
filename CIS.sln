@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIS.UI", "CIS.UI\CIS.UI.csproj", "{2B516EB5-FBFF-4DF6-9706-AF84FE68D361}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{BF1537CD-A98C-4409-A1B0-41BD0CF28D75}"
@@ -23,6 +25,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIS.Data", "CIS.Data\CIS.Data.csproj", "{B15D6AA5-7E64-4713-A754-44384474FA2E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIS.Core", "CIS.Core\CIS.Core.csproj", "{443E80B3-B2B6-402B-828C-804F8E8532B8}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CIS.Setup", "CIS.Setup\CIS.Setup.vdproj", "{35021209-D6E2-497C-A9AE-2F4CF2E26821}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,6 +161,21 @@ Global
 		{443E80B3-B2B6-402B-828C-804F8E8532B8}.SingleImage|Mixed Platforms.Build.0 = Release|x86
 		{443E80B3-B2B6-402B-828C-804F8E8532B8}.SingleImage|x86.ActiveCfg = Release|x86
 		{443E80B3-B2B6-402B-828C-804F8E8532B8}.SingleImage|x86.Build.0 = Release|x86
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.CD_ROM|Any CPU.ActiveCfg = Release
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.CD_ROM|Mixed Platforms.ActiveCfg = Release
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.CD_ROM|x86.ActiveCfg = Release
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.Debug|Any CPU.ActiveCfg = Debug
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.Debug|x86.ActiveCfg = Debug
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.DVD-5|Any CPU.ActiveCfg = Debug
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.DVD-5|Mixed Platforms.ActiveCfg = Debug
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.DVD-5|x86.ActiveCfg = Debug
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.Release|Any CPU.ActiveCfg = Release
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.Release|Mixed Platforms.ActiveCfg = Release
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.Release|x86.ActiveCfg = Release
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.SingleImage|Any CPU.ActiveCfg = Release
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.SingleImage|Mixed Platforms.ActiveCfg = Release
+		{35021209-D6E2-497C-A9AE-2F4CF2E26821}.SingleImage|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
