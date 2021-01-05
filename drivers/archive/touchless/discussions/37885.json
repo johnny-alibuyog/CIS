@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "125646",
+    "ThreadId": "37885",
+    "Html": "Hi there... I'm trying to use the Demo but I can't execute it. I'm getting a 0xc0000135 error &quot;Application Failer to Initialize Properly&quot;.<br>\r\n<br>\r\nI really enjoyed the idea of Touchless, but I can't see it yet.<br>\r\n<br>\r\nWaiting someone to help me. Thanks a lot!<br>\r\n<br>\r\nBaldini<br>\r\n",
+    "PostedDate": "2008-10-16T10:06:09.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125726",
+    "ThreadId": "37885",
+    "Html": "Hi Baldini,<br>\r\n<br>\r\nUnfortunately, I can’t diagnose this error alone. But there are several things you can try:<br>\r\n<br>\r\nHave you properly extracted the Touchless.zip file to another location on your computer? You can’t execute the demo from within the Touchless.zip file.<br>\r\nEnsure that the extracted WebCamLib.dll and TouchlessLib.dll are in the same folder as the TouchlessDemo.exe file that you are executing.<br>\r\nIf all the files are in place, ensure that you’re running on a supported OS. XP, Vista, Server 2003, and Server 2008 should work.<br>\r\nAdditionally, ensure that you have a functioning DirectShow compliant webcam. The best way to do this is test the webcam with other DirectShow applications.<br>\r\n<br>\r\nIf you still can’t get the demo to work, I’d be happy to take details of your configuration and try to investigate further.<br>\r\n<br>\r\nThanks for your support,<br>\r\n- Mike Wasserman\r\n",
+    "PostedDate": "2008-10-16T16:25:10.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125830",
+    "ThreadId": "37885",
+    "Html": "Hi Michwass!<br>\r\n<br>\r\nThanks for your efforts trying to solve my problem.<br>\r\n<br>\r\nI just made it! The problem was my .NET Framework, wich was not updated.<br>\r\n<br>\r\nJust updated it and Touchless works perfect. (updated to v. 2.0)<br>\r\n<br>\r\nI think it's far better than other softwares around!<br>\r\n<br>\r\nI only need a better webcam, because mine is not so good as this software needs to work as well. (My webcam luminosity is poor... so the detection of the marker is compromised...)<br>\r\n<br>\r\n<br>\r\nThanks a lot for your help!<br>\r\n<br>\r\nBest Regards!<br>\r\n<br>\r\nBaldini<br>\r\n",
+    "PostedDate": "2008-10-17T04:15:46.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "128174",
+    "ThreadId": "38636",
+    "Html": "Hi Mike<div><br></div><div>Thank you sound for you willingness to help</div><div>In my project I wanna use the touchless library to trace a marker location in two cameras</div><div> I thought about using two TouchlessMgr objects each for one camera. Each camera should </div><div>have its own window and marker</div><div><br></div><div>lets say if I have the selected camera from the comboBox  is linked to _touchlesssMgrCam1</div><div>_touchlessMgrCam1.CurrentCamera == (Camera)comboBoxCameras.SelectedItem;<br></div><div><br></div><div>how can I link the other camera to anthor touchlessMgr object let say _touchlesssMgrCam2</div><div>and process it the same way like the first object.</div><div><br></div><div>_Yasir</div><div><br></div><div><br></div><div><br></div>",
+    "PostedDate": "2008-10-27T19:35:35.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129249",
+    "ThreadId": "38636",
+    "Html": "Hi Yasir, Sorry for my delayed response. Hang tight and I'll investigate this over the weekend.<br>\r\nCan you share your project (send a link or files; <a href=\"mailto:michwass@microsoft.com\">michwass@microsoft.com</a>), to save me the trouble of making something similar from scratch?<br>\r\n- Mike \r\n",
+    "PostedDate": "2008-10-31T11:31:05.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129830",
+    "ThreadId": "38636",
+    "Html": "Hey Yasir,<br>\r\nI tried using two TouchlessMgr objects for simultaneous multiple camera support. You are right; it doesn’t work.<br>\r\nI’m not sure exactly what prevents this, but we will investigate and hopefully make a fix soon.<br>\r\nWe’re in the midst of many changes in WebCamLib and our camera support.<br>\r\nI will post progress here. Sorry for the inconvenience, let me know if you find anything else.<br>\r\n- Mike<br>\r\n<br>\r\n",
+    "PostedDate": "2008-11-03T17:16:49.83-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129870",
+    "ThreadId": "38636",
+    "Html": "Thanks Mike,<div><br></div><div>I hope I didn't bother you with my dilemmas. </div><div><br></div><div>yes sure I'll try to investigate it also and I'll post here whatever results I get.</div><div><br></div><div><br></div><div>Cheers,</div><div>Yasir</div>",
+    "PostedDate": "2008-11-04T00:13:34.333-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "130013",
+    "ThreadId": "38636",
+    "Html": "It's no bother; that's why I'm here. And your involvement makes it worthwhile!<br>\r\n",
+    "PostedDate": "2008-11-04T11:31:28.173-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "131909",
+    "ThreadId": "38636",
+    "Html": "Hi Mike<div><br></div><div>I managed to use multiple camera but I can't add a marker to it and more over the program crashes </div><div>if I move the window.</div><div>I'm not using the Webcamlib.dll any more and I also remove the Nativemethod.cs fellow I have changed</div><div>the camera.cs also.</div><div>actually I did many  modifications and I think it's not suitable to post all the files her. I wonder if I can mail </div><div>the program to you to see where the problem is.</div><div><br></div><div>Regards,</div><div>Yasir,</div><div> </div>",
+    "PostedDate": "2008-11-11T22:55:30.52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "132198",
+    "ThreadId": "38636",
+    "Html": "Hi everyone<div><br></div><div>Thanks I managed to solve the previous post problem but now I have anther problem which is the marker.EventData.Present doesn't</div><div>become true at all I found that it become true in markeerUpdate() method only when the (marker.EventData.Area &gt; 0 ) even when </div><div>I tried to the sample program work throw &quot;WalkthroughSample&quot; most of the time marker.EventData.Present which means the image is</div><div>not overlayed. I wonder if there are any condition in the selection of the marker or anything I can change to make become true most </div><div>of the time.</div><div><br></div><div>I would also ask if there are any documentation about the marker functions because the code is quite long and it a bit harder for me to</div><div>understand the marker scanning algorithm.</div><div><br></div><div>Regards.</div><div>Yasir</div>",
+    "PostedDate": "2008-11-12T20:40:41.62-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "132478",
+    "ThreadId": "38636",
+    "Html": "Hi Yasir,<br>\r\n<br>\r\nYou're right that currently EventData.Present is set true only when EventData.Area &gt; 0.<br>\r\nThis just means that if we found at least one matching pixel, the marker is present.<br>\r\nIf the marker has no matched area then it's not present.<br>\r\n<br>\r\nPerhaps your marker isn't very good or was trained/added poorly.<br>\r\nRead my tips in TouchlessDemo on the markers tab when you click &quot;Help!&quot;<br>\r\nAddMarker takes an image and the center &amp; radius of the cirlce to scan for the marker.<br>\r\nWalkthroughSample just assumes some small radius around the point of a mouse click.<br>\r\nTo get the best result, send a center AND radius that closely match the bounds of the marker in the image.<br>\r\nTry adding markers like I've done in TouchlessDemo, by selecting the circle that closely fits your marker.<br>\r\n<br>\r\nDocumentation is distributed with the release as&nbsp;&quot;Touchless.chm&quot; (it's also in the source code Documentation folder).<br>\r\nIf you need clarification on the public functions, or have questions about internal workings, I can help with that.<br>\r\n<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-11-13T20:28:00.53-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

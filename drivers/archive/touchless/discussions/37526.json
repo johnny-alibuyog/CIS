@@ -1,0 +1,130 @@
+[
+  {
+    "Id": "124517",
+    "ThreadId": "37526",
+    "Html": "go it working on my desktop, and i am freaking amazed.<br>\r\ni put red electrical tape on the end of my finger, and boom, i was playing snake. that is , after i realized i didnt have .NET installed.(very non-descript error message.)<br>\r\n<br>\r\nhows this, 2 colors of tape, on 2 fingers.<br>\r\nmake the red one used to move the mouse, and when the 2nd color become visible its a click. maybe add another color for right click.<br>\r\n<br>\r\ni have little experience with code, but i think this community can make it happen. I plan on doing some learning and actually contributing. C++ sound like a good place to start?<br>\r\ni plan on using this with my projector, maybe using LEDs as markers, as tape in the dark will, my guess, not work.<br>\r\n<br>\r\n<br>\r\nWho's in?<br>\r\n",
+    "PostedDate": "2008-10-11T15:59:37.37-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124582",
+    "ThreadId": "37526",
+    "Html": "<span style=\"font-family:Tahoma;font-size:11px;white-space:pre-wrap\">Trum4n, I appreciate your enthusiasm!</span><div><span style=\"font-family:Tahoma;font-size:11px;white-space:pre-wrap\">Tape on your finger should work great. And using a second marker for a click is definitely one of the more popular ideas.It's pretty easy to hide your thumb behind your other fingers and use a &quot;thumbs up&quot; as a click.</span><div><span style=\"font-family:Tahoma;font-size:11px;white-space:pre-wrap\"><br></span></div><div><span style=\"font-family:Tahoma;font-size:11px;white-space:pre-wrap\">If you're unfamiliar with the supported languages (C++, C#, and VB), I'd recommend C#; it's very easy to learn.</span></div><div><span style=\"font-family:Tahoma;font-size:11px;white-space:pre-wrap\">This might be a good place to start your research: <span><a href=\"http://msdn.microsoft.com/en-us/library/ms646970(VS.85).aspx\">http://msdn.microsoft.com/en-us/library/ms646970(VS.85).aspx</a></span></span></div><div><span style=\"font-family:Tahoma;font-size:11px;white-space:pre-wrap\"><br></span></div><div><span style=\"font-family:Tahoma;font-size:11px;white-space:pre-wrap\">Using Touchless with a projector is a great idea, but you're right that it will require active markers (something that emits light like and LED).</span></div><div><span style=\"font-family:Tahoma;font-size:11px;white-space:pre-wrap\"><br></span></div><div><span style=\"font-family:Tahoma;font-size:11px;white-space:pre-wrap\">You might want to add a feature request in the Issues section to setup a transformation between webcam input and marker on-screen coordinates.</span></div><div><span style=\"font-family:Tahoma;font-size:11px;white-space:pre-wrap\">That way you could easily setup direct manipulation with the camera at an angle that wouldn't get so much background noise from the projector's light.</span></div><div><span style=\"font-family:Tahoma;font-size:11px;white-space:pre-wrap\">I imagine lots of people will want this feature.</span></div></div>",
+    "PostedDate": "2008-10-12T11:20:06.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139205",
+    "ThreadId": "37526",
+    "Html": "Tried it, and it works well.<br>\r\n<br>\r\nOne problem is the 'shivering' marker, it wont stop even if you dont move the pointingobject. this makes clicks hard to do, plus the problem that 'drag and drop' operations get interrupted from time to time, resulting in a doubleclick.<br>\r\n<br>\r\nI'm a noob, but I'll try to work on the marker-recognition algorithms, cause thats where i see the problem: changing markersize. I got a nice idea for a workaround :)<br>\r\n",
+    "PostedDate": "2008-12-10T00:03:31.603-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139931",
+    "ThreadId": "37526",
+    "Html": "Pollux,<br>\r\n<br>\r\nIf you have a mouse control demo/app using Touchless, I would love to try it for myself and share it with our community. I would like to help address some of the problems you're having; I could potentially help you code. I've had a TODO on my plate to add something like exponential decay for stabilizing the markers within Toucghless, but I don't know when I'll get to that. (I'm definitely seeking capable contributors!)<br>\r\n<br>\r\nI've thought of app-side approach you could use to smooth the marker motion. Perhaps try using the marker location as a force to act upon the cursor location you're setting. Think distance-based attractive forces or emulating a spring; these methods introduce some delay between actual and tracked locations, but they would reduce the 'shivering' that you're seeing.<br>\r\n<br>\r\nAs for clicking, perhaps you could have a similar heuristic to make invocation and releasing-invocation more reliable. Imagine having a value aggregated over a small amount of time (say 30-300 ms) that would accumulate your current metric for invocation. Once this value reaches a threshold, it would cause the actual change in the invocation state. It would require additional logic to disambiguate clicks from mousedown-drag-mouseup, but it would certainly be more reliable.<br>\r\n<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-12-11T20:31:45.763-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139980",
+    "ThreadId": "37526",
+    "Html": "Sorry Mike, at this point of time I cant share the code, yet.<br>\r\nMaybe in a while :)<br>\r\n<br>\r\nI've send you an message with some more datils about the problem.<br>\r\n<br>\r\nThanks for your time<br>\r\n",
+    "PostedDate": "2008-12-12T01:35:33.807-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140133",
+    "ThreadId": "37526",
+    "Html": "Wow Pollux, nice work!  Really hope you are able to share it out soon.\r\n",
+    "PostedDate": "2008-12-12T11:17:45.583-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140340",
+    "ThreadId": "37526",
+    "Html": "Hey,<br>\r\n<br>\r\nHere is my implementation of MouseDemo. Cursor is a bit shaky... but I think that can be solved if in detection algorithm we keep same size of Area (or use absolute center of detected area). I'll try that in the morning (must get some sleep now :).<br>\r\n<br>\r\nGreat library by the way!<br>\r\n<br>\r\n<a href=\"http://87.106.41.175/Touchless-Release.zip\">http://87.106.41.175/Touchless-Release.zip</a> (if you don't wish to compile)<br>\r\n<a href=\"http://87.106.41.175/Touchless-Source.zip\">http://87.106.41.175/Touchless-Source.zip</a> (complete solution, removed source bindings)<br>\r\n<a href=\"http://87.106.41.175/Touchless-SourceDiff.zip\">http://87.106.41.175/Touchless-SourceDiff.zip</a> (contains just my additions... you'll need to download Touchless source if you don't have it - <a href=\"http://www.codeplex.com/touchless/SourceControl/ListDownloadableCommits.aspx\">http://www.codeplex.com/touchless/SourceControl/ListDownloadableCommits.aspx</a>)<br>\r\n<br>\r\nP.\r\n",
+    "PostedDate": "2008-12-13T22:03:14.537-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "141546",
+    "ThreadId": "37526",
+    "Html": "&nbsp; Hello guys, why you don't&nbsp; make&nbsp; this code &nbsp; to be an driver for CMPD (Camera pointing device)&nbsp; who work like HID (Human interface device) on PC. That's gone be like mouse i think !??<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-18T02:21:26.923-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "142732",
+    "ThreadId": "37526",
+    "Html": "I have almost same idea as Machineria to be able use it as mouse. I can have cursor control by a marker. However it is shaky.Trying to figure out a way to stabilize it.<br>\r\n",
+    "PostedDate": "2008-12-23T18:07:54.95-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "142835",
+    "ThreadId": "37526",
+    "Html": "<p>Hi all and merry Christmas to all of you!</p>\r\n<p>I recently created a code snippet using a marker in the cam image center area (80% of width and height) as mouse, mapped to the whole screen. I use the dead edges to perform different kinds of clicks when a marker appears here for a short time after being hidden &quot;long enough&quot;.</p>\r\n<p>This seems to work quite well but yet has the problem that you don't &quot;see&quot; where you hover this marker in order to click.</p>\r\n<p>I will try to enhance this by overlaying the whole screen with a transparent camera image and will report back my progress...</p>\r\n<p>maybe I will attach the code to the appropriate issue ticket (see #6424 under &quot;issue tracker&quot;).</p>\r\n<p></p>\r\n<p>[edit: fixed typos, explained &quot;image center area&quot; and click edges, added reference to issue ticket #6424]</p>\r\n",
+    "PostedDate": "2008-12-24T06:49:37.997-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "142946",
+    "ThreadId": "37526",
+    "Html": "Hi all,<div><br></div><div>I am new at coding as well using Touchless sdk. </div><div>I tried the code posted by lepipele. But it doesn't seem to work for me.</div><div>I tried to do the same with my code but getting the same error when it comes to simulate the mouse click.</div><div>Can anyone help please?</div><div><br></div><div>The error is:</div><div><div>Managed Debugging Assistant 'PInvokeStackImbalance' has detected a problem in 'C:\\Data\\Downloads\\Touchless\\Source\\Samples\\TouchlessDemo\\bin\\Debug\\TouchlessDemo.vshost.exe'.</div><div>Additional Information: A call to PInvoke function 'TouchlessDemo!TouchlessDemo.MouseDemo::mouse_event' has unbalanced the stack. This is likely because the managed PInvoke signature does not match the unmanaged target signature. Check that the calling convention and parameters of the PInvoke signature match the target unmanaged signature.</div><div><br></div></div><div>for line:</div><div><div>mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);</div><div><br></div><div>It would be nice if some one can upload the complete working project. Thanks in advance.</div></div>",
+    "PostedDate": "2008-12-25T05:10:36.03-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "142989",
+    "ThreadId": "37526",
+    "Html": "Hey,<br>\r\n<br>\r\nWhat version of Visual Studio are you using?<br>\r\n<br>\r\nReplace lines from #40 to #71 in MouseDemo with this, and tell me if it works (I've changed mouse_event signature, now parameters are uint's instead of long's):<br>\r\n<br>\r\n-----------------<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // send mouse clicks<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [DllImport(&quot;user32.dll&quot;, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, UIntPtr dwExtraInfo);<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private const int MOUSEEVENTF_LEFTDOWN = 0x02;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private const int MOUSEEVENTF_LEFTUP = 0x04;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private const int MOUSEEVENTF_RIGHTDOWN = 0x08;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private const int MOUSEEVENTF_RIGHTUP = 0x10;<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private int _leftclickCooldown = 200;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private DateTime _previousLeftClick = DateTime.MinValue;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void MouseDemo_Click(object sender, MarkerEventArgs e)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (_previousLeftClick &lt; DateTime.Now.AddMilliseconds(-_leftclickCooldown))<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _previousLeftClick = DateTime.Now;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (uint)Cursor.Position.X, (uint)Cursor.Position.Y, 0, UIntPtr.Zero);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private int _rightclickCooldown = 1000;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private DateTime _previousRightClick = DateTime.MinValue;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void MouseDemo_RightClick(object sender, MarkerEventArgs e)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (_previousRightClick &lt; DateTime.Now.AddMilliseconds(-_rightclickCooldown))<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _previousRightClick = DateTime.Now;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP,<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (uint)Cursor.Position.X, (uint)Cursor.Position.Y, 0, UIntPtr.Zero);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n<br>\r\n--------------<br>\r\nP.<br>\r\n",
+    "PostedDate": "2008-12-25T21:11:27.347-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "143215",
+    "ThreadId": "37526",
+    "Html": "I can approve the uint parameter type works, in my implementation, I use\r\n<pre>[Flags]<br>\r\nprivate enum MouseEventDWFlags<br>\r\n{<br>\r\n    MOUSEEVENTF_MOVE = 0x01,<br>\r\n    MOUSEEVENTF_LEFTDOWN = 0x02,<br>\r\n    MOUSEEVENTF_LEFTUP = 0x04,<br>\r\n    MOUSEEVENTF_RIGHTDOWN = 0x08,<br>\r\n    MOUSEEVENTF_RIGHTUP = 0x10,<br>\r\n    MOUSEEVENTF_MIDDLEDOWN = 0x20,<br>\r\n    MOUSEEVENTF_MIDDLEUP = 0x40<br>\r\n}<br>\r\n<br>\r\n[DllImport(&quot;user32.dll&quot;)]<br>\r\npublic static extern void mouse_event(<br>\r\n    UInt32 dwFlags, // motion and click options <br>\r\n    UInt32 dx, // horizontal position or change <br>\r\n    UInt32 dy, // vertical position or change <br>\r\n    UInt32 dwData, // wheel movement <br>\r\n    IntPtr dwExtraInfo // application-defined information <br>\r\n);<br>\r\n<br>\r\ninternal static void MouseLeftClick()<br>\r\n{<br>\r\n    WinAPICalls.mouse_event(<br>\r\n        (UInt32) MouseEventDWFlags.MOUSEEVENTF_LEFTDOWN,<br>\r\n        0, 0, 0, new System.IntPtr());<br>\r\n    WinAPICalls.mouse_event(<br>\r\n        (UInt32)MouseEventDWFlags.MOUSEEVENTF_LEFTUP,<br>\r\n        0, 0, 0, new System.IntPtr());<br>\r\n}</pre>\r\n<p>My MouseLeftClick() method clicks at the current mouse pointer position, not the passed one, attention when copying...</p>\r\n<p>You can surely defer the other mouse buttons or double clicks if needed...</p>\r\n<p>Cursor.Position = ... will help you &quot;move&quot; the cursor using native .net code...</p>\r\n",
+    "PostedDate": "2008-12-28T09:38:10.53-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144292",
+    "ThreadId": "37526",
+    "Html": "Hi,<div><br></div><div>Thanks for you Help Guys. I am using VS 2005.</div><div>The modification by lepipele did worked for me. Thank you. </div>",
+    "PostedDate": "2009-01-04T22:01:59.703-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154280",
+    "ThreadId": "37526",
+    "Html": "Hi guys! am new on this Touchless SDK and I would like to participate on your project about implementing Touchless as mouse.<div>I know it's a bit hard to simulate CLICKING on this one as we know WE ARE NOT touching anything .. so a Gesture instead is a great idea and more flexible.</div><div><br></div><div>- Jayzon</div><div><br></div>",
+    "PostedDate": "2009-02-04T08:12:48.62-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "155713",
+    "ThreadId": "37526",
+    "Html": "Download the latest source to use the new Mouse Demo in TouchlessDemo.<br>\r\n(No building required, just run bin\\release\\TouchlessDemo.exe)<br>\r\nThe first draft of Mouse Demo is added with Change Set #28723.<br>\r\n<br>\r\nBe careful, it really does control your mouse with markers!<br>\r\nRead the demo notes for instructions.<br>\r\n<br>\r\nThanks to all of you, particularly lepipele and eFloh for help and inspiration.<br>\r\nImprove the demo, suggest changes, report experiences, and post video links!<br>\r\n<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2009-02-09T02:02:43.68-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

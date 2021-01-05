@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "124395",
+    "ThreadId": "37489",
+    "Html": "I'm getting the error&nbsp;Error&nbsp;3&nbsp;fatal error C1083: Cannot open include file: 'dxtrans.h': No such file or directory&nbsp;c:\\program files\\microsoft sdks\\windows\\v6.0a\\include\\qedit.h&nbsp;498&nbsp;WebCamLib<br>\r\n<br>\r\nI've downloaded and installed the DirectX SDK and set the include directory for the Lib dir on the DirectX SDK directory and nothing.<br>\r\n<br>\r\nAny thoughts?\r\n",
+    "PostedDate": "2008-10-10T14:57:07.723-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124398",
+    "ThreadId": "37489",
+    "Html": "Hi krees,<br>\r\n<br>\r\nCompiling webcamlib is a little tricky right now and that is why we redistribute a build in the release.&nbsp; The trick is to use the correct version of the DirectX SDK.&nbsp; The one we are using can be found at: <a href=\"http://www.microsoft.com/downloads/details.aspx?familyid=124552FF-8363-47FD-8F3B-36C226E04C85&displaylang=en\">http://www.microsoft.com/downloads/details.aspx?familyid=124552FF-8363-47FD-8F3B-36C226E04C85&amp;displaylang=en</a>\r\n",
+    "PostedDate": "2008-10-10T15:44:19.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124406",
+    "ThreadId": "37489",
+    "Html": "Hey Moose,<br>\r\n<br>\r\nThanks for the response. <br>\r\nI want to recompile the webcamlib cuz the dll provided can't be used in my projects (using VS2008). I'm getting the error: <br>\r\n<br>\r\n<em>A reference to webcamlib.dll cannot be added. Please make sure the file is accesible and that is a valid assembly or COM component.<br>\r\n</em><br>\r\nBut I can run the sample ok from the exe file... strange ... any clues?<br>\r\n<br>\r\nthanks in advance\r\n",
+    "PostedDate": "2008-10-10T16:25:44.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124409",
+    "ThreadId": "37489",
+    "Html": "Since its an unmanaged dll you don't actually add it as a reference.&nbsp; Touchlib refers to it explicitily via a DllImport.&nbsp; All you need to do is make sure the built webcamlib.dll is in your output directory.\r\n",
+    "PostedDate": "2008-10-10T17:07:55.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "587581",
+    "ThreadId": "37489",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>hypermoose wrote:</strong><br />&nbsp;        &nbsp;<br /> Compiling webcamlib is a little tricky right now and that is why we redistribute a build in the release.&nbsp; The trick is to use the correct version of the DirectX SDK.&nbsp; The one we are using can be found at: &nbsp;<a href=\"http://www.microsoft.com/downloads/details.aspx?familyid=124552FF-8363-47FD-8F3B-36C226E04C85&amp;displaylang=en\"> http://www.microsoft.com/downloads/details.aspx?familyid=124552FF-8363-47FD-8F3B-36C226E04C85&amp;displaylang=en</a></blockquote>\r\n<p>the link you provided doesn't work any longer :(</p>\r\n<p>What version of DirectX SDK is needed to compile WebCamLib?</p>\r\n<p>Is it DirectX 9.0 SDK of August 2005? It is available at http://www.microsoft.com/downloads/en/details.aspx?FamilyID=3904b19a-02b9-447b-ab58-c12e2456e9ba&amp;DisplayLang=en&nbsp;</p>",
+    "PostedDate": "2011-03-28T07:10:33.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

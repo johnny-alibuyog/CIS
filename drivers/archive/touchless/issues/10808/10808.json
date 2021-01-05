@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Attempted to read or write protected memory. This is often an indication that other memory is corrupt.\n \n   at System.Drawing.SafeNativeMethods.Gdip.GdipGetImageThumbnail(HandleRef image, Int32 thumbWidth, Int32 thumbHeight, IntPtr& thumbImage, GetThumbnailImageAbort callback, IntPtr callbackdata)\n   at System.Drawing.Image.GetThumbnailImage(Int32 thumbWidth, Int32 thumbHeight, GetThumbnailImageAbort callback, IntPtr callbackData)\n   at TouchlessLib.TouchlessMgr.CaptureCallbackProc(Int32 dataSize, Byte[] data)\n \nWindows 7 x64. Using in managed application compiled for x86 with native images generated for Application.exe and TouchlessLib.dll.",
+    "LastUpdatedDate": "2013-02-21T16:27:53.1-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2010-05-09T03:22:05.527-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "GDI+ exception",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10808
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Exception sometimes occurs in release code even without native images of application executable and Touchless SDK libraries.",
+      "PostedDate": "2010-05-09T08:50:58.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:27:53.1-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

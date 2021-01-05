@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "593097",
+    "ThreadId": "252846",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>Im planing to create an application where I will be using 4 different colour markers and I will be generating 3-D models on the positions of these markers. I have a few questions.</p>\r\n<p>1. Is there a way to find the X-Axis of these markers.</p>\r\n<p>2. Methods to get a good FPS. ( I have experienced that anything over two markers become slow in Touchless SDK 1.0)</p>\r\n<p>I would really appriciate a response.</p>\r\n<p>Thanks</p>\r\n",
+    "PostedDate": "2011-04-06T13:42:34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

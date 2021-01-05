@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1086074",
+    "ThreadId": "454828",
+    "Html": "Hi, guys pls i want to use touchlesslib for a webcam project Visual Basic 2010. It work successfully when iam using .Net framework 3.5 but  when i switch to .Net framework 4.0, It keep generating this error code : &quot;An error occurred creating the form. See Exception.InnerException for details.  The error is: Mixed mode assembly is built against version 'v2.0.50727' of the runtime and cannot be loaded in the 4.0 runtime without additional configuration information.&quot;}.\r<br />\nPls I need help.<br />\n",
+    "PostedDate": "2013-08-29T02:00:18.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

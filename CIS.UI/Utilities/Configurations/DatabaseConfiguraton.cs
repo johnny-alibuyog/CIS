@@ -18,10 +18,10 @@ namespace CIS.UI.Utilities.Configurations
 
         public DatabaseConfiguraton()
         {
-            this.ServerName = "(local)";
+            this.ServerName = "PHMANAALVAREZ01";
             this.DatabaseName = "cisdb";
             this.Username = "sa";
-            this.Password = "admin123";
+            this.Password = "1234";
         }
     }
 }

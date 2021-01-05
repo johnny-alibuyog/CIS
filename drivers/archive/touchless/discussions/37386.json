@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "124049",
+    "ThreadId": "37386",
+    "Html": "I downloaded everything extracted all and when i go u use touchless my camera screen is blank like the camera doesn't work but i know it does what should i do?&gt;<br>\r\n",
+    "PostedDate": "2008-10-09T07:34:43.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124121",
+    "ThreadId": "37386",
+    "Html": "You should double check that your camera does work with DirectShow.<br>\r\nNavigate to the Camera tab in the Touchless Demo, ensure that the correct camera is selected in the dropdown menu.<br>\r\nUnfortunately, I can't provide help regarding specific cameras or hardware/driver configuration problems.<br>\r\n",
+    "PostedDate": "2008-10-09T11:43:03.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

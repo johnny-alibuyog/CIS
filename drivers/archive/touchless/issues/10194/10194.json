@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "WebCamLib",
+      "DisplayName": "WebCamLib"
+    },
+    "ClosedComment": "As per my change &#35;55789&#58;&#91;EDIT&#93; Partial workaround for x32 builds on an x64 machine&#58;Currently, only 64-bit WebCamLib builds will work on 64-bit systems.Removed &#34;Any CPU&#34; and &#34;Mixed Platforms&#34; build configurations.You can only use the x64 build configuration for 64-bit systems right now.I&#39;ll look into a better long-term solution as I have time.",
+    "ClosedDate": "2010-02-16T02:01:02.33-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I runs touchless.demo as startup project in v2,\nIt could not find any camera.\nbut in v1, it has no problem like this.",
+    "LastUpdatedDate": "2013-05-16T04:06:04.94-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2010-02-12T22:23:17.47-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Demo issue in v2",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10194
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2659,
+      "FileName": "nocamera.PNG",
+      "DownloadUrl": ".\\2659"
+    },
+    {
+      "FileId": 2706,
+      "FileName": "WebCamLib.dll",
+      "DownloadUrl": ".\\2706"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I was able to reproduce this problem by a stroke of luck. I believe WebCamLib.dll isn't being built correctly in some situations. Try copying the attached WebCamLib.dll into the folder where you are launching Touchless.Demo.exe or Touchless.WPF.exe and try again. Please let me know if that helps. Also, are you running a 64-bit OS and are you using Visual Studio Team Explorer? I'll work on a fix asap.",
+      "PostedDate": "2010-02-16T01:34:46.04-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-16T01:35:23.563-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "WebCamLib.dll didn't attach?",
+      "PostedDate": "2010-02-16T01:36:51.77-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-16T01:36:53.373-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-16T02:01:02.33-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:27:53.45-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:06:04.94-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

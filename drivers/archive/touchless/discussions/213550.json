@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "446316",
+    "ThreadId": "213550",
+    "Html": "<p>I added a maker to represent the mouse cursor. and the cursor&nbsp;moves according to the same way the maker moves. When it stop moving, there is a timer to count, and if the elapsetime is less than 2 seconds, the Left Botton will be DOWN. If I want the Left Botton Up,&nbsp;when the maker escaped the captured image.&nbsp;How can I do? Is there&nbsp;a BOOL variable in Maker Class representing the state of the maker whether it is&nbsp;in or out of the captured image?</p>",
+    "PostedDate": "2010-05-23T00:13:38.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

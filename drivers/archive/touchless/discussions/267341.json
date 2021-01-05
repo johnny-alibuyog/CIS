@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "650730",
+    "ThreadId": "267341",
+    "Html": "\r\n<p>I tried Touchless SDK and after 10 minutes it worked very well, nice job guys :)</p>\r\n<p>I searched for a way to change the resolution of the captured image. Am I right: there's actually now way to do this? I want to use the SDK to capture HD images and it's a pity it won't work this way.</p>\r\n<p>&nbsp;</p>\r\n<p>I'm using C# and Microsoft LifeCam Studio</p>\r\n",
+    "PostedDate": "2011-08-01T12:37:06.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1241251",
+    "ThreadId": "267341",
+    "Html": "See my post here. <a href=\"https://touchless.codeplex.com/discussions/544196\" rel=\"nofollow\">Change CaptureWidth/CaptureHeight in .Net 4 - Working!</a><br />\n",
+    "PostedDate": "2014-05-04T08:56:43.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "Id": "123942",
+    "ThreadId": "37350",
+    "Html": "hi<br>\r\n<br>\r\ni'm using VS2005 and .net3.5 ...<br>\r\n<br>\r\nand no execute demo file executable and compile Source example... <br>\r\n<br>\r\nSystem.AccessViolationException was unhandled<br>\r\n&nbsp; Message=&quot;Attempted to read or write protected memory. This is often an indication that other memory is corrupt.&quot;<br>\r\n&nbsp; Source=&quot;System.Drawing&quot;<br>\r\n&nbsp; StackTrace:<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Drawing.SafeNativeMethods.Gdip.GdipGetImageThumbnail(HandleRef image, Int32 thumbWidth, Int32 thumbHeight, IntPtr&amp; thumbImage, GetThumbnailImageAbort callback, IntPtr callbackdata)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Drawing.Image.GetThumbnailImage(Int32 thumbWidth, Int32 thumbHeight, GetThumbnailImageAbort callback, IntPtr callbackData)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at TouchlessLib.TouchlessMgr.CaptureCallbackProc(Int32 dataSize, Byte[] data)<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-08T23:02:15.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124122",
+    "ThreadId": "37350",
+    "Html": "Unfortunately, I'm not sure what's causing this access violation.<br>\r\nWhich projects have you compiled from source code, and which have you used the release binary?<br>\r\nI recommend that you try the release build and ensure that your hardware/driver configuration works with Touchless before compiling the code yourself.<br>\r\n",
+    "PostedDate": "2008-10-09T11:49:57.71-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127722",
+    "ThreadId": "37350",
+    "Html": "Hi,<br>\r\n<br>\r\nI get a similar error, each time I try to run the Touchless Demo:<br>\r\n<br>\r\nAppName: touchlessdemo.exe&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AppVer: 1.0.0.0&nbsp;&nbsp;&nbsp;&nbsp; AppStamp:48e95946<br>\r\nModName: gdiplus.dll&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ModVer: 5.1.3102.5581&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ModStamp:4804ea0c<br>\r\nfDebug: 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Offset: 00057071<br>\r\n<br>\r\nI'm using an older, cheap webcam from &quot;Genius&quot; (which works perfectly with Skype, Live Messenger and every other software I've tried).<br>\r\nThe error appears, when the webcam loads it's image.<br>\r\nThanks fpr your help, I can post additional Information if you need more.<br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-25T10:02:22.24-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127774",
+    "ThreadId": "37350",
+    "Html": "Hi Figigo2,<br>\r\n<br>\r\nThat's curious; I'm not sure exactly what's happening. I'm guessing you've extracted the demo binaries properly.<br>\r\nPlease let me know what OS you are using, what version of .NET you have, and anything about your setup that might be non-conventional.<br>\r\nIf you are able, please also try another webcam. I apologize that I don't really know offhand, but I hope we can solve your problem.<br>\r\nIf any community members have seen this error, please feel free to help.<br>\r\n<br>\r\n- Mike\r\n",
+    "PostedDate": "2008-10-25T16:50:14.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127781",
+    "ThreadId": "37350",
+    "Html": "Hi Mike,<br>\r\n<br>\r\nI'm using Windows XP Home SP3 (all updates) German Version (which explains my englich ;), .NET Framework 3.5<br>\r\nAMD Athlon 3700+ and 1 GB Memory.<br>\r\nThe Webcam is controlled by a driver called &quot;VideoCAM Look&quot; . I've installed Antivir, Spybot Search &amp; Destroy and Microsoft Visual C# 2008 Express Edition.<br>\r\nBeside that, I don't think that there's anything more to say about my PC, all hardware diagnosis programs don't show any problems. <br>\r\n<br>\r\nI'll be able to try another webcam on Monday and post my results here.<br>\r\n<br>\r\nRichard<br>\r\n<br>\r\nEdit: When the Demo crashes, the Windows &quot;event viewer&quot; shows the following (I try to translate it..)<br>\r\nEvent Source:&nbsp;&nbsp; &nbsp;.NET Runtime 2.0 Error Reporting<br>\r\nEvent Category:&nbsp;&nbsp; &nbsp;Keine<br>\r\nN° of the event::&nbsp;&nbsp; &nbsp;1000<br>\r\nDate:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;26.10.2008<br>\r\nTime:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;02:15:54<br>\r\nUser:&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<span>Not applicable</span><br>\r\nComputer:&nbsp;&nbsp; &nbsp;RICHARD<br>\r\nDescription:<br>\r\nFaulting application touchlessdemo.exe, version 1.0.0.0, stamp 48e95946, faulting module gdiplus.dll, version 5.1.3102.5581, stamp 4804ea0c, debug? 0, fault address 0x00057071.<br>\r\n<br>\r\nFor further information, please visit: http://go.microsoft.com/fwlink/events.asp.<br>\r\nData:<br>\r\n0000: 41 00 70 00 70 00 6c 00&nbsp;&nbsp; A.p.p.l.<br>\r\n0008: 69 00 63 00 61 00 74 00&nbsp;&nbsp; i.c.a.t.<br>\r\n0010: 69 00 6f 00 6e 00 20 00&nbsp;&nbsp; i.o.n. .<br>\r\n0018: 46 00 61 00 69 00 6c 00&nbsp;&nbsp; F.a.i.l.<br>\r\n0020: 75 00 72 00 65 00 20 00&nbsp;&nbsp; u.r.e. .<br>\r\n0028: 20 00 74 00 6f 00 75 00&nbsp;&nbsp;&nbsp; .t.o.u.<br>\r\n0030: 63 00 68 00 6c 00 65 00&nbsp;&nbsp; c.h.l.e.<br>\r\n0038: 73 00 73 00 64 00 65 00&nbsp;&nbsp; s.s.d.e.<br>\r\n0040: 6d 00 6f 00 2e 00 65 00&nbsp;&nbsp; m.o...e.<br>\r\n0048: 78 00 65 00 20 00 31 00&nbsp;&nbsp; x.e. .1.<br>\r\n0050: 2e 00 30 00 2e 00 30 00&nbsp;&nbsp; ..0...0.<br>\r\n0058: 2e 00 30 00 20 00 34 00&nbsp;&nbsp; ..0. .4.<br>\r\n0060: 38 00 65 00 39 00 35 00&nbsp;&nbsp; 8.e.9.5.<br>\r\n0068: 39 00 34 00 36 00 20 00&nbsp;&nbsp; 9.4.6. .<br>\r\n0070: 69 00 6e 00 20 00 67 00&nbsp;&nbsp; i.n. .g.<br>\r\n0078: 64 00 69 00 70 00 6c 00&nbsp;&nbsp; d.i.p.l.<br>\r\n0080: 75 00 73 00 2e 00 64 00&nbsp;&nbsp; u.s...d.<br>\r\n0088: 6c 00 6c 00 20 00 35 00&nbsp;&nbsp; l.l. .5.<br>\r\n0090: 2e 00 31 00 2e 00 33 00&nbsp;&nbsp; ..1...3.<br>\r\n0098: 31 00 30 00 32 00 2e 00&nbsp;&nbsp; 1.0.2...<br>\r\n00a0: 35 00 35 00 38 00 31 00&nbsp;&nbsp; 5.5.8.1.<br>\r\n00a8: 20 00 34 00 38 00 30 00&nbsp;&nbsp;&nbsp; .4.8.0.<br>\r\n00b0: 34 00 65 00 61 00 30 00&nbsp;&nbsp; 4.e.a.0.<br>\r\n00b8: 63 00 20 00 66 00 44 00&nbsp;&nbsp; c. .f.D.<br>\r\n00c0: 65 00 62 00 75 00 67 00&nbsp;&nbsp; e.b.u.g.<br>\r\n00c8: 20 00 30 00 20 00 61 00&nbsp;&nbsp;&nbsp; .0. .a.<br>\r\n00d0: 74 00 20 00 6f 00 66 00&nbsp;&nbsp; t. .o.f.<br>\r\n00d8: 66 00 73 00 65 00 74 00&nbsp;&nbsp; f.s.e.t.<br>\r\n00e0: 20 00 30 00 30 00 30 00&nbsp;&nbsp;&nbsp; .0.0.0.<br>\r\n00e8: 35 00 37 00 30 00 37 00&nbsp;&nbsp; 5.7.0.7.<br>\r\n00f0: 31 00 0d 00 0a 00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1..... &nbsp;<br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-25T17:12:55.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127865",
+    "ThreadId": "37350",
+    "Html": "It worked with the SplitCam Driver from http://www.splitcamera.com/ - I think it was a hardware-related problem<br>\r\n",
+    "PostedDate": "2008-10-26T11:42:34.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127902",
+    "ThreadId": "37350",
+    "Html": "Richard,<br>\r\n<br>\r\nI'm glad you were able to figure this out. Did you use the SplitCam driver with the same webcam, or another webcam?<br>\r\nTouchless uses Directshow to connect to webcams, and 1%-5% of webcams that are incompatible.<br>\r\nI'd be interested to know if some webcams work with one driver but do not work with another drvier.<br>\r\n<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-10-26T14:57:31.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128092",
+    "ThreadId": "37350",
+    "Html": "Hi Mike,<br>\r\n<br>\r\nI used the SplitCam driver with the same webcam that doen'st work with its own driver. It seems that Touchless has problems with the original webcam driver Genius VideoCAM Look 1.0 (but as Genius is a low-price company, there is a lot of doubt about the exact manufacturers of the camera and its drivers: The Windows device manager names &quot;Sonix&quot; as the driver manufacturer and Version 4.7.5.4. <br>\r\n<br>\r\nI hope these informations might help you developping Touchless<br>\r\n<br>\r\nRichard \r\n",
+    "PostedDate": "2008-10-27T12:50:00.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129469",
+    "ThreadId": "37350",
+    "Html": "Hi!<br>\r\nI have problems with running the demo on my PC (XP SP3, P4-3.0 GHz, RAM 2 GB, nVidia GForce 7300, Genius VideoCAM Look 2.0, NET Frameworks 1.1, 2.0-SP1, 3.0, 3.5). The application starts and I can see video for 1 or 2 seconds. Than the app crashes. If I re-start the demo it sometimes shows the following message:&nbsp; Unable to start camera. rc = -2147023792. I think it would be nice if the demo could make a log file so that one could see what went wrong.<br>\r\nI'm sorry for my english. It's not my native language.<br>\r\nMichael. \r\n",
+    "PostedDate": "2008-11-01T23:45:08.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129472",
+    "ThreadId": "37350",
+    "Html": "Hi Michael,<br>\r\nI'm sorry that Touchless crashes for you. Your computer specs look fine, but I can't vouch for any particular webcam.<br>\r\nThe message on restart appears because the previous crashed process hasn't yet freed it's lock on the camera.<br>\r\nTry using the debug version (recent binaries in source <a href=\"http://www.codeplex.com/touchless/SourceControl/DownloadSourceCode.aspx?changeSetId=25622\">here</a>); that might show the exception being thrown.<br>\r\nOr, if you could debug the process and grab a callstack for the crash, that would also help a lot.<br>\r\nAdding a crash log sounds like a good idea. I've added an <a href=\"http://www.codeplex.com/touchless/WorkItem/View.aspx?WorkItemId=6533\">Issue Tracker item</a>; please vote for it.<br>\r\n- Mike\r\n",
+    "PostedDate": "2008-11-02T01:28:15.897-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129489",
+    "ThreadId": "37350",
+    "Html": "Hi Mike.<br>\r\nI will try to trace what happens with it as long as I get to my workstation with Visual Studio 2005 at my work. If I manage to find anything I'll post here. Unfortunately I have only that Genius camera and can't run the demo with some other device. I suspect that the trouble is specific to this type of&nbsp; Genius cameras. I tried two versions of Genius drivers: 1.0 and 2.0 with the same result.<br>\r\n<br>\r\n",
+    "PostedDate": "2008-11-02T06:51:59.223-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

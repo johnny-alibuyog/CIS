@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1130003",
+    "ThreadId": "471425",
+    "Html": "First of all this is my first thread, I'm new here so yeah, hello.\r<br />\n<br />\nI would like to ask whether i am able to use Touchless to help detect whether my webcam is being used by any other application.\r<br />\n<br />\nThe method I have in my mind is to put a timer and every time it ticked, It will check whether the webcam is running. Is this possible?\r<br />\nPlease anyone? I have tried few but not able to. <br />\n",
+    "PostedDate": "2013-11-28T06:37:07.833-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

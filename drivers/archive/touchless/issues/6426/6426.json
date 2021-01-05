@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Lets get this to do what webcams do best - connect to other webcams!\n \nBonus points if you can alter one of the demos so that two touchless users can interact on the same demo across the internet through the webcam(perhaps both drawing on the same canvas... or perhaps two to four different users playing pong).",
+    "LastUpdatedDate": "2013-02-21T16:27:56.673-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2008-10-13T11:34:48.473-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "A connection to other Webcams",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6426
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

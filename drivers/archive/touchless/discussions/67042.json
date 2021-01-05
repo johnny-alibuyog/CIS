@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "227903",
+    "ThreadId": "67042",
+    "Html": "<p>Hi</p>\r\n<p>I'm trying to tweak the sample to work out when a marker is on screen and display different message boxes depending on the marker that appears onscreen, later this will call actual code rather than the test messages. I've got a messagebox working with&nbsp;Messagebox.show but I can't figure out how to tell which Marker is onscreen at that time to put in a select statement. I thought Marker.Equals might work but it doesn't appear to. Any ideas?</p>\r\n<p>Cheers</p>\r\n<p>Andrew</p>",
+    "PostedDate": "2009-08-26T04:50:55.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228063",
+    "ThreadId": "67042",
+    "Html": "<p>You may use something like</p>\r\n<pre>Marker firstVisibleMarker = null;\r\nforeach(Marker m in touchlessMgr.Markers)\r\n{\r\n    if (m.CurrentData.Present)\r\n    {\r\n        firstVisibleMarker = m;\r\n        break;\r\n    }\r\n}\r</pre>\r\n<p>or, using Linq code a litte bit shorter:</p>\r\n<pre>Marker firstVisibleMarker = touchlessMgr.Markers.FirstOrDefault(m =&gt; m.CurrentData.Present);\r</pre>\r\n<p>Maybe you would also use theforeach variant, adding an &quot;int countVisibleMarkers&quot; and removing the break statement. Then you can call your code only if exactly one marker is detected.</p>\r\n<p>&nbsp;I think using the Marker.Changed event (or, with my Patch, TouchlessMgr.MarkerChanged) and checking if a marker just became present (Marker.CurrentData.Present &amp;&amp; !Marker.PreviousData.Present)is thebest-fitting solution here...</p>",
+    "PostedDate": "2009-08-26T11:13:51.62-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

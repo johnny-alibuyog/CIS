@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "249881",
+    "ThreadId": "73147",
+    "Html": "<p>Hey Mike,</p>\r\n<p><span style=\"font-size:10pt;color:black;font-family:'Segoe UI','sans-serif'\">I've seen&nbsp;your video interviews/presentations and you&rsquo;ve express that you would like businesses to use your Touchless SDK. I don't know to what degree that has happened yet, but you should create a very user friendly manual and programming guide for your Touchless SDK. I know you have the help files, but they assume a good degree of programming experience. I would say 10-15% of the population would love to use your Touchless SDK either as a hobby or for business applications. However, roughly 5% of the population can program code, or have some experience/expose to it. Of that 5%, maybe 2% have the expertise in programming to be able to pick up the Touchless SDK and use it effectively.&nbsp; If you created an easy to understand user manual directed to the beginner programmer, or a willing programmer who has almost no experience, you would increase your audience by 500%.&nbsp;&nbsp; People are also a lot more likely to use something like this in the work/professional environment if they feel comfortable with it before hand (as a hobby at home).</span></p>\r\n<p><span style=\"font-size:10pt;color:black;font-family:'Segoe UI','sans-serif'\">It's too late for me to use this manual to its full benefit (I've struggled through it already with my limited programming experience), but I bet it would get hundreds of other people's attention and bring the Touchless SDK up to its full potential.&nbsp; Something that seems obvious to an experienced programmer like yourself can be very unintuitive and scary to the rest of us. </span></p>\r\n<p><span style=\"font-size:10pt;color:black;font-family:'Segoe UI','sans-serif'\">=)</span></p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-26T12:27:22.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "251440",
+    "ThreadId": "73147",
+    "Html": "<p>Hey Mahhari, thanks for the suggestion and for bearing with the project!</p>\r\n<p>The <a href=\"http://www.vimeo.com/7100308\">C# Walkthrough Sample video</a>, explains how to write that very simple intro project in the&nbsp;repository.</p>\r\n<p>Lucian also made a <a href=\"http://code.msdn.microsoft.com/vbtouchless\">minimal VB project</a> that I will try to host in our respository soon.</p>\r\n<p>Having graduated 'Touchless 101' can you post tips/questions for a new developer FAQ/documentation?</p>\r\n<p>I can't write a guide for non-programmers, but will gladly simplify&amp;clarify code, docs, samples, etc.</p>\r\n<p>I also hope that the community has been helpful through this discussion board!</p>\r\n<p>- Mike</p>",
+    "PostedDate": "2009-10-29T18:39:41.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "251453",
+    "ThreadId": "73147",
+    "Html": "<p>Hi Mike,</p>\r\n<div>Yeah I can post tips and questions I came across using Touchless SDK. I'm just starting my use with it, I'll keep a record of my adventure and post when I'm done. <br><br>I think you hit it on the spot when you said simplify docs.&nbsp; The Touchless SDK help files are very brief and I found/find it hard to visualize how to implement the&nbsp;classes and methods correctly and what to expect exactly as a return. &nbsp; A more descriptive explanation of all the methods and how to use them would be priceless. Also writing them in simple basic grade 5 English would make it easier to understand for beginner programmer who aren't familiar to all the special programming lingo.&nbsp; If you included simple code (including all the aspects of code needed so it can be&nbsp;copy and pasted to be played around with)&nbsp;to show how to use that specific method would also speak a thousand words. To further with this, you may also instead consider a walkthrough&nbsp;booklet of a program that develops slowly using almost all the methods available. So it starts off just adding a camera, and explains how/why it works; by the end you have a complete complex program using almost all Touchless SDK's feature in one continous program! So a Step-by-Step construction of a program 100% using Touchless assuming a beginner programmer audience.</div>",
+    "PostedDate": "2009-10-29T20:17:03.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "252183",
+    "ThreadId": "73147",
+    "Html": "This discussion has been copied to a work item. Click <a href=\"http://touchless.codeplex.com/WorkItem/View.aspx?WorkItemId=9092\">here</a> to go to the work item and continue the discussion.",
+    "PostedDate": "2009-11-01T12:29:20.253-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

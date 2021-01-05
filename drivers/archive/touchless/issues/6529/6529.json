@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This may be a little ways away for the SDK but I think it's quite do-able...\n \nHow about using a stereoscopic image? What I mean is.. two cameras, set X-inches apart pointing to the same area by X-degrees.. a-la-human eyes. You could identify the same marker on both images. The SDK could track and interpolate the position based on both image. With a little trig you could figure out X,Y,Z relative motion.  This would lead to all kinds of marker tracking improvements and probably help with changing light too. Not to mention adding a Z-axis would let you do some neat wiimote-like tricks.",
+    "LastUpdatedDate": "2013-02-21T16:27:55.95-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2008-10-30T18:40:39.08-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Improving accuracy and Z-axis (3D) support",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 6529
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

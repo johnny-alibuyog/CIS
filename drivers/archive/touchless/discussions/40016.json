@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "132825",
+    "ThreadId": "40016",
+    "Html": "Using the UpdateMarker Event i tried to check against that variable. It never turned false. I exspected it to go to false when i move the marker out of the screen or in any other case where Marker is not tracked. Maybe i dont understand the application right. Can someone explain?<br>\r\n<br>\r\n",
+    "PostedDate": "2008-11-15T11:12:07.293-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "132852",
+    "ThreadId": "40016",
+    "Html": "Thanks for pointing this out, Balex.<br>\r\nIndeed, you'll only be sent UpdateMarker events when the marker is found.<br>\r\nAn eariler iteration of the project would post these events every frame.<br>\r\nI suppose MarkerEventData doesn't benefit from this member anymore; I'll remove it soon.<br>\r\n- Mike\r\n",
+    "PostedDate": "2008-11-15T15:27:19.383-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "138579",
+    "ThreadId": "40016",
+    "Html": "<p>if you need a version that supports Present==false and calculates the AvgColor whenever the marker is visible, see my patch provided under source code - patches.<br>\r\nThis version will raise the marker event one last time when the marker becomes invisible.</p>\r\n<p>I have a version applying against rev. 26756, just contact me if you need it.<br>\r\n(or should I upload the patch again, Mike?)</p>\r\n",
+    "PostedDate": "2008-12-08T05:25:39.38-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139952",
+    "ThreadId": "40016",
+    "Html": "Efloh, I'm really glad you uploaded those patches, I can always use a helping hand.<br>\r\n<br>\r\nYour patch appears to be based off of the 1.0 source code, which has been updated significantly in the source repository.<br>\r\nI've fixed the representative color (again, haha) with change #26832, and I had previously removed the MarkerEventData.ColorAvg.<br>\r\nI don't think it's useful to provide an average color from the marker at each frame. (Marker.RepresentativeColor should be sufficient)<br>\r\n<strong>If anyone disagrees and would like a per-marker per-frame average color, please vote or make your case in this thread.</strong><br>\r\n<br>\r\nAs for MarkerEventData.Present, I'm not sure what users of Touchless want/expect.<br>\r\nIn the latest source, I've removed the property, and only send events when the marker is present.<br>\r\nUsers that poll data can check the Marker's area to determine if it's present, (0Area == !Present).<br>\r\nHowever, I do see how your idea of sending a single event when the marker is lost could be helpful.<br>\r\n<strong>If anyone would like this change incorporated, please vote or make your case in this thread.</strong><br>\r\n<br>\r\nIf you would like increased saturation on the highlight color, that's easy enough to do client side.<br>\r\n<strong>But if anyone would like this change incorporated into Touchless itself, </strong><strong>please vote or make your case in this thread.</strong><br>\r\n<br>\r\n(As for the other changes regarding false positives from the highlight color, that's no longer an issue in the latest source)<br>\r\nThanks for making a contribution to the Touchless community! You rock!<br>\r\n<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-12-11T23:39:09.793-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140032",
+    "ThreadId": "40016",
+    "Html": "<p>Hello Mike,</p>\r\n<p>I watched your progress happily, I think it could be useful to have a per-frame AvgColor for example when you &quot;paint&quot; using a marker. The brush color would adapt more precise to the &quot;visible&quot; color using the per-frame value, but of course, the RepresentativeColor is fine also... Maybe one could use bool <em>CalcuateAvgColor { get; set; }</em> to choose if the AvgColor should be calculated per frame (or even to recalculate the RepresentativeColor per-frame; thats what I used the AvgColor indeed).</p>\r\n<p>The polling of a marker is fine but, as you nevertheless have to calculate the marker presence, I is much more resource-saving when you get &quot;went-out-of-sight&quot; events. Maybe a better alternative to the Present property would be to add two an event <em>PresenceChanged</em> (using the sematics from my patch: fire once the marker changes its present value). Using this alternative, one can register for the extra events when interested. I already changed by patch to use <em>bool Present { get { return Area &gt; 0; }}</em> to match the new code for more clean client code. We could reuse this.</p>\r\n<p>The saturation change came just from my very own testing for my feedback. How could one add this in client code? I don't see a simple way as it can be done in the scanner loop. But I think this is really not an necessary feature for the lib.</p>\r\n<p>The false positives only come from the highlighting and are gone in the new release, as far as I could observe, good work!</p>\r\n<p>Another point is that I observed that the cam loop is lots slower when at least one marker was not present in the last frame as it has to do a complete scan for the whole picture instead of just the expected &quot;motion&quot; area. For some applications, it would be fine to &quot;preset&quot; if the marker is relevant/has to be searched for. For this purpose, I propose a new property <em>bool Active {get; set; }</em> to disable a marker temporarily without having to delete it.</p>\r\n<p>If you would like, I can add these proposals to the latest release, as states above, half is already done when I updated my checkout of the lib to the new version. I simply would post a new patch containing</p>\r\n<ul>\r\n    <li>Property bool CalculateAvgColor {get; set; }<br>\r\n    Determines if the average color of the recognized marker pixels should be calculated in each camera frame</li>\r\n    <li>Property Color AvgColor { get; }<br>\r\n    Returns the average color of the recognized marker pixels from the current frame. Returns the RepresentativeColor when CalculateAvgColor is set to false.</li>\r\n    <li>Property bool Present { get; }<br>\r\n    Returns if the marker is currently recognized. Returns true if the Area property is &gt; 0, else false.</li>\r\n    <li>Property bool Active { get; set; }<br>\r\n    Determines if the marker should be checked for presencein each camera frame and if events should be raised for this marker. When set to false, the system behaves as if the marker was not defined and completely ignores this marker.</li>\r\n    <li>Event OnPresenceChanged(object sender, MarkerEventArgs e)<br>\r\n    Raised when the Present property of a marker changes. e.Present will return the new state of the marker.</li>\r\n</ul>\r\n<p>Of course, I am open to other proposals...</p>\r\n<p>BTW: in your pre/post build events, you should add quotation marks around the copy parameters (copy &quot;fromfile&quot; &quot;tofile&quot;) because when the paths contain spaces, the commands will fail else.</p>\r\n<p>- Florian</p>\r\n",
+    "PostedDate": "2008-12-12T06:24:30.45-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140269",
+    "ThreadId": "40016",
+    "Html": "<p>Hi again,</p>\r\n<p>just had some time, see the patches section for a patch matching my above description... (touchless_present_avgcolor_svn26832)</p>\r\n<ul>\r\n    <li>[BUG] Demo Application did not check if a marker is selected at all when clicking the remove button.</li>\r\n    <li>[FEATURE] Marker.ToString() now contains info if the marker is visible and active.<br>\r\n    Adapted Demo Application to only show the Marker Name in the Marker ComboBox.</li>\r\n    <li>[FEATURE] added HSV.ToString() for debug purposes.</li>\r\n    <li>[FEATURE] added property Marker.CalculateAvgColor to enable AvgColor calculation in each cam image scanning loop.</li>\r\n    <li>[FEATURE] added property Marker.Active to be able to &quot;ignore&quot; markers in the cam image scanner loop (and marker events)</li>\r\n    <li>[FEATURE] added event Marker.OnPresenceChanged that is fired whenever the marker becomes detected or becomes invisble.<br>\r\n    Adapted comments for event Marker.OnChange and Marker.OnPresenceChanged.</li>\r\n    <li>[FIX] Renamed Marker.FireMarkerEventData() to Marker.FireMarkerChangedEvent to better match the name of the fired event.</li>\r\n    <li>[FEATURE] Added MarkerEventData.Present for cleaner code. Returns true iif MarkerEventData.Area &gt; 0.</li>\r\n    <li>[FEATURE] Added MarkerEventData.ColorAvg. Returns the average color of the recognized pixels when Marker.CalculateAvgColor is set to true, else returns<br>\r\n    the Marker.RepresentativeColor.</li>\r\n    <li>[INFO] Added TODO about thread safety in TouchlessMgr.UpdateMarkers</li>\r\n    <li>[FIX] Adapted TouchlessMgr.UpdateMarkers to obey the Marker.Active property and only calulate the MarkerEventData.AvgColor when Marker.CalulateAvgColor<br>\r\n    is set to true.</li>\r\n    <li>[FIX] Adapted TouchlessMgr.postProcessMarker to use the Present property and determine which events (OnChange, OnPresenceChanged) to fire.</li>\r\n</ul>\r\n",
+    "PostedDate": "2008-12-13T09:23:14.55-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

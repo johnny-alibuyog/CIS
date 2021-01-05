@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "650069",
+    "ThreadId": "267182",
+    "Html": "\r\n<p>hey michwass hey guys :), in the begining i'd like to thank you for&nbsp;your library it's easy to implement and &nbsp;fun to use , im trying to include your library on my hexapod robot &nbsp;project and i've been facing some problems , you see basically\r\n what my program does is that it sends data to my robot&nbsp; via the serial port and i have used your library to help me with the video processing and between each time i send a command to the serial port i have to add a tiny time delay and used threading\r\n to do this function for example</p>\r\n<p>serialport.open();</p>\r\n<p>serialport.write(&quot;whatever data im sennding here&quot;);</p>\r\n<p>thread.sleep(500);</p>\r\n<p>serialport.close();&quot;</p>\r\n<p>note i added a new&nbsp;&nbsp;serial port device and i included system,threading namespace in the begining of my program</p>\r\n<p>when the robot isn't moving i don't have any problems the bitmaps drawn in my picturebox keep changing with a constant fps but when the robot starts moving the last bitmap drawn freezes in the picturebox till the the robot stops , and i get nothing from\r\n the camera while the robot is moving , so i was wondering if there's a way to overcome this problem ?</p>\r\n<p>&nbsp;by the way &nbsp;the examples i found in the demo was so helpfull and the helped me alot to understand how to work with the library but im wondering if a tutorial counld be added to teach me how to include the patch files i want to try to store the\r\n markers instead of having to create new ones everytime, please reply soon thanks for help and work so far :)</p>\r\n<p>&nbsp;</p>\r\n<div id=\"_mcePaste\" style=\"width:1px; height:1px; overflow:hidden; top:50px; left:-10000px\">\r\n&#65279;</div>\r\n",
+    "PostedDate": "2011-07-30T15:34:57.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

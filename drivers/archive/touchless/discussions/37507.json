@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "124449",
+    "ThreadId": "37507",
+    "Html": "Hi@all,<br>\r\nI have some problems with the integration of my webcam.<br>\r\n<br>\r\nFirst: I had/have a problem to integrate the webcamlib.dll, but this is described in an other thread, what actualy is no help for me.<br>\r\n<br>\r\nSecond: I list up my cam with TouchlessMgr cam = new TouchlessMgr() =&gt; Cameras() but I cant get a CurrentImage() cause the cam is not startet.<br>\r\nI searched in the Touchlesslib but I didn't find a method, that's for starting the webcam.<br>\r\n<br>\r\nHow I use the webcamlib.dll if I don't know which methods and objects exist??<br>\r\n<br>\r\nSorry for these absolutely newbie questions and for my bad english :) Hope you can help me!<br>\r\n<br>\r\nLithic[newbie]<br>\r\n",
+    "PostedDate": "2008-10-11T03:55:31.46-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124450",
+    "ThreadId": "37507",
+    "Html": "fyi: my webcam works fine in the touchless demo!<br>\r\n",
+    "PostedDate": "2008-10-11T03:56:32.723-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124478",
+    "ThreadId": "37507",
+    "Html": "Hi Lithic:<br>\r\n<br>\r\nYou should never need to use any methods in webcamlib.dll.&nbsp; All of the methods there are exposed in TouchlessLib to managed code.&nbsp; The step you are missing is to set the Camera property on TouchlessMgr to one of the Cameras returned from the Cameras() method.&nbsp; That will start the webcam and allow you to get the current image from the Camera you selected.<br>\r\n",
+    "PostedDate": "2008-10-11T09:23:20.62-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230352",
+    "ThreadId": "37507",
+    "Html": "<p>Hi Hypermoose,</p>\r\n<p>i try again to integrate my&nbsp; again, after try out WIA/Direct show with result, but not with satisfaction.</p>\r\n<p>Now a new try with an error, I could not fix.</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><br>TouchlessMgr manager = <span style=\"color:Blue\">new</span> TouchlessMgr();<br></pre>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>My summary error:</p>\r\n<p>&quot;System.EntryPointNotFoundException wurde nicht behandelt.<br>&nbsp; Message=&quot;Der Einstiegspunkt Initialize wurde nicht in der DLL WebCamLib.dll gefunden.&quot;<br>&nbsp; Source=&quot;TouchlessLib&quot;&quot;</p>\r\n<p>Message translation &quot;There's no EntryPoint Initialize in the DLL WebCamLib.dll&quot;.</p>\r\n<p>&nbsp;</p>\r\n<p>My Header includes:</p>\r\n<p>using TouchlessLib;<br>using Webcamlib;</p>\r\n<p>&nbsp;</p>\r\n<p>How should I integrate the TouchlessLib?? I saw the samples, but they are to complex to understand all details. I need a short discription like a checkliste(1. using TouchlessLIb 2. Get cam with TouchlessMgr....) The interaktion with the cam, I will get by autodidactic.</p>\r\n<p>&nbsp;</p>\r\n<p>Many thanks for help and sorry for my &sect;$&sect;=&quot;&sect;%()=&sect;$%= english :)</p>\r\n<p>Lithic</p>",
+    "PostedDate": "2009-09-02T11:54:36.943-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230623",
+    "ThreadId": "37507",
+    "Html": "<p>OK, here comes your checklist:</p>\r\n<p>1. Create the manager:</p>\r\n<pre>TouchlessMgr manager = new TouchlessMgr();\r</pre>\r\n<p>&nbsp;</p>\r\n<p>2. Choose your weapons -aehm- camera:</p>\r\n<pre>private void initTouchlessCam(TouchlessMgr manager)\r\n        {\r\n            Camera choosenCam = null;\r\n            foreach (Camera cam in manager.Cameras)\r\n            {\r\n                try\r\n                {\r\n                    manager.CurrentCamera = cam;\r\n                    choosenCam = cam;\r\n                }\r\n                catch\r\n                {\r\n                    choosenCam = null;\r\n                }\r\n            }\r\n            if (choosenCam != null)\r\n            {\r\n                choosenCam.OnImageCaptured += new EventHandler(choosenCam_OnImageCaptured);\r\n            }\r\n            else\r\n            {\r\n                MessageBox.Show(&quot;no usable camera found&quot;);\r\n            }\r\n        }\r\n\r\n        private void  choosenCam_OnImageCaptured(object sender, CameraEventArgs e)\r\n        {\r\n            Bitmap currentImage = e.Image;\r\n            if (currentImage != null)\r\n            {\r\n                /* do whatever you want, see TouchlessDemo.drawLatestImage() for example */\r\n            }\r\n        }\r</pre>\r\n<p>&nbsp;</p>\r\n<p>3. Use manager.AddMarker(...) to add markers and register to the marker.MarkerChanged event to get updates concerning the marker.</p>\r\n<p>Hope this helps,<br>Florian</p>",
+    "PostedDate": "2009-09-03T04:16:12.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230737",
+    "ThreadId": "37507",
+    "Html": "<p>Thank you for your fast answer!</p>\r\n<p>&nbsp;</p>\r\n<p>I think I found my mistake. I got the Visual Studio with C#, but without C++ addon, so I can't load the webcam.lib. Am I right thinking that's the reason for System.EntryPointNotFoundException error in WEbcamlib.dll??</p>\r\n<p>No, it's not the reason for the error....</p>\r\n<p>best regards!</p>",
+    "PostedDate": "2009-09-03T09:20:12.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "256091",
+    "ThreadId": "37507",
+    "Html": "<p>@lithic:</p>\r\n<p>You should not require any special add-ons for the C# Express Edition of Visual Studio in order to interface with this library.&nbsp; You should remove the &quot;using Webcamlib;&quot; directive as this is probably not necessary.&nbsp; Also make sure that you've added a Reference to the TouchlessLib.dll in your project.&nbsp; Go over to the Solution Explorer, right click on the &quot;References&quot; folder, and pick &quot;Add Reference&quot;.&nbsp; Then after that window loads (it may take a minute), go to the Browse tab and select your TouchlessLib.dll file in there.</p>\r\n<p>If you are getting this problem when you hit F5 to compile, you will need to make sure that the TouchlessLib.dll file is located in your Project's bin/Debug folder along side of the debug .exe file.</p>\r\n<p>Good luck!</p>",
+    "PostedDate": "2009-11-11T12:15:29.423-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

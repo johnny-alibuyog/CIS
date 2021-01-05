@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "842816",
+    "ThreadId": "357752",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I'm currently using VB 2005 and when i use the touchless dll libraries, i get an error while declaring the camera. For:</p>\r\n<p>&nbsp;</p>\r\n<p></p>\r\n<pre> Public Touchless As New TouchlessLib.TouchlessMgr\r\n    Public Camera1 As TouchlessLib.Camera = Touchless.Cameras.ElementAt(0)</pre>\r\n<p></p>\r\n<p>I get the error:&nbsp;<span>&nbsp;'ElementAt is not a member of 'System.collection.Generic.ILi</span><span>&shy;st(Of touchlessLib.Camera). Any clue how i could work this out? As i'm new, i'm not too sure of this. Please let me know.</span></p>\r\n<p><span>Thanks!</span></p>\r\n",
+    "PostedDate": "2012-05-30T14:10:25.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1022619",
+    "ThreadId": "357752",
+    "Html": "i am also having a similar problem at &quot;Dim Camera1 As TouchlessLib.Camera = Touchless.Cameras.ElementAt(0)&quot; hope someone helps<br />\n",
+    "PostedDate": "2013-03-28T13:25:59.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

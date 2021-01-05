@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Im new in touchless sdk..\n \nI created a program that captures image...it works on my pc which is 32 bit, winXP SP3, 1gb ram....it also works in a computer in our computer laboratory in school which is 32 bit, win7......but when I tried it in another computer which is 64 bit, win7 it show an INNEREXCEPTION EXCEPTION...I forgot the whole error string but what I remember is TouchlessLib is involved in the error...",
+    "LastUpdatedDate": "2013-02-21T16:27:51.537-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2012-09-07T15:49:45.39-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "64 bit compatible??",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15596
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

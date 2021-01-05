@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "124596",
+    "ThreadId": "37557",
+    "Html": "I was thinking about porting this over to WPF using my &quot;WPF MediaKit&quot; (http://codeplex.com/WPFMediaKit).&nbsp; I won't have any free time for a few weeks, but it shouldn't be too hard as I already have a &quot;VideoCaptureElement&quot; that would just need a SampleGrabber.&nbsp; If anyone is interested, email me at jeremiah.morrill [at] gmail [dot] com.<br>\r\n<br>\r\n-Jer<br>\r\n",
+    "PostedDate": "2008-10-12T14:21:39.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127618",
+    "ThreadId": "37557",
+    "Html": "WPF sample can be found <a href=\"http://www.papnkukn.net/link.php?id=touchless_wpf\" title=\"http://www.papnkukn.net/link.php?id=touchless_wpf\">here</a>. Painting Canvas with ImageBrush is a quick solution that requires no external libraries. However, it is probably more CPU consuming than jmorrill's controls. I am interested in WPF MediaKit integration but don't have the time to go in depth with source code...<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-24T16:17:45.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127770",
+    "ThreadId": "37557",
+    "Html": "Hi papnkukn,<br>\r\n<br>\r\nIt looks like you've started some cool work with Touchless.<br>\r\nYour demo works, but suffers from some fairly glaring memory leaks.<br>\r\nI encourage other community members to work with papnkukn, let's see some good WPF progress!<br>\r\n<br>\r\n- Mike\r\n",
+    "PostedDate": "2008-10-25T16:37:29.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128210",
+    "ThreadId": "37557",
+    "Html": "<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\">Hi all,</span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\"> </span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\">I’m writing to let you know that I’ve managed to convert Touchless to run in WPF using Jeremiah's MediaKit. </span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\"> </span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\">Here you can download the modified sources for both Touchless SDK and WPF MediaKit:<br>\r\n<a href=\"http://cid-4c7ec0c2176a0b0d.skydrive.live.com/self.aspx/Public/Touchless|_20081028.zip\">http://cid-4c7ec0c2176a0b0d.skydrive.live.com/self.aspx/Public/Touchless|_20081028.zip</a></span></p>\r\n<p style=\"margin:0cm 0cm 0pt\">&nbsp;</p>\r\n<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\"> </span><span style=\"font-family:calibri\">Here is a brief list of changes that I made:</span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\"> </span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><b><span style=\"font-family:calibri\">WPF MediaKit</span></b></p>\r\n<p style=\"margin:0cm 0cm 0pt 36pt\"><b><span><span style=\"font-family:calibri\">1.</span><span style=\"font:7pt 'times new roman'\">       </span></span></b><span style=\"font-family:calibri\">Modified VideoCapturePlayer to include SampleGrabber in filter graph. It uses the same properties as the video stream so the output bitmap will most likely be 24bpp RGB. <b></b></span></p>\r\n<p style=\"margin:0cm 0cm 0pt 36pt\"><b><span><span style=\"font-family:calibri\">2.</span><span style=\"font:7pt 'times new roman'\">       </span></span></b><span style=\"font-family:calibri\">VideoCaptureElement exposes Click method that captures a single frame and some additional properties.<b></b></span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><b><span style=\"font-family:calibri\"> </span></b></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><b><span style=\"font-family:calibri\">Touchless SDK</span></b></p>\r\n<p style=\"margin:0cm 0cm 0pt 36pt\"><span><span style=\"font-family:calibri\">1.</span><span style=\"font:7pt 'times new roman'\">       </span></span><span style=\"font-family:calibri\">I have removed all dependencies on the WebCamLib, including the Camera class and all related code from TouchlessMgr.</span></p>\r\n<p style=\"margin:0cm 0cm 0pt 36pt\"><span><span style=\"font-family:calibri\">2.</span><span style=\"font:7pt 'times new roman'\">       </span></span><span style=\"font-family:calibri\">The camera updates are now handled in the demo application via the CameraTracker class which manages its own thread.</span></p>\r\n<p style=\"margin:0cm 0cm 0pt 36pt\"><span><span style=\"font-family:calibri\">3.</span><span style=\"font:7pt 'times new roman'\">       </span></span><span style=\"font-family:calibri\">TouchlessMgr.UpdateMarker now writes to separate bitmap to create marker highlights. This bitmap is later overlayed on top of the video via an InteropBitmap.</span></p>\r\n<p style=\"margin:0cm 0cm 0pt 36pt\"><span><span style=\"font-family:calibri\">4.</span><span style=\"font:7pt 'times new roman'\">       </span></span><span style=\"font-family:calibri\">Since the input bitmap now can have 24 bpp the code that accessed BitmapData via pointers was moved to BitmapHelper class that can handle both 24 and 32 bpp. This also removed the need to convert the input bitmap with GetThumbnailImage which in turn improved performance.</span></p>\r\n<p style=\"margin:0cm 0cm 0pt 36pt\"><span><span style=\"font-family:calibri\">5.</span><span style=\"font:7pt 'times new roman'\">       </span></span><span style=\"font-family:calibri\">I have changed all marker position properties to double type so it can size more smoothly in WPF.</span></p>\r\n<p style=\"margin:0cm 0cm 0pt 36pt\"><span><span style=\"font-family:calibri\">6.</span><span style=\"font:7pt 'times new roman'\">       </span></span><span style=\"font-family:calibri\">The video now can run in 640x480 resolution. Some changes were made in order to avoid repeating memory allocation of large arrays. </span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\"> </span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\">The overall performance is pretty good – I get 30fps on 640x480 video with about 23% CPU. I think some overhead is caused by WPF redrawing the overlay bitmap. But another cool idea would be to rewrite the algorithm using Parallel Extensions. </span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\"> </span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\">Hope you enjoy my sample, and please let me know if you have any suggestions or ideas what can be improved.</span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\"> </span></p>\r\n<p style=\"margin:0cm 0cm 0pt\"><span style=\"font-family:calibri\">-Szymon</span></p>\r\n",
+    "PostedDate": "2008-10-28T00:02:04.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129247",
+    "ThreadId": "37557",
+    "Html": "Hi,<br>\r\n<br>\r\nI've recently fixed memory leak issue in WPF sample. Problem was with Bitmap.GetHbitmap() method, IntPtr is now deleted after use.<br>\r\n<br>\r\nI've also created two samples - a chess-like game and circuit drawing application, both using Touchless SDK. Both samples can be found at <a title=\"Samples based on Touchless SDK\" href=\"http://www.papnkukn.net/touchless\">http://www.papnkukn.net/touchless</a><br>\r\n<br>\r\nkobush, your version works well. I get 45-50% CPU without markers and additonal 10% with single marker and no memory leaks at 640x480. Could you please write your machine configuration (to compare test results)?<br>\r\nMy sample works with max 25% CPU and no memory leaks at 320x240 @ 25 FPS. Tested on Core Duo @ 2.20 GHz, 2 GB RAM, WinXP SP2.<br>\r\n",
+    "PostedDate": "2008-10-31T11:26:02.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129270",
+    "ThreadId": "37557",
+    "Html": "Hi papnkukn,<br>\r\nI see you made great progress with your version. It's cool that you even managed to add your own applications and I'm going to take a closer look at it tomorrow. <br>\r\n<br>\r\nThanks for checking out my sample too. The results I presented above were obtained on Core Quad @ 2.66 GHz, 8GB RAM, Vista Ultimate 64-bit. I'm currently using Logitech QuickCam Pro 9000 for my tests. <br>\r\n<br>\r\nBut I also run it on my TabletPC that has low voltage Core 2 Duo @ 1.6 GHz, 2GB RAM, Vista Business 32-bit. Here frame rate dropped to about 10 fps. But it turned out that the problem was caused by graphics drivers for Intel GMA 965. I used a DropShadowEffect on video border in the MainWindow, but on this graphics adapter its not hardware accelerated. When I removed this effect it runs in 640x480 @ max 40% CPU with one marker.\r\n",
+    "PostedDate": "2008-10-31T13:14:10.54-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129347",
+    "ThreadId": "37557",
+    "Html": "Papnkukn,<br>\r\n<br>\r\nI really dig it; your WPF sample runs nicely now. And your other two demos are awesome. I really like the transparency slider idea.<br>\r\nThe interaction of grabbing a circuit component is well done, but putting it down without an active marker or invocation method is tough.<br>\r\nThe Knight game is really a great experience; the game flows well with the use of a marker.<br>\r\n<br>\r\nYou are leading the pack in creative uses for Touchless; I'd like to post your link on our new &quot;Touchless Media&quot; wiki page.<br>\r\nI'll also look closer at your source code for TouchlessWPF.exe; that might be useful to include in our source repository, if you'd allow.<br>\r\n<br>\r\nOne problem: I can't view your silverlight videos, it sends me to <a href=\"http://www.microsoft.com/silverlight/resources/install.aspx?v=2.0.30523\">this site</a>. I have Silverlight 2.<br>\r\n<br>\r\nGreat work! keep it up!<br>\r\n- Mike\r\n",
+    "PostedDate": "2008-10-31T21:17:34.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129403",
+    "ThreadId": "37557",
+    "Html": "Hi,<br>\r\n<br>\r\nThanks, it is the Touchless idea that inspired me.<br>\r\n<br>\r\nSure, TouchlessWPF can be inlcuded in svn repository. Even more, it should be the official development version (always the lastest). Main idea is to use a single control (named TouchlessCanvas) in WPF that can be easily integrated in xaml.<br>\r\n<br>\r\nTip for watching demo videos: close browser, uninstall previous version (beta), install new version of Silverlight 2.0 (rtw).<br>\r\n<br>\r\n-Papn Kukn<br>\r\n",
+    "PostedDate": "2008-11-01T10:17:07.81-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129494",
+    "ThreadId": "37557",
+    "Html": "Hi Papn,<br>\r\n<br>\r\nI'm also thinking about puting together some infrastructure around Touchless in WPF as well. I got some inspiration after watching the PDS session about developing with Surface SDK (<a href=\"http://channel9.msdn.com/pdc2008/PC17/\">http://channel9.msdn.com/pdc2008/PC17/</a>). They have a set of WPF Controls that can work with multi-touch input. But the controls work on top of some driver that sends routed events for each contact. I think we should be able to use the same model for Touchless. But eventually for the end user it should be as easy as to put a TouchlessCanvas instead of regular canvas to get multi-touch input (or TouchlessScatterView). I will be prototyping it this week. <br>\r\n<br>\r\n-Szymon<br>\r\n<br>\r\n",
+    "PostedDate": "2008-11-02T07:52:09.837-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134177",
+    "ThreadId": "37557",
+    "Html": "Hi kobush,<br>\r\n<br>\r\nActually there is already a project that will allow you to make what you want. Look at <a href=\"http://www.codeplex.com/MultiTouchVista\">MultiTouchVista</a> project. All you have to do is to implement an &quot;input provider&quot; (one simple interface) that will be using Touchless.<br>\r\n<br>\r\n-Nesher<br>\r\n",
+    "PostedDate": "2008-11-21T02:00:52.46-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "432588",
+    "ThreadId": "37557",
+    "Html": "<p>Help! me please !</p>\r\n<p>i just downloaded <a href=\"http://cid-4c7ec0c2176a0b0d.skydrive.live.com/self.aspx/Public/Touchless|_20081028.zip\">http://cid-4c7ec0c2176a0b0d.skydrive.live.com/self.aspx/Public/Touchless|_20081028.zip</a>&nbsp;as kobush reccommented.</p>\r\n<p>after that i open it in Visual Studio 2008 sp1</p>\r\n<p>then i start deployment but it show this error</p>\r\n<p>&quot;Exception has been thrown by the target of an invocation&quot;</p>\r\n<p>What should i do next ?</p>\r\n<p>Project Directory : C:\\Users\\Pattadon\\Documents\\Visual Studio 2008\\Projects\\Touchless</p>\r\n<p>OS : Windows7 Ultimate</p>",
+    "PostedDate": "2010-04-18T23:51:26.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "433518",
+    "ThreadId": "37557",
+    "Html": "<p>Can anyone please give some solution for me ?</p>",
+    "PostedDate": "2010-04-21T01:16:05.657-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "433858",
+    "ThreadId": "37557",
+    "Html": "<p>I have the same issue with Windows Vista on a laptop with embedded webcam. If I connect an <strong>external webcam</strong> and change VideoInputNames[0] to [1] on MainWindowPresentationModel.cs:70 then the application <strong>works fine</strong>.</p>\r\n<p>So, the solution is hardware (driver) dependent. If you are familiar with DirectShow you can change the way frames are grabbed from a webcam but this is more complex solution. Alternative is to try <a title=\"touchless sample\" href=\"http://www.papnkukn.net/touchless\">this</a> demo and use it as sample grabber.</p>",
+    "PostedDate": "2010-04-21T13:39:21.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

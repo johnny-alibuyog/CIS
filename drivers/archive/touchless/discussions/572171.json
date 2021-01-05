@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1322532",
+    "ThreadId": "572171",
+    "Html": "I succesfully created windows desktop application, but when I tried to publish it to another computer running Windows 8.1 with no VS installed, it gave error during installation:\r<br />\n<br />\nCould not load file or assembly &quot;WebCamLib, Version=0.0.0.0. Culture=neutral, Public Key Token=null&quot; or one of its dependencies. The system cannot find the file specified\r<br />\n<br />\nI built my application using Windows 7 &amp; VS 2012, configuration manager for solution: platform x86, target CPU x86, Net Framework 4.0 (same error using 4.5)\r<br />\nCan anyone help ?<br />\n",
+    "PostedDate": "2014-11-15T10:01:34.15-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1459984",
+    "ThreadId": "572171",
+    "Html": "Please Confirm add webcamLib.dll to your Debug folder.\r<br />\n<br />\nRADU MEDIA.<br />\n",
+    "PostedDate": "2016-01-20T22:27:42.423-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

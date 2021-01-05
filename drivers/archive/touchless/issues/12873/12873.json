@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello @ll,\n \nI just tried to compile the newest version of Touchless SDK. It's working great, but when I change the webcam (I have two) I'm getting an exception \"Graph builder was null!\". Then I need to restart the application and it'll work great again, till I try to change my webcam. Any idea what the problem is?\n \nThank for all your work! ;)\n \nMichael\n \nPS. If you need addition information, just ask!",
+    "LastUpdatedDate": "2013-02-21T16:27:52.507-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2011-01-19T09:38:20.697-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Exception: Graph builder was null!",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12873
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

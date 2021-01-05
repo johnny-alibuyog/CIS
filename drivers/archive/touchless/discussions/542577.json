@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1235238",
+    "ThreadId": "542577",
+    "Html": "Dear all, \r<br />\n<br />\nI 'm a recent user of touchless lib, and i easily copy the same code on youtube sample, i manage to add libs, i see webcam name but when i click on button, i don't have image which appear in picture box, please help :), i have too another problem the property captureheight and width only in read only, then whatever, i put it in comments \r<br />\nthx \r<br />\n<br />\nhere my code :\r<br />\n<br />\nPublic Class Form1<br />\n<pre><code>Public touchless As New TouchlessLib.TouchlessMgr\nPublic camera1 As TouchlessLib.Camera = touchless.Cameras.ElementAt(0)\n\n\n\nPrivate Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load\n    touchless.CurrentCamera = camera1\n    MsgBox(camera1.ToString)\n    'touchless.CurrentCamera.CaptureHeight = 480\n    'touchless.CurrentCamera.CaptureHeight = 640\nEnd Sub\n\nPrivate Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click\n\n    ' touchless.CurrentCamera = camera1\n    PictureBox1.Image = touchless.CurrentCamera.GetCurrentImage\n    MsgBox(camera1.CaptureHeight)\nEnd Sub\n\nPrivate Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click\n\nEnd Sub</code></pre>\n\nEnd Class<br />\n",
+    "PostedDate": "2014-04-17T15:56:27.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I just downloaded the Touchless SDK 1.0 and 2.0 from the code tracker. I also downloaded the pre-compiled demo.\n \nHere is what I get on all three of them. I have tried two different cameras as well.\n \nIt works fine in the Windows Scanner and Camera Wizard.\n \nOS: Windows XP Pro 32-bit",
+    "LastUpdatedDate": "2013-02-21T16:27:52.727-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2010-09-22T20:40:14.32-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Chunky / Scrambled Video",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11993
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3487,
+      "FileName": "touchless-camera.jpg",
+      "DownloadUrl": ".\\3487"
+    },
+    {
+      "FileId": 3488,
+      "FileName": "windows-camera-wizard.jpg",
+      "DownloadUrl": ".\\3488"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Problem Occurs Here.",
+      "PostedDate": "2010-09-22T20:41:26.19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:27:52.727-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

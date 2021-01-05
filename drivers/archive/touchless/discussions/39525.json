@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "131168",
+    "ThreadId": "39525",
+    "Html": "Hi, nice project you have here :)<br>\r\nI want to ask if its possible to track two identical markers independently? My project got only one week development time so i ask without even looking into the SDK source. Its also quite hard to understand for me.<br>\r\nWas thinking of a parameter like <strong>concentration of recognised pixels in a area</strong>, to track individual &quot;hotspots&quot; of the same color. <br>\r\n",
+    "PostedDate": "2008-11-09T08:07:30.67-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "131266",
+    "ThreadId": "39525",
+    "Html": "Hi Balex,<br>\r\nShort answer: Touchless isn't currently built to do this. If two markers look the same, both will match pixels of their shared colors.<br>\r\nAdding a notion of numerous &quot;hotspots&quot; for the same set of marker colors is a good idea; although it would be a significant change.<br>\r\nI'm quite backlogged with feature requests, I encourage skilled community members to consider contributing.<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-11-09T23:54:17.97-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

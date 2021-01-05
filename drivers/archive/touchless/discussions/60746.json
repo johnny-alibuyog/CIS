@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "205814",
+    "ThreadId": "60746",
+    "Html": "<p>Hi,</p>\r\n<p>When I try to dispose my TouchlessMgr instance, the app is freezing.</p>\r\n<p>It hangs on &quot;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; g_pMediaControl-&gt;Stop();&quot;&nbsp; in &quot;CameraMethods::StopCamera()&quot; file &quot;WebcamLib.cpp&quot; line 381</p>\r\n<p>I have revision 31008 of file (latest in svn).</p>\r\n<p>My cam is a Microsoft VX-2000.</p>\r\n<p>I think this can be due to not enough time between a previous dipose and a new instanciation of manager.</p>\r\n<p>&nbsp;</p>\r\n<p>I have wrapped the lib into an ActiveX to use in a IE webpage.</p>\r\n<p>I will try to search more further.</p>",
+    "PostedDate": "2009-06-26T02:19:59.1-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "205819",
+    "ThreadId": "60746",
+    "Html": "<p>Found : Deadlock</p>\r\n<p>&nbsp;</p>\r\n<p>When calling IMediaControl.Stop(), there can be a deadlock if the UI thread is not responding.</p>\r\n<p>Since I have a live view of the image (handle on Camera.OnImageCaptured event, get image, set picturebox image) and that I have to deal with InvokeRequired property, I have changed sync Invoke() calls to async calls with BeginInvoke(). And that solved my deadlock problem.</p>\r\n<p>Link that helped me to understand : <a href=\"http://www.microsoft.com/communities/newsgroups/list/en-us/default.aspx?dg=microsoft.public.win32.programmer.directx.video&tid=1d22c916-383a-4f96-80a0-fae8c5d9db2d&cat=&lang=&cr=&sloc=&p=1\">http://www.microsoft.com/communities/newsgroups/list/en-us/default.aspx?dg=microsoft.public.win32.programmer.directx.video&amp;tid=1d22c916-383a-4f96-80a0-fae8c5d9db2d&amp;cat=&amp;lang=&amp;cr=&amp;sloc=&amp;p=1</a></p>",
+    "PostedDate": "2009-06-26T02:39:23.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "205866",
+    "ThreadId": "60746",
+    "Html": "<p>Great work,</p>\r\n<p>I also could observe this deadlock from time to time in a plain win app, but could not explain to me why it happened.<br>I don't know if the BeginInvoke is ok to do and cleanly resolves the bug, but at least it helps :)</p>\r\n<p>I could only observe the deadlock inside the debugger, but not when executing my app compiled in RELEASE mode and starting it outside the studio.</p>",
+    "PostedDate": "2009-06-26T05:19:21.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206859",
+    "ThreadId": "60746",
+    "Html": "<p>Very nice. Is there anything more to it than changing <span style=\"font-size:x-small\">OnImageCaptured.Invoke to <span style=\"font-size:x-small\">OnImageCaptured.BeginInvoke? </span></span><span style=\"font-size:x-small\"><span style=\"font-size:x-small\">I'll work this into my next changeset.</span></span><span style=\"font-size:x-small\"></span></p>",
+    "PostedDate": "2009-06-29T19:15:45.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

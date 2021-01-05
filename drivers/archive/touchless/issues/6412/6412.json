@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I think it would be a blast to have a simple photo viewer that could be control by Touchless - it would be a fun way to show friends and family members pictures. It would also be fun to do some simple editting - Rotate, Crop, Fix Red Eye.",
+    "LastUpdatedDate": "2013-02-21T16:27:57.23-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2008-10-09T16:07:03.02-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Idea: Photo Viewer and Editor",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 6412
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

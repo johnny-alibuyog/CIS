@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi,\n\nWe have successfully implemented the Touchless SDK in our VB.NET 2010 application and it runs fine under Windows 7. Running on Windows 8 Pro on a tablet, however, we do see some issues. For some reason the webcam does not unload correctly, this causes subsequent problems accessing the webcam in general. Even 3rd party programs that use the webcam fail after using our program once.\n\nIs there a way to actually close the Webcam?\n\nJohn",
+    "LastUpdatedDate": "2013-02-25T07:01:15.41-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2013-02-19T02:28:57.627-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Webcam does not terminate correctly in W8",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16051
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Although we seem to have fixed this in the coding, I feel that it would be good to have a method to colse the camera explicitly.\r\n\r\nJohn",
+      "PostedDate": "2013-02-25T06:27:26.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ahhhh.... we used disposed, that solved the problem.\r\n\r\nI know that we have found the solution to the issue ourselves, but.... I feel that we would all be helped by some documentation..\r\n\r\nJohn",
+      "PostedDate": "2013-02-25T07:01:15.41-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

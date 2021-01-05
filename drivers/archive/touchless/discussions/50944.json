@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "170716",
+    "ThreadId": "50944",
+    "Html": "Hi Mike<br>\r\n<br>\r\nI have a very bad image of my cam when I run TouchlessDemo, image with poins running. I think it's not recognizing my cam. Does it have any soluction or I have to buy other webcam?<br>\r\nI'm from Brazil, then sorry for any error :)<br>\r\n<br>\r\nThanks<br>\r\n<br>\r\nEditing...<br>\r\n<br>\r\nMaybe it is becouse my webcam is not DirectShow, isn't it?<br>\r\n",
+    "PostedDate": "2009-03-22T21:16:32.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "171670",
+    "ThreadId": "50944",
+    "Html": "Hi dario2,<br>\r\n<br>\r\nI'm sorry that you're having trouble with Touchless.<br>\r\nI'm not sure what you mean by &quot;image with points running&quot;.<br>\r\nDoes TouchlessDemo start, or does it ask you to plug in a webcam?<br>\r\nCan you try using a friend's computer and/or webcam to see which is the problem?<br>\r\nDo you know the webcam model, can you try finding the latest drivers?<br>\r\n<br>\r\nIf your webcam doesn't work with DirectShow, then sadly it won't work with Touchless.<br>\r\nI'm sorry that I can't be of more help. Thanks for trying Touchless anyway!<br>\r\n<br>\r\n- Mike\r\n",
+    "PostedDate": "2009-03-24T21:39:35.05-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "171684",
+    "ThreadId": "50944",
+    "Html": "Hi touchless community,<br>\r\n<br>\r\nI'm starting to work with the Touchless SDK and it's awesome!The applications that can be made using this SDK are endless, congratulations to Mike and this hardworking community for sharing all your knowledge.<br>\r\n<br>\r\nI'm having almost the same trouble as dario2, I have a 1.3&nbsp; Megapixels HD webcam and a 2.0 Megapixels laptop integrated webcam. Altough the Touchless Demo and the samples I've created do recognize my webcams and present my images, I have experienced the following issues with it:<br>\r\n<br>\r\n-The video stream appears ok, but then a progressive delay starts to appear while running.<br>\r\n-The markers I define are hardly recognized, and I have to play a lot with the Treshold value, bringing it almost to 0 in order to recognize a marker.<br>\r\n-And also, when it does recognize my marker, when I use the drawing example it always draws random points within the borders of my marker, in other words it doesnt recognize my markers as a whole object.<br>\r\n<br>\r\nWhat I've seen in most of the videos of the Touchless SDK is that it runs in a very smooth way, so I would like to know what are the minimun characteristics of your webcam/system, to guide myself if I have to get a new webcam or maybe a new computer...which I hope not. And if someone could explain to me what is the function of the Treshold in the image capture.<br>\r\n<br>\r\nThanks<br>\r\n<br>\r\nFernando,<br>\r\nGuatemala<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-03-24T22:55:07.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "172595",
+    "ThreadId": "50944",
+    "Html": "Image with points running is like a TV with no signal. I don'k know how to say it in English. I'll try with a friend's cam and I'll come back to say if it's working.<br>\r\n",
+    "PostedDate": "2009-03-26T19:14:59.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "173185",
+    "ThreadId": "50944",
+    "Html": "I've tested with a friend's webcam. TouchlessDemo worked well, no errors. So, I'm gonna buy a new webcam.<br>\r\n<br>\r\nThank you Mike :)<br>\r\n",
+    "PostedDate": "2009-03-29T02:35:05.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "183910",
+    "ThreadId": "50944",
+    "Html": "Greetings Touchless community, I was testing the sdk and decided to create my own sample from the WalkhroughSample that comes with the demo, and I started to have all the troubles that I listed before. But the real problem that I had was the size of my picturebox, the form component that shows the camera output. Maybe it was because the marker selection is done just by clicking in the image instead of selecting an area, and also the bigger the picturebox more fuzzy is the marker selection. Although in the complete demo the picturebox is pretty big but the marker selection mode is done by selecting an area.<br>\r\n<br>\r\nBut the point is that since I reduced the size of the picturebox, it works very smoothly. I hope it works for someone, and it works fine in both of my webcams.<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-26T20:43:17.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "184333",
+    "ThreadId": "50944",
+    "Html": "Hi Fernando, please let me know if these tips help:<br>\r\n<br>\r\nTouchlessDemo scales the video display from 320x240 to 640x480 for visual clarity. TouchlessLib requires a simple translation in coordinates when the user clicks on the image, and TouchlessDemo records the location. I believe that your predominant problem is likely the mismatch in display space and image space coordinates. For example, using the same scaling as TouchlessDemo, if the user selects a point at 100,100 in the windows forms picturebox, the code should send the point 50,50 to TouchlessLib to get the same point in the image.<br>\r\n<br>\r\nHowever, you're correct in noting that using a single point with a predefined radius to add markers is not the best technique. Touchless relies heavily upon the selected area to properly track the marker. Using a very tight fitting circle around a relatively round marker is the most well supported scenario. You definitely want to match the marker area when adding for proper functionality.<br>\r\n<br>\r\nThanks for your interest and trying Touchless SDK!<br>\r\n- Mike\r\n",
+    "PostedDate": "2009-04-27T21:20:55.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "254669",
+    "ThreadId": "74441",
+    "Html": "<p>I bet this has already been thought of, but with a high-def camera (or maybe low def if the software was good enough..maybe). You could blink twice fastly for left click (have the software monitore your normal blinking intervals) and a long blink for right click.</p>\r\n<p>&nbsp;</p>\r\n<p>Also, i had this on my old harddrive about a year ago, and spent about an hour googling to try and find this! I got to places like touchlight/gestureck but thats it.. Maybe you could somehow make it easir to find on search engines? I typed in &quot;two disdinct birght onjects&quot; and all kinds of things to try and find it. Finally i gave up and screwed my old harddrive into my laptop.</p>",
+    "PostedDate": "2009-11-07T21:47:42.947-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254767",
+    "ThreadId": "74441",
+    "Html": "<p><span style=\"font-size:10pt;color:black;font-family:'Segoe UI'\">Hi imop45,</span></p>\r\n<p><span style=\"font-size:10pt;color:black;font-family:'Segoe UI'\">From my understanding of touchless sdk, eyeball mouse tracking wouldn't be very possible for the following reasons:</span></p>\r\n<p><span style=\"font-size:10pt;color:black;font-family:'Segoe UI'\">1: your eye color would have to be very different from&nbsp;your face and environment&nbsp;colors (brown skin brown eyed people would have no chance).</span></p>\r\n<p><span style=\"font-size:10pt;color:black;font-family:'Segoe UI'\">2: you wouldn't be able to move your head an inch or the software will think the mouse is moving even though your eyeball stays in place. </span></p>\r\n<p><span style=\"font-size:10pt;color:black;font-family:'Segoe UI'\">3: touchless sdk can technically monitor a blink by the absence and then presence of the marker (your eye), but once the marker disappears the software will try it's hardest to find it and pickup false positives. </span></p>\r\n<p><span style=\"font-size:10pt;color:black;font-family:'Segoe UI'\">Don&rsquo;t give up on your idea because of these points, now that you are aware of them you can find a way around them. &nbsp;</span></p>\r\n<p><span style=\"font-size:10pt;color:black;font-family:'Segoe UI'\">I stumbled onto touchless with my project after a series of a few simple &quot;webcam object tracking&quot;&nbsp;searches in Google. I thought it was pretty simple to find. </span></p>",
+    "PostedDate": "2009-11-08T09:24:13.433-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254779",
+    "ThreadId": "74441",
+    "Html": "Yes, the absence and presence of the object would signifiy blinks. and you could regress to a less agressive scan for the objects after a certain amount of absence to avoid negative positives.\n\n\nThere's a TV that can tell when someones eyes are looking at it and when the eyes aren't, but I believe it uses the face as a base and then has guidlines to where the eyes are normally (for example the eyes would be roughly in the middle of your whole  head.)\n\nAlso you could get around head movement b/c looking forward the iris is in the middle of the eye and is a perfect circle. when you move to the left it becomes oval shaped (viewpoint from the camers it looks oval shaped) and its now in the left region of the eye area, where to the right there is more scalera (white part of the eye).\n\nOnly problem I really see is color distinction... that would require a massive overhaul of the sdk and problem a highdef camera",
+    "PostedDate": "2009-11-08T10:14:38.037-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254780",
+    "ThreadId": "74441",
+    "Html": "Yes, the absence and presence of the object would signifiy blinks. and you could regress to a less agressive scan for the objects after a certain amount of absence to avoid negative positives.\n\n\nThere's a TV that can tell when someones eyes are looking at it and when the eyes aren't, but I believe it uses the face as a base and then has guidlines to where the eyes are normally (for example the eyes would be roughly in the middle of your whole  head.)\n\nAlso you could get around head movement b/c looking forward the iris is in the middle of the eye and is a perfect circle. when you move to the left it becomes oval shaped (viewpoint from the camers it looks oval shaped) and its now in the left region of the eye area, where to the right there is more scalera (white part of the eye).\n\nOnly problem I really see is color distinction... that would require a massive overhaul of the sdk and problem a highdef camera",
+    "PostedDate": "2009-11-08T10:15:01.873-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

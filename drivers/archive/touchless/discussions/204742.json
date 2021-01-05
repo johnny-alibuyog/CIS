@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "417350",
+    "ThreadId": "204742",
+    "Html": "<pre>Dear All,<br><br>I have built a simple exe appliocation that uses the Touchless Lib and WebCam lib, the application runs perfectly <br>under vs 2008 but if i try to execute the .exe file the application does even start i simply <br>the Appname as stopped working ..search for solution dialog box.<br><br><br>So, i downloaded the latest build from Codplex and if i run the demo app in debug and then press the drop down for the demo crashes<br>with <br><br>&quot;Could not load file or assembly 'WebCamLib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. An attempt was made to load a program with an incorrect format.&quot;<br><br>=== Pre-bind state information ===<br>LOG: User = Real-PC\\Ladva<br>LOG: DisplayName = WebCamLib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null<br>&nbsp;(Fully-specified)<br>LOG: Appbase = file:///C:/_downloads/touchless-55790/trunk/Touchless/Touchless.Demo/bin/Debug/<br>LOG: Initial PrivatePath = NULL<br>Calling assembly : Touchless.Vision, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null.<br>===<br>LOG: This bind starts in default load context.<br>LOG: No application configuration file found.<br>LOG: Using machine configuration file from C:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\config\\machine.config.<br>LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).<br>LOG: Attempting download of new URL file:///C:/_downloads/touchless-55790/trunk/Touchless/Touchless.Demo/bin/Debug/WebCamLib.DLL.<br>ERR: Failed to complete setup of assembly (hr = 0x8007000b). Probing terminated.<br><br><br>I've done a clean and rebuild of the entire solution but to no avail.<br><br>Pls help.<br><br>Thnx<br></pre>",
+    "PostedDate": "2010-03-12T02:17:28.513-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "422044",
+    "ThreadId": "204742",
+    "Html": "<p>even i got this error.. please help</p>",
+    "PostedDate": "2010-03-22T03:29:07.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "443337",
+    "ThreadId": "204742",
+    "Html": "<p>hi guys i know it's a bit late, but could be useful for others.</p>\r\n<p>make sure you have referenced the two libraries correctly.</p>\r\n<p>and then, try the following : either:</p>\r\n<p>1- replace the existing dll with the new one, or</p>\r\n<p>2- set the correct startup file in the project explorer.</p>\r\n<p>hope this works.</p>",
+    "PostedDate": "2010-05-15T16:08:35.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "690904",
+    "ThreadId": "204742",
+    "Html": "<p>hi guys,</p>\r\n<p>&nbsp;</p>\r\n<p>change platform target to \"x86\" instead of \"any cpu\" on the BUILD tab of your project.</p>\r\n<p>it will not work to \"any cpu\" and x64\" platform.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-10-28T10:29:19.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "910057",
+    "ThreadId": "204742",
+    "Html": "<p>how will I be able to run this on 64 bit cpu? is it possible?</p>",
+    "PostedDate": "2012-09-08T13:54:37.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

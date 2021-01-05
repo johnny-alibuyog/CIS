@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The height and width properties in the MarkerEventData class were defined incorrectly (e.g., Height was defined as \"Right - Left\", and vice versa).",
+    "LastUpdatedDate": "2013-02-21T16:27:54.247-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2009-07-25T16:02:04.51-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "MarkerEventData Height and Width reversed",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 8176
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "confirmed",
+      "PostedDate": "2009-07-26T10:42:54.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:27:54.247-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

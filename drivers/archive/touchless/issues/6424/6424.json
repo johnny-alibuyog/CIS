@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Download the latest source to use the new Mouse Demo in TouchlessDemo.\n(No building required, just run bin\\release\\TouchlessDemo.exe)\nThe first draft of Mouse Demo is added with Change Set #28723.\n\nBe careful, it really does control your mouse with markers!\nRead the demo notes for instructions.\n\nThanks to all of you, particularly lepipele and eFloh for help and inspiration.\nImprove the demo, suggest changes, report experiences, and post video links!\n\n- Mike",
+    "ClosedDate": "2009-02-09T02:05:23.413-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Definitely.\nThis should also be easier to do, just hide the gui and everything and let two markers control mouse movements. Everything can be done minority style with the markers (tapes/LEDs/Nailpolish?!) on fingers of the two hands. A Click can be interpreted as the disappearance/appearance of a marker, similarly some such thing for double click and drag and drop.\n \nYou can be sitting away from your chair and playing/pausing/volume adjusting your movies while the complete time high fiving your buddies! (well not high fiving coz that could you know...)",
+    "LastUpdatedDate": "2013-05-16T04:06:05.403-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2008-10-13T01:20:06.787-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mouse Functionality",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 6,
+    "Id": 6424
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

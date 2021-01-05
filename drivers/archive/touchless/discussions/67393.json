@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "229053",
+    "ThreadId": "67393",
+    "Html": "<p>Hi i was just wondering if I could use this sdk to integrate my client side web cam in my web application.</p>\r\n<p>i would like to send back clicks from the camera and other information back to the server.</p>\r\n<p>Thanks in advance,</p>\r\n<p>Arsalan</p>",
+    "PostedDate": "2009-08-29T23:53:44.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "528496",
+    "ThreadId": "67393",
+    "Html": "\r\n<p>yes you can.<br>\r\n<br>\r\nin .NET&nbsp;you can do http posts ... ( see webclient or httpwebrequest on MSDN )<br>\r\nin a HTTP post you can send a file , or even send your image as a BASE64 variable with some other variables.</p>\r\n<p>google: bitmap to byte array.<br>\r\nconvert byte array&nbsp;it to base64 string. &#65279; (&#65279;&#65279; Convert.ToBase64String(..) )<br>\r\n<br>\r\ngoogle: &quot;site:msdn.microsoft.com&nbsp; httpwebrequest&nbsp; POST&quot;<br>\r\n<br>\r\nthe data you shoud post :&nbsp;String&nbsp;PostDATA =&nbsp;String.Format( &quot;myImage={0}&amp;mysecondvariable={1}&amp;mythridvar={2}&quot; , base64string , &quot;dummyvar1&quot; , &quot;dummyvar2&quot;);<br>\r\n<br>\r\nin php: $Image = $_POST['myImage']; (decode it, and save it as an image )<br>\r\nin ASP:&nbsp; String base64image = Request.form['myImage'] ;&nbsp;&nbsp; // decode .. .etc\r\n<br>\r\n<br>\r\nand your done.</p>\r\n",
+    "PostedDate": "2010-11-29T13:51:28.447-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

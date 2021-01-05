@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "728775",
+    "ThreadId": "286962",
+    "Html": "\r\n<p>Hello!</p>\r\n<p>I'm need to use Framework 4.0 in my application. If I add Toucsless references, I get error that they are not&nbsp;compatible&nbsp;with this framework version.</p>\r\n<p>I downloaded the source code, but I can't compile it with Visual Studio 2010 Ultimate - I get errors.</p>\r\n<p>Touchless is&nbsp;originally&nbsp;compiled to &quot;Framework 2.0&quot; and &quot;x86&quot;, but I need it for &quot;Framework 4.0 Client&quot; (or full) and (optional) for &quot;Any CPU&quot; (x86 and x64). Can please someone compile it for me and send me the files to info@bojanpotocnik.com ?<br>\r\n<br>\r\nThank you very much!</p>\r\n<p>Best regards<br>\r\nBojan Potocnik from Slovenia&nbsp;</p>\r\n",
+    "PostedDate": "2012-01-21T13:58:12.23-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "728780",
+    "ThreadId": "286962",
+    "Html": "<p>I downloaded latest version 55790 and found both files in two folders.<br /><br />If I add two files from:&nbsp;<br />C:\\Users\\Bojan\\Documents\\Visual Studio 2010\\Projects\\Touchless SDK\\Touchless v55790\\branches\\v.1\\trunk\\bin\\Release</p>\r\n<p>I get Error:<br /><em>Mixed mode assembly is built against version 'v2.0.50727' of the runtime and cannot be loaded in the 4.0 runtime without additional configuration information.&nbsp;</em><br /><br />If I add two files from:&nbsp;<br />C:\\Users\\Bojan\\Documents\\Visual Studio 2010\\Projects\\Touchless SDK\\Touchless v55790\\branches\\v.1\\trunk\\bin\\Debug</p>\r\n<p>I get Error:<br /><em>Could not load file or assembly 'WebCamLib.dll' or one of its dependencies. Navedenega modula ni bilo mogoče najti. (=<span class=\"hps\">That module</span>&nbsp;<span class=\"hps\">could not be found</span><span>.)</span></em></p>\r\n<p>Any known solution? Thank you.</p>",
+    "PostedDate": "2012-01-21T14:13:44.95-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

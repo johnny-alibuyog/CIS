@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "197332",
+    "ThreadId": "58349",
+    "Html": "<p>Just curious, is this the same code used for the new XBOX Fluid???? If so, congrats to Mike Wasserman.</p>",
+    "PostedDate": "2009-06-03T10:04:58.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197478",
+    "ThreadId": "58349",
+    "Html": "<p>Nope.&nbsp;Unfortunately, I wasn't even contacted regarding any of the awesome work that Microsoft (<span style=\"font-family:'Verdana','sans-serif';font-size:10pt\"><a href=\"http://news.bbc.co.uk/2/hi/technology/8077369.stm\"><span style=\"color:#0000ff\">http://news.bbc.co.uk/2/hi/technology/8077369.stm</span></a></span>) and&nbsp;Sony (<a href=\"http://news.bbc.co.uk/1/hi/technology/8080511.stm\">http://news.bbc.co.uk/1/hi/technology/8080511.stm</a>) have undertaken, even though both share conceptual elements with the Touchless project. It's very exciting that this technology is coming to conosle platforms, and I would have liked to work on one of these projects!</p>\r\n<p>Hopefully all the excitement around this technology will bring more users&nbsp;(and <span style=\"line-height:115%;font-family:'Segoe UI','sans-serif';color:black;font-size:10pt\">contributors</span>!) to Touchless. Touchless is a free, open source development kit and demo platform.&nbsp;Touchless&nbsp;only requires a webcam and some brightly colored objects to work with your existing hardware. While touchless doesn't provide all six degrees of freedom (x, y, z, pitch, yaw, roll), it can be used similarly to the new projects unveiled by Microsoft and Sony.</p>\r\n<p>I have some great ideas to improve Touchless for users and developers alike. Together, we have the power to create a free, open-source platform that offers more natural (and fun!) user experiences to a wide base of users. Unfortunately, I have no regular contributors to the project, and a lot of my ideas and your feedback are falling to the wayside. Consider this your personal invitation to join the Touchless project as a contributor!</p>\r\n<p>I'm going to post something similar on the homepage...</p>\r\n<p>- Mike</p>",
+    "PostedDate": "2009-06-03T15:48:25.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197913",
+    "ThreadId": "58349",
+    "Html": "<p>Mike,</p>\r\n<p>Well, congrats nonetheless. I'm going to install the software I found on this site so I can explore it's capabilities over the weekend.</p>\r\n<p>I'm a part time student pursuing my PhD in Industrial Engineering. My focus is on Human Computer Interaction (user interfaces, information fusion/management, etc). I'm kicking around the idea of utilizing this software for my dissertation.</p>\r\n<p>One idea that came to mind was to link the software with a head mounted display (HMD) (http://en.wikipedia.org/wiki/Head-mounted_display). I'm wondering if I can use the software to help people manipulate objects in a virtual reality or mixed reality environment. This sort of work is already being done with big, bulky and expensive ceiling-mounted ultra-sound tracking systems (it's a version of a motion capture studio). I have access to that kind of equipment, but I was looking for an alternative which could make my research a little more 'real world' oriented.</p>\r\n<p>Naturally, the issues of expense and practicality abound for big bulky systems like that. But what you created might simplify things tremendously. I'm definitely going to look into this over the summer during my off-time to see if I could interface the technologies. I'm not a programmer by profession, but I know just enough that I could probably (eventually) get the software to communicate with the Vizard software that one of the labs uses to feed visual display information into an HMD.</p>\r\n<p>Thanks for the invite! This is cool stuff. :)</p>\r\n<p>Tony</p>",
+    "PostedDate": "2009-06-04T13:18:51.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198648",
+    "ThreadId": "58349",
+    "Html": "<p>Hey Tony,</p>\r\n<p>Your academic interests sound similar to my own, props to you for pursuing a PhD.&nbsp;I've done a it of work with head mounted ar displays for unrelated projects at the Columbia University Media AR/VR lab. That stuff is really awesome, I got intersense cubes working with the Half Life 2 SDK so you could put one on your head with a HMD and look around in game (or with transparency on, overlay objects in the real world). The work was ealry prototyping related to the Goblin Project (<a href=\"http://goblinxna.codeplex.com/\">http://goblinxna.codeplex.com/</a>). The ceiling mounted stuff is a serious limitation, but with 6DOF tracking gear, GPS, and cameras you can get a lot of the same functionality. I wonder if you've seen the MIT sixth sense project&nbsp;<a href=\"http://www.ted.com/index.php/talks/pattie_maes_demos_the_sixth_sense.html\">http://www.ted.com/index.php/talks/pattie_maes_demos_the_sixth_sense.html</a>, that's some incredible work.</p>\r\n<p>I suspect Touchless could be useful in your project, and I'd glady try to support your efforts in the way of updating Touchless. You should also be sure to check out ARTag (or whatever their name is now), OpenAR, and other projects that might suit your needs better.</p>\r\n<p>Thanks again for getting in touch with Touchless; and best of luck in your ventures.</p>\r\n<p>- Mike</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-06-06T20:22:40.4-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

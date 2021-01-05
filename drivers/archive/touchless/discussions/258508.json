@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "616305",
+    "ThreadId": "258508",
+    "Html": "<p>im new to all this image processing and webcam capturing thing ,i've read posts on msdn that recomended using touchless , so far i tried to download ur demo project but it's not working it said could not load&nbsp;file for assembly v.0.0.0.0 and ,and the sample is solution is not&nbsp;geting compiled my first guess was maybe that's because the program runs using the old versions of the library but still after i included them again in the refrences i had more errors coming up, so what i'd apretiate is having a sample code that works and a demo to see what i can do with this SDK ? can anyone help me ? thanks in advance</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-05-21T16:38:54.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "616336",
+    "ThreadId": "258508",
+    "Html": "<p>ok&nbsp; i tried both version of the demo the one in the new release and the one in the default download folder v1.0.0.0 the one in the new release is the one that gives the error i read earlier posts and someone&nbsp; said that the reason was because he was using visual studio 2005 , well im using visual C# 2010 express edition and my computer has a 64 bit OS , and now the demo is working but &nbsp;the markers thing it doesn't work i&nbsp;pictured a marker that's coloured and spherical clicked on it with the mouse tried all the applications and nothing is moving( no snake , no&nbsp;icehockey thing, no pics flip&nbsp;) nada! and the video of making a walk through example in 16 mins or was it 15 ? idk the link isn't available. it looks awesome and i wanna try so somebody plz help me XD</p>",
+    "PostedDate": "2011-05-21T22:13:15.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "659252",
+    "ThreadId": "258508",
+    "Html": "<p>Hello there!</p>\r\n<p>I not sure if this will help at this point of time, however, when you add the markers, did you click and drag? or you just click on it?</p>\r\n<p>&nbsp;</p>\r\n<p>Cheers</p>\r\n<p>RestLiver</p>",
+    "PostedDate": "2011-08-16T23:50:41.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "659298",
+    "ThreadId": "258508",
+    "Html": "<p>i just clicked it :|</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-08-17T01:48:27.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "660452",
+    "ThreadId": "258508",
+    "Html": "<p>Hi,</p>\r\n<p>You are supposed to click &amp; drag &amp; select the colour region you want the system to track!</p>",
+    "PostedDate": "2011-08-19T01:58:57.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "660454",
+    "ThreadId": "258508",
+    "Html": "<p>Check this Walkthrough Sample</p>\r\n<p>http://www.vimeo.com/7100308</p>",
+    "PostedDate": "2011-08-19T02:01:50.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "689641",
+    "ThreadId": "258508",
+    "Html": "<p>Hi!!</p>\r\n<p>Yupyup! thayine is right!</p>\r\n<p>Cheers</p>\r\n<p>RestLiver</p>",
+    "PostedDate": "2011-10-26T07:38:28.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

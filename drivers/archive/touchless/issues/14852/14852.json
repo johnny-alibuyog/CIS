@@ -1,0 +1,51 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "webcamlib.dll could not be loaded or added to references\n \nMicrosoft Visual Studio 2010\nWindows Forms C#\nBuild: x86\n.NET FW 4.0\n \nWindows 7 Ultimate\nSP 1\n64 bit",
+    "LastUpdatedDate": "2013-06-25T17:36:49.047-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2012-03-23T16:25:42.047-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "webcamlib could not be added to references",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14852
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4272,
+      "FileName": "Untitled.png",
+      "DownloadUrl": ".\\4272"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I have the same problem when I release the application, but on the develop machine works fine \r\n\r\n\nConsulte el final de este mensaje para obtener más detalles sobre cómo invocar a la depuración \nJust-In-Time (JIT) en lugar de a este cuadro de diálogo.\r\n\r\n************** Texto de la excepción **************\nSystem.IO.FileNotFoundException: No se puede cargar el archivo o ensamblado 'WebCamLib.dll' ni una de sus dependencias. No se puede encontrar el módulo especificado.\nNombre de archivo: 'WebCamLib.dll'\n   en Touchless.Vision.Camera.CameraService.<BuildCameraList>d__0.MoveNext()",
+      "PostedDate": "2013-06-25T17:36:49.047-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "From the demo, it looks like it could be possible to create 'Soft' buttons...\n...or, buttons within the interface and screen. Buttons that could be 'touched' with a marker. \n \nOne example would be a button that changes the color of the line that the 'Draw' Demo is drawing with.  Move a marker over a red button... and that marker now draws with a red line, etc.",
+    "LastUpdatedDate": "2013-02-21T16:27:56.86-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2008-10-13T11:21:39.46-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Create 'Soft' Buttons?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 4,
+    "Id": 6425
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I think this is no issue of the touchlessLib but can simply be done in the client application.\r\nJust define the areas of the image and check in the Marker.OnChange event if the marker is \"over\" the defined area.\r\nPossibly you should add a treshold to check if the marker stays a short time over the area to kill false positives...",
+      "PostedDate": "2008-12-13T09:26:27.623-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have started a techdemo how to do this, I will upload it in the next days as attachment to this issue.",
+      "PostedDate": "2008-12-15T03:12:47.023-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-30T00:42:37.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:27:56.86-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

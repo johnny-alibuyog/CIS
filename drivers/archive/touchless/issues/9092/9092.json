@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Documentation",
+      "DisplayName": "Documentation"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Suggested by user mahhari:\n \n\"The Touchless SDK help files are very brief and I found/find it hard to visualize how to implement the classes and methods correctly and what to expect exactly as a return.   A more descriptive explanation of all the methods and how to use them would be priceless. Also writing them in simple basic grade 5 English would make it easier to understand for beginner programmer who aren't familiar to all the special programming lingo.  If you included simple code (including all the aspects of code needed so it can be copy and pasted to be played around with) to show how to use that specific method would also speak a thousand words. To further with this, you may also instead consider a walkthrough booklet of a program that develops slowly using almost all the methods available. So it starts off just adding a camera, and explains how/why it works; by the end you have a complete complex program using almost all Touchless SDK's feature in one continous program! So a Step-by-Step construction of a program 100% using Touchless assuming a beginner programmer audience.\"",
+    "LastUpdatedDate": "2013-02-21T16:27:54.027-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2009-11-01T12:29:18.81-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Friendly User Guide: \"Hands-on to Touchless SDK\"",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 3,
+    "Id": 9092
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Yeah, let's bring Touchless to the hobbyist programmer!!  All you great programmers started off as us hobbyists ;)",
+      "PostedDate": "2009-11-02T16:43:14.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-10T21:41:42.057-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:27:54.027-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

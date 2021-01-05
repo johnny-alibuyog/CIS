@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "593159",
+    "ThreadId": "252864",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>Im using the latest version checked out (touchless-55790) and it does not seem to register Markers properly. This issue seemed to be with the provided demo too. When the below code is executed ********MARKER REMOVED********* console message is printed.\r\n<br>\r\n</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>_touchlessManager.Register(_markerDetector);\r\n<br><br>Regards<br>Janidu</pre>\r\n</div>\r\n<p></p>\r\n",
+    "PostedDate": "2011-04-06T15:40:03.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

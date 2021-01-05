@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "124555",
+    "ThreadId": "37544",
+    "Html": "I observe, that Touchless Demo takes 30% of processor's time (from 2.4G DualCore) and over 25M of working memory.<br>\r\nQuite big numbers. Why?\r\n<p><img title=\"\" alt=\"\" src=\"http://www.jgui.net/jg/touchless_desktopx.jpg\" src=\"http://www.jgui.net/jg/touchless_desktopx.jpg\">\r\n<p>I'm sorry for moose on my desktop, it's only for testing these purposes <b>;-)</b> </p>\r\n",
+    "PostedDate": "2008-10-12T04:43:09.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124571",
+    "ThreadId": "37544",
+    "Html": "funny, my athlon 64 3500+ see's 85% when it cant see my markers, and 35% when it does. There is indeed a lot of work being done, but object recognition in robotics has been done on Pentium 133's.<br>\r\n",
+    "PostedDate": "2008-10-12T09:07:23.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124584",
+    "ThreadId": "37544",
+    "Html": "I can only state in my defense that this is my first iteration of the project, and there is indeed plenty of room for improvement.<div>I hope that the community will take hold of the project with me and commit vast improvements to the underlying algorithms.</div><div>Everyone is welcome to browse the source code and fix or point out inefficiencies.</div><div>- Mike</div>",
+    "PostedDate": "2008-10-12T11:41:06.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124598",
+    "ThreadId": "37544",
+    "Html": "I must say i ment no offense, just pointing out facts! This project is far beyond anything i could muster, and respect your skill! Improvement will come as time passes im sure.<br>\r\n",
+    "PostedDate": "2008-10-12T15:02:57.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

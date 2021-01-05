@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "490812",
+    "ThreadId": "226497",
+    "Html": "<p>Hi,</p>\r\n<p>Does someone have 2.0 binary ? it seems difficult to build WebCamlib from source, there's some depedencies i can't resolve.</p>\r\n<p>I saw in trunk log about 64 bit build ? does Webcamlib needs to be build on both plateform ?</p>\r\n<p>thanks in advance,</p>\r\n<p>Cyrille.</p>",
+    "PostedDate": "2010-09-08T10:59:45.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

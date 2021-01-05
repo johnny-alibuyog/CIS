@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "131721",
+    "ThreadId": "39691",
+    "Html": "Hi, do you know of a way to use a Video Cam with your SDK? That would give me a much better picture. <br>\r\n<br>\r\n",
+    "PostedDate": "2008-11-11T09:53:56.81-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "131748",
+    "ThreadId": "39691",
+    "Html": "Hi Balex,<br>\r\nI'm not aware of what video cameras might support streaming video via DirectShow; I encourage you to do a bit of research .<br>\r\nWe're hoping to make 640x480 camera resolution default; that might help a bit.<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-11-11T11:14:04.197-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "132284",
+    "ThreadId": "39691",
+    "Html": "Just had a Camcorder working with your TouchlessDemo. Using DV ( Firewire ) works out of the box. It is a SONY DCR-HC27 just for the reference. Downside is i dont know how to mirror the picture.<br>\r\nCan i up the resolution to 640x480 setting some parameter in the SDK?<br>\r\n",
+    "PostedDate": "2008-11-13T06:09:33.57-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "132480",
+    "ThreadId": "39691",
+    "Html": "Your camcorder worked; that's a pleasant surprise!<br>\r\nThe latest version of the SDK/Demo adds our own flipping mechanism.<br>\r\nYou can grab binaries and/or source from the source code repository.<br>\r\nUnfortunately, right now Touchless is hard-coded to 320x240, but we'll be fixing that soon.<br>\r\nI'll try to post here to let you know when we've committed those changes.<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-11-13T20:35:33.653-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "143664",
+    "ThreadId": "39691",
+    "Html": "Of course it makes sense that if your video camcorder will connect directly to go that route.  However, most of the time this won't work.  I just now downloaded the SDK, so I am only assuming my method will work, but in the back of my closet is a USB device called Dazzle DVC.  It plugs into the RCA jacks coming out of any video/audio device.  It's at least 10 years old, but works well with IM software like Yahoo for 20 to 30 times better quality.  I'm sure there are 10 different items if not more that will do the same thing.\r\n",
+    "PostedDate": "2008-12-31T00:26:30.37-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "183719",
+    "ThreadId": "39691",
+    "Html": "&quot;<em>Unfortunately, right now Touchless is hard-coded to 320x240, but we'll be fixing that soon.</em>&quot;<br>\r\n<br>\r\nIs it fixed? I can't set the resolution.<br>\r\n",
+    "PostedDate": "2009-04-26T03:30:28.62-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "184330",
+    "ThreadId": "39691",
+    "Html": "Hi Sickbattery,<br>\r\n<br>\r\nNo, sorry the camera resolution is still currently hardcoded. I've been swamped with dayjob work...<br>\r\nI am working on perf improvements and still looking for DirectShow help to fix this story.<br>\r\nHopefully we'll have a new release this summer, and it should be addressed by then.<br>\r\nPlease, feel free to take a peek at the code and suggest a fix, you have the power to help!<br>\r\n<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2009-04-27T21:10:31.067-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

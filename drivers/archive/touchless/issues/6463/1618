@@ -1,0 +1,231 @@
+Index: TouchlessLib/Marker.cs
+===================================================================
+--- TouchlessLib/Marker.cs	(revision 26912)
++++ TouchlessLib/Marker.cs	(working copy)
+@@ -118,10 +118,21 @@
+         /// <returns>The name of the marker</returns>
+         public override String ToString() { return Name; }
+ 
++        /// <summary>
++        /// Creates a Pair of marker name and raw appearance data from this marker.
++        /// This data can be used to restore a marker using TouchlessMgr.AddMarker(string, int[,,]);
++        /// </summary>
++        /// <returns></returns>
++        public ExportedMarker ExportMarker()
++        {
++            return new ExportedMarker(this.Name, this.rawHsvFreq);
++        }
++
+         #endregion Public Interface
+ 
+         // Color frequency dictionary (ColorKey key -> uint freq)
+         internal Dictionary<ColorKey, uint> hsvFreq;
++        private int[, ,] rawHsvFreq;
+         internal MarkerEventData currData;
+         internal MarkerEventData prevData;
+         internal MarkerEventData lastGoodData;
+@@ -139,8 +150,11 @@
+         /// </summary>
+         /// <param name="rawHsvFreq">A 3D array of HSV frequencies</param>
+         /// <returns>Success</returns>
+-        internal bool SetMarkerAppearance(int[, ,] rawHsvFreq)
++        private bool SetMarkerAppearance(int[, ,] rawHsvFreq)
+         {
++            // save the raw data for exporting the marker
++            this.rawHsvFreq = rawHsvFreq;
++
+             // Get the dimensions of the cube
+             bins.Hue = (byte)rawHsvFreq.GetLength(0);
+             bins.Sat = (byte)rawHsvFreq.GetLength(1);
+@@ -188,7 +202,7 @@
+                 OnChange(this, new MarkerEventArgs(currData, this));
+         }
+ 
+-        internal Marker(string name)
++        internal Marker(string name, int[,,] apprearance)
+         {
+             this.Name = name;
+             Highlight = true;
+@@ -200,6 +214,8 @@
+             searchMaxX = new MarkerScanCommand(this, ScanCommand.remMarker, 0);
+             searchMinY = new MarkerScanCommand(this, ScanCommand.addMarker, 0);
+             searchMaxY = new MarkerScanCommand(this, ScanCommand.remMarker, 0);
++
++            this.SetMarkerAppearance(apprearance);
+         }
+ 
+         #endregion
+@@ -298,6 +314,83 @@
+         }
+     }
+ 
++    public class ExportedMarker
++    {
++        public string Name { get; set; }
++        public int[] rawHsvFreqFlat { get; set; }
++        public int dim0Size { get; set; }
++        public int dim1Size { get; set; }
++        public int dim2Size { get; set; }
++
++        [Obsolete("Only for serialization!")]
++        public ExportedMarker()
++        {
++        }
++
++        public ExportedMarker(string name, int[, ,] rawHsvFreq)
++        {
++            this.Name = name;
++            this.dim0Size = rawHsvFreq.GetLength(0);
++            this.dim1Size = rawHsvFreq.GetLength(1);
++            this.dim2Size = rawHsvFreq.GetLength(2);
++            this.rawHsvFreqFlat = ExportedMarker.Array3DToFlat(rawHsvFreq);
++        }
++
++        public static int[, ,] ArrayFlatTo3D(ExportedMarker m)
++        {
++            int[] array = m.rawHsvFreqFlat;
++            int sizeX = m.dim0Size;
++            int sizeY = m.dim1Size;
++            int sizeZ = m.dim2Size;
++
++            int[, ,] result = new int[sizeX, sizeY, sizeZ];
++
++
++            for (int z = 0; z < sizeZ; z++)
++            {
++                for (int y = 0; y < sizeY; y++)
++                {
++                    for (int x = 0; x < sizeX; x++)
++                    {
++                        int sizeQ = sizeX * sizeY;
++                        int q = y * sizeX + x;
++                        int p = z * sizeQ + q;
++
++                        result[x, y, z] = array[p];
++                    }
++                }
++            }
++
++            return result;
++        }
++
++        public static int[] Array3DToFlat(int[, ,] array)
++        {
++            int sizeX = array.GetLength(0);
++            int sizeY = array.GetLength(1);
++            int sizeZ = array.GetLength(2);
++
++            int[] result = new int[sizeX * sizeY * sizeZ];
++
++            for (int z = 0; z < sizeZ; z++)
++            {
++                for (int y = 0; y < sizeY; y++)
++                {
++                    for (int x = 0; x < sizeX; x++)
++                    {
++                        int sizeQ = sizeX * sizeY;
++                        int q = y * sizeX + x;
++                        int p = z * sizeQ + q;
++
++                        result[p] = array[x, y, z];
++                    }
++                }
++            }
++
++            return result;
++        }
++    }
++
+     #region Scanline Rasterization
+     /// <summary>
+     /// An enumeration used to distinguish between add/rem commands during the image scan loop
+Index: TouchlessLib/TouchlessMgr.cs
+===================================================================
+--- TouchlessLib/TouchlessMgr.cs	(revision 26912)
++++ TouchlessLib/TouchlessMgr.cs	(working copy)
+@@ -125,7 +125,7 @@
+         /// <param name="center">The center point of the new marker as pixel coordinates</param>
+         /// <param name="radius">The radius of the new marker in pixels</param>
+         /// <returns>A newly trained marker</returns>
+-        /// /// <example>
++        /// <example>
+         /// The following is a code snippet that shows how to create a Marker
+         /// <code>
+         ///     TouchlessMgr _touch = new TouchlessMgr();
+@@ -137,13 +137,74 @@
+         /// </example>
+         public Marker AddMarker(string name, Bitmap image, Point center, float radius)
+         {
+-            Marker newMarker = new Marker(name);
+-            newMarker.SetMarkerAppearance(GetMarkerAppearance(image, center, radius));
++            int[, ,] markerAppearance = this.GetMarkerAppearance(image, center, radius);
++            Marker newMarker = new Marker(name, markerAppearance);
+             _markers.Add(newMarker);
+             return newMarker;
+         }
+ 
+         /// <summary>
++        /// Adds a new marker given training data as raw frequency values.
++        /// This overload is mainly for restoring a saved marker.
++        /// The properties of the marker (Active, Highlight, CalculateAvgColor, ...) are
++        /// not restored.
++        /// </summary>
++        /// <param name="savedMarker">The saved marker data to use for this marker</param>
++        /// <returns>A newly trained marker mathcing the saved marker name and color frequency</returns>
++        /// <example>
++        /// The following is a code snippet that shows how to save and load markers to a file
++        /// (warning! this code has no file io checks and try-catches for the (de)serialization)
++        /// <code>
++        ///     TouchlessMgr _touch = new TouchlessMgr();
++        ///     ...
++        /// 
++        ///     // Create a new marker using the current image at a fixed location and size
++        ///     Marker m = _touch.AddMarker("marker", _touch.CurrentCamera.GetCurrentImage(), new Point(100, 100), 10);
++        ///     
++        ///     // export the marker data of all markers to a file
++        ///     using (stream = System.IO.File.OpenWrite(markerSavesFile))
++        ///     {
++        ///         System.Xml.Serialization.XmlSerializer serializer =
++        ///                 new System.Xml.Serialization.XmlSerializer(
++        ///                 typeof(List<ExportedMarker>));
++        /// 
++        ///         List<ExportedMarker> savedMarkers = new List<ExportedMarker>();
++        ///         foreach (Marker m in this.touchlessManager.Markers)
++        ///         {
++        ///             savedMarkers.Add(m.ExportMarker());
++        ///         }
++        ///         serializer.Serialize(stream, savedMarkers);
++        ///     }
++        ///     
++        ///     _touch.Markers.Clear();
++        ///     
++        ///     // import the marker data from a file
++        ///     using (stream = System.IO.File.OpenRead("d:\\savedMarkers.dat"))
++        ///     {
++        ///         System.Xml.Serialization.XmlSerializer serializer =
++        ///                 new System.Xml.Serialization.XmlSerializer(
++        ///                 typeof(List<ExportedMarker>));
++        ///     
++        ///         List<ExportedMarker> deserList = serializer.Deserialize(stream) as List<ExportedMarker>;
++        ///         if (deserList != null)
++        ///         {
++        ///             foreach (ExportedMarker savedMarker in deserList)
++        ///             {
++        ///                 Marker m = _touch.AddMarker(savedMarker);
++        ///             }
++        ///         }
++        ///     }
++        /// </code>
++        /// </example>
++        public Marker AddMarker(ExportedMarker savedMarker)
++        {
++            Marker newMarker = new Marker(savedMarker.Name,
++                ExportedMarker.ArrayFlatTo3D(savedMarker));
++            _markers.Add(newMarker);
++            return newMarker;
++        }
++
++        /// <summary>
+         /// Removes a currently active marker and stops all tracking
+         /// </summary>
+         /// <param name="index">Index of the marker to remove</param>

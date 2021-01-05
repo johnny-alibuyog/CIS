@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "124189",
+    "ThreadId": "37429",
+    "Html": "Hi All,<br>\r\n<br>\r\nthis looks quite interesting....<br>\r\n<br>\r\nhave tried running the demo. Camera feeds in fine but when I try to add a new marker the image in the camera window locks up. Nothing happens. All I can do is to cancel adding new marker. Can't progress past that.<br>\r\n<br>\r\nAny ideas???<br>\r\n<br>\r\nAdrian<br>\r\n",
+    "PostedDate": "2008-10-09T19:38:50.017-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124328",
+    "ThreadId": "37429",
+    "Html": "Hi Adrian,<div><br></div><div>Thanks for seeking out help. This is actually expected behavior. If you click the &quot;Help!&quot; button on the Markers tab, it will explain how to add a marker.</div><div><br></div><div>What you'll want to do is hold up your marker for the camera, click &quot;Add a New Marker&quot;, the camera will take a snapshot. Then you can click and drag on the paused image to select the marker you want to add. Drag from the center of the marker to its edge, fitting a tight red-outlined circle around the marker. Release the mouse button to add the marker and it should start tracking your selection right away.</div><div><br></div><div>Don't hesitate to read the &quot;Help!&quot; button's dialog on each of the tabs (Camera, Markers, Demo).</div><div><br></div><div>Thanks,</div><div>- Mike</div>",
+    "PostedDate": "2008-10-10T08:42:51.04-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124329",
+    "ThreadId": "37429",
+    "Html": "That is normal. After clicking &quot;add a new marker&quot; the video stops and you can use your mouse to click and drag on the marker.<br>\r\n<br>\r\n1. move your &quot;marker&quot; object into the picture<br>\r\n2. click &quot;add a new marker&quot;<br>\r\n3. use your mouse; press your mouse button on your &quot;marker&quot; object and the drag the mouse; you will see a circle; release your mouse button<br>\r\n4. after releasing your mouse button the video plays and you can see if the software can track your marker<br>\r\n<br>\r\nhope that helps<br>\r\no/<br>\r\n",
+    "PostedDate": "2008-10-10T08:47:33.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

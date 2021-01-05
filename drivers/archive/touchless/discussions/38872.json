@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "128944",
+    "ThreadId": "38872",
+    "Html": "Hi all,<br>\r\nFirst of all, I apologise in advance for what is probably a really basic question. I'm quite new to Visual Studio, so still getting to grips with things.<br>\r\n<br>\r\nI'm trying to build the Touchless source code in Visual Studio 2008, but I keep getting a load of errors about missing assemblies/references, one of which is NUnit. All of the errors seem to be to do with the test classes.<br>\r\nBasically what I'm wanting to do is look into how to extract the current X and Y co-ordinates of a marker for use in an XNA game, so I'm trying to learn how to incorporate touchless into a simple prototype game.<br>\r\n<br>\r\nThere was a mention somewhere on this site about a tutorial video that takes new developers through the process of compiling the source code and making a simple game - I can't seem to find that video though. Does anyone have a link to it? I think it would probably answer all of my questions and get me started on the right road.<br>\r\n<br>\r\nThanks,<br>\r\nJonathan\r\n",
+    "PostedDate": "2008-10-30T08:16:08.347-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129221",
+    "ThreadId": "38872",
+    "Html": "<p style=\"margin:0cm 0cm 10pt\"><span style=\"font-family:calibri\">I have the same problem, and when I try to use the binaries dll's MS-Visual studio C# is telling me the WebCamLib  is not a valid library.. ;-( </span></p>\r\n",
+    "PostedDate": "2008-10-31T09:33:38.227-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129256",
+    "ThreadId": "38872",
+    "Html": "<strong>Jonathan:</strong><br>\r\n    You're right, NUnit is for testing... Remove the TouchlessUnitTests project if you don't want to deal with building the tests.<br>\r\n    But, if you're just looking to use Touchless SDK and not modify it, look at the section &quot;How to add Touchless to your project&quot; from Touchless.rtf:<br>\r\n<br>\r\n<em>To add Touchless to an existing Visual Studio project, simply right click “References” and select “Add Reference…” go to the browse tab, and select &quot;TouchlessLib.dll&quot;. Ensure that both &quot;TouchlessLib.dll&quot; and &quot;WebcamLib.dll&quot; are copied to the same output directory to be used with your builds.<br>\r\n</em><br>\r\n    Take a look at the WalkthroughSample in our source code repository; this will show you how to subscribe to OnChnge for your markers and process the MarkerEventData.<br>\r\n    I'll try to get the WalkthroughSample video online this weekend. It shows how WalkthroughSample was made.<br>\r\n    You might find people interested in collaborating on your game if you post a new discussion topic advertising your project.<br>\r\n<br>\r\n<strong>Zaleo:<br>\r\n</strong>    For now, WebCamLib is unmanaged and you don't add it to your project's references. Read the snippet above on &quot;How to add Touchless to your project&quot;. <br>\r\n<br>\r\nI hope this helps and I can't wait to see what you guys build with Touchless!<br>\r\n- Mike<br>\r\n<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-31T12:03:25.54-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129325",
+    "ThreadId": "38872",
+    "Html": "Hey guys!<br>\r\nWatch a video showing how we made the Walkthrough Sample in only 15 minutes!<br>\r\n<a href=\"http://video.msn.com/video.aspx?vid=e84b0f3e-a701-49f6-b831-c0537a4ced37\">http://video.msn.com/video.aspx?vid=e84b0f3e-a701-49f6-b831-c0537a4ced37</a><br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-10-31T18:04:11.347-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129344",
+    "ThreadId": "38872",
+    "Html": "Mike! You're an absolute legend, that video is exactly what I needed to get started, brilliant!<br>\r\nI plan on using Touchless as one of the main inputs in my final year university computing science project. My project title is &quot;A computer game with a non-traditional form of user input&quot;. I plan on making a Galaga type spaceship arcade shooter game in XNA, using a laser pen&nbsp; + touchless to move the ship about, and using voice commands to navigate menus.<br>\r\nI'll keep you updated on how it goes!<br>\r\n",
+    "PostedDate": "2008-10-31T20:25:28.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129346",
+    "ThreadId": "38872",
+    "Html": "Jonathan,<br>\r\nGlad to help. That sounds like an awesome game project; I and other wise fans of Touchless look forward to playing it!<br>\r\n- Mike\r\n",
+    "PostedDate": "2008-10-31T20:53:37.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "131862",
+    "ThreadId": "38872",
+    "Html": "Hi Mike,<br>\r\nJust an update - I'm well on the road to success now. That video helped loads. <br>\r\nHere's a video of my first basic video input prototype in action: <a href=\"http://www.flickr.com/photos/jsynnott/3023857406/\">http://www.flickr.com/photos/jsynnott/3023857406/</a>\r\n",
+    "PostedDate": "2008-11-11T17:53:32.737-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474986",
+    "ThreadId": "38872",
+    "Html": "<p>Hi Mike</p>\r\n<p>Why i cannot view the walkthrough sample video above? When i clicked the link it state &quot;</p>\r\n<h3>Web page you are attempting to view may not exist or may have moved<span style=\"font-weight:normal;font-size:13px\">&quot;.</span></h3>\r\n<p><span style=\"font-weight:normal;font-size:13px\">Besides that video where i can get started in touchless? I'm just a new guy.</span></p>",
+    "PostedDate": "2010-07-31T01:12:41.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "700841",
+    "ThreadId": "38872",
+    "Html": "<p>I know I am replying to a very old thread here, but want to clarify a point which may help others: <strong>michwass </strong>mentioned <strong>\"For now, WebCamLib is unmanaged\"</strong> - this is <strong>not strictly true</strong>.&nbsp; WebCamLib is a C++/CLI project, meaning that it is a C++ project that uses the .NET framework.&nbsp; It contains three classes, two of them managed, and an unmanaged class called SampleGrabberCB which derives from a DirectShow interface class.</p>\r\n<p>Todd</p>",
+    "PostedDate": "2011-11-20T09:29:45.613-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

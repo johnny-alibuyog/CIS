@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" name="TouchlessHost" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetNamedPipeBinding_ITouchlessHost_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8000/touchless/host?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8000/touchless/host?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8000/touchless/host?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Touchless.Vision.Contracts" />
+      <xsd:import schemaLocation="http://localhost:8000/touchless/host?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITouchlessHost_RegisterClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterClient" />
+  </wsdl:message>
+  <wsdl:message name="ITouchlessHost_RegisterClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITouchlessHost_UnRegisterClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnRegisterClient" />
+  </wsdl:message>
+  <wsdl:message name="ITouchlessHost_UnRegisterClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnRegisterClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITouchlessHost_StartFrameProcessing_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartFrameProcessing" />
+  </wsdl:message>
+  <wsdl:message name="ITouchlessHost_StartFrameProcessing_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartFrameProcessingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITouchlessHost_StopFrameProcessing_InputMessage">
+    <wsdl:part name="parameters" element="tns:StopFrameProcessing" />
+  </wsdl:message>
+  <wsdl:message name="ITouchlessHost_StopFrameProcessing_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StopFrameProcessingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITouchlessHost_OnObjectsDetected_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnObjectsDetected" />
+  </wsdl:message>
+  <wsdl:message name="ITouchlessHost_OnNewObject_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnNewObject" />
+  </wsdl:message>
+  <wsdl:message name="ITouchlessHost_OnObjectMoved_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnObjectMoved" />
+  </wsdl:message>
+  <wsdl:message name="ITouchlessHost_OnObjectRemoved_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnObjectRemoved" />
+  </wsdl:message>
+  <wsdl:portType name="ITouchlessHost">
+    <wsdl:operation name="RegisterClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITouchlessHost/RegisterClient" message="tns:ITouchlessHost_RegisterClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITouchlessHost/RegisterClientResponse" message="tns:ITouchlessHost_RegisterClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnRegisterClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITouchlessHost/UnRegisterClient" message="tns:ITouchlessHost_UnRegisterClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITouchlessHost/UnRegisterClientResponse" message="tns:ITouchlessHost_UnRegisterClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartFrameProcessing">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITouchlessHost/StartFrameProcessing" message="tns:ITouchlessHost_StartFrameProcessing_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITouchlessHost/StartFrameProcessingResponse" message="tns:ITouchlessHost_StartFrameProcessing_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StopFrameProcessing">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITouchlessHost/StopFrameProcessing" message="tns:ITouchlessHost_StopFrameProcessing_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITouchlessHost/StopFrameProcessingResponse" message="tns:ITouchlessHost_StopFrameProcessing_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnObjectsDetected">
+      <wsdl:output wsaw:Action="http://tempuri.org/ITouchlessHost/OnObjectsDetected" message="tns:ITouchlessHost_OnObjectsDetected_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnNewObject">
+      <wsdl:output wsaw:Action="http://tempuri.org/ITouchlessHost/OnNewObject" message="tns:ITouchlessHost_OnNewObject_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnObjectMoved">
+      <wsdl:output wsaw:Action="http://tempuri.org/ITouchlessHost/OnObjectMoved" message="tns:ITouchlessHost_OnObjectMoved_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnObjectRemoved">
+      <wsdl:output wsaw:Action="http://tempuri.org/ITouchlessHost/OnObjectRemoved" message="tns:ITouchlessHost_OnObjectRemoved_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetNamedPipeBinding_ITouchlessHost" type="tns:ITouchlessHost">
+    <wsp:PolicyReference URI="#NetNamedPipeBinding_ITouchlessHost_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/named-pipe" />
+    <wsdl:operation name="RegisterClient">
+      <soap12:operation soapAction="http://tempuri.org/ITouchlessHost/RegisterClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnRegisterClient">
+      <soap12:operation soapAction="http://tempuri.org/ITouchlessHost/UnRegisterClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartFrameProcessing">
+      <soap12:operation soapAction="http://tempuri.org/ITouchlessHost/StartFrameProcessing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopFrameProcessing">
+      <soap12:operation soapAction="http://tempuri.org/ITouchlessHost/StopFrameProcessing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnObjectsDetected">
+      <soap12:operation soapAction="http://tempuri.org/ITouchlessHost/OnObjectsDetected" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnNewObject">
+      <soap12:operation soapAction="http://tempuri.org/ITouchlessHost/OnNewObject" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnObjectMoved">
+      <soap12:operation soapAction="http://tempuri.org/ITouchlessHost/OnObjectMoved" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnObjectRemoved">
+      <soap12:operation soapAction="http://tempuri.org/ITouchlessHost/OnObjectRemoved" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TouchlessHost">
+    <wsdl:port name="NetNamedPipeBinding_ITouchlessHost" binding="tns:NetNamedPipeBinding_ITouchlessHost">
+      <soap12:address location="net.pipe://localhost/touchless/host" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.pipe://localhost/touchless/host</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

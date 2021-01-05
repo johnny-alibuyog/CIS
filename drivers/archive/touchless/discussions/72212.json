@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "246499",
+    "ThreadId": "72212",
+    "Html": "<p>Hi</p>\r\n<p>You guys were a big help so thought I'd start to try and give back a bit from what we've learnt over the last few months using Touchless. First, a very simple example of how to move the mouse cursor using a marker</p>\r\n<p><span style=\"color:#0000ff;font-size:x-small\"><span style=\"color:#0000ff;font-size:x-small\">void&nbsp;<span style=\"color:#000000\">Player1_OnChange(</span><span style=\"color:#0000ff;font-size:x-small\"><span style=\"color:#0000ff;font-size:x-small\">object</span></span><span style=\"color:#000000;font-size:x-small\"> sender, </span><span style=\"color:#2b91af;font-size:x-small\"><span style=\"color:#2b91af;font-size:x-small\">MarkerEventArgs</span></span><span style=\"color:#000000;font-size:x-small\"> e)</span>\r\n<p>{</p>\r\n</span>&nbsp;</span></p>\r\n<p>\r\n<p><span style=\"color:#2b91af;font-size:x-small\"><span style=\"color:#2b91af;font-size:x-small\">Cursor</span></span><span style=\"font-size:x-small\">.Position = </span><span style=\"color:#0000ff;font-size:x-small\"><span style=\"color:#0000ff;font-size:x-small\">new</span></span><span style=\"font-size:x-small\"> System.Drawing.</span><span style=\"color:#2b91af;font-size:x-small\"><span style=\"color:#2b91af;font-size:x-small\">Point</span></span><span style=\"font-size:x-small\">((</span><span style=\"color:#0000ff;font-size:x-small\"><span style=\"color:#0000ff;font-size:x-small\">int</span></span><span style=\"font-size:x-small\">)(e.EventData.X * 4.031), (</span><span style=\"color:#0000ff;font-size:x-small\"><span style=\"color:#0000ff;font-size:x-small\">int</span></span><span style=\"font-size:x-small\">)(e.EventData.Y * 4.24));</span></p>\r\n<p>}</p>\r\n</p>\r\n<p>where the *4.031 is the difference between our picturebox control that has the webcam feed and the actual screen resolution, in this case we have a video feed in a picturebox of size 254&nbsp;by 181 pixels, and a screen of 1024 x 768. Divide 1024 by 254 to get the 4.031 multiplier, this just means you can move it ovr the whole screen without having to make your video feed full screen. In our case we have a small video feed and a game board covering the rest of the screen and this lets our markers move the mouse to the correct tiles.</p>\r\n<p>Cheers</p>\r\n<p>Andrew</p>",
+    "PostedDate": "2009-10-16T05:26:52.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "246791",
+    "ThreadId": "72212",
+    "Html": "<p>Cool; thanks for your tips, Andrew! That's a really concise explanation to getting this working. You can also handle a wider variety of resolutions using Screen.PrimaryScreen.Bounds.&nbsp;Anyone that wants to just try this out or learn more about controlling a mouse with Touchless can check out <a href=\"http://touchless.codeplex.com/sourcecontrol/changeset/view/31008?projectName=touchless#421622\">MouseDemo</a> in TouchlessDemo. I put that together with help from Predrag Tomasevic and the famous eFloh. It's not perfect (be careful using two markers to 'click'!), so any patches or other contributions to that demo are appreciated. I've had the best luck pointing the camera down at my desk, (maybe even slightly towards yourself)&nbsp;to capture smaller markers in a mousepad sized area. I've used dry erase marker caps on my fingertips and even M&amp;Ms as decent markers for this. It's a nice quick and dirty multi-'touch' 'pad'.</p>\r\n<p>- Mike</p>",
+    "PostedDate": "2009-10-16T20:45:20.853-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

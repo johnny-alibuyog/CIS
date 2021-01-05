@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "131580",
+    "ThreadId": "39651",
+    "Html": "Hi, <br>\r\n<br>\r\ni would like to change the layout of the Game &quot;Defend&quot; (Or called pong)&nbsp; in Touchless, but i don't know where to begin. Which files are required and maybe also which code to edit to replace the white ball and the blue/red sticks? and the Background too.<br>\r\n<br>\r\nThanks<br>\r\n",
+    "PostedDate": "2008-11-10T22:17:22.3-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "131743",
+    "ThreadId": "39651",
+    "Html": "Hi Yafes,<br>\r\nYou should download the binaries for Touchless.dll and WebCamLib.dll and the source for project TouchlessDemo (in the samples folder). Get files from the release page or the latest files from the source code repository. Take a look at the file called DefendDemo inside the TouchlessDemo project. Perhaps you’d like to use XNA? My very basic demo is done with GDI shapes.<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-11-11T11:00:24.85-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

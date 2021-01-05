@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "As indicated by the error you posted, this project is not meant to be executed directly. Use Touchless.Demo or Touchless.WPF as your startup project.",
+    "ClosedDate": "2010-02-14T16:23:20.703-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I run the touchless.vision as startup project,\nit shows an error message as the attachment picture.",
+    "LastUpdatedDate": "2013-05-16T04:06:04.443-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2010-02-12T22:27:11.26-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "touchless.vision runs error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10195
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2660,
+      "FileName": "error in vision.PNG",
+      "DownloadUrl": ".\\2660"
+    }
+  ],
+  "Comments": []
+}

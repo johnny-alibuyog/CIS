@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Sorry my english, i find a exception when i deactivate and activate 5 markers, in the release 5579 branches v.1.0, the exception throw in:\n \nLine 388 of TouchlessMgr.cs ArgumentOutOfRangeException\n...\nfor (int x = _markerScanCommandsX[mscIndexX].coordinate; x <= _markerScanCommandsX[mscIndexX + 1].coordinate; x++, pPixelCurr++)\n...\n \nmscIndexX is 1 and the array is of length 2 and therefore is outside the array\n \nthis is me pice of code:\n \npublic void ActivateMarkers()\n        {\n            foreach(Marker marker in _touchlessMgr.Markers)\n                marker.Active = true;\n        }\n \n        public void DeactivateMarkers()\n        {\n            foreach (Marker marker in _touchlessMgr.Markers)\n                marker.Active = false;\n        }",
+    "LastUpdatedDate": "2013-02-21T16:27:52.917-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2010-05-17T11:32:33.393-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "ArgumentOutOfRangeException",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10892
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Ok i solved the problem! i dont know if it's the best way but works for me :)\r\n\r\nThe problem arises when you deactivate and activate the markers, to perform this action, the DX and DY values rise to negative values for example -40 000\r\n\r\nI solved it with this code as i mentioned above I do not know if it's the best way to solve the problem or whether this well at all but it works for me: \r\n\r\nLine 470 of TouchlessMgr.cs\r\n\r\nif (marker.prevData.DX < -imageHeight)\r\n                    marker.prevData.DX = 0;\r\n                if (marker.prevData.DY < -imageWidth)\r\n                    marker.prevData.DY = 0;\r\n\r\nAnd in the line 382 of the same class:\r\n\r\nif (mscIndexX + 1 >= _markerScanCommandsX.Count)\r\n                            continue;\r\n\r\nif (mscIndexY + 1 >= _markerScanCommandsY.Count)\r\n                            continue;",
+      "PostedDate": "2010-05-20T15:02:28.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:27:52.917-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

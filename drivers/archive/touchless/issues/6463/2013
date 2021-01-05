@@ -1,0 +1,559 @@
+Index: Samples/TouchlessDemo/TouchlessDemo.cs
+===================================================================
+--- Samples/TouchlessDemo/TouchlessDemo.cs	(revision 33886)
++++ Samples/TouchlessDemo/TouchlessDemo.cs	(working copy)
+@@ -12,6 +12,8 @@
+ using System.Drawing;
+ using System.Windows.Forms;
+ using TouchlessLib;
++using System.IO;
++using System.Collections.Generic;
+ 
+ namespace TouchlessDemo
+ {
+@@ -234,7 +236,7 @@
+         public void OnImageCaptured(object sender, CameraEventArgs args)
+         {
+             // Update the FPS display once every second
+-            if ( _uiUpdateTimer.ElapsedMilliseconds >= 1000)
++            if (_uiUpdateTimer.ElapsedMilliseconds >= 1000)
+             {
+                 this.BeginInvoke(new Action<double>(UpdateFPSInUI), new object[] { args.CameraFps });
+                 _uiUpdateTimer.Reset();
+@@ -372,6 +374,167 @@
+             buttonMarkerActive.Text = _markerSelected.Active ? "Deactivate" : "Activate";
+         }
+ 
++        #region marker saving/loading
++
++        /// <summary>
++        /// Handles the Click event of the buttonLoadMarkersFromFile control.
++        /// </summary>
++        /// <param name="sender">The source of the event.</param>
++        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
++        private void buttonLoadMarkersFromFile_Click(object sender, EventArgs e)
++        {
++            this.loadMarkers();
++        }
++
++        /// <summary>
++        /// Handles the Click event of the buttonSaveMarkersToFile control.
++        /// </summary>
++        /// <param name="sender">The source of the event.</param>
++        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
++        private void buttonSaveMarkersToFile_Click(object sender, EventArgs e)
++        {
++            this.saveMarkers();
++        }
++
++        /// <summary>
++        /// Saves all markers to a file specified by the user.
++        /// </summary>
++        private void saveMarkers()
++        {
++            SaveFileDialog fileChooser = new SaveFileDialog();
++            fileChooser.CheckFileExists = false;
++            fileChooser.CheckPathExists = true;
++            fileChooser.DefaultExt = "tms";
++            fileChooser.Filter = "Touchless Markers (*.tms)|*.tms|All files (*.*)|*.*";
++            fileChooser.InitialDirectory = this.GetType().Assembly.Location;
++            fileChooser.OverwritePrompt = true;
++            fileChooser.Title = this.Text + " - Choose file to save markers to";
++            fileChooser.ValidateNames = true;
++            DialogResult dialogResult = fileChooser.ShowDialog(this);
++
++            if (dialogResult == DialogResult.OK && !String.IsNullOrEmpty(fileChooser.FileName))
++            {
++                string markerFilename = fileChooser.FileName;
++
++                try
++                {
++                    using (FileStream stream = System.IO.File.OpenWrite(markerFilename))
++                    {
++                        System.Xml.Serialization.XmlSerializer serializer =
++                                new System.Xml.Serialization.XmlSerializer(
++                                typeof(List<ExportedMarker>));
++
++                        List<ExportedMarker> savedMarkers = new List<ExportedMarker>();
++                        foreach (Marker m in this._touchlessMgr.Markers)
++                        {
++                            savedMarkers.Add(m.ExportMarker());
++                        }
++                        serializer.Serialize(stream, savedMarkers);
++                    }
++                    DialogResult clearResult = MessageBox.Show("All markers where saved to file \"" + markerFilename + "\"." +
++                        Environment.NewLine + "Should the marker list be cleared now?",
++                        this.Text + " - markers saved", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
++
++                    if (clearResult == DialogResult.Yes)
++                    {
++                        /* remove all markers from the manager and the UI */
++                        this._touchlessMgr.RemoveAllMarkers();
++                        comboBoxMarkers.Items.Clear();
++
++                        comboBoxMarkers.SelectedIndex = -1;
++                        comboBoxMarkers.Text = "Edit An Existing Marker";
++                        groupBoxMarkerControl.Enabled = false;
++                        groupBoxMarkerControl.Text = "No Marker Selected";
++                        if (comboBoxMarkers.Items.Count == 0)
++                        {
++                            radioButtonDemo.Enabled = false;
++                            comboBoxMarkers.Enabled = false;
++                        }
++                    }
++                }
++                catch (Exception ex)
++                {
++                    MessageBox.Show("Error saving markers to file \"" + markerFilename + "\":" + Environment.NewLine +
++                        ex.Message, this.Text + " - marker saving error", MessageBoxButtons.OK, MessageBoxIcon.Error);
++                }
++            }
++        }
++
++        /// <summary>
++        /// Loads touchless markers from a file specified by the user.
++        /// </summary>
++        private void loadMarkers()
++        {
++            OpenFileDialog fileChooser = new OpenFileDialog();
++            fileChooser.CheckFileExists = true;
++            fileChooser.CheckPathExists = true;
++            fileChooser.DefaultExt = "tms";
++            fileChooser.Filter = "Touchless Markers (*.tms)|*.tms|All files (*.*)|*.*";
++            fileChooser.InitialDirectory = this.GetType().Assembly.Location;
++            fileChooser.Multiselect = false;
++            fileChooser.Title = this.Text + " - Choose file to load markers from";
++            fileChooser.ValidateNames = true;
++            DialogResult dialogResult = fileChooser.ShowDialog(this);
++
++            if (dialogResult == DialogResult.OK && !String.IsNullOrEmpty(fileChooser.FileName))
++            {
++                string markerFilename = fileChooser.FileName;
++
++                DialogResult clearResult = MessageBox.Show("Should the marker list be cleared before loading?",
++                        this.Text + " - load markers from file", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
++
++                if (clearResult == DialogResult.Yes)
++                {
++                    this._touchlessMgr.RemoveAllMarkers();
++                }
++
++                try
++                {
++                    using (FileStream stream = System.IO.File.OpenRead(markerFilename))
++                    {
++                        System.Xml.Serialization.XmlSerializer serializer =
++                                new System.Xml.Serialization.XmlSerializer(
++                                typeof(List<ExportedMarker>));
++
++                        List<ExportedMarker> deserList = serializer.Deserialize(stream) as List<ExportedMarker>;
++                        if (deserList != null)
++                        {
++                            foreach (ExportedMarker savedMarker in deserList)
++                            {
++                                try
++                                {
++                                    Marker newMarker = this._touchlessMgr.AddMarker(savedMarker);
++                                    comboBoxMarkers.Items.Add(newMarker);
++                                }
++                                catch (Exception ex)
++                                {
++                                    MessageBox.Show("Error loading marker " + savedMarker.Name + ", skipped." + Environment.NewLine +
++                                        ex.Message, this.Text + " - marker loading error",
++                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
++                                }
++                            }
++                        }
++                    }
++
++                    if (comboBoxMarkers.Items.Count > 0)
++                    {
++                        // Enable the demo and marker editing
++                        radioButtonDemo.Enabled = true;
++                        buttonNext.Enabled = true;
++                        comboBoxMarkers.Enabled = true;
++                        comboBoxMarkers.SelectedIndex = comboBoxMarkers.Items.Count - 1;
++                    }
++                }
++                catch (Exception ex)
++                {
++                    MessageBox.Show("Error loading markers from file \"" + markerFilename + "\":" + Environment.NewLine +
++                        ex.Message, this.Text + " - marker loading error", MessageBoxButtons.OK, MessageBoxIcon.Error);
++                }
++            }
++        }
++
++        #endregion
++
+         #region UI Marker Editing
+ 
+         private void checkBoxMarkerHighlight_CheckedChanged(object sender, EventArgs e)
+Index: Samples/TouchlessDemo/TouchlessDemo.Designer.cs
+===================================================================
+--- Samples/TouchlessDemo/TouchlessDemo.Designer.cs	(revision 33886)
++++ Samples/TouchlessDemo/TouchlessDemo.Designer.cs	(working copy)
+@@ -61,6 +61,8 @@
+             this.buttonBack = new System.Windows.Forms.Button();
+             this.buttonNext = new System.Windows.Forms.Button();
+             this.linkLabelHomepage = new System.Windows.Forms.LinkLabel();
++            this.buttonLoadMarkersFromFile = new System.Windows.Forms.Button();
++            this.buttonSaveMarkersToFile = new System.Windows.Forms.Button();
+             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDisplay)).BeginInit();
+             this.groupBoxCamera.SuspendLayout();
+             this.groupBoxCameraInfo.SuspendLayout();
+@@ -254,6 +256,8 @@
+             // 
+             // groupBoxMarkers
+             // 
++            this.groupBoxMarkers.Controls.Add(this.buttonSaveMarkersToFile);
++            this.groupBoxMarkers.Controls.Add(this.buttonLoadMarkersFromFile);
+             this.groupBoxMarkers.Controls.Add(this.groupBoxMarkerControl);
+             this.groupBoxMarkers.Controls.Add(this.comboBoxMarkers);
+             this.groupBoxMarkers.Controls.Add(this.buttonMarkerAdd);
+@@ -274,7 +278,7 @@
+             this.groupBoxMarkerControl.Controls.Add(this.labelMarkerData);
+             this.groupBoxMarkerControl.Controls.Add(this.buttonMarkerRemove);
+             this.groupBoxMarkerControl.Enabled = false;
+-            this.groupBoxMarkerControl.Location = new System.Drawing.Point(10, 48);
++            this.groupBoxMarkerControl.Location = new System.Drawing.Point(10, 74);
+             this.groupBoxMarkerControl.Name = "groupBoxMarkerControl";
+             this.groupBoxMarkerControl.Size = new System.Drawing.Size(304, 237);
+             this.groupBoxMarkerControl.TabIndex = 25;
+@@ -473,11 +477,32 @@
+             this.linkLabelHomepage.Text = "www.codeplex.com/touchless";
+             this.linkLabelHomepage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHomepage_LinkClicked);
+             // 
++            // buttonLoadMarkersFromFile
++            // 
++            this.buttonLoadMarkersFromFile.Location = new System.Drawing.Point(10, 45);
++            this.buttonLoadMarkersFromFile.Name = "buttonLoadMarkersFromFile";
++            this.buttonLoadMarkersFromFile.Size = new System.Drawing.Size(151, 23);
++            this.buttonLoadMarkersFromFile.TabIndex = 26;
++            this.buttonLoadMarkersFromFile.Text = "Load from file";
++            this.buttonLoadMarkersFromFile.UseVisualStyleBackColor = true;
++            this.buttonLoadMarkersFromFile.Click += new System.EventHandler(this.buttonLoadMarkersFromFile_Click);
++            // 
++            // buttonSaveMarkersToFile
++            // 
++            this.buttonSaveMarkersToFile.Location = new System.Drawing.Point(167, 45);
++            this.buttonSaveMarkersToFile.Name = "buttonSaveMarkersToFile";
++            this.buttonSaveMarkersToFile.Size = new System.Drawing.Size(146, 23);
++            this.buttonSaveMarkersToFile.TabIndex = 27;
++            this.buttonSaveMarkersToFile.Text = "Save to file";
++            this.buttonSaveMarkersToFile.UseVisualStyleBackColor = true;
++            this.buttonSaveMarkersToFile.Click += new System.EventHandler(this.buttonSaveMarkersToFile_Click);
++            // 
+             // TouchlessDemo
+             // 
+             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+             this.ClientSize = new System.Drawing.Size(991, 503);
++            this.Controls.Add(this.groupBoxMarkers);
+             this.Controls.Add(this.linkLabelHomepage);
+             this.Controls.Add(this.buttonNext);
+             this.Controls.Add(this.buttonBack);
+@@ -488,7 +513,6 @@
+             this.Controls.Add(this.pictureBoxDisplay);
+             this.Controls.Add(this.groupBoxCamera);
+             this.Controls.Add(this.groupBoxDemo);
+-            this.Controls.Add(this.groupBoxMarkers);
+             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+             this.MaximizeBox = false;
+             this.Name = "TouchlessDemo";
+@@ -545,6 +569,8 @@
+         private System.Windows.Forms.Button buttonMarkerActive;
+         private System.Windows.Forms.ComboBox comboBoxDemos;
+         private System.Windows.Forms.Button buttonDemoStartStop;
++        private System.Windows.Forms.Button buttonSaveMarkersToFile;
++        private System.Windows.Forms.Button buttonLoadMarkersFromFile;
+     }
+ }
+ 
+Index: TouchlessLib/Marker.cs
+===================================================================
+--- TouchlessLib/Marker.cs	(revision 33886)
++++ TouchlessLib/Marker.cs	(working copy)
+@@ -118,12 +118,23 @@
+         /// <returns>The name of the marker</returns>
+         public override string ToString() { return Name; }
+ 
++        /// <summary>
++        /// Creates a Pair of marker name and raw appearance data from this marker.
++        /// This data can be used to restore a marker using TouchlessMgr.AddMarker(string, int[,,]);
++        /// </summary>
++        /// <returns></returns>
++        public ExportedMarker ExportMarker()
++        {
++            return new ExportedMarker(this.Name, this.rawHsvFreq);
++        }
++
+         #endregion Public Interface
+ 
+         #region Internal Implementation
+ 
+         // Color frequency dictionary (ColorKey key -> uint freq)
+         internal SortedDictionary<ColorKey, uint> hsvFreq;
++        private int[, ,] rawHsvFreq;
+         internal MarkerEventData currData;
+         internal MarkerEventData prevData;
+         internal MarkerEventData lastGoodData;
+@@ -145,8 +156,11 @@
+         /// </summary>
+         /// <param name="rawHsvFreq">A 3D array of HSV frequencies</param>
+         /// <returns>Success</returns>
+-        internal bool SetMarkerAppearance(int[, ,] rawHsvFreq)
++        private bool SetMarkerAppearance(int[, ,] rawHsvFreq)
+         {
++            // save the raw data for exporting the marker
++            this.rawHsvFreq = rawHsvFreq;
++
+             // Get the dimensions of the cube
+             bins.H = (byte)rawHsvFreq.GetLength(0);
+             bins.S = (byte)rawHsvFreq.GetLength(1);
+@@ -191,7 +205,7 @@
+                 OnChange(this, new MarkerEventArgs(currData, this));
+         }
+ 
+-        internal Marker(string name)
++        internal Marker(string name, int[, ,] appearance)
+         {
+             Name = name;
+             Highlight = true;
+@@ -205,6 +219,8 @@
+             searchMaxX = new MarkerScanCommand(this, ScanCommand.remMarker, 0);
+             searchMinY = new MarkerScanCommand(this, ScanCommand.addMarker, 0);
+             searchMaxY = new MarkerScanCommand(this, ScanCommand.remMarker, 0);
++
++            this.SetMarkerAppearance(appearance);
+         }
+ 
+         #endregion
+@@ -304,6 +320,130 @@
+         internal MarkerEventArgs(MarkerEventData med, Marker m) { EventData = med; EventMarker = m; }
+     }
+ 
++    /// <summary>
++    /// Container for all data needed to recreate a marker from a saved/serialized representation.
++    /// </summary>
++    public class ExportedMarker
++    {
++        /// <summary>
++        /// The name of the marker
++        /// </summary>
++        public string Name { get; set; }
++
++        /// <summary>
++        /// the HSV frequency table as Flat int[].
++        /// a multi-dimensional array cannot be serialized propery using the XMLSerializer...
++        /// </summary>
++        public int[] rawHsvFreqFlat { get; set; }
++
++        /// <summary>
++        /// The original length/size of the first dimension of the frequency array.
++        /// </summary>
++        public int dim0Size { get; set; }
++
++        /// <summary>
++        /// The original length/size of the second dimension of the frequency array.
++        /// </summary>
++        public int dim1Size { get; set; }
++
++        /// <summary>
++        /// The original length/size of the third dimension of the frequency array.
++        /// </summary>
++        public int dim2Size { get; set; }
++
++        /// <summary>
++        /// Creates a new empty ExportedMarker instance.
++        /// </summary>
++        /// <remarks>The Obsolete-Attribute is a trick to disable developers to use this constructor,
++        /// but the serializing classes can nevertheless use it. :)</remarks>
++        [Obsolete("Only for serialization!", true)]
++        public ExportedMarker()
++        {
++        }
++
++        /// <summary>
++        /// Creates a new ExportedMarker instance for the marker
++        /// specified by its name and HSV frequency table.
++        /// </summary>
++        /// <param name="name">The name of the represented marker.</param>
++        /// <param name="rawHsvFreq">The raw HSV frequency table of the represented marker.</param>
++        public ExportedMarker(string name, int[, ,] rawHsvFreq)
++        {
++            this.Name = name;
++            this.dim0Size = rawHsvFreq.GetLength(0);
++            this.dim1Size = rawHsvFreq.GetLength(1);
++            this.dim2Size = rawHsvFreq.GetLength(2);
++            this.rawHsvFreqFlat = this.Array3DToFlat(rawHsvFreq);
++        }
++
++        /// <summary>
++        /// Converts the one dimensional HSV frequency table of this
++        /// ExportedMarker instance into the original 3 dimensional array.
++        /// </summary>
++        /// <returns>The 3 dimensional frequency table represented by the passed ExportedMarker instance</returns>
++        public int[, ,] GetRawHsvFreq3D()
++        {
++            int[] array = this.rawHsvFreqFlat;
++            int sizeX = this.dim0Size;
++            int sizeY = this.dim1Size;
++            int sizeZ = this.dim2Size;
++
++            int[, ,] result = new int[sizeX, sizeY, sizeZ];
++
++
++            for (int z = 0; z < sizeZ; z++)
++            {
++                for (int y = 0; y < sizeY; y++)
++                {
++                    for (int x = 0; x < sizeX; x++)
++                    {
++                        int sizeQ = sizeX * sizeY;
++                        int q = y * sizeX + x;
++                        int p = z * sizeQ + q;
++
++                        result[x, y, z] = array[p];
++                    }
++                }
++            }
++
++            return result;
++        }
++
++        /// <summary>
++        /// Converts the 3 dimensional HSV frequency table of a Marker instance
++        /// into a one dimensional array to be stored in a ExportedMarker instance.
++        /// </summary>
++        /// <param name="array">The raw HSV frequency table of a Marker instance</param>
++        /// <returns>A one dimensional frequency table to be used in a ExportedMarker
++        /// instance representing the passed Marker instance array.</returns>
++        private int[] Array3DToFlat(int[, ,] array)
++        {
++            int sizeX = array.GetLength(0);
++            int sizeY = array.GetLength(1);
++            int sizeZ = array.GetLength(2);
++
++            int[] result = new int[sizeX * sizeY * sizeZ];
++
++            for (int z = 0; z < sizeZ; z++)
++            {
++                for (int y = 0; y < sizeY; y++)
++                {
++                    for (int x = 0; x < sizeX; x++)
++                    {
++                        int sizeQ = sizeX * sizeY;
++                        int q = y * sizeX + x;
++                        int p = z * sizeQ + q;
++
++                        result[p] = array[x, y, z];
++                    }
++                }
++            }
++
++            System.Diagnostics.Debug.WriteLine("");
++            return result;
++        }
++    }
++
+     #region Scanline Rasterization
+     /// <summary>
+     /// An enumeration used to distinguish between add/rem commands during the image scan loop
+Index: TouchlessLib/TouchlessMgr.cs
+===================================================================
+--- TouchlessLib/TouchlessMgr.cs	(revision 33886)
++++ TouchlessLib/TouchlessMgr.cs	(working copy)
+@@ -125,7 +125,7 @@
+         /// <param name="center">The center point of the new marker as pixel coordinates</param>
+         /// <param name="radius">The radius of the new marker in pixels</param>
+         /// <returns>A newly trained marker</returns>
+-        /// /// <example>
++        /// <example>
+         /// The following is a code snippet that shows how to create a Marker
+         /// <code>
+         ///     TouchlessMgr _touch = new TouchlessMgr();
+@@ -137,13 +137,82 @@
+         /// </example>
+         public Marker AddMarker(string name, Bitmap image, Point center, float radius)
+         {
+-            Marker newMarker = new Marker(name);
+-            newMarker.SetMarkerAppearance(GetMarkerAppearance(image, center, radius));
++            int[, ,] markerAppearance = this.GetMarkerAppearance(image, center, radius);
++            Marker newMarker = new Marker(name, markerAppearance);
+             _markers.Add(newMarker);
+             return newMarker;
+         }
+ 
+         /// <summary>
++        /// Adds a new marker given training data as raw frequency values.
++        /// This overload is mainly for restoring a saved marker.
++        /// The properties of the marker (Active, Highlight, CalculateAvgColor, ...) are
++        /// not restored.
++        /// </summary>
++        /// <param name="savedMarker">The saved marker data to use for this marker</param>
++        /// <returns>A newly trained marker mathcing the saved marker name and color frequency</returns>
++        /// <example>
++        /// The following is a code snippet that shows how to save and load markers to a file
++        /// (warning! this code has no file io checks and try-catches for the (de)serialization)
++        /// <code>
++        ///     TouchlessMgr _touch = new TouchlessMgr();
++        ///     ...
++        /// 
++        ///     // Create a new marker using the current image at a fixed location and size
++        ///     Marker m = _touch.AddMarker("marker", _touch.CurrentCamera.GetCurrentImage(), new Point(100, 100), 10);
++        ///     
++        ///     // export the marker data of all markers to a file
++        ///     using (FileStream stream = System.IO.File.OpenWrite(markerSavesFile))
++        ///     {
++        ///         System.Xml.Serialization.XmlSerializer serializer =
++        ///                 new System.Xml.Serialization.XmlSerializer(
++        ///                 typeof(List&lt;ExportedMarker&gt;));
++        /// 
++        ///         List&lt;ExportedMarker&gt; savedMarkers = new List&lt;ExportedMarker&gt;();
++        ///         foreach (Marker m in this.touchlessManager.Markers)
++        ///         {
++        ///             savedMarkers.Add(m.ExportMarker());
++        ///         }
++        ///         serializer.Serialize(stream, savedMarkers);
++        ///     }
++        ///     
++        ///     _touch.Markers.Clear();
++        ///     
++        ///     // import the marker data from a file
++        ///     using (FileStream stream = System.IO.File.OpenRead("d:\\savedMarkers.dat"))
++        ///     {
++        ///         System.Xml.Serialization.XmlSerializer serializer =
++        ///                 new System.Xml.Serialization.XmlSerializer(
++        ///                 typeof(List&lt;ExportedMarker&gt;));
++        ///     
++        ///         List&lt;ExportedMarker&gt; deserList = serializer.Deserialize(stream) as List&lt;ExportedMarker&gt;;
++        ///         if (deserList != null)
++        ///         {
++        ///             foreach (ExportedMarker savedMarker in deserList)
++        ///             {
++        ///                 Marker m = _touch.AddMarker(savedMarker);
++        ///             }
++        ///         }
++        ///     }
++        /// </code>
++        /// </example>
++        public Marker AddMarker(ExportedMarker savedMarker)
++        {
++            Marker newMarker = new Marker(savedMarker.Name,
++                savedMarker.GetRawHsvFreq3D());
++            _markers.Add(newMarker);
++            return newMarker;
++        }
++
++        /// <summary>
++        /// Removes all currently active marker and stops all tracking
++        /// </summary>
++        public void RemoveAllMarkers()
++        {
++            this._markers.Clear();
++        }
++
++        /// <summary>
+         /// Removes a currently active marker and stops all tracking
+         /// </summary>
+         /// <param name="index">Index of the marker to remove</param>

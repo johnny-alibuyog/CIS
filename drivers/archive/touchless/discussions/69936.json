@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "238129",
+    "ThreadId": "69936",
+    "Html": "<p>Hi, I would like to use webcam.ddll and touchless.dll in LabVIEW. To do so I require header files with both the dlls. Header files provided with SDK do not work with code interface node. Can somebody provide both the header files.</p>\r\n<p>Thanks sam12</p>",
+    "PostedDate": "2009-09-23T21:44:18.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

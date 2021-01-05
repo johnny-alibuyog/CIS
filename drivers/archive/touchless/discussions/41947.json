@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "139233",
+    "ThreadId": "41947",
+    "Html": "Using this line of code:<br>\r\n<br>\r\ntextboxBoundsX.Text = manager.markers[0].Bounds.Width.ToString();<br>\r\n<br>\r\ncaused an exception: the markerproperty Bounds runs in a diffrent thread then the GUI-Thread.<br>\r\n<br>\r\nI've worked around the problem now, but in the long run it might be better to have an internal fix for that problem.<br>\r\n<br>\r\nMaybe you add it to you 'Todo-list'?<br>\r\n<br>\r\nThanks in advance!<br>\r\n",
+    "PostedDate": "2008-12-10T02:48:47.003-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139923",
+    "ThreadId": "41947",
+    "Html": "Pollux, I'm glad you reported this, but I'm unable to reproduce this problem; please elaborate.<br>\r\n<br>\r\nClass TouchlessMgr has a public member 'Markers' and a private member '_markers', which are you using?<br>\r\nClass Marker doesn't have a member called Bounds. Class MarkerEventData used to before change #26052.<br>\r\nWhat bounds structure are you referring to?<br>\r\n<br>\r\nI've tried dropping the following code into TouchlessDemo's DrawDemo::updateMarker(object sender, MarkerEventArgs args)<br>\r\nConsole.WriteLine(_tlmgr.Markers[0].CurrentData.X.ToString());<br>\r\nConsole.WriteLine(args.EventData.X.ToString());<br>\r\nBoth of these seem to work fine; so I'm not sure how to reproduce your threading problem.<br>\r\n<br>\r\nThanks,<br>\r\n- mike<br>\r\n",
+    "PostedDate": "2008-12-11T20:05:45.507-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139966",
+    "ThreadId": "41947",
+    "Html": "Sorry, I just noticed i left out one part of the chain :)<br>\r\n<br>\r\n&quot;Manager.Markers[0].PreviousData.Bounds.Width.ToString();&quot;<br>\r\n<br>\r\nthis is the complete line of code, left out the step 'previousdata' or 'currentdata' or whatever one wants to use there.<br>\r\nIn fact, as i had to change the code, i dont have the original line of code anymore, sorry.<br>\r\n<br>\r\nthe problem seems to be that youre somehow getting the camdata (and therefor the markerdata) from an 'outside' (non-.net) source (?) and that my way of accessing it leads a problem cause the GUI-element 'textbox' runs on a diffrent thread. I actualy checked the threadIDs during runtime and they where non-identical.<br>\r\n<br>\r\nDont realy know what else I could say, so I try to clearify by pointing out the obvious :)<br>\r\n<br>\r\nim calling the 'ToString()'-Methodof the int variable 'width' belonging to the rectangle 'Bounds' belonging to the MarkerEventData 'PreviousData' belonging to the Marker at position zero in the list 'Markers' belonging to the object 'Manager' of type 'TouchlessMgr'.<br>\r\n<br>\r\nHope this helps :)<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-12T00:57:56.867-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140188",
+    "ThreadId": "41947",
+    "Html": "Pollux,<br>\r\n<br>\r\nThis may be a problem with the old code (probably unmanaged WebCamLib), but it seems to be fixed in our latest code.<br>\r\nTry upgrading to the latest version of Touchless, and you should no longer have this problem.<br>\r\nCommunity member John Conwell volunteered his time to make our new managed C++ WebCamLib, so thank you John!<br>\r\n<br>\r\nI successfully ran Console.WriteLine(_tlmgr.Markers[0].Previousdata.X.ToString()); in two places of my DrawDemo.<br>\r\nIt works in DrawDemo::updateMarker, which runs on the marker updating event thread, called from the new managed C++ WebCamLib.dll.<br>\r\nIt also works in DrawDemo::drawCanvas, which runs on the UI updating thread, called from the client process.<br>\r\n<br>\r\nIf you are unable to upgrade, it sounds like your event thread solution is a legitimate workaround.<br>\r\nI apologize for the inconvenience that this bug caused you.<br>\r\nI looking to hearing about how your project comes along.<br>\r\n<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-12-12T14:47:56.69-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140265",
+    "ThreadId": "41947",
+    "Html": "<p>Hi all,</p>\r\n<p>this a common problem when you try to manipulate GUI elements from another thread.</p>\r\n<p>You can use this simple code snippet to make your code switch to the right thread:</p>\r\n<pre>private void SomeEventHandler(object sender, EventArgs e)\r\n{\r\n    if (this.InvokeRequired)\r\n    {\r\n        Action&lt;object&gt; invoker = new Action&lt;object, EventArgs&gt;(this.SomeEventHandler);\r\n        this.Invoke(invoker, sender, e);\r\n    }\r\n    else\r\n    {\r\n        // your regular code here changing the GUI element, e.g.\r\n        this.SomeTextField.Text = e.ToString();\r\n    }\r\n}\r\n&lt;/object&gt;</pre>\r\n<p>The example also shows that this could not be done internally in the touchlessLib, as the Invoke(Required) has to be called on the GUI object to be manipulated.</p>\r\n<p></p>\r\n<p>(edit: fixed generic class representation, html editor destroyed the generics)</p>\r\n",
+    "PostedDate": "2008-12-13T09:17:20.283-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140508",
+    "ThreadId": "41947",
+    "Html": "Thats exactly what I did :)<br>\r\n<br>\r\nDidnt know it was the best way to do it. Thanks eFloh!<br>\r\n",
+    "PostedDate": "2008-12-15T01:37:16.3-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

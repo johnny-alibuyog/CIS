@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "139910",
+    "ThreadId": "42100",
+    "Html": "Hi all,<br>\r\nI'm planning to make a simple XNA game which uses touchless to allow a player to move their character.<br>\r\nUsing the tutorial video, I've managed to get touchless working in a simple C# application. I'm having a bit of trouble getting started with XNA, however.<br>\r\nIn C#, The webcam output is displayed in a Windows Form PictureBox, which allows the user to click it to set a marker. Obviously tthis Form object doesn't exist when using XNA, so I have tried to work around it.<br>\r\n<br>\r\nBasically, I have saved a default_marker.bmp image which shows a marker. As I know the location of the marker in that image, I attempted to create a new marker using the following:<br>\r\n<br>\r\n---<br>\r\n<br>\r\n<span style=\"font-size:13px\">\r\n<p>Line 57 - bitmap = </p>\r\n</span>\r\n<p><span style=\"font-size:13px;color:#0000ff\">new</span><span style=\"font-size:13px\"> </span><span style=\"font-size:13px;color:#2b91af\">Bitmap</span><span style=\"font-size:13px\">(@</span><span style=\"font-size:13px;color:#a31515\">&quot;C:\\Project\\Prototypes\\Sprite_Movement_Prototype\\Sprite_Movement_Prototype\\Content\\default_marker.bmp&quot;</span><span style=\"font-size:13px\">);\r\n<p>&nbsp;</p>\r\n<p>Line 58 - marker = _touch.AddMarker(</p>\r\n</span></p>\r\n<p><span style=\"font-size:13px;color:#a31515\">&quot;marker&quot;</span><span style=\"font-size:13px\">,bitmap, </span><span style=\"font-size:13px;color:#0000ff\">new</span><span style=\"font-size:13px\"> System.Drawing.</span><span style=\"font-size:13px;color:#2b91af\">Point</span><span style=\"font-size:13px\">(35 58), 10);<br>\r\n<p>&nbsp;</p>\r\n</span></p>\r\n<br>\r\n---<br>\r\n<br>\r\nUnfortunately when doing so, the following exception is thrown:<br>\r\n<br>\r\n---<br>\r\n<br>\r\nSystem.AccessViolationException was unhandled<br>\r\n  Message=&quot;Attempted to read or write protected memory. This is often an indication that other memory is corrupt.&quot;<br>\r\n  Source=&quot;TouchlessLib&quot;<br>\r\n  StackTrace:<br>\r\n       at TouchlessLib.TouchlessMgr.GetMarkerAppearance(Bitmap image, Point center, Single radius, HSV binCounts)<br>\r\n       at TouchlessLib.TouchlessMgr.GetMarkerAppearance(Bitmap image, Point center, Single radius)<br>\r\n       at TouchlessLib.TouchlessMgr.AddMarker(String name, Bitmap image, Point center, Single radius)<br>\r\n       at Sprite_Movement_Prototype.Game1.Initialize() in C:\\Project\\Prototypes\\Sprite_Movement_Prototype\\Sprite_Movement_Prototype\\Game1.cs:line 58<br>\r\n       at Microsoft.Xna.Framework.Game.Run()<br>\r\n       at Sprite_Movement_Prototype.Program.Main(String[] args) in C:\\Project\\Prototypes\\Sprite_Movement_Prototype\\Sprite_Movement_Prototype\\Program.cs:line 14<br>\r\n  InnerException: <br>\r\n<br>\r\n---<br>\r\n<br>\r\nIt seems as if it doesn't like me referring directly to a Bitmap. Does anyone have any idea what could be throwing this exception? Does anyone know what I can use as an alternative to Form PictureBox in xna?<br>\r\n<br>\r\nIf anyone could point me in the right direction I'd be extremely greatful - currently have a splitting headache over this one!<br>\r\n<br>\r\nThanks,<br>\r\nJonathan\r\n",
+    "PostedDate": "2008-12-11T18:41:05.157-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139935",
+    "ThreadId": "42100",
+    "Html": "Jonathan, thank you very much for reporting this bug, I'm sorry that it caused you frustration.<br>\r\nI've just submitted a fix (change #26831). Grab updated binaries and/or source from our source repository.<br>\r\nAlternately, workaround this bug by using a 32bpp Rgb/Argb image. I suspect default_marker.bmp is 24bppRgb.<br>\r\n<br>\r\nSince you expressed interest in adding run-time marker adding, here's some tips on XNA:<br>\r\nIf you'd like to draw Touchless' images you can make Texture2Ds and draw some sprites:<br>\r\n<a href=\"http://msdn.microsoft.com/en-us/library/bb194908.aspx\">http://msdn.microsoft.com/en-us/library/bb194908.aspx</a><br>\r\n<a href=\"http://msdn.microsoft.com/en-us/library/bb203919.aspx\"></a>You'll likely find more concise tutorials by searching online; and maybe someone else can offer more info.<br>\r\nIf you're stuck on getting that to work, I have some old code I can update and send you that uses XNA.<br>\r\n<br>\r\nKeep us updated on your game!<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-12-11T21:45:39.313-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140037",
+    "ThreadId": "42100",
+    "Html": "Hi Mike,<br>\r\nFirst of all - wow, thanks for the unbelievably quick reply and fix, very much appreciated.<br>\r\nYou're right - the bmp I was using was 24bit. Upon converting it to 32bit, it now works without error and I can see that the xna project is picking up the movement of the marker. Brilliant!<br>\r\n<br>\r\nNext step is to get the webcam feed to appear in game. I'll keep you posted :).<br>\r\n<br>\r\nThanks again,<br>\r\nJonathan\r\n",
+    "PostedDate": "2008-12-12T07:02:16.8-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140201",
+    "ThreadId": "42100",
+    "Html": "Hi all,<br>\r\nThought you might be interested in my latest XNA/Touchless video: <a href=\"http://flickr.com/photos/jsynnott/3103274218/\">http://flickr.com/photos/jsynnott/3103274218/</a> .<br>\r\nThis project is really fun to work on. The main thing I need to do is some better lighting in my room so that the markers show up better!\r\n",
+    "PostedDate": "2008-12-12T16:58:22.707-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "277315",
+    "ThreadId": "42100",
+    "Html": "<p>Hey guys, do either of you have any source code for implementing touchless and xna? I'm starting to experiment with computer vision in general. I really like this touchless library so far. Very cool stuff. I imagine I could have a lot of fun if I could get it running within xna. Anything you can send my way would be helpful. Thanks!</p>",
+    "PostedDate": "2010-01-14T13:43:00.693-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

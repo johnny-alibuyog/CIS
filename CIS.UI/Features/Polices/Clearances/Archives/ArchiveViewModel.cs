@@ -23,6 +23,8 @@ namespace CIS.UI.Features.Polices.Clearances.Archives
 
         public virtual IReactiveCommand ViewClearance { get; set; }
 
+        public virtual IReactiveCommand ViewClearanceIdCard { get; set; }
+
         public virtual IReactiveCommand GenerateListReport { get; set; }
 
         public ArchiveViewModel()

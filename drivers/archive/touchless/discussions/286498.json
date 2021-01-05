@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "726859",
+    "ThreadId": "286498",
+    "Html": "\r\n<p>I downloaded the sdk and run the app in two different pc with two different camera. After i add a marker, it doesn't seems to recognize it. And once I start the demo, the camera goes a bit white. Not sure if that's the problem. So does the marker has to\r\n be some color?</p>\r\n",
+    "PostedDate": "2012-01-17T21:49:49.24-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "726861",
+    "ThreadId": "286498",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>cxy007 wrote:</strong><br />\r\n<p>I downloaded the sdk and run the app in two different pc with two different camera. After i add a marker, it doesn't seems to recognize it. And once I start the demo, the camera goes a bit white. Not sure if that's the problem. So does the marker has to  be some color?</p>\r\n</blockquote>\r\n<p>Never mind, I need to drag.&nbsp; ;-)</p>",
+    "PostedDate": "2012-01-17T21:52:34.08-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

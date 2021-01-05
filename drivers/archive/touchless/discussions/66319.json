@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "225295",
+    "ThreadId": "66319",
+    "Html": "<p>Hi, I just found your project here and I have done a lot of similar work myself and was thinking of contributing to it. I am currently working on finishing my PhD so I don't have that much time currently, but my areas of research are in illumination invariance. I wrote a tracker similar to this a few months ago which tracks colour patches (I used post-it notes) to drive the mouse. The main advantage was that I used my own custom colour models to allow for more reliable tracking over illumination and shading changes.</p>",
+    "PostedDate": "2009-08-19T00:06:49.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

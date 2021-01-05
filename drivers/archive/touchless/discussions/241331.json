@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "547392",
+    "ThreadId": "241331",
+    "Html": "\r\n<p>Hi</p>\r\n<p>Cool app :)</p>\r\n<p>I have just downloaded the source code and opened it up in Visual Studio 2010 on 64bit Windows 7. &nbsp;I have the latest DirectX SDK installed. &nbsp;When attempting to compile it, I get:</p>\r\n<p>&quot;error C1083: Cannot open include file: 'qedit.h': No such file or directory<span>\r\n</span>D:\\Downloads\\dot Net\\DirectShow\\touchless-55790\\trunk\\Touchless\\WebCamLib\\WebCamLib.cpp<span>\r\n</span>19<span> </span>1<span> </span>WebCamLib&quot;</p>\r\n<p>Any ideas? &nbsp;Do I need to read some compilation document?</p>\r\n<p>Thanks,<br>\r\nStephen&nbsp;</p>\r\n",
+    "PostedDate": "2011-01-11T09:46:51.73-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "587553",
+    "ThreadId": "241331",
+    "Html": "<p>Perhaps <a href=\"http://touchless.codeplex.com/discussions/37489\">the post</a> may help you.</p>\n<p>A common advice is to have DirectX SDK August 2007 installed on your PC, and not the latest one...</p>\n<p>However <a href=\"http://msdn.microsoft.com/en-us/library/dd376985(v=vs.85).aspx\">MSDN page about ISampleGrabberCB Interface</a> suggests to install <a href=\"http://www.microsoft.com/downloads/en/details.aspx?FamilyID=4377f86d-c913-4b5c-b87e-ef72e5b4e065&amp;displaylang=en\">older version of Microsoft&reg; Windows&reg; Software Development Kit Update for Windows Vista&trade;</a>&nbsp;.</p>",
+    "PostedDate": "2011-03-28T06:34:26.94-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

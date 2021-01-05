@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Touchless.Vision.Detection.Configuration.MarkerDetectorConfigurationElement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="550" Height="260">
+    <GroupBox Header="Marker Settings">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical" Width="200">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="buttonMarkerAdd" Content="Add Marker" HorizontalAlignment="Left" Click="buttonMarkerAdd_Click" />
+                    <ComboBox x:Name="comboBoxMarkers" Text="Select Marker" MinWidth="120" Margin="10,0,0,0" SelectionChanged="comboBoxMarkers_SelectionChanged" ItemsSource="{Binding Path=_markerDetector.TrackingMarkers}" />
+                </StackPanel>
+                <GroupBox Header="No Marker Selected" Name="groupBoxMarkerControl" IsEnabled="False" Margin="0,10,0,0" DataContext="{Binding SelectedItem, ElementName=comboBoxMarkers, Mode=Default}">
+                    <StackPanel Orientation="Vertical">
+                        <CheckBox x:Name="checkBoxMarkerActive" Content="Track Marker" IsChecked="{Binding Active, Mode=TwoWay}" />
+                        <CheckBox x:Name="checkBoxMarkerHighlight" Content="Highlight Marker" IsChecked="{Binding Highlight, Mode=TwoWay}" />
+                        <CheckBox x:Name="checkBoxMarkerSmoothing" Content="Smooth Marker Data" IsChecked="{Binding SmoothingEnabled, Mode=TwoWay}" />
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                            <Label VerticalAlignment="Center" Margin="-1">Pixel Match Threshold:</Label>
+                            <TextBox x:Name="txtThreshold" Text="0" Width="60" VerticalAlignment="Center" MaxLines="1" HorizontalContentAlignment="Right" TextChanged="txtThreshold_TextChanged" />
+                        </StackPanel>
+                        <TextBox x:Name="labelMarkerData" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Height="60" />
+                        <Button x:Name="buttonMarkerRemove" HorizontalAlignment="Center" Margin="0,10,0,0" Content="Remove Marker" Click="buttonMarkerRemove_Click" />
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            <Image x:Name="pictureBoxDisplay" Width="320" Height="240" Margin="10,0,10,0" MouseDown="pictureBoxDisplay_MouseDown" MouseUp="pictureBoxDisplay_MouseUp" MouseMove="pictureBoxDisplay_MouseMove" Stretch="Fill" VerticalAlignment="Top" />
+        </StackPanel>
+    </GroupBox>
+</UserControl>

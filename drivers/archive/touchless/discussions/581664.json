@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1355092",
+    "ThreadId": "581664",
+    "Html": "Hi,\r<br />\nI am using this SDK to capture images and save it on my drive.  I am not able to change the size of the image from 320 X 240 to 640 X 480 or  higher. My code is written in C#. In one of the demo I saw someone using CurrentCamera.CaptureHeight and CurrentCamera.CaptureWidth to set the height and width of the image, however these are ready only properties. Is there any other way to change the size.\r<br />\n<br />\nRegards,\r<br />\nSameer<br />\n",
+    "PostedDate": "2015-02-23T21:48:37.817-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "At least for touchless mouse simulation it would be nice to have a event that is raised when the CurrentCamera and/or CurrentCamera.CaptureWidth/Height is changed.\nOtherwise, one had to poll in each marker event for the current size in order to correctly transform camera coordinates to screen coordinates.\n(This is at least partly WebCamLib code, I think, what I cannot modify myself because of lack of knowledge and fixed C++ includes for vista)\n \nAlongside, it would be great when the IDemoInterface.DrawDemoCanvas(Graphics) method had two other parameters:\n- Rectangle clipRectangle (from the original Paint event of the picture box)\n- scalingFactor: The scaling factor that must be applied to marker coordinates in order to retrieve coordinates matching the passed graphics object.\n \nAs I already mentioned, I am working on an extended version of the TouchlessMgr class that will support such scenarios of \"applications\" resembling the way you implemented the IDemoInterface and supporting these parameters...",
+    "LastUpdatedDate": "2013-02-21T16:27:55.347-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2009-02-10T13:50:30.343-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Event for Camera (and Camera Capture Size) changed",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 7063
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

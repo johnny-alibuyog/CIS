@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "450925",
+    "ThreadId": "214790",
+    "Html": "Hello, \r\nfirst of all i want to say that i really like the idea of Touchless.\r\nI have written a simple application after watching the video guide.\r\nEverything works fine as long as my PictureBox has the same width and height as camera's resolution, which is 320x240.\r\nWhen i resize it, the markers kind a go mad. Most of the time they select whole picture. I guess there is some sort of work around it since the demo application works fine and the PictureBox there is much bigger. Could you give me some pointers on this topic please?\r\n\r\nThank you.\r\nMike.",
+    "PostedDate": "2010-06-02T17:48:06.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

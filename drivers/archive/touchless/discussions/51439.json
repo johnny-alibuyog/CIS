@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "172478",
+    "ThreadId": "51439",
+    "Html": "This Project is very interresting.<br>\r\nI whould like to understand in deep how you accomplish the creation and recognition of the markers.<br>\r\nCould you please post a detailed illustration of the algorithm and calculations?<br>\r\nAlso a list of known problems and possible improvements would be of value.<br>\r\nI think that could help other developers to contribute to this project.<br>\r\n",
+    "PostedDate": "2009-03-26T13:03:21.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "184329",
+    "ThreadId": "51439",
+    "Html": "Hi xelpplex,<br>\r\n<br>\r\nThere is a good amount of information in touchless.rtf, touchless.chm, touchless.jpg, and touchless.pptx. There are also extensive comments provided in the code itself. All of these are available from the repository (see the documentation folder) and with the aging 1.0 release. I suggest you try these items and perhaps point out areas that need further detail. I simply don't have the time to recap all of this info right now. However, here's a really brief recap that I happened to compose the other day:<br>\r\n<br>\r\n<p style=\"margin:0in 0in 0pt\"><span style=\"font-family:'calibri','sans-serif';color:#1f497d;font-size:11pt\"><em>In one sentence, Touchless compares colors with those found in your marker during add, and tracks the colors that match.</em></span></p>\r\n<p style=\"margin:0in 0in 0pt\"><span style=\"font-family:'calibri','sans-serif';color:#1f497d;font-size:11pt\"><em> </em></span></p>\r\n<p style=\"margin:0in 0in 0pt\"><span style=\"font-family:'calibri','sans-serif';color:#1f497d;font-size:11pt\"><em>With a little more detail: Touchless takes a snapshot of the frequencies of similar colors in your marker when you add it (it also compensates for similar background colors). Then subsequent images are scanned and pixels are compared with the marker’s color distribution. If a pixel’s color’s frequency exceeds the marker threshold, then that’s considered a match in the binary pixel matching operation. Beyond that its naïve blob/object tracking for matched pixels. It uses HSV color space partitioning to mitigate smaller changes in lighting, and employs some homebrewed scan region optimizations to search only in the marker’s axis aligned search regions.</em></span></p>\r\n<p style=\"margin:0in 0in 0pt\"><span style=\"font-family:'calibri','sans-serif';color:#1f497d;font-size:11pt\"><br>\r\nI'm always looking for contributors and help with any aspect of Touchless.<br>\r\nIf you want to contribute and focus on a particular part of the project, I'm happy to go into extensive detail to help you.<br>\r\nSorry if this response doesn't quite satisfy your request.<br>\r\n<br>\r\nThanks for your interest!<br>\r\n- Mike</span></p>\r\n",
+    "PostedDate": "2009-04-27T21:04:58.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

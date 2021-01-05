@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It would be awesome to be able to control pptPlex using Touchless. It would be very Minority Report-ish. \n \nYou can find pptPlex here: http://www.officelabs.com/projects/pptPlex",
+    "LastUpdatedDate": "2013-02-21T16:27:57.66-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2008-10-08T11:19:46.193-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Idea: Create a Touchless app to control pptPlex",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 7,
+    "Id": 6404
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I would love to use pptPlex with touch less. \r\nLet me know I can be of any help in developing the demo for pptPlex.",
+      "PostedDate": "2008-10-29T02:34:47.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:27:57.66-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

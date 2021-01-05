@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fb5237d3-3c23-4e8b-903d-d2af69869dcd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8000/touchless/host" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="host.xsd" MetadataType="Schema" ID="38382b40-f134-4405-bb15-e26109c69540" SourceId="1" SourceUrl="http://localhost:8000/touchless/host?xsd=xsd1" />
+    <MetadataFile FileName="host1.xsd" MetadataType="Schema" ID="71d45dba-d8d1-41e7-aae7-188b113cee91" SourceId="1" SourceUrl="http://localhost:8000/touchless/host?xsd=xsd0" />
+    <MetadataFile FileName="TouchlessHost.wsdl" MetadataType="Wsdl" ID="211128aa-3571-4460-b983-9568fb480525" SourceId="1" SourceUrl="http://localhost:8000/touchless/host" />
+    <MetadataFile FileName="host2.xsd" MetadataType="Schema" ID="525183b2-91ea-4b51-a927-b4f16af95246" SourceId="1" SourceUrl="http://localhost:8000/touchless/host?xsd=xsd2" />
+    <MetadataFile FileName="host3.xsd" MetadataType="Schema" ID="81f62b41-e9b8-4e3b-b52d-42a5eccdff0c" SourceId="1" SourceUrl="http://localhost:8000/touchless/host?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

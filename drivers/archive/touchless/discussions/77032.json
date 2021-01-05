@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "263358",
+    "ThreadId": "77032",
+    "Html": "<p>Hi,&nbsp;</p>\r\n<p>I am looking for object recognition library which will let me to recognize some objects on photos even if the photos were made from different point of view, weather conditions, lighting.&nbsp;</p>\r\n<p>Is Touchless SDK can do such tasks or it use less advanced algorithmes?</p>\r\n<p>Thanks in advance,</p>\r\n<p>Vadim Sherman</p>",
+    "PostedDate": "2009-12-03T13:04:31.023-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "263410",
+    "ThreadId": "77032",
+    "Html": "<p>This would be out of the scope of Touchless SDK. Touchless was designed to recognize and use markers to manipulate applications data. It's a Human Machine Interface (HMI) tool.</p>",
+    "PostedDate": "2009-12-03T15:41:05.35-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

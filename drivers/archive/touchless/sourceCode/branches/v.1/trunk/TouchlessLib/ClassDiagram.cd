@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Segoe UI" Size="9" />
+  <Class Name="TouchlessLib.Camera" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Camera.cs</FileName>
+      <HashCode>ABEAIAAAASCgAAFEAQAAAEAACBAAAEAAAAAAAAIQAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="_bitmap" Hidden="true" />
+      <Field Name="_bitmapLock" Hidden="true" />
+      <Field Name="_dtLastCap" Hidden="true" />
+      <Field Name="_fpslimit" Hidden="true" />
+      <Field Name="_height" Hidden="true" />
+      <Field Name="_name" Hidden="true" />
+      <Field Name="_nativeInterface" Hidden="true" />
+      <Field Name="_timeBehind" Hidden="true" />
+      <Field Name="_timeBetweenFrames" Hidden="true" />
+      <Field Name="_width" Hidden="true" />
+      <Method Name="Camera" Hidden="true" />
+      <Method Name="ImageCaptured" Hidden="true" />
+      <Property Name="NativeInterface" Hidden="true" />
+    </Members>
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="TouchlessLib.CameraEventArgs">
+    <Position X="0.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>Camera.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="_image" Hidden="true" />
+      <Method Name="CameraEventArgs" Hidden="true" />
+    </Members>
+  </Class>
+  <Class Name="TouchlessLib.Marker">
+    <Position X="4.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Marker.cs</FileName>
+      <HashCode>AAGAcADSAQBgAAAMAAAABAQAAAAEAFAgIABkBAhBBAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="binsHue" Hidden="true" />
+      <Field Name="binsSat" Hidden="true" />
+      <Field Name="binsVal" Hidden="true" />
+      <Field Name="currData" Hidden="true" />
+      <Method Name="FireMarkerEventData" Hidden="true" />
+      <Field Name="frequencyThreshhold" Hidden="true" />
+      <Field Name="highlight" Hidden="true" />
+      <Field Name="hsvFreq" Hidden="true" />
+      <Field Name="lastGoodData" Hidden="true" />
+      <Method Name="Marker" Hidden="true" />
+      <Field Name="name" Hidden="true" />
+      <Field Name="prevData" Hidden="true" />
+      <Field Name="provideCalculatedProperties" Hidden="true" />
+      <Field Name="representativeColor" Hidden="true" />
+      <Field Name="searchMaxX" Hidden="true" />
+      <Field Name="searchMaxY" Hidden="true" />
+      <Field Name="searchMinX" Hidden="true" />
+      <Field Name="searchMinY" Hidden="true" />
+      <Method Name="SetMarkerAppearance" Hidden="true" />
+      <Field Name="smoothingEnabled" Hidden="true" />
+      <Field Name="smoothingFactor" Hidden="true" />
+    </Members>
+  </Class>
+  <Class Name="TouchlessLib.MarkerEventArgs">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Marker.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAICAAAAAAAABAAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="_eventData" Hidden="true" />
+      <Field Name="_eventMarker" Hidden="true" />
+      <Method Name="MarkerEventArgs" Hidden="true" />
+    </Members>
+  </Class>
+  <Class Name="TouchlessLib.TouchlessMgr" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>TouchlessMgr.cs</FileName>
+      <HashCode>ABggAAAIACBCQKAAEAgACIAAQcFAEAoAABAAAAgAAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="_cameras" Hidden="true" />
+      <Field Name="_camHeight" Hidden="true" />
+      <Field Name="_camWidth" Hidden="true" />
+      <Field Name="_currentCamera" Hidden="true" />
+      <Field Name="_markers" Hidden="true" />
+      <Field Name="_MarkerScanCommandComparison" Hidden="true" />
+      <Field Name="_markerScanCommandsX" Hidden="true" />
+      <Field Name="_markerScanCommandsY" Hidden="true" />
+      <Field Name="_nativeCallback" Hidden="true" />
+      <Field Name="_scanMarkersX" Hidden="true" />
+      <Field Name="_scanMarkersY" Hidden="true" />
+      <Field Name="_webcamLibCount" Hidden="true" />
+      <Field Name="_webcamLock" Hidden="true" />
+      <Method Name="CaptureCallbackProc" Hidden="true" />
+      <Method Name="CleanupCameras" Hidden="true" />
+      <Method Name="GetMarkerAppearance" Hidden="true" />
+      <Method Name="postProcessMarker" Hidden="true" />
+      <Method Name="preProcessMarker" Hidden="true" />
+      <Method Name="UpdateMarkers" Hidden="true" />
+    </Members>
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
+  </Class>
+  <Struct Name="TouchlessLib.MarkerEventData">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Marker.cs</FileName>
+      <HashCode>AAAAAEAAAABAQBAAAAAaAAgAAgAIAAgAAABiAQAA5gE=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Field Name="area" Hidden="true" />
+      <Field Name="bottom" Hidden="true" />
+      <Field Name="bounds" Hidden="true" />
+      <Field Name="colorAvg" Hidden="true" />
+      <Field Name="dx" Hidden="true" />
+      <Field Name="dy" Hidden="true" />
+      <Field Name="left" Hidden="true" />
+      <Field Name="present" Hidden="true" />
+      <Field Name="right" Hidden="true" />
+      <Field Name="timestamp" Hidden="true" />
+      <Field Name="top" Hidden="true" />
+      <Field Name="x" Hidden="true" />
+      <Field Name="y" Hidden="true" />
+    </Members>
+  </Struct>
+</ClassDiagram>

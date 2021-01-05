@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "259813",
+    "ThreadId": "75954",
+    "Html": "<p>All,</p>\r\n<p>A few days ago I discovered this wonderfull project. At the moment I'm trying to build a kind of webshop where customers can click on their desired clothes with a marker and try it out to see how it fits by moving the selected clothe over their own body.</p>\r\n<p>Before doing this I already tried some Touchless demo's and I find it quite hard to learn, but once you known the basics it's a little bit simpler :)</p>\r\n<p>I already saw some stuff where there is an integration with WPF but I can't find anything about Silverlight. For the project I'm trying to build I would love to use silverlight for it, but can't find any resources for this.</p>\r\n<p>Does anybody got some usefull references/tips/tutorials/.... concerning the integration with SilverLight? I know there is not a big webcam support in silverlight at the moment, but I guess it's not impossible? is it?</p>\r\n<p>&nbsp;</p>\r\n<p>Kr,</p>",
+    "PostedDate": "2009-11-23T06:22:13.537-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "260122",
+    "ThreadId": "75954",
+    "Html": "<p>Hi,</p>\r\n<p>Last week at PDC Microsoft anounced new features in Silverlight 4 - and not suprisingly one of them is full camera/mic support. Since there is also a Silverlight 4 Beta available I already started working on porting Touchless to Silverlight (it was quite easy). I already have the core framework working and now I'm just finishing a demo application. I hope to publish it this week on my blog so stay tuned.</p>\r\n<p>-Szymon</p>",
+    "PostedDate": "2009-11-24T00:09:30.83-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "260144",
+    "ThreadId": "75954",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>kobush wrote:</strong><br>\r\n<p>Hi,</p>\r\n<p>Last week at PDC Microsoft anounced new features in Silverlight 4 - and not suprisingly one of them is full camera/mic support. Since there is also a Silverlight 4 Beta available I already started working on porting Touchless to Silverlight (it was quite easy). I already have the core framework working and now I'm just finishing a demo application. I hope to publish it this week on my blog so stay tuned.</p>\r\n<p>-Szymon</p>\r\n</blockquote>\r\n<p>wow Kobush, at the right time there are some changes for Silverlight.... You will be my hero!! :d :)</p>\r\n<p>I'll wait patiently for an update on your blog :)</p>\r\n<p>&nbsp;</p>\r\n<p>Kr,</p>",
+    "PostedDate": "2009-11-24T01:50:25.91-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "261760",
+    "ThreadId": "75954",
+    "Html": "<p>Hi Kr,</p>\r\n<p>I finished first spike of Touchless for SL4 over the weekend and I'm happy to tell that all works well. Here you can see the demo <a href=\"http://geekswithblogs.net/kobush/archive/2009/11/29/touchlesssl.aspx\">http://geekswithblogs.net/kobush/archive/2009/11/29/touchlesssl.aspx</a></p>\r\n<p>Currently only the image demo is implemented and I will add more when I have some more time. I will try to blog shortly about the implementation in couple of days.</p>\r\n<p>Please note that this port is based on old version of Touchless SDK that I made about a year ago for WPF. So now I need to see what changed since then and merge the changes.</p>\r\n<p>-Szymon</p>",
+    "PostedDate": "2009-11-30T00:57:02.533-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "264278",
+    "ThreadId": "75954",
+    "Html": "<p>This is awesome, Szymon. When you have your blog post ready, I think I'll put the link on the main Touchless page.</p>",
+    "PostedDate": "2009-12-06T18:31:28.6-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "292611",
+    "ThreadId": "75954",
+    "Html": "<p>Kobush,</p>\r\n<p>&nbsp;</p>\r\n<p>I am trying to use your demo to create my own Silverlight 4 and Touchless app. &nbsp;However, I am having huge issues getting this process to work. &nbsp;What tools did you use to develop this app ? &nbsp;I am using Visual Studios 2010 beta 2 with Silverlight 4 and I am constantly getting errors such as &quot;Breakpoint will not be hit, symbols not loaded&quot; as well as &quot;Operation not complete, there is not enough storage space&quot; and sometimes both your app and my own will run fine, not complain about the breakpoints not being hit but all the same not stop on them. &nbsp;Even in App startup breakpoints are not hit. &nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>How did you manage to develop this ? Did you not come across these troubles ? I figured as we must use beta versions that there would be a few issues here and there but...this makes development impossible.</p>",
+    "PostedDate": "2010-02-19T05:24:50.73-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

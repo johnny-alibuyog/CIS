@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "137944",
+    "ThreadId": "41567",
+    "Html": "Hi, great project, thanks for sharing it!<br>\r\n<br>\r\nIm experimenting with it and while i was trying to find out what colors and sizes work best as markers, I set my 'addMarker' button to show the marker.RepresentativeColor.<br>\r\n<br>\r\nThe strange thing is, that even for well recognized markers, the RepresentativeColor differs from the actual color of the item.<br>\r\n<br>\r\nThe one I have had best results with is a light green, and it shows up as black, sometimes blue.<br>\r\n<br>\r\nMaybe im confusing something, but so far I cant see why it behaves like that.<br>\r\n<br>\r\nCan anyone explain this?<br>\r\n",
+    "PostedDate": "2008-12-05T02:43:46.42-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "138107",
+    "ThreadId": "41567",
+    "Html": "Hi Pollux, I apologize for this bug in my 1.0 release.<br>\r\nI've fixed RepresentativeColor with change 25662 on November 4th.<br>\r\nYou can download the latest files from our source repository to see the update.<br>\r\n- Mike<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-05T11:33:15.657-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "138862",
+    "ThreadId": "41567",
+    "Html": "Thanks for your reply and the update!<br>\r\n",
+    "PostedDate": "2008-12-09T00:13:36.783-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

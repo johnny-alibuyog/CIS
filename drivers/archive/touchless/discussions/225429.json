@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "486881",
+    "ThreadId": "225429",
+    "Html": "<p>Hi,</p>\r\n<p>I am new in this forum and need some help. I downloaded the source code and found that it has 12 projects. One out of them is a demo but I could not make out what the others are.</p>\r\n<p>There is a project called -The executable - This seems to have some WCF services. I am wondering how are they used in the project.</p>\r\n<p>In the demo file there is an option of &quot;Start Image Demo&quot;. I need something like that for my current requirement. Is there any documentation on that? The demo video shows the Drawing demo but not this. I am interested in knowing how to make my overlayed objects interact with change in marker positions (more like the Image Demo).</p>\r\n<p>Can anyone please help?</p>\r\n<p>Regards,</p>\r\n<p>Anshu Dutta</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-08-31T05:19:44.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

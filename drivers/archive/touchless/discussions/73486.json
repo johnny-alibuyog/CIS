@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "251151",
+    "ThreadId": "73486",
+    "Html": "<p>How can I join the team as a contributor?</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks!</p>",
+    "PostedDate": "2009-10-29T06:08:59.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "251433",
+    "ThreadId": "73486",
+    "Html": "<p>Hey juliano, I'm glad you're interested in contributing to Touchless!</p>\r\n<p>In order to become a contributor, I encourage you to express some specific interests/experience for improving the project. You can&nbsp;prepare a patch, draft some rough design outlines, or maybe just write up an idea or two. If you're headed in the right direction and express honest interest in contribution, you can have direct access. I added this stipulation after adding a couple 'contributors' that&nbsp;never contribute or respond to mail after they are granted direct source access. Post here, PM,&nbsp;or e-mail me to move forward. Looking forward to some fresh talent!</p>\r\n<p>-&nbsp;Mike</p>",
+    "PostedDate": "2009-10-29T18:18:46.723-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258690",
+    "ThreadId": "73486",
+    "Html": "<p>Hi Mike,</p>\r\n<p>Sorry for the late response, the last few weeks has been busy. I have two ideas for touchless. The first would be a flip on the position detection algorithm so if in front of the webcam I move an object to my left, the cursor repeat the same movement instead of going right.</p>\r\n<p>The second idea is a sample app. It's a motion detection algorithm but limited to a specify area, so if I move the object being watched outside the boundaries I've just configured, it won't make cursor move.</p>\r\n<p>That's it.</p>\r\n<p>&nbsp;</p>\r\n<p>Sorry for any errors on my text.</p>",
+    "PostedDate": "2009-11-19T07:27:34.367-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258992",
+    "ThreadId": "73486",
+    "Html": "<p>Hey juliano,</p>\r\n<p>the first idea is already possible using the RotateFlip Property of the Camera class, or do you mind flipping the wole image?</p>\r\n<p>I already created a sample for the second idea about half a year ago, if you want, I can share my code and you may prepare an extended sample for the website, I myself lack the time for this at the moment...</p>",
+    "PostedDate": "2009-11-20T01:18:54.963-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "259209",
+    "ThreadId": "73486",
+    "Html": "<p>If you don't want to use the RotateFlip property, most webcams have a &quot;horizontal flip&quot; or &quot;mirror&quot; option in thier properties windows you can call with touchless as seen in the demo. As eFloh said, the second idea is simply code you can write that wouldn't take up any more than a couple if statements. I am using that for my project but reversed. if it's inside a certain area, the program doesn't track the marker.</p>",
+    "PostedDate": "2009-11-20T12:54:41.837-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "259294",
+    "ThreadId": "73486",
+    "Html": "<p>Well, I expanded the &quot;restricted area&quot; a bit:</p>\r\n<p>I use a 3x3 grid over the whole cam image area. The big center area is used to move the mouse, the border regions are used to perform mouse button actions or toexecute other functions.</p>\r\n<p>The mouse is captured when the marker is inside the move area for at least a second, thus short false positives and &quot;move overs&quot; are ignored. When the marker appears in a button or command area, it has to be visible there for at least &lt;insert favorite timespan&gt; ms before the action is executed. This delay time is made visible using a 50% opacity progress bar filling the corresponding region.</p>\r\n<p>My latest idea is to add two new buttons that &quot;zoom/unzoom&quot; the move area so that one can roughly place the pointer on the whole screen, then switch to zoom mode where only a 20% area (or such) around the starting pointer location can be reached with the mouse move area. Another idea is to change the absolute screen mapping to an 8-way relative movement pad as seen in the image demo by Mike.</p>\r\n<p>&nbsp;</p>\r\n<table style=\"border-collapse:separate\" border=1>\r\n<tbody>\r\n<tr height=150>\r\n<td width=150>left button click</td>\r\n<td width=400>(additional command buttons)</td>\r\n<td width=150>right button click</td>\r\n</tr>\r\n<tr height=400>\r\n<td width=150>&nbsp;</td>\r\n<td width=400>Mouse move area</td>\r\n<td width=150>&nbsp;</td>\r\n</tr>\r\n<tr height=150>\r\n<td width=150>left double click</td>\r\n<td width=400>(additional command buttons)</td>\r\n<td width=150>middle button click</td>\r\n</tr>\r\n</tbody>\r\n</table>",
+    "PostedDate": "2009-11-21T01:14:51.617-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "259382",
+    "ThreadId": "73486",
+    "Html": "<p>The idea would be the rotation of the points instead of the webcam image, but I think this would solve the problem.</p>\r\n<p>eFloh,&nbsp;I like your idea for commands. Can you share the code you have mentioned?</p>",
+    "PostedDate": "2009-11-21T11:00:30.007-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

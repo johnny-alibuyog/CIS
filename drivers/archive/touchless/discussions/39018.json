@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "129451",
+    "ThreadId": "39018",
+    "Html": "Suppose I have 2 camera. I start with one , switch over to the other and then toggle back.<br>\r\nError at <span style=\"font-size:13px\"> </span><span style=\"color:#0000ff;font-size:13px\">if</span><span style=\"font-size:13px\"> (</span><span style=\"color:#0000ff;font-size:13px\">value</span><span style=\"font-size:13px\">.NativeInterface == </span><span style=\"color:#0000ff;font-size:13px\">null</span><span style=\"font-size:13px\">){ t</span><span style=\"color:#0000ff;font-size:13px\">hrow</span><span style=\"font-size:13px\"> </span><span style=\"color:#0000ff;font-size:13px\">new</span><span style=\"font-size:13px\"> </span><span style=\"color:#2b91af;font-size:13px\">InvalidComObjectException</span><span style=\"font-size:13px\">(</span><span style=\"color:#a31515;font-size:13px\">&quot;The camera has been disposed&quot;</span><span style=\"font-size:13px\">);}<br>\r\n<br>\r\nThis would be a nice feature to have,perhaps        \r\n<p>&nbsp;</p>\r\n<p> -----------------</p>\r\n</span>\r\n<p>I guess it's a problem with how the demo app, releases camera handles on selection change</p>\r\n",
+    "PostedDate": "2008-11-01T19:36:49.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129834",
+    "ThreadId": "39018",
+    "Html": "Hi Rajiv,<br>\r\nThis bug was fixed in our upgrade to a managed C++ WebCamLib (change 25620).<br>\r\nFeel free to grab the latest version from our source code repository (we have binaries there too).<br>\r\nThanks for pointing it out!<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-11-03T17:52:12.963-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

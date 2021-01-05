@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Reactive;
-using System.Reactive.Linq;
-using System.Windows.Forms;
-using CIS.Core.Entities.Commons;
+﻿using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Firearms;
 using CIS.Core.Entities.Memberships;
 using CIS.Core.Entities.Polices;
-using CIS.Core.Utilities.Extentions;
 using CIS.Data.Commons.Exceptions;
 using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 using CIS.UI.Features.Commons.Biometrics;
 using CIS.UI.Features.Commons.Cameras;
 using CIS.UI.Features.Commons.Persons;
 using CIS.UI.Features.Commons.Signatures;
-using CIS.UI.Features.Memberships.Users;
 using CIS.UI.Features.Memberships.Users.Approvals;
 using CIS.UI.Features.Polices.Maintenances;
 using CIS.UI.Utilities.Extentions;
@@ -24,7 +15,11 @@ using CIS.UI.Utilities.Reports;
 using Microsoft.Reporting.WinForms;
 using NHibernate.Linq;
 using ReactiveUI;
-using ReactiveUI.Xaml;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reactive.Linq;
+using System.Windows.Forms;
 
 namespace CIS.UI.Features.Polices.Clearances.Applications
 {
@@ -510,9 +505,9 @@ namespace CIS.UI.Features.Polices.Clearances.Applications
             this.ViewModel.Summary.BirthPlace = this.ViewModel.PersonalInformation.BirthPlace;
         }
 
-        private ClearanceReportViewModel GenerateClearance()
+        private ClearanceIdCardReportViewModel GenerateClearance()
         {
-            var result = new ClearanceReportViewModel();
+            var result = new ClearanceIdCardReportViewModel();
 
             using (var session = this.SessionFactory.OpenSession())
             using (var transaction = session.BeginTransaction())
@@ -749,7 +744,7 @@ namespace CIS.UI.Features.Polices.Clearances.Applications
             return result;
         }
 
-        private void PrintClearance(ClearanceReportViewModel data)
+        private void PrintClearance(ClearanceIdCardReportViewModel data)
         {
             var report = new LocalReport();
             report.EnableExternalImages = true;

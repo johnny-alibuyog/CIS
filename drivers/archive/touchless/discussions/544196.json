@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1241129",
+    "ThreadId": "544196",
+    "Html": "Hello All,<br />\n<br />\nFirst off I am NOT a C# guy. VB is my gig and I had to do some research before I attempted this. However I found this little gem and I wasn't going to let it go unresolved. Here's the procedure.<br />\n<br />\nMy project Target Framework is 4:<br />\n<br />\n1) I imported the project into VS 2010.<br />\n2) Set the Target Framework to 4.<br />\n3) Using the error tab I located all the errors and with the help of the IntellIsense I was able to correct the errors.<br />\n4) I compiled each project in the solution from the last project in the list to the first.<br />\n<br />\nWorked great but the user could not change the CaptureWidth/CaptureHeight. The problem is the declaration CaptureWidth/CaptureHeight is set to private:<br />\n<pre><code>public int CaptureWidth { get; private set; }</code></pre>\n\nHere's what I did:<br />\n<br />\nCamera.cs<br />\n<h1>region Public Interface</h1>\nLine 52 with all other regions collapsed. Your line numbers may vary.<br />\n<br />\nChange From:<br />\n<pre><code>public int CaptureWidth { get; private set; }</code></pre>\n\nTo:<br />\n<pre><code>public int CaptureWidth { get; set; }</code></pre>\n\nCamera.cs<br />\n<h1>region Public Interface</h1>\nLine 57<br />\n<br />\nChange From:<br />\n<pre><code>public int CaptureHeight { get; private set; }</code></pre>\n\nTo:<br />\n<pre><code>public int CaptureHeight { get; set; }</code></pre>\n\nThe last step is to build touchlesslib.<br />\nI hope I'm not to late and this helps a few of you. Your comments are welcomed.<br />\n<br />\nDoug<br />\n",
+    "PostedDate": "2014-05-03T18:16:25.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

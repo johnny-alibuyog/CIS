@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "240927",
+    "ThreadId": "70718",
+    "Html": "<p>Hi All,</p>\r\n<p>The video seems to be down at the moment.<br>Does anyone know when it'll be back up?</p>\r\n<p>In the meantime, does anyone have code for a simple demo so I can get an idea how to start using the Touchless SDK?</p>\r\n<p>Thanks</p>",
+    "PostedDate": "2009-10-01T07:38:21.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "246349",
+    "ThreadId": "70718",
+    "Html": "<p>Hey, I would really like to know where the video is as well, or when it will be up. As a newer user I'm having a great deal of trouble knowing what to do =(</p>\r\n<p>Mikeeeee help us! we need that video!</p>\r\n<p>Thanks!</p>",
+    "PostedDate": "2009-10-15T20:33:07.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "246474",
+    "ThreadId": "70718",
+    "Html": "<p>Just download the sources, there is a really good sample project included which may show rather quick how to use touchless, at least for me that was really enough.</p>\r\n<p>Go read some lines of foreign code ;)</p>",
+    "PostedDate": "2009-10-16T04:30:44.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "246590",
+    "ThreadId": "70718",
+    "Html": "<p>Thanks for the reply eFloh.</p>\r\n<p>I looked through the sample sources but I wasn't able to make heads or tails of them. I think they are also written in C# or C++, I'm a bit more farmiliar with VB than C.&nbsp; What file should I start with? There are several files in the sample folder. Does each file show a different aspect of touchless? What are the file's showing? Also are the files suppose to fun, I get an error about &quot;source control not found&quot; when I try to run them.</p>\r\n<p>For my project I'm looking for as something as simple just creating a marker and being able to read the X and Y coordinate data and outputing information through SerialPort.</p>",
+    "PostedDate": "2009-10-16T08:26:50.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "246592",
+    "ThreadId": "70718",
+    "Html": "<p><span style=\"font-size:9.5pt;color:#30332d\">familiar*</span></p>\r\n<p><span style=\"font-size:9.5pt;color:#30332d\"><span style=\"font-size:9.5pt;color:#30332d\">Also are the files suppose to run**</span></span></p>\r\n<p><span style=\"font-size:9.5pt;color:#30332d\">&nbsp;</span></p>",
+    "PostedDate": "2009-10-16T08:29:47.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "246601",
+    "ThreadId": "70718",
+    "Html": "<p>I just posted the C# Walkthrough Sample video at:&nbsp;<a href=\"http://www.vimeo.com/7100308\">http://www.vimeo.com/7100308</a></p>\r\n<p>See the VB sample and video game code at: <a href=\"http://code.msdn.microsoft.com/vbtouchless\">http://code.msdn.microsoft.com/vbtouchless</a></p>\r\n<p>You can ignore the source control warnings, those are for uploading to this site.</p>\r\n<p>The important file is Form1.cs, everything else is done with the VS Form Designer.</p>",
+    "PostedDate": "2009-10-16T08:50:30.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "246767",
+    "ThreadId": "70718",
+    "Html": "<p>Wow that explains everything! thanks a lot Michwass! Please keep the video up, I (and I'm sure others) need to study it carefully.&nbsp; Since I'm still just learning VB I think I'll switch over to C# to make using touchless sdk easier.&nbsp; I'll submit my project once it's done!</p>\r\n<p>Thanks again! and nice video quality too.</p>\r\n<p>Mahhari.</p>",
+    "PostedDate": "2009-10-16T18:40:53.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

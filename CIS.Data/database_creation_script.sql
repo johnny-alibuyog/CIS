@@ -2,18 +2,18 @@ USE [master]
 GO
 
 /****** Object:  Database [cisdb]    Script Date: 01/09/2013 16:49:50 ******/
-IF  EXISTS (SELECT name FROM sys.databases WHERE name = N'cisdb')
-DROP DATABASE [cisdb]
-GO
+--IF  EXISTS (SELECT name FROM sys.databases WHERE name = N'cisdb')
+--DROP DATABASE [cisdb]
+--GO
 
 USE [master]
 GO
 
 /****** Object:  Database [cisdb]    Script Date: 01/09/2013 16:49:50 ******/
 CREATE DATABASE [cisdb] ON  PRIMARY 
-( NAME = N'cisdb', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\DATA\cisdb.mdf' , SIZE = 2048KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+( NAME = N'cisdb', FILENAME = N'C:\sandbox\CIS\cisdb.mdf' , SIZE = 4096KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
  LOG ON 
-( NAME = N'cisdb_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\DATA\cisdb_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+( NAME = N'cisdb_log', FILENAME = N'C:\sandbox\CIS\cisdb_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
 GO
 
 ALTER DATABASE [cisdb] SET COMPATIBILITY_LEVEL = 100

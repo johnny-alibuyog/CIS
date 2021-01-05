@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1488110",
+    "ThreadId": "659485",
+    "Html": "I know you can set the CaptureHeight and CaptureWidth on the Camera object. There doesn't seem to be any way to find out what that maximum size can be for the camera. If you set it higher than the maximum does it just default to maximum? For my use I want to have maximum size as I am scanning for PDF417 2D barcode and highest resolution is best for recognizing a barcode.\r<br />\n<br />\nThanks,\r<br />\nDan<br />\n",
+    "PostedDate": "2016-11-16T10:30:23.23-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

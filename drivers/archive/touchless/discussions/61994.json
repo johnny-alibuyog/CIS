@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "210436",
+    "ThreadId": "61994",
+    "Html": "<p>Hey...</p>\r\n<p>thank you very much for this nice project...I used this SDK a lot the last semester at my university for developing a<br>gesture recognition system which works for XNA Games as well as for Windows applications. Anyway I encountered<br>some drawbacks while using the Touchless.</p>\r\n<p>In some light conditions pixels in the color range of a marker appear in the background or people<br>wearing the same color as a marker walk into the field of view of the camera and so<br>disturb the correctness of the marker position. So I would like to try to improve this somehow...</p>\r\n<p>My idea now is to detect, based on the previous data of a marker, sudden changes in the size of a marker<br>or the center of a marker. This should happen while the marker is recognized by the UpdateMarker() function...</p>\r\n<p>So with the knowledge of the last position and area of a marker the UpdateMarker() function should be able to<br>reject recognizing pixels as marker pixel if they are outside of the last marker size + a maximum deviation.<br>Basically it should be an outlier detection :-)</p>\r\n<p>My problem is, that I'm not 100% sure where to start with that and I'm also not 100% sure if I understood all the code<br>in the UpdateMarker()  function.</p>\r\n<p>It would be great if someone could help me finding a starting point or explaining me the function a bit more precise...<br>I'm not that good with HSV colors...</p>\r\n<p>Looking forward for some answers :-)</p>\r\n<p>Jonas</p>",
+    "PostedDate": "2009-07-09T07:30:44.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "210519",
+    "ThreadId": "61994",
+    "Html": "<p>Hi Jonas,</p>\r\n<p>your motion recognition sounds really interesting and I would love to have a glance at your code or project, can you share some more information or even your project with the community?</p>\r\n<p>Now to the UpdateMarker() function:</p>\r\n<p>(all line numbers valid for SVN rev. 33989)</p>\r\n<p>The if-Block starting in line 399 is entered when the currently checked pixel at position (variables x,y) is &quot;detected&quot; for the current marker (variable marker).</p>\r\n<p>The marker properties set in the Block represent the following:</p>\r\n<ul>\r\n<li>Area: total amount of pixels detected for this marker</li>\r\n<li>X: Center X-position (The Average is calculated after the image loop for performance reasons by dividing through &quot;Area&quot;)</li>\r\n<li>Y: Center Y-position (The Average is calculated after the image loop for performance reasons by dividing through &quot;Area&quot;)</li>\r\n<li>Top, Bottom, Left, Right: The Marker outline rectangle</li>\r\n</ul>\r\n<p>The code starting in line 425 is used to draw the search box for every marker. The search box is the area in which a marker <strong>may</strong> be detected in this processing turn. When &nbsp;a pixel has marker colors, but lies outside of this box, it will not be detected as marker pixel.</p>\r\n<p>Maybe this is the point where you can attach your modifications: create a better search box for a marker by changing the preProcessMarker() method and/or adapting the UpdateMarker code to use more intelligent search boxes. Maybe you can use non-rectangular search boxes or use smaller search boxes...</p>\r\n<p>&nbsp;</p>\r\n<p>You will have noticed in my post that there already <strong>is</strong> code to reduce the search area. You can make it shown by setting the Highlight-Property of the marker to &quot;true&quot;. The search box is shown in thecam image with the marker representative color. Keep in mind that this box is NOT the marker area rectangle. This can be a bit confusing...</p>\r\n<p>&nbsp;</p>\r\n<p>I just added a path to the Source Code section of this project thatmodifies the Lib and demo app so the whole marker rectangle can be highlighted, not only the detected pixels. (patch #3289)</p>",
+    "PostedDate": "2009-07-09T10:38:35.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214130",
+    "ThreadId": "61994",
+    "Html": "<p>Hey Jonas,</p>\r\n<p>eFloh's description of hte detection process is really good. Is there anything else we can clear up?</p>\r\n<p>- Mike</p>",
+    "PostedDate": "2009-07-20T22:26:48.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214253",
+    "ThreadId": "61994",
+    "Html": "<p>Hey eFloh and Mike...</p>\r\n<p>no worries, your description is very good and I already started to try out some things...anyway I don't have enough time right now, because I'm writing on the theoretical things behind my master thesis. When I'm finished I will publish the project and some more details about it. There are a lot of enhancements for my gesture recognition system I could imagine so this might be a good place to start from.</p>\r\n<p>Some basics of what the system is already able to do:</p>\r\n<ul>\r\n<li>semi-automatic setup of markers in the beginning</li>\r\n<li>two &quot;click&quot; - modes for marker: one for drawing gestures and one for interacting with forms (a usual mouse click mode)</li>\r\n<li>recognizing of 3 gesture types: pointing gestures, one-marker gestures and multi-marker gestures</li>\r\n<li>assigning program functions to specfic gestures (or assigning key-shortcuts to gestures)</li>\r\n<li>loading and saving of gestures via xml file</li>\r\n</ul>\r\n<p>This should be enough for the first run. I have to finish my theoretical part till the 17th of August, so I will post more after this date :-)</p>\r\n<p>Jonas</p>",
+    "PostedDate": "2009-07-21T04:49:59.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

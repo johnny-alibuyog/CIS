@@ -1,9 +1,9 @@
 ﻿<local:DialogBase x:Class="CIS.UI.Features.Polices.Clearances.Applications.ClearanceReportView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:CIS.UI.Features"
-        xmlns:viewer="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" 
-        Title="ClearanceReportView">
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:CIS.UI.Features"
+    xmlns:viewer="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms" 
+    Title="ClearanceReportView">
     <Grid Style="{StaticResource ContentRoot}">
         <WindowsFormsHost Name="windowsFormsHost">
             <viewer:ReportViewer x:Name="_reportViewer" Dock="Fill" ShowExportButton="False" />

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "635919",
+    "ThreadId": "263529",
+    "Html": "\r\n<p>HI</p>\r\n<p>I am capturing the Touchless library frames and sending them to openCV. When i try to stop the application. It gives error on in the thrashOldCamera method on the following line:</p>\r\n<p>&nbsp;_frameSource.Camera.Dispose();</p>\r\n<p>and the application hangs. Any idea how to resolve this?</p>\r\n",
+    "PostedDate": "2011-07-01T03:18:08.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

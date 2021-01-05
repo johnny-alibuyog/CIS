@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "162957",
+    "ThreadId": "48800",
+    "Html": "I'd love to be able to use Touchless as a fake mouse input device, together with Microsoft Multipoint SDK (that supports multiple mice [can each have a fancy cursor like an animal head etc.]) for educational applications (combined with camera and projector and kids moving their colored banner to move their mouse each one arround or even wearing a colored hat and walking arround in the room)<br>\r\n",
+    "PostedDate": "2009-02-27T16:12:44.647-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "164646",
+    "ThreadId": "48800",
+    "Html": "Hi birbilis,<br>\r\n<br>\r\nThanks for the comment, I've heard of Multipoint before, but haven't used it myself.<br>\r\nIt would definitely be interesting to see multiple cursors under independent control using Touchless.<br>\r\n<br>\r\nI can tell you from experience that kids enjoy non-traditional computer interaction, like Touchless.<br>\r\nOne little dude was fascinated by drawing on the computer with M&amp;Ms at my last fair demo. <br>\r\nYou may be interested in the <a href=\"http://www2.smarttech.com/st/en-US/Products/SMART+Table/SMARTTableVideos\">SMART Table</a> project, more or less Surface aimed at kids.<br>\r\n<br>\r\nDo you have any coding experience? I'd be happy to offer help with using Touchless.<br>\r\n<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2009-03-04T21:16:06.167-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "164755",
+    "ThreadId": "48800",
+    "Html": "Thanks for the pointer to SMART Table, very interesting one. Multipoint (multiple cursors), Touchless and MultiTouch (MS Surface) are very interesting technologies. <br>\r\n<br>\r\nI've also looked a bit at Intel's OpenCV (Open Computer Vision) since I'm into robotics too (doing a PhD). I have plenty of programming experience, I'm a Microsoft MVP btw (J# / R&amp;D). <br>\r\n<br>\r\nSpeaking of interesting technologies, have you looked into the new Microsoft Tag? Wouldn't it be interesting to also support it apart from plain colored markers? They seem to have developed a coloured-pattern-drawing method that is like a barcode-descendent, but it is a 2D square of small colored triangles. They can detect and read its data, even from blured and out of focus (or shot at an angle) photos. MS is suggesting its use with mobile phone cameras from what I've read, having customers shoot at such tags they find on products etc. and automatically get more info or extra options/services via the net about that product/service on their phone. Imagine Touchless also allowing people to print such random markers (maybe MS Tag provides software for that already) and register them via the webcam to use for visual manipulation.<br>\r\n<br>\r\nBTW, seeing a video of Microsoft Surface usage, there were some handle-cubes that had a dotted pattern under them (a fat dot at the middle and some dots arround like a dice, but in a way that one could find 2D rotation of the cube since at least one dot on the cube's bottom side edges arround the central dot were missing)<br>\r\n<br>\r\nBack to the point, one crude way to integrate MultiPoint with Touchless might be to implement a virtual mouse device driver that would use IPC to talk to a .NET process which would use Touchless. That&nbsp; is unless the MultiPoint SDK provides some entry point for one to register virtual mice. Making the virtual mouse device driver would allow of course Touchless to be more generic and integrate with other stuff too on Windows<br>\r\n",
+    "PostedDate": "2009-03-05T04:10:49.647-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "165326",
+    "ThreadId": "48800",
+    "Html": "<p>Just found another project strongly reminding me of this one...</p>\r\n<p>http://www.youtube.com/watch?v=pQpr3W-YmcQ</p>\r\n",
+    "PostedDate": "2009-03-06T06:05:11.61-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "171672",
+    "ThreadId": "48800",
+    "Html": "I thought readers of this thread might be interested in a MultiPoint SDK update.<br>\r\nHere's a Channel9 article with a video interview and some additional info:<br>\r\n<a href=\"http://channel9.msdn.com/posts/Charles/MultiPoint-Revisited-SDK-11/\">http://channel9.msdn.com/posts/Charles/MultiPoint-Revisited-SDK-11/</a><br>\r\nWho wants to get crackin on some MultiPoint integration?!?<br>\r\n<br>\r\n- Mike \r\n",
+    "PostedDate": "2009-03-24T21:43:51.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "171898",
+    "ThreadId": "48800",
+    "Html": "Thanks all for those links. Some notes:<br>\r\n<br>\r\n1) the Touchless library (for building MultiTouch applications [using FTIR method on some surface]) seems to have a virtual mouse driver for Windows (according to the YouTube video above). For starters a separate thing from MultiPoint would be to allow one or more colored tracker via Touchless to work with that virtual mouse driver and its multitouch functionality (even in the case the NUI group [who make the MultiTouch lib] don't have something generic for any windows version, MS have such multitouch functionality for Win7 from what I read [maybe to act on files, windows - say zoom them in/out - etc. maybe])<br>\r\n<br>\r\nBTW, should also see the &quot;Sixth Sense&quot; presentation at TED from MIT people:<br>\r\n<a href=\"http://videos.techielife.com/unveiling-the-sixth-sense-game-changing-wearable-tech-pattie-maes-pranav-mistry/video-online/2009/03/14\">http://videos.techielife.com/unveiling-the-sixth-sense-game-changing-wearable-tech-pattie-maes-pranav-mistry/video-online/2009/03/14</a><br>\r\nregarding intergration of technology like Touchless and MultiTouch<br>\r\n<br>\r\n2)<br>\r\n- the ImagineCup competition (for Student Developer Teams) has a\r\nMultiPoint app topic and the Unlimited Potential group that makes\r\nMultiPoint allow one to get an extra chance to win something for the\r\nbest MultiPoint app (not necesserily the winner app of the ImagineCup\r\nMultiPoint theme from what I understand)<br>\r\n- the new MultiPoint SDK seems to support registering other input devices apart from mice too. Maybe it can more easily be integrated now with Touchless lib<br>\r\n<br>\r\n",
+    "PostedDate": "2009-03-25T08:38:30.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "283078",
+    "ThreadId": "82398",
+    "Html": "<p>I am observing some odd behavior from the Touchless SDK in VB.NET (2008 Express).&nbsp; After creating a new Windows Application and adding a reference to TouchlessLib.dll, VB recognizes the Touchless library (will perform autocompletes, etc).&nbsp; However, when I add the following code to the Form, things don't work:</p>\r\n<p>Public Class Form1<br>&nbsp;&nbsp;&nbsp; Private mgr As TouchlessLib.TouchlessMgr<br><br>&nbsp;&nbsp;&nbsp; Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mgr = New TouchlessLib.TouchlessMgr()<br>&nbsp;&nbsp;&nbsp; End Sub<br>End Class</p>\r\n<p>If I set a breakpoint on the mgr = line, the breakpoint is never hit even though the Form seems to load and behave just fine (it's as if the Form1_Load routine is never executed).&nbsp; If I comment out the mgr = line, a breakpoint on End Sub is hit when the Form loads (correct behavior).&nbsp; Is Touchless just not usable from VB.NET perhaps?&nbsp; That would be unfortunate.</p>\r\n<p>Thanks,</p>\r\n<p>Ben</p>",
+    "PostedDate": "2010-01-28T18:06:34.88-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283498",
+    "ThreadId": "82398",
+    "Html": "<p>Here's the (partial) solution for anyone else who encounters this problem:&nbsp; For mysterious reasons, VB.NET decides to skip code in lieu of throwing an exception when certain exceptions are generated while a Form is loading.&nbsp; Moving the mgr = line to a Click event on a button revealed an error where the WebCamLib.dll was incompatible with the VB.NET project, presumably because I'm using a 64-bit machine.&nbsp; I'm still working on how to solve that problem.</p>",
+    "PostedDate": "2010-01-29T14:47:43.513-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

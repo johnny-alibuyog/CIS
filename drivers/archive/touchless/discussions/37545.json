@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "124556",
+    "ThreadId": "37545",
+    "Html": "I cannot use SDK and compile a demo projects.<br>\r\nThis is becasue I have VS without C# I think.<br>\r\nIs this possible to make in in native C++ ?<br>\r\n<br>\r\nI'd like to see some possibility to display demos in fullscreen mode (of course with multimonitors support).<br>\r\nThat could make one monitor the additional part of desktop.<br>\r\n<br>\r\n<img title=\"\" alt=\"\" src=\"http://www.jgui.net/jg/touchless_desktopx.jpg\">&nbsp;<br>\r\n<br>\r\nBut I'm afraid about resources, due to my previous&nbsp;message about...\r\n",
+    "PostedDate": "2008-10-12T04:53:13.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124586",
+    "ThreadId": "37545",
+    "Html": "You are correct, the demo source code is in C#, you'll need that Visual Studio component to compile Touchless Demo.<div>Someone has expressed interest in re-implementing the demo in VB. Perhaps you'd like to do so in Visual C++?</div><div><br></div><div>Fullscreen is quite possible without much additional resource usage (through image scaling).</div><div>I encourage you to investigate multi-mon support and share your work with other eager fans of Touchless.</div><div>I'll be happy to link to related projects on Codeplex, or even host great demos/applications/games in our codebase.</div><div><br></div><div>Thanks!</div><div> - Mike Wasserman</div>",
+    "PostedDate": "2008-10-12T11:53:09.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

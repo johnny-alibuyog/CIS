@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "281358",
+    "ThreadId": "81923",
+    "Html": "<p>hi, I'm developing a C# .NET&nbsp;code that achieves touchless control over a robot. I plan to use the touchless sdk. My goal is to use object tracking for the motor movements, for example if I move marker 1, the right motor moves forward, and if I move marker 2, the left motor moves forward. Can anyone please give me the basic steps for constructing such a code. tips and tricks, anything at all. Or hints of a similar project to this one. thanks</p>",
+    "PostedDate": "2010-01-25T04:44:22.587-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "281684",
+    "ThreadId": "81923",
+    "Html": "<p><span style=\"font-size:10pt;color:black;font-family:'Segoe UI'\">The touchless SDK can defiantly do this. I used it to emulate a ps3 controller's joysticks.&nbsp; You need to be more clear about what you&rsquo;re asking. how much code and microcontroller experience do you have? what type of tips do you want?&nbsp; Also more details about the project can help. </span></p>",
+    "PostedDate": "2010-01-25T21:13:22.297-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283250",
+    "ThreadId": "81923",
+    "Html": "<p>thank you very much for your early reply. The project involves touch-less control of a .net micro-framework robot. All aspects of programming the micro controller has already been done. I'm still a beginner in C#, but I believe I can get by. My first task is to write a C# code that&nbsp;<strong>extracts values from the touchless sdk, i.e. when a marker is being tracked, a value is then assigned. The values can be from 0 - 255. </strong>Any value that is extracted is then assigned to the motor movements. I've chosen to follow the sequence: values 0-127 produce a backward movement of the motor, value 128 gives a neutral movement, then 129-255 produce a forward movement of the motor.&nbsp;</p>\r\n<p>I've been given a string to extract the values from the marker movements then assign the values for the motor movements.</p>\r\n<p>the string is:</p>\r\n<p>&lt;begin&gt; value, value, value, value ......&lt;end&gt;</p>\r\n<p>so for example, I move marker one upwards, it gives the value say 158, then 158 is assigned for left motor to move forward.</p>\r\n<p>Any idea how to construct this code??</p>\r\n<p>Jesse.</p>",
+    "PostedDate": "2010-01-29T02:21:43.117-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "286653",
+    "ThreadId": "81923",
+    "Html": "<p>can someone help me out with this project please. I'm still not sure how to achieve my task</p>",
+    "PostedDate": "2010-02-06T11:12:55.4-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "286721",
+    "ThreadId": "81923",
+    "Html": "<p>Hi Nextmanche,</p>\r\n<p>I would love to help, however your last reply didn't give me enough information to do so.&nbsp; I am still unclear as to your question and how much you know about touchlessSDK.</p>\r\n<p>Have you seen the tutorial video found here: <a href=\"http://www.vimeo.com/7100308\">http://www.vimeo.com/7100308</a></p>\r\n<p>What do you mean by this:</p>\r\n<p><em>&quot;aspects of programming the micro controller has already been done.&quot;</em></p>\r\n<p>Did you do this? therefore can you modify the micro controller programming etc? Also what is the purpose of the project? Just something you're doing for fun as a hobby or does it have a specfic application? (know this can help me help you).</p>\r\n<p>I am also confused what you mean by this:</p>\r\n<p><em>&quot;I've been given a string to extract the values from the marker movements then assign the values for the motor movements.</em></p>\r\n<p><em>the string is:</em></p>\r\n<p><em>&lt;begin&gt; value, value, value, value ......&lt;end&gt;&quot;</em></p>\r\n<p>I believe there are other forum member who want to help as well, but are having difficulty understanding your needs as I am.</p>\r\n<p>Thanks!</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-02-06T18:35:48.787-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

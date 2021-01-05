@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8000/touchless/host?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Touchless.Vision.Contracts" />
+  <xs:element name="RegisterClient">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegisterClientResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnRegisterClient">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnRegisterClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UnRegisterClientResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartFrameProcessing">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartFrameProcessingResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StopFrameProcessing">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StopFrameProcessingResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnObjectsDetected">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Touchless.Vision.Contracts" minOccurs="0" name="frame" nillable="true" type="q1:Frame" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Touchless.Vision.Contracts" minOccurs="0" name="detectedObjects" nillable="true" type="q2:ArrayOfDetectedObject" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnNewObject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Touchless.Vision.Contracts" minOccurs="0" name="frame" nillable="true" type="q3:Frame" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Touchless.Vision.Contracts" minOccurs="0" name="detectedObject" nillable="true" type="q4:DetectedObject" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnObjectMoved">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Touchless.Vision.Contracts" minOccurs="0" name="frame" nillable="true" type="q5:Frame" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Touchless.Vision.Contracts" minOccurs="0" name="detectedObject" nillable="true" type="q6:DetectedObject" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnObjectRemoved">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Touchless.Vision.Contracts" minOccurs="0" name="frame" nillable="true" type="q7:Frame" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Touchless.Vision.Contracts" minOccurs="0" name="detectedObject" nillable="true" type="q8:DetectedObject" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

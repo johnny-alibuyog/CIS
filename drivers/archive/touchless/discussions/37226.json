@@ -1,0 +1,194 @@
+[
+  {
+    "Id": "123538",
+    "ThreadId": "37226",
+    "Html": "Have feedback, a question, an idea please feel free to discuss it here :)<br>\r\n<br>\r\nCheers<br>\r\nNicole\r\n",
+    "PostedDate": "2008-10-07T10:58:22.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "123798",
+    "ThreadId": "37226",
+    "Html": "Hello,<br>\r\nJust heard about this project this morning when I got to work, and have been playing with it a bit.&nbsp; I'm pretty excited about the project, and am interested in doing a little programming for it.&nbsp; But when I started, I ran into an issue...<br>\r\nI have the full version of Visual Studio 2005.&nbsp; I opened a new project, a c# project, and attempted to add the two dlls to the references.&nbsp; The TouchlessLib added, but the WebcamLib would not add, saying that:<br>\r\n&quot;A reference to ...WebcamLib.dll' could not be added.&nbsp; Please make sure that the file is accessible, and that it is a valid assembly or COM component.&quot;<br>\r\nThe WebcamLib file is located in the same directory as the TouchlessLib, so I would think the first part is ruled out; I have not used references before in Visual Studio, as my background has been mostly straight C and Java, but it seemed to be fairly straightforward... so is there something obvious that I'm missing?<br>\r\n<img alt=\"\"><br>\r\n",
+    "PostedDate": "2008-10-08T09:33:04.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "123806",
+    "ThreadId": "37226",
+    "Html": "Hi there,<br>\r\n<br>\r\nI'm glad your interested in trying out Touchless.&nbsp; WebcamLib doesn't need to be added as a reference to your project only TouchlessLib.&nbsp; WebcamLib is unmanaged code written in C++ and it is referenced directly in the code of TouchlessLib.&nbsp; All you will need to do is ensure that WebcamLib is in your project output directory when you run your program.&nbsp; If you watch the Walkthrough video in the Documentation directory it will show you how to do this.<br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-08T09:54:48.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "123897",
+    "ThreadId": "37226",
+    "Html": "Hello,&nbsp; <br>\r\nI can't wait to try this out when I get home.&nbsp; My kids will get a kick out of it.&nbsp; <br>\r\nI was wondering if I could use my miniDV Camcorder instead of buying a WEBcam just for this tool.&nbsp; If you don't know then I will let you know when I try it out tonight.&nbsp; I was just wondering if anyone has tested the samples with a miniDV camcorder yet.<br>\r\nThanks,<br>\r\nCROW\r\n",
+    "PostedDate": "2008-10-08T16:28:51.83-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "123906",
+    "ThreadId": "37226",
+    "Html": "Hi Crowsoft,<br>\r\nThanks for the post. If your device works with Microsoft DirectShow (a&nbsp;multimedia framework for video input, etc.) it will work with Touchless.&nbsp;I don't expect you to buy a webcam to use Touchless, but I wouldn't stop you ;-).&nbsp;I can definitely see potential to build educational and entertaining Touchless&nbsp;applications/games targeted to youth,&nbsp;kids even really liked my Touchless Demo little demos at our last Microsoft Office Labs Productivity Science Fair!\r\n",
+    "PostedDate": "2008-10-08T17:25:38.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124281",
+    "ThreadId": "37226",
+    "Html": "Hello,<br>\r\n&nbsp; This is really cool, and why didn't I take my webcam to work today :). Well will have to wait few hours to go home :(.<br>\r\n<br>\r\n&nbsp; Lukasz<br>\r\n",
+    "PostedDate": "2008-10-10T05:58:40.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125483",
+    "ThreadId": "37226",
+    "Html": "Hi, $0Thank you for explaining how to run the touchless program but I still encounter this error(The command &quot;copy C:\\Documents and Settings\\admin\\Desktop\\Touchless\\Samples\\TouchlessDemo\\..\\..\\bin\\Release\\WebCamLib.dll C:\\Documents and Settings\\admin\\Desktop\\Touchless\\Samples\\TouchlessDemo\\bin\\Release\\WebCamLib.dll&quot; exited with code 1.)$0$0I'm  pretty new programmer and I don't know much about C# so I didn't get what the error means<span>$0</span>$0",
+    "PostedDate": "2008-10-15T20:39:18.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125488",
+    "ThreadId": "37226",
+    "Html": "Hi yasirutp,<br>\r\n<br>\r\nThat means that the post-build event of copying WebCamLib.dll failed. You should ensure that your directory structure is setup as it is in our code repository, make sure the file is in the source location, and can be copied to the destination. If you want, you can also modify or remove the post-build event to suit your needs. Try right clicking the project in Solution Explorer, click properties and look around for the post-build event's copy command.<br>\r\nGood luck and post a new topic if you have more questions!<br>\r\n<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2008-10-15T21:04:55.787-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125538",
+    "ThreadId": "37226",
+    "Html": "Thanks so much Mike for the fast reply$0Actually as I said earlier I'm very new in C# I didn't get how can I edit my post-build event $0$0my post-build event command is empty I don't now what to add to it.$0$0I didn't create a new project I just download the project file and run it but I still get that error$0$0$0$0$0-Yasir $0",
+    "PostedDate": "2008-10-16T03:17:14.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125724",
+    "ThreadId": "37226",
+    "Html": "My mistake, the copy command is in the <em>PRE</em>-build event command line. The easiest option for you is probably to remove this command altogether. But be sure to copy WebCamLib.dll into your output directories for Touchless Demo. The way to remove the pre-build copy command is to right click on the project &quot;TouchlessDemo&quot;, listed under &quot;Solution 'TouchlessDemo'&quot; in the Solution Explorer. Navigate to the Build Events tab, and it's right there. Remove the command &quot;copy $(SolutionDir)..\\..\\bin\\Release\\WebCamLib.dll $(TargetDir)WebCamLib.dll&quot; from the &quot;pre-build event command line&quot; text field. Save everything, and try rebuilding. I hope this works for you.<br>\r\n",
+    "PostedDate": "2008-10-16T16:19:40.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125801",
+    "ThreadId": "37226",
+    "Html": "Oh thanks so much $0$0$0That's alright now I managed to get it running $0$0This gonna be very helpful for game programmers$0$0$0$0$0That's cool Mike Thanks$0$0",
+    "PostedDate": "2008-10-16T23:32:18.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127436",
+    "ThreadId": "37226",
+    "Html": "<span style=\"font-weight:bold\">Hi Mike</span><span>$0</span>I'm trying to use your touchless library to capture from two cameras but I'm facing some problems doing it. I'm trying to use two (TouchlessMgr) objects <span>To access the two cameras$0</span><span style=\"white-space:pre\">\t</span>TouchlessMgr _touchCam1 = new TouchlessMgr();<span>$0</span>        TouchlessMgr _touchCam2 = new TouchlessMgr();<span>$0</span> but it seems it is not the right way. do you have any idea that how it could be done. I'm doing some stereo application that's way I need to deal with multiple cameras<span>$0</span>Regards<span>$0</span>-Yasir",
+    "PostedDate": "2008-10-24T02:20:49.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127761",
+    "ThreadId": "37226",
+    "Html": "Hi Yasirutp,<br>\r\n<br>\r\nSounds like you're working on an interesting project. Touchless hasn't been tested for this sort of use, but I'd still like to help you and make it work.<br>\r\nI don't see anything offhand that would prevent creating multiple instances of TouchlessMgr; please give more detail about the problem you're seeing.<br>\r\nPerhaps create a new discussion thread that will address this problem specifically. I'd also be happy to look at your code and do a little investigative work.<br>\r\n<br>\r\n- Mike\r\n",
+    "PostedDate": "2008-10-25T15:35:50.253-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128453",
+    "ThreadId": "37226",
+    "Html": "H Mike,<div><br></div><div>I have created a new discussion lists by the title &quot;multi-camera touchless&quot;</div><div><br></div><div>Regards,</div><div><br></div><div>Yasir,</div>",
+    "PostedDate": "2008-10-28T17:52:25.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "232971",
+    "ThreadId": "37226",
+    "Html": "<p>I am facing the same problem as discussed by yasirutp and&nbsp;michwass. I tried the solution suggested by michwass but it still showing the same error message....</p>\r\n<p>Can u put some light on this why doing all the things right i am still facing the same problem?</p>\r\n<p>Any reply will be appriciated.</p>\r\n<p>Regards</p>\r\n<p>Akki</p>",
+    "PostedDate": "2009-09-10T00:09:07.54-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233335",
+    "ThreadId": "37226",
+    "Html": "<p>Akki619, Did you remove any pre- or post-build events from the projects?&nbsp;Please double check that... The error just means that it can't a binary built by the project or the target location of the command in the event.</p>",
+    "PostedDate": "2009-09-10T15:22:58.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233403",
+    "ThreadId": "37226",
+    "Html": "<p>Thanks Michwass....</p>\r\n<p>After posting my query, I tried to solve it in many ways and found out that Visual Studio version may be a problem...</p>\r\n<p>So yesterday, I updated my .Net&nbsp;version 2.0 and Visual Studio 2005 with .Net 3.5 and Visual Studio 2008 and the application is now working properly.</p>\r\n<p>Thanks once again for your quick response....</p>\r\n<p>Regards,</p>\r\n<p>Akki</p>",
+    "PostedDate": "2009-09-10T20:54:44.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291157",
+    "ThreadId": "37226",
+    "Html": "<p>I have problem when i'm trying to add reference to WebCamLib.dll in VC++ project. I'm have error &quot;Could not add reference to file &quot;WevCamLib.dll' because it is neither a .NET assembly or registered ActiveX control&quot;. I found another copy of .dll with example form other website, and I can add reference, but later I have problem to run compiled program.</p>",
+    "PostedDate": "2010-02-16T02:54:01.643-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291415",
+    "ThreadId": "37226",
+    "Html": "<p>You shouldn't have to add a reference directly to WebCamLib if you are just using TouchlessLib.</p>\r\n<p>Otherwise, try building WebCamLib for your target platform and referencing that, or include the WebCamLib project in your solution.</p>",
+    "PostedDate": "2010-02-16T13:40:46.433-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417003",
+    "ThreadId": "37226",
+    "Html": "<p>Im sorry can u please sent me the link of the video as im unable to find it</p>\r\n<p>-dan</p>",
+    "PostedDate": "2010-03-11T07:47:05.733-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "449085",
+    "ThreadId": "37226",
+    "Html": "<p>hi all</p>\r\n<p>I am having problem with webcamlib .....&nbsp; when I compile i get errors and warnings</p>\r\n<p>Warning&nbsp;&nbsp; &nbsp;3&nbsp;&nbsp; &nbsp;The referenced component 'WebCamLib' could not be found. &nbsp;&nbsp; &nbsp;</p>\r\n<p>Error&nbsp;&nbsp; &nbsp;1&nbsp;&nbsp; &nbsp;The type or namespace name 'WebCamLib' could not be found (are you missing a using directive or an assembly reference?)&nbsp;&nbsp; &nbsp;C:\\Documents and Settings\\Owner\\My Documents\\CapsTone_Project\\touchless-30139\\TouchlessLib\\TouchlessMgr.cs&nbsp;&nbsp;</p>\r\n<p>Error&nbsp;&nbsp; &nbsp;2&nbsp;&nbsp; &nbsp;The type or namespace name 'CameraMethods' could not be found (are you missing a using directive or an assembly reference?)&nbsp;&nbsp; &nbsp;C:\\Documents and Settings\\Owner\\My Documents\\CapsTone_Project\\touchless-30139\\TouchlessLib\\Camera.cs</p>\r\n<p>Error&nbsp;&nbsp; &nbsp;4&nbsp;&nbsp; &nbsp;The type or namespace name 'WebCamLib' could not be found (are you missing a using directive or an assembly reference?)&nbsp;&nbsp; &nbsp;C:\\Documents and Settings\\Owner\\My Documents\\CapsTone_Project\\touchless-30139\\TouchlessLib\\Camera.cs&nbsp;&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>I tried all possible you posted but still i get these errors and warnings and also when I tried open it by microsoft visual C# 2008 express edition i get this message (webcamlib\\webcamlib.vcproj could not be opened because its project type (.vcproj) is not supported by this version of this application)&nbsp; &nbsp; ...&nbsp; i hope you replay me fast because I need for my graduation project</p>\r\n<p>please replay me fast</p>\r\n<p>thanks in advance</p>\r\n<p>regards,</p>\r\n<p>Mariam</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-05-29T10:51:36.81-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "449139",
+    "ThreadId": "37226",
+    "Html": "<p>Mariam</p>\r\n<p>You are getting these errors because you are trying to open it from touchless.sln. Rather you need to go to .\\samples\\touchlessDemo\\ and find the file named TouchlessDemo.csproj, double click it and run. This will definitly work. Have fun.</p>",
+    "PostedDate": "2010-05-29T15:51:16.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "451817",
+    "ThreadId": "37226",
+    "Html": "<p>hi everyone</p>\r\n<p>i tried tcouless and it was awesome project .... but have some suggestion and i need help and advise of how to enhance this project .... i want to integrate multipoint sdk with touchless at same time i want to use silverlight</p>\r\n<p>second can we use two cameras with two mouse demo .... ?</p>\r\n<p>&nbsp;</p>\r\n<p>thanks in advance ..</p>\r\n<p>regards,</p>\r\n<p>Mariam</p>",
+    "PostedDate": "2010-06-04T11:17:18.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "531099",
+    "ThreadId": "37226",
+    "Html": "\r\n<p>hi&nbsp;</p>\r\n<p>when i tried to add the two dll files to my project i could add the touchlessLib.dll but i could not add the webCamLib.dll &nbsp;when i tried to add that&nbsp;</p>\r\n<p>visual studio gave me an error saying&nbsp;A referance to 'C:\\zstuff\\sw\\touchless\\WebCamLib.dll' could not be added.Please make sure that the file is accessible, and that it is a valid assembly or COM component</p>\r\n<p>i'm using vs2008 and my os is 64 bit.Plz tl me how to fix this</p>\r\n",
+    "PostedDate": "2010-12-04T05:39:42.197-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

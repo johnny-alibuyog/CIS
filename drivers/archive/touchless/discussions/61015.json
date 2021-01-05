@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "206848",
+    "ThreadId": "61015",
+    "Html": "<p>Hi. I am using Touchless for my project.</p>\r\n<p>I have 'hardcoded' the markers in the program by add the bitmap image of the markers. This allows me to use the demos without calibrating the marker everytime I restart the program.</p>\r\n<p>But the program do not detect the hardcoded markers in different lighting well. Are there any ways to increase the sensitivity or are there any ways to save the marker's image?</p>\r\n<p>Thanks in advance.</p>",
+    "PostedDate": "2009-06-29T18:43:40.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206854",
+    "ThreadId": "61015",
+    "Html": "<p>Hey, that's cool if you've got it loading markers from file. Could you extend that to add marker save and load functionality? I'd be willing to help out if you upload a patch or send me code.</p>\r\n<p>To answer your question, the best thing to do would be to re-add the marker in very different lighting conditions, but you might be able to tweak the marker threshold sufficiently to make it work (a lower thresh will match more pixels). Otherwise, you might be able to adjust your webcam settings to compensate for limited lighting differences by using/tweaking automatic&nbsp;gain / night mode / exposure settings, depending on your camera's software. It might also be possible to add some controls that would offset Touchless's detected colors to compensate for lighting differences, but you'd have to perform some brightness sampling or add manual user controls to make that work, and I'm not sure how well it'd play out.</p>\r\n<p>If you're able to contribute, you'll be helping other people with the same requests!</p>\r\n<p>- Mike</p>",
+    "PostedDate": "2009-06-29T18:55:35.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206956",
+    "ThreadId": "61015",
+    "Html": "<div style=\"color:Black;background-color:White\"></div>\r\n<p>Is it possible to save the bitmap image when we add a new marker using <span style=\"font-size:medium\"></span></p>\r\n<pre><p>&nbsp;</p><pre>image.Save(<span style=\"color:#A31515\">&quot;c:\\\\button.bmp&quot;</span>, System.Drawing.Imaging.ImageFormat.Bmp);\r\n</pre>\r\n<p>\r\n<pre>I placed this code in addMarker(), but the image saved is whole image captured from the webcam. I am not sure not how the image is processed when we are adding the marker though.</pre>\r\n</p>\r\n</pre>",
+    "PostedDate": "2009-06-30T01:29:53.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "207183",
+    "ThreadId": "61015",
+    "Html": "<p>Hey Mike,</p>\r\n<p>I am a bit silent in the last time because I am writing on my master thesis (about rule engines, in case someone asks), but I still have the Load/Save marker code in my hands.</p>\r\n<p>I thought I had commited a patch containing it but I could double check if it still applies with the current release or else recommit an updated version, are you (and YOU, YOU, and You over there ;) interested?</p>",
+    "PostedDate": "2009-06-30T11:29:52.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "207344",
+    "ThreadId": "61015",
+    "Html": "<p>Hi eFloh,</p>\r\n<p>I am interested in the save and load patch. I did try your patch and I have 1.</p>\r\n<p>1. 'TouchlessLib.Marker.SetMarkerAppearance(int[*,*,*])': not all code paths return a value</p>\r\n<p>&nbsp;</p>\r\n<p>Hope you can help.</p>\r\n<p>Thanks.</p>\r\n<p>&nbsp;</p>\r\n<p>*edited</p>\r\n<p>I managed to get the program running. But the markers don't seem to be saved.</p>",
+    "PostedDate": "2009-06-30T19:36:52.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "207528",
+    "ThreadId": "61015",
+    "Html": "<p>Hi happyrasins,</p>\r\n<p>I am happy to annouce that I just uploaded a new patch for marker saving and loading.</p>\r\n<p>The demo app is also updated in this version and shows sample &nbsp;code for marker saving and loading.</p>\r\n<p>The marker data is not processed, so changing light conditions will affect your success with my code, too.</p>\r\n<p>direct download: <a title=\"direct patch download\" href=\"http://touchless.codeplex.com/Project/Download/FileDownload.aspx?DownloadId=73578\">http://touchless.codeplex.com/Project/Download/FileDownload.aspx?DownloadId=73578&nbsp;</a></p>",
+    "PostedDate": "2009-07-01T06:27:12.35-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "207786",
+    "ThreadId": "61015",
+    "Html": "<p>Hi eFloh,</p>\r\n<p>Thanks for the reply. I tried the new patch and I have errors 'ExportedMarker' could not be found in TouchlessDemo.cs</p>\r\n<p>Hope you can help.</p>",
+    "PostedDate": "2009-07-01T19:55:26.357-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "207893",
+    "ThreadId": "61015",
+    "Html": "<p>sorry to hear this.</p>\r\n<p>How did you apply the patch? When I get a clean checkout using subversion and then patching the sources (using TortoiseSVN &quot;apply patch&quot; function),<br>my code cleanlycompiles. Please ensure that all 4 files were patched:</p>\r\n<p>TouchlessLib:</p>\r\n<ul>\r\n<li>Marker.cs</li>\r\n<li>TouchlessMgr.cs&nbsp;</li>\r\n</ul>\r\n<p>TouchlessDemo:</p>\r\n<ul>\r\n<li>&nbsp;TouchlessDemo.cs</li>\r\n<li>TouchlessDemo.Designer.cs</li>\r\n</ul>\r\n<p>&nbsp;</p>\r\n<p>You may check the file Marker.cs if it contains the class ExportedMarker, else you had problems applying the patch.</p>",
+    "PostedDate": "2009-07-02T04:30:12.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208204",
+    "ThreadId": "61015",
+    "Html": "<p>Thanks, I managed to solved the problem.</p>",
+    "PostedDate": "2009-07-02T23:34:51.073-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

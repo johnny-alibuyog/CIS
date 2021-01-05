@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "124828",
+    "ThreadId": "37639",
+    "Html": "<a class=breadcrumb href=\"http://weblog.infoworld.com/fatalexception/\">Fatal Exception | Neil McAllister&nbsp;</a>in <a href=\"http://weblog.infoworld.com/fatalexception/archives/2008/10/microsofts_touc.html\">his review of Touchless on infoworld.com</a>&nbsp; he said:<br>\r\n&quot;Not everything went smoothly. The demo apps seemed to expect the video feed from my Webcam to work like a mirror, not a camera. But my Webcam doesn't flip the image along the vertical axis. When I move my hand to the right, the marker in the onscreen video moves left -- and so does the Touchless cursor.&quot;<br>\r\n<br>\r\nHow can we make this better?&nbsp; It's not clear if didn't know a mirroring option is normally available in the webcam option dialog or if his webcam didn't support mirroring.&nbsp; Both cases could be true. <br>\r\nFor the first&nbsp;maybe Touchless&nbsp;should auto detect and set&nbsp;vertical mirroring.<br>\r\nFor the second, can we find out how common it is?&nbsp; If it is common for modern webcams to lack this functionality could we do this in software?<br>\r\n<br>\r\n- qhawk\r\n",
+    "PostedDate": "2008-10-13T15:02:19.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "433841",
+    "ThreadId": "210096",
+    "Html": "<p>Hello.</p>\r\n<p>I have a logitech orbit webcam that can capture HIGH RES Image, but, usign touchless, the max resolution is 640*480. If possible to change this?.</p>\r\n<p>Thanks.</p>",
+    "PostedDate": "2010-04-21T12:50:57.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "464313",
+    "ThreadId": "210096",
+    "Html": "<p>I'm using the latest build and the resolution seems to be fixed at 320x240.&nbsp; The imagebox is 640x480 but the actual image returned in OnImageCaptured&nbsp;(_latestFrame = frame.Image) is 320X240.</p>\r\n<p>The following post shows how to change the resolution, but I don't know where to get the pin parameter from:</p>\r\n<p><a href=\"http://social.msdn.microsoft.com/forums/en-US/windowsdirectshowdevelopment/thread/fa127dc1-71f8-41d6-89bf-eddc96699dad\">http://social.msdn.microsoft.com/forums/en-US/windowsdirectshowdevelopment/thread/fa127dc1-71f8-41d6-89bf-eddc96699dad</a></p>",
+    "PostedDate": "2010-07-07T08:08:07.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1442757",
+    "ThreadId": "644455",
+    "Html": "help..\r<br />\nI've being trying to add the WebcamLib.dll to my vb.net vs 12 project through add reference, each time i tried, always got error &quot;file coudn' t be added, please make sure that this file is accessible and that is a valid assembly or COM component&quot;.\r<br />\nMeanwhile it was able to add TouchlessLib.dll in the same folder....\r<br />\n<br />\nthanks for the in advance.\r<br />\n<br />\nmy mail: <a href=\"mailto:walexzzytechn@gmail.com\" rel=\"nofollow\">walexzzytechn@gmail.com</a><br />\n",
+    "PostedDate": "2015-09-01T20:03:05.43-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1459983",
+    "ThreadId": "644455",
+    "Html": "<strong>walexzzy wrote:</strong><br />\n<blockquote>\nhelp..<br />\nI've being trying to add the WebcamLib.dll to my vb.net vs 12 project through add reference, each time i tried, always got error &quot;file coudn' t be added, please make sure that this file is accessible and that is a valid assembly or COM component&quot;.<br />\nMeanwhile it was able to add TouchlessLib.dll in the same folder....<br />\n<br />\nthanks for the in advance.<br />\n<br />\nmy mail: <a href=\"mailto:walexzzytechn@gmail.com\" rel=\"nofollow\">walexzzytechn@gmail.com</a><br />\n</blockquote>\nDear Bro,\r<br />\n<br />\nThis Touchless Lib does not required to Add webcamLib.dll as a Reference to your Project. It require  Add Tocuhless Lib as a Reference. After add reference Kindly Put webcamLib.dll to Debug Folder. It's enough to Run Successfully.\r<br />\n<br />\nAll the Best\r<br />\nRADU MEDIA<br />\n",
+    "PostedDate": "2016-01-20T22:24:09.857-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

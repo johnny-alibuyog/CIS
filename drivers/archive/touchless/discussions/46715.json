@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "156193",
+    "ThreadId": "46715",
+    "Html": "hi,<br>\r\n<br>\r\nI just tried the touchless SDK and was quite happy to see an open source project using a webcam to interact with a graphical interface. Since I am quite new to dotnet and since my background is web related, I would like to ask if it would be possible to integrate touchless into a web site as client application to interact with it? <br>\r\nI thought of something like ActiveX or similar .. <br>\r\n<br>\r\nI've done a bit of research and found nothing appropriate, yet. It would be nice to control web content without a mouse just using your hands and some predefined gestures ( or modify the application to learn your gestures and save it as a profile? ).<br>\r\n<br>\r\nI appreciate every answer. Thank you in advance. <br>\r\n<br>\r\nplex. \r\n",
+    "PostedDate": "2009-02-10T04:30:14.217-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "156832",
+    "ThreadId": "46715",
+    "Html": "Hi plex,<br>\r\n<br>\r\nUnfortunately, I don't know much about running Touchless (or arbitrary dlls) client-side from a website.<br>\r\nHopefully someone else does! Otherwise, you could build a client-side app that's run normally alongside a browser.<br>\r\nYou can interpret Touchless data as gestures and then fire keyboard/mouse events.<br>\r\nYou'd be able to scroll, pageup/pagedown, zoom (with ctrl-scrollwhell), etc. on most (read: non-flash) websites.<br>\r\n<br>\r\nAlso, flash has some webcam support, so one could theoretically implement something like Touchless in flash.<br>\r\n<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2009-02-11T14:56:03.29-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "157365",
+    "ThreadId": "46715",
+    "Html": "Hello michwass,<br>\r\n<br>\r\nthank you for your reply. I'm sorry I could not answer immediately :(<br>\r\n<br>\r\nI recently evaluated Touchless as an ActiveX control inside a web page, with some limitations ActiveX implies: <br>\r\n<br>\r\n- the user must install and accept the new component and be willing to access system ressources ( taking over mouse control etc..)<br>\r\n-&gt; this implies that a lot of user won't be willing to do so..<br>\r\n<br>\r\nas an alternative I tried the mouse control integration of touchless, which is a good start, but offers limited precise control over the mouse ( as you have written as comment in the demo app ).<br>\r\n<br>\r\nUsing flash would be a nice alternative and I think I'm going to port it into the most recent flex version. The only disadvantage I saw was the performance, which is slighly below Touchless.<br>\r\n<br>\r\nHowever, this project is still a great advancement in creating new human controllable interfaces that are a more intuitive .. <br>\r\nKeep on the good work and thank you again for sharing your project with us :)<br>\r\n<br>\r\n- plex.<br>\r\n<br>\r\n",
+    "PostedDate": "2009-02-13T03:11:59.483-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "157879",
+    "ThreadId": "46715",
+    "Html": "Hmm, I'd definitely like to see an ActiveX use of Touchless if anyone else is interested.<br>\r\nMouse control is at its beginning, I'm hoping we all can improve functionality soon.<br>\r\n<br>\r\nPlex, I encourage you to post more info about your project here as it progresses.<br>\r\nMyself and others will be interested in your work, whether or not you use Touchless.<br>\r\n<br>\r\nI'm glad to hear that you appreciate the project. Best regards,<br>\r\n- Mike\r\n",
+    "PostedDate": "2009-02-15T15:09:02.8-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "158895",
+    "ThreadId": "46715",
+    "Html": "Hello Michwass,<br>\r\n<br>\r\nthe more I am working on this project the more exciting it gets. We are currently testing the performance of wavelets for shape recognition and some other non-classical shape detection algorithms ( see belongie et. al. for a rather good approach in detecting shapes).<br>\r\n<br>\r\nAnother major problem is the recognition of gestures, like waving ones arms or turning hands to control something. But we are still at the beginning..<br>\r\nUnfortunatley I cannot reveal any source code due to my companies restrictions .. But for some a plain description of the process will suffice I think and will be no problem for my company .. <br>\r\n<br>\r\nThank you for reading :)<br>\r\n<br>\r\nbest regards,<br>\r\nplex. <br>\r\n<br>\r\n\r\n",
+    "PostedDate": "2009-02-18T01:59:06.567-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

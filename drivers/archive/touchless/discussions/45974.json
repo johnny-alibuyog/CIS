@@ -1,0 +1,90 @@
+[
+  {
+    "Id": "153399",
+    "ThreadId": "45974",
+    "Html": "Hi guys,<br>\r\nI've been working on my XNA (w/touchless) game for a few weeks now, and I'm getting on quite well with it.<br>\r\nI'm trying to make a settings form which will allow the user to tweak all settings to do with markers and gesture recognition (something I'm adding in as part of the project).<br>\r\nAs part of this settings form, I want the user to be able to replace the default marker if they wish.<br>\r\nWhen they have selected the area they wish to have as their marker, I want to remove the existing marker and replace it with this new one. My problem is that removing/inserting markers at specific indexes in the Markers IList wont work as it is read only. <br>\r\nIn the Touchless demo, though, the user is able to remove specific markers. <br>\r\n<br>\r\nIs there any easy way for me to do this? And if not, is there any way to set Markers.IsReadOnly to False?<br>\r\n<br>\r\nIf you're interested in seeing the progress of my XNA + Touchless game so far, there are a few videos up here:<br>\r\n<a href=\"http://www.jsynnott.com/category/final-year-project/\">http://www.jsynnott.com/category/final-year-project/</a><br>\r\n<br>\r\nI update it with progress videos every week or so.<br>\r\n<br>\r\nThanks,<br>\r\nJonathan<br>\r\n",
+    "PostedDate": "2009-02-02T10:00:49.957-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "153416",
+    "ThreadId": "45974",
+    "Html": "Ah, I see there is a Markers.RemoveMarker() method which the demo probably uses to modify the Markers IList. Say I wanted to add my own method to your implementation of the IList, how would I go about modifying and recompiling your touchlib.dll? Sorry for the newbie question!\r\n",
+    "PostedDate": "2009-02-02T11:11:37.953-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154004",
+    "ThreadId": "45974",
+    "Html": "<p>The most easy way to understand what is done is just downloading the source code (also containing the demo app sources) and reading what's happening.<br>\r\nThats how I started, too.</p>\r\n<p>Afterall, the &quot;IList&quot; you get is nothing more than a standard List&lt;Marker&gt;. You do not want to modify this list, but possibly use other methods of the TouchlessMgr class</p>\r\n<p>(or if you really miss a feature, extend that class and/or ask for the feature here in the forums or using the issue tracker)</p>\r\n<p></p>\r\n<p>HTH,</p>\r\n<p>Florian</p>\r\n",
+    "PostedDate": "2009-02-03T15:47:57.91-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154500",
+    "ThreadId": "45974",
+    "Html": "Hey Johnathan,<br>\r\n<br>\r\nDid Florian's advice help? He's right.<br>\r\nUse RemoveMarker(), The IList is a read-only copy to prevent threading problems.<br>\r\nThe IList is a templated .NET construct that I use, I don't extend their implementation.<br>\r\nIt's easy enough to modify the source code and link to your version of the library.<br>\r\nMay I ask what additional functionality are you looking for?<br>\r\n<br>\r\n- Mike\r\n",
+    "PostedDate": "2009-02-04T18:24:56.993-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154501",
+    "ThreadId": "45974",
+    "Html": "Hi guys,<br>\r\nThanks for the responses.<br>\r\nMike - I managed to work out how to modify and recompile your source code. I stuck with an old build though, as I found some changes in the new builds were breaking some parts of my project. I'm sure it would be sensible in the long-term for me to upgrade my code to work with the new builds, but given the time constraints I have on this project I didn't want to complicate matters!<br>\r\n<br>\r\nBasically, I added an &quot;InsertMarkerAt&quot; method to your TouchlessLib. This allows me to specify where in the Markers list a new marker will be added. The reason behind this is because I have two markers in my game which I allow the user to define themselves in any order. One marker is for player character movement, and the other marker is for gestures. I needed to be able to insert a marker at a specific place in the marker list as I had to ensure that the player marker was always the first one in the list (index 0) and the gesture marker was always the second one (index 1). If I simply used the addMarker() method, the last marker that the user defines would be placed second in the list.<br>\r\n<br>\r\nHope that makes sense, haha. My brain is a bit mushed after working on all of this for so long. Hopefully you'll enjoy the finished project - be sure to check out those videos Mike!\r\n",
+    "PostedDate": "2009-02-04T18:32:56.357-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154503",
+    "ThreadId": "45974",
+    "Html": "Oh sigh..<br>\r\nI've just realised after looking at my code with a pair of fresh eyes, that I didn't need to bother adding that method at all.. I could have done it a far simpler way.<br>\r\n<br>\r\n",
+    "PostedDate": "2009-02-04T18:45:10.457-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154506",
+    "ThreadId": "45974",
+    "Html": "I was just going to suggest that it might have been easier to\r\nmodify your client-side code to remember the indices of your game's\r\n'movement' and 'gesture' markers, instead of assuming they are 0 and 1.\r\nEither way, I'm glad you found a solution. If you'd like, you can\r\nsubmit a request to the feature tracker for me to add more Marker list editing functionality, although I'm not sure how useful it is to other users.<br>\r\n<br>\r\nThe videos are great, I just pointed them out to my family this past weekend. Your project looks like it's coming along nicely. I particularly like the video you just added with your own editable gesture recognition system and mini-language. Something similar would potentially be a useful component of the Touchless library. I'd love to see a gesture recognition system built on top of the library, or a way to map Touchless output to an existing system.<br>\r\n<br>\r\nKeep up the awesome work,<br>\r\n- Mike<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-02-04T18:53:02.16-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154508",
+    "ThreadId": "45974",
+    "Html": "Hahah yeah I just realised I could've used IndexOf() and fed in the marker I want to remove, and then remove the marker at that index. Simple as that. That's about 4 hours yesterday wasted! Oh well, you live and learn :).<br>\r\n<br>\r\nGlad you liked the videos. I plan on investing at least another solid 2 weeks coding time into the project to have the majority of it done, but it's definitely something I'll continue to work upon in my spare time afterwards. I'll give you all the source code (if you're interested) to see if there's anything useful you can salvage from it once it's finished, assuming my university don't have any issues with me giving it out.\r\n",
+    "PostedDate": "2009-02-04T18:59:05.65-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "155154",
+    "ThreadId": "45974",
+    "Html": "<p>Hi again,</p>\r\n<p>I also had the need to &quot;identify&quot;/classify markers and thus used the marker name for this (or is the &quot;Name&quot; property an extension of my own? can't remember...)<br>\r\nMike, we could extend the Marker and Manager classes with a marker ID generated on AddMarker and/or user-settable and add FindMarker(string name) and RemoveMarker(string name) etc. methods.</p>\r\n<p>Another idea I am currently working on is adding some more event handlers to the marker class to allow user code to register once and recieve Marker.OnChange-Events for any marker defined or added later. Does anyone need this feature? In that case, I could make a small intermediate patch for you, until Mike may include it in its main code.</p>\r\n",
+    "PostedDate": "2009-02-06T10:26:17.223-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "155595",
+    "ThreadId": "45974",
+    "Html": "<p>I just added the patch mentioned above for the curious. Mike, the content is part of a bigger patchset, so you may simply decline it without checking, the changes will be part of anotherbigger patchset following later. Just had some spare time on the train...</p>\r\n<p>http://www.codeplex.com/Project/Download/FileDownload.aspx?ProjectName=touchless&amp;DownloadId=57932</p>\r\n<p>The patch applies against SVN r28702</p>\r\n<p></p>\r\n<p>[edit: fixed typo]</p>\r\n",
+    "PostedDate": "2009-02-08T13:24:26.013-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "156450",
+    "ThreadId": "45974",
+    "Html": "Hi Guys,<br>\r\nJust a little update on my touchless game if anyone's interested. <a href=\"http://flickr.com/photos/jsynnott/3269878479/\">http://flickr.com/photos/jsynnott/3269878479/</a><br>\r\nThe game is really starting to take shape now!\r\n",
+    "PostedDate": "2009-02-10T15:31:43.32-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

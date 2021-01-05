@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "127806",
+    "ThreadId": "38522",
+    "Html": "Hi, whenever I click on one of the demo's buttons, everything looks ok, but I' can't use the markers, please help. I am using a&nbsp;GE 98756 MiniCam Pro webcam.<br>\r\n-----------------------------------------------------<br>\r\nI got a new webcam, the Microsoft LifeCam VX-1000. It should work with the application. \r\n",
+    "PostedDate": "2008-10-26T00:57:08.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127904",
+    "ThreadId": "38522",
+    "Html": "Hi tiggman93, Please let me know exactly what you're having trouble with.<br>\r\nOn the &quot;Markers&quot; tab, try clicking the &quot;Help!&quot; button on the bottom left. This will give you tips on how to add a marker.<br>\r\nOnce you successfully add a marker, you'll see a box around it and the matched pixels will be highlighted; then you're ready to use the demos.<br>\r\n- Mike\r\n",
+    "PostedDate": "2008-10-26T15:15:16.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129409",
+    "ThreadId": "38522",
+    "Html": "Same here. Dell XPS M1330.<br>\r\nFirst time the demo button was enabled but nothing hapenned. Then app crashed. Now no marker is recognized <br>\r\n-----------------<br>\r\nit's working. igonre msg\r\n",
+    "PostedDate": "2008-11-01T11:05:04.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

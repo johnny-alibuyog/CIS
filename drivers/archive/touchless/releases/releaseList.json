@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "0",
+    "Name": "Touchless 1.0",
+    "DevelopmentStatus": "Stable",
+    "Description": "! Wait, Try the new version!\nDon't use the out-of-date Touchless 1.0 release; *[url:download the newest version|http://touchless.codeplex.com/SourceControl/ListDownloadableCommits.aspx]* instead!\nThe newest version has improved performance, new features, and additional demos.\nThe newest version is only missing updated documentation and instructions like the ones posted here.\n! Want the Demo Only?\n* Save the Touchless.zip file above\n* Open the folder it is in\n* Right click on it and select Extract All\n* Make sure you have a webcam hooked up\n* Double click TouchlessDemo.exe\n* Have Fun!\n! What's in this release?\nThe Touchless.zip release includes a short list of binary files to demonstrate Touchless:\n* WebCamLib.dll - Interfaces with DirectShow to grab webcam frames\n* TouchlessLib.dll - Contains the functionality of Touchless SDK\n* TouchlessDemo.exe - A small demonstration of what Touchless can be used for\n* Image.gif - Used in TouchlessDemo's image demo\n* Touchless.chm - A documentation file of the Touchless API for developers\n* Touchless.jpg - A class diagram of the Touchless API for developers\n* Touchless.rtf - A text documentation file for users and developers\nThe {\"Touchless_Source_Code.zip\"} release was assembled for easy access to the source.\n* Contains the source files for WebCamLib, TouchlessLib, and TouchlessDemo, and the Walkthrough Sample\n* Contains the documentation, but not the videos stored in the repository\n* Contains the binary debug and release builds for WebCamLib, TouchlessLib, and TouchlessDemo\n! How to add Touchless to your project\nBy adding Touchless to your project, you can give your users a truly fun, novel, and functional multi-touch experience, and all they need is a webcam!\n\nThe prerequisites you'll need to develop using Touchless are:\n* Visual Studio 2005 or 2008, or [url:Visual Studio Express Edition|http://www.microsoft.com/express/product/]\n* .NET 3.0 or greater\n* \"TouchlessLib.dll\" and \"WebcamLib.dll\"\nTo add Touchless to an existing Visual Studio project, simply right click “References” and select “Add Reference…” go to the browse tab, and select \"TouchlessLib.dll\". Ensure that both \"TouchlessLib.dll\" and \"WebcamLib.dll\" are copied to the same output directory to be used with your builds. Watch a video showing [url:how we made the Walkthrough Sample|http://video.msn.com/video.aspx?vid=e84b0f3e-a701-49f6-b831-c0537a4ced37] in only 15 minutes!\n\n*Want to post your demo here or contribute to Touchless?*\nRequest access by getting in touch with [url:Mike Wasserman|https://www.codeplex.com/site/users/contact/michwass?OriginalUrl=http://www.codeplex.com/touchless]\n\n! What's Touchless?\nTouchless is an SDK that allows users to create and experience multi-touch applications. Touchless started as Mike Wasserman’s college project at Columbia University. The main idea: to offer users a new and cheap way of experiencing multi-touch capabilities, without the need of expensive hardware or software. All the user needs is a camera, which will track colored markers defined by the user.\n\nMike presented the project at the Microsoft Office Labs Productivity Science Fair, Office Labs fell in love with it, and Touchless was chosen as a Community Project. Our deliverables include an extensible demo application to showcase a limited set of multi-touch capabilities, but mainly we are delivering an SDK to allow users to build their own multi-touch applications.\n\nNow, Touchless is released free and open-source to the world under the Microsoft Public License (Ms-PL) on CodePlex. Our goals are to drive community involvement and use of the SDK as it continues to develop.\n\nRemember that this is just the beginning; and you're invited to join our journey. Send us your questions and feedback, use Touchless SDK in your .NET applications and XNA games, and support the community by contributing to the source code.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2009-03-19T02:11:36.39-07:00",
+    "Files": [
+      {
+        "Id": "983e60e0-fa29-4297-8483-82a6a52a27c7",
+        "FileName": "Touchless.zip",
+        "Url": "./0/983e60e0-fa29-4297-8483-82a6a52a27c7",
+        "Type": "Application",
+        "UploadDate": "2008-10-05T17:54:15.423-07:00"
+      },
+      {
+        "Id": "b0dc9496-74bb-458b-a74a-343b8142938f",
+        "FileName": "Touchless_Source_Code.zip",
+        "Url": "./0/b0dc9496-74bb-458b-a74a-343b8142938f",
+        "Type": "Source Code",
+        "UploadDate": "2008-10-08T12:17:02.35-07:00"
+      }
+    ]
+  }
+]

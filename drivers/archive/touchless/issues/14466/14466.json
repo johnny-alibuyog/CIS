@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I downloaded the sdk source code 55790 and converted to a Visual Studio 2010 solution without any error. But when I tried to compile the solution, it fails with many erros that could be resumed that WebCamLib does not exist. I tried to compile the WebCamLib project only, but it fails with 'qedit.h':No such file or directory in line 19 from WebCamLib.cpp. I tried to reference the binary WebCamLib.dll that I got from the demo, and now Visual Studio complains that it is not a valid .dll and the refence is no set.\nWhat am I doing wrong?",
+    "LastUpdatedDate": "2013-02-21T16:27:52.303-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2011-11-25T14:28:41.313-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Unable building on Visual Studio 2010 64 bits",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 14466
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

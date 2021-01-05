@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "488083",
+    "ThreadId": "225750",
+    "Html": "<p>Hi,</p>\r\n<p>I was just wondering if there is source code available for the &quot;Image Demo&quot; option in the demo application. The video tutorial shows the &quot;Draw Demo&quot; and the source code available through download is for the &quot;Defend Demo&quot;. I have a requirement which is something like the &quot;Image Demo&quot; option in the demo application. I could not find the source code for the same.</p>\r\n<p>Can anyone please tell me if that is available? Also, my question is how is the map image in the &quot;Image Demo&quot; getting rendered in the display. Is that a graphics image being drawn on the picture box or is that an image inserted in the video buffer of the camera feed.</p>\r\n<p>Can someone please help!!</p>\r\n<p>Thanks!</p>\r\n<p>Anshu Dutta</p>",
+    "PostedDate": "2010-09-02T02:05:46.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

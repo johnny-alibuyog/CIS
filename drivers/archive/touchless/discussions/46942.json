@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "157021",
+    "ThreadId": "46942",
+    "Html": "Hi, I would like to know first if this is a place where I can post bugs of the program, or if that is not welcome here.<br>\r\n<br>\r\nIf i can, the tittle describes the bug by itself.<br>\r\nAs soon as I start the program, it will shut down. I have tryed a logitech webcam, but I will try with another one asap and in another computer, and i will post results and more concret webcams models.<br>\r\n<br>\r\nIs this a known bug with an easy way to be solved? If so, where can i find a description of the possible solution?<br>\r\nThanks a lot!<br>\r\n<br>\r\n",
+    "PostedDate": "2009-02-12T06:19:29.697-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "157272",
+    "ThreadId": "46942",
+    "Html": "Hey armagedoom,<br>\r\n<br>\r\nThis is a good place for the problem you describe, especially because I could use some more detail.<br>\r\nAre you using the 1.0 release or a later build from the source repository? Is there any message/error?<br>\r\nThis isn't a known issue, unless you're running Touchless from inside a zip file (you need to extract).<br>\r\n<br>\r\nPlease do try the app with another webcam or on another machine. Or try that webcam with another app.<br>\r\nWhat is the configuration of that machine? (OS, webcam model/drivers, .NET version, DirectX version...)<br>\r\nI hope I'll be able to help more with some additional information.<br>\r\n<br>\r\nThanks,<br>\r\n- Mike<br>\r\n",
+    "PostedDate": "2009-02-12T19:31:23.29-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "157715",
+    "ThreadId": "46942",
+    "Html": "It was the cammera, &quot;logitech expressII&quot; not compatible with the program, coz I try it with the &quot;PS2 eyetoy&quot;, and it will work like charm.<br>\r\nBoth on windows XP, with SP3<br>\r\nThe version of the program installed is the last one I could download 3 days ago, at this link:<br>\r\n<a href=\"http://www.codeplex.com/touchless/Release/ProjectReleases.aspx?ReleaseId=17986\">http://www.codeplex.com/touchless/Release/ProjectReleases.aspx?ReleaseId=17986</a><br>\r\n<br>\r\nThere was no message or error, the program just shut down (was not running from a zip hehe, im not a computer noob ^^).<br>\r\nDirectX and .net are the lastest ones.<br>\r\n<br>\r\nSo no help needed coz its working now, but if u need any more info to locate the bug, just ask.<br>\r\n<br>\r\nThankyou, and Id like to give u a message of encoragement with the project, wich promisses a lot.\r\n",
+    "PostedDate": "2009-02-14T14:10:18.493-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "157877",
+    "ThreadId": "46942",
+    "Html": "Hmm, I'm guessing the problem would be with WebCamLib's use of the camera driver.<br>\r\nI encourage you to try the latest version of the application to see if the bug is still present.<br>\r\nHere's a link: <a href=\"http://www.codeplex.com/touchless/SourceControl/changeset/view/28723\">http://www.codeplex.com/touchless/SourceControl/changeset/view/28723</a>#<br>\r\nClick the download link in green, you'll get source code and binaries are in the &quot;bin&quot; folder.<br>\r\n<br>\r\nWebCamLib needs maintenence, and that should be addressed in the coming weeks.<br>\r\nIn the mean time, I'm glad you have a backup camera.<br>\r\n<br>\r\nI'm glad to hear you like the library/demo.<br>\r\nSpread the word; make and share something cool!<br>\r\n- Mike\r\n",
+    "PostedDate": "2009-02-15T14:58:15.983-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "124033",
+    "ThreadId": "37381",
+    "Html": "Cool stuff :)<br>\r\nWould it be a major problem in the demo application to have the interactions not mirror-inverted? Currently, it is very cumbersome to interact.<br>\r\n<br>\r\nNice and interesting - and surely a lot of space for improvements.<br>\r\n<br>\r\nCheers,<br>\r\nChristian<br>\r\n",
+    "PostedDate": "2008-10-09T07:02:50.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124104",
+    "ThreadId": "37381",
+    "Html": "Hi Christian,<br>\r\n<br>\r\nThanks for the question. If you click the Camera Tab and then click Adjust Camera Properties - you can select to mirror the image. There are other camera settings there as well.<br>\r\n<br>\r\nCheers<br>\r\nNicole\r\n",
+    "PostedDate": "2008-10-09T10:22:26.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124106",
+    "ThreadId": "37381",
+    "Html": "Doh! Thanks :)<br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-09T10:29:32.613-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124107",
+    "ThreadId": "37381",
+    "Html": "... well... I don't have that property...<br>\r\n",
+    "PostedDate": "2008-10-09T10:35:12.307-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124120",
+    "ThreadId": "37381",
+    "Html": "We've heard that some cameras do not have the option to flip axes in their properties dialogs.<br>\r\nIf you'd like this feature as part of the SDK/Demo, please vote on issue 6385: <a id=\"ctl00_ctl00_MasterContent_TabContentPanel_Content_WorkItemListRepeater_ctl02_TitleLink\" href=\"../WorkItem/View.aspx?WorkItemId=6385\">Webcam Properties - Flip Image X and Y.</a><a>\r\n</a>\r\n",
+    "PostedDate": "2008-10-09T11:35:55.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

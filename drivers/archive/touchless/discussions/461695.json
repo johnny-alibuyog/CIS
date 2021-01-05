@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1105655",
+    "ThreadId": "461695",
+    "Html": "I am doing a project using touchless library I wanted to study the touchless well...so I have downloaded the touchless_source_code.zip from <a href=\"http://touchless.codeplex.com/releases/view/17986\" rel=\"nofollow\">http://touchless.codeplex.com/releases/view/17986</a> link..\r<br />\nextracted and\r<br />\n \r<br />\nwhen i try to run the exe file from\r<br />\nTouchless_Source_Code\\Touchless\\bin\\Debug\\touchless.exe its running\r<br />\n \r<br />\nbut when i run the project file from\r<br />\n\\Touchless_Source_Code\\Touchless\\Samples\\TouchlessDemo\\ here I run TouchlessDemo C# project file .....it is throwing error\r<br />\n \r<br />\nError    1    &quot;The command &quot;copy E:\\Browser Vision\\Touchless_Source_Code\\Touchless\\Samples\\TouchlessDemo....\\bin\\Release\\WebCamLib.dll E:\\Browser Vision\\Touchless_Source_Code\\Touchless\\Samples\\TouchlessDemo\\bin\\Debug\\WebCamLib.dll&quot; exited with code 1.    TouchlessDemo&quot;\r<br />\n \r<br />\n \r<br />\nCould you please find me a solution for this....<br />\n",
+    "PostedDate": "2013-10-09T11:31:45.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

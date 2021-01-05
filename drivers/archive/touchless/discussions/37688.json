@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "124968",
+    "ThreadId": "37688",
+    "Html": "Hi!<br>\r\n<br>\r\nI'm getting a NullReferenceException in my application. <br>\r\nI created a marker image using the demo and stored it on disk. Then I\r\nincluded the image (and the marker data) in my application as a\r\nresource. After that, I included the touchless-tracking in my application using the following code:<br>\r\n<br>\r\nmgr = new TouchlessMgr();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>\r\nmgr.CurrentCamera = mgr.Cameras[0];<br>\r\n_width = mgr.CurrentCamera.CaptureWidth;<br>\r\n_height = mgr.CurrentCamera.CaptureHeight;<br>\r\nMarker marker = mgr.AddMarker(&quot;testmarker&quot;, Resources.image, new System.Drawing.Point(99, 84), 19.5f); // this is the markerdata created in the demo application.<br>\r\nmarker.OnChange += new EventHandler&lt;MarkerEventArgs&gt;(Marker_OnChange);&nbsp;&nbsp;&nbsp; <br>\r\n<br>\r\nWell, the tracking works fine for some seconds, but then it stops and I get a NullReferenceException. Unfortunately, I do not get any more information about the source of the exception.<br>\r\n<br>\r\nIs this a known problem and is there a workaround?!<br>\r\n<br>\r\nGreetings.<br>\r\n",
+    "PostedDate": "2008-10-14T06:08:13.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125112",
+    "ThreadId": "37688",
+    "Html": "Sorry,<br>\r\n<br>\r\nfalse alarm.<br>\r\n<br>\r\nI had a GC issue in which my object was collected when it should not be. So far, everything is working now!<br>\r\n<br>\r\nRegards.<br>\r\n",
+    "PostedDate": "2008-10-14T14:01:33.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

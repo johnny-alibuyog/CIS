@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "223771",
+    "ThreadId": "65771",
+    "Html": "<p>Hello,</p>\r\n<p>Is it possible to hook into any of the Windows 7&nbsp;multi touch&nbsp;gestures/etc with the Touchless SDK?</p>\r\n<p>Thank you!</p>",
+    "PostedDate": "2009-08-14T20:28:40.723-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226603",
+    "ThreadId": "65771",
+    "Html": "<p>Hi,</p>\r\n<p>There was talk about this sometime ago in the MultiTouch Vista project. <a href=\"http://multitouchvista.codeplex.com/\">http://multitouchvista.codeplex.com/</a></p>\r\n<p>Their project includes plugin architecture for touch input providers so possibly one could implement one using Touchless SDK.</p>\r\n<p>On the other hand there is a Windows 7 driver to map these input providers to work in Windows 7.<br> I wrote about seting up this driver on my blog: <a href=\"http://geekswithblogs.net/kobush/archive/2009/03/10/129993.aspx\">http://geekswithblogs.net/kobush/archive/2009/03/10/129993.aspx</a></p>\r\n<p>Hope this helps,</p>\r\n<p>-Szymon</p>",
+    "PostedDate": "2009-08-22T01:21:31.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258564",
+    "ThreadId": "65771",
+    "Html": "<p>Hi,<br><br>Yesterday I started with Toucless and MultiTouch Vista and I managed to create a Touchless-plugin for MultiTouch Vista. Too bad my camera is very slow, so it wasn't very usable, but I will go out to get a better cam.<br>There's also a lot more work to do on the plugin, because now it's actually just the two programs tied together: you have to create markers with the Touchless Demo, save them and MultiTouch Vista opens them to use.</p>\r\n<p>But I was able to move my mouse in Windows 7 without touching anything, so it's a start!</p>\r\n<p><br>Kind regards,<br>amelsfort</p>",
+    "PostedDate": "2009-11-19T00:51:53.073-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "259707",
+    "ThreadId": "65771",
+    "Html": "<p>I am really interested in this idea, I could see it turning any display into interactive multi-touch. Maybe an even better program could send TUIO messages and objects.</p>",
+    "PostedDate": "2009-11-22T22:15:16.743-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269176",
+    "ThreadId": "65771",
+    "Html": "Hey Amselfort,\r\nCould you share your Touchless InputProvider for Multi-Touch Vista?\r\nPlease send the code to me or upload a patch and let me know.\r\nThanks,\r\n- Mike",
+    "PostedDate": "2009-12-18T19:36:32.927-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

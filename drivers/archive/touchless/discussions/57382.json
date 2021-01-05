@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "193899",
+    "ThreadId": "57382",
+    "Html": "<p>Hey guys,</p>\r\n<p>I am using Touchless for webcam handling. I would like to know if there is a way to get the list of supported resolutions of the webcam with touchless and if there is a way to change the capture resolution.</p>\r\n<p>Many thanks</p>\r\n<p>Peter</p>",
+    "PostedDate": "2009-05-25T05:40:25.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197483",
+    "ThreadId": "57382",
+    "Html": "<p>Hi Peter,</p>\r\n<p>Unforutunately, right now there is no way to change the webcam resolution.</p>\r\n<p>Hopefully that feature will work it's way into Touchless in the coming months.</p>\r\n<p>*Touchless is looking for contributors!*</p>\r\n<p>- Mike</p>",
+    "PostedDate": "2009-06-03T16:07:14.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

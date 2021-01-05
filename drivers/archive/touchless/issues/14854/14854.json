@@ -1,0 +1,66 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "webcamlib.dll could not be loaded or added to references\n \nMicrosoft Visual Studio 2010\nWindows Forms C#\nBuild: x86\n.NET FW 4.0\n \nWindows 7 Ultimate\nSP 1\n64 bit",
+    "LastUpdatedDate": "2015-01-16T12:13:23.147-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2012-03-23T16:36:29.983-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "webcamlib could not be added to references",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 14854
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4274,
+      "FileName": "Untitled.png",
+      "DownloadUrl": ".\\4274"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I have the same problem... any help?\nthanks",
+      "PostedDate": "2012-12-16T10:22:42.433-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-12-16T15:07:18.717-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:27:51.733-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If anyone is still watching this 2015... Does anyone know of a 64bit webcam lib?  I can't believe it is so hard to find one.  I just want to grab the camera feed and put it in a WPF application, with some other controls on top of it.  I didn't think it would be so hard to come up with a lib.  Surely I'm not the first person to want this.",
+      "PostedDate": "2015-01-16T12:13:23.147-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

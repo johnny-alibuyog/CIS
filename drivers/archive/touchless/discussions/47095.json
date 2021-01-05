@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "157512",
+    "ThreadId": "47095",
+    "Html": "I was wondering how hard would it be to port the Touchless SDK to Windows CE. Could you please tell me what are the main features (libs from the .Net Framework and such) that the SDK uses? I want to map what is not covered by the compact framework and maybe contribute to it.<br>\r\n&nbsp;<br>\r\nThanks a lot in advance,<br>\r\n<br>\r\n<strong>Pedro Cavalca</strong><br>\r\n",
+    "PostedDate": "2009-02-13T11:04:30.557-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "157885",
+    "ThreadId": "47095",
+    "Html": "<p>Hi Pedro,</p>\r\n<p>I have no experiece with the compact framework, but I'll try to assist you anyway.<br>\r\nHere is a list of the namespaces and their objects employed by TouchlessLib:</p>\r\n<p>System; (Comparison, DateTime, EventArgs, EventHandler, IDisposable, IntPtr)<br>\r\nSystem.Collections.Generic; (Dictionary, IList, List)<br>\r\nSystem.Diagnostics; (Stopwatch)<br>\r\nSystem.Drawing; (Bitmap, Color, Point, Rectangle, RotateFlipType)<br>\r\nSystem.Drawing.Imaging; (BitmapData, ImageLockMode, PixelFormat)<br>\r\nSystem.Runtime.InteropServices; (MarshalAs, MarshalAsAttribute, UnmanagedType)<br>\r\n<br>\r\nHere is a list of the resources employed by WebCamLib:<br>\r\nNote that these might change as we're planning to update WebCamLib to C#.</p>\r\n<p>using namespace System; (IntPtr, String)<br>\r\nusing namespace System::Runtime::InteropServices; (COMException, GCHandle, Marshal, MarshalAsAttribute, UnmanagedType)<br>\r\n#include &lt;dshow.h&gt; (CLSID_CaptureGraphBuilder2, CLSID_FilterGraph, CLSID_SystemDeviceEnum, CLSID_VideoInputDeviceCategory, FORMAT_VideoInfo, IBaseFilter, ICaptureGraphBuilder2, IGraphBuilder, IID_IMediaControl, IMediaControl, LPSTR, LPWSTR, MEDIASUBTYPE_RGB24, MEDIATYPE_Video, PIN_CATEGORY_CAPTURE, VIDEOINFOHEADER)<br>\r\n#include &lt;strsafe.h&gt; (hmm, I'm not sure we actaully use anything from this header)<br>\r\n#define __IDxtCompositor_INTERFACE_DEFINED__<br>\r\n#define __IDxtAlphaSetter_INTERFACE_DEFINED__<br>\r\n#define __IDxtJpeg_INTERFACE_DEFINED__<br>\r\n#define __IDxtKey_INTERFACE_DEFINED__<br>\r\n#include &lt;qedit.h&gt; (ISampleGrabberCB, CLSID_SampleGrabber, CLSID_NullRenderer, IID_ISampleGrabber)</p>\r\n<p>Please share any advice you might have on maximizing compatibility with the compact framework.<br>\r\nI'd be happy to see Touchless usable on mobile devices, although I'm dubious of the performance.<br>\r\nPerhaps we could collaborate on a 'light' version of the library.<br>\r\n- Mike</p>\r\n",
+    "PostedDate": "2009-02-15T16:14:33.22-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "164758",
+    "ThreadId": "47095",
+    "Html": "I don't think &quot;System.Runtime.InteropServices; (MarshalAs, MarshalAsAttribute,&nbsp;UnmanagedType)&quot; is supported at Compact Framework<br>\r\nAlso to get Camera images not sure if there's standard API on those devices, maybe some PocketPC OS call (could make a separate executable that you call with appropriate params and it saves a file that you then grab - could be fast since those devices use memory and not a disk, not sure if fast enough though - else could talk to it using TCP/IP or Pipes maybe if they're supported)<br>\r\n",
+    "PostedDate": "2009-03-05T04:18:38.277-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

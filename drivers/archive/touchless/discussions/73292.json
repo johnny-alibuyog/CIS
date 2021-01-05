@@ -1,0 +1,394 @@
+[
+  {
+    "Id": "250472",
+    "ThreadId": "73292",
+    "Html": "<p>I need to run two cameras simultaneously in one application and get data from both cameras. Is this possible?</p>\r\n<p>Under the help file for: <strong>CurrentCamera Property</strong> it says:</p>\r\n<p><em>&quot;The camera currently acquiring images, only one camera can be acquiring at one time and its starts acquiring as soon as it is set&quot;</em></p>\r\n<p>If I created two TouchlessMgr instances like could I have one cam on each instance? for example:</p>\r\n<p>TouchlessMgr _touch1 = new&nbsp; TouchlessMgr();</p>\r\n<p>TouchlessMgr _touch2 = new&nbsp; TouchlessMgr();</p>\r\n<p>_touch1.CurrentCamera = _touch1.Cameras[0];</p>\r\n<p>_touch2.CurrentCamera = _touch2.Cameras[1];</p>\r\n<p><span style=\"font-size:x-small\">\r\n<p>&nbsp;</p>\r\n</span>&nbsp;</p>",
+    "PostedDate": "2009-10-27T20:43:47.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "250474",
+    "ThreadId": "73292",
+    "Html": "<p>or perhaps:</p>\r\n<pre>\t    Camera c = new Camera();\r\n            Camera d = new Camera();\r\n            c = _touch.Cameras[0];\r\n            d = _touch.Cameras[1];</pre>",
+    "PostedDate": "2009-10-27T20:49:45.353-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "251435",
+    "ThreadId": "73292",
+    "Html": "<p>Nope, sorry. I've wanted this functionality for a while, but have insuficient DirectShow experience. Perhaps sometime soon or with some help...</p>\r\n<p>- Mike</p>",
+    "PostedDate": "2009-10-29T18:24:02.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "251483",
+    "ThreadId": "73292",
+    "Html": "<p>- Mike <br><br>I can to send working example how to use two or more cameras simultaneously using DirectShow, if you want.<br>I&nbsp;use 5 cameras in my C# project now.<br><br>Andrew P.</p>",
+    "PostedDate": "2009-10-30T00:42:26.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "252189",
+    "ThreadId": "73292",
+    "Html": "<p>Cool! If you have the rights to redistribute that code, it doesn't use AviCap32, and it doesn't depend on external projects (like DirectShow.NET);&nbsp;please do send it along. It would be great if you could prepare a patch that integrates your project into Touchless by extending or replacing WebCamLib? I could then expose the functionality through TouchlessMgr. Otherwise, e-mail me your project&nbsp;and I'll take a look as I have time. Thanks!</p>\r\n<p>- Mike</p>",
+    "PostedDate": "2009-11-01T12:49:32.037-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255716",
+    "ThreadId": "73292",
+    "Html": "<p>Did anything happen with this? Mike, are you working on a new dual cam option?</p>",
+    "PostedDate": "2009-11-10T14:32:01.257-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "256205",
+    "ThreadId": "73292",
+    "Html": "<p>I'm waiting on Andrew to reply, I'll PM him.&nbsp;I'll be glad to help integrate any viable patches to support this functionality.</p>",
+    "PostedDate": "2009-11-11T20:54:49.673-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415812",
+    "ThreadId": "73292",
+    "Html": "<p>HI</p>\r\n<p>i AM DEVELOPING AN APPLICATION IN C# TO CONTROL 3 WEBCAMS.</p>\r\n<p>BUT I CANT CONTROL MORE THAN ONE. CAN ANY ONE SEND THE SOURCE CODE OF HOW TO CONTROL MORE THAN 1 WEBCAM USING TOUCHLESS SDK IT WILL BE VERY USEFULL FOR ME.</p>\r\n<p>REGARDS</p>\r\n<p>MUTHU</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-09T00:15:55.26-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "416163",
+    "ThreadId": "73292",
+    "Html": "<p>- Mike<br><br>Hello.<br>I can send example to you ... but how I can to do this? (to which e-mail or ...)<br>..see P.S. &amp;&nbsp;P.P.S. below...</p>\r\n<p><br>- Muthu<br><br>I sent example which&nbsp;work with some web cams at one time&nbsp;for you, but I use DirectShow.NET library for this.<br><br>Write me if u have some&nbsp;questions.</p>\r\n<p><br>P.S.: -Mile. This example don't use touchless SDK. It's only example how I use some web cams in my app. You can adapt your SDK (or my example :) )&nbsp;if you want.</p>\r\n<p>P.P.S.: I think that you can make some compilation of DirectShow.NET library if you don't want to use this library.</p>\r\n<p>Andrew.</p>",
+    "PostedDate": "2010-03-09T16:28:20.06-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "416176",
+    "ThreadId": "73292",
+    "Html": "Please send the sample to this email id <a href=\"mailto:ntumuthu@gmail.com\">ntumuthu@gmail.com</a> <br><br><br><div>On Wed, Mar 10, 2010 at 8:28 AM, apetrachenko <span dir=ltr>&lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt;</span> wrote:<br>\r\n<blockquote style=\"margin:0pt 0pt 0pt 0.8ex;padding-left:1ex\">   <div> <p>From: apetrachenko</p> <div><p>- Mike<br><br>Hello.<br>I can send example to you ... but how I can to do this? (to which e-mail or ...)<br>\r\n..see P.S. & P.P.S. below...</p>\r\n<p><br>- Muthu<br><br>I sent example which work with some web cams at one time for you, but I use DirectShow.NET library for this.<br><br>Write me if u have some questions.</p>\r\n<p><br>P.S.: -Mile. This example don't use touchless SDK. It's only example how I use some web cams in my app. You can adapt your SDK (or my example :) ) if you want.</p>\r\n<p>P.P.S.: I think that you can make some compilation of DirectShow.NET library if you don't want to use this library.</p>\r\n<p>Andrew.</p></div> <div> <p>Read the <a href=\"http://touchless.codeplex.com/Thread/View.aspx?ThreadId=73292&ANCHOR#Post416163\">full discussion online</a>.</p> <p>To add a post to this discussion, reply to this email (<a href=\"mailto:touchless@discussions.codeplex.com?subject=[touchless:73292]\">touchless@discussions.codeplex.com</a>)</p>\r\n <p>To start a new discussion for this project, email <a href=\"mailto:touchless@discussions.codeplex.com\">touchless@discussions.codeplex.com</a></p> <p>You are receiving this email because you subscribed to this discussion on CodePlex. You can <a href=\"http://www.codeplex.com/site/discussions/thread/unsubscribe/73292\">unsubscribe</a> on CodePlex.com.</p>\r\n <p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com</p> </div> </div> </blockquote></div><br>",
+    "PostedDate": "2010-03-09T18:10:43.467-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "432272",
+    "ThreadId": "73292",
+    "Html": "<p>Apretracenko:</p>\r\n<p>Hi, i read your post. Can u email me the source code? I just want to load two camera in my main form and able to capture photo on the both camera. I searched high and low at google for many hours untill i saw you. I would be appreciate if you can email it to me at <a href=\"mailto:testdebug@hotmail.com\">testdebug@hotmail.com</a><br>Thank you.</p>\r\n<p>Daren</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-17T09:34:37.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "432334",
+    "ThreadId": "73292",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>darenwai wrote:</strong><br>\r\n<p>Apretracenko:</p>\r\n<p>Hi, i read your post. Can u email me the source code? I just want to load two camera in my main form and able to capture photo on the both camera. I searched high and low at google for many hours untill i saw you. I would be appreciate if you can email it to me at <a href=\"mailto:testdebug@hotmail.com\">testdebug@hotmail.com</a><br>Thank you.</p>\r\n<p>Daren</p>\r\n<p>&nbsp;</p>\r\n</blockquote>\r\n<p>&nbsp;Sent</p>",
+    "PostedDate": "2010-04-17T15:46:35.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "432405",
+    "ThreadId": "73292",
+    "Html": "<p>VB sample project was added..</p>",
+    "PostedDate": "2010-04-18T05:27:42.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "433022",
+    "ThreadId": "73292",
+    "Html": "<p>Apretracenko:</p>\r\n<p>Hi,</p>\r\n<p>&nbsp;I read your post. Can u email me the source code?</p>\r\n<p>&nbsp;I just want to load two camera in my main form and able to capture photo on the both camera.</p>\r\n<p>&nbsp;I would be appreciate if you can email it to me at <a href=\"mailto:arunmanobanu@yahoo.co.in\">arunmanobanu@yahoo.co.in</a></p>\r\n<p><br>Thank you.</p>\r\n<p>Arun</p>",
+    "PostedDate": "2010-04-19T22:22:19.4-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "433105",
+    "ThreadId": "73292",
+    "Html": "<p>Sent</p>",
+    "PostedDate": "2010-04-20T02:37:25.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "446327",
+    "ThreadId": "73292",
+    "Html": "<p>Apretracenko:</p>\r\n<p>&nbsp;</p>\r\n<p>Heya, I would like to recieve the files, could you please email them at phantomsurfr@gmail.com</p>\r\n<p>Many Thanks,</p>\r\n<p>Tolson</p>",
+    "PostedDate": "2010-05-23T01:56:12.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "449502",
+    "ThreadId": "73292",
+    "Html": "<p>Apretracenko:</p>\r\n<p>I just read the above post and is keenly interested in the source code.Please send it to me at unnikrishnan.anil@gmail.com</p>\r\n<p>Thanks in advance,</p>\r\n<p>Anil.</p>",
+    "PostedDate": "2010-05-31T01:46:29.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "451951",
+    "ThreadId": "73292",
+    "Html": "<p>Sent</p>",
+    "PostedDate": "2010-06-05T02:01:35.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "451952",
+    "ThreadId": "73292",
+    "Html": "<p>Sent</p>",
+    "PostedDate": "2010-06-05T02:01:58.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453260",
+    "ThreadId": "73292",
+    "Html": "<p>hiya cud i get the source code thanks a million :) <a href=\"mailto:angela_nolan@live.com\">angela_nolan@live.com</a></p>",
+    "PostedDate": "2010-06-08T18:04:15.437-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453398",
+    "ThreadId": "73292",
+    "Html": "<p>Sent</p>",
+    "PostedDate": "2010-06-09T01:26:39.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "457146",
+    "ThreadId": "73292",
+    "Html": "<p>Hi&nbsp;Apetrachenko,</p>\r\n<p>thank you for your kind contribution, eh..mind if i can share your&nbsp;source code as well? I hope to load two cameras and able to capture videos on the both creative web cameras. I searched in google for many hours until i come across this forum. I would be appreciate if you can email it to me at <a href=\"mailto:pengjm18@yahoo.com.sg\">pengjm18@yahoo.com.sg</a>&nbsp;</p>\r\n<p>Thank you and hope to hear from you soon.</p>\r\n<p>Warm Regards,</p>\r\n<p>jimmy.&nbsp;</p>\r\n<p>P.S. hmm..not sure if i could ask this, but is your program able to mix two videos captured into one video? Thanks. :)</p>",
+    "PostedDate": "2010-06-18T01:59:31.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "457159",
+    "ThreadId": "73292",
+    "Html": "<p>Sent.<br><br>What do you mean &quot;able to mix two videos captured into one video&quot;?<br>Example able to read separate samples (frames) from some input devices. And you can to do any processing with this data (filter, mix, write to file, view to screen &amp; etc.)<br>..you can make your event handler..<br><br></p>",
+    "PostedDate": "2010-06-18T02:20:45.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "457192",
+    "ThreadId": "73292",
+    "Html": "<p>Thanks apetrachenko. That's was real fast. Thank you. :)</p>",
+    "PostedDate": "2010-06-18T03:24:23.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "468564",
+    "ThreadId": "73292",
+    "Html": "<p>Hello, I have the same problen and was hoping that you would send that source code my way too.</p>\r\n<p>&nbsp;</p>\r\n<p>anthrax.f@gmail.com</p>",
+    "PostedDate": "2010-07-17T13:34:09.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "468567",
+    "ThreadId": "73292",
+    "Html": "<p>Sent example sources</p>",
+    "PostedDate": "2010-07-17T14:03:03.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474645",
+    "ThreadId": "73292",
+    "Html": "<p>Hi, ﻿Andrew.</p>\r\n<p>Can you send your example&nbsp;mee too&nbsp;at chudinia[at]gmail.com</p>",
+    "PostedDate": "2010-07-30T02:28:38.047-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474666",
+    "ThreadId": "73292",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>ili wrote:</strong><br>\r\n<p>Hi, ﻿Andrew.</p>\r\n<p>Can you send your example&nbsp;mee too&nbsp;at chudinia[at]gmail.com</p>\r\n</blockquote>\r\n<p>&nbsp;Example was sent</p>",
+    "PostedDate": "2010-07-30T03:13:27.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "477349",
+    "ThreadId": "73292",
+    "Html": "<p>I know you get this a lot Apetrachenko, but can you send me an example too at f.xrave@gmail.com please? :D</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks a lot~</p>",
+    "PostedDate": "2010-08-06T06:04:29.307-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "477872",
+    "ThreadId": "73292",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Xrave wrote:</strong><br>\r\n<p>I know you get this a lot Apetrachenko, but can you send me an example too at f.xrave@gmail.com please? :D</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks a lot~</p>\r\n</blockquote>\r\n<p>&nbsp;Example was sent</p>",
+    "PostedDate": "2010-08-08T19:38:53.04-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "531564",
+    "ThreadId": "73292",
+    "Html": "\r\n<p>Hi apetrachenko,</p>\r\n<p>I would like to have a copy of example also. kindly send at redbinhilan@gmail.com.</p>\r\n<p>Thanks a lot</p>\r\n",
+    "PostedDate": "2010-12-05T22:54:46.09-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "531983",
+    "ThreadId": "73292",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>redzer0 wrote:</strong><br>\r\n<p>Hi apetrachenko,</p>\r\n<p>I would like to have a copy of example also. kindly send at redbinhilan@gmail.com.</p>\r\n<p>Thanks a lot</p>\r\n</blockquote>\r\n<p>&nbsp;Example was sent</p>\r\n",
+    "PostedDate": "2010-12-06T14:27:00.867-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "551569",
+    "ThreadId": "73292",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>Can you send me your example?</p>\r\n<p>brilkov@yahoo.com</p>\r\n<p>Best regards</p>\r\n",
+    "PostedDate": "2011-01-18T15:21:40.127-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "553847",
+    "ThreadId": "73292",
+    "Html": "\r\n<p>hello, apetrachenko</p>\r\n<p>i've read your post above...</p>\r\n<p>could you please send me the source code and the example to seventhmoon123@gmail.com</p>\r\n<p>thank you very much... :D</p>\r\n",
+    "PostedDate": "2011-01-22T22:30:13.223-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "554066",
+    "ThreadId": "73292",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>brilkov wrote:</strong><br>\r\n<p>Hello,</p>\r\n<p>Can you send me your example?</p>\r\n<p>brilkov@yahoo.com</p>\r\n<p>Best regards</p>\r\n</blockquote>\r\n<p>&nbsp;Example was sent</p>\r\n",
+    "PostedDate": "2011-01-23T14:47:00.13-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "554067",
+    "ThreadId": "73292",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>sevencolored wrote:</strong><br>\r\n<p>hello, apetrachenko</p>\r\n<p>i've read your post above...</p>\r\n<p>could you please send me the source code and the example to seventhmoon123@gmail.com</p>\r\n<p>thank you very much... :D</p>\r\n</blockquote>\r\n<p>&nbsp;Example was sent</p>\r\n",
+    "PostedDate": "2011-01-23T14:47:25.527-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "565778",
+    "ThreadId": "73292",
+    "Html": "<p>hello, apetrachenko</p>\r\n<p>I am also looking into working with 2 or more webcams at the same time, is there any chance you could also e-mail me your example and source to <a href=\"mailto:parrjohn@hotmail.com\">parrjohn@hotmail.com</a>&nbsp;?</p>\r\n<p>Best regards</p>",
+    "PostedDate": "2011-02-14T03:23:05.603-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "584185",
+    "ThreadId": "73292",
+    "Html": "<p>Hi,</p>\n<p>I have coded a C# WPF app that let you connect Kinects and webcams to take pictures and videos from all sources at the same time. I'm using Touchless to manage the webcams, but I have a rather big problem. Those webcams run 1080p at 30fps and they can't be  used asynchronously because TouchlessMgr is monolithic. I have to alternate between cameras by setting the \"TouchlessMgr.CurrentCamera\" to each one successively while I would need to run them in their own thread with their own TouchlessMgr and Camera handle.  Any advice on that would be greatly appreciated. Thank you for your time,</p>\n<p>&nbsp;</p>\n<p>Louis</p>",
+    "PostedDate": "2011-03-21T22:54:29.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "587306",
+    "ThreadId": "73292",
+    "Html": "<blockquote style=\"padding-bottom: 0px; font-style: italic; margin: 0.25em 1em 0px; padding-left: 0.25em; padding-right: 0.25em; padding-top: 0px; border: #ccc 0.1em solid;\"><strong>parrjohn wrote:</strong><br />\r\n<p>hello, apetrachenko</p>\r\n<p>I am also looking into working with 2 or more webcams at the same time, is there any chance you could also e-mail me your example and source to <a href=\"mailto:parrjohn@hotmail.com\">parrjohn@hotmail.com</a>&nbsp;?</p>\r\n<p>Best regards</p>\r\n</blockquote>\r\n<p><br />Sent</p>",
+    "PostedDate": "2011-03-27T15:13:57.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "587307",
+    "ThreadId": "73292",
+    "Html": "<blockquote style=\"padding-bottom: 0px; font-style: italic; margin: 0.25em 1em 0px; padding-left: 0.25em; padding-right: 0.25em; padding-top: 0px; border: #ccc 0.1em solid;\"><strong>lpbourret wrote:</strong><br />\r\n<p>Hi,</p>\r\n<p>I have coded a C# WPF app that let you connect Kinects and webcams to take pictures and videos from all sources at the same time. I'm using Touchless to manage the webcams, but I have a rather big problem. Those webcams run 1080p at 30fps and they can't be used asynchronously because TouchlessMgr is monolithic. I have to alternate between cameras by setting the \"TouchlessMgr.CurrentCamera\" to each one successively while I would need to run them in their own thread with their own TouchlessMgr and Camera handle. Any advice on that would be greatly appreciated. Thank you for your time,</p>\r\n<p>&nbsp;</p>\r\n<p>Louis</p>\r\n</blockquote>\r\n<p><br />I can to send sample project to you If you want.&nbsp;Tell me your e-mail address then.</p>",
+    "PostedDate": "2011-03-27T15:16:22.307-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "604132",
+    "ThreadId": "73292",
+    "Html": "<p>I would greatly&nbsp;appreciate&nbsp;a the code as well! &nbsp;</p>\r\n<p>jtford55@hotmail.com</p>\r\n<p>Thanks!</p>",
+    "PostedDate": "2011-04-28T07:25:26.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "604141",
+    "ThreadId": "73292",
+    "Html": "<p>apetrachenko, I sent you a private message to get the code aswell, thank you for your time</p>",
+    "PostedDate": "2011-04-28T07:31:59.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "612446",
+    "ThreadId": "73292",
+    "Html": "<p>Could you please send me the code as well?</p>\r\n<p>Jakal@insightbb.com</p>\r\n<p>Thanks!</p>",
+    "PostedDate": "2011-05-13T08:21:31.67-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "916685",
+    "ThreadId": "73292",
+    "Html": "<p>Hi&nbsp;<a class=\"UserProfileLink\" href=\"http://www.codeplex.com/site/users/view/apetrachenko\">apetrachenko</a>,</p>\r\n<p>&nbsp;</p>\r\n<p>Can you send the code to me as well? Thanks in advance dennis.medina@outlook.com</p>",
+    "PostedDate": "2012-09-24T08:26:14.837-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "916686",
+    "ThreadId": "73292",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>apetrachenko wrote:</strong><br>\r\n<p>- Mike <br>\r\n<br>\r\nI can to send working example how to use two or more cameras simultaneously using DirectShow, if you want.<br>\r\nI&nbsp;use 5 cameras in my C# project now.<br>\r\n<br>\r\nAndrew P.</p>\r\n</blockquote>\r\n<p>Can you send the code to me as well?</p>\r\n<p>Thanks!</p>\r\n<p>dennis.medina@outlook.com</p>\r\n",
+    "PostedDate": "2012-09-24T08:27:05.04-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "939012",
+    "ThreadId": "73292",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>apetrachenko wrote:</strong><br />\r\n<p>- Mike <br /> <br /> I can to send working example how to use two or more cameras simultaneously using DirectShow, if you want.<br /> I&nbsp;use 5 cameras in my C# project now.<br /> <br /> Andrew P.</p>\r\n</blockquote>\r\n<p>Hello apetrachenko,</p>\r\n<p>I appreciate so much your contribution. I'd be very interested in getting a multi-camera application, maybe you can help me :)</p>\r\n<p><br />Would you mind sending me an example application in C# where I can use more than one camera simultaneously? I'm not very familiar to the \"low level\" functions like DirectShow... I'd be nice to have a MainForm where I can see how to manage all the cameras.</p>\r\n<p><br />Thank you in advance for your help. Great work!!</p>\r\n<p><br />Kind regards,</p>\r\n<p>I. Muslera</p>\r\n<p>nacho.muslera@gmail.com</p>",
+    "PostedDate": "2012-11-09T01:13:40.097-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1033622",
+    "ThreadId": "73292",
+    "Html": "<strong>apetrachenko wrote:</strong><br />\n<blockquote>\n<ul>\n<li>\nMike I can to send working example how to use two or more cameras simultaneously using DirectShow, if you want.I&nbsp;use 5 cameras in my C# project now.Andrew P.<br />\n</li>\n</ul>\n</blockquote>\nHi Apetrachenko,\r<br />\n<br />\nI am developing a WPF app that needs to connect to more than 1 camera at one time, could you send me your sample code to do that ? Thanks in Advance..\r<br />\n<br />\nRegards,\r<br />\nbskhoo \r<br />\n<a href=\"mailto:skye0504@yahoo.com\" rel=\"nofollow\">skye0504@yahoo.com</a><br />\n",
+    "PostedDate": "2013-04-21T11:32:15.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1037622",
+    "ThreadId": "73292",
+    "Html": "Hi Apetrachenko, <br />\n<br />\nCould you send me the example to run 5 webcams using directshow ??<br />\n<br />\nmy email is <a href=\"mailto:surya2089@gmail.com\" rel=\"nofollow\">surya2089@gmail.com</a><br />\n",
+    "PostedDate": "2013-04-30T06:27:46.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1170219",
+    "ThreadId": "73292",
+    "Html": "Sent example to Rohan..<br />\n",
+    "PostedDate": "2014-01-15T17:57:11.997-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

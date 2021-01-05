@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "198344",
+    "ThreadId": "58596",
+    "Html": "<p>is it possible for the touchless api to treat the camera like a depth camera?</p>\r\n<p>i asume that the api must begin to support z axis transformations</p>",
+    "PostedDate": "2009-06-05T11:02:26.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198650",
+    "ThreadId": "58596",
+    "Html": "<p>Hello,</p>\r\n<p>Unfortunately, I haven't worked directly with 3D webcams, and Touchless SDK doesn't do anything special with the greyscale depth map images they seem to output. Touchless could certainly use that imagery to add accurate depth tracking to markers, but I'm not sure there has been much API standardization or device proliferation for 3D cameras, so this isn't currently a top priority for this project. I would however gladly integrate a patch to add this functionality to Touchless.</p>\r\n<p>Thanks,</p>\r\n<p>- Mike</p>",
+    "PostedDate": "2009-06-06T20:30:06.56-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

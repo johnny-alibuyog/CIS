@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "205021",
+    "ThreadId": "60531",
+    "Html": "<p>Hi,</p>\r\n<p>Nice project :o)</p>\r\n<p>I would like to know if project is still alive ? I would like to use it in some of my projects and try to add some improvements...</p>\r\n<p>Thanks.</p>\r\n<p>&nbsp;</p>\r\n<p>D&eacute;d&eacute;</p>",
+    "PostedDate": "2009-06-24T07:52:45.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "205665",
+    "ThreadId": "60531",
+    "Html": "<p>Hi&nbsp;D&eacute;d&eacute;,</p>\r\n<p>Thanks! Yup, I work on Touchless somewhat regularly in my spare time, mostly improving core functionality and demos, at least when I'm not responding to ppl's comments and questions :-) I hope that you do use Touchless in your own projects, I'd like to hear about your work, and I'm happy to help you.</p>\r\n<p>Touchless could definitely use your help if you are interested in contributing. If you're inclined to work on your own, submit patches to the project under the source code tab, and I'll try to integrate them. If you'd rather work more directly with me (I'm open to helping out or offering direction), we can correspond here or <a href=\"http://www.codeplex.com/site/users/contact/michwass?OriginalUrl=http://www.codeplex.com/site/users/view/michwass\">offline</a>.</p>\r\n<p>- Mike</p>",
+    "PostedDate": "2009-06-25T14:52:41.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "205801",
+    "ThreadId": "60531",
+    "Html": "<p>Thanks for replying :)</p>\r\n<p>The first project I'm using Touchless is first adding webcam image capturing to websites using a C# activex.</p>\r\n<p>I am thinking about usages of your lib in my job.</p>\r\n<p>Are you an expert in image data scanning ? A next generation maker could be to recognize people's hands position instead of a color...</p>\r\n<p>&nbsp;</p>\r\n<p>Anyway I think that your lib can lead to amazing projects :o)</p>",
+    "PostedDate": "2009-06-26T01:24:35.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206858",
+    "ThreadId": "60531",
+    "Html": "<p>Sweet, other people have asked about using Touchless in ActiveX controls... if you're willing to share that work, it would help improve the library and I'm sure lots of users would find it invaluable.</p>\r\n<p>What's your job? it would be great to see Touchless used in commercial work (so long as it respects the MS-PL license).</p>\r\n<p>I wouldn't say I'm an expert in image scanning, a lot of the work I've done from Touchless is based off of undergrad study, reading computer vision papers, and simply playing around with some homebrewed algorithms. I'd love to extend/improve the image processing that Touchless uses, and I've even drafted up some ideas, but detecting skin tones isn't really up my alley... in school we used simply red channel filtering for crude skin tone differentiation, but this is hardly workable in most cases, and pursuing that avenue would involve more semantic reasoning about the markers presented (differentiating a person's head, hand, arm, etc. all in the camera frame)... Wait for Project Natal, that'll blow your socks off.</p>\r\n<p>Thanks! I've gotta spend more time on Touchless... but wakeboarding and motorcycling are way more fun :-)</p>",
+    "PostedDate": "2009-06-29T19:08:27.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206979",
+    "ThreadId": "60531",
+    "Html": "<p>The hadest is to create an ActiveX : if it is visible, create a UserControl, else a Component.</p>\r\n<p>Add following attributes to class :</p>\r\n<p>&nbsp;&nbsp;&nbsp; [ComVisible(true)]<br>&nbsp;&nbsp;&nbsp; [Guid(&quot;0201EBCC-2E53-40DB-0000-D6D81990360B&quot;)]<br>&nbsp;&nbsp;&nbsp; [ClassInterface(ClassInterfaceType.AutoDispatch)]</p>\r\n<p>Replace the GUID by your own.</p>\r\n<p>And code your usercontrol as you like.</p>\r\n<p>After compiling, just run &quot;regasm YourAssembly.dll&quot;, &quot;et voil&agrave;&quot;.</p>\r\n<p>You can instanciate your ActiveX using its Guid.</p>\r\n<p>&nbsp;</p>\r\n<p>There are a few tutorials on how you can make an ActiveX visible component, with events and a named way to instanciate your component. I'm working on a way to auto-deploy it using my website...</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>My job is software developper in a small company that publish a hospital management software. I use you lib primarily to take images from webcam. I have other ideas, but it is too early.</p>\r\n<p>Project Natal sounds great :D can you do better ? (joke)</p>",
+    "PostedDate": "2009-06-30T02:45:00.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206991",
+    "ThreadId": "60531",
+    "Html": "<p>Hmmm, do you think it is possible to add a kind of laser pointer recognition like this project : http://laserinteraction.codeplex.com/</p>\r\n<p>And the associated demo could be a white board...</p>",
+    "PostedDate": "2009-06-30T03:16:12.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206994",
+    "ThreadId": "60531",
+    "Html": "<p>And what about marker gesture recognition ?</p>",
+    "PostedDate": "2009-06-30T03:24:53.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214128",
+    "ThreadId": "60531",
+    "Html": "<p>Nice, it'd be great if someone put together a sample&nbsp;Touchless ActiveX control.</p>\r\n<p>You can definitely use a laser pointer with Touchless, typically those pixels are read as pure white. That laserinteraction project does look very neat, It would be pretty easy to tweak the mouse demo to do something very similar with Touchless (clicking on mouse up, etc.)</p>\r\n<p>As for gesture recognition, I leave that up to clients of the Touchless SDK for now. If someone wants to integrate or contribute a gesture recognition project to go with Touchless, that'd be awesome. But currently Touchless SDK is like a raw multi-&quot;touch&quot; pad.</p>",
+    "PostedDate": "2009-07-20T22:17:37.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1001215",
+    "ThreadId": "433150",
+    "Html": "Hi,<br />\n<br />\nWe have successfully implemented the Touchless SDK in our VB.NET 2010 application and it runs fine under Windows 7. Running on Windows 8 Pro on a tablet, however, we do see some issues. For some reason the webcam does not unload correctly, this causes subsequent problems accessing the webcam in general. Even 3rd party programs that use the webcam fail after using our program once.<br />\n<br />\nIs there a way to actually close the Webcam?<br />\n<br />\nLooking forward to any reply,<br />\nJohn<br />\n",
+    "PostedDate": "2013-02-14T06:52:02.11-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1006256",
+    "ThreadId": "433150",
+    "Html": "In essence, the problem is that the webcam does not seem to close correctly. After tunning the program once, sometimes twice, the Webcam becomes unavailable.<br />\n",
+    "PostedDate": "2013-02-25T05:24:54.92-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

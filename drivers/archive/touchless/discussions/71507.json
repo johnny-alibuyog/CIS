@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "243900",
+    "ThreadId": "71507",
+    "Html": "<p>Hi all - I&nbsp; love this project :)</p>\r\n<p>&nbsp;</p>\r\n<p>Does anybody have any idea how to build a System.IO.Stream-derived class to stream the video from the webcam instead of having single and seperate images?</p>\r\n<p>Thanks.</p>",
+    "PostedDate": "2009-10-09T07:27:15.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244947",
+    "ThreadId": "71507",
+    "Html": "<p>Hello.</p>\r\n<p>I think, that you can&nbsp;use DirectShow for this. <br>Then you can use callback methods of DirectShow filters&nbsp;directly or make some class (derived from Stream, for example) based on this mechanism.</p>\r\n<p>I use library &quot;Directshowlib-2005&quot; for the similar purposes.</p>\r\n<p>...excuse for my English&nbsp; :)</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-13T00:56:40.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

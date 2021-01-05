@@ -1,0 +1,51 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Following the video for adding touchless to my project, I got to Object browser, Browse to \"custom component set\" and click on the ... to edit custom component set. I am able to add the TouchlessLib but am unable to add WebCamLib.dll\nI get an error message saying \"The Selected component could not be browsed\" with the path to where the file \"IS\" located.\nI have tried downloaded the touchless SDK again, still with no luck. \nCan anyone please help?",
+    "LastUpdatedDate": "2013-05-01T06:17:41.213-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2013-05-01T06:15:23.407-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "The Selected component could not be browsed",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16187
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4739,
+      "FileName": "webcamlib.dll message.png",
+      "DownloadUrl": ".\\4739"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I forgot, Running windows 8 64 bit, Visual studio 2012.",
+      "PostedDate": "2013-05-01T06:17:41.213-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

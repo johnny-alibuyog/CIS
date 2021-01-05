@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "TouchlessDemo",
+      "DisplayName": "TouchlessDemo"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "A log file would help diagnose user problems with TouchlessDemo, especially crashes.",
+    "LastUpdatedDate": "2013-02-21T16:27:55.767-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2008-11-02T01:16:43.03-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Add an app/crash log for TouchlessDemo",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 6533
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "See the end of this message for details on invoking \r\njust-in-time (JIT) debugging instead of this dialog box.\r\n\r\n************** Exception Text **************\r\nSystem.IO.FileLoadException: Could not load file or assembly 'WebCamLib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The application has failed to start because its side-by-side configuration is incorrect. Please see the application event log for more detail. (Exception from HRESULT: 0x800736B1)\r\nFile name: 'WebCamLib, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' ---> System.Runtime.InteropServices.COMException (0x800736B1): The application has failed to start because its side-by-side configuration is incorrect. Please see the application event log for more detail. (Exception from HRESULT: 0x800736B1)\r\n   at TouchlessLib.TouchlessMgr.RefreshCameraList()\r\n   at TouchlessLib.TouchlessMgr.get_Cameras()\r\n   at TouchlessDemo.TouchlessDemo.TouchlessDemo_Load(Object sender, EventArgs e)\r\n   at System.Windows.Forms.Form.OnLoad(EventArgs e)\r\n   at System.Windows.Forms.Form.OnCreateControl()\r\n   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)\r\n   at System.Windows.Forms.Control.CreateControl()\r\n   at System.Windows.Forms.Control.WmShowWindow(Message& m)\r\n   at System.Windows.Forms.Control.WndProc(Message& m)\r\n   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)\r\n   at System.Windows.Forms.ContainerControl.WndProc(Message& m)\r\n   at System.Windows.Forms.Form.WmShowWindow(Message& m)\r\n   at System.Windows.Forms.Form.WndProc(Message& m)\r\n   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\r\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\r\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\r\n\r\n\r\n\r\n\r\n************** Loaded Assemblies **************\r\nmscorlib\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1434 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/Windows/Microsoft.NET/Framework/v2.0.50727/mscorlib.dll\r\n----------------------------------------\r\nTouchlessDemo\r\n    Assembly Version: 1.0.0.0\r\n    Win32 Version: 1.0.0.0\r\n    CodeBase: file:///C:/Users/William%20Anderson/Desktop/touchless-28723/bin/Release/TouchlessDemo.exe\r\n----------------------------------------\r\nSystem.Windows.Forms\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1434 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/Windows/assembly/GAC_MSIL/System.Windows.Forms/2.0.0.0__b77a5c561934e089/System.Windows.Forms.dll\r\n----------------------------------------\r\nSystem\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1434 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/Windows/assembly/GAC_MSIL/System/2.0.0.0__b77a5c561934e089/System.dll\r\n----------------------------------------\r\nSystem.Drawing\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1434 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/Windows/assembly/GAC_MSIL/System.Drawing/2.0.0.0__b03f5f7f11d50a3a/System.Drawing.dll\r\n----------------------------------------\r\nTouchlessLib\r\n    Assembly Version: 1.0.0.0\r\n    Win32 Version: 1.0.0.0\r\n    CodeBase: file:///C:/Users/William%20Anderson/Desktop/touchless-28723/bin/Release/TouchlessLib.DLL\r\n----------------------------------------\r\n\r\n************** JIT Debugging **************\r\nTo enable just-in-time (JIT) debugging, the .config file for this\r\napplication or computer (machine.config) must have the\r\njitDebugging value set in the system.windows.forms section.\r\nThe application must also be compiled with debugging\r\nenabled.\r\n\r\nFor example:\r\n\r\n<configuration>\r\n    <system.windows.forms jitDebugging=\"true\" />\r\n</configuration>\r\n\r\nWhen JIT debugging is enabled, any unhandled exception\r\nwill be sent to the JIT debugger registered on the computer\r\nrather than be handled by this dialog box.\r\n",
+      "PostedDate": "2009-03-18T20:03:43.637-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-13T03:15:15.573-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:27:55.767-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

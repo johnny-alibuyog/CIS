@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "531538",
+    "ThreadId": "237236",
+    "Html": "\r\n<p>Hi, I have a problem running the TouchlessDemo.exe, im using Windows7 and when I run the application the form displays then a message says that &quot;TouchlessDemo has stopped working&quot;.</p>\r\n<p>I run in debug mode the source code files and here's an error.</p>\r\n<p>AccessViolationException was unhandled.<br>\r\nAttempted to read or write protected memory. This is often an indication that other memory is corrupt.</p>\r\n<p>Edit:<br>\r\nI got it running.. have to change this</p>\r\n<p>comboBoxCameras.SelectedIndex = 0; to comboBoxCameras.SelectedIndex = 1;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-05T21:26:44.2-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

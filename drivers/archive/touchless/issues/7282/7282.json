@@ -1,0 +1,61 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Well Im working in integrating the jhonny lee whiteboard with the codeplex SDK but I have a problem when  it starts the calibration form the camera stops the capture, making imposible to triger the update event  (OnImageCaptured that subtitutes the  WiimoteChanged  event), and also it cant take the IR dot  to make the calibration matrix.\n \nAlso a good way to make a IR finter is with the acetate of a 3.5 disk \n \nHere is my workless proyect XD is for windows XP",
+    "LastUpdatedDate": "2013-02-21T16:27:55.157-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2009-03-14T13:20:57.12-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "TOUCHLESS-Jhonny Lee White Board,",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 7282
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1788,
+      "FileName": "TOUCHLESS_LEE_WHITEBOARD.rar",
+      "DownloadUrl": ".\\1788"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I dont have IT studies so I dont know to much so maybe the solution is not in changing the libraries of touchless but if you find the solution please share it",
+      "PostedDate": "2009-03-14T16:35:12.673-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It would certainly be cool to get a whiteboarding demo/app working with Touchless, hopefully you'll find some people interested in collaborating here.\r\n\r\nAdding a marker does pause capture during TouchlessDemo, but that isn't part of Touchless SDK. Also, after a successful marker addition, image updates should resume. As for the IR dot calibration matrix, I'm not sure what you mean, I'd probably have to dig into the whiteboard code.\r\n\r\nI haven't taken a look myself, but I think Miguel Trejo has the right idea. You shouldn't have to modify the SDK to integrate with a realtively modular whiteboarding project.\r\n\r\nI hope you'll keep trying, I might find some time in the next week or so to look into your code. Post a discussion topic so we can follow your progress.\r\n\r\nLol, 'workless'. I see what you did there.\r\n- Mike",
+      "PostedDate": "2009-03-24T22:02:09.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:27:55.157-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

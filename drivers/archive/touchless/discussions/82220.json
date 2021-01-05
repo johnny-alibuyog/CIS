@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "282461",
+    "ThreadId": "82220",
+    "Html": "<p>Hi</p>\r\n<p>Can I use touchless SDK grabing images from camera in 1600*1200 resolution ?</p>\r\n<p>Can I change the default resolution ?</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks</p>",
+    "PostedDate": "2010-01-27T11:57:36.267-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "286809",
+    "ThreadId": "82220",
+    "Html": "<p>My understanding is that TouchlessSDK simply captures whatever the webcam is sending out. If your webcam captures at 1600x1200 touchless will grab it at that resolution. I'm not aware of any restrictions.</p>",
+    "PostedDate": "2010-02-07T08:47:50.947-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "286811",
+    "ThreadId": "82220",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Mahhari wrote:</strong><br>\r\n<p>My understanding is that TouchlessSDK simply captures whatever the webcam is sending out. If your webcam captures at 1600x1200 touchless will grab it at that resolution. I'm not aware of any restrictions.</p>\r\n</blockquote>\r\n<p>Thanks</p>\r\n<p>&nbsp;But I couldn't change the output resolution&nbsp; :)</p>",
+    "PostedDate": "2010-02-07T08:49:45.63-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "286876",
+    "ThreadId": "82220",
+    "Html": "<p>I've never seen a webcam that can output that high of a video resolution. most are much much lower like 640x480.</p>",
+    "PostedDate": "2010-02-07T13:32:34.213-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "286878",
+    "ThreadId": "82220",
+    "Html": "<p>Exactly</p>\r\n<p>I use Logitech QuickCam Pro 9000 :D</p>",
+    "PostedDate": "2010-02-07T13:34:38.797-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "286960",
+    "ThreadId": "82220",
+    "Html": "<p>Hmm that was does say it captures video at 1600 res. I wonder if that is a marketing gimic or if it is actual (what I mean is maybe it only does that resolution at very low frame rates). Does it look worse when you capture in Touchless than when you are using it in any other program? When I connected a cam with 320 resolution, it had 320 in touchless and when i connected 640 res, it had 640.&nbsp; So touchless is capable of multiple resolutions, but I'm not sure if there is a limit.</p>",
+    "PostedDate": "2010-02-07T21:34:42.577-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

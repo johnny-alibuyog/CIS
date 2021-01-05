@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "290817",
+    "ThreadId": "85380",
+    "Html": "<p>Hello,</p>\r\n<p>&nbsp;&nbsp; &nbsp;I was wondering how / where in the code could I substitute the input from that of a webcam, to simple bitmap data which could be supplied via a .NET event 25 times a second. This is because I have a device which give an output very similar to that from the webcam, except it works&nbsp;capacitively&nbsp;instead of by light. I would like to adapt your project to work with my input data. Basically I process data sent into USB, 16x16 resolution, I can the interpolate this data up to a much greater resolution, suitable for input into touchless, I just need to know if there is an easy way of skipping the webcam bit?</p>\r\n<p>&nbsp;&nbsp; Any help would be greatly appreciated.</p>\r\n<p>&nbsp;</p>\r\n<p>Dan</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-02-15T05:30:39.797-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291427",
+    "ThreadId": "85380",
+    "Html": "<p>You should try the latest V2 source code, implement a new FrameSource. Please let us know how this goes for you, as we'd be interested in your feedback and perhaps adding this feature to the Touchless V2 library.</p>",
+    "PostedDate": "2010-02-16T14:07:48.417-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291434",
+    "ThreadId": "85380",
+    "Html": "<p>Excellent, I will look at this tomorrow morning and see if I can work out what to do, has anything like this been attempted before? Also is their any documentation on how to go about this?</p>\r\n<p>&nbsp;&nbsp; &nbsp;If I get anything working I will happily give feedback and share my code as it could be a powerful feature. Can I ask ... is a &quot;marker&quot; an associated area (or hotspot) in the image that has been linked to a touch. As far as I can tell the image is scanned for markers, the peaks within the markers are then found, and then the points are tracked using these peaks, each frame is compared to keep track of each marker.</p>\r\n<p>&nbsp;&nbsp; I was trying to implement something similar but it started getting really messy, its no easy task, I was using connected component labeling algorythms to identify the individual hotspots in my image.</p>",
+    "PostedDate": "2010-02-16T14:19:39.207-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291498",
+    "ThreadId": "85380",
+    "Html": "<p><span style=\"color:black;font-size:10pt\">Unfortunately we don't have documentation for v2.0 yet, but it's in the works. Your best bet is to implement a new IFrameSource (see Toucless.Vision.Contract's IFrameSource.cs), and you might find it useful to see the implementation of CameraFrameSource in Touchless.Vision's Camera folder. CameraFrameSource.OnImageCaptured recieves image events from&nbsp;its Camera (via WebCamLib) and then reports those events via the IFrameSource.NewFrame. Depending on your device library, you'll want to pass along its image events&nbsp;or write an IFrameSource that polls the device.</span></p>\r\n<p><span style=\"color:black;font-size:10pt\">A Marker is a collection of hashed color values that are used to filter the image to match any similar pixels. Touchless doesn't currently analyze connected components, so two disjoint blobs of identical color will be tracked as a single entity, and this may not be ideal for you. But the project is open source, so feel free to extend our implementation and perhaps we&rsquo;ll adopt your changes. I'll happily help you if you get most of the way there.</span></p>",
+    "PostedDate": "2010-02-16T16:39:44.63-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

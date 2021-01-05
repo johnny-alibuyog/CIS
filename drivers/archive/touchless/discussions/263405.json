@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "635385",
+    "ThreadId": "263405",
+    "Html": "\r\n<p>Hi</p>\r\n<p>I am using Touchless SDK for capturing webcam but now i have come to know that it is not capturing the dell laptop's webcams. It returns null for this. Any idea how to resolve this?</p>\r\n",
+    "PostedDate": "2011-06-30T06:38:01.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

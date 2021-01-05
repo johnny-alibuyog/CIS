@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "584628",
+    "ThreadId": "250753",
+    "Html": "<p>Hi Im a final year student of University of Westminster. For my final year project im using this tohcless SDK &amp; bulding an application. The code which i did is working fine(private void pnlCapture_MarkerMove(object sender, MarkerMoveEventArgs e)<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br /> }<br /> only for one marker.<br /> I want to know is how can i do for multiple markers.<br /> The system is detecting multiple markers. But marker move code is working for only one marker. I badly need a help in this. <br /> Scenario is i have 2 marker(Orange and Blue)<br /> For an example take that i have one image in the system &amp; i want to move that image according to these markers. The lefthand side of the image shd be tracked using orange colour marker &amp; right hand side of the image should be tracked using blue colour marker.</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-03-22T14:14:20.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

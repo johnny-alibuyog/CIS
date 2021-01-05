@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I don't want to create markers everytime. Please add serialisation of markers, so we don't always have to setup the application.",
+    "LastUpdatedDate": "2013-02-21T16:27:56.493-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2008-10-21T05:15:19.353-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Save and Load Marker",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 7,
+    "Id": 6463
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1618,
+      "FileName": "touchless_markerSaving_svn26912.patch",
+      "DownloadUrl": ".\\1618"
+    },
+    {
+      "FileId": 1620,
+      "FileName": "touchless_markerSaving_svn26913.patch",
+      "DownloadUrl": ".\\1620"
+    },
+    {
+      "FileId": 2013,
+      "FileName": "touchless_markerSaving_svn31008.patch",
+      "DownloadUrl": ".\\2013"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This seems a hard edge to me, as the light conditions normally influence the marker recognition massively...\r\nI think the light \"normalisation\" has to be managed first...",
+      "PostedDate": "2008-12-13T09:30:25.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ok, first shot ignoring changed conditions...\r\n\r\nthe patch adds a new TouchlessMgr.AddMarker overload for a \"ExportedMarker\" object. This can be obtained using Marker.ExportMarker().\r\nSee the comments of the new Marker.AddMarker() method for usage sample.",
+      "PostedDate": "2008-12-15T03:11:32.68-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-15T03:11:36.273-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, forgot XML documentation.\r\nNew version with fixed documentation and minor fixes in internal implementation is attached. (touchless_markerSaving_svn26913.patch).\r\n\r\nExample usage for the impatient:\r\n\r\n_mgr = new TouchlessMgr();\r\n_mgr.AddMarker(...);\r\n\r\n// ...regular app flow...\r\n\r\nList<ExportedMarkers> exports = new List<ExportedMarkers>();\r\nforeach(Marker marker in _mgr.Markers)\r\n{\r\n  exports.Add(_mgr.Markers[0].ExportMarker());\r\n}\r\n// in real app: serialize exports to a file\r\n\r\n// optional but sensible: remove all existing markers before reload\r\n\r\nList<ExportedMarkers> imports = exports // in reallity, deserialize from file...\r\nforeach(ExportedMarker savedMarker in imports)\r\n{\r\n  _mgr.AddMarker(savedMarker);\r\n  // set properties like Highlight, SmoothingEnabled, ... on each savedMarker\r\n}\r\n// here you go, your exported markers are reloaded.\r\n\r\n ",
+      "PostedDate": "2008-12-15T05:37:03.007-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-15T05:37:04.257-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "a new patch for the current revision was uploaded (patch id 3226) to the patches section.",
+      "PostedDate": "2009-07-01T06:28:57.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-01T06:29:00.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-17T07:05:12.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-30T00:42:45.097-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T16:27:56.493-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

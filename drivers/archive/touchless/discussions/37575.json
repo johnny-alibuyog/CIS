@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "124649",
+    "ThreadId": "37575",
+    "Html": "Anyone using the IP pens such used with Johnnylee Wii demo?<br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-13T00:42:08.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127726",
+    "ThreadId": "37575",
+    "Html": "i was just about to dig mine out, but i realized i had taken the battery out to try a better setup, then never put it back together. i dont know how well it would work though. to the webcam, it would be a purpleish bright white spot. i think the software would pick up anything white<br>\r\n",
+    "PostedDate": "2008-10-25T10:46:40.403-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127776",
+    "ThreadId": "37575",
+    "Html": "Please do try this and let us know!<br>\r\nI suspect you're right, tomgabriele about the signal appearing &quot;white&quot; as its mixed with visible wavlength light as part of the camera's imaging sensor.<br>\r\ntouchless can't do much after this, if there are other similar 'colors' in the image, but don't give up yet.<br>\r\nI've heard that you can filter out visible light from the webcam using soemthing like exposed camera film.<br>\r\nThat way all the camera would pick up is the IR signal, which would appear very different from the rest of the scene.<br>\r\nGive it a go and let us know!<br>\r\n- Mike\r\n",
+    "PostedDate": "2008-10-25T16:54:16.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127787",
+    "ThreadId": "37575",
+    "Html": "reading my first response, i sound nearly illiterate, huh?&nbsp; to clarify just a bit, what i was trying to say is that i would think the color that the webcam would pick up would be easily confused with, for example, the white sheets on my bed behind me (dorm room)<br>\r\n<br>\r\ni will def do some research into finding an ir filter (or would that be like a reverse ir filter?) and see what happens.&nbsp; <br>\r\n<br>\r\njust as a bit of background about myself, i have absolutely zero coding experience. i am very excited about the possibilities of where this program can go, and i will do what i can to help, but i'm afraid the sdk side of things is greek to me.<br>\r\n",
+    "PostedDate": "2008-10-25T18:27:33.5-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "127839",
+    "ThreadId": "37575",
+    "Html": "Nice application and especially the demo with double markers is great :-)<br>\r\n<br>\r\nIt is correct that you can filter away all the colors from the natural light sources by using an IR filter. <br>\r\n<br>\r\nThere is also a great amount of IR light in natural light and also in the electrical light source you use in your home.<br>\r\n<br>\r\nTo test the effect I just created a simpel IR pen, using an IR LED (Light Emitting Diode) and added an IR filter in front of my web cam. I took the filter that normally is placed in the front of a TV remote control (It is the purple plastic part).<br>\r\nSwitching off other light sources practically gives a very dark gray image which makes the IR light  (LED) stand out very clearly. Using the drawing demo shows that this is a very good filter.<br>\r\n<br>\r\nBut if you turn on the normal lights in the room, there will be a lot of &quot;noise&quot; or false light detection, which makes it more difficult for the software to recognice the IR light source from the LED.<br>\r\n<br>\r\nThis IR filtering also has the unfortunate sideeffect that you only can have one marker (well you can have more than one, but it will have the same color, as the IR light show up as white), so you can not make use of the double markers.<br>\r\n<br>\r\nI think that choosing a neutral colored background and selecting the markers using colored items that you dont have elsewhere in the picture will be the best way to have the markers stand out in the picture.<br>\r\n<br>\r\nKeep up the good work.<br>\r\nPeter\r\n",
+    "PostedDate": "2008-10-26T08:02:19.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "162136",
+    "ThreadId": "37575",
+    "Html": "Well an odd idea I came up with was the little LED book lights. My camera doesn't show many bright colors so the light is very easy to recognize. (Should also work even better if auto-balance is turned on.) The only down-side to it is that you can only have one.<br>\r\n",
+    "PostedDate": "2009-02-25T17:44:03.66-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "167580",
+    "ThreadId": "37575",
+    "Html": "the magnetic recording acetate like in the old 3.5 disks works perfect., withe dot in midel of perfect dark.\r\n",
+    "PostedDate": "2009-03-12T18:01:17.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

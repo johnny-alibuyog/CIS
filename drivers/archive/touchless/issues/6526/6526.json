@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "First off, Mike,  excellent job with the SDK! It's a great tool indeed and there's all kinds of potential here. Thanks for putting it out there and sharing it with the world.\n \nFrom what I've tested, the SDK works fairly smoothly, specially when the subjects are well (and constantly) lit. I was thinking of a way to compensate for changing light such as shadows or side-lit object which tend to have very uneven exposure to light (like trying to use it in a dimly lit room with a big TV on).\n \nI havent really scanned all of the code yet and I'm not yet sure of all the tricks the SDK is using but I thought about the concept of setting a exposure/metering level similar to the way digicams do (and webcams are horrible at it). If you could pick a spot on the image as your neutral light level, you could track this and compensate for color change based on that spot's change from neutral. You could use some color equalization algorithm (something similar to photoshop's levels or equalize tool) to exagerate the colors as the subject gets dim, or wash it out as it becomes over-bright.\n \nIt's just a thought, but I think that if there's a way to make the tracking more robust, this could have extremely wide-reaching potential.",
+    "LastUpdatedDate": "2013-02-21T16:27:56.12-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "touchless",
+    "ReportedDate": "2008-10-30T18:17:24.237-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "A way to compensate for changing light conditions",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 6526
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

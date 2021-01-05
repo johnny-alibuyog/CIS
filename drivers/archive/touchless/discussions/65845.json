@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "223999",
+    "ThreadId": "65845",
+    "Html": "<p>Hi</p>\r\n<p>I'm building a game where touchless is going to be used to control it. What I want to do is have a series of bitmap files as markersand have those same ones printed on cards, so when the player draws a card it triggers the onscreen event. Not even quite sure where to start, any ideas?</p>\r\n<p>Thanks</p>\r\n<p>Andrew</p>",
+    "PostedDate": "2009-08-16T03:29:19.037-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226601",
+    "ThreadId": "65845",
+    "Html": "<p>Hi,</p>\r\n<p>I would recommend you take a look at the Augmented Reality toolkit. It provides you with algorithms to recognice such printed tiles and even output their position in space so you can incorporate 3D models into video images. Take a look at this project: <a href=\"http://www.mperfect.net/wpfAugReal/\">http://www.mperfect.net/wpfAugReal/</a>&nbsp;</p>\r\n<p>If you are not interested in the the 3D position you can also use something similar to Microsoft tag: <a href=\"http://www.microsoft.com/tag/\">http://www.microsoft.com/tag/</a><br>However I'm not sure if there is an SDK that you can incorporate in your application.</p>\r\n<p>-Szymon</p>",
+    "PostedDate": "2009-08-22T01:15:52.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]
