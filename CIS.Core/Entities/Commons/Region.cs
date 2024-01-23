@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Commons
 {
-    public class Region
+    public class Region : Entity<Guid>
     {
-        private Guid _id;
         private string _name;
-        private ICollection<Province> _provinces;
+        private ICollection<Province> _provinces = new Collection<Province>();
 
         public virtual Guid Id
         {
@@ -29,6 +27,11 @@ namespace CIS.Core.Entities.Commons
         {
             get { return _provinces; }
             set { SyncProvinces(value); }
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
 
         #region Methods
@@ -68,65 +71,6 @@ namespace CIS.Core.Entities.Commons
         {
             item.Region = this;
             _provinces.Add(item);
-        }
-
-        #endregion
-
-        #region Constructors
-
-        public Region()
-        {
-            _provinces = new Collection<Province>();
-        }
-
-        #endregion
-
-        #region Equality Comparer
-
-        private int? _hashCode;
-
-        public override bool Equals(object obj)
-        {
-            var that = obj as Region;
-
-            if (that == null)
-                return false;
-
-            if (that.Id == Guid.Empty && this.Id == Guid.Empty)
-                return object.ReferenceEquals(that, this);
-
-            return (that.Id == this.Id);
-        }
-
-        public override int GetHashCode()
-        {
-            if (_hashCode == null)
-            {
-                _hashCode = (this.Id != Guid.Empty)
-                    ? this.Id.GetHashCode()
-                    : base.GetHashCode();
-            }
-
-            return _hashCode.Value;
-        }
-
-        public static bool operator ==(Region x, Region y)
-        {
-            return Equals(x, y);
-        }
-
-        public static bool operator !=(Region x, Region y)
-        {
-            return !Equals(x, y);
-        }
-
-        #endregion
-
-        #region Method Overrides
-
-        public override string ToString()
-        {
-            return this.Name;
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using CIS.UI.Bootstraps.InversionOfControl;
@@ -45,7 +46,7 @@ public abstract class ViewModelBase : ReactiveObject, IDataErrorInfo
 
     public virtual string Error
     {
-        get 
+        get
         {
             var invalidValues = this.Validator.Validate(this);
 
@@ -78,14 +79,14 @@ public abstract class ViewModelBase : ReactiveObject, IDataErrorInfo
     public virtual void Revalidate()
     {
         var invalidValues = this.Validator.Validate(this);
-        this.IsValid = (invalidValues.Count() == 0);
+        this.IsValid = (!invalidValues.Any());
     }
 
     public virtual IObservable<bool> IsValidObservable()
     {
         return this.WhenAnyValue(x => x.IsValid);
     }
-    
+
     #endregion
 
     #region Constructors
@@ -150,6 +151,57 @@ public abstract class ViewModelBase : ReactiveObject, IDataErrorInfo
     //            return false;
     //    }
     //}
+
+    #endregion
+
+    #region Equality Comparer
+
+    public static bool operator ==(ViewModelBase one, ViewModelBase two)
+    {
+        return EqualOperator(one, two);
+    }
+
+    protected static bool EqualOperator(ViewModelBase left, ViewModelBase right)
+    {
+        if (left is null ^ right is null)
+            return false;
+
+        return ReferenceEquals(left, right) || left.Equals(right);
+    }
+
+    public static bool operator !=(ViewModelBase one, ViewModelBase two)
+    {
+        return NotEqualOperator(one, two);
+    }
+
+    protected static bool NotEqualOperator(ViewModelBase left, ViewModelBase right)
+    {
+        return !EqualOperator(left, right);
+    }
+
+    protected virtual IEnumerable<object> GetEqualityValues()
+    {
+        yield return this;
+    }
+
+    public override bool Equals(object obj)
+    {
+        if (obj == null || obj.GetType() != GetType())
+        {
+            return false;
+        }
+
+        var that = (ViewModelBase)obj;
+
+        return this.GetEqualityValues().SequenceEqual(that.GetEqualityValues());
+    }
+
+    public override int GetHashCode()
+    {
+        return GetEqualityValues()
+            .Select(x => x?.GetHashCode() ?? 0)
+            .Aggregate((x, y) => x ^ y);
+    }
 
     #endregion
 }

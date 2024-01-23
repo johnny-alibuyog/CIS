@@ -12,6 +12,11 @@ public class FingerViewModel : ViewModelBase
 
     public virtual string ImageUri { get; private set; }
 
+    protected override IEnumerable<object> GetEqualityValues()
+    {
+        yield return this.Id;
+    }
+
     #region Static Members
 
     public static readonly FingerViewModel RightThumb = new()
@@ -92,44 +97,6 @@ public class FingerViewModel : ViewModelBase
     public static IList<FingerViewModel> GetByIds(IList<string> ids)
     {
         return FingerViewModel.All.Where(x => ids.Contains(x.Id)).ToList();
-    }
-
-    #endregion
-
-    #region Equality Comparer
-
-    private int? _hashCode;
-
-    public override bool Equals(object obj)
-    {
-        var that = obj as FingerViewModel;
-
-        if (that == null)
-            return false;
-
-        if (string.IsNullOrWhiteSpace(that.Id) && string.IsNullOrWhiteSpace(this.Id))
-            return object.ReferenceEquals(that, this);
-
-        return (that.Id == this.Id);
-    }
-
-    public override int GetHashCode()
-    {
-        _hashCode ??= (!string.IsNullOrWhiteSpace(this.Id))
-                ? this.Id.GetHashCode()
-                : base.GetHashCode();
-
-        return _hashCode.Value;
-    }
-
-    public static bool operator ==(FingerViewModel x, FingerViewModel y)
-    {
-        return Equals(x, y);
-    }
-
-    public static bool operator !=(FingerViewModel x, FingerViewModel y)
-    {
-        return !Equals(x, y);
     }
 
     #endregion

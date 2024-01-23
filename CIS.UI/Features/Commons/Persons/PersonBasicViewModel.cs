@@ -1,4 +1,5 @@
-﻿using CIS.Core.Entities.Commons;
+﻿using System.Collections.Generic;
+using CIS.Core.Entities.Commons;
 using CIS.Core.Utilities.Extentions;
 using NHibernate.Validator.Constraints;
 
@@ -120,63 +121,8 @@ public class PersonBasicViewModel : ViewModelBase
 
     public static readonly PersonBasicViewModel Empty = new();
 
-    #region Equality Comparer
-
-    private int? _hashCode;
-
-    public override bool Equals(object obj)
+    protected override IEnumerable<object> GetEqualityValues() 
     {
-        var that = obj as PersonBasicViewModel;
-
-        if (that == null)
-            return false;
-
-        if (that.Prefix != this.Prefix)
-            return false;
-
-        if (that.FirstName != this.FirstName)
-            return false;
-
-        if (that.MiddleName != this.MiddleName)
-            return false;
-
-        if (this.LastName != this.LastName)
-            return false;
-
-        if (this.Suffix != this.Suffix)
-            return false;
-
-        return true;
+        yield return this.GetFullName();
     }
-
-    public override int GetHashCode()
-    {
-        if (_hashCode == null)
-        {
-            unchecked
-            {
-                _hashCode = 17;
-                _hashCode = _hashCode * 23 + (!string.IsNullOrWhiteSpace(this.Prefix) ? this.Prefix.GetHashCode() : 0);
-                _hashCode = _hashCode * 23 + (!string.IsNullOrWhiteSpace(this.FirstName) ? this.FirstName.GetHashCode() : 0);
-                _hashCode = _hashCode * 23 + (!string.IsNullOrWhiteSpace(this.MiddleName) ? this.MiddleName.GetHashCode() : 0);
-                _hashCode = _hashCode * 23 + (!string.IsNullOrWhiteSpace(this.LastName) ? this.LastName.GetHashCode() : 0);
-                _hashCode = _hashCode * 23 + (!string.IsNullOrWhiteSpace(this.Suffix) ? this.Suffix.GetHashCode() : 0);
-            }
-        }
-
-        return _hashCode.Value;
-    }
-
-    public static bool operator ==(PersonBasicViewModel x, PersonBasicViewModel y)
-    {
-        return Equals(x, y);
-    }
-
-    public static bool operator !=(PersonBasicViewModel x, PersonBasicViewModel y)
-    {
-        return !Equals(x, y);
-    }
-
-    #endregion
-
 }

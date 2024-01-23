@@ -2,23 +2,15 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using CIS.Core.Utilities.Extentions;
 
 namespace CIS.Core.Entities.Commons
 {
-    public class Province
+    public class Province : Entity<Guid>
     {
-        private Guid _id;
         private string _name;
         private Region _region;
-        private ICollection<City> _cities;
-
-        public virtual Guid Id
-        {
-            get { return _id; }
-            protected set { _id = value; }
-        }
+        private ICollection<City> _cities = new Collection<City>();
 
         public virtual string Name
         {
@@ -36,6 +28,11 @@ namespace CIS.Core.Entities.Commons
         {
             get { return _cities; }
             set { SyncCities(value); }
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
 
         #region Methods
@@ -81,65 +78,6 @@ namespace CIS.Core.Entities.Commons
         {
             item.Province = this;
             _cities.Add(item);
-        }
-
-        #endregion
-
-        #region Constructors
-
-        public Province()
-        {
-            _cities = new Collection<City>();
-        }
-
-        #endregion
-
-        #region Equality Comparer
-
-        private int? _hashCode;
-
-        public override bool Equals(object obj)
-        {
-            var that = obj as Province;
-
-            if (that == null)
-                return false;
-
-            if (that.Id == Guid.Empty && this.Id == Guid.Empty)
-                return object.ReferenceEquals(that, this);
-
-            return (that.Id == this.Id);
-        }
-
-        public override int GetHashCode()
-        {
-            if (_hashCode == null)
-            {
-                _hashCode = (this.Id != Guid.Empty)
-                    ? this.Id.GetHashCode()
-                    : base.GetHashCode();
-            }
-
-            return _hashCode.Value;
-        }
-
-        public static bool operator ==(Province x, Province y)
-        {
-            return Equals(x, y);
-        }
-
-        public static bool operator !=(Province x, Province y)
-        {
-            return !Equals(x, y);
-        }
-
-        #endregion
-
-        #region Method Override
-
-        public override string ToString()
-        {
-            return this.Name;
         }
 
         #endregion

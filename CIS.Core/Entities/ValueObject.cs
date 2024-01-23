@@ -28,7 +28,7 @@ public abstract class ValueObject
         return !EqualOperator(left, right);
     }
 
-    protected abstract IEnumerable<object> GetEqualityComponents();
+    protected abstract IEnumerable<object> GetEqualityValues();
 
     public override bool Equals(object obj)
     {
@@ -39,12 +39,12 @@ public abstract class ValueObject
 
         var that = (ValueObject)obj;
 
-        return this.GetEqualityComponents().SequenceEqual(that.GetEqualityComponents());
+        return this.GetEqualityValues().SequenceEqual(that.GetEqualityValues());
     }
 
     public override int GetHashCode()
     {
-        return GetEqualityComponents()
+        return GetEqualityValues()
             .Select(x => x?.GetHashCode() ?? 0)
             .Aggregate((x, y) => x ^ y);
     }

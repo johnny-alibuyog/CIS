@@ -3,19 +3,12 @@ using System;
 
 namespace CIS.Core.Entities.Commons
 {
-    public class Barangay
+    public class Barangay : Entity<Guid>
     {
-        private Guid _id;
         private string _name;
         private City _city;
         private AreaClass? _areaClass;
         private int? _population;
-
-        public virtual Guid Id
-        {
-            get { return _id; }
-            protected set { _id = value; }
-        }
 
         public virtual string Name
         {
@@ -41,8 +34,6 @@ namespace CIS.Core.Entities.Commons
             set { _population = value; }
         }
 
-        #region Methods
-
         public virtual void SerializeWith(Barangay value)
         {
             this.Name = value.Name;
@@ -51,56 +42,9 @@ namespace CIS.Core.Entities.Commons
             this.AreaClass = value.AreaClass;
         }
 
-        #endregion
-
-        #region Equality Comparer
-
-        private int? _hashCode;
-
-        public override bool Equals(object obj)
-        {
-            var that = obj as Barangay;
-
-            if (that == null)
-                return false;
-
-            if (that.Id == Guid.Empty && this.Id == Guid.Empty)
-                return object.ReferenceEquals(that, this);
-
-            return (that.Id == this.Id);
-        }
-
-        public override int GetHashCode()
-        {
-            if (_hashCode == null)
-            {
-                _hashCode = (this.Id != Guid.Empty)
-                    ? this.Id.GetHashCode()
-                    : base.GetHashCode();
-            }
-
-            return _hashCode.Value;
-        }
-
-        public static bool operator ==(Barangay x, Barangay y)
-        {
-            return Equals(x, y);
-        }
-
-        public static bool operator !=(Barangay x, Barangay y)
-        {
-            return !Equals(x, y);
-        }
-
-        #endregion
-
-        #region Method Overrides
-
         public override string ToString()
         {
             return this.Name;
         }
-
-        #endregion
     }
 }

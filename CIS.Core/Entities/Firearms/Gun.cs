@@ -40,13 +40,12 @@ public class Gun : ValueObject
         set => _make = value;
     }
 
-    protected override IEnumerable<object> GetEqualityComponents()
+    protected override IEnumerable<object> GetEqualityValues()
     {
         yield return this.Model;
         yield return this.Caliber;
         yield return this.SerialNumber;
         yield return this.Kind;
-        yield return this.
-Make;
+        yield return this.Make;
     }
 }

@@ -55,7 +55,7 @@ public class PhysicalAttributes : ValueObject
         set => _nationality = value.ToProperCase();
     }
 
-    protected override IEnumerable<object> GetEqualityComponents()
+    protected override IEnumerable<object> GetEqualityValues()
     {
         yield return Hair;
         yield return Eyes;

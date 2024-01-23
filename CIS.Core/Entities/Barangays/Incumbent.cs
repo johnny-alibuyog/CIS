@@ -10,7 +10,7 @@ public class Incumbent : Entity<Guid>
 {
     private int _version;
     private Audit _audit;
-    private Office _office; //FIXME: what is this for?
+    //private Office _office; //FIXME: what is this for?
     private DateTime? _date;
     private ICollection<Official> _officials;
 

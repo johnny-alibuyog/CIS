@@ -54,7 +54,7 @@ public class Address : ValueObject
         .Trim();
     }
 
-    protected override IEnumerable<object> GetEqualityComponents()
+    protected override IEnumerable<object> GetEqualityValues()
     {
         yield return Address1;
         yield return Address2;

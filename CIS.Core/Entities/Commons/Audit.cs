@@ -56,7 +56,7 @@ public class Audit : ValueObject
         };
     }
 
-    protected override IEnumerable<object> GetEqualityComponents()
+    protected override IEnumerable<object> GetEqualityValues()
     {
         yield return CreatedBy;
         yield return CreatedOn;

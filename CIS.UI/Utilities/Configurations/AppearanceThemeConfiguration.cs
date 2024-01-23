@@ -44,8 +44,6 @@ public class AppearanceThemeConfiguration
 
     #region Equality Comparer
 
-    private int? _hashCode;
-
     public override bool Equals(object obj)
     {
         var that = obj as AppearanceThemeConfiguration;
@@ -64,17 +62,11 @@ public class AppearanceThemeConfiguration
 
     public override int GetHashCode()
     {
-        if (_hashCode == null)
-        {
-            unchecked
-            {
-                _hashCode = 17;
-                _hashCode = _hashCode * 23 + (!string.IsNullOrWhiteSpace(this.DisplayName) ? this.DisplayName.GetHashCode() : 0);
-                _hashCode = _hashCode * 23 + (!string.IsNullOrWhiteSpace(this.RelativeUri) ? this.RelativeUri.GetHashCode() : 0);
-            }
-        }
+        var hashCode = 17;
+        hashCode = hashCode * 23 + (!string.IsNullOrWhiteSpace(this.DisplayName) ? this.DisplayName.GetHashCode() : 0);
+        hashCode = hashCode * 23 + (!string.IsNullOrWhiteSpace(this.RelativeUri) ? this.RelativeUri.GetHashCode() : 0);
 
-        return _hashCode.Value;
+        return hashCode;
     }
 
     public static bool operator ==(AppearanceThemeConfiguration x, AppearanceThemeConfiguration y)

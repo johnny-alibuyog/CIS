@@ -52,8 +52,6 @@ namespace CIS.UI.Utilities.Configurations
 
         #region Equality Comparer
 
-        private int? _hashCode;
-
         public override bool Equals(object obj)
         {
             var that = obj as AppearanceColorConfiguration;
@@ -75,18 +73,12 @@ namespace CIS.UI.Utilities.Configurations
 
         public override int GetHashCode()
         {
-            if (_hashCode == null)
-            {
-                unchecked
-                {
-                    _hashCode = 17;
-                    _hashCode = _hashCode * 23 + (this.Red != default(byte) ? this.Red.GetHashCode() : 0);
-                    _hashCode = _hashCode * 23 + (this.Green != default(byte) ? this.Green.GetHashCode() : 0);
-                    _hashCode = _hashCode * 23 + (this.Blue != default(byte) ? this.Blue.GetHashCode() : 0);
-                }
-             }
+            var hashCode = 17;
+            hashCode = hashCode * 23 + (this.Red != default(byte) ? this.Red.GetHashCode() : 0);
+            hashCode = hashCode * 23 + (this.Green != default(byte) ? this.Green.GetHashCode() : 0);
+            hashCode = hashCode * 23 + (this.Blue != default(byte) ? this.Blue.GetHashCode() : 0);
 
-            return _hashCode.Value;
+            return hashCode;
         }
 
         public static bool operator ==(AppearanceColorConfiguration x, AppearanceColorConfiguration y)

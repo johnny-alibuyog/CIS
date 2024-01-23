@@ -23,12 +23,10 @@ public class Lookup<T> : ViewModelBase
 
     #region Equality Comparer
 
-    private int? _hashCode;
 
     private bool IsValueDefault(T value)
     {
-        //return EqualityComparer<T>.Default.Equals(value, default(T));
-        return EqualityComparer<T>.Default.Equals(value, default(T));
+        return EqualityComparer<T>.Default.Equals(value, default);
     }
 
     public override bool Equals(object obj)
@@ -41,19 +39,16 @@ public class Lookup<T> : ViewModelBase
         if (IsValueDefault(that.Id) && IsValueDefault(this.Id))
             return object.ReferenceEquals(that, this);
 
-        return EqualityComparer<T>.Default.Equals(that.Id, this.Id); //(that.Id == this.Id);
+        return EqualityComparer<T>.Default.Equals(that.Id, this.Id);
     }
 
     public override int GetHashCode()
     {
-        if (_hashCode == null)
-        {
-            _hashCode = (!IsValueDefault(this.Id))
+        var hashCode = (!IsValueDefault(this.Id))
                 ? this.Id.GetHashCode()
                 : base.GetHashCode();
-        }
 
-        return _hashCode.Value;
+        return hashCode;
     }
 
     #endregion

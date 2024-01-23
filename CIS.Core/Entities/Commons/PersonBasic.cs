@@ -70,7 +70,7 @@ public class PersonBasic : ValueObject
         return this.GetFullName();
     }
 
-    protected override IEnumerable<object> GetEqualityComponents()
+    protected override IEnumerable<object> GetEqualityValues()
     {
         yield return this.Fullname;
     }
