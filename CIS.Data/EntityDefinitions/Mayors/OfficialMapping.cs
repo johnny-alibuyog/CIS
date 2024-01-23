@@ -1,30 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Mayors;
+﻿using CIS.Core.Entities.Mayors;
 using FluentNHibernate.Mapping;
 
-namespace CIS.Data.EntityDefinition.Mayors
+namespace CIS.Data.EntityDefinition.Mayors;
+
+public class OfficialMapping : ClassMap<Official>
 {
-    public class OfficialMapping : ClassMap<Official>
+    public OfficialMapping()
     {
-        public OfficialMapping()
-        {
-            OptimisticLock.Version();
+        OptimisticLock.Version();
 
-            Id(x => x.Id);
+        Id(x => x.Id);
 
-            Version(x => x.Version);
+        Version(x => x.Version);
 
-            Component(x => x.Audit);
+        Component(x => x.Audit);
 
-            Component(x => x.Person);
+        Component(x => x.Person);
 
-            DiscriminateSubClassesOnColumn("Discriminator")
-                .Index("DiscriminatorIndex")
-                .Not.Nullable()
-                .Length(25);
-        }
+        DiscriminateSubClassesOnColumn("Discriminator")
+            .Index("DiscriminatorIndex")
+            .Not.Nullable()
+            .Length(25);
     }
 }

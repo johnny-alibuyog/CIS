@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace CIS.UI.Features;
 
-namespace CIS.UI.Features
+public interface IImportService
 {
-    public interface IImportService
-    {
-        void Execute();
-    }
+    void Execute();
 }

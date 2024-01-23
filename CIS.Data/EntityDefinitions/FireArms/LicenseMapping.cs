@@ -1,38 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Firearms;
+﻿using CIS.Core.Entities.Firearms;
 using FluentNHibernate.Mapping;
 
-namespace CIS.Data.EntityDefinitions.FireArms
+namespace CIS.Data.EntityDefinitions.FireArms;
+
+public class LicenseMapping : ClassMap<License>
 {
-    public class LicenseMapping : ClassMap<License>
+    public LicenseMapping()
     {
-        public LicenseMapping()
-        {
-            OptimisticLock.Version();
+        OptimisticLock.Version();
 
-            Id(x => x.Id);
+        Id(x => x.Id);
 
-            Version(x => x.Version);
+        Version(x => x.Version);
 
-            Component(x => x.Audit);
+        Component(x => x.Audit);
 
-            Component(x => x.Person);
+        Component(x => x.Person);
 
-            Component(x => x.Address);
+        Component(x => x.Address);
 
-            Component(x => x.Gun);
+        Component(x => x.Gun);
 
-            Map(x => x.LicenseNumber);
+        Map(x => x.LicenseNumber);
 
-            Map(x => x.ControlNumber);
+        Map(x => x.ControlNumber);
 
-            Map(x => x.IssueDate);
+        Map(x => x.IssueDate);
 
-            Map(x => x.ExpiryDate);
-        }
+        Map(x => x.ExpiryDate);
     }
 }

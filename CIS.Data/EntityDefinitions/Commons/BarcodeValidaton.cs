@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Commons;
+﻿using CIS.Core.Entities.Commons;
 using NHibernate.Validator.Cfg.Loquacious;
 
-namespace CIS.Data.EntityDefinition.Commons
+namespace CIS.Data.EntityDefinition.Commons;
+
+public class BarcodeValidaton : ValidationDef<Barcode>
 {
-    public class BarcodeValidaton : ValidationDef<Barcode>
+    public BarcodeValidaton()
     {
-        public BarcodeValidaton()
-        {
-            Define(x => x.Id);
+        Define(x => x.Id);
 
-            Define(x => x.Image)
-                .NotNullable()
-                .And.IsValid();
+        Define(x => x.Image)
+            .NotNullable()
+            .And.IsValid();
 
-            Define(x => x.Text)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+        Define(x => x.Text)
+            .NotNullableAndNotEmpty()
+            .And.MaxLength(150);
 
-        }
     }
 }

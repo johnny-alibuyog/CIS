@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Polices;
+﻿using CIS.Core.Entities.Polices;
 using NHibernate.Validator.Cfg.Loquacious;
 
-namespace CIS.Data.EntityDefinition.Polices
-{
-    public class PurposeValidaton : ValidationDef<Purpose>
-    {
-        public PurposeValidaton()
-        {
-            Define(x => x.Id);
+namespace CIS.Data.EntityDefinition.Polices;
 
-            Define(x => x.Name)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(250);
-        }
+public class PurposeValidaton : ValidationDef<Purpose>
+{
+    public PurposeValidaton()
+    {
+        Define(x => x.Id);
+
+        Define(x => x.Name)
+            .NotNullableAndNotEmpty()
+            .And.MaxLength(250);
     }
 }

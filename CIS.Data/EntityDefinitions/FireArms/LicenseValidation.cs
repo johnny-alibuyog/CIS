@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Firearms;
+﻿using CIS.Core.Entities.Firearms;
 using NHibernate.Validator.Cfg.Loquacious;
+using System;
 
 namespace CIS.Data.EntityDefinitions.FireArms
 {
@@ -49,21 +45,21 @@ namespace CIS.Data.EntityDefinitions.FireArms
                 if (instance.IssueDate < sqlMinimumDate)
                 {
                     var message = string.Format("License {0} has invalid issue date.", instance.LicenseNumber);
-                    context.AddInvalid<License, Nullable<DateTime>>(message, x => x.IssueDate);
+                    context.AddInvalid<License, DateTime?>(message, x => x.IssueDate);
                     result = false;
                 }
 
                 if (instance.ExpiryDate < sqlMinimumDate)
                 {
                     var message = string.Format("License {0} has invalid expiry date.", instance.LicenseNumber);
-                    context.AddInvalid<License, Nullable<DateTime>>(message, x => x.ExpiryDate);
+                    context.AddInvalid<License, DateTime?>(message, x => x.ExpiryDate);
                     result = false;
                 }
 
                 if (instance.Person.BirthDate < sqlMinimumDate)
                 {
                     var message = string.Format("License {0} has invalid birth date.", instance.LicenseNumber);
-                    context.AddInvalid<License, Nullable<DateTime>>(message, x => x.Person.BirthDate);
+                    context.AddInvalid<License, DateTime?>(message, x => x.Person.BirthDate);
                     result = false;
                 }
 

@@ -6,7 +6,19 @@
         local:DialogBase.DialogResult="{Binding Path=ActionResult}" 
         Title="Clearance Issuance System" SizeToContent="WidthAndHeight" 
         MinHeight="0" MinWidth="0" ResizeMode="NoResize" ShowInTaskbar="True" WindowStartupLocation="CenterScreen">
+
+    <!--<local:DialogBase.LayoutTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="2" ScaleY="2" CenterX=".5" CenterY=".5" />
+            --><!--<SkewTransform AngleX="0" AngleY="0" />
+            <RotateTransform Angle="0" />
+            <TranslateTransform X="0" Y="0" />--><!--
+        </TransformGroup>
+    </local:DialogBase.LayoutTransform>-->
     <StackPanel Style="{StaticResource ContentRoot}" >
+        <!--<StackPanel.LayoutTransform>
+            <ScaleTransform ScaleX="1.5" ScaleY="1.5" CenterX=".5" CenterY=".5" />
+        </StackPanel.LayoutTransform>-->
         <StackPanel.Resources>
             <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
         </StackPanel.Resources>

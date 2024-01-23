@@ -1,8 +1,6 @@
-﻿using System;
+﻿using ServiceStack.DataAnnotations;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ServiceStack.DataAnnotations;
 
 namespace CIS.Store.Domain.Entities
 {
@@ -35,7 +33,7 @@ namespace CIS.Store.Domain.Entities
 
         public virtual decimal BailAmount { get; set; }
 
-        public virtual Nullable<DateTime> IssuedOn { get; set; }
+        public virtual DateTime? IssuedOn { get; set; }
 
         [StringLength(300)]
         public virtual string IssuedBy { get; set; }
@@ -46,7 +44,7 @@ namespace CIS.Store.Domain.Entities
         [StringLength(100)]
         public virtual string ArrestStatus { get; set; }
 
-        public virtual Nullable<DateTime> ArrestDate { get; set; }
+        public virtual DateTime? ArrestDate { get; set; }
 
         [StringLength(700)]
         public virtual string Disposition { get; set; }
@@ -73,7 +71,7 @@ namespace CIS.Store.Domain.Entities
         [StringLength(100)]
         public virtual string SuspectGender { get; set; }
 
-        public virtual Nullable<DateTime> SuspectBirthDate { get; set; }
+        public virtual DateTime? SuspectBirthDate { get; set; }
 
         [StringLength(700)]
         public virtual Address SuspectAddress { get; set; }

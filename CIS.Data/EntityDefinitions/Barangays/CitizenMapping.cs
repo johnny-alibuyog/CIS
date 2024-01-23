@@ -1,68 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Barangays;
+﻿using CIS.Core.Entities.Barangays;
 using CIS.Data.Commons.Extentions;
 using FluentNHibernate.Mapping;
 
-namespace CIS.Data.EntityDefinitions.Barangays
+namespace CIS.Data.EntityDefinitions.Barangays;
+
+public class CitizenMapping : ClassMap<Citizen>
 {
-    public class CitizenMapping : ClassMap<Citizen>
+    public CitizenMapping()
     {
-        public CitizenMapping()
-        {
-            OptimisticLock.Version();
+        OptimisticLock.Version();
 
-            Id(x => x.Id);
+        Id(x => x.Id);
 
-            Version(x => x.Version);
+        Version(x => x.Version);
 
-            Component(x => x.Audit);
+        Component(x => x.Audit);
 
-            Component(x => x.Person);
+        Component(x => x.Person);
 
-            Map(x => x.CivilStatus);
+        Map(x => x.CivilStatus);
 
-            Map(x => x.AlsoKnownAs);
+        Map(x => x.AlsoKnownAs);
 
-            Map(x => x.BirthPlace);
+        Map(x => x.BirthPlace);
 
-            Map(x => x.Occupation);
+        Map(x => x.Occupation);
 
-            Map(x => x.Religion);
+        Map(x => x.Religion);
 
-            Map(x => x.Citizenship);
+        Map(x => x.Citizenship);
 
-            Map(x => x.EmailAddress);
+        Map(x => x.EmailAddress);
 
-            Map(x => x.TelephoneNumber);
+        Map(x => x.TelephoneNumber);
 
-            Map(x => x.CellphoneNumber);
+        Map(x => x.CellphoneNumber);
 
-            Component(x => x.CurrentAddress)
-                .ColumnPrefix("Current");
+        Component(x => x.CurrentAddress)
+            .ColumnPrefix("Current");
 
-            Component(x => x.ProvincialAddress)
-                .ColumnPrefix("Province");
+        Component(x => x.ProvincialAddress)
+            .ColumnPrefix("Province");
 
-            References(x => x.FingerPrint)
-                .Cascade.All();
+        References(x => x.FingerPrint)
+            .Cascade.All();
 
-            HasManyToMany(x => x.Pictures)
-                .Access.CamelCaseField(Prefix.Underscore)
-                .Schema(GetType().ParseSchema())
-                .Table("CitizensPictures")
-                .Cascade.AllDeleteOrphan()
-                .AsSet();
+        HasManyToMany(x => x.Pictures)
+            .Access.CamelCaseField(Prefix.Underscore)
+            .Schema(GetType().ParseSchema())
+            .Table("CitizensPictures")
+            .Cascade.AllDeleteOrphan()
+            .AsSet();
 
-            HasManyToMany(x => x.Signatures)
-                .Access.CamelCaseField(Prefix.Underscore)
-                .Schema(GetType().ParseSchema())
-                .Table("CitizensSignatures")
-                .Cascade.AllDeleteOrphan()
-                .AsSet();
-        }
+        HasManyToMany(x => x.Signatures)
+            .Access.CamelCaseField(Prefix.Underscore)
+            .Schema(GetType().ParseSchema())
+            .Table("CitizensSignatures")
+            .Cascade.AllDeleteOrphan()
+            .AsSet();
     }
 }

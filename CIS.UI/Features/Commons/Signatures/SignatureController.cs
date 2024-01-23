@@ -1,24 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Ink;
-using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
+﻿using CIS.UI.Bootstraps.InversionOfControl.Ninject.Interceptors;
 
-namespace CIS.UI.Features.Commons.Signatures
+namespace CIS.UI.Features.Commons.Signatures;
+
+[HandleError]
+public class SignatureController(SignatureViewModel viewModel) : ControllerBase<SignatureViewModel>(viewModel)
 {
-    [HandleError]
-    public class SignatureController : ControllerBase<SignatureViewModel>
+    public virtual void Capture() { }
+
+    public virtual void Clear()
     {
-        public SignatureController(SignatureViewModel viewModel) : base(viewModel) { }
-
-        public virtual void Capture() { }
-
-        public virtual void Clear()
-        {
-            //this.ViewModel.Strokes.Clear();
-            this.ViewModel.SignatureImage = null;
-        }
+        //this.ViewModel.Strokes.Clear();
+        this.ViewModel.SignatureImage = null;
     }
 }

@@ -83,7 +83,7 @@ namespace CIS.Core.Entities.Commons
 
         #region Equality Comparer
 
-        private Nullable<int> _hashCode;
+        private int? _hashCode;
 
         public override bool Equals(object obj)
         {

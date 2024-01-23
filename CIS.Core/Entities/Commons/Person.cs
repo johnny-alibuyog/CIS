@@ -1,165 +1,100 @@
-﻿using System;
+﻿using CIS.Core.Utilities.Extentions;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Commons;
-using CIS.Core.Utilities.Extentions;
 
-namespace CIS.Core.Entities.Commons
+namespace CIS.Core.Entities.Commons;
+
+public class Person : ValueObject
 {
-    public class Person
+    private string _prefix;
+    private string _firstName;
+    private string _middleName;
+    private string _lastName;
+    private string _suffix;
+    private Gender? _gender;
+    private DateTime? _birthDate;
+
+    public virtual string Prefix
     {
-        private string _prefix;
-        private string _firstName;
-        private string _middleName;
-        private string _lastName;
-        private string _suffix;
-        private Nullable<Gender> _gender;
-        private Nullable<DateTime> _birthDate;
+        get => _prefix;
+        set => _prefix = value.ToProperCase();
+    }
 
-        public virtual string Prefix
-        {
-            get { return _prefix; }
-            set { _prefix = value.ToProperCase(); }
-        }
+    public virtual string FirstName
+    {
+        get => _firstName;
+        set => _firstName = value.ToProperCase();
+    }
 
-        public virtual string FirstName
-        {
-            get { return _firstName; }
-            set { _firstName = value.ToProperCase(); }
-        }
+    public virtual string MiddleName
+    {
+        get => _middleName;
+        set => _middleName = value.ToProperCase();
+    }
 
-        public virtual string MiddleName
-        {
-            get { return _middleName; }
-            set { _middleName = value.ToProperCase(); }
-        }
+    public virtual string LastName
+    {
+        get => _lastName;
+        set => _lastName = value.ToProperCase();
+    }
 
-        public virtual string LastName
-        {
-            get { return _lastName; }
-            set { _lastName = value.ToProperCase(); }
-        }
+    public virtual string Suffix
+    {
+        get => _suffix;
+        set => _suffix = value.ToProperCase();
+    }
 
-        public virtual string Suffix
-        {
-            get { return _suffix; }
-            set { _suffix = value.ToProperCase(); }
-        }
+    public virtual Gender? Gender
+    {
+        get => _gender;
+        set => _gender = value;
+    }
 
-        public virtual Nullable<Gender> Gender
-        {
-            get { return _gender; }
-            set { _gender = value; }
-        }
+    public virtual DateTime? BirthDate
+    {
+        get => _birthDate;
+        set => _birthDate = value;
+    }
 
-        public virtual Nullable<DateTime> BirthDate
-        {
-            get { return _birthDate; }
-            set { _birthDate = value; }
-        }
+    public virtual int? Age => this.ComputeAge();
 
-        public virtual Nullable<int> Age
-        {
-            get { return this.ComputeAge(); }
-        }
+    public virtual string Fullname => this.GetFullName();
 
-        public virtual string Fullname
-        {
-            get { return this.GetFullName(); }
-        }
+    private string GetFullName()
+    {
+        return
+        (
+            (!string.IsNullOrWhiteSpace(this.Prefix) ? this.Prefix : string.Empty) +
+            (!string.IsNullOrWhiteSpace(this.FirstName) ? " " + this.FirstName : string.Empty) +
+            (!string.IsNullOrWhiteSpace(this.MiddleName) ? " " + this.MiddleName : string.Empty) +
+            (!string.IsNullOrWhiteSpace(this.LastName) ? " " + this.LastName : string.Empty) +
+            (!string.IsNullOrWhiteSpace(this.Suffix) ? " " + this.Suffix : string.Empty)
+        )
+        .Trim();
+    }
 
-        #region Methods
+    private int? ComputeAge()
+    {
+        if (this.BirthDate == null)
+            return null;
 
-        //public virtual void SerializeWith(Person value)
-        //{
-        //    this.Prefix = value.Prefix;
-        //    this.FirstName = value.FirstName;
-        //    this.MiddleName = value.MiddleName;
-        //    this.LastName = value.LastName;
-        //    this.Suffix = value.Suffix;
-        //    this.Gender = value.Gender;
-        //    this.BirthDate = value.BirthDate;
-        //}
+        var value = this.BirthDate.Value;
+        var now = DateTime.Now;
+        var age = now.Year - value.Year;
 
-        private string GetFullName()
-        {
-            return
-            (
-                (!string.IsNullOrWhiteSpace(this.Prefix) ? this.Prefix : string.Empty) +
-                (!string.IsNullOrWhiteSpace(this.FirstName) ? " " + this.FirstName : string.Empty) +
-                (!string.IsNullOrWhiteSpace(this.MiddleName) ? " " + this.MiddleName : string.Empty) +
-                (!string.IsNullOrWhiteSpace(this.LastName) ? " " + this.LastName : string.Empty) +
-                (!string.IsNullOrWhiteSpace(this.Suffix) ? " " + this.Suffix : string.Empty)
-            )
-            .Trim();
-        }
+        if (now.Month < value.Month || (now.Month == value.Month && now.Day < value.Day))
+            age--;
 
-        private Nullable<int> ComputeAge()
-        {
-            if (this.BirthDate == null)
-                return null;
+        return age;
+    }
 
-            var value = this.BirthDate.Value;
-            var now = DateTime.Now;
-            var age = now.Year - value.Year;
+    public override string ToString()
+    {
+        return this.GetFullName();
+    }
 
-            if (now.Month < value.Month || (now.Month == value.Month && now.Day < value.Day))
-                age--;
-
-            return age;
-        }
-
-        #endregion
-
-        #region Equality Comparer
-
-        private Nullable<int> _hashCode;
-
-        public override int GetHashCode()
-        {
-            if (_hashCode == null)
-            {
-                _hashCode = !string.IsNullOrWhiteSpace(this.Fullname)
-                    ? this.Fullname.GetHashCode()
-                    : base.GetHashCode();
-            }
-
-            return _hashCode.Value;
-        }
-
-        public override bool Equals(object obj)
-        {
-            var that = obj as Person;
-
-            if (that == null)
-                return false;
-
-            if (string.IsNullOrWhiteSpace(that.Fullname) && string.IsNullOrWhiteSpace(this.Fullname))
-                return object.ReferenceEquals(this, that);
-
-            return that.Fullname.Equals(this.Fullname);
-        }
-
-        public static bool operator ==(Person x, Person y)
-        {
-            return Equals(x, y);
-        }
-
-        public static bool operator !=(Person x, Person y)
-        {
-            return !Equals(x, y);
-        }
-
-        #endregion
-
-        #region Method Overrides
-
-        public override string ToString()
-        {
-            return this.GetFullName();
-        }
-
-        #endregion
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return this.Fullname;
     }
 }

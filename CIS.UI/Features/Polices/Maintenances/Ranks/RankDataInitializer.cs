@@ -1,40 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using CIS.Core.Entities.Polices;
 using NHibernate;
 using NHibernate.Linq;
 
-namespace CIS.UI.Features.Polices.Maintenances.Ranks
+namespace CIS.UI.Features.Polices.Maintenances.Ranks;
+
+public class RankDataInitializer(ISessionFactory sessionFactory) : IDataInitializer
 {
-    public class RankDataInitializer : IDataInitializer
+    private readonly ISessionFactory _sessionFactory = sessionFactory;
+
+    public void Execute()
     {
-        private readonly ISessionFactory _sessionFactory;
+        using var session = _sessionFactory.OpenSession();
+        using var transaction = session.BeginTransaction();
 
-        public RankDataInitializer(ISessionFactory sessionFactory)
+        var ranks = session.Query<Rank>().Cacheable().ToList();
+
+        foreach (var toSave in Rank.All)
         {
-            _sessionFactory = sessionFactory;
+            if (ranks.Contains(toSave))
+                continue;
+
+            session.Save(toSave);
         }
 
-        public void Execute()
-        {
-            using (var session = _sessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
-            {
-                var ranks = session.Query<Rank>().Cacheable().ToList();
-
-                foreach (var toSave in Rank.All)
-                {
-                    if (ranks.Contains(toSave))
-                        continue;
-
-                    session.Save(toSave);
-                }
-
-                transaction.Commit();
-            }
-        }
+        transaction.Commit();
     }
 }

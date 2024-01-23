@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Commons;
+﻿using CIS.Core.Entities.Commons;
 using CIS.Core.Utilities.Extentions;
 using CIS.UI.Utilities.Extentions;
 using LinqToExcel;
 using NHibernate;
 using NHibernate.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CIS.UI.Features.Commons.Addresses
 {

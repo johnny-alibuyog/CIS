@@ -1,24 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Commons;
+﻿using CIS.Core.Entities.Commons;
 using FluentNHibernate.Mapping;
 
-namespace CIS.Data.EntityDefinition.Commons
+namespace CIS.Data.EntityDefinition.Commons;
+
+public class BlobMapping : ClassMap<Blob>
 {
-    public class BlobMapping : ClassMap<Blob>
+    public BlobMapping()
     {
-        public BlobMapping()
-        {
-            Id(x => x.Id);
+        Id(x => x.Id);
 
-            Map(x => x.Bytes);
+        Map(x => x.Bytes);
 
-            DiscriminateSubClassesOnColumn("Discriminator")
-                .Index("DiscriminatorIndex")
-                .Not.Nullable()
-                .Length(25);
-        }
+        DiscriminateSubClassesOnColumn("Discriminator")
+            .Index("DiscriminatorIndex")
+            .Not.Nullable()
+            .Length(25);
     }
 }

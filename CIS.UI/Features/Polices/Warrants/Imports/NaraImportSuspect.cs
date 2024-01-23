@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CIS.UI.Features.Polices.Warrants.Imports
 {
@@ -63,7 +59,7 @@ namespace CIS.UI.Features.Polices.Warrants.Imports
         private string _lastName;
         private string _suffix;
         private string _gender;
-        private Nullable<DateTime> _birthDate;
+        private DateTime? _birthDate;
         private string _address1;
         private string _address2;
         private string _barangay;
@@ -125,7 +121,7 @@ namespace CIS.UI.Features.Polices.Warrants.Imports
             set { _gender = (value ?? string.Empty).Trim(); }
         }
 
-        public virtual Nullable<DateTime> BirthDate
+        public virtual DateTime? BirthDate
         {
             get { return _birthDate; }
             set { _birthDate = value <= SqlDateTime.MinValue.Value ? null : value; }

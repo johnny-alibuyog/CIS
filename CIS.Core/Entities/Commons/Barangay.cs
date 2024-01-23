@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Utilities.Extentions;
+﻿using CIS.Core.Utilities.Extentions;
+using System;
 
 namespace CIS.Core.Entities.Commons
 {
@@ -11,8 +8,8 @@ namespace CIS.Core.Entities.Commons
         private Guid _id;
         private string _name;
         private City _city;
-        private Nullable<AreaClass> _areaClass;
-        private Nullable<int> _population;
+        private AreaClass? _areaClass;
+        private int? _population;
 
         public virtual Guid Id
         {
@@ -32,13 +29,13 @@ namespace CIS.Core.Entities.Commons
             set { _city = value; }
         }
 
-        public virtual Nullable<AreaClass> AreaClass
+        public virtual AreaClass? AreaClass
         {
             get { return _areaClass; }
             set { _areaClass = value; }
         }
 
-        public virtual Nullable<int> Population
+        public virtual int? Population
         {
             get { return _population; }
             set { _population = value; }
@@ -58,7 +55,7 @@ namespace CIS.Core.Entities.Commons
 
         #region Equality Comparer
 
-        private Nullable<int> _hashCode;
+        private int? _hashCode;
 
         public override bool Equals(object obj)
         {

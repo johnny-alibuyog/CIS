@@ -1,89 +1,72 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.UI.Bootstraps.InversionOfControl;
-using CIS.UI.Features.Commons.Persons;
 using NHibernate.Validator.Constraints;
 using ReactiveUI;
 
-namespace CIS.UI.Features.Polices.Clearances.Applications
+namespace CIS.UI.Features.Polices.Clearances.Applications;
+
+public class FindingViewModel : ViewModelBase
 {
-    public class FindingViewModel : ViewModelBase
+    private static readonly string NoDerogatoryRemarks = "No Derogatory Records/Information";
+
+    public virtual Guid Id { get; set; }
+
+    [Valid]
+    public virtual AmendmentViewModel Amendment { get; set; }
+
+    public virtual IReactiveList<HitViewModel> Hits { get; set; }
+
+    public virtual IReactiveDerivedList<HitViewModel> IdentifiedHits { get; set; }
+
+    public virtual HitViewModel SelectedHit { get; set; }
+
+    public virtual bool HasHits => this.Hits != null && this.Hits.Count() > 0;
+
+    public virtual bool HasAmendments => this.Amendment != null;
+
+    public virtual string Evaluate()
     {
-        private static readonly string NoDerogatoryRemarks = "No Derogatory Records/Information";
+        if (this.Amendment != null)
+            return this.Amendment.Remarks;
 
-        public virtual Guid Id { get; set; }
+        if (this.IdentifiedHits.Count() > 0)
+            return string.Join("\n", this.IdentifiedHits);
 
-        [Valid]
-        public virtual AmendmentViewModel Amendment { get; set; }
+        return NoDerogatoryRemarks;
+    }
 
-        public virtual IReactiveList<HitViewModel> Hits { get; set; }
-
-        public virtual IReactiveDerivedList<HitViewModel> IdentifiedHits { get; set; }
-
-        public virtual HitViewModel SelectedHit { get; set; }
-
-        public virtual bool HasHits
+    public FindingViewModel()
+    {
+        this.Amendment = new AmendmentViewModel();
+        this.ObservableForProperty(x => x.Amendment).Subscribe(amendment =>
         {
-            get { return this.Hits != null && this.Hits.Count() > 0; }
-        }
+            amendment.Value?
+                .IsValidObservable()
+                .Subscribe(o => this.Revalidate());
 
-        public virtual bool HasAmendments
+            this.Revalidate();
+        });
+
+        this.Hits = new ReactiveList<HitViewModel>();
+        this.Hits.ChangeTrackingEnabled = true;
+        this.Hits.ItemChanged.Subscribe(_ =>
         {
-            get { return this.Amendment != null; }
-        }
-
-        public virtual string Evaluate()
-        {
-            if (this.Amendment != null)
-                return this.Amendment.Remarks;
-
-            if (this.IdentifiedHits.Count() > 0)
-                return string.Join("\n", this.IdentifiedHits);
-
-            return NoDerogatoryRemarks;
-        }
-
-        public FindingViewModel()
-        {
-            this.Amendment = new AmendmentViewModel();
-            this.ObservableForProperty(x => x.Amendment).Subscribe(x =>
+            var hasIdentifiedHit = this.Hits.Any(x => x.IsIdentifiedHit == false);
+            if (hasIdentifiedHit)
             {
-                var amendment = x.Value;
-                if (amendment != null)
-                {
-                    amendment.IsValidObservable()
-                        .Subscribe(o => this.Revalidate());
-                }
+                this.Amendment ??= new AmendmentViewModel();
 
-                this.Revalidate();
-            });
-
-            this.Hits = new ReactiveList<HitViewModel>();
-            this.Hits.ChangeTrackingEnabled = true;
-            this.Hits.ItemChanged.Subscribe(_ =>
+                var identifiedHits = this.Hits.Where(x => x.IsIdentifiedHit);
+                this.Amendment.Remarks = identifiedHits.Any()
+                    ? string.Join("\n", identifiedHits)
+                    : NoDerogatoryRemarks;
+            }
+            else
             {
-                var hasIdentifiedHit = this.Hits.Any(x => x.IsIdentifiedHit == false);
-                if (hasIdentifiedHit)
-                {
-                    if (this.Amendment == null)
-                        this.Amendment = new AmendmentViewModel();
+                this.Amendment = null;
+            }
+        });
 
-                    var identifiedHits = this.Hits.Where(x => x.IsIdentifiedHit);
-                    this.Amendment.Remarks = identifiedHits.Count() > 0
-                        ? string.Join("\n", identifiedHits)
-                        : NoDerogatoryRemarks;
-                }
-                else
-                {
-                    this.Amendment = null;
-                }
-            });
-
-            this.IdentifiedHits = this.Hits.CreateDerivedCollection(x => x, x => x.IsIdentifiedHit);
-        }
+        this.IdentifiedHits = this.Hits.CreateDerivedCollection(x => x, x => x.IsIdentifiedHit);
     }
 }

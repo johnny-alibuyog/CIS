@@ -1,33 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Commons;
+﻿using CIS.Core.Entities.Commons;
 using NHibernate.Validator.Cfg.Loquacious;
 
-namespace CIS.Data.EntityDefinitions.Commons
+namespace CIS.Data.EntityDefinitions.Commons;
+
+public class TerminalValidation : ValidationDef<Terminal>
 {
-    public class TerminalValidation : ValidationDef<Terminal>
+    public TerminalValidation()
     {
-        public TerminalValidation()
-        {
-            Define(x => x.Id);
+        Define(x => x.Id);
 
-            Define(x => x.Version);
+        Define(x => x.Version);
 
-            Define(x => x.Audit);
+        Define(x => x.Audit);
 
-            Define(x => x.MachineName)
-                .MaxLength(100);
+        Define(x => x.MachineName)
+            .MaxLength(100);
 
-            Define(x => x.IpAddress)
-                .MaxLength(100);
+        Define(x => x.IpAddress)
+            .MaxLength(100);
 
-            Define(x => x.MacAddress)
-                .MaxLength(100);
+        Define(x => x.MacAddress)
+            .MaxLength(100);
 
-            Define(x => x.WithDefaultLogin);
-        }
+        Define(x => x.WithDefaultLogin);
     }
 }

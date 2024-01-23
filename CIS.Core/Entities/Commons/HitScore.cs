@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CIS.Core.Entities.Commons;
 
-namespace CIS.Core.Entities.Commons
+public enum HitScore
 {
-    public enum HitScore
-    {
-        Partial,
-        Perfect
-    }
+    Partial,
+    Perfect
 }

@@ -1,29 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Polices;
+﻿using CIS.Core.Entities.Polices;
 using FluentNHibernate.Mapping;
 
-namespace CIS.Data.EntityDefinitions.Polices
+namespace CIS.Data.EntityDefinitions.Polices;
+
+public class HitMapping : ClassMap<Hit>
 {
-    public class HitMapping : ClassMap<Hit>
+    public HitMapping()
     {
-        public HitMapping()
-        {
-            Id(x => x.Id);
+        Id(x => x.Id);
 
-            References(x => x.Finding);
+        References(x => x.Finding);
 
-            Map(x => x.HitScore);
+        Map(x => x.HitScore);
 
-            Map(x => x.IsIdentical);
+        Map(x => x.IsIdentical);
 
-            DiscriminateSubClassesOnColumn("Discriminator")
-                .Index("DiscriminatorIndex")
-                .Not.Nullable()
-                .Length(25);
-        }
+        DiscriminateSubClassesOnColumn("Discriminator")
+            .Index("DiscriminatorIndex")
+            .Not.Nullable()
+            .Length(25);
     }
 }

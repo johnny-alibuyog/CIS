@@ -1,40 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Data.Commons.Exceptions;
+﻿using CIS.Data.Commons.Exceptions;
 using CIS.UI.Features;
 using ReactiveUI;
+using System;
+using System.Collections.Generic;
 
-namespace CIS.UI.Utilities.Extentions
+namespace CIS.UI.Utilities.Extentions;
+
+public static class ReactiveExtention
 {
-    public static class ReactiveExtention
+    public static IReactiveList<T> ToReactiveList<T>(this IEnumerable<T> items)
     {
-        public static IReactiveList<T> ToReactiveList<T>(this IEnumerable<T> items)
-        {
-            return new ReactiveList<T>(items);
-        }
+        return new ReactiveList<T>(items);
+    }
 
-        public static void Handle(this IObservable<Exception> thrownExceptions, IControllerBase handler, string message = null)
+    public static void Handle(this IObservable<Exception> observableException, IControllerBase handler, string message = null)
+    {
+        observableException.Subscribe(exception =>
         {
-            thrownExceptions.Subscribe(x =>
+            var notification = exception switch
             {
-                var notification = string.Empty;
+                BusinessException businessException 
+                    => businessException.Message,
+                _ 
+                    => !string.IsNullOrWhiteSpace(message) ? message : exception.Message
+            };
 
-                if (x is BusinessException)
-                    notification = x.Message;
-                else if (!string.IsNullOrWhiteSpace(message))
-                    notification = message;
-                else
-                    notification = x.Message;
-
-                //var notification = x is BusinessException 
-                //    ? x.Message : message != string.Empty 
-                //    ? message : x.Message;
-
-                handler.MessageBox.Warn(notification);
-            });
-        }
+            handler.MessageBox.Warn(notification);
+        });
     }
 }

@@ -1,235 +1,223 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 
-namespace CIS.UI.Utilities.Controls
+namespace CIS.UI.Utilities.Controls;
+
+/// <summary>
+/// Class that provides the Watermark attached property
+/// </summary>
+public static class WatermarkService
 {
     /// <summary>
-    /// Class that provides the Watermark attached property
+    /// Watermark Attached Dependency Property
     /// </summary>
-    public static class WatermarkService
+    public static readonly DependencyProperty WatermarkProperty = 
+        DependencyProperty.RegisterAttached("Watermark", typeof(object), typeof(WatermarkService),
+         new FrameworkPropertyMetadata((object)null, new PropertyChangedCallback(OnWatermarkChanged)));
+
+    #region Private Fields
+
+    /// <summary>
+    /// Dictionary of ItemsControls
+    /// </summary>
+    private static readonly Dictionary<object, ItemsControl> _itemsControls = new Dictionary<object, ItemsControl>();
+
+    #endregion
+
+    /// <summary>
+    /// Gets the Watermark property.  This dependency property indicates the watermark for the control.
+    /// </summary>
+    /// <param name="dependencyObject"><see cref="DependencyObject"/> to get the property from</param>
+    /// <returns>The value of the Watermark property</returns>
+    public static object GetWatermark(DependencyObject dependencyObject)
     {
-        /// <summary>
-        /// Watermark Attached Dependency Property
-        /// </summary>
-        public static readonly DependencyProperty WatermarkProperty = 
-            DependencyProperty.RegisterAttached("Watermark", typeof(object), typeof(WatermarkService),
-             new FrameworkPropertyMetadata((object)null, new PropertyChangedCallback(OnWatermarkChanged)));
+        return (object)dependencyObject.GetValue(WatermarkProperty);
+    }
 
-        #region Private Fields
+    /// <summary>
+    /// Sets the Watermark property.  This dependency property indicates the watermark for the control.
+    /// </summary>
+    /// <param name="dependencyObject"><see cref="DependencyObject"/> to set the property on</param>
+    /// <param name="value">value of the property</param>
+    public static void SetWatermark(DependencyObject dependencyObject, object value)
+    {
+        dependencyObject.SetValue(WatermarkProperty, value);
+    }
 
-        /// <summary>
-        /// Dictionary of ItemsControls
-        /// </summary>
-        private static readonly Dictionary<object, ItemsControl> _itemsControls = new Dictionary<object, ItemsControl>();
+    /// <summary>
+    /// Handles changes to the Watermark property.
+    /// </summary>
+    /// <param name="dependencyObject"><see cref="DependencyObject"/> that fired the event</param>
+    /// <param name="e">A <see cref="DependencyPropertyChangedEventArgs"/> that contains the event data.</param>
+    private static void OnWatermarkChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
+    {
+        var control = (Control)dependencyObject;
+        control.Loaded += Control_Loaded;
 
-        #endregion
-
-        /// <summary>
-        /// Gets the Watermark property.  This dependency property indicates the watermark for the control.
-        /// </summary>
-        /// <param name="dependencyObject"><see cref="DependencyObject"/> to get the property from</param>
-        /// <returns>The value of the Watermark property</returns>
-        public static object GetWatermark(DependencyObject dependencyObject)
+        if (dependencyObject is ComboBox || dependencyObject is TextBox)
         {
-            return (object)dependencyObject.GetValue(WatermarkProperty);
+            control.GotKeyboardFocus += Control_GotKeyboardFocus;
+            control.LostKeyboardFocus += Control_Loaded;
         }
 
-        /// <summary>
-        /// Sets the Watermark property.  This dependency property indicates the watermark for the control.
-        /// </summary>
-        /// <param name="dependencyObject"><see cref="DependencyObject"/> to set the property on</param>
-        /// <param name="value">value of the property</param>
-        public static void SetWatermark(DependencyObject dependencyObject, object value)
+        if (dependencyObject is ItemsControl && dependencyObject is not ComboBox)
         {
-            dependencyObject.SetValue(WatermarkProperty, value);
+            var i = (ItemsControl)dependencyObject;
+
+            // for Items property  
+            i.ItemContainerGenerator.ItemsChanged += ItemsChanged;
+            _itemsControls.Add(i.ItemContainerGenerator, i);
+
+            // for ItemsSource property  
+            var prop = DependencyPropertyDescriptor.FromProperty(ItemsControl.ItemsSourceProperty, i.GetType());
+            prop.AddValueChanged(i, ItemsSourceChanged);
         }
+    }
 
-        /// <summary>
-        /// Handles changes to the Watermark property.
-        /// </summary>
-        /// <param name="dependencyObject"><see cref="DependencyObject"/> that fired the event</param>
-        /// <param name="e">A <see cref="DependencyPropertyChangedEventArgs"/> that contains the event data.</param>
-        private static void OnWatermarkChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
+    #region Event Handlers
+
+    /// <summary>
+    /// Handle the GotFocus event on the control
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
+    private static void Control_GotKeyboardFocus(object sender, RoutedEventArgs e)
+    {
+        var c = (Control)sender;
+        if (ShouldShowWatermark(c))
         {
-            var control = (Control)dependencyObject;
-            control.Loaded += Control_Loaded;
-
-            if (dependencyObject is ComboBox || dependencyObject is TextBox)
-            {
-                control.GotKeyboardFocus += Control_GotKeyboardFocus;
-                control.LostKeyboardFocus += Control_Loaded;
-            }
-
-            if (dependencyObject is ItemsControl && !(dependencyObject is ComboBox))
-            {
-                var i = (ItemsControl)dependencyObject;
-
-                // for Items property  
-                i.ItemContainerGenerator.ItemsChanged += ItemsChanged;
-                _itemsControls.Add(i.ItemContainerGenerator, i);
-
-                // for ItemsSource property  
-                var prop = DependencyPropertyDescriptor.FromProperty(ItemsControl.ItemsSourceProperty, i.GetType());
-                prop.AddValueChanged(i, ItemsSourceChanged);
-            }
+            RemoveWatermark(c);
         }
+    }
 
-        #region Event Handlers
-
-        /// <summary>
-        /// Handle the GotFocus event on the control
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
-        private static void Control_GotKeyboardFocus(object sender, RoutedEventArgs e)
+    /// <summary>
+    /// Handle the Loaded and LostFocus event on the control
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
+    private static void Control_Loaded(object sender, RoutedEventArgs e)
+    {
+        var control = (Control)sender;
+        if (ShouldShowWatermark(control))
         {
-            var c = (Control)sender;
+            ShowWatermark(control);
+        }
+    }
+
+    /// <summary>
+    /// Event handler for the items source changed event
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">A <see cref="EventArgs"/> that contains the event data.</param>
+    private static void ItemsSourceChanged(object sender, EventArgs e)
+    {
+        var c = (ItemsControl)sender;
+        if (c.ItemsSource != null)
+        {
             if (ShouldShowWatermark(c))
+            {
+                ShowWatermark(c);
+            }
+            else
             {
                 RemoveWatermark(c);
             }
         }
-
-        /// <summary>
-        /// Handle the Loaded and LostFocus event on the control
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">A <see cref="RoutedEventArgs"/> that contains the event data.</param>
-        private static void Control_Loaded(object sender, RoutedEventArgs e)
+        else
         {
-            var control = (Control)sender;
+            ShowWatermark(c);
+        }
+    }
+
+    /// <summary>
+    /// Event handler for the items changed event
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">A <see cref="ItemsChangedEventArgs"/> that contains the event data.</param>
+    private static void ItemsChanged(object sender, ItemsChangedEventArgs e)
+    {
+        var control = default(ItemsControl);
+        if (_itemsControls.TryGetValue(sender, out control))
+        {
             if (ShouldShowWatermark(control))
             {
                 ShowWatermark(control);
             }
-        }
-
-        /// <summary>
-        /// Event handler for the items source changed event
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">A <see cref="EventArgs"/> that contains the event data.</param>
-        private static void ItemsSourceChanged(object sender, EventArgs e)
-        {
-            var c = (ItemsControl)sender;
-            if (c.ItemsSource != null)
-            {
-                if (ShouldShowWatermark(c))
-                {
-                    ShowWatermark(c);
-                }
-                else
-                {
-                    RemoveWatermark(c);
-                }
-            }
             else
             {
-                ShowWatermark(c);
+                RemoveWatermark(control);
             }
         }
-
-        /// <summary>
-        /// Event handler for the items changed event
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">A <see cref="ItemsChangedEventArgs"/> that contains the event data.</param>
-        private static void ItemsChanged(object sender, ItemsChangedEventArgs e)
-        {
-            var control = (ItemsControl)null;
-            if (_itemsControls.TryGetValue(sender, out control))
-            {
-                if (ShouldShowWatermark(control))
-                {
-                    ShowWatermark(control);
-                }
-                else
-                {
-                    RemoveWatermark(control);
-                }
-            }
-        }
-
-        #endregion
-
-        #region Helper Methods
-
-        /// <summary>
-        /// Remove the watermark from the specified element
-        /// </summary>
-        /// <param name="control">Element to remove the watermark from</param>
-        private static void RemoveWatermark(UIElement control)
-        {
-            var layer = AdornerLayer.GetAdornerLayer(control);
-
-            // layer could be null if control is no longer in the visual tree
-            if (layer != null)
-            {
-                var adorners = layer.GetAdorners(control);
-                if (adorners == null)
-                {
-                    return;
-                }
-
-                foreach (var adorner in adorners)
-                {
-                    if (adorner is WatermarkAdorner)
-                    {
-                        adorner.Visibility = Visibility.Hidden;
-                        layer.Remove(adorner);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Show the watermark on the specified control
-        /// </summary>
-        /// <param name="control">Control to show the watermark on</param>
-        private static void ShowWatermark(Control control)
-        {
-            var layer = AdornerLayer.GetAdornerLayer(control);
-
-            // layer could be null if control is no longer in the visual tree
-            if (layer != null)
-            {
-                layer.Add(new WatermarkAdorner(control, GetWatermark(control)));
-            }
-        }
-
-        /// <summary>
-        /// Indicates whether or not the watermark should be shown on the specified control
-        /// </summary>
-        /// <param name="control"><see cref="Control"/> to test</param>
-        /// <returns>true if the watermark should be shown; false otherwise</returns>
-        private static bool ShouldShowWatermark(Control control)
-        {
-            if (control is ComboBox)
-            {
-                return (control as ComboBox).Text == string.Empty;
-            }
-            else if (control is TextBoxBase)
-            {
-                return (control as TextBox).Text == string.Empty;
-            }
-            else if (control is ItemsControl)
-            {
-                return (control as ItemsControl).Items.Count == 0;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        #endregion
     }
+
+    #endregion
+
+    #region Helper Methods
+
+    /// <summary>
+    /// Remove the watermark from the specified element
+    /// </summary>
+    /// <param name="control">Element to remove the watermark from</param>
+    private static void RemoveWatermark(UIElement control)
+    {
+        var layer = AdornerLayer.GetAdornerLayer(control);
+
+        // layer could be null if control is no longer in the visual tree
+        if (layer != null)
+        {
+            var adorners = layer.GetAdorners(control);
+            if (adorners == null)
+            {
+                return;
+            }
+
+            foreach (var adorner in adorners)
+            {
+                if (adorner is WatermarkAdorner)
+                {
+                    adorner.Visibility = Visibility.Hidden;
+                    layer.Remove(adorner);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Show the watermark on the specified control
+    /// </summary>
+    /// <param name="control">Control to show the watermark on</param>
+    private static void ShowWatermark(Control control)
+    {
+        var layer = AdornerLayer.GetAdornerLayer(control);
+
+        // layer could be null if control is no longer in the visual tree
+        layer?.Add(new WatermarkAdorner(control, GetWatermark(control)));
+    }
+
+    /// <summary>
+    /// Indicates whether or not the watermark should be shown on the specified control
+    /// </summary>
+    /// <param name="control"><see cref="Control"/> to test</param>
+    /// <returns>true if the watermark should be shown; false otherwise</returns>
+    private static bool ShouldShowWatermark(Control control)
+    {
+        return control switch
+        {
+            ComboBox comboBox 
+                => comboBox.Text == string.Empty,
+            TextBox textBox
+                => textBox.Text == string.Empty,
+            ItemsControl itemsControl 
+                => itemsControl.Items.Count == 0,
+            _ 
+                => false
+        };
+    }
+
+    #endregion
 }

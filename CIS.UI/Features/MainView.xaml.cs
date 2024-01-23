@@ -1,29 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CIS.Core.Entities.Commons;
-using CIS.Core.Entities.Memberships;
-using CIS.UI.Bootstraps.InversionOfControl;
-using CIS.UI.Features.Commons.Biometrics;
-using CIS.UI.Features.Commons.Terminals;
-using CIS.UI.Features.Firearms.Maintenances;
-using CIS.UI.Features.Polices.Maintenances;
+﻿using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Utilities.Extentions;
 using FirstFloor.ModernUI.Windows.Controls;
-using NHibernate;
-using NHibernate.Linq;
 using ReactiveUI;
+using System.Windows.Media;
+using System.Windows;
 
 namespace CIS.UI.Features
 {
@@ -52,6 +32,16 @@ namespace CIS.UI.Features
         {
             this.InitializeComponent();
             this.InitializeViewModelAsync(() => IoC.Container.Resolve<MainViewModel>());
+
+            var root = this.GetTemplateChild("LayoutRoot");
+            //root.LayoutTransform = new ScaleTransform(1.5, 1.5);
+
+            //var root = (FrameworkElement)this.GetVisualChild(0);
+            //if (root != null)
+            //{
+            //    root.LayoutTransform = new ScaleTransform(1.5, 1.5);
+            //}
+            //this.LayoutTransform = new ScaleTransform(1.5, 1.5);
         }
     }
 }

@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CIS.UI.Features;
 
-namespace CIS.UI.Features
+public interface IDataInitializer
 {
-    public interface IDataInitializer
-    {
-        void Execute();
-    }
+    void Execute();
 }

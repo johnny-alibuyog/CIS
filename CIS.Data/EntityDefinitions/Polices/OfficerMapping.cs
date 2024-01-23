@@ -1,35 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Polices;
+﻿using CIS.Core.Entities.Polices;
 using FluentNHibernate.Mapping;
 
-namespace CIS.Data.EntityDefinition.Polices
+namespace CIS.Data.EntityDefinition.Polices;
+
+public class OfficerMapping : ClassMap<Officer>
 {
-    public class OfficerMapping : ClassMap<Officer>
+    public OfficerMapping()
     {
-        public OfficerMapping()
-        {
-            OptimisticLock.Version();
+        OptimisticLock.Version();
 
-            Id(x => x.Id);
+        Id(x => x.Id);
 
-            Version(x => x.Version);
+        Version(x => x.Version);
 
-            Component(x => x.Audit);
+        Component(x => x.Audit);
 
-            Component(x => x.Person);
+        Component(x => x.Person);
 
-            References(x => x.Station);
+        References(x => x.Station);
 
-            References(x => x.Rank);
+        References(x => x.Rank);
 
-            Map(x => x.Position);
+        Map(x => x.Position);
 
-            References(x => x.Signature)
-                .Cascade.All()
-                .Fetch.Join();
-        }
+        References(x => x.Signature)
+            .Cascade.All()
+            .Fetch.Join();
     }
 }

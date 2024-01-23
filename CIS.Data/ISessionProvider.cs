@@ -1,14 +1,10 @@
-﻿using System;
-using CIS.Data.Configurations;
-using NHibernate;
-using NHibernate.Validator.Engine;
+﻿using NHibernate;
 
-namespace CIS.Data
+namespace CIS.Data;
+
+public interface ISessionProvider
 {
-    public interface ISessionProvider
-    {
-        ISession GetSharedSession();
-        ISession ReleaseSharedSession();
-        ISessionFactory SessionFactory { get; }
-    }
+    ISession GetSharedSession();
+    ISession ReleaseSharedSession();
+    ISessionFactory SessionFactory { get; }
 }

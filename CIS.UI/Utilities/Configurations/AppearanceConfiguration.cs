@@ -1,35 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 using FirstFloor.ModernUI.Presentation;
 
-namespace CIS.UI.Utilities.Configurations
+namespace CIS.UI.Utilities.Configurations;
+
+[Serializable()]
+public class AppearanceConfiguration
 {
-    [Serializable()]
-    public class AppearanceConfiguration
+    public virtual FontSize FontSize { get; set; }
+    public virtual AppearanceColorConfiguration Color { get; set; }
+    public virtual AppearanceThemeConfiguration Theme { get; set; }
+
+    public AppearanceConfiguration()
     {
-        public virtual FontSize FontSize { get; set; }
-        public virtual AppearanceColorConfiguration Color { get; set; }
-        public virtual AppearanceThemeConfiguration Theme { get; set; }
+        this.Color = new AppearanceColorConfiguration();
+        this.Theme = new AppearanceThemeConfiguration();
+    }
 
-        public AppearanceConfiguration()
-        {
-            this.Color = new AppearanceColorConfiguration();
-            this.Theme = new AppearanceThemeConfiguration();
-        }
+    public virtual void Apply()
+    {
+        AppearanceManager.Current.FontSize = this.FontSize;
 
-        public virtual void Apply()
-        {
-            AppearanceManager.Current.FontSize = this.FontSize;
+        if (this.Color != AppearanceColorConfiguration.Empty)
+            AppearanceManager.Current.AccentColor = this.Color.Value;
 
-            if (this.Color != AppearanceColorConfiguration.Empty)
-                AppearanceManager.Current.AccentColor = this.Color.Value;
-
-            if (this.Theme != AppearanceThemeConfiguration.Empty)
-                AppearanceManager.Current.ThemeSource = this.Theme.Value.Source;
-        }
+        if (this.Theme != AppearanceThemeConfiguration.Empty)
+            AppearanceManager.Current.ThemeSource = this.Theme.Value.Source;
     }
 }

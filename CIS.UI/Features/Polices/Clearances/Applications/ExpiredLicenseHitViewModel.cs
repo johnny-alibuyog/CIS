@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Commons;
-using CIS.Core.Entities.Polices;
+﻿using CIS.Core.Entities.Commons;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Features.Commons.Persons;
-using CIS.UI.Features.Firearms.Licenses;
 using CIS.UI.Features.Firearms.Licenses.Registrations;
+using System;
 
 namespace CIS.UI.Features.Polices.Clearances.Applications
 {
@@ -24,7 +18,7 @@ namespace CIS.UI.Features.Polices.Clearances.Applications
 
         public virtual string LicenseNumber { get; set; }
 
-        public virtual Nullable<DateTime> ExpiryDate { get; set; }
+        public virtual DateTime? ExpiryDate { get; set; }
 
         public override HitScore HitScore
         {

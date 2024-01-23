@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using CIS.Data.Configurations;
+﻿using CIS.Data.Configurations;
 using CIS.Data.Conventions;
 using CIS.Data.EntityDefinition.Commons;
 using FluentNHibernate.Cfg;
@@ -13,92 +8,92 @@ using NHibernate;
 using NHibernate.Bytecode;
 using NHibernate.Context;
 using NHibernate.Validator.Engine;
+using System.IO;
 
-namespace CIS.Data
+namespace CIS.Data;
+
+public class SessionProvider : ISessionProvider
 {
-    public class SessionProvider : ISessionProvider
+    private readonly ISessionFactory _sessionFactory;
+
+    private static ValidatorEngine _validator;
+    private static AuditResolver _auditResolver;
+
+    internal static ValidatorEngine Validator
     {
-        private readonly ISessionFactory _sessionFactory;
+        get { return _validator; }
+        private set { _validator = value; }
+    }
 
-        private static ValidatorEngine _validator;
-        private static AuditResolver _auditResolver;
+    internal static AuditResolver AuditResolver
+    {
+        get { return _auditResolver; }
+        private set { _auditResolver = value; }
+    }
 
-        internal static ValidatorEngine Validator
+    public virtual ISessionFactory SessionFactory
+    {
+        get { return _sessionFactory; }
+    }
+
+    public virtual ISession GetSharedSession()
+    {
+        if (CurrentSessionContext.HasBind(_sessionFactory) != true)
         {
-            get { return _validator; }
-            private set { _validator = value; }
+            CurrentSessionContext.Bind(_sessionFactory.OpenSession());
         }
 
-        internal static AuditResolver AuditResolver
+        if (_sessionFactory.GetCurrentSession().IsConnected == false || 
+            _sessionFactory.GetCurrentSession().IsOpen == false)
         {
-            get { return _auditResolver; }
-            private set { _auditResolver = value; }
+            CurrentSessionContext.Unbind(_sessionFactory);
+            CurrentSessionContext.Bind(_sessionFactory.OpenSession());
         }
 
-        public virtual ISessionFactory SessionFactory
-        {
-            get { return _sessionFactory; }
-        }
+        return _sessionFactory.GetCurrentSession();
+    }
 
-        public virtual ISession GetSharedSession()
-        {
-            if (CurrentSessionContext.HasBind(_sessionFactory) != true)
-            {
-                CurrentSessionContext.Bind(_sessionFactory.OpenSession());
-            }
+    public virtual ISession ReleaseSharedSession()
+    {
+        return CurrentSessionContext.Unbind(_sessionFactory);
+    }
 
-            if (_sessionFactory.GetCurrentSession().IsConnected == false || 
-                _sessionFactory.GetCurrentSession().IsOpen == false)
-            {
-                CurrentSessionContext.Unbind(_sessionFactory);
-                CurrentSessionContext.Bind(_sessionFactory.OpenSession());
-            }
+    public SessionProvider(ValidatorEngine validator, AuditResolver auditResolver, string serverName, string databaseName, string username, string password)
+    {
+        _validator = validator;
+        _auditResolver = auditResolver;
 
-            return _sessionFactory.GetCurrentSession();
-        }
+        var schemaExportPath = Path.Combine(System.Environment.CurrentDirectory, "Mappings");
 
-        public virtual ISession ReleaseSharedSession()
-        {
-            return CurrentSessionContext.Unbind(_sessionFactory);
-        }
+        if (!Directory.Exists(schemaExportPath))
+            Directory.CreateDirectory(schemaExportPath);
 
-        public SessionProvider(ValidatorEngine validator, AuditResolver auditResolver, string serverName, string databaseName, string username, string password)
-        {
-            _validator = validator;
-            _auditResolver = auditResolver;
-
-            var schemaExportPath = Path.Combine(System.Environment.CurrentDirectory, "Mappings");
-
-            if (!Directory.Exists(schemaExportPath))
-                Directory.CreateDirectory(schemaExportPath);
-
-            _sessionFactory = Fluently.Configure()
-                .Database(MsSqlConfiguration.MsSql2008
-                    .DefaultSchema("dbo")
-                    .ConnectionString(x => x
-                        .Server(serverName)
-                        .Database(databaseName)
-                        .Username(username)
-                        .Password(password)
-                    )
-                    .QuerySubstitutions("true 1, false 0, yes y, no n")
-                    .AdoNetBatchSize(15)
-                    .FormatSql()
+        _sessionFactory = Fluently.Configure()
+            .Database(MsSqlConfiguration.MsSql2008
+                .DefaultSchema("dbo")
+                .ConnectionString(x => x
+                    .Server(serverName)
+                    .Database(databaseName)
+                    .Username(username)
+                    .Password(password)
                 )
-                .Mappings(x => x
-                    .FluentMappings.AddFromAssemblyOf<AuditMapping>()
-                    .Conventions.AddFromAssemblyOf<_CustomJoinedSubclassConvention>()
-                    .Conventions.Setup(o => o.Add(AutoImport.Never()))
-                    .ExportTo(schemaExportPath)
-                )
-                .ProxyFactoryFactory<DefaultProxyFactoryFactory>()
-                .ExposeConfiguration(EventListenerConfiguration.Configure)
-                .ExposeConfiguration(CacheConfiguration.Configure)
-                .ExposeConfiguration(ValidatorConfiguration.Configure)
-                .ExposeConfiguration(IndexForeignKeyConfiguration.Configure)
-                .ExposeConfiguration(SchemaConfiguration.Configure)
-                .ExposeConfiguration(SessionContextConfiguration.Configure)
-                .BuildSessionFactory();
-        }
+                .QuerySubstitutions("true 1, false 0, yes y, no n")
+                .AdoNetBatchSize(15)
+                .FormatSql()
+            )
+            .Mappings(x => x
+                .FluentMappings.AddFromAssemblyOf<AuditMapping>()
+                .Conventions.AddFromAssemblyOf<_CustomJoinedSubclassConvention>()
+                .Conventions.Setup(o => o.Add(AutoImport.Never()))
+                .ExportTo(schemaExportPath)
+            )
+            .ProxyFactoryFactory<DefaultProxyFactoryFactory>()
+            .ExposeConfiguration(EventListenerConfiguration.Configure)
+            .ExposeConfiguration(CacheConfiguration.Configure)
+            .ExposeConfiguration(ValidatorConfiguration.Configure)
+            .ExposeConfiguration(IndexForeignKeyConfiguration.Configure)
+            .ExposeConfiguration(SchemaConfiguration.Configure)
+            .ExposeConfiguration(SessionContextConfiguration.Configure)
+            .BuildSessionFactory();
     }
 }

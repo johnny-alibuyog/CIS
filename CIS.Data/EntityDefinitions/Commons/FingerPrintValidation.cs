@@ -1,37 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Commons;
+﻿using CIS.Core.Entities.Commons;
 using NHibernate.Validator.Cfg.Loquacious;
 
-namespace CIS.Data.EntityDefinition.Commons
+namespace CIS.Data.EntityDefinition.Commons;
+
+public class FingerPrintValidation : ValidationDef<FingerPrint>
 {
-    public class FingerPrintValidation : ValidationDef<FingerPrint>
+    public FingerPrintValidation()
     {
-        public FingerPrintValidation()
-        {
-            Define(x => x.Id);
+        Define(x => x.Id);
 
-            Define(x => x.RightThumb);
+        Define(x => x.RightThumb);
 
-            Define(x => x.RightIndex);
+        Define(x => x.RightIndex);
 
-            Define(x => x.RightMiddle);
+        Define(x => x.RightMiddle);
 
-            Define(x => x.RightRing);
+        Define(x => x.RightRing);
 
-            Define(x => x.RightPinky);
+        Define(x => x.RightPinky);
 
-            Define(x => x.LeftThumb);
+        Define(x => x.LeftThumb);
 
-            Define(x => x.LeftIndex);
+        Define(x => x.LeftIndex);
 
-            Define(x => x.LeftMiddle);
+        Define(x => x.LeftMiddle);
 
-            Define(x => x.LeftRing);
+        Define(x => x.LeftRing);
 
-            Define(x => x.LeftPinky);
-        }
+        Define(x => x.LeftPinky);
     }
 }

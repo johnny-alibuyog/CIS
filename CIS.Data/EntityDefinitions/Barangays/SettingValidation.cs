@@ -1,35 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Barangays;
+﻿using CIS.Core.Entities.Barangays;
 using NHibernate.Validator.Cfg.Loquacious;
 
-namespace CIS.Data.EntityDefinitions.Barangays
+namespace CIS.Data.EntityDefinitions.Barangays;
+
+public class SettingValidation : ValidationDef<Setting>
 {
-    public class SettingValidation : ValidationDef<Setting>
+    public SettingValidation()
     {
-        public SettingValidation()
-        {
-            Define(x => x.Id);
+        Define(x => x.Id);
 
-            Define(x => x.Version);
+        Define(x => x.Version);
 
-            Define(x => x.Audit);
+        Define(x => x.Audit);
 
-            Define(x => x.Terminal)
-                .NotNullable()
-                .And.IsValid();
+        Define(x => x.Terminal)
+            .NotNullable()
+            .And.IsValid();
 
-            Define(x => x.WithCameraDevice);
+        Define(x => x.WithCameraDevice);
 
-            Define(x => x.WithFingerScannerDevice);
+        Define(x => x.WithFingerScannerDevice);
 
-            Define(x => x.WithDigitalSignatureDevice);
+        Define(x => x.WithDigitalSignatureDevice);
 
-            Define(x => x.FingersToScan)
-                .HasValidElements();
-        }
+        Define(x => x.FingersToScan)
+            .HasValidElements();
     }
 }

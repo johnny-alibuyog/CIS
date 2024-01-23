@@ -1,45 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Memberships;
+﻿using CIS.Core.Entities.Memberships;
 using CIS.Data.Commons.Extentions;
-using CIS.Data.EntityDefinition.Commons;
 using FluentNHibernate.Mapping;
 
-namespace CIS.Data.EntityDefinition.Memberships
+namespace CIS.Data.EntityDefinition.Memberships;
+
+public class UserMapping : ClassMap<User>
 {
-    public class UserMapping : ClassMap<User>
+    public UserMapping()
     {
-        public UserMapping()
-        {
-            OptimisticLock.Version();
+        OptimisticLock.Version();
 
-            Id(x => x.Id);
+        Id(x => x.Id);
 
-            Version(x => x.Version);
+        Version(x => x.Version);
 
-            Map(x => x.Username)
-                .Unique();
+        Map(x => x.Username)
+            .Unique();
 
-            Map(x => x.Password);
+        Map(x => x.Password);
 
-            Map(x => x.Email);
+        Map(x => x.Email);
 
-            Component(x => x.Person);
+        Component(x => x.Person);
 
-            HasMany<Role>(x => x.Roles)
-                .Access.CamelCaseField(Prefix.Underscore)
-                .Schema(GetType().ParseSchema())
-                .Table("UsersRoles")
-                .Element("Role")
-                .AsSet();
+        HasMany<Role>(x => x.Roles)
+            .Access.CamelCaseField(Prefix.Underscore)
+            .Schema(GetType().ParseSchema())
+            .Table("UsersRoles")
+            .Element("Role")
+            .AsSet();
 
-            //HasManyToMany(x => x.Roles)
-            //    .Access.CamelCaseField(Prefix.Underscore)
-            //    .Schema(GetType().ParseSchema())
-            //    .Table("UsersRoles")
-            //    .AsSet();
-        }
+        //HasManyToMany(x => x.Roles)
+        //    .Access.CamelCaseField(Prefix.Underscore)
+        //    .Schema(GetType().ParseSchema())
+        //    .Table("UsersRoles")
+        //    .AsSet();
     }
 }

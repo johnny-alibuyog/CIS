@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CIS.UI.Features.Firearms.Licenses.Registrations
 {
@@ -14,6 +10,6 @@ namespace CIS.UI.Features.Firearms.Licenses.Registrations
 
         public virtual string Gun { get; set; }
 
-        public virtual Nullable<DateTime> ExpiryDate { get; set; }
+        public virtual DateTime? ExpiryDate { get; set; }
     }
 }

@@ -1,32 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Mayors;
+﻿using CIS.Core.Entities.Mayors;
 using FluentNHibernate.Mapping;
 
-namespace CIS.Data.EntityDefinition.Mayors
+namespace CIS.Data.EntityDefinition.Mayors;
+
+public class OfficeMapping : ClassMap<Office>
 {
-    public class OfficeMapping : ClassMap<Office>
+    public OfficeMapping()
     {
-        public OfficeMapping()
-        {
-            OptimisticLock.Version();
+        OptimisticLock.Version();
 
-            Id(x => x.Id);
+        Id(x => x.Id);
 
-            Version(x => x.Version);
+        Version(x => x.Version);
 
-            Component(x => x.Audit);
+        Component(x => x.Audit);
 
-            Map(x => x.Name);
+        Map(x => x.Name);
 
-            Map(x => x.Location);
+        Map(x => x.Location);
 
-            Component(x => x.Address);
+        Component(x => x.Address);
 
-            References(x => x.Incumbent)
-                .Cascade.SaveUpdate();
-        }
+        References(x => x.Incumbent)
+            .Cascade.SaveUpdate();
     }
 }

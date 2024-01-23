@@ -1,29 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Commons;
+﻿using CIS.Core.Entities.Commons;
 using FluentNHibernate.Mapping;
 
-namespace CIS.Data.EntityDefinitions.Commons
+namespace CIS.Data.EntityDefinitions.Commons;
+
+public class PersonBasicMapping : ComponentMap<PersonBasic>
 {
-    public class PersonBasicMapping : ComponentMap<PersonBasic>
+    public PersonBasicMapping()
     {
-        public PersonBasicMapping()
-        {
-            Map(x => x.Prefix);
+        Map(x => x.Prefix);
 
-            Map(x => x.FirstName)
-                .Index("FirstNameIndex");
+        Map(x => x.FirstName)
+            .Index("FirstNameIndex");
 
-            Map(x => x.MiddleName)
-                .Index("MiddleNameIndex");
+        Map(x => x.MiddleName)
+            .Index("MiddleNameIndex");
 
-            Map(x => x.LastName)
-                .Index("LastNameIndex");
+        Map(x => x.LastName)
+            .Index("LastNameIndex");
 
-            Map(x => x.Suffix);
-        }
+        Map(x => x.Suffix);
     }
 }

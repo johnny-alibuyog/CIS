@@ -1,183 +1,119 @@
-﻿using System;
+﻿using CIS.Core.Entities.Commons;
+using CIS.Core.Utilities.Extentions;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Commons;
-using CIS.Core.Utilities.Extentions;
 
-namespace CIS.Core.Entities.Polices
+namespace CIS.Core.Entities.Polices;
+
+public class Station : Entity<Guid>
 {
-    public class Station
+    private int _version;
+    private Audit _audit;
+    private ImageBlob _logo = new();
+    private string _name;
+    private string _office;
+    private string _location;
+    private decimal? _clearanceFee;
+    private int? _clearanceValidityInDays;
+    private Address _address;
+    private ICollection<Officer> _officers = new Collection<Officer>();
+
+    public virtual int Version
     {
-        private Guid _id;
-        private int _version;
-        private Audit _audit;
-        private ImageBlob _logo;
-        private string _name;
-        private string _office;
-        private string _location;
-        private Nullable<decimal> _clearanceFee;
-        private Nullable<int> _clearanceValidityInDays;
-        private Address _address;
-        private ICollection<Officer> _officers;
+        get => _version;
+        protected set => _version = value;
+    }
 
-        public virtual Guid Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
+    public virtual Audit Audit
+    {
+        get => _audit;
+        set => _audit = value;
+    }
 
-        public virtual int Version
-        {
-            get { return _version; }
-            protected set { _version = value; }
-        }
+    public virtual ImageBlob Logo
+    {
+        get => _logo;
+        set => _logo = value;
+    }
 
-        public virtual Audit Audit
-        {
-            get { return _audit; }
-            set { _audit = value; }
-        }
+    public virtual string Name
+    {
+        get => _name;
+        set => _name = value.ToProperCase();
+    }
 
-        public virtual ImageBlob Logo
-        {
-            get { return _logo; }
-            set { _logo = value; }
-        }
+    public virtual string Office
+    {
+        get => _office;
+        set => _office = value.ToProperCase();
+    }
 
-        public virtual string Name
-        {
-            get { return _name; }
-            set { _name = value.ToProperCase(); }
-        }
+    public virtual string Location
+    {
+        get => _location;
+        set => _location = value.ToProperCase();
+    }
 
-        public virtual string Office
-        {
-            get { return _office; }
-            set { _office = value.ToProperCase(); }
-        }
+    public virtual decimal? ClearanceFee
+    {
+        get => _clearanceFee;
+        set => _clearanceFee = value;
+    }
 
-        public virtual string Location
-        {
-            get { return _location; }
-            set { _location = value.ToProperCase(); }
-        }
+    public virtual int? ClearanceValidityInDays
+    {
+        get => _clearanceValidityInDays;
+        set => _clearanceValidityInDays = value;
+    }
 
-        public virtual Nullable<decimal> ClearanceFee
-        {
-            get { return _clearanceFee; }
-            set { _clearanceFee = value; }
-        }
+    public virtual Address Address
+    {
+        get => _address;
+        set => _address = value;
+    }
 
-        public virtual Nullable<int> ClearanceValidityInDays
-        {
-            get { return _clearanceValidityInDays; }
-            set { _clearanceValidityInDays = value; }
-        }
+    public virtual IEnumerable<Officer> Officers
+    {
+        get => _officers;
+        set => SyncOfficers(value);
+    }
 
-        public virtual Address Address
-        {
-            get { return _address; }
-            set { _address = value; }
-        }
+    private void SyncOfficers(IEnumerable<Officer> items)
+    {
+        foreach (var item in items)
+            item.Station = this;
 
-        public virtual IEnumerable<Officer> Officers
-        {
-            get { return _officers; }
-            set { SyncOfficers(value); }
-        }
+        var itemsToInsert = items.Except(_officers).ToList();
+        var itemsToUpdate = _officers.Where(x => items.Contains(x)).ToList();
+        var itemsToRemove = _officers.Except(items).ToList();
 
-        #region Methods
-
-        private void SyncOfficers(IEnumerable<Officer> items)
-        {
-            foreach (var item in items)
-                item.Station = this;
-
-            var itemsToInsert = items.Except(_officers).ToList();
-            var itemsToUpdate = _officers.Where(x => items.Contains(x)).ToList();
-            var itemsToRemove = _officers.Except(items).ToList();
-
-            // insert
-            foreach (var item in itemsToInsert)
-            {
-                item.Station = this;
-                _officers.Add(item);
-            }
-
-            // update
-            foreach (var item in itemsToUpdate)
-            {
-                var value = items.Single(x => x == item);
-                item.SerializeWith(value);
-            }
-
-            // delete
-            foreach (var item in itemsToRemove)
-            {
-                item.Station = null;
-                _officers.Remove(item);
-            }
-        }
-
-        public virtual void AddOfficer(Officer item)
+        // insert
+        foreach (var item in itemsToInsert)
         {
             item.Station = this;
             _officers.Add(item);
         }
 
-        #endregion
-
-        #region Constructors
-
-        public Station()
+        // update
+        foreach (var item in itemsToUpdate)
         {
-            _logo = new ImageBlob();
-            _officers = new Collection<Officer>();
+            var value = items.Single(x => x == item);
+            item.SerializeWith(value);
         }
 
-        #endregion
-
-        #region Equality Comparer
-
-        private Nullable<int> _hashCode;
-
-        public override bool Equals(object obj)
+        // delete
+        foreach (var item in itemsToRemove)
         {
-            var that = obj as Station;
-
-            if (that == null)
-                return false;
-
-            if (that.Id == Guid.Empty && this.Id == Guid.Empty)
-                return object.ReferenceEquals(that, this);
-
-            return (that.Id == this.Id);
+            item.Station = null;
+            _officers.Remove(item);
         }
+    }
 
-        public override int GetHashCode()
-        {
-            if (_hashCode == null)
-            {
-                _hashCode = (this.Id != Guid.Empty)
-                    ? this.Id.GetHashCode()
-                    : base.GetHashCode();
-            }
-
-            return _hashCode.Value;
-        }
-
-        public static bool operator ==(Station x, Station y)
-        {
-            return Equals(x, y);
-        }
-
-        public static bool operator !=(Station x, Station y)
-        {
-            return !Equals(x, y);
-        }
-
-        #endregion
+    public virtual void AddOfficer(Officer item)
+    {
+        item.Station = this;
+        _officers.Add(item);
     }
 }

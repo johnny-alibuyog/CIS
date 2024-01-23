@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Commons;
+﻿using CIS.Core.Entities.Commons;
 using FluentNHibernate.Mapping;
 
-namespace CIS.Data.EntityDefinition.Commons
+namespace CIS.Data.EntityDefinition.Commons;
+
+public class AuditMapping : ComponentMap<Audit>
 {
-    public class AuditMapping : ComponentMap<Audit>
+    public AuditMapping()
     {
-        public AuditMapping()
-        {
-            Map(x => x.CreatedBy);
+        Map(x => x.CreatedBy);
 
-            Map(x => x.UpdatedBy);
+        Map(x => x.UpdatedBy);
 
-            Map(x => x.CreatedOn);
+        Map(x => x.CreatedOn);
 
-            Map(x => x.UpdatedOn);
-        }
+        Map(x => x.UpdatedOn);
     }
 }

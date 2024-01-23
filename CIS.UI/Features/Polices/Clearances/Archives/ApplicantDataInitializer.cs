@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NHibernate;
+﻿using NHibernate;
 
-namespace CIS.UI.Features.Polices.Clearances.Archives
+namespace CIS.UI.Features.Polices.Clearances.Archives;
+
+public class ApplicantDataInitializer(ISessionFactory sessionFactory) : IDataInitializer
 {
-    public class ApplicantDataInitializer : IDataInitializer
+    private readonly ISessionFactory _sessionFactory = sessionFactory;
+
+    public void Execute()
     {
-        private readonly ISessionFactory _sessionFactory;
-
-        public ApplicantDataInitializer(ISessionFactory sessionFactory)
-        {
-            _sessionFactory = sessionFactory;
-        }
-
-        public void Execute()
-        {
-            var sql = @"
+        var sql = @"
                 update 
 	                Polices.Applicants 
                 set 
@@ -34,12 +24,10 @@ namespace CIS.UI.Features.Polices.Clearances.Archives
 	                (CivilStatus = 'Widow' and Gender = 'Male');
             ";
 
-            using (var session = _sessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
-            {
-                var count = session.CreateSQLQuery(sql).ExecuteUpdate();
-                transaction.Commit();
-            }
-        }
+        using var session = _sessionFactory.OpenSession();
+        using var transaction = session.BeginTransaction();
+
+        var count = session.CreateSQLQuery(sql).ExecuteUpdate();
+        transaction.Commit();
     }
 }

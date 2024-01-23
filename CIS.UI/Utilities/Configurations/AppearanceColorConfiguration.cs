@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Xml.Serialization;
-using FirstFloor.ModernUI.Presentation;
 
 namespace CIS.UI.Utilities.Configurations
 {
@@ -57,7 +52,7 @@ namespace CIS.UI.Utilities.Configurations
 
         #region Equality Comparer
 
-        private Nullable<int> _hashCode;
+        private int? _hashCode;
 
         public override bool Equals(object obj)
         {

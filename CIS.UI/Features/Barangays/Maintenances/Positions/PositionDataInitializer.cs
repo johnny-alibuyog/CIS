@@ -1,50 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Barangays;
+﻿using CIS.Core.Entities.Barangays;
 using NHibernate;
 using NHibernate.Linq;
+using System.Linq;
 
-namespace CIS.UI.Features.Barangays.Maintenances.Positions
+namespace CIS.UI.Features.Barangays.Maintenances.Positions;
+
+public class PositionDataInitializer(ISessionFactory sessionFactory) : IDataInitializer
 {
-    public class PositionDataInitializer : IDataInitializer
-    {
-        private readonly ISessionFactory _sessionFactory;
+    private readonly ISessionFactory _sessionFactory = sessionFactory;
 
-        public PositionDataInitializer(ISessionFactory sessionFactory)
+    public void Execute()
+    {
+        using (var session = _sessionFactory.OpenSession())
+        using (var transaction = session.BeginTransaction())
         {
-            _sessionFactory = sessionFactory;
+            var positions = session.Query<Position>().Cacheable().ToList();
+
+            foreach (var toSave in Position.All)
+            {
+                if (positions.Contains(toSave))
+                    continue;
+
+                session.Save(toSave);
+            }
+
+            transaction.Commit();
         }
 
-        public void Execute()
+        // load to cache
+        using (var session = _sessionFactory.OpenSession())
+        using (var transaction = session.BeginTransaction())
         {
-            using (var session = _sessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
-            {
-                var positions = session.Query<Position>().Cacheable().ToList();
+            session.Query<Position>().Cacheable().ToList();
+            session.Query<Committee>().Cacheable().ToList();
 
-                foreach (var toSave in Position.All)
-                {
-                    if (positions.Contains(toSave))
-                        continue;
-
-                    session.Save(toSave);
-                }
-
-                transaction.Commit();
-            }
-
-            // load to cache
-            using (var session = _sessionFactory.OpenSession())
-            using (var transaction = session.BeginTransaction())
-            {
-                session.Query<Position>().Cacheable().ToList();
-                session.Query<Committee>().Cacheable().ToList();
-
-                transaction.Commit();
-            }
+            transaction.Commit();
         }
     }
 }

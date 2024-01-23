@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Commons;
-using CIS.Core.Entities.Polices;
+﻿using CIS.Core.Entities.Commons;
 using CIS.Core.Utilities.Extentions;
 using CIS.UI.Features.Commons.Persons;
-using ReactiveUI;
+using System;
 
 namespace CIS.UI.Features.Barangays.Clearances.Applications
 {
@@ -23,7 +17,7 @@ namespace CIS.UI.Features.Barangays.Clearances.Applications
 
         public virtual string Charge { get; set; }
 
-        public virtual Nullable<DateTime> FiledOn { get; set; }
+        public virtual DateTime? FiledOn { get; set; }
 
         public virtual HitScore HitScore { get { return this.ComputeHitScore(this.Applicant, this.Defendant); } }
 

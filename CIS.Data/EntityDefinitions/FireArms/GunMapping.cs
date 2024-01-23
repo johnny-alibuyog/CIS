@@ -1,42 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Firearms;
+﻿using CIS.Core.Entities.Firearms;
 using FluentNHibernate.Mapping;
+using System;
 
-namespace CIS.Data.EntityDefinitions.FireArms
+namespace CIS.Data.EntityDefinitions.FireArms;
+
+public class GunMapping : ComponentMap<Gun>
 {
-    public class GunMapping : ComponentMap<Gun>
+    public GunMapping()
     {
-        public GunMapping()
+        Map(x => x.Model);
+
+        Map(x => x.Caliber);
+
+        Map(x => x.SerialNumber);
+
+        References(x => x.Kind);
+
+        References(x => x.Make);
+    }
+
+    internal static Action<ComponentPart<Gun>> Map(string columnPrefix = "")
+    {
+        return mapping =>
         {
-            Map(x => x.Model);
+            mapping.Map(x => x.Model, columnPrefix + "Model");
 
-            Map(x => x.Caliber);
+            mapping.Map(x => x.Caliber, columnPrefix + "Caliber");
 
-            Map(x => x.SerialNumber);
+            mapping.Map(x => x.SerialNumber, columnPrefix + "SerialNumber");
 
-            References(x => x.Kind);
+            mapping.References(x => x.Kind, columnPrefix + "KindId");
 
-            References(x => x.Make);
-        }
-
-        internal static Action<ComponentPart<Gun>> Map(string columnPrefix = "")
-        {
-            return mapping =>
-            {
-                mapping.Map(x => x.Model, columnPrefix + "Model");
-
-                mapping.Map(x => x.Caliber, columnPrefix + "Caliber");
-
-                mapping.Map(x => x.SerialNumber, columnPrefix + "SerialNumber");
-
-                mapping.References(x => x.Kind, columnPrefix + "KindId");
-
-                mapping.References(x => x.Make, columnPrefix + "MakeId");
-            };
-        }
+            mapping.References(x => x.Make, columnPrefix + "MakeId");
+        };
     }
 }

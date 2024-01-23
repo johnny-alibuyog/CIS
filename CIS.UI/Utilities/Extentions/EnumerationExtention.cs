@@ -1,72 +1,67 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Markup;
 
-namespace CIS.UI.Utilities.Extentions
+namespace CIS.UI.Utilities.Extentions;
+
+public class EnumerationExtention : MarkupExtension
 {
-    public class EnumerationExtention : MarkupExtension
+    private Type _enumType;
+
+    public EnumerationExtention(Type enumType)
     {
-        private Type _enumType;
+        if (enumType == null)
+            throw new ArgumentNullException("enumType");
 
+        EnumType = enumType;
+    }
 
-        public EnumerationExtention(Type enumType)
+    public Type EnumType
+    {
+        get { return _enumType; }
+        private set
         {
-            if (enumType == null)
-                throw new ArgumentNullException("enumType");
+            if (_enumType == value)
+                return;
 
-            EnumType = enumType;
+            var enumType = Nullable.GetUnderlyingType(value) ?? value;
+
+            if (enumType.IsEnum == false)
+                throw new ArgumentException("Type must be an Enum.");
+
+            _enumType = value;
         }
+    }
 
-        public Type EnumType
-        {
-            get { return _enumType; }
-            private set
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        var enumValues = Enum.GetValues(EnumType);
+
+        return enumValues.OfType<object>()
+            .Select(x => new EnumerationMember()
             {
-                if (_enumType == value)
-                    return;
+                Value = x,
+                Description = GetDescription(x)
+            })
+            .ToArray();
+    }
 
-                var enumType = Nullable.GetUnderlyingType(value) ?? value;
+    private string GetDescription(object enumValue)
+    {
+        var descriptionAttribute = EnumType
+          .GetField(enumValue.ToString())
+          .GetCustomAttributes(typeof(DescriptionAttribute), false)
+          .FirstOrDefault() as DescriptionAttribute;
 
-                if (enumType.IsEnum == false)
-                    throw new ArgumentException("Type must be an Enum.");
+        return descriptionAttribute != null
+          ? descriptionAttribute.Description
+          : enumValue.ToString();
+    }
 
-                _enumType = value;
-            }
-        }
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            var enumValues = Enum.GetValues(EnumType);
-
-            return enumValues.OfType<object>()
-                .Select(x => new EnumerationMember()
-                {
-                    Value = x,
-                    Description = GetDescription(x)
-                })
-                .ToArray();
-        }
-
-        private string GetDescription(object enumValue)
-        {
-            var descriptionAttribute = EnumType
-              .GetField(enumValue.ToString())
-              .GetCustomAttributes(typeof(DescriptionAttribute), false)
-              .FirstOrDefault() as DescriptionAttribute;
-
-            return descriptionAttribute != null
-              ? descriptionAttribute.Description
-              : enumValue.ToString();
-        }
-
-        public class EnumerationMember
-        {
-            public virtual string Description { get; set; }
-            public virtual object Value { get; set; }
-        }
+    public class EnumerationMember
+    {
+        public virtual string Description { get; set; }
+        public virtual object Value { get; set; }
     }
 }

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CIS.UI.Features.Polices.Warrants.Imports
 {
@@ -14,7 +11,7 @@ namespace CIS.UI.Features.Polices.Warrants.Imports
         private string _crime;
         private string _remarks;
         private decimal _bailAmount;
-        private Nullable<DateTime> _issuedOn;
+        private DateTime? _issuedOn;
         private string _issuedBy;
         private string _issuedAtAddress1;
         private string _issuedAtAddress2;
@@ -53,7 +50,7 @@ namespace CIS.UI.Features.Polices.Warrants.Imports
             set { _bailAmount = value; }
         }
 
-        public virtual Nullable<DateTime> IssuedOn
+        public virtual DateTime? IssuedOn
         {
             get { return _issuedOn; }
             set { _issuedOn = value <= SqlDateTime.MinValue.Value ? null : value; }

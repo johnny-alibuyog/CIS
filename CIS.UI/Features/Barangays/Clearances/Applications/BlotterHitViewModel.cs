@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Barangays;
+﻿using CIS.Core.Entities.Barangays;
 using CIS.Core.Entities.Commons;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Features.Commons.Persons;
+using System;
 
 namespace CIS.UI.Features.Barangays.Clearances.Applications
 {
@@ -24,11 +20,11 @@ namespace CIS.UI.Features.Barangays.Clearances.Applications
 
         public virtual string Remarks { get; set; }
 
-        public virtual Nullable<BlotterStatus> Status { get; set; }
+        public virtual BlotterStatus? Status { get; set; }
 
         public virtual AddressViewModel Address { get; set; }
 
-        public virtual Nullable<DateTime> OccuredOn { get; set; }
+        public virtual DateTime? OccuredOn { get; set; }
 
         public override HitScore HitScore
         {

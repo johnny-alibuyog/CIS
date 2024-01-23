@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using CIS.Core.Entities.Commons;
+﻿using CIS.Core.Entities.Commons;
 using CIS.Core.Entities.Memberships;
 using CIS.Store.Services;
 using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Features;
-using CIS.UI.Features.Memberships.Users;
 using CIS.UI.Features.Memberships.Users.Logins;
-using CIS.UI.Utilities;
 using CIS.UI.Utilities.Configurations;
+using System.Linq;
+using System.Threading;
+using System.Windows;
 
 namespace CIS.UI
 {
@@ -25,7 +18,7 @@ namespace CIS.UI
     {
         public static Window CurrentWindow
         {
-            get { return Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive); }
+            get { return Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive); }
         }
 
         public static ApplicationData Data { get; set; }
@@ -42,13 +35,12 @@ namespace CIS.UI
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            var createdNew = false;
-            _instanceMutex = new Mutex(true, @"Clearance Issuance System", out createdNew);
+            _instanceMutex = new Mutex(true, @"Clearance Issuance System", out var createdNew);
             if (createdNew == false)
             {
                 _instanceMutex = null;
                 MessageBox.Show("Application is already running...", "Clearance Issuance System", MessageBoxButton.OK);
-                Application.Current.Shutdown();
+                Current.Shutdown();
                 return;
             }
 

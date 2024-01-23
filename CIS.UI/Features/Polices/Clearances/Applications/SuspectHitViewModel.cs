@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Commons;
-using CIS.Core.Entities.Polices;
+﻿using CIS.Core.Entities.Commons;
 using CIS.UI.Features.Commons.Addresses;
 using CIS.UI.Features.Commons.Persons;
-using CIS.UI.Utilities.Extentions;
+using System;
 
 namespace CIS.UI.Features.Polices.Clearances.Applications
 {
@@ -33,7 +27,7 @@ namespace CIS.UI.Features.Polices.Clearances.Applications
 
         public virtual AddressViewModel IssuedAt { get; set; }
 
-        public virtual Nullable<DateTime> IssuedOn { get; set; }
+        public virtual DateTime? IssuedOn { get; set; }
 
         public override HitScore HitScore
         {

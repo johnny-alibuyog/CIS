@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ServiceStack.DataAnnotations;
+﻿using ServiceStack.DataAnnotations;
+using System;
 
 namespace CIS.Store.Domain.Entities
 {
@@ -20,7 +17,7 @@ namespace CIS.Store.Domain.Entities
         public virtual string Origin { get; set; }
 
         [Required()]
-        public virtual Nullable<DateTimeOffset> Date { get; set; }
+        public virtual DateTimeOffset? Date { get; set; }
 
         [Required()]
         [StringLength(50)]

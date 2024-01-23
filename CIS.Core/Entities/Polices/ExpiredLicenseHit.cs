@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Firearms;
+﻿using CIS.Core.Entities.Firearms;
+using System;
 
 namespace CIS.Core.Entities.Polices
 {
     public class ExpiredLicenseHit : Hit
     {
         private License _licence;
-        private Nullable<DateTime> _expiryDate;
+        private DateTime? _expiryDate;
 
         public virtual License License
         {
@@ -18,7 +14,7 @@ namespace CIS.Core.Entities.Polices
             set { _licence = value; }
         }
 
-        public virtual Nullable<DateTime> ExpiryDate
+        public virtual DateTime? ExpiryDate
         {
             get { return _expiryDate; }
             set { _expiryDate = value; }

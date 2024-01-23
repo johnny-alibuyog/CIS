@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Commons;
+﻿using CIS.Core.Entities.Commons;
 using FluentNHibernate.Mapping;
 
-namespace CIS.Data.EntityDefinition.Commons
+namespace CIS.Data.EntityDefinition.Commons;
+
+public class BarcodeMapping : ClassMap<Barcode>
 {
-    public class BarcodeMapping : ClassMap<Barcode>
+    public BarcodeMapping()
     {
-        public BarcodeMapping()
-        {
-            Id(x => x.Id);
+        Id(x => x.Id);
 
-            References(x => x.Image)
-                .Cascade.All()
-                .Fetch.Join();
+        References(x => x.Image)
+            .Cascade.All()
+            .Fetch.Join();
 
-            Map(x => x.Text);
-        }
+        Map(x => x.Text);
     }
 }

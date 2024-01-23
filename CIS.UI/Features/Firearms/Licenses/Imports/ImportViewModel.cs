@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.UI.Bootstraps.InversionOfControl;
+﻿using CIS.UI.Bootstraps.InversionOfControl;
 using ReactiveUI;
-using ReactiveUI.Xaml;
+using System;
 
 namespace CIS.UI.Features.Firearms.Licenses.Imports
 {
@@ -15,13 +10,13 @@ namespace CIS.UI.Features.Firearms.Licenses.Imports
 
         public virtual string SourcePath { get; set; }
 
-        public virtual Nullable<DateTime> ImportStart { get; set; }
+        public virtual DateTime? ImportStart { get; set; }
 
-        public virtual Nullable<DateTime> ImportEnd { get; set; }
+        public virtual DateTime? ImportEnd { get; set; }
 
-        public virtual Nullable<TimeSpan> TotalTime { get; set; }
+        public virtual TimeSpan? TotalTime { get; set; }
 
-        public virtual Nullable<decimal> TotalLicenses { get; set; }
+        public virtual decimal? TotalLicenses { get; set; }
 
         public virtual string Status { get; set; }
 

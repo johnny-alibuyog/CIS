@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <LangVersion>12</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
@@ -957,7 +958,6 @@
     <Compile Include="Bootstraps\InversionOfControl\IoC.cs" />
     <Compile Include="Features\ControllerBase.cs" />
     <Compile Include="Features\DialogBase.cs" />
-    <Compile Include="Features\Homes\Class1.cs" />
     <Compile Include="Features\Polices\Warrants\MasterList\WarrantView.xaml.cs">
       <DependentUpon>WarrantView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -969,7 +969,6 @@
     </Compile>
     <Compile Include="Features\Polices\Warrants\MasterList\WarrantListViewModel.cs" />
     <Compile Include="Features\Settings\Abouts\AboutViewModel.cs" />
-    <Compile Include="Features\Settings\Appearances\Class1.cs" />
     <Compile Include="Features\Settings\Class1.cs" />
     <Compile Include="Features\ViewModelBase.cs" />
     <Compile Include="Utilities\Audits\UserAuditResolver.cs" />

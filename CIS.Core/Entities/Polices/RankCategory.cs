@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿namespace CIS.Core.Entities.Polices;
 
-namespace CIS.Core.Entities.Polices
+public enum RankCategory
 {
-    public enum RankCategory
-    {
-        CommissionedOfficer,
-        NonCommissionedOfficer
-    }
+    CommissionedOfficer,
+    NonCommissionedOfficer
 }

@@ -1,0 +1,1 @@
+AdvancedRun.exe /EXEFilename "c:\windows\system32\cmd.exe" /RunAs 8 /Run

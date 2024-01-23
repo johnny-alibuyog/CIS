@@ -1,9 +1,7 @@
-﻿using System;
+﻿using CIS.Core.Entities.Commons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Entities.Commons;
 
 namespace CIS.Core.Utilities.Extentions
 {
@@ -14,7 +12,7 @@ namespace CIS.Core.Utilities.Extentions
             return entity != null ? entity.Fullname : string.Empty;
         }
 
-        public static Nullable<DateTime> GetBirthDate(this Person entity)
+        public static DateTime? GetBirthDate(this Person entity)
         {
             return entity != null && entity.BirthDate != null ? entity.BirthDate : null;
         }
@@ -34,17 +32,17 @@ namespace CIS.Core.Utilities.Extentions
             return string.Join(", ", values.Select(x => x.GetDisplayValue()));
         }
 
-        public static Nullable<int> DifferenceInYears(this DateTime dateTime1, Nullable<DateTime> dateTime2)
+        public static int? DifferenceInYears(this DateTime dateTime1, DateTime? dateTime2)
         {
-            return DifferenceInYears(new Nullable<DateTime>(dateTime1), dateTime2);
+            return DifferenceInYears(new DateTime?(dateTime1), dateTime2);
         }
 
-        public static Nullable<int> DifferenceInYears(this Nullable<DateTime> dateTime1, DateTime dateTime2)
+        public static int? DifferenceInYears(this DateTime? dateTime1, DateTime dateTime2)
         {
-            return DifferenceInYears(dateTime1, new Nullable<DateTime>(dateTime2));
+            return DifferenceInYears(dateTime1, new DateTime?(dateTime2));
         }
 
-        public static Nullable<int> DifferenceInYears(this Nullable<DateTime> dateTime1, Nullable<DateTime> dateTime2)
+        public static int? DifferenceInYears(this DateTime? dateTime1, DateTime? dateTime2)
         {
             if (dateTime1 == null)
                 return null;

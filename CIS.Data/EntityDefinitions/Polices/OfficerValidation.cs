@@ -1,40 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Polices;
+﻿using CIS.Core.Entities.Polices;
 using NHibernate.Validator.Cfg.Loquacious;
 
-namespace CIS.Data.EntityDefinition.Polices
+namespace CIS.Data.EntityDefinition.Polices;
+
+public class OfficerValidation : ValidationDef<Officer>
 {
-    public class OfficerValidation : ValidationDef<Officer>
+    public OfficerValidation()
     {
-        public OfficerValidation()
-        {
-            Define(x => x.Id);
+        Define(x => x.Id);
 
-            Define(x => x.Version);
+        Define(x => x.Version);
 
-            Define(x => x.Audit);
+        Define(x => x.Audit);
 
-            Define(x => x.Person)
-                .NotNullable()
-                .And.IsValid();
+        Define(x => x.Person)
+            .NotNullable()
+            .And.IsValid();
 
-            Define(x => x.Station)
-                .NotNullable()
-                .And.IsValid();
+        Define(x => x.Station)
+            .NotNullable()
+            .And.IsValid();
 
-            Define(x => x.Rank)
-                .NotNullable()
-                .And.IsValid();
+        Define(x => x.Rank)
+            .NotNullable()
+            .And.IsValid();
 
-            Define(x => x.Position)
-                .NotNullableAndNotEmpty()
-                .And.MaxLength(150);
+        Define(x => x.Position)
+            .NotNullableAndNotEmpty()
+            .And.MaxLength(150);
 
-            Define(x => x.Signature)
-                .IsValid();
-        }
+        Define(x => x.Signature)
+            .IsValid();
     }
 }

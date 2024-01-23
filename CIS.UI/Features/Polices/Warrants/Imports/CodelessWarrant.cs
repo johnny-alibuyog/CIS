@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CIS.Core.Utilities.Extentions;
+﻿using CIS.Core.Utilities.Extentions;
+using System;
 
 namespace CIS.UI.Features.Polices.Warrants.Imports
 {
@@ -17,7 +13,7 @@ namespace CIS.UI.Features.Polices.Warrants.Imports
         private string _address;
         private string _case;
         private string _disposition;
-        private Nullable<DateTime> _arrestedOn;
+        private DateTime? _arrestedOn;
 
         public virtual string Prefix
         {
@@ -67,7 +63,7 @@ namespace CIS.UI.Features.Polices.Warrants.Imports
             set { _disposition = value.ToProperCase(); }
         }
 
-        public virtual Nullable<DateTime> ArrestedOn
+        public virtual DateTime? ArrestedOn
         {
             get { return _arrestedOn; }
             set { _arrestedOn = value; }

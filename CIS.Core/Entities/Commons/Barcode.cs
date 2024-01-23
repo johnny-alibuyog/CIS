@@ -1,116 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CIS.Core.Entities.Commons;
 using ZXing;
 using ZXing.Common;
 
-namespace CIS.Core.Entities.Commons
+namespace CIS.Core.Entities.Commons;
+
+public class Barcode : Entity<Guid>
 {
-    public class Barcode
+    private ImageBlob _image;
+    private string _text;
+
+    public virtual ImageBlob Image
     {
-        private Guid _id;
-        private ImageBlob _image;
-        private string _text;
+        get => _image;
+        protected set => _image = value;
+    }
 
-        public virtual Guid Id
+    public virtual string Text
+    {
+        get => _text;
+        protected set => _text = value;
+    }
+
+    private static readonly Random _random = new();
+
+    public static Barcode GenerateBarcode()
+    {
+        var barcodeText = Barcode.GeneratBarcodeText();
+        var barcodeImage = Barcode.GenerateBarcodeImage(barcodeText);
+        return new Barcode()
         {
-            get { return _id; }
-            protected set { _id = value; }
-        }
+            Text = barcodeText,
+            Image = barcodeImage
+        };
+    }
 
-        public virtual ImageBlob Image
+    public static string GeneratBarcodeText()
+    {
+        var text = string.Empty;
+        text += _random.Next(Guid.NewGuid().GetHashCode(), int.MaxValue).ToString();
+        text += _random.Next(Guid.NewGuid().GetHashCode(), int.MaxValue).ToString();
+        return text;
+    }
+
+    public static ImageBlob GenerateBarcodeImage(string text)
+    {
+        var builder = new BarcodeWriter()
         {
-            get { return _image; }
-            protected set { _image = value; }
-        }
-
-        public virtual string Text
-        {
-            get { return _text; }
-            protected set { _text = value; }
-        }
-
-        #region Equality Comparer
-
-        private Nullable<int> _hashCode;
-
-        public override bool Equals(object obj)
-        {
-            var that = obj as Barcode;
-
-            if (that == null)
-                return false;
-
-            if (that.Id == Guid.Empty && this.Id == Guid.Empty)
-                return object.ReferenceEquals(that, this);
-
-            return (that.Id == this.Id);
-        }
-
-        public override int GetHashCode()
-        {
-            if (_hashCode == null)
+            Format = BarcodeFormat.CODE_128,
+            Options = new EncodingOptions()
             {
-                _hashCode = (this.Id != Guid.Empty)
-                    ? this.Id.GetHashCode()
-                    : base.GetHashCode();
-            }
-
-            return _hashCode.Value;
-        }
-
-        public static bool operator ==(Barcode x, Barcode y)
-        {
-            return Equals(x, y);
-        }
-
-        public static bool operator !=(Barcode x, Barcode y)
-        {
-            return !Equals(x, y);
-        }
-
-        #endregion
-
-        #region Static Members
-
-        private static readonly Random _random = new Random();
-
-        public static Barcode GenerateBarcode()
-        {
-            var barcodeText = Barcode.GeneratBarcodeText();
-            var barcodeImage = Barcode.GenerateBarcodeImage(barcodeText);
-            return new Barcode()
-            {
-                Text = barcodeText,
-                Image = barcodeImage
-            };
-        }
-
-        public static string GeneratBarcodeText()
-        {
-            var text = string.Empty;
-            text += _random.Next(Guid.NewGuid().GetHashCode(), int.MaxValue).ToString();
-            text += _random.Next(Guid.NewGuid().GetHashCode(), int.MaxValue).ToString();
-            return text;
-        }
-
-        public static ImageBlob GenerateBarcodeImage(string text)
-        {
-            var builder = new BarcodeWriter()
-            {
-                Format = BarcodeFormat.CODE_128,
-                Options = new EncodingOptions()
-                {
-                    PureBarcode = true,
-                    Height = 50,
-                    Width = 150,
-                },
-            };
-            return new ImageBlob(builder.Write(text));
-        }
-
-        #endregion
+                PureBarcode = true,
+                Height = 50,
+                Width = 150,
+            },
+        };
+        return new ImageBlob(builder.Write(text));
     }
 }
