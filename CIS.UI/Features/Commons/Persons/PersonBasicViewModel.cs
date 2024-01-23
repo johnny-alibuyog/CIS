@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using CIS.Core.Entities.Commons;
+﻿using CIS.Core.Entities.Commons;
 using CIS.Core.Utilities.Extentions;
 using NHibernate.Validator.Constraints;
 
@@ -121,8 +120,38 @@ public class PersonBasicViewModel : ViewModelBase
 
     public static readonly PersonBasicViewModel Empty = new();
 
-    protected override IEnumerable<object> GetEqualityValues() 
+    #region Equality Comparer
+
+    public override bool Equals(object obj)
     {
-        yield return this.GetFullName();
+        var that = obj as PersonBasicViewModel;
+
+        if (that == null)
+            return false;
+
+        if (that.GetFullName() != this.GetFullName())
+            return false;
+
+        return true;
     }
+
+    public override int GetHashCode()
+    {
+        var hashCode = 17;
+        hashCode = hashCode * 23 + (!string.IsNullOrWhiteSpace(this.GetFullName()) ? this.GetFullName().GetHashCode() : 0);
+
+        return hashCode;
+    }
+
+    public static bool operator ==(PersonBasicViewModel x, PersonBasicViewModel y)
+    {
+        return Equals(x, y);
+    }
+
+    public static bool operator !=(PersonBasicViewModel x, PersonBasicViewModel y)
+    {
+        return !Equals(x, y);
+    }
+
+    #endregion
 }
