@@ -13,10 +13,9 @@ public class DialogBase : ModernWindow
 
     private static void DialogResultChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
     {
-        var window = dependencyObject as Window;
-        if (window == null)
+        if (dependencyObject is not Window window)
             return;
-        
+
         window.DialogResult = e.NewValue as bool?;
     }
 

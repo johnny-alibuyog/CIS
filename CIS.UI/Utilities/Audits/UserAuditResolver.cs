@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Security.Principal;
-using CIS.Core.Entities.Commons;
+using CIS.Core.Domain.Common;
 using CIS.Data.Configurations;
 
 namespace CIS.UI.Utilities;
@@ -9,8 +9,8 @@ public class UserAuditResolver : AuditResolver
 {
     private string GetCurrentUserName()
     {
-        return App.Data.User != null
-            ? App.Data.User.Username
+        return App.Context.User != null
+            ? App.Context.User.Username
             : WindowsIdentity.GetCurrent().Name;
     }
 

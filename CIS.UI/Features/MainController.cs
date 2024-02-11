@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using CIS.UI.Bootstraps.InversionOfControl;
 using FirstFloor.ModernUI.Presentation;
@@ -9,8 +8,6 @@ namespace CIS.UI.Features;
 
 public class MainController : ControllerBase<MainViewModel>
 {
-    private IEnumerable<ITaskScheduler> _tasks;
-
     public MainController(MainViewModel viewModel)
         : base(viewModel)
     {
@@ -22,34 +19,18 @@ public class MainController : ControllerBase<MainViewModel>
     {
         this.ViewModel.LinkGroups = [];
 
-        if (App.Data.User.IsPoliceStaff())
+        if (App.Context.User.IsPoliceStaff())
         {
-            addLinkGroup("police",
-                new Link() { DisplayName = "Clearance", Source = new Uri("/Features/Polices/Clearances/ClearancePage.xaml", UriKind.Relative) },
-                new Link() { DisplayName = "Warrant", Source = new Uri("/Features/Polices/Warrants/WarrantPage.xaml", UriKind.Relative) },
-                new Link() { DisplayName = "Maintenance", Source = new Uri("/Features/Polices/Maintenances/MaintenancePage.xaml", UriKind.Relative) }
+            addLinkGroup("membership",
+                new Link() { DisplayName = "Registration", Source = new Uri("/Features/Membership/Registration/RegistrationPage.xaml", UriKind.Relative) },
+                new Link() { DisplayName = "Members", Source = new Uri("/Features/Membership/Member/MemberPage.xaml", UriKind.Relative) },
+                //new Link() { DisplayName = "Warrant", Source = new Uri("/Features/Membership/Warrants/WarrantPage.xaml", UriKind.Relative) },
+                new Link() { DisplayName = "Maintenance", Source = new Uri("/Features/Membership/Maintenance/MaintenancePage.xaml", UriKind.Relative) }
             );
         }
 
-        if (App.Data.User.IsBarangayStaff())
-        {
-            addLinkGroup("barangay",
-                new Link() { DisplayName = "Clearance", Source = new Uri("/Features/Barangays/Clearances/ClearancePage.xaml", UriKind.Relative) },
-                new Link() { DisplayName = "Blotter", Source = new Uri("/Features/Barangays/Blotters/BlotterPage.xaml", UriKind.Relative) },
-                new Link() { DisplayName = "Maintenance", Source = new Uri("/Features/Barangays/Maintenances/MaintenancePage.xaml", UriKind.Relative) }
-            );
-        }
-
-        if (App.Data.User.IsMayorStaff())
-        {
-            addLinkGroup("mayor",
-                new Link() { DisplayName = "Clearance" },
-                new Link() { DisplayName = "Maintenance" }
-            );  
-        }
-
-        addLinkGroup("membership",
-            new Link() { DisplayName = "User", Source = new Uri("/Features/Memberships/Users/UserPage.xaml", UriKind.Relative) }
+        addLinkGroup("security",
+            new Link() { DisplayName = "User", Source = new Uri("/Features/Security/Users/UserPage.xaml", UriKind.Relative) }
         );
 
         addLinkGroup("settings",
@@ -68,10 +49,10 @@ public class MainController : ControllerBase<MainViewModel>
 
     private void InitializeTaskSchedulers()
     {
-        _tasks = IoC.Container.ResolveAll<ITaskScheduler>();
+        var tasks = IoC.Container.ResolveAll<ITaskScheduler>();
         if (App.Config.SyncronizeToDataStore)
         {
-            foreach (var task in _tasks)
+            foreach (var task in tasks)
             {
                 task.StartWork();
             }

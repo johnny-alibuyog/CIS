@@ -31,9 +31,7 @@ public class Lookup<T> : ViewModelBase
 
     public override bool Equals(object obj)
     {
-        var that = obj as Lookup<T>;
-
-        if (that == null)
+        if (obj is not Lookup<T> that)
             return false;
 
         if (IsValueDefault(that.Id) && IsValueDefault(this.Id))

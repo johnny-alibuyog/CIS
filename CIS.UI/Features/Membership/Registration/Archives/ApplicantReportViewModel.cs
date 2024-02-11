@@ -1,0 +1,161 @@
+﻿using System;
+using CIS.Core.Domain.Membership;
+using CIS.Core.Utility.Extention;
+
+namespace CIS.UI.Features.Membership.Registration.Archives;
+
+public class ApplicantReportViewModel : ViewModelBase
+{
+    public virtual Guid Id { get; set; }
+    public virtual string ApplicantName { get; set; }
+    public virtual string ApplicantNickname { get; set; }
+    public virtual string CityAddress { get; set; }
+    public virtual string ProvincialAddress { get; set; }
+    public virtual DateTime? BirthDate { get; set; }
+    public virtual string BirthPlace { get; set; }
+    public virtual int? AgeUponApplication { get; set; }
+    public virtual string Father { get; set; }
+    public virtual string Mother { get; set; }
+    public virtual string Relatives { get; set; }
+    public virtual string CivilStatus { get; set; }
+    public virtual string Religion { get; set; }
+    public virtual string Occupation { get; set; }
+    public virtual string Purpose { get; set; }
+    public virtual string EmailAddress { get; set; }
+    public virtual string TelephoneNumber { get; set; }
+    public virtual string CellphoneNumber { get; set; }
+    public virtual string TaxCertificateNumber { get; set; }
+    public virtual string PassportNumber { get; set; }
+    public virtual string TaxIdentificationNumber { get; set; }
+    public virtual string SocialSecuritySystemNumber { get; set; }
+    public virtual int? YearsOfResidency { get; set; }
+    public virtual string Gender { get; set; }
+    public virtual string Build { get; set; }
+    public virtual string Marks { get; set; }
+    public virtual string Height { get; set; }
+    public virtual string Weight { get; set; }
+    public virtual string Citizenship { get; set; }
+    public virtual int? YearsRecident { get; set; }
+    public virtual DateTime? IssueDate { get; set; }
+    public virtual byte[] Picture { get; set; }
+    public virtual byte[] Signature { get; set; }
+    public virtual byte[] RightThumb { get; set; }
+    public virtual byte[] RightIndex { get; set; }
+    public virtual byte[] RightMiddle { get; set; }
+    public virtual byte[] RightRing { get; set; }
+    public virtual byte[] RightPinky { get; set; }
+    public virtual byte[] LeftThumb { get; set; }
+    public virtual byte[] LeftIndex { get; set; }
+    public virtual byte[] LeftMiddle { get; set; }
+    public virtual byte[] LeftRing { get; set; }
+    public virtual byte[] LeftPinky { get; set; }
+
+    public override object SerializeWith(object instance)
+    {
+        if (instance == null)
+            return null;
+
+        if (instance is ApplicantReportViewModel)
+        {
+            var target = this;
+            var source = instance as ApplicantReportViewModel;
+
+            target.Id = source.Id;
+            target.ApplicantName = source.ApplicantName;
+            target.ApplicantNickname = source.ApplicantNickname;
+            target.CityAddress = source.CityAddress;
+            target.ProvincialAddress = source.ProvincialAddress;
+            target.BirthDate = source.BirthDate;
+            target.BirthPlace = source.BirthPlace;
+            target.AgeUponApplication = source.AgeUponApplication;
+            target.Father = source.Father;
+            target.Mother = source.Mother;
+            target.Relatives = source.Relatives;
+            target.CivilStatus = source.CivilStatus;
+            target.Religion = source.Religion;
+            target.Occupation = source.Occupation;
+            target.Purpose = source.Purpose;
+            target.EmailAddress = source.EmailAddress;
+            target.TelephoneNumber = source.TelephoneNumber;
+            target.CellphoneNumber = source.CellphoneNumber;
+            target.TaxCertificateNumber = source.TaxCertificateNumber;
+            target.PassportNumber = source.PassportNumber;
+            target.TaxIdentificationNumber = source.TaxIdentificationNumber;
+            target.SocialSecuritySystemNumber = source.SocialSecuritySystemNumber;
+            target.YearsRecident = source.YearsRecident;
+            target.Gender = source.Gender;
+            target.Build = source.Build;
+            target.Marks = source.Marks;
+            target.Height = source.Height;
+            target.Weight = source.Weight;
+            target.Citizenship = source.Citizenship;
+            target.IssueDate = source.IssueDate;
+            target.Picture = source.Picture;
+            target.Signature = source.Signature;
+            target.RightThumb = source.RightThumb;
+            target.RightIndex = source.RightIndex;
+            target.RightMiddle = source.RightMiddle;
+            target.RightRing = source.RightRing;
+            target.RightPinky = source.RightPinky;
+            target.LeftThumb = source.LeftThumb;
+            target.LeftIndex = source.LeftIndex;
+            target.LeftMiddle = source.LeftMiddle;
+            target.LeftRing = source.LeftRing;
+            target.LeftPinky = source.LeftPinky;
+
+            return target;
+        }
+        else if (instance is Core.Domain.Membership.Registration)
+        {
+            var target = this;
+            var source = instance as Core.Domain.Membership.Registration;
+
+            target.Id = source.Id;
+            target.ApplicantName = source.Application.Person.GetDisplayValue();
+            target.ApplicantNickname = source.Application.AlsoKnownAs;
+            target.CityAddress = source.Application.Address.GetDisplayValue();
+            target.ProvincialAddress = source.Application.ProvincialAddress.GetDisplayValue();
+            target.BirthDate = source.Application.Person.GetBirthDate();
+            target.BirthPlace = source.Application.Person.BirthPlace;
+            target.AgeUponApplication = source.IssueDate.DifferenceInYears(source.Application.Person.GetBirthDate());
+            target.Father = source.Application.Father.GetDisplayValue();
+            target.Mother = source.Application.Mother.GetDisplayValue();
+            target.Relatives = source.Application.Relatives.GetDisplayValue();
+            target.CivilStatus = source.Application.CivilStatus.ToString();
+            target.Religion = source.Application.Religion;
+            target.Occupation = source.Application.Occupation;
+            target.Purpose = source.Purpose.Name;
+            target.EmailAddress = source.Application.EmailAddress;
+            target.TelephoneNumber = source.Application.TelephoneNumber;
+            target.CellphoneNumber = source.Application.CellphoneNumber;
+            target.TaxCertificateNumber = source.TaxCertificateNumber;
+            target.PassportNumber = source.Application.PassportNumber;
+            target.TaxIdentificationNumber = source.Application.TaxIdentificationNumber;
+            target.SocialSecuritySystemNumber = source.Application.SocialSecuritySystemNumber;
+            target.YearsRecident = source.YearsResident;
+            target.Gender = source.Application.Person.Gender.ToString();
+            target.Build = source.Application.Build;
+            target.Marks = source.Application.Marks;
+            target.Height = source.Application.Height;
+            target.Weight = source.Application.Weight;
+            target.Citizenship = source.Application.Citizenship;
+            target.IssueDate = source.IssueDate;
+            target.Picture = source.ApplicantPicture.Bytes;
+            target.Signature = source.ApplicantSignature.Bytes;
+            target.RightThumb = source.Application.FingerPrint.RightThumb.Bytes;
+            target.RightIndex = source.Application.FingerPrint.RightIndex.Bytes;
+            target.RightMiddle = source.Application.FingerPrint.RightMiddle.Bytes;
+            target.RightRing = source.Application.FingerPrint.RightRing.Bytes;
+            target.RightPinky = source.Application.FingerPrint.RightPinky.Bytes;
+            target.LeftThumb = source.Application.FingerPrint.LeftThumb.Bytes;
+            target.LeftIndex = source.Application.FingerPrint.LeftIndex.Bytes;
+            target.LeftMiddle = source.Application.FingerPrint.LeftMiddle.Bytes;
+            target.LeftRing = source.Application.FingerPrint.LeftRing.Bytes;
+            target.LeftPinky = source.Application.FingerPrint.LeftPinky.Bytes;
+
+            return target;
+        }
+
+        return null;
+    }
+}

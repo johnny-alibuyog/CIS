@@ -1,0 +1,183 @@
+﻿<UserControl 
+    x:Class="CIS.UI.Features.Membership.Member.Application.Steps.EducationalAttainmentView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mui="http://firstfloorsoftware.com/ModernUI">
+
+    <StackPanel>
+        <TextBlock Text="EDUCATIONAL ATTAINMENT" Style="{StaticResource Heading2}" />
+
+        <ListView ItemsSource="{Binding Data.Educations}">
+            <ListView.Style>
+                <Style TargetType="ListView">
+                    <Setter Property="KeyboardNavigation.TabNavigation" Value="Cycle" />
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Margin" Value="0,20,0,0" />
+                </Style>
+            </ListView.Style>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Focusable" Value="False" />
+                    <Setter Property="Margin" Value="0,0,0,3" />
+                    <!--<Style.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="IsMouseOver" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Background" Value="{x:Null}" />
+                                <Setter Property="BorderBrush" Value="{x:Null}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                    </Style.Triggers>-->
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn>
+                        <GridViewColumnHeader Content="Level" Margin="0,0,0,10" HorizontalContentAlignment="Left" Width="130" />
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Level}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumnHeader Content="School" Margin="0,0,0,10" HorizontalContentAlignment="Left" Width="Auto" />
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding SchoolName}" Width="350"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumnHeader Content="Graduation" Margin="0,0,0,10" HorizontalContentAlignment="Left" Width="Auto" />
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker Text="{Binding DateGraduated, StringFormat=MM/dd/yyyy}" Width="Auto"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Orientation="Horizontal" Margin="6,15,0,8">
+            <StackPanel.Resources>
+                <Style x:Key="ListSet" TargetType="StackPanel">
+                    <Setter Property="Orientation" Value="Vertical" />
+                    <Setter Property="Margin" Value="0,5,100,5" />
+                    <Setter Property="Width" Value="250" />
+                </Style>
+            </StackPanel.Resources>
+
+            <StackPanel Style="{StaticResource ListSet}">
+                <TextBlock Text="Skills" Style="{StaticResource Emphasis}" Margin="0,0,0,10" />
+
+                <DockPanel FlowDirection="RightToLeft">
+                    <mui:ModernButton Command="{Binding AddSkillCommand}" Style="{StaticResource app_bar_add}" Margin="4,0,4,0"/>
+                    <TextBox Text="{Binding NewSkill, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FlowDirection="LeftToRight">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Return" Command="{Binding AddSkillCommand}"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+                </DockPanel>
+
+                <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1" Margin="0,5,0,0">
+                    <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Data.Skills, Mode=TwoWay, ValidatesOnDataErrors=True}">
+                        <ListBox.InputBindings>
+                            <KeyBinding 
+                                Key="Delete" 
+                                Command="{Binding RemoveSkillCommand}" 
+                                CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                        </ListBox.InputBindings>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <TextBlock 
+                                        Grid.Column="1" 
+                                        Text="{Binding}" 
+                                        HorizontalAlignment="Left" 
+                                        VerticalAlignment="Center" 
+                                        TextWrapping="Wrap">
+                                    </TextBlock>
+                                    <mui:ModernButton 
+                                        Grid.Column="0" 
+                                        Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.RemoveSkillCommand}" 
+                                        CommandParameter="{Binding}" 
+                                        Style="{StaticResource app_bar_delete}" 
+                                        HorizontalAlignment="Right" 
+                                        VerticalAlignment="Center" 
+                                        Margin="0,0,0,0">
+                                    </mui:ModernButton>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+            </StackPanel>
+
+
+            <StackPanel Style="{StaticResource ListSet}">
+                <TextBlock Text="Hobbies" Style="{StaticResource Emphasis}" Margin="0,0,0,10" />
+
+                <DockPanel FlowDirection="RightToLeft">
+                    <mui:ModernButton Command="{Binding AddHobbyCommand}" Style="{StaticResource app_bar_add}" Margin="4,0,4,0"/>
+                    <TextBox Text="{Binding NewHobby, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FlowDirection="LeftToRight">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Return" Command="{Binding AddHobbyCommand}"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+                </DockPanel>
+
+                <Border BorderBrush="{DynamicResource InputBorder}" BorderThickness="1" Margin="0,5,0,0">
+                    <ListBox HorizontalAlignment="Stretch" ItemsSource="{Binding Data.Hobbies, Mode=TwoWay, ValidatesOnDataErrors=True}">
+                        <ListBox.InputBindings>
+                            <KeyBinding 
+                                Key="Delete" 
+                                Command="{Binding RemoveHobbyCommand}" 
+                                CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+                        </ListBox.InputBindings>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <TextBlock 
+                                        Grid.Column="1" 
+                                        Text="{Binding}" 
+                                        HorizontalAlignment="Left" 
+                                        VerticalAlignment="Center" 
+                                        TextWrapping="Wrap">
+                                    </TextBlock>
+                                    <mui:ModernButton 
+                                        Grid.Column="0" 
+                                        Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.RemoveHobbyCommand}" 
+                                        CommandParameter="{Binding}" 
+                                        Style="{StaticResource app_bar_delete}" 
+                                        HorizontalAlignment="Right" 
+                                        VerticalAlignment="Center" 
+                                        Margin="0,0,0,0">
+                                    </mui:ModernButton>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+            </StackPanel>
+
+        </StackPanel>
+
+    </StackPanel>
+
+</UserControl>

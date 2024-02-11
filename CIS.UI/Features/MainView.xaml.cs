@@ -31,9 +31,9 @@ namespace CIS.UI.Features
         public MainView()
         {
             this.InitializeComponent();
-            this.InitializeViewModelAsync(() => IoC.Container.Resolve<MainViewModel>());
+            this.InitializeViewModel(() => IoC.Container.Resolve<MainViewModel>());
 
-            var root = this.GetTemplateChild("LayoutRoot");
+            //var root = this.GetTemplateChild("LayoutRoot");
             //root.LayoutTransform = new ScaleTransform(1.5, 1.5);
 
             //var root = (FrameworkElement)this.GetVisualChild(0);

@@ -1,13 +1,11 @@
-﻿using CIS.Core.Entities.Commons;
-using CIS.Core.Entities.Memberships;
-using CIS.Store.Services;
-using CIS.UI.Bootstraps.InversionOfControl;
-using CIS.UI.Features;
-using CIS.UI.Features.Memberships.Users.Logins;
-using CIS.UI.Utilities.Configurations;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Windows;
+using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Features;
+using CIS.UI.Features.Security.Users.Logins;
+using CIS.UI.Utilities.Configurations;
+using CIS.UI.Utilities.Context;
 
 namespace CIS.UI
 {
@@ -16,18 +14,15 @@ namespace CIS.UI
     /// </summary>
     public partial class App : Application
     {
-        public static Window CurrentWindow
-        {
-            get { return Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive); }
-        }
+        public static Window CurrentWindow => Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
 
-        public static ApplicationData Data { get; set; }
+        public static ApplicationContext Context { get; set; }
 
         public static ApplicationConfiguration Config { get; set; }
 
         public App()
         {
-            App.Data = IoC.Container.Resolve<ApplicationData>();
+            App.Context = IoC.Container.Resolve<ApplicationContext>();
             App.Config = IoC.Container.Resolve<ApplicationConfiguration>();
         }
 
@@ -35,11 +30,11 @@ namespace CIS.UI
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            _instanceMutex = new Mutex(true, @"Clearance Issuance System", out var createdNew);
+            _instanceMutex = new Mutex(true, @"Certification Issuance System", out var createdNew);
             if (createdNew == false)
             {
                 _instanceMutex = null;
-                MessageBox.Show("Application is already running...", "Clearance Issuance System", MessageBoxButton.OK);
+                MessageBox.Show("Application is already running...", "Certification Issuance System", MessageBoxButton.OK);
                 Current.Shutdown();
                 return;
             }
@@ -50,11 +45,9 @@ namespace CIS.UI
 
         protected override void OnExit(ExitEventArgs e)
         {
-            //App.Config.Provider.Write(App.Config);
             App.Config.Write();
 
-            if (_instanceMutex != null)
-                _instanceMutex.ReleaseMutex();
+            _instanceMutex?.ReleaseMutex();
 
             base.OnExit(e);
         }
@@ -82,25 +75,6 @@ namespace CIS.UI
             this.MainWindow = mainDialog.View;
             this.MainWindow.ShowDialog();
             this.Shutdown(1);
-        }
-
-        public class ApplicationData
-        {
-            public virtual User User { get; set; }
-            public virtual City City { get; set; }
-            public virtual Terminal Terminal { get; set; }
-            public virtual ProductConfiguration Product { get; set; }
-            public virtual DataStoreConfiguration DataStore { get; set; }
-            public virtual ImageScaleFactorConfiguration Image { get; set; }
-
-            public virtual ClientInfo GetClientInfo()
-            {
-                return new ClientInfo()
-                {
-                    Username = User.Username,
-                    Origin = Terminal.MachineName
-                };
-            }
         }
     }
 }

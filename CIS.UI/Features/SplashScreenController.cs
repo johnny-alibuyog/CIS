@@ -4,8 +4,11 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using CIS.Core.Entities.Commons;
-using CIS.Core.Entities.Polices;
+using CIS.Core.Domain.Common;
+using CIS.Core.Domain.Membership;
+using CIS.Data.Definition;
+using CIS.Data.Definition.Common;
+using CIS.Data.Definition.Membership;
 using CIS.UI.Bootstraps.InversionOfControl;
 using NHibernate.Linq;
 
@@ -13,120 +16,92 @@ namespace CIS.UI.Features;
 
 public class SplashScreenController : ControllerBase<SplashScreenViewModel>
 {
-    private readonly BackgroundWorker _backgroundWorker;
-
     public SplashScreenController(SplashScreenViewModel viewModel)
         : base(viewModel)
     {
-        _backgroundWorker = new BackgroundWorker();
-        _backgroundWorker.DoWork += (sender, e) => InitializeData();
-        _backgroundWorker.RunWorkerCompleted += (sender, e) => this.ViewModel.Close();
-        _backgroundWorker.RunWorkerAsync();
+        var backgroundWorker = new BackgroundWorker();
+        backgroundWorker.DoWork += (sender, e) => InitializeData();
+        backgroundWorker.RunWorkerCompleted += (sender, e) => this.ViewModel.Close();
+        backgroundWorker.RunWorkerAsync();
     }
 
     public virtual void InitializeData()
     {
-        var dataInitializer = (IDataInitializer)null;
-
-        Action<string> SendMessageAndInitializeViewModel = (message) =>
+        void Seed<Seeder>(string message) where Seeder : ISeeder
         {
+            if (string.IsNullOrWhiteSpace(this.ViewModel.Licensee) && App.Context.Product != null)
+                this.ViewModel.Licensee = App.Context.Product.Licensee;
+
+            if (this.ViewModel.Plugins == null && App.Context.Product != null)
+                this.ViewModel.Plugins = App.Context.Product.Plugins;
+
             this.ViewModel.Message = message;
+
+            var seeder = IoC.Container.Resolve<Seeder>();
+
+            if (seeder is ConfigurationSeeder.Product productSeeder)
+            {
+                productSeeder.Updated = (config) => App.Context.Product = config;
+            }
+
+            if (seeder is ConfigurationSeeder.ImageScaleFactor imageScaleFactorSeeder)
+            {
+                imageScaleFactorSeeder.Updated = (config) => App.Context.Image = config;
+            }
+
+            if (seeder is ConfigurationSeeder.DataStore dataStoreSeeder)
+            {
+                dataStoreSeeder.IsProductionEnvironment = () => App.Config.ConnectToProductionEnvironment;
+                dataStoreSeeder.Updated = (config) => App.Context.DataStore = config;
+            }
+
+            if (seeder is TerminalSeeder terminalSeeder)
+            {
+                terminalSeeder.Updated = (config) => App.Context.Terminal = config;
+            }
+
+            seeder.Seed();
+
             Thread.Sleep(300);
+        }
 
-            if (string.IsNullOrWhiteSpace(this.ViewModel.Licensee) && App.Data.Product != null)
-                this.ViewModel.Licensee = App.Data.Product.Licensee;
+        Seed<ConfigurationSeeder.Product>("Initializing product configuration ...");
 
-            if (this.ViewModel.Plugins == null && App.Data.Product != null)
-                this.ViewModel.Plugins = App.Data.Product.Plugins;
-        };
+        Seed<ConfigurationSeeder.ProperCasing>("Initializing proper casing configuration ...");
 
-        //dataInitializer = IoC.Container.Resolve<AddressDataInitializer>();
-        //dataInitializer.Execute();
+        Seed<ConfigurationSeeder.DataStore>("Initializing data store configuration ...");
 
-        SendMessageAndInitializeViewModel("Initializing product configuration ...");
-        dataInitializer = IoC.Container.Resolve<Commons.Configurations.ProductConfigurationDataInitializer>();
-        dataInitializer.Execute();
+        Seed<ConfigurationSeeder.ImageScaleFactor>("Initializing image resize scale factore configuration ...");
 
-        SendMessageAndInitializeViewModel("Initializing proper casing configuration ...");
-        dataInitializer = IoC.Container.Resolve<Commons.Configurations.ProperCasingConfigurationDataInitializer>();
-        dataInitializer.Execute();
+        Seed<FingerSeeder>("Initializing finger print scanner configuration ...");
 
-        SendMessageAndInitializeViewModel("Initializing data store configuration ...");
-        dataInitializer = IoC.Container.Resolve<Commons.Configurations.DataStoreConfigurationDataInitializer>();
-        dataInitializer.Execute();
+        Seed<TerminalSeeder>("Initializing terminal configuration ...");
 
-        SendMessageAndInitializeViewModel("Initializing image resize scale factore configuration ...");
-        dataInitializer = IoC.Container.Resolve<Commons.Configurations.ImageScaleFactorConfigurationDataInitializer>();
-        dataInitializer.Execute();
+        Seed<SettingSeeder>("Initializing police settings ...");
 
-        SendMessageAndInitializeViewModel("Initializing finger print scanner configuration ...");
-        dataInitializer = IoC.Container.Resolve<Commons.Biometrics.FingerDataInitializer>();
-        dataInitializer.Execute();
+        Seed<RankSeeder>("Initializing police ranks ...");
 
-        SendMessageAndInitializeViewModel("Initializing terminal configuration ...");
-        dataInitializer = IoC.Container.Resolve<Commons.Terminals.TerminalDataInitializer>();
-        dataInitializer.Execute();
+        Seed<PurposeSeeder>("Initializing police purposes ...");
 
-        SendMessageAndInitializeViewModel("Initializing police settings ...");
-        dataInitializer = IoC.Container.Resolve<Polices.Maintenances.Settings.SettingDataInitializer>();
-        dataInitializer.Execute();
+        Seed<StationSeeder>("Initializing police station ...");
 
-        SendMessageAndInitializeViewModel("Initializing police ranks ...");
-        dataInitializer = IoC.Container.Resolve<Polices.Maintenances.Ranks.RankDataInitializer>();
-        dataInitializer.Execute();
+        Seed<OfficerSeeder>("Initializing police officers ...");
 
-        SendMessageAndInitializeViewModel("Initializing police purposes ...");
-        dataInitializer = IoC.Container.Resolve<Polices.Maintenances.Purposes.PurposeDataInitializer>();
-        dataInitializer.Execute();
+        Seed<ApplicantionSeeder>("Initializing police clearance applicant ...");
 
-        SendMessageAndInitializeViewModel("Initializing police station ...");
-        dataInitializer = IoC.Container.Resolve<Polices.Maintenances.Stations.StationDataInitializer>();
-        dataInitializer.Execute();
-
-        SendMessageAndInitializeViewModel("Initializing police clearance applicant ...");
-        dataInitializer = IoC.Container.Resolve<Polices.Clearances.Archives.ApplicantDataInitializer>();
-        dataInitializer.Execute();
-
-        SendMessageAndInitializeViewModel("Initializing firearms make ...");
-        dataInitializer = IoC.Container.Resolve<Firearms.Maintenances.Makes.MakeDataInitializer>();
-        dataInitializer.Execute();
-
-        SendMessageAndInitializeViewModel("Initializing firearms kind ...");
-        dataInitializer = IoC.Container.Resolve<Firearms.Maintenances.Kinds.KindDataInitializer>();
-        dataInitializer.Execute();
-
-        SendMessageAndInitializeViewModel("Initializing barangay clearance purposes ...");
-        dataInitializer = IoC.Container.Resolve<Barangays.Maintenances.Purposes.PurposeDataInitializer>();
-        dataInitializer.Execute();
-
-        SendMessageAndInitializeViewModel("Initializing barangay position ...");
-        dataInitializer = IoC.Container.Resolve<Barangays.Maintenances.Positions.PositionDataInitializer>();
-        dataInitializer.Execute();
-
-        SendMessageAndInitializeViewModel("Initializing barangay settings ...");
-        dataInitializer = IoC.Container.Resolve<Barangays.Maintenances.Settings.SettingDataInitializer>();
-        dataInitializer.Execute();
-
-        SendMessageAndInitializeViewModel("Initializing barangay office ...");
-        dataInitializer = IoC.Container.Resolve<Barangays.Maintenances.Offices.OfficeDataInitializer>();
-        dataInitializer.Execute();
-
-        SendMessageAndInitializeViewModel("Set proper casing configuration as initialzed...");
-        var properCasingDataInitializer = (Commons.Configurations.ProperCasingConfigurationDataInitializer)null;
-        properCasingDataInitializer = IoC.Container.Resolve<Commons.Configurations.ProperCasingConfigurationDataInitializer>();
-        properCasingDataInitializer.SetProperCasingIsInitialized(true);
+        Seed<AddressSeeder>("Initializing address ...");
 
         //LoadImages();
     }
 
     private void LoadImages()
     {
-        var applicants = new List<Applicant>();
+        var applicants = default(List<Application>);
 
         using (var session = this.SessionFactory.OpenSession())
         using (var transaction = session.BeginTransaction())
         {
-            applicants = session.Query<Applicant>()
+            applicants = session.Query<Application>()
                 .Where(x =>
                     x.Person.Gender == Gender.Female &&
                     x.CivilStatus == CivilStatus.Single &&
@@ -139,11 +114,8 @@ public class SplashScreenController : ControllerBase<SplashScreenViewModel>
         }
 
         foreach (var applicant in applicants)
-            foreach (var picture in applicant.Pictures)
+            foreach (var picture in applicant.Pictures.Where(x => x.Image != null))
             {
-                if (picture.Image == null)
-                    continue;
-
                 var filename = Path.Combine(App.Config.ApplicationDataLocation, applicant.Person.Fullname + ".bmp");
                 picture.Image.Save(filename);
             }

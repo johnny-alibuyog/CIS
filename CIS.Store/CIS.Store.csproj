@@ -106,7 +106,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Services\ClientInfo.cs" />
-    <Compile Include="Services\Memberships\Registration.cs" />
+    <Compile Include="Services\Security\Registration.cs" />
     <Compile Include="Services\Warrants\DeleteWarrantRequest.cs" />
     <Compile Include="Services\Warrants\DeleteWarrantResponse.cs" />
     <Compile Include="Services\Warrants\GetWarrantRequest.cs" />

@@ -1,6 +1,6 @@
 ﻿using CIS.Data.Configurations;
-using CIS.Data.Conventions;
-using CIS.Data.EntityDefinition.Commons;
+using CIS.Data.Convention;
+using CIS.Data.Definition.Common;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions.Helpers;
@@ -82,7 +82,7 @@ public class SessionProvider : ISessionProvider
                 .FormatSql()
             )
             .Mappings(x => x
-                .FluentMappings.AddFromAssemblyOf<AuditMapping>()
+                .FluentMappings.AddFromAssemblyOf<AuditDefinition.Mapping>()
                 .Conventions.AddFromAssemblyOf<_CustomJoinedSubclassConvention>()
                 .Conventions.Setup(o => o.Add(AutoImport.Never()))
                 .ExportTo(schemaExportPath)

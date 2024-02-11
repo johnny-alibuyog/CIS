@@ -1,8 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
+using CIS.Core.Domain.Security;
+using CIS.Data;
+using CIS.Data.Common.Exception;
 using CIS.UI.Bootstraps.InversionOfControl;
+using CIS.UI.Utilities.CommonDialogs;
+using NHibernate;
 using NHibernate.Validator.Engine;
 using ReactiveUI;
 
@@ -42,7 +47,7 @@ public abstract class ViewModelBase : ReactiveObject, IDataErrorInfo
 
     #region IDataErrorInfo Members
 
-    public virtual bool IsValid { get; private set; }
+    public virtual bool IsValid { get; private set; } = true;
 
     public virtual string Error
     {
@@ -67,12 +72,12 @@ public abstract class ViewModelBase : ReactiveObject, IDataErrorInfo
 
             this.IsValid = !invalidValues.Any();
 
-            var message = invalidValues
+            var messages = invalidValues
                 .Where(x => x.PropertyName == columnName)
                 .Select(x => x.Message)
-                .FirstOrDefault()
-;
-            return message;
+                .ToList();
+            
+            return string.Join(Environment.NewLine, messages);
         }
     }
 
@@ -152,5 +157,34 @@ public abstract class ViewModelBase : ReactiveObject, IDataErrorInfo
     //    }
     //}
 
+    #endregion
+
+    #region Services
+
+    private readonly Lazy<IMessageBus> _messageBus = new(() => IoC.Container.Resolve<IMessageBus>());
+    private readonly Lazy<IMessageBoxService> _messageBox = new(() => IoC.Container.Resolve<IMessageBoxService>());
+    private readonly Lazy<ISessionProvider> _sessionProvider = new(() => IoC.Container.Resolve<ISessionProvider>());
+
+    public virtual IMessageBus MessageBus => this._messageBus.Value;
+
+    public virtual IMessageBoxService MessageBox => this._messageBox.Value;
+
+    public virtual ISessionFactory SessionFactory => this.SessionProvider.SessionFactory;
+
+    public virtual ISessionProvider SessionProvider => this._sessionProvider.Value;
+
+    public virtual void DispatcherInvoke(Action action)
+    {
+        Application.Current.Dispatcher.Invoke(action);
+    }
+
+    public virtual void Authorize(params Role[] roles)
+    {
+        if (App.Context.User == null)
+            throw new AuthenticationException("No user is currently logged-in.");
+
+        if (App.Context.User.Has(roles) == false)
+            throw new AuthorizationException("You are not authorized to perform this action.");
+    }
     #endregion
 }

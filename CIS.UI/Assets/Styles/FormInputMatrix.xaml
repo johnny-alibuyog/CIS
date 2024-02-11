@@ -7,7 +7,7 @@
 
     <Style x:Key="FieldSet" TargetType="StackPanel">
         <Setter Property="Orientation" Value="Horizontal" />
-        <Setter Property="Margin" Value="0,0,0,4" />
+        <Setter Property="Margin" Value="0,5,0,5" />
     </Style>
     <!--<Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
         <Setter Property="Width" Value="{StaticResource LabelWidth}" />
@@ -16,11 +16,13 @@
     <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
         <Setter Property="Width" Value="{StaticResource LabelWidth}" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
         <Setter Property="Height" Value="Auto" />
-        <Setter Property="Padding" Value="0" />
+        <Setter Property="Padding" Value="0,0,15,0" />
         <Setter Property="Margin" Value="0" />
     </Style>
-    <Style x:Key="ErrorDisplay" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+    <Style x:Key="ErrorDisplay" TargetType="ContentControl" BasedOn="{StaticResource {x:Type ContentControl}}">
         <Setter Property="Foreground" Value="Red" />
         <Setter Property="Width" Value="{StaticResource InputWidth}" />
     </Style>

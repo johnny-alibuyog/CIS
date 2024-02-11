@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="CIS.UI.Features.Membership.Maintenance.MaintenancePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Style="{StaticResource ContentRoot}">
+        <mui:ModernTab Layout="List" SelectedSource="/Features/Membership/Maintenance/Station/StationView.xaml">
+            <mui:ModernTab.Links>
+                <mui:Link DisplayName="Station" Source="/Features/Membership/Maintenance/Station/StationView.xaml"/>
+                <mui:Link DisplayName="Settings" Source="/Features/Membership/Maintenance/Settings/SettingView.xaml"/>
+                <mui:Link DisplayName="Officers" Source="/Features/Membership/Maintenance/Officer/OfficerListView.xaml"/>
+                <mui:Link DisplayName="Purposes" Source="/Features/Membership/Maintenance/Purpose/PurposeListView.xaml"/>
+            </mui:ModernTab.Links>
+        </mui:ModernTab>
+    </Grid>
+</UserControl>

@@ -112,57 +112,29 @@ GO
 USE [cisdb];
 GO
 
-/****** Object:  Schema [Memberships]    Script Date: 01/09/2013 16:22:26 ******/
-IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'Memberships')
-DROP SCHEMA [Memberships]
+/****** Object:  Schema [Security]    Script Date: 01/09/2013 16:22:26 ******/
+IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'Security')
+DROP SCHEMA [Security]
 GO
 
-/****** Object:  Schema [Memberships]    Script Date: 01/09/2013 16:22:26 ******/
-CREATE SCHEMA [Memberships] AUTHORIZATION [dbo]
+/****** Object:  Schema [Security]    Script Date: 01/09/2013 16:22:26 ******/
+CREATE SCHEMA [Security] AUTHORIZATION [dbo]
 GO
 
-/****** Object:  Schema [Polices]    Script Date: 01/09/2013 16:22:26 ******/
-IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'Polices')
-DROP SCHEMA [Polices]
+/****** Object:  Schema [Membership]    Script Date: 01/09/2013 16:22:26 ******/
+IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'Membership')
+DROP SCHEMA [Membership]
 GO
 
-/****** Object:  Schema [Polices]    Script Date: 01/09/2013 16:22:26 ******/
-CREATE SCHEMA [Polices] AUTHORIZATION [dbo]
+/****** Object:  Schema [Membership]    Script Date: 01/09/2013 16:22:26 ******/
+CREATE SCHEMA [Membership] AUTHORIZATION [dbo]
 GO
 
-/****** Object:  Schema [Commons]    Script Date: 01/09/2013 16:22:26 ******/
-IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'Commons')
-DROP SCHEMA [Commons]
+/****** Object:  Schema [Common]    Script Date: 01/09/2013 16:22:26 ******/
+IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'Common')
+DROP SCHEMA [Common]
 GO
 
-/****** Object:  Schema [Commons]    Script Date: 01/09/2013 16:22:26 ******/
-CREATE SCHEMA [Commons] AUTHORIZATION [dbo]
-GO
-
-/****** Object:  Schema [[Barangays]]    Script Date: 01/09/2013 16:22:26 ******/
-IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'Barangays')
-DROP SCHEMA [Barangays]
-GO
-
-/****** Object:  Schema [Barangays]    Script Date: 01/09/2013 16:22:26 ******/
-CREATE SCHEMA [Barangays] AUTHORIZATION [dbo]
-GO
-
-
-/****** Object:  Schema [Mayors]    Script Date: 01/09/2013 16:22:26 ******/
-IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'Mayors')
-DROP SCHEMA Mayors
-GO
-
-/****** Object:  Schema [Mayors]    Script Date: 01/09/2013 16:22:26 ******/
-CREATE SCHEMA Mayors AUTHORIZATION [dbo]
-GO
-
-/****** Object:  Schema [Firearms]    Script Date: 01/09/2013 16:22:26 ******/
-IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'Firearms')
-DROP SCHEMA Firearms
-GO
-
-/****** Object:  Schema [Firearms]    Script Date: 01/09/2013 16:22:26 ******/
-CREATE SCHEMA Firearms AUTHORIZATION [dbo]
+/****** Object:  Schema [Common]    Script Date: 01/09/2013 16:22:26 ******/
+CREATE SCHEMA [Common] AUTHORIZATION [dbo]
 GO

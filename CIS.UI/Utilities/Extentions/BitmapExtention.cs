@@ -146,7 +146,7 @@ public static class BitmapExtention
 
     public static BitmapSource ReduceSize(this BitmapSource bitmapSource)
     {
-        return bitmapSource.ReduceSize(App.Data.Image.DefaultResizeScaleFactor);
+        return bitmapSource.ReduceSize(App.Context.Image.DefaultResizeScaleFactor);
     }
 
     public static BitmapSource ReduceSize(this BitmapSource bitmapSource, double scaleFactor)
@@ -161,7 +161,7 @@ public static class BitmapExtention
 
     public static Bitmap ReduceSize(this Bitmap source)
     {
-        return ReduceSize(source, App.Data.Image.DefaultResizeScaleFactor);
+        return ReduceSize(source, App.Context.Image.DefaultResizeScaleFactor);
     }
 
     public static Bitmap ReduceSize(this Bitmap source, double scaleFactor)

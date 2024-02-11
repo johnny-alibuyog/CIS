@@ -1,6 +1,6 @@
-﻿using CIS.Core.Entities.Memberships;
+﻿using CIS.Core.Domain.Security;
 using CIS.Data;
-using CIS.Data.Commons.Exceptions;
+using CIS.Data.Common.Exception;
 using CIS.UI.Bootstraps.InversionOfControl;
 using CIS.UI.Utilities.CommonDialogs;
 using Common.Logging;
@@ -39,10 +39,10 @@ public abstract class ControllerBase<TViewModel>(TViewModel viewModel) : IContro
 
     public virtual void Authorize(params Role[] roles)
     {
-        if (App.Data.User == null)
+        if (App.Context.User == null)
             throw new AuthenticationException("No user is currently logged-in.");
 
-        if (App.Data.User.Has(roles) == false)
+        if (App.Context.User.Has(roles) == false)
             throw new AuthorizationException("You are not authorized to perform this action.");
     }
 }

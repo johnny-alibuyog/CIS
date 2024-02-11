@@ -1,0 +1,18 @@
+﻿<local:DialogBase  x:Class="CIS.UI.Features.Common.Person.PersonBasicDialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:CIS.UI.Features"
+        xmlns:person="clr-namespace:CIS.UI.Features.Common.Person"
+        local:DialogBase.DialogResult="{Binding Path=ActionResult}"
+        Title="Person" SizeToContent="WidthAndHeight"
+        MinHeight="0" MinWidth="0" >
+    <StackPanel Style="{StaticResource ContentRoot}">
+        <person:PersonBasicView DataContext="{Binding Person}"/>
+
+        <!-- buttons -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Ok" IsDefault="True" Command="{Binding Path=Accept}" Margin="4" />
+            <Button Content="Cancel" IsCancel="True"  Margin="4" />
+        </StackPanel>
+    </StackPanel>
+</local:DialogBase >

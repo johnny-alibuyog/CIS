@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="CIS.UI.Features.Settings.About.AboutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI">
+    <Grid>
+        <ScrollViewer>
+            <StackPanel MinWidth="200">
+                <TextBlock Text="ABOUT" Style="{StaticResource Heading2}" />
+                <!--<mui:BBCodeBlock BBCode="" />-->
+                <mui:BBCodeBlock BBCode="{Binding About}" />
+                <!--<mui:BBCodeBlock BBCode="" />
+                <mui:BBCodeBlock BBCode="[b]JLRC Manasoft Inc.[/b] is commitment to deliver innovative, powerful and first-rate products and services." />
+                <mui:BBCodeBlock BBCode="" />
+                <mui:BBCodeBlock BBCode="An award-winning global developer and provider of intelligent IT Solutions offering a broad range of expertise in software development, systems integration and collaboration as well as software and hardware sales." />
+                <mui:BBCodeBlock BBCode="" />
+                <mui:BBCodeBlock BBCode="At the forefront of software development. Constantly developing cost effective and reliable application to meet the client's ever changing needs. Whether developing specialized applications from ground up or modifying existing programs or integrating systems, Manasoft has the technical skills to design, develop, test and implement applications on a broad range of platforms." />--> 
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

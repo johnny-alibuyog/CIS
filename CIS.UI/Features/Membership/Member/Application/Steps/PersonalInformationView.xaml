@@ -1,0 +1,111 @@
+﻿<UserControl 
+    x:Class="CIS.UI.Features.Membership.Member.Application.Steps.PersonalInformationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:person="clr-namespace:CIS.UI.Features.Common.Person"
+    xmlns:address="clr-namespace:CIS.UI.Features.Common.Address"
+    xmlns:converters="clr-namespace:CIS.UI.Utilities.Converters">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
+                <ResourceDictionary>
+                    <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <StackPanel>
+        <TextBlock Text="PERSONAL INFORMATION" Style="{StaticResource Heading2}" />
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ScrollViewer Margin="{StaticResource SplitLeft}">
+                <StackPanel>
+
+                    <StackPanel Margin="0,10,0,0">
+                        <person:PersonView DataContext="{Binding Person}" />
+                        <StackPanel Style="{StaticResource FieldSet}">
+                            <Label Content="Civil Status"/>
+                            <ComboBox ItemsSource="{Binding CivilStatuses, Mode=TwoWay}"
+                                  SelectedValue="{Binding CivilStatus, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource FieldSet}">
+                            <Label Content="Citizenship"/>
+                            <ComboBox ItemsSource="{Binding Citizenships, Mode=TwoWay}"
+                                  SelectedValue="{Binding Citizenship, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource FieldSet}">
+                            <Label Content="Religion"/>
+                            <ComboBox ItemsSource="{Binding Religions, Mode=TwoWay}"
+                                  SelectedValue="{Binding Religion, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource FieldSet}">
+                            <Label Content="Blood Type"/>
+                            <TextBox Text="{Binding BlodType, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource FieldSet}">
+                            <Label Content="Height"/>
+                            <TextBox Text="{Binding Height, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource FieldSet}">
+                            <Label Content="Weight"/>
+                            <TextBox Text="{Binding Weight, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+
+            <GridSplitter Grid.Column="1" />
+
+            <ScrollViewer Grid.Column="2 " Margin="{StaticResource SplitRight}">
+                <StackPanel>
+                    <StackPanel Margin="0,10,0,0">
+
+                        <TextBlock Text="Address" Style="{StaticResource Emphasis}" />
+
+                        <address:AddresssView DataContext="{Binding HomeAddress}" />
+
+                        <Separator Height="20" Background="Transparent"/>
+
+                        <TextBlock Text="Contact Information" Style="{StaticResource Emphasis}" />
+
+                        <StackPanel Style="{StaticResource FieldSet}">
+                            <Label Content="Telephone"/>
+                            <TextBox Text="{Binding TelephoneNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource FieldSet}">
+                            <Label Content="Mobile"/>
+                            <TextBox Text="{Binding MobileNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource FieldSet}">
+                            <Label Content="E-mail"/>
+                            <TextBox Text="{Binding Email, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+
+                        <Separator Height="20" Background="Transparent"/>
+
+                        <TextBlock Text="Emergency Contact" Style="{StaticResource Emphasis}" />
+
+                        <StackPanel Style="{StaticResource FieldSet}">
+                            <Label Content="Person"/>
+                            <TextBox Text="{Binding EmergencyContactPerson, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <StackPanel Style="{StaticResource FieldSet}">
+                            <Label Content="Phone Number"/>
+                            <TextBox Text="{Binding EmergencyContactNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </StackPanel>
+
+</UserControl>

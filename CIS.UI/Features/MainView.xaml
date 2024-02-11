@@ -8,45 +8,26 @@
     mui:ModernFrame.KeepAlive="False" Width="1080" Height="700"
     ContentSource="{Binding DefaultPage}"
     MenuLinkGroups="{Binding LinkGroups}">
-    <!--ContentSource="/Features/Polices/Clearances/ClearancePage.xaml"-->
+    <!--ContentSource="/Features/Membership/Registration/RegistrationPage.xaml"-->
 
     <!--<mui:ModernWindow.MenuLinkGroups>
         <mui:LinkGroup DisplayName="welcome">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="home" Source="/Features/Homes/Page.xaml" />
-                <mui:Link DisplayName="test" Source="/Features/Commons/Signatures/SignatureView.xaml" />
+                <mui:Link DisplayName="test" Source="/Features/Common/Signature/SignatureView.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
         <mui:LinkGroup DisplayName="police">
             <mui:LinkGroup.Links>
-                <mui:Link DisplayName="Clearance" Source="/Features/Polices/Clearances/ClearancePage.xaml" />
-                <mui:Link DisplayName="Warrant" Source="/Features/Polices/Warrants/WarrantPage.xaml" />
-                <mui:Link DisplayName="Maintenance" Source="/Features/Polices/Maintenances/MaintenancePage.xaml" />
+                <mui:Link DisplayName="Clearance" Source="/Features/Membership/Registration/RegistrationPage.xaml" />
+                <mui:Link DisplayName="Warrant" Source="/Features/Membership/Warrants/WarrantPage.xaml" />
+                <mui:Link DisplayName="Maintenance" Source="/Features/Membership/Maintenance/MaintenancePage.xaml" />
                 <mui:Link DisplayName="Wanted" />
-            </mui:LinkGroup.Links>
-        </mui:LinkGroup>
-        <mui:LinkGroup DisplayName="firearms">
-            <mui:LinkGroup.Links>
-                <mui:Link DisplayName="License" Source="/Features/Firearms/Licenses/LicensePage.xaml" />
-                <mui:Link DisplayName="Maintenance" Source="/Features/Firearms/Maintenances/MaintenancePage.xaml" />
-            </mui:LinkGroup.Links>
-        </mui:LinkGroup>
-        <mui:LinkGroup DisplayName="barangay">
-            <mui:LinkGroup.Links>
-                <mui:Link DisplayName="Clearance" />
-                <mui:Link DisplayName="Office" />
-                <mui:Link DisplayName="Blotter" />
-            </mui:LinkGroup.Links>
-        </mui:LinkGroup>
-        <mui:LinkGroup DisplayName="mayor">
-            <mui:LinkGroup.Links>
-                <mui:Link DisplayName="Clearance" />
-                <mui:Link DisplayName="Office" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
         <mui:LinkGroup DisplayName="membership">
             <mui:LinkGroup.Links>
-                <mui:Link DisplayName="User" Source="/Features/Memberships/Users/UserPage.xaml" />
+                <mui:Link DisplayName="User" Source="/Features/Security/Users/UserPage.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
         <mui:LinkGroup DisplayName="settings">

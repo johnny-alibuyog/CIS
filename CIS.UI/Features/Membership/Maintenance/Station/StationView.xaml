@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="CIS.UI.Features.Membership.Maintenance.Station.StationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:address="clr-namespace:CIS.UI.Features.Common.Address" 
+             mc:Ignorable="d" d:DesignHeight="300" d:Dessign="300">
+    <Grid >
+        <ScrollViewer>
+            <StackPanel>
+                <TextBlock Text="Station Configuration" Style="{StaticResource Heading2}" Margin="0,0,0,8" />
+                <mui:BBCodeBlock BBCode="Station definition and configuration." Margin="0,0,0,16"/>
+
+                <StackPanel x:Name="Form">
+                    <StackPanel.Resources>
+                        <ResourceDictionary Source="/Assets/Styles/FormInputMatrix.xaml" />
+                    </StackPanel.Resources>
+
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Logo" />
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Logo}" HorizontalAlignment="Center" Height="80" Width="80"/>
+                            <mui:ModernButton Command="{Binding LookupLogo}" Style="{StaticResource app_bar_picture}" VerticalAlignment="Center" Margin="4"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Name"/>
+                        <TextBox Text="{Binding Name, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Office"/>
+                        <TextBox Text="{Binding Office, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Location"/>
+                        <TextBox Text="{Binding Location, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Clearance Fee"/>
+                        <TextBox Text="{Binding ClearanceFee, StringFormat=N2, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" />
+                        <TextBlock Text="  (Php)" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource FieldSet}">
+                        <Label Content="Clearance Validity"/>
+                        <TextBox Text="{Binding ClearanceValidityInDays, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" />
+                        <TextBlock Text="  (Days)" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <address:AddresssView DataContext="{Binding Address}"/>
+
+                    <!-- buttons -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                        <Button Content="Save" IsDefault="True" Command="{Binding Path=Save}" Margin="4" />
+                        <Button Content="Refresh" IsCancel="True" Command="{Binding Path=Refresh}" Margin="4" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

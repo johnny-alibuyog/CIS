@@ -3,6 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <LangVersion>12</LangVersion>
+    <Nullable>enable</Nullable>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{443E80B3-B2B6-402B-828C-804F8E8532B8}</ProjectGuid>
@@ -68,122 +69,107 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Barangays\Amendment.cs" />
-    <Compile Include="Entities\Barangays\Blotter.cs" />
-    <Compile Include="Entities\Barangays\BlotterHit.cs">
-      <DependentUpon>Hit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Barangays\BlotterStatus.cs" />
-    <Compile Include="Entities\Barangays\Citizen.cs" />
-    <Compile Include="Entities\Barangays\Clearance.cs" />
-    <Compile Include="Entities\Barangays\Finding.cs" />
-    <Compile Include="Entities\Barangays\Hit.cs" />
-    <Compile Include="Entities\Barangays\Incumbent.cs" />
-    <Compile Include="Entities\Barangays\Committee.cs" />
-    <Compile Include="Entities\Barangays\Office.cs" />
-    <Compile Include="Entities\Barangays\Official.cs" />
-    <Compile Include="Entities\Barangays\Position.cs" />
-    <Compile Include="Entities\Barangays\Purpose.cs" />
-    <Compile Include="Entities\Barangays\Setting.cs" />
-    <Compile Include="Entities\Commons\Address.cs" />
-    <Compile Include="Entities\Commons\Audit.cs" />
-    <Compile Include="Entities\Commons\Barangay.cs">
+    <Compile Include="Domain\AggregateRoot.cs" />
+    <Compile Include="Domain\Common\Address.cs" />
+    <Compile Include="Domain\Common\Audit.cs" />
+    <Compile Include="Domain\Common\Barangay.cs">
       <DependentUpon>Address.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Commons\AreaClass.cs" />
-    <Compile Include="Entities\Commons\Barcode.cs" />
-    <Compile Include="Entities\Commons\Configuration.cs" />
-    <Compile Include="Entities\Commons\DataStoreConfiguration.cs" />
-    <Compile Include="Entities\Commons\ImageScaleFactorConfiguration.cs" />
-    <Compile Include="Entities\Commons\PersonBasic.cs" />
-    <Compile Include="Entities\Commons\Blob.cs" />
-    <Compile Include="Entities\Commons\CivilStatus.cs" />
-    <Compile Include="Entities\Commons\City.cs">
+    <Compile Include="Domain\Common\AreaClass.cs" />
+    <Compile Include="Domain\Common\Barcode.cs" />
+    <Compile Include="Domain\Common\BloodType.cs" />
+    <Compile Include="Domain\Common\Citizenship.cs" />
+    <Compile Include="Domain\Common\Configuration.cs" />
+    <Compile Include="Domain\Common\DataStoreConfiguration.cs" />
+    <Compile Include="Domain\Common\ImageScaleFactorConfiguration.cs" />
+    <Compile Include="Domain\Common\PersonBasic.cs" />
+    <Compile Include="Domain\Common\Blob.cs" />
+    <Compile Include="Domain\Common\CivilStatus.cs" />
+    <Compile Include="Domain\Common\City.cs">
       <DependentUpon>Address.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Commons\Contact.cs" />
-    <Compile Include="Entities\Commons\Email.cs">
+    <Compile Include="Domain\Common\Contact.cs" />
+    <Compile Include="Domain\Common\Email.cs">
       <DependentUpon>Contact.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Commons\Fax.cs">
+    <Compile Include="Domain\Common\Fax.cs">
       <DependentUpon>Contact.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Commons\Finger.cs" />
-    <Compile Include="Entities\Commons\FingerPrint.cs" />
-    <Compile Include="Entities\Commons\Gender.cs" />
-    <Compile Include="Entities\Commons\ImageBlob.cs">
+    <Compile Include="Domain\Common\Finger.cs" />
+    <Compile Include="Domain\Common\FingerPrint.cs" />
+    <Compile Include="Domain\Common\Gender.cs" />
+    <Compile Include="Domain\Common\ImageBlob.cs">
       <DependentUpon>Blob.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Commons\Landline.cs">
+    <Compile Include="Domain\Common\Landline.cs">
       <DependentUpon>Contact.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Commons\Mobile.cs">
+    <Compile Include="Domain\Common\Mobile.cs">
       <DependentUpon>Contact.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Commons\Person.cs" />
-    <Compile Include="Entities\Commons\PhysicalAttributes.cs" />
-    <Compile Include="Entities\Commons\ProductConfiguration.cs">
+    <Compile Include="Domain\Common\Person.cs" />
+    <Compile Include="Domain\Common\PhysicalAttribute.cs" />
+    <Compile Include="Domain\Common\ProductConfiguration.cs">
       <DependentUpon>Configuration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Commons\ProperCasingConfiguration.cs">
+    <Compile Include="Domain\Common\ProperCasingConfiguration.cs">
       <DependentUpon>Configuration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Commons\Province.cs">
+    <Compile Include="Domain\Common\Province.cs">
       <DependentUpon>Address.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Commons\Region.cs">
+    <Compile Include="Domain\Common\Region.cs">
       <DependentUpon>Address.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Commons\Terminal.cs" />
-    <Compile Include="Entities\Entity.cs" />
-    <Compile Include="Entities\Firearms\Gun.cs" />
-    <Compile Include="Entities\Firearms\Kind.cs" />
-    <Compile Include="Entities\Firearms\Make.cs" />
-    <Compile Include="Entities\Firearms\License.cs" />
-    <Compile Include="Entities\Mayors\Clearance.cs" />
-    <Compile Include="Entities\Mayors\Incumbent.cs" />
-    <Compile Include="Entities\Mayors\Mayor.cs">
-      <DependentUpon>Official.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Mayors\Office.cs" />
-    <Compile Include="Entities\Mayors\Official.cs" />
-    <Compile Include="Entities\Mayors\Secretary.cs">
-      <DependentUpon>Official.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Memberships\Role.cs" />
-    <Compile Include="Entities\Memberships\User.cs" />
-    <Compile Include="Entities\Polices\Amendment.cs" />
-    <Compile Include="Entities\Polices\Applicant.cs" />
-    <Compile Include="Entities\Polices\ArrestStatus.cs" />
-    <Compile Include="Entities\Polices\Clearance.cs" />
-    <Compile Include="Entities\Polices\ExpiredLicenseHit.cs">
+    <Compile Include="Domain\Common\Terminal.cs" />
+    <Compile Include="Domain\Entity.cs" />
+    <Compile Include="Domain\Common\Dependent.cs" />
+    <Compile Include="Domain\Common\Relationship.cs" />
+    <Compile Include="Domain\Common\Education.cs" />
+    <Compile Include="Domain\Common\EducationLevel.cs" />
+    <Compile Include="Domain\Membership\Member.cs" />
+    <Compile Include="Domain\Membership\MemberDependentInformation.cs" />
+    <Compile Include="Domain\Membership\MemberEducationalAttainment.cs" />
+    <Compile Include="Domain\Membership\MemberMembershipInformation.cs" />
+    <Compile Include="Domain\Membership\MemberPersonalInformation.cs" />
+    <Compile Include="Domain\Membership\MemberProfessionalInfomation.cs" />
+    <Compile Include="Domain\Common\Religion.cs" />
+    <Compile Include="Domain\Membership\MembershipStatus.cs" />
+    <Compile Include="Domain\Membership\Position.cs" />
+    <Compile Include="Domain\Membership\Signatory.cs" />
+    <Compile Include="Domain\Membership\SignatoryRole.cs" />
+    <Compile Include="Domain\Security\Role.cs" />
+    <Compile Include="Domain\Security\User.cs" />
+    <Compile Include="Domain\Membership\Amendment.cs" />
+    <Compile Include="Domain\Membership\Application.cs" />
+    <Compile Include="Domain\Membership\ArrestStatus.cs" />
+    <Compile Include="Domain\Membership\Registration.cs" />
+    <Compile Include="Domain\Membership\Finding.cs" />
+    <Compile Include="Domain\Membership\Hit.cs" />
+    <Compile Include="Domain\Common\HitScore.cs" />
+    <Compile Include="Domain\Membership\Officer.cs" />
+    <Compile Include="Domain\Membership\Purpose.cs" />
+    <Compile Include="Domain\Membership\Rank.cs" />
+    <Compile Include="Domain\Membership\RankCategory.cs" />
+    <Compile Include="Domain\Membership\Setting.cs" />
+    <Compile Include="Domain\Membership\Station.cs" />
+    <Compile Include="Domain\Membership\Suspect.cs" />
+    <Compile Include="Domain\Membership\SuspectHit.cs">
       <DependentUpon>Hit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Polices\Finding.cs" />
-    <Compile Include="Entities\Polices\Hit.cs" />
-    <Compile Include="Entities\Commons\HitScore.cs" />
-    <Compile Include="Entities\Polices\Officer.cs" />
-    <Compile Include="Entities\Polices\Purpose.cs" />
-    <Compile Include="Entities\Polices\Rank.cs" />
-    <Compile Include="Entities\Polices\RankCategory.cs" />
-    <Compile Include="Entities\Polices\Setting.cs" />
-    <Compile Include="Entities\Polices\Station.cs" />
-    <Compile Include="Entities\Polices\Suspect.cs" />
-    <Compile Include="Entities\Polices\SuspectHit.cs">
-      <DependentUpon>Hit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Polices\Warrant.cs" />
-    <Compile Include="Entities\ValueObject.cs" />
+    <Compile Include="Domain\Membership\Warrant.cs" />
+    <Compile Include="Domain\ValueObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\Extentions\EntityExtention.cs" />
-    <Compile Include="Utilities\Extentions\StringExtention.cs" />
-    <Compile Include="Utilities\Extentions\StringFormatter.cs" />
+    <Compile Include="Utility\Extention\EntityExtention.cs" />
+    <Compile Include="Utility\Extention\EnumExtention.cs" />
+    <Compile Include="Utility\Extention\TypeHelperExtension.cs" />
+    <Compile Include="Utility\Extention\StringExtention.cs" />
+    <Compile Include="Utility\Extention\StringFormatter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Entities\Commons\AddressNotes.txt">
+    <Content Include="Domain\Common\AddressNotes.txt">
       <DependentUpon>Address.cs</DependentUpon>
     </Content>
-    <Content Include="Entities\Firearms\TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

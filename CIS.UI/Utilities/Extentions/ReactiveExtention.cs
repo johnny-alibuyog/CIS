@@ -1,4 +1,4 @@
-﻿using CIS.Data.Commons.Exceptions;
+﻿using CIS.Data.Common.Exception;
 using CIS.UI.Features;
 using ReactiveUI;
 using System;
@@ -22,6 +22,22 @@ public static class ReactiveExtention
                 BusinessException businessException 
                     => businessException.Message,
                 _ 
+                    => !string.IsNullOrWhiteSpace(message) ? message : exception.Message
+            };
+
+            handler.MessageBox.Warn(notification);
+        });
+    }
+
+    public static void Handle(this IObservable<Exception> observableException, ViewModelBase handler, string message = null)
+    {
+        observableException.Subscribe(exception =>
+        {
+            var notification = exception switch
+            {
+                BusinessException businessException
+                    => businessException.Message,
+                _
                     => !string.IsNullOrWhiteSpace(message) ? message : exception.Message
             };
 
