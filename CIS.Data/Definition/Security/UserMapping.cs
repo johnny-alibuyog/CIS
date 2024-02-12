@@ -23,7 +23,7 @@ public class UserMapping : ClassMap<User>
 
         Component(x => x.Person);
 
-        HasMany<Role>(x => x.Roles)
+        HasMany(x => x.Roles)
             .Access.CamelCaseField(Prefix.Underscore)
             .Schema(GetType().ParseSchema())
             .Table("UsersRoles")

@@ -20,7 +20,7 @@ public class StationSeeder(ISessionFactory sessionFactory) : ISeeder
         {
             station = new Station()
             {
-                Name = "Name not set",
+                Name = "Descrition not set",
                 Office = "Office not set",
                 Location = "Location not set",
                 ClearanceFee = 100.00M,

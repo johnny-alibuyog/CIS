@@ -153,7 +153,7 @@ public class OfficerListController : ControllerBase<OfficerListViewModel>
             var station = query.FirstOrDefault();
             station ??= new MembershipD.Station()
             {
-                Name = "Name not set",
+                Name = "Descrition not set",
                 Office = "Office not set",
                 Location = "Location not set",
                 ClearanceFee = 100.00M,
@@ -183,8 +183,8 @@ public class OfficerListController : ControllerBase<OfficerListViewModel>
 
         //var item = new OfficerListItemViewModel();
         //item.Id = value.Id;
-        //item.Name = value.Person.FullName;
-        //item.Rank = value.Rank.Name;
+        //item.Descrition = value.Person.FullName;
+        //item.Rank = value.Rank.Descrition;
 
         //this.ViewModel.Items.Add(item);
         //this.ViewModel.SelectedItem = item;
@@ -241,8 +241,8 @@ public class OfficerListController : ControllerBase<OfficerListViewModel>
 
         //var item = this.ViewModel.SelectedItem;
         //item.Id = value.Id;
-        //item.Name = value.Person.FullName;
-        //item.Rank = value.Rank.Name;
+        //item.Descrition = value.Person.FullName;
+        //item.Rank = value.Rank.Descrition;
 
         this.Search();
 

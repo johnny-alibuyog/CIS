@@ -11,11 +11,11 @@ public class ApplicationController : ControllerBase<ApplicationViewModel>
     {
         this.ViewModel.Wizard = new(
             steps: [
-                PersonalInformationViewModel.Create(),
-                ProfessionalInformationViewModel.Create(),
-                new EducationalAttainmentViewModel(),
+                PersonalInfoViewModel.Create(),
+                ProfessionalInfoViewModel.Create(),
+                EducationalAttainmentViewModel.Create(),
                 LegalDependentsViewModel.Create(),
-                MembershipInformationViewModel.Create(),
+                MembershipInfoViewModel.Create(),
             ],
             onReset: () => Console.WriteLine("Reset"),
             onSubmit: () => Console.WriteLine("Submit")

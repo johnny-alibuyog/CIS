@@ -11,9 +11,9 @@ public class CitizenshipDefinition
         public Mapping()
         {
             Id(x => x.Id)
-                .GeneratedBy.GuidComb();
+                .GeneratedBy.Assigned();
 
-            Map(x => x.Name);
+            Map(x => x.Descrition);
         }
     }
 
@@ -23,9 +23,9 @@ public class CitizenshipDefinition
         {
             Define(x => x.Id);
 
-            Define(x => x.Name)
+            Define(x => x.Descrition)
                 .NotNullableAndNotEmpty()
-                .And.MaxLength(50);
+                .And.MaxLength(150);
         }
     }
 }

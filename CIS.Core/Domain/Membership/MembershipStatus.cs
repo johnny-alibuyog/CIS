@@ -3,43 +3,57 @@ using System.Collections.Generic;
 
 namespace CIS.Core.Domain.Membership;
 
-public abstract class MembershipStatus : Entity<Guid>
+public abstract class MembershipStatus : Entity<Guid> 
 {
-    private string _remarks;
+    private MemberMembershipInfo _membershipInfo;
 
-    public virtual string Remarks
+    public virtual MemberMembershipInfo MembershipInfo
     {
-        get => _remarks;
-        set => _remarks = value;
+        get => _membershipInfo;
+        protected set => _membershipInfo = value;
+    }
+
+    public MembershipStatus() { }
+
+    public MembershipStatus(MemberMembershipInfo member)
+    {
+        _membershipInfo = member;
     }
 }
 
-public class ApplyingStatus : MembershipStatus
+public class MemberApplied : MembershipStatus
 {
+    private DateTime _appliedOn;
     private readonly ICollection<Signatory> _signatories = [];
+
+    public virtual DateTime AppliedOn
+    {
+        get => _appliedOn;
+        set => _appliedOn = value;
+    }
 
     public virtual ICollection<Signatory> Signatories
     {
         get => _signatories;
     }
 
-    public ApplyingStatus() { }
+    public MemberApplied() { }
 
-    public ApplyingStatus(IEnumerable<Signatory> signatories)
+    public MemberApplied(MemberMembershipInfo membershipInfo, IEnumerable<Signatory> signatories) : base(membershipInfo)
     {
         this._signatories = [.. signatories];
     }
 }
 
-public class ApprovedStatus : MembershipStatus
+public class MemberApproved : MembershipStatus
 {
-    private DateTime _approvedDate;
+    private DateTime _approvedOn;
     private readonly ICollection<Signatory> _signatories = [];
 
-    public virtual DateTime ApprovedDate
+    public virtual DateTime ApprovedOn
     {
-        get => _approvedDate;
-        set => _approvedDate = value;
+        get => _approvedOn;
+        set => _approvedOn = value;
     }
 
     public virtual ICollection<Signatory> Signatories
@@ -47,19 +61,19 @@ public class ApprovedStatus : MembershipStatus
         get => _signatories;
     }
 
-    public ApprovedStatus() { }
+    public MemberApproved() { }
 
-    public ApprovedStatus(Signatory signatory)
+    public MemberApproved(MemberMembershipInfo membershipInfo, IEnumerable<Signatory> signatories) : base(membershipInfo)
     {
-        this._approvedDate = DateTime.Now;
-        this._signatories.Add(signatory);
+        this._approvedOn = DateTime.Now;
+        this._signatories = [.. signatories];
     }
 }
 
-public class RegisteredStatus : MembershipStatus // technically, this is also active status
+public class MemberRegistered : MembershipStatus // technically, this is also active status
 {
     private int _year;
-    private DateTime _registeredDate;
+    private DateTime _registeredOn;
     private Member _incumbentSecretary; // FIXME: this should be a officer
     private Member _incumbentPersident; // FIXME: this should be a officer
 
@@ -69,10 +83,10 @@ public class RegisteredStatus : MembershipStatus // technically, this is also ac
         protected set => _year = value;
     }
 
-    public virtual DateTime RegisteredDate
+    public virtual DateTime RegisteredOn
     {
-        get => _registeredDate;
-        protected set => _registeredDate = value;
+        get => _registeredOn;
+        protected set => _registeredOn = value;
     }
 
     public virtual Member IncumbentSecretary
@@ -87,27 +101,27 @@ public class RegisteredStatus : MembershipStatus // technically, this is also ac
         set => _incumbentPersident = value;
     }
 
+    public MemberRegistered() { }
 
-    public RegisteredStatus() { }
-
-    public RegisteredStatus(Member incumbentSecretary, Member incumbentPresident)
+    public MemberRegistered(MemberMembershipInfo membershipInfo, Member incumbentSecretary, Member incumbentPresident) : base(membershipInfo)
     {
         this._year = DateTime.Now.Year;
-        this._registeredDate = DateTime.Now;
+        this._registeredOn = DateTime.Now;
         this._incumbentSecretary = incumbentSecretary;
         this._incumbentPersident = incumbentPresident;
     }
 }
 
-public class RejectedStatus : MembershipStatus
+public class MemberRejected : MembershipStatus
 {
-    private DateTime _rejectedDate;
+    private DateTime _rejectedOn;
     private Signatory _rejectedBy;
+    private string _reason;
 
-    public virtual DateTime RejectedDate
+    public virtual DateTime RejectedOn
     {
-        get => _rejectedDate;
-        protected set => _rejectedDate = value;
+        get => _rejectedOn;
+        protected set => _rejectedOn = value;
     }
 
     public virtual Signatory RejectedBy
@@ -116,12 +130,18 @@ public class RejectedStatus : MembershipStatus
         protected set => _rejectedBy = value;
     }
 
-    public RejectedStatus() { }
-
-    public RejectedStatus(Signatory signatory)
+    public virtual string Reason
     {
-        this._rejectedDate = DateTime.Now;
-        this._rejectedBy = signatory;
+        get => _reason;
+        set => _reason = value;
+    }   
+
+    public MemberRejected() { }
+
+    public MemberRejected(MemberMembershipInfo membershipInfo, Signatory rejectedBy, string reason = null) : base(membershipInfo)
+    {
+        this._rejectedOn = DateTime.Now;
+        this._rejectedBy = rejectedBy;
+        this._reason = reason;
     }
 }
-

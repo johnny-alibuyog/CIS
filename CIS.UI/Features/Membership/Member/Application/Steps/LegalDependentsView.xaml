@@ -29,7 +29,7 @@
                                 <ComboBox 
                                     ItemsSource="{Binding DataContext.Lookup.Relationships, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
                                     SelectedValue="{Binding Relationship, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"
-                                    Width="11c0"/>
+                                    Width="110"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

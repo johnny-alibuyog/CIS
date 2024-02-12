@@ -5,37 +5,31 @@ namespace CIS.Core.Domain;
 
 public abstract class ValueObject
 {
-    public static bool operator ==(ValueObject one, ValueObject two)
-    {
-        return EqualOperator(one, two);
-    }
+    protected abstract IEnumerable<object> GetEqualityValues();
 
-    protected static bool EqualOperator(ValueObject left, ValueObject right)
+    public static bool operator ==(ValueObject left, ValueObject right)
     {
         if (left is null ^ right is null)
             return false;
 
-        return ReferenceEquals(left, right) || left.Equals(right);
+        if (ReferenceEquals(left, right))
+            return true;
+
+        return left.Equals(right);
     }
 
     public static bool operator !=(ValueObject one, ValueObject two)
     {
-        return NotEqualOperator(one, two);
+        return !(one == two);
     }
-
-    protected static bool NotEqualOperator(ValueObject left, ValueObject right)
-    {
-        return !EqualOperator(left, right);
-    }
-
-    protected abstract IEnumerable<object> GetEqualityValues();
 
     public override bool Equals(object obj)
     {
-        if (obj == null || obj.GetType() != GetType())
-        {
+        if (obj is null)
             return false;
-        }
+
+        if (obj.GetType() != GetType())
+            return false;
 
         var that = (ValueObject)obj;
 

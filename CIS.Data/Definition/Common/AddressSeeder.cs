@@ -333,7 +333,7 @@ public static class AddressExcelImporter
 //            {
 //                var region = new Region()
 //                {
-//                    Name = regionToImport.Region
+//                    Descrition = regionToImport.Region
 //                };
 //                regionDictionary.Add(region.Key(), region);
 //                session.Insert(region);
@@ -365,7 +365,7 @@ public static class AddressExcelImporter
 //            {
 //                var province = new Province()
 //                {
-//                    Name = provinceToImport.Province,
+//                    Descrition = provinceToImport.Province,
 //                    Region = regionDictionary[$"{provinceToImport.Region}"]
 //                };
 //                provinceDictionary.Add(province.Key(), province);
@@ -399,7 +399,7 @@ public static class AddressExcelImporter
 //            {
 //                var city = new City()
 //                {
-//                    Name = cityToImport.City,
+//                    Descrition = cityToImport.City,
 //                    Province = provinceDictionary[$"{cityToImport.Region}{cityToImport.Province}"]
 //                };
 //                cityDictionary.Add(city.Key(), city);
@@ -432,7 +432,7 @@ public static class AddressExcelImporter
 //            {
 //                var barangay = new Barangay()
 //                {
-//                    Name = barangayToImport.Barangay,
+//                    Descrition = barangayToImport.Barangay,
 //                    City = cityDictionary[$"{barangayToImport.Region}{barangayToImport.Province}{barangayToImport.City}"],
 //                    AreaClass = barangayToImport.AreaClass.AsNullableEnum<AreaClass>(),
 //                    Population = Convert.ToInt64(barangayToImport.Population)
@@ -481,38 +481,38 @@ public static class AddressExcelImporter
 
 //            foreach (var item in itemsToImport)
 //            {
-//                var region = regions.FirstOrDefault(x => IsEqual(x.Name, item.Region));
+//                var region = regions.FirstOrDefault(x => IsEqual(x.Descrition, item.Region));
 //                if (region == null)
 //                {
 //                    region = new Region();
-//                    region.Name = item.Region;
+//                    region.Descrition = item.Region;
 //                    //session.Save(region);
 //                    session.Insert(region);
 //                }
 
-//                var province = region.Provinces.FirstOrDefault(x => IsEqual(x.Name, item.Province));
+//                var province = region.Provinces.FirstOrDefault(x => IsEqual(x.Descrition, item.Province));
 //                if (province == null)
 //                {
 //                    province = new Province();
-//                    province.Name = item.Province;
+//                    province.Descrition = item.Province;
 //                    region.AddProvice(province);
 //                    session.Insert(province);
 //                }
 
-//                var city = province.Cities.FirstOrDefault(x => IsEqual(x.Name, item.City));
+//                var city = province.Cities.FirstOrDefault(x => IsEqual(x.Descrition, item.City));
 //                if (city == null)
 //                {
 //                    city = new City();
-//                    city.Name = item.City;
+//                    city.Descrition = item.City;
 //                    province.AddCity(city);
 //                    session.Insert(city);
 //                }
 
-//                var barangay = city.Barangays.FirstOrDefault(x => IsEqual(x.Name, item.Barangay));
+//                var barangay = city.Barangays.FirstOrDefault(x => IsEqual(x.Descrition, item.Barangay));
 //                if (barangay == null)
 //                {
 //                    barangay = new Barangay();
-//                    barangay.Name = item.Barangay;
+//                    barangay.Descrition = item.Barangay;
 //                    barangay.AreaClass = item.AreaClass.As<AreaClass>();
 //                    barangay.Population = item.Population;
 //                    city.AddBarangay(barangay);
@@ -548,38 +548,38 @@ public static class AddressExcelImporter
 
 //                foreach (var item in itemsToImportBatch)
 //                {
-//                    var region = regions.FirstOrDefault(x => IsEqual(x.Name, item.Region));
+//                    var region = regions.FirstOrDefault(x => IsEqual(x.Descrition, item.Region));
 //                    if (region == null)
 //                    {
 //                        region = new Region();
-//                        region.Name = item.Region;
+//                        region.Descrition = item.Region;
 //                        session.Save(region);
 //                        //session.Insert(region);
 //                    }
 
-//                    var province = region.Provinces.FirstOrDefault(x => IsEqual(x.Name, item.Province));
+//                    var province = region.Provinces.FirstOrDefault(x => IsEqual(x.Descrition, item.Province));
 //                    if (province == null)
 //                    {
 //                        province = new Province();
-//                        province.Name = item.Province;
+//                        province.Descrition = item.Province;
 //                        region.AddProvice(province);
 //                        //session.Insert(province);
 //                    }
 
-//                    var city = province.Cities.FirstOrDefault(x => IsEqual(x.Name, item.City));
+//                    var city = province.Cities.FirstOrDefault(x => IsEqual(x.Descrition, item.City));
 //                    if (city == null)
 //                    {
 //                        city = new City();
-//                        city.Name = item.City;
+//                        city.Descrition = item.City;
 //                        province.AddCity(city);
 //                        //session.Insert(city);
 //                    }
 
-//                    var barangay = city.Barangays.FirstOrDefault(x => IsEqual(x.Name, item.Barangay));
+//                    var barangay = city.Barangays.FirstOrDefault(x => IsEqual(x.Descrition, item.Barangay));
 //                    if (barangay == null)
 //                    {
 //                        barangay = new Barangay();
-//                        barangay.Name = item.Barangay;
+//                        barangay.Descrition = item.Barangay;
 //                        barangay.AreaClass = item.AreaClass.As<AreaClass>();
 //                        barangay.Population = item.Population;
 //                        city.AddBarangay(barangay);
@@ -688,13 +688,13 @@ public static class AddressExcelImporter
 //    //        .GroupBy(x => new { x.Region })
 //    //        .Select(address => new Region()
 //    //        {
-//    //            Name = address.Key.Region,
+//    //            Descrition = address.Key.Region,
 //    //            Provinces = dataRow
 //    //                .Where(x1 => x1.Region == address.Key.Region)
 //    //                .GroupBy(x2 => new { x2.Province })
 //    //                .Select(addres2 => new Province()
 //    //                {
-//    //                    Name = addres2.Key.Province,
+//    //                    Descrition = addres2.Key.Province,
 //    //                    Cities = dataRow
 //    //                        .Where(x2 => 
 //    //                            x2.Region == address.Key.Region && 
@@ -703,7 +703,7 @@ public static class AddressExcelImporter
 //    //                        .GroupBy(x3 => new { x3.City })
 //    //                        .Select(address3 => new City()
 //    //                        {
-//    //                            Name = address3.Key.City,
+//    //                            Descrition = address3.Key.City,
 //    //                            Barangays = address
 //    //                                .Where(x4 => 
 //    //                                    x4.Region == address.Key.Region && 
@@ -712,7 +712,7 @@ public static class AddressExcelImporter
 //    //                                )
 //    //                                .Select(address4 => new Barangay()
 //    //                                {
-//    //                                    Name = address4.Barangay,
+//    //                                    Descrition = address4.Barangay,
 //    //                                    AreaClass = address4.AreaClass.AsNullableEnum<AreaClass>(),
 //    //                                    Population = Convert.ToInt64(address4.Population)
 //    //                                })

@@ -23,7 +23,7 @@ public class MainController : ControllerBase<MainViewModel>
         {
             addLinkGroup("membership",
                 new Link() { DisplayName = "Registration", Source = new Uri("/Features/Membership/Registration/RegistrationPage.xaml", UriKind.Relative) },
-                new Link() { DisplayName = "Members", Source = new Uri("/Features/Membership/Member/MemberPage.xaml", UriKind.Relative) },
+                new Link() { DisplayName = "Members", Source = new Uri("/Features/Membership/MembershipInfo/MemberPage.xaml", UriKind.Relative) },
                 //new Link() { DisplayName = "Warrant", Source = new Uri("/Features/Membership/Warrants/WarrantPage.xaml", UriKind.Relative) },
                 new Link() { DisplayName = "Maintenance", Source = new Uri("/Features/Membership/Maintenance/MaintenancePage.xaml", UriKind.Relative) }
             );

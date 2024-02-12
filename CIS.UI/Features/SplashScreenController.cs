@@ -91,6 +91,8 @@ public class SplashScreenController : ControllerBase<SplashScreenViewModel>
 
         Seed<AddressSeeder>("Initializing address ...");
 
+        Seed<CitizenshipSeeder>("Initializing citizenship ...");
+
         //LoadImages();
     }
 

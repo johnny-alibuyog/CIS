@@ -129,12 +129,16 @@
     <Compile Include="Convention\_CustomJoinedSubclassConvention.cs" />
     <Compile Include="Definition\Common\CitizenshipDefinition.cs" />
     <Compile Include="Definition\Common\AddressSeeder.cs" />
+    <Compile Include="Definition\Common\CitizenshipSeeder.cs" />
     <Compile Include="Definition\Common\ConfigurationDefinition.cs" />
     <Compile Include="Definition\Common\ConfigurationSeeder.cs" />
     <Compile Include="Definition\Common\DataStoreConfigurationMapping.cs">
       <DependentUpon>ConfigurationDefinition.cs</DependentUpon>
     </Compile>
+    <Compile Include="Definition\Common\DependentDefinition.cs" />
+    <Compile Include="Definition\Common\EducationDefinition.cs" />
     <Compile Include="Definition\Common\FingerSeeder.cs" />
+    <Compile Include="Definition\Common\HobbyDefinition.cs" />
     <Compile Include="Definition\Common\ImageScaleFactorConfigurationMapping.cs">
       <DependentUpon>ConfigurationDefinition.cs</DependentUpon>
     </Compile>
@@ -146,19 +150,31 @@
     <Compile Include="Definition\Common\ProperCasingConfigurationMapping.cs">
       <DependentUpon>ConfigurationDefinition.cs</DependentUpon>
     </Compile>
+    <Compile Include="Definition\Common\ReligionDefinition.cs" />
+    <Compile Include="Definition\Common\SkillDefinition.cs" />
     <Compile Include="Definition\Common\TerminalSeeder.cs" />
     <Compile Include="Definition\Importer.cs" />
     <Compile Include="Definition\ISeeder.cs" />
     <Compile Include="Definition\Membership\AmendmentDefinition.cs" />
     <Compile Include="Definition\Membership\ApplicationDefinition.cs" />
     <Compile Include="Definition\Membership\ApplicationSeeder.cs" />
+    <Compile Include="Definition\Membership\MemberDependentInfoDefinition.cs" />
     <Compile Include="Definition\Membership\FindingDefinition.cs" />
     <Compile Include="Definition\Membership\HitDefinition.cs" />
+    <Compile Include="Definition\Membership\MemberDefinition.cs" />
+    <Compile Include="Definition\Membership\MemberEducationalAttainmentDefinition.cs" />
+    <Compile Include="Definition\Membership\MemberPersonalInfoDefinition.cs" />
+    <Compile Include="Definition\Membership\MemberProfessionalInfoDefinition.cs" />
+    <Compile Include="Definition\Membership\MemberMembershipInfoDefinition.cs" />
+    <Compile Include="Definition\Membership\MembershipStatusDefinition.cs" />
     <Compile Include="Definition\Membership\OfficerSeeder.cs" />
+    <Compile Include="Definition\Membership\PositionDefinition.cs" />
     <Compile Include="Definition\Membership\PurposeSeeder.cs" />
     <Compile Include="Definition\Membership\RankSeeder.cs" />
     <Compile Include="Definition\Membership\SettingDefinition.cs" />
     <Compile Include="Definition\Membership\SettingSeeder.cs" />
+    <Compile Include="Definition\Membership\SignatoryDefinition.cs" />
+    <Compile Include="Definition\Membership\SignatoryRoleDefinition.cs" />
     <Compile Include="Definition\Membership\StationSeeder.cs" />
     <Compile Include="Definition\Membership\SuspectHitMapping.cs">
       <DependentUpon>HitDefinition.cs</DependentUpon>

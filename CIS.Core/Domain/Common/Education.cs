@@ -4,14 +4,14 @@ namespace CIS.Core.Domain.Common;
 
 public class Education : Entity<Guid>
 {
-    private EducationLevel _educationLevel;
+    private EducationLevel _Level;
     private string _schoolName;
-    private DateTime? _dateGraduated;
+    private int? _yearGraduated;
 
-    public virtual EducationLevel EducationLevel
+    public virtual EducationLevel Level
     {
-        get => _educationLevel;
-        set => _educationLevel = value;
+        get => _Level;
+        set => _Level = value;
     }
 
     public virtual string SchoolName
@@ -20,16 +20,16 @@ public class Education : Entity<Guid>
         set => _schoolName = value;
     }
 
-    public virtual DateTime? DateGraduated
+    public virtual int? YearGraduated
     {
-        get => _dateGraduated;
-        set => _dateGraduated = value;
+        get => _yearGraduated;
+        set => _yearGraduated = value;
     }
 
-    internal virtual void SerializeWith(Education value)
+    public virtual void SerializeWith(Education value)
     {
-        this.EducationLevel = value.EducationLevel;
+        this.Level = value.Level;
         this.SchoolName = value.SchoolName;
-        this.DateGraduated = value.DateGraduated;
+        this.YearGraduated = value.YearGraduated;
     }
 }

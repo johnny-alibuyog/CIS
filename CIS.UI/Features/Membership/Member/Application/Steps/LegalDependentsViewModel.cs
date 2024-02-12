@@ -1,11 +1,11 @@
-﻿using CIS.Core.Utility.Extention;
-using System;
-using CIS.UI.Features.Common.Wizard;
-using CIS.Core.Domain.Common;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ReactiveUI;
+using CIS.Core.Domain.Common;
+using CIS.Core.Utility.Extention;
+using CIS.UI.Features.Common.Wizard;
 using CIS.UI.Utilities.Extentions;
+using ReactiveUI;
 
 namespace CIS.UI.Features.Membership.Member.Application.Steps;
 
@@ -60,10 +60,7 @@ public class LegalDependentsViewModel : WizardStep
         Console.WriteLine($"{this.Title} is unloading ...");
     }
 
-    public static LegalDependentsViewModel Create()
-    {
-        return new LegalDependentsViewModel();
-    }
+    public static LegalDependentsViewModel Create() => new();
 }
 
 public class LegalDependentLookup()
@@ -77,7 +74,7 @@ public class DependentModel(Relationship relationship, string name, DateTime? bi
     public string Name { get; set; } = name;
     public DateTime? BirthDate { get; set; } = birthDate;
 
-    public static DependentModel Empty => new DependentModel(Relationship.Child, string.Empty, null);
+    public static DependentModel Empty => new(Relationship.Child, string.Empty, null);
 }
 
 public class LegalDependentsModel

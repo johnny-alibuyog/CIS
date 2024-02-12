@@ -95,7 +95,7 @@ namespace CIS.Data.Configurations
             return SubstitutionExpression.Replace(originalMessage, match =>
             {
                 if ("[EntityName]".Equals(match.Value))
-                    return CleanEntityPostfix(entity.Name);//return entity.Name;
+                    return CleanEntityPostfix(entity.Name);//return entity.Descrition;
 
                 if ((!string.IsNullOrEmpty(propName) && "[PropertyName]".Equals(match.Value)))
                     return propName;

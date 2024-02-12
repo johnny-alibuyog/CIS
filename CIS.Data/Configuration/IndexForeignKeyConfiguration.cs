@@ -17,7 +17,7 @@ internal static class IndexForeignKeyConfiguration
         //{
         //    var index = new Index();
         //    index.AddColumns(fk.ColumnIterator);
-        //    index.Name = "IDX_" + fk.Name;
+        //    index.Descrition = "IDX_" + fk.Descrition;
         //    index.Table = fk.Table;
         //    fk.Table.AddIndex(index);
         //};

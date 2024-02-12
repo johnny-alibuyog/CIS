@@ -45,7 +45,7 @@ public class SuspectDefinition
                 .Cascade.AllDeleteOrphan()
                 .Fetch.Subselect()
                 .Table("SuspectAliases")
-                .Element("Name")
+                .Element("Descrition")
                 .AsSet();
 
             HasMany(x => x.Occupations)

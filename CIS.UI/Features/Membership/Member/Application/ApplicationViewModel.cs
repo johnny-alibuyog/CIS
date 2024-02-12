@@ -1,5 +1,4 @@
-﻿using CIS.UI.Bootstraps.InversionOfControl;
-using CIS.UI.Features.Common.Wizard;
+﻿using CIS.UI.Features.Common.Wizard;
 
 namespace CIS.UI.Features.Membership.Member.Application;
 

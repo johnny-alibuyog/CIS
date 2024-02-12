@@ -347,18 +347,18 @@
     <Compile Include="Features\Membership\Member\Application\Steps\LegalDependentsView.xaml.cs">
       <DependentUpon>LegalDependentsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Membership\Member\Application\Steps\MembershipInformationViewModel.cs" />
-    <Compile Include="Features\Membership\Member\Application\Steps\MembershipInformationView.xaml.cs">
-      <DependentUpon>MembershipInformationView.xaml</DependentUpon>
+    <Compile Include="Features\Membership\Member\Application\Steps\MembershipInfoViewModel.cs" />
+    <Compile Include="Features\Membership\Member\Application\Steps\MembershipInfoView.xaml.cs">
+      <DependentUpon>MembershipInfoView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Membership\Member\Application\Steps\PersonalInformationView.xaml.cs">
-      <DependentUpon>PersonalInformationView.xaml</DependentUpon>
+    <Compile Include="Features\Membership\Member\Application\Steps\PersonalInfoView.xaml.cs">
+      <DependentUpon>PersonalInfoView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Membership\Member\Application\Steps\PersonalInformationViewModel.cs" />
-    <Compile Include="Features\Membership\Member\Application\Steps\ProfessionalInformationView.xaml.cs">
-      <DependentUpon>ProfessionalInformationView.xaml</DependentUpon>
+    <Compile Include="Features\Membership\Member\Application\Steps\PersonalInfoViewModel.cs" />
+    <Compile Include="Features\Membership\Member\Application\Steps\ProfessionalInfoView.xaml.cs">
+      <DependentUpon>ProfessionalInfoView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Features\Membership\Member\Application\Steps\ProfessionalInformationViewModel.cs" />
+    <Compile Include="Features\Membership\Member\Application\Steps\ProfessionalInfoViewModel.cs" />
     <Compile Include="Features\Membership\Member\MemberPage.xaml.cs">
       <DependentUpon>MemberPage.xaml</DependentUpon>
     </Compile>
@@ -692,15 +692,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Features\Membership\Member\Application\Steps\MembershipInformationView.xaml">
+    <Page Include="Features\Membership\Member\Application\Steps\MembershipInfoView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Features\Membership\Member\Application\Steps\PersonalInformationView.xaml">
+    <Page Include="Features\Membership\Member\Application\Steps\PersonalInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Features\Membership\Member\Application\Steps\ProfessionalInformationView.xaml">
+    <Page Include="Features\Membership\Member\Application\Steps\ProfessionalInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

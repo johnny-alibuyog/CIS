@@ -1,4 +1,6 @@
-﻿namespace CIS.Core.Domain.Membership;
+﻿using System.Collections.Generic;
+
+namespace CIS.Core.Domain.Membership;
 
 public class SignatoryRole : Entity<string>
 {
@@ -27,4 +29,5 @@ public class SignatoryRole : Entity<string>
     public static SignatoryRole Endorser = new("Endorser", "Endorser");
     public static SignatoryRole Concurrer = new("Concurrer", "Concurrer");
     public static SignatoryRole Approver = new("Approver", "Approver");
+    public static ICollection<SignatoryRole> List = [Sponsor, Endorser, Concurrer, Approver];
 }

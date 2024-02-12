@@ -18,7 +18,7 @@ public class StationViewModel : ViewModelBase
 
     public virtual BitmapSource Logo { get; set; }
 
-    [NotNullNotEmpty(Message = "Name is mandatory.")]
+    [NotNullNotEmpty(Message = "Descrition is mandatory.")]
     public virtual string Name { get; set; }
 
     [NotNullNotEmpty(Message = "Office is mandatory.")]

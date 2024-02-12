@@ -91,6 +91,8 @@ public class EducationalAttainmentViewModel : WizardStep
     {
         Console.WriteLine($"{this.Title} is unloading ...");
     }
+
+    public static EducationalAttainmentViewModel Create() => new();
 }
 
 public class EducationModel(EducationLevel educationLevel, string schoolName, DateTime? dateGraduated) : ReactiveObject

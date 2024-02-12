@@ -26,7 +26,7 @@ public class Dependent : Entity<Guid>
         set => _birthDate = value;
     }
 
-    internal virtual void SerializeWith(Dependent value)
+    public virtual void SerializeWith(Dependent value)
     {
         this.Relationship = value.Relationship;
         this.Name = value.Name;

@@ -14,23 +14,21 @@ namespace CIS.Core.Domain
 
         public virtual void WithId(T id)
         {
-            this.Id = id;
+            _id = id;
         }
 
         public override bool Equals(object obj)
         {
-            if (obj is Entity<T> other)
-            {
-                if (ReferenceEquals(this, other))
-                    return true;
+            if (obj is null)
+                return false;
 
-                if (ReferenceEquals(null, other))
-                    return false;
+            if (obj is not Entity<T> other)
+                return false;
 
-                return Id.Equals(other.Id);
-            }
+            if (ReferenceEquals(this, other))
+                return true;
 
-            return false;
+            return Id.Equals(other.Id);
         }
 
         public override int GetHashCode()
@@ -40,11 +38,11 @@ namespace CIS.Core.Domain
 
         public static bool operator ==(Entity<T> x, Entity<T> y)
         {
+            if (x is null ^ y is null)
+                return false;
+
             if (ReferenceEquals(x, y))
                 return true;
-
-            if (ReferenceEquals(null, x) || ReferenceEquals(null, y))
-                return false;
 
             return x.Id.Equals(y.Id);
         }
