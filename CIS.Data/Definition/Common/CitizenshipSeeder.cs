@@ -18,8 +18,7 @@ public class CitizenshipSeeder(ISessionFactory sessionFactory) : ISeeder
         if (session.Query<Citizenship>().Any())
             return;
 
-        Citizenship.List
-            .ForEach(x => session.Save(x));
+        Citizenship.List.ForEach(x => session.Save(x));
 
         transaction.Commit();
     }
